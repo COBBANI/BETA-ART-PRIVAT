@@ -32,7 +32,7 @@ def norm(name):
     """Karşılaştırma anahtarı: küçük harf, yalnız harf/rakam, sondaki _1/_2 kopya eki atılmış."""
     stem, dot, ext = name.rpartition('.')
     if not dot: stem, ext = name, ''
-    stem = re.sub(r'[_ ]\(?\d+\)?$', '', stem)
+    stem = re.sub(r'[_ ]\(?\d{1,2}\)?$', '', stem)   # _1, _2, (3): tarayıcı kopya eki; _20260905 ad parçasıdır
     return re.sub(r'[^a-z0-9]', '', stem.lower()) + '.' + ext.lower()
 
 def collect(sources, tmp):
@@ -125,7 +125,7 @@ def main():
         if SECRET_NAMES.search(base) or SECRET_BODY.search(b[:200000]):
             disarida.append({'dosya': base, 'neden': 'gizli bilgi görünümü (ad ya da içerik)', 'kaynak': origin}); continue
         h = sha(b)
-        c = canon.get(norm(base)); ad = c[0] if c else re.sub(r'([_ ])\(?\d+\)?(\.[A-Za-z0-9]+)$', r'\2', base); tur = (c[1] if c else '') or 'İncelenecek'
+        c = canon.get(norm(base)); ad = c[0] if c else re.sub(r'([_ ])\(?\d{1,2}\)?(\.[A-Za-z0-9]+)$', r'\2', base); tur = (c[1] if c else '') or 'İncelenecek'
         if h in known_sha: kopya.append({'dosya': base, 'ayni': known_sha[h]['dosya'], 'kaynak': origin}); continue
         if h in seen: kopya.append({'dosya': base, 'ayni': seen[h], 'kaynak': origin}); continue
         seen[h] = ad
@@ -135,7 +135,7 @@ def main():
     for r in new:
         base_ad = r['dosya']; k = 2
         while r['dosya'] in adlar:
-            stem, dot, ext = base_ad.rpartition('.'); r['dosya'] = f'{stem}_kopya{k}.{ext}' if dot else f'{base_ad}_kopya{k}'; k += 1
+            stem, dot, ext = base_ad.rpartition('.'); r['dosya'] = f'{stem}_surum{k}.{ext}' if dot else f'{base_ad}_surum{k}'; k += 1
         adlar.add(r['dosya'])
     n0 = len(env['kayitlar'])
     for i, r in enumerate(new, n0 + 1): r['no'] = f'{a.kod}-{i:03d}'

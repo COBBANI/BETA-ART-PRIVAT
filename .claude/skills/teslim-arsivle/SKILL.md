@@ -78,7 +78,11 @@ betik bir sonraki koşuda ondan devam eder.
 - Kullanıcı dizin HTML'ini de defalarca yükler (`_v6_3.html`, `_v6_10.html`); bunlar
   özet olarak aynıdır, betik ayıklar. Ama dizinin **yeni revizyonu** (daha fazla dosya
   sayan) içerik olarak farklıdır ve arşivdeki eski dizini değiştirmez; eskisi kalır,
-  yenisi yeni numara alır. Kullanıcıya hangisinin güncel olduğunu söyle.
+  yenisi `_surum2` ekiyle yeni numara alır (ek, arşivdeki kaçıncı farklı içerik olduğunu
+  sayar; kullanıcının kendi revizyon numarası değildir). Kullanıcıya hangisinin güncel
+  olduğunu ve karşılığını söyle ("surum2 = sizin revizyon 3").
+- Ad sonundaki `_1`, `_2`, `(3)` tarayıcı kopya ekidir ve atılır; `_20260905` gibi uzun
+  sayılar ad parçasıdır, dokunulmaz (test raporu bu yüzden bir kez yanlış adlanmıştı).
 - `SHA256SUMS.txt` çoğu zaman dizin ve envanteri de listeler; onların özeti sonradan
   değişebilir (kullanıcı listeyi yeniden üretmiştir). UYUŞMAZ satırı gördüğünde önce
   bunu düşün.

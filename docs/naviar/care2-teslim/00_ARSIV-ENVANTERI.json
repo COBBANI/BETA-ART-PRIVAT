@@ -185,7 +185,38 @@
    "tur": "Güncel teslim · v7 · statik sürümden üretilen üç dilli site metinleri",
    "bayt": 91456,
    "sha256": "8dd4be44cb2666b251e74c28ea11ef9e20ff2074e77e1e19f0b8378ea30377c5"
+  },
+  {
+   "no": "NC2-ARS-027",
+   "dosya": "NAVIAR-CARE-002_Arsiv-Dizini_v6_surum2.html",
+   "tur": "Arşiv dizini · v6 (kullanıcı paketi)",
+   "bayt": 7549,
+   "sha256": "d45f34873e8a85a8ec96213988dee887f5c5dca7ee206f7c2bc80f10d33bf17d",
+   "yukleme_adi": "NAVIARCARE002_ArsivDizini_v6.html",
+   "kaynak": "/root/.claude/uploads/62390516-8cbe-515a-8f18-14718c4fcf79/b8f9d7de-NAVIARCARE002_ArsivDizini_v6.html"
+  },
+  {
+   "no": "NC2-ARS-028",
+   "dosya": "NAVIAR-CARE-002_Arsiv-Envanteri_v6_surum2.json",
+   "tur": "İncelenecek",
+   "bayt": 10931,
+   "sha256": "00967f543d0962bdce4d4cdb8c1b9d25e23ae11bac57c6a05c653dbfaa5906cf",
+   "yukleme_adi": "NAVIARCARE002_ArsivEnvanteri_v6.json",
+   "kaynak": "/root/.claude/uploads/62390516-8cbe-515a-8f18-14718c4fcf79/b242d9d3-NAVIARCARE002_ArsivEnvanteri_v6.json"
+  },
+  {
+   "no": "NC2-ARS-029",
+   "dosya": "NAVIAR-CARE-1-2_TEST-RAPORU_2026-09-05.md",
+   "tur": "Ortak test kaydı · arşiv kopyası",
+   "bayt": 3937,
+   "sha256": "cd9ecc306f4511f4479681ac05955d9a2a6726a0844c4015a2014edb6514b23e",
+   "yukleme_adi": "NAVIARCARE12_TESTRAPORU_20260905.md",
+   "kaynak": "/root/.claude/uploads/62390516-8cbe-515a-8f18-14718c4fcf79/257bd331-NAVIARCARE12_TESTRAPORU_20260905.md"
   }
  ],
- "not": "Kullanıcı arşiv revizyonu 2 (17 dosya) tamamen alındı (SHA256SUMS 17/17). v7 belgeleri BETA-ART statik sürümü için üretildi; v6 özgün teslim değişmedi."
+ "not": "Kullanıcı arşiv revizyonu 2 (17 dosya) tamamen alındı (SHA256SUMS 17/17). v7 belgeleri BETA-ART statik sürümü için üretildi; v6 özgün teslim değişmedi.",
+ "kopyalar": [],
+ "disarida": [],
+ "dogrulama": [],
+ "kod": "NC2-ARS"
 }

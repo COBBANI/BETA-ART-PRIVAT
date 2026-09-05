@@ -570,3 +570,14 @@ Açık kalan: naviarcare.com DNS (kullanıcı), marka hukuki taraması, CONCEPT 
   dizin bağlantılarını kırdı. 1. turda betikte bulunan kusur (ZIP'le gelen dosyanın türü
   önceki envanterden alınmıyordu) düzeltildi; 2. turda beceri ile 29/29, süre 93 sn (becerisiz 127).
 - Örnek veri ve ölçütler `evals/` altında; çalışma alanı (`*-workspace/`) depoya girmez.
+
+## 05.09.2026 (gece, arşiv) — CARE 2 arşiv revizyonu 3: ortak test raporu
+
+- Kullanıcı arşiv revizyonu 3'ü yükledi (18 kayıt): yeni olan tek belge CARE 1–2 ortak
+  test raporu. `teslim-arsivle` ile üç yeni kayıt: NC2-ARS-027 dizin (rev 3,
+  `_surum2` eki), NC2-ARS-028 envanter (rev 3), NC2-ARS-029
+  `NAVIAR-CARE-1-2_TEST-RAPORU_2026-09-05.md`. Aynı oturumda gelen 7 ZIP ve ~20 tekil
+  dosya arşivdekiyle bayt bayt aynıydı, numara almadı.
+- Betik düzeltmesi: `_20260905` gibi tarih ekleri tarayıcı kopya eki sanılıp
+  kırpılıyordu; artık yalnız 1–2 haneli ekler atılır. Aynı adlı farklı içerik
+  `_kopya` yerine `_surum` eki alır.

@@ -1,15 +1,8 @@
-# NAVIAR CARE 2 — belge arşivi (NC2-ARS)
+# NAVIAR-CARE-002 — teslim arşivi (NC2-ARS)
 
-Proje kodu: NAVIAR-CARE-002. Arşiv tarihi: 05.09.2026. Kaynak: kullanıcının bu oturumda yüklediği
-dosyalar; adlar kullanıcının kendi arşiv dizinindeki (`NAVIAR-CARE-002_Arsiv-Dizini_v6.html`) adlara
-çevrildi, içerikler bayt bayt korundu (SHA-256 aşağıda; `SHA256SUMS.txt` (rev. 2) ile 17/17 eşleşti;
-son dosya `NAVIAR-CARE-002-Tasarim-v4.jpg` ZIP paketiyle geldi).  Numaralar bu deponun sırasıdır; kullanıcının
-belge kodları (DOS/REV/SRC/REG) dosya adında durur ve değiştirilmez.
-
-Teslim paketinde bulunmayan ön yüz dosyaları (`styles.css`, `site.js`, `model.js`, `operations.js`,
-`studio.js`, `sample-calendar.js`) ve sunucu (`server/*.mjs`) `naviar/care2-src/public/` altında
-yeniden yazıldı; özgün `logo.svg` ve `conversation.webp` arşivdeki Studio-Demo dosyasının içinden
-çıkarıldı. v7 belgeleri (NC2-ARS-024…026) bu statik sürümü anlatır.
+Arşiv tarihi: 2026-09-05. Kayıt sayısı: 29. Kaynak: kullanıcı yüklemesi; adlar kullanıcının kendi
+dizin/envanterine göre düzeltildi, içerikler bayt bayt korundu. Numaralar bu deponun sırasıdır; dosya
+adındaki proje kodları (DOS/REV/SRC…) değiştirilmez. `İncelenecek` = türü hiçbir dizinde geçmeyen dosya.
 
 | No | Dosya | Tür | Bayt | SHA-256 |
 |---|---|---|---|---|
@@ -39,5 +32,8 @@ yeniden yazıldı; özgün `logo.svg` ve `conversation.webp` arşivdeki Studio-D
 | NC2-ARS-024 | `NAVIAR-CARE-002_Konsept-ve-Web-Teslimi_v7.md` | Güncel teslim · v7 statik sürüm (BETA-ART, Markdown) | 33216 | `1e18a233922406a5…` |
 | NC2-ARS-025 | `NAVIAR-CARE-002_Konsept-ve-Web-Teslimi_v7.html` | Güncel teslim · v7 statik sürüm (BETA-ART) | 40312 | `c7a0f0ea7bf9c66c…` |
 | NC2-ARS-026 | `NAVIAR-CARE-002_Web-Sitesi-Metinleri_NO-EN-TR_v7.html` | Güncel teslim · v7 · statik sürümden üretilen üç dilli site metinleri | 91456 | `8dd4be44cb2666b2…` |
+| NC2-ARS-027 | `NAVIAR-CARE-002_Arsiv-Dizini_v6_surum2.html` | Arşiv dizini · v6 (kullanıcı paketi) | 7549 | `d45f34873e8a85a8…` |
+| NC2-ARS-028 | `NAVIAR-CARE-002_Arsiv-Envanteri_v6_surum2.json` | İncelenecek | 10931 | `00967f543d0962bd…` |
+| NC2-ARS-029 | `NAVIAR-CARE-1-2_TEST-RAPORU_2026-09-05.md` | Ortak test kaydı · arşiv kopyası | 3937 | `cd9ecc306f4511f4…` |
 
 Tam SHA-256 değerleri `00_ARSIV-ENVANTERI.json` içinde.

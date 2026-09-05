@@ -1,0 +1,209 @@
+{
+  "project_code": "NAVIAR-CARE-002",
+  "project_name": "NAVIAR CARE 2",
+  "archive_date": "2026-09-05",
+  "delivery_version": "6.0",
+  "document_count": 18,
+  "service_status": "Konsept ve teknik demo; gerçek sağlık hizmeti açık değil.",
+  "files": [
+    {
+      "file_name": "NAVIAR-CARE-002_Konsept-ve-Web-Teslimi_v6.html",
+      "size_bytes": 32267,
+      "sha256": "011d2b789b4969164b9a7debb54f0ead848b14618ae4cded092ae2e793d5ee2d",
+      "status": "Güncel teslim · v6",
+      "current": true,
+      "source_path": "/00_WEB_PROJECTS_KONSOLIDE_2026-09-04/05_NAVIAR_CARE/NAVIAR-CARE-002_NAVIAR-CARE-2/NAVIAR-CARE-002_Konsept-ve-Web-Teslimi_v6.html",
+      "source_library_file_id": "libfile_a1a7223519648191a981c3b986cd157e",
+      "source_version_id": null
+    },
+    {
+      "file_name": "NAVIAR-CARE-002_Konsept-ve-Web-Teslimi_v6.md",
+      "size_bytes": 26602,
+      "sha256": "6b1b92f7115d72d715f6dc00c01e5ad52753ddc5eebb11974dc8df35c1e7ae5a",
+      "status": "Güncel teslim · v6",
+      "current": true,
+      "source_path": "/00_WEB_PROJECTS_KONSOLIDE_2026-09-04/05_NAVIAR_CARE/NAVIAR-CARE-002_NAVIAR-CARE-2/NAVIAR-CARE-002_Konsept-ve-Web-Teslimi_v6.md",
+      "source_library_file_id": "libfile_ce9cd1a3dc408191834670aa8503b6f8",
+      "source_version_id": "1"
+    },
+    {
+      "file_name": "NAVIAR-CARE-002_Web-Sitesi-Metinleri_NO-EN-TR_v6.html",
+      "size_bytes": 91456,
+      "sha256": "c2d70d70e310e5d216ab74851a6d5cc397617f3b8635f8cf86229b72ae07d057",
+      "status": "Güncel teslim · v6",
+      "current": true,
+      "source_path": "/00_WEB_PROJECTS_KONSOLIDE_2026-09-04/05_NAVIAR_CARE/NAVIAR-CARE-002_NAVIAR-CARE-2/NAVIAR-CARE-002_Web-Sitesi-Metinleri_NO-EN-TR_v6.html",
+      "source_library_file_id": "libfile_12950c569c90819184e5203772a9a08a",
+      "source_version_id": null
+    },
+    {
+      "file_name": "NAVIAR-CARE-002-DOS-001_Konsept-ve-Gelistirme_v1.0.pdf",
+      "size_bytes": 122177,
+      "sha256": "9af37198cc18f92299e6f5f86d95fa9a3cea7e058e65e6e6916d2320e7ab3c8f",
+      "status": "Geçmiş kayıt · özgün dosya",
+      "current": false,
+      "source_path": "/00_WEB_PROJECTS_KONSOLIDE_2026-09-04/05_NAVIAR_CARE/NAVIAR-CARE-002_NAVIAR-CARE-2/NAVIAR-CARE-002-DOS-001_Konsept-ve-Gelistirme_v1.0.pdf",
+      "source_library_file_id": "libfile_ec836015c9408191b50a074a324c89cd",
+      "source_version_id": null
+    },
+    {
+      "file_name": "NAVIAR-CARE-002-DOS-002_Isletim-ve-Yayin_v3.0.pdf",
+      "size_bytes": 89620,
+      "sha256": "30c758a67b578ba1d6a6583ffb35d511eb8ce176d9775beb7334918e99c9334e",
+      "status": "Geçmiş kayıt · özgün dosya",
+      "current": false,
+      "source_path": "/00_WEB_PROJECTS_KONSOLIDE_2026-09-04/05_NAVIAR_CARE/NAVIAR-CARE-002_NAVIAR-CARE-2/NAVIAR-CARE-002-DOS-002_Isletim-ve-Yayin_v3.0.pdf",
+      "source_library_file_id": "libfile_4b37420492a481918497ed1af0a70930",
+      "source_version_id": null
+    },
+    {
+      "file_name": "NAVIAR-CARE-002-REG-001_Arsiv-Kaydi_v1.3.json",
+      "size_bytes": 13344,
+      "sha256": "5d636b7303fa308586a9e682f54b64189801705dff5c26c76cea827fd2850a9a",
+      "status": "Geçmiş kayıt · özgün dosya",
+      "current": false,
+      "source_path": "/00_WEB_PROJECTS_KONSOLIDE_2026-09-04/05_NAVIAR_CARE/NAVIAR-CARE-002_NAVIAR-CARE-2/NAVIAR-CARE-002-REG-001_Arsiv-Kaydi_v1.3.json",
+      "source_library_file_id": "libfile_9f0d158b47f481918e63e117461db483",
+      "source_version_id": "3"
+    },
+    {
+      "file_name": "NAVIAR-CARE-002-REV-001_Inceleme-ve-Duzeltmeler_v1.0.md",
+      "size_bytes": 25278,
+      "sha256": "d647648a9cfaef852d95954f2e62604d4dd8d3e52ab60413c1d94cec28982f86",
+      "status": "Geçmiş kayıt · özgün dosya",
+      "current": false,
+      "source_path": "/00_WEB_PROJECTS_KONSOLIDE_2026-09-04/05_NAVIAR_CARE/NAVIAR-CARE-002_NAVIAR-CARE-2/NAVIAR-CARE-002-REV-001_Inceleme-ve-Duzeltmeler_v1.0.md",
+      "source_library_file_id": "libfile_bc314b0cd36881919d5129ab61907ca1",
+      "source_version_id": null
+    },
+    {
+      "file_name": "NAVIAR-CARE-002-REV-002_Tasarim-Inceleme_v4.html",
+      "size_bytes": 982300,
+      "sha256": "24554102be6b985f259e0114bcd02bccf83d7c0514ffc5861b752cc0669f5944",
+      "status": "Geçmiş kayıt · özgün dosya",
+      "current": false,
+      "source_path": "/00_WEB_PROJECTS_KONSOLIDE_2026-09-04/05_NAVIAR_CARE/NAVIAR-CARE-002_NAVIAR-CARE-2/NAVIAR-CARE-002-REV-002_Tasarim-Inceleme_v4.html",
+      "source_library_file_id": "libfile_8b4c2eabf2f481919fb6c367728ab4a7",
+      "source_version_id": null
+    },
+    {
+      "file_name": "NAVIAR-CARE-002-SRC-001_Ana-Sayfa_Kullanici-Kopyasi.md",
+      "size_bytes": 13465,
+      "sha256": "1f0762011a6929a3a5ed39411d142430ebdc0cf7744b2368a18596b8e4ba43dd",
+      "status": "Kullanıcının paylaştığı kaynak metin",
+      "current": false,
+      "source_path": "/00_WEB_PROJECTS_KONSOLIDE_2026-09-04/05_NAVIAR_CARE/NAVIAR-CARE-002_NAVIAR-CARE-2/NAVIAR-CARE-002-SRC-001_Ana-Sayfa_Kullanici-Kopyasi.md",
+      "source_library_file_id": "libfile_42e60ac5006c8191aafbf31b3d7d57bc",
+      "source_version_id": null
+    },
+    {
+      "file_name": "NAVIAR-CARE-002-SRC-002_Doktor-Rezervasyon_Kullanici-Kopyasi.md",
+      "size_bytes": 19806,
+      "sha256": "e7e943840a226842df52d3239a91430e5cc1290e2d6f579b420ac06d4a065bf6",
+      "status": "Kullanıcının paylaştığı kaynak metin",
+      "current": false,
+      "source_path": "/00_WEB_PROJECTS_KONSOLIDE_2026-09-04/05_NAVIAR_CARE/NAVIAR-CARE-002_NAVIAR-CARE-2/NAVIAR-CARE-002-SRC-002_Doktor-Rezervasyon_Kullanici-Kopyasi.md",
+      "source_library_file_id": "libfile_71f8ee849c208191907ee723bd85c6ad",
+      "source_version_id": null
+    },
+    {
+      "file_name": "NAVIAR-CARE-002-SRC-003_Diller_Ikinci-Gonderim.md",
+      "size_bytes": 27541,
+      "sha256": "b8ccc9726c21c295d527a936bda84e9431bdc0874e35b6431f6396875348f301",
+      "status": "Kullanıcının paylaştığı kaynak metin",
+      "current": false,
+      "source_path": "/00_WEB_PROJECTS_KONSOLIDE_2026-09-04/05_NAVIAR_CARE/NAVIAR-CARE-002_NAVIAR-CARE-2/NAVIAR-CARE-002-SRC-003_Diller_Ikinci-Gonderim.md",
+      "source_library_file_id": "libfile_4a3a240da9b48191b5191e430e7c9ce6",
+      "source_version_id": null
+    },
+    {
+      "file_name": "NAVIAR-CARE-002-SRC-003_Diller_Kullanici-Kopyasi.md",
+      "size_bytes": 27541,
+      "sha256": "b8ccc9726c21c295d527a936bda84e9431bdc0874e35b6431f6396875348f301",
+      "status": "Kullanıcının paylaştığı kaynak metin",
+      "current": false,
+      "source_path": "/00_WEB_PROJECTS_KONSOLIDE_2026-09-04/05_NAVIAR_CARE/NAVIAR-CARE-002_NAVIAR-CARE-2/NAVIAR-CARE-002-SRC-003_Diller_Kullanici-Kopyasi.md",
+      "source_library_file_id": "libfile_432ed91e57688191a1133a1a12fd1d75",
+      "source_version_id": null
+    },
+    {
+      "file_name": "NAVIAR-CARE-002-Tasarim-v4.jpg",
+      "size_bytes": 114035,
+      "sha256": "b78fdd7da7e74f018b3763e735b149a660c41f47a55853c5c0cad1882dccd0e1",
+      "status": "Geçmiş kayıt · özgün dosya",
+      "current": false,
+      "source_path": "/00_WEB_PROJECTS_KONSOLIDE_2026-09-04/05_NAVIAR_CARE/NAVIAR-CARE-002_NAVIAR-CARE-2/NAVIAR-CARE-002-Tasarim-v4.jpg",
+      "source_library_file_id": "libfile_a073e91f8cbc8191805ab6701ad38c60",
+      "source_version_id": null
+    },
+    {
+      "file_name": "NAVIAR-CARE-002_Platform-Karari-ve-Test_v1.0.html",
+      "size_bytes": 16863,
+      "sha256": "4a785111e9b91c641a1b2d57db3668d80c329078a1bc988309d1530e695d7b11",
+      "status": "Geçmiş kayıt · özgün dosya",
+      "current": false,
+      "source_path": "/00_WEB_PROJECTS_KONSOLIDE_2026-09-04/05_NAVIAR_CARE/NAVIAR-CARE-002_NAVIAR-CARE-2/NAVIAR-CARE-002_Platform-Karari-ve-Test_v1.0.html",
+      "source_library_file_id": "libfile_1a4b7d6a91a8819197aef23d2d1c76a6",
+      "source_version_id": null
+    },
+    {
+      "file_name": "NAVIAR-CARE-002_Studio-Demo_v1.0.html",
+      "size_bytes": 158174,
+      "sha256": "a84f6509b9b30ce3b79f246afea75c6bfe753ca677e1c640ed023aac237f5d3f",
+      "status": "Geçmiş kayıt · özgün dosya",
+      "current": false,
+      "source_path": "/00_WEB_PROJECTS_KONSOLIDE_2026-09-04/05_NAVIAR_CARE/NAVIAR-CARE-002_NAVIAR-CARE-2/NAVIAR-CARE-002_Studio-Demo_v1.0.html",
+      "source_library_file_id": "libfile_bf31e808a8ac819191134940fdfcfeb7",
+      "source_version_id": null
+    },
+    {
+      "file_name": "NAVIAR-CARE-002_Teslim-Kaydi_v5.0.html",
+      "size_bytes": 10006,
+      "sha256": "3d20532568eee22ee597ac5d56dc666d3ff247f2712380b524322ba8eae2194b",
+      "status": "Geçmiş kayıt · özgün dosya",
+      "current": false,
+      "source_path": "/00_WEB_PROJECTS_KONSOLIDE_2026-09-04/05_NAVIAR_CARE/NAVIAR-CARE-002_NAVIAR-CARE-2/NAVIAR-CARE-002_Teslim-Kaydi_v5.0.html",
+      "source_library_file_id": "libfile_476f75dd377c8191831154f52bf49073",
+      "source_version_id": null
+    },
+    {
+      "file_name": "NAVIAR-CARE-2-demo.html",
+      "size_bytes": 21769,
+      "sha256": "31edf417a62aad3cd594ca8d4426a8181fe9ce135e647c1e256d047958a4a2ea",
+      "status": "Geçmiş demo tasarımı · ayrı klasörden eklendi",
+      "current": false,
+      "source_path": "/00_WEB_PROJECTS_KONSOLIDE_2026-09-04/05_NAVIAR_CARE/NAVIAR-CARE-002_NAVIAR-CARE-2/NAVIAR-CARE-2-demo.html",
+      "source_library_file_id": "libfile_397f73de92c08191ac480bdf1ac24aa8",
+      "source_version_id": null
+    },
+    {
+      "file_name": "NAVIAR-CARE-1-2_TEST-RAPORU_2026-09-05.md",
+      "size_bytes": 3937,
+      "sha256": "cd9ecc306f4511f4479681ac05955d9a2a6726a0844c4015a2014edb6514b23e",
+      "status": "Ortak teknik test raporu · 5 Eylül 2026 · arşiv kopyası",
+      "current": false,
+      "source_path": "/NAVIAR CARE/01_BELGELER/NAVIAR-CARE-1-2_TEST-RAPORU_2026-09-05.md",
+      "source_library_file_id": "libfile_8ec33f252fd08191bcb8b3d4841c0050",
+      "source_version_id": null
+    }
+  ],
+  "archive_revision": 3,
+  "scope": "NAVIAR CARE 2 / NAVIAR-CARE-002 projesinin erişilebilir 17 özgün belge ve tasarım kaydı ile CARE 1–2 ortak test raporu. Bu paket güncel uygulama kaynak kodunun veya tüm sohbet geçmişinin yedeği değildir.",
+  "change_note": "Önceki 17 dosya baytları değişmeden korundu. Ayrı proje klasöründeki ortak CARE 1–2 test raporunun arşiv kopyası eklendi. Kaynak rapor kendi yerinde korundu. Dizin, envanter ve bütünlük listesi güncellendi.",
+  "archive_verified_at_utc": "2026-09-05T22:48:41.543812+00:00",
+  "verification": {
+    "preserved_original_files": 17,
+    "added_shared_documents": 1,
+    "source_comparison": "18 dosya kaynak içeriğiyle bayt düzeyinde karşılaştırıldı.",
+    "original_zip_crc": "passed",
+    "archive_support_files": [
+      "NAVIAR-CARE-002_Arsiv-Envanteri_v6.json",
+      "NAVIAR-CARE-002_Arsiv-Dizini_v6.html",
+      "SHA256SUMS.txt"
+    ],
+    "excluded_site_projection": {
+      "name": "NAVIAR CARE 2 — NAVIAR-CARE-002.txt",
+      "reason": "Web projesi kaydıdır; indirilebilir belge değildir."
+    }
+  }
+}
