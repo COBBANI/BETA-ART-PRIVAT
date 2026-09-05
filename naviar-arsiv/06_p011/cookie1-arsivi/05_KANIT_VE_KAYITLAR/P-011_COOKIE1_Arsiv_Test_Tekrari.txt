@@ -1,0 +1,29 @@
+5 Eylül 2026 | Node v24.19.0 | Geri alınan v0.4.0
+Komut: node --test tests/*.test.mjs
+Çıkış kodu: 0
+
+✔ review rejects invalid contact, date and missing acknowledgement; displays values as data (1.7811ms)
+✔ portable demo creates once, requires its token, cancels and resets with new instance (1.403029ms)
+✔ simulated connection failure leaves no record and retry can succeed; payment stays blocked (0.295356ms)
+✔ minimal request validates real dates, Oslo date window, consent and sensitive extra fields (14.837037ms)
+✔ idempotency creates exactly one request, one email and one demand count; changed input conflicts (4.208386ms)
+✔ human-confirmed slots reject overlaps and buffer conflicts, allow a 15 minute gap (2.223338ms)
+✔ webhook rejects modified raw body, stale signature and missing configuration (1.401867ms)
+✔ payment settles only a matching signed event, is idempotent and cannot be downgraded (1.714329ms)
+✔ checkout uses server quote, test keys and hosted Stripe destination only (0.69493ms)
+✔ outbox sends only to configured test recipient and records accepted, not delivered (1.790694ms)
+✔ analytics rejects identifiers and non-consent; forecast uses complete weeks and holdout (1.477512ms)
+✔ all three languages have complete text keys and render semantic page with no undefined copy (0.995934ms)
+✔ HTTP: origin protection, scoped status, private administration, review gates and provider failure (58.436565ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 180.542557
+
+Statik derleme: node build.mjs; çıkış kodu 0.
+Diller: nb, en, tr. Her dilde 154 içerik anahtarı.
+Sağlayıcı yanıtları test çiftleriyle sınandı. Bu turda tarayıcı testi veya canlı tahsilat/gönderim yapılmadı.

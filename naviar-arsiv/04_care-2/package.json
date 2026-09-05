@@ -1,0 +1,19 @@
+{
+  "name": "naviar-care-2-operations",
+  "version": "3.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "python3 build_operations.py && node scripts/build.mjs",
+    "db:generate": "drizzle-kit generate",
+    "test": "node --test checks/operations.test.mjs checks/sample-calendar.test.mjs && node checks/catalog-model.cjs && python3 checks/static.py",
+    "dev": "vite"
+  },
+  "dependencies": {
+    "drizzle-orm": "0.45.2"
+  },
+  "devDependencies": {
+    "drizzle-kit": "0.31.10",
+    "vite": "8.2.2"
+  }
+}

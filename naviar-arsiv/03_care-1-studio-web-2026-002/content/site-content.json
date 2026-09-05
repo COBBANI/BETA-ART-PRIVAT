@@ -1,0 +1,79 @@
+{
+  "project": {
+    "archiveId": "WEB-2026-002",
+    "name": "NAVIAR CARE – Hverdagsstøttepilot",
+    "defaultLanguage": "nb",
+    "languages": ["nb", "en", "tr"],
+    "status": "prototype",
+    "booking": "not-connected",
+    "payments": "not-connected",
+    "email": "not-connected",
+    "analytics": "not-connected"
+  },
+  "positioning": {
+    "nb": "Trygg og avgrenset støtte i hverdagen, planlagt sammen med personen og de nærmeste.",
+    "en": "Safe, defined everyday support planned together with the person and their close relations.",
+    "tr": "Kişi ve yakınlarıyla birlikte planlanan güvenli ve sınırları belirli günlük yaşam desteği."
+  },
+  "services": [
+    {
+      "id": "social-company",
+      "status": "pilot-scope",
+      "title": {"nb": "Sosialt samvær", "en": "Social company", "tr": "Sosyal eşlik"},
+      "description": {
+        "nb": "Besøk, samtale, kafé eller en rolig aktivitet i nærmiljøet.",
+        "en": "A visit, conversation, café trip or calm activity in the local area.",
+        "tr": "Ziyaret, sohbet, kafeye gitme veya yakın çevrede sakin bir aktivite."
+      }
+    },
+    {
+      "id": "walks-activities",
+      "status": "pilot-scope",
+      "title": {"nb": "Tur og aktivitet", "en": "Walks and activities", "tr": "Yürüyüş ve aktivite"},
+      "description": {
+        "nb": "Gåtur, trening, kultur eller en aktivitet med støtte underveis.",
+        "en": "A walk, exercise, culture or another activity with support along the way.",
+        "tr": "Yürüyüş, egzersiz, kültür veya yol boyunca destek gerektiren başka bir aktivite."
+      }
+    },
+    {
+      "id": "practical-errands",
+      "status": "pilot-scope",
+      "title": {"nb": "Praktiske ærender", "en": "Practical errands", "tr": "Pratik işler"},
+      "description": {
+        "nb": "Handling, enkel transport eller følge til avtaler og aktiviteter.",
+        "en": "Shopping, simple transport or accompaniment to appointments and activities.",
+        "tr": "Alışveriş, basit ulaşım veya randevu ve aktivitelere eşlik."
+      }
+    },
+    {
+      "id": "everyday-assistance",
+      "status": "pilot-scope",
+      "title": {"nb": "Enkel hverdagsstøtte", "en": "Everyday assistance", "tr": "Günlük yaşam yardımı"},
+      "description": {
+        "nb": "Enkle oppgaver i hjemmet som kan beskrives og avtales på forhånd.",
+        "en": "Simple tasks at home that can be described and agreed in advance.",
+        "tr": "Önceden tanımlanıp kararlaştırılabilen basit ev işleri."
+      }
+    }
+  ],
+  "outOfScope": [
+    "diagnosis-or-treatment",
+    "medication-management",
+    "clinical-follow-up",
+    "advanced-personal-care",
+    "high-risk-lifting",
+    "emergency-requests"
+  ],
+  "journey": [
+    {"id": "understand", "nb": "Forstå", "en": "Understand", "tr": "Anla"},
+    {"id": "define", "nb": "Avgrense", "en": "Define", "tr": "Sınırla"},
+    {"id": "match", "nb": "Matche", "en": "Match", "tr": "Eşleştir"},
+    {"id": "follow-up", "nb": "Følge opp", "en": "Follow up", "tr": "Takip et"}
+  ],
+  "operationalNotes": [
+    "No live booking, email, payment, CRM or analytics is configured in this prototype.",
+    "Helper checks, insurance, employment or contractor status and responsible operator must be defined before launch.",
+    "The prototype must not be used to collect health information or national identity numbers."
+  ]
+}

@@ -1,0 +1,62 @@
+[
+  {
+    "source_archive_member": "01_GUNCEL_BELGE/NAVIAR-CARE-001-WEB-01_DOC-011_Konsept-ve-Web-Tasarimi_v1.0.docx",
+    "path": "03_ONCEKI_BELGELER/NAVIAR-CARE-001-WEB-01_DOC-011_Konsept-ve-Web-Tasarimi_v1.0.docx",
+    "bytes": 169375,
+    "sha256": "eac059236ecb791ad8f8457636bd8917a6aa186e2a0932e8a884ae972cfe201b"
+  },
+  {
+    "source_archive_member": "01_GUNCEL_BELGE/NAVIAR-CARE-001-WEB-01_DOC-011_Konsept-ve-Web-Tasarimi_v1.0.md",
+    "path": "03_ONCEKI_BELGELER/NAVIAR-CARE-001-WEB-01_DOC-011_Konsept-ve-Web-Tasarimi_v1.0.md",
+    "bytes": 23378,
+    "sha256": "45b3b61b4b926807141e6de17d0c3b4b1c336d19ed7334fdf67846562cfa24ab"
+  },
+  {
+    "source_archive_member": "02_KAYNAK_DOSYALAR/01_BELGELER/NAVIAR-CARE-001-WEB-01_DOC-001_KONSEPT_v1.0.html",
+    "path": "03_ONCEKI_BELGELER/NAVIAR-CARE-001-WEB-01_DOC-001_KONSEPT_v1.0.html",
+    "bytes": 11846,
+    "sha256": "03c5c891552c1bb8b9afe0dc472641b65181e3a37766a3a421004f5f2b9e1807"
+  },
+  {
+    "source_archive_member": "02_KAYNAK_DOSYALAR/01_BELGELER/NAVIAR-CARE-001-WEB-01_DOC-005_LOGO-SECIM_v1.0.html",
+    "path": "03_ONCEKI_BELGELER/NAVIAR-CARE-001-WEB-01_DOC-005_LOGO-SECIM_v1.0.html",
+    "bytes": 356977,
+    "sha256": "198dc15f2ab2802acac7381654e6b6819c407d27dcfd6a8d937164b869f93d47"
+  },
+  {
+    "source_archive_member": "02_KAYNAK_DOSYALAR/01_BELGELER/NAVIAR-CARE-001-WEB-01_DOC-007_GELISTIRME.html",
+    "path": "03_ONCEKI_BELGELER/NAVIAR-CARE-001-WEB-01_DOC-007_GELISTIRME.html",
+    "bytes": 11392,
+    "sha256": "c0dacdd273e1c6a99e28e12ecc29725d8e52a7d662886f54292401207eada304"
+  },
+  {
+    "source_archive_member": "02_KAYNAK_DOSYALAR/01_BELGELER/NAVIAR-CARE-001-WEB-01_DOC-010_TESLIM_v2.4.html",
+    "path": "03_ONCEKI_BELGELER/NAVIAR-CARE-001-WEB-01_DOC-010_TESLIM_v2.4.html",
+    "bytes": 9806,
+    "sha256": "8f41b2b62f3b7fa53c01abdde8bd08bfc45b00897242ff61cfe4e0ac9fa9f953"
+  },
+  {
+    "source_archive_member": "02_KAYNAK_DOSYALAR/01_BELGELER/NAVIAR-CARE-001-WEB-01_REV-20260904-01.md",
+    "path": "03_ONCEKI_BELGELER/NAVIAR-CARE-001-WEB-01_REV-20260904-01.md",
+    "bytes": 37955,
+    "sha256": "98cfffd0df27cd26c68b6e48b2d023e926589cc105800cdf4ec7b86fc3c283e4"
+  },
+  {
+    "source_archive_member": "02_KAYNAK_DOSYALAR/NAVIAR-CARE-001-WEB-01_DOC-009_PLATFORM-STUDIO.html",
+    "path": "03_ONCEKI_BELGELER/NAVIAR-CARE-001-WEB-01_DOC-009_PLATFORM-STUDIO.html",
+    "bytes": 15182,
+    "sha256": "1e2f36613a5f94913b7b481a71326d7b636a32e8a2d423a4f287483026e849c3"
+  },
+  {
+    "source_archive_member": "02_KAYNAK_DOSYALAR/NAVIAR-CARE-001-WEB-01_DOC-009_STUDIO_v2.2.html",
+    "path": "03_ONCEKI_BELGELER/NAVIAR-CARE-001-WEB-01_DOC-009_STUDIO_v2.2.html",
+    "bytes": 17592,
+    "sha256": "c6269266b0e1aa77bf7546b32764e4658dddbf1999f2ceeb0acd95a8cb259e7e"
+  },
+  {
+    "source_archive_member": "02_KAYNAK_DOSYALAR/NAVIAR-CARE-001-WEB-01_DOC-010_FINAL-TESLIM_v2.4.html",
+    "path": "03_ONCEKI_BELGELER/NAVIAR-CARE-001-WEB-01_DOC-010_FINAL-TESLIM_v2.4.html",
+    "bytes": 10286,
+    "sha256": "615f96be0e9ce851c167e38f23158b89dcdfd738dfdc717aa98273cfd7fb77e5"
+  }
+]

@@ -1,0 +1,10 @@
+﻿kayit,asama,karar,gerekce,durum
+ARC-01,Discover,P-011 ve DRAFT-NC-COOKIE1 kimliklerini koru,Başka NAVIAR web projeleriyle yanlış eşleştirmeyi önlemek,Dosyalarla doğrulandı
+ARC-02,Define,Tıbbi olmayan günlük destek kapsamı,Önceki hizmet ve kaynak kararını korumak,Mevcut konsept
+ARC-03,Design,Üç dil ve gönderim öncesi gözden geçirme,Kapsamı ve sonraki adımı anlaşılır kılmak,v0.4.0 kaynakta
+ARC-04,Build,v0.4.0 kodunu değiştirmeden arşivle,Belgeleme talebinde sürüm geçmişini korumak,Bu arşivde uygulandı
+ARC-05,Validate,13 otomatik testi bir kez yeniden çalıştır,Geri alınan paketin çalışabilirliğini doğrulamak,13/13 geçti
+ARC-06,Validate,Sonraki mobil kontrol beyanını ayrı kanıt seviyesinde tut,Konuşma beyanı ile belirli dosya sürümünü eşleştiren kayıt yok,Konuşmada bildirildi; dosya eşleştirmesi açık
+ARC-07,Launch,Alan adı ve özel demo yayınına tamamlandı deme,"Hedef alan adı, DNS kaydı veya yayın sonucu yok",Açık
+ARC-08,Measure,Toplu olayları okuma/kişisel ihtiyaç tahmini sayma,Ölçünün gerçekten gösterdiğini korumak,Kaynak sözleşmesi
+ARC-09,Archive,Özgün paketler + açık kod + envanter + SHA-256,Gelecekte geri yükleme ve karşılaştırma,Bu arşivde uygulandı

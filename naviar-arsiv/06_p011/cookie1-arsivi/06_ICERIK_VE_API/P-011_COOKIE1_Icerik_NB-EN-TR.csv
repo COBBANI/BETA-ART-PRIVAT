@@ -1,0 +1,155 @@
+﻿anahtar,nb,en,tr
+lang,nb,en,tr
+title,NAVIAR CARE — Litt hjelp. Mer hverdag.,NAVIAR CARE — A little help. More everyday life.,NAVIAR CARE — Biraz destek. Hayata daha çok yer.
+description,"Utforsk planlagt praktisk hverdagsstøtte, selskap og digital hjelp. NAVIAR CARE utvikler en avgrenset pilot i Oslo.","Explore planned practical everyday support, companionship and digital help. NAVIAR CARE is developing a limited Oslo pilot.","Planlanan günlük yaşam desteğini, arkadaşlığı ve dijital yardımı keşfedin. NAVIAR CARE, Oslo için sınırlı bir pilot hazırlıyor."
+skip,Hopp til innhold,Skip to content,İçeriğe geç
+preview,Utviklingsversjon · Tjenesten er ikke åpnet,Development version · Service has not opened,Geliştirme sürümü · Hizmet henüz açılmadı
+navSupport,Støtten vi planlegger,Planned support,Planlanan destek
+navProcess,Slik fungerer det,How it works,Nasıl çalışır?
+navFamily,For pårørende,For relatives,Yakınlar için
+navSafety,Trygghet,Safety,Güvenlik
+cta,Finn riktig støtte,Find the right support,Uygun desteği bul
+menu,Meny,Menu,Menü
+close,Lukk,Close,Kapat
+eyebrow,"HVERDAGSSTØTTE, PÅ DINE PREMISSER","EVERYDAY SUPPORT, ON YOUR TERMS",SİZİN TERCİHLERİNİZLE GÜNLÜK DESTEK
+hero1,Litt hjelp.,A little help.,Biraz destek.
+hero2,Mer hverdag.,More everyday life.,Hayata daha çok yer.
+lead,"Praktisk hjelp, hyggelig selskap og følge til avtaler. Vi utvikler en tjeneste der støtten planlegges sammen med deg.","Practical help, friendly company and someone to accompany you. We are developing a service that plans support together with you.","Pratik yardım, keyifli sohbet ve randevulara eşlik. Desteği sizinle birlikte planlayan bir hizmet geliştiriyoruz."
+primary,Utforsk støtten,Explore support,Desteği keşfet
+secondary,Se hvordan det fungerer,See how it works,Nasıl çalıştığını gör
+pilot,Planlagt Oslo-pilot,Proposed Oslo pilot,Planlanan Oslo pilotu
+boundary,Praktisk støtte. Ingen helsehjelp.,Practical support. No healthcare.,Günlük yaşam desteği. Tıbbi hizmet içermez.
+planEyebrow,ET EKSEMPEL PÅ EN GOD PLAN,AN EXAMPLE OF A THOUGHTFUL PLAN,DÜŞÜNÜLEREK HAZIRLANMIŞ BİR PLAN ÖRNEĞİ
+planTitle,Din hverdag.,Your everyday life.,Sizin günlük hayatınız.
+planTitle2,Dine valg.,Your choices.,Sizin tercihleriniz.
+planText,En rolig tur. Noen små ærender. Tid til en prat. Du er med på å bestemme.,A gentle walk. A few small errands. Time for a conversation. You help decide.,Sakin bir yürüyüş. Birkaç küçük iş. Sohbete ayrılan zaman. Kararların içinde siz varsınız.
+plan1,Vi snakker sammen,We talk together,Birlikte konuşuruz
+plan1text,Hva vil gjøre dagen enklere?,What would make the day easier?,Gününüzü ne kolaylaştırır?
+plan2,Vi avtaler en tydelig plan,We agree a clear plan,Açık bir plan oluştururuz
+plan2text,"Oppgaver, tid og pris avklares først.","Tasks, time and price are clarified first.","Önce görev, zaman ve ücret netleşir."
+plan3,Vi følger opp,We follow up,Nasıl gittiğini değerlendiririz
+plan3text,Du forteller hva som fungerer.,You tell us what works.,Neyin işe yaradığını siz söylersiniz.
+example,Illustrert forløp — ingen avtale er bestilt.,Illustrated journey — no appointment is booked.,Örnek hizmet akışı — randevu oluşturulmadı.
+promise1,Et tydelig utgangspunkt,A clear starting point,Açık bir başlangıç
+promise1text,Du får vite hva hjelpen omfatter.,Know what the support includes.,Desteğin kapsamını bilirsiniz.
+promise2,Din mening teller,Your voice matters,Sizin fikriniz önemli
+promise2text,Støtten tar utgangspunkt i dine valg.,Support starts with your choices.,"Destek, tercihlerinizden başlar."
+promise3,Oversikt før du bestemmer deg,Clarity before you decide,Karardan önce açıklık
+promise3text,Pris og vilkår må være avklart.,Price and terms must be agreed.,Ücret ve koşullar netleşmelidir.
+supportEyebrow,STØTTE I DET SMÅ,SUPPORT IN THE SMALL THINGS,KÜÇÜK İŞLERDE DESTEK
+supportTitle,Hva vil gjøre dagen lettere?,What would make the day easier?,Gününüzü ne kolaylaştırır?
+supportText,Velg et område og se hva den planlagte støtten kan omfatte.,Choose an area to see what the planned support could include.,Planlanan desteğin kapsamını görmek için bir alan seçin.
+company,Selskap og turfølge,Company and walks,Sohbet ve yürüyüş
+companyText,"Tid til en samtale, en tur i nærmiljøet eller følge til en avtale.","Time for a conversation, a local walk or company on the way to an appointment.","Sohbete, yakın çevrede yürüyüşe veya randevuya birlikte gitmeye ayrılan zaman."
+errands,Små ærender,Everyday errands,Günlük küçük işler
+errandsText,"Planlagt hjelp med handlelister, enkle ærender og daglige rutiner.","Planned support with shopping lists, simple errands and everyday routines.","Alışveriş listeleri, basit işler ve günlük rutinler için planlı destek."
+digital,Digital hjelp,Digital help,Dijital yardım
+digitalText,"Støtte til mobilen, nettbrettet eller en videosamtale. Du beholder kontrollen.","Support with your phone, tablet or a video call. You stay in control.","Telefon, tablet veya görüntülü görüşme için destek. Kontrol sizde kalır."
+select,Velg denne støtten,Choose this support,Bu desteği seç
+selected,Valgt,Selected,Seçildi
+recommend,"Neste steg, ut fra valget ditt","Your next step, based on your choice",Seçiminize göre sonraki adım
+recommendText,"Se hvordan vi avklarer oppgaver, ønsker og grenser før en eventuell avtale.","See how we clarify tasks, preferences and boundaries before a possible agreement.","Olası bir anlaşmadan önce görevleri, tercihleri ve sınırları nasıl netleştirdiğimizi görün."
+processEyebrow,FRA BEHOV TIL EN AVTALT PLAN,FROM A NEED TO AN AGREED PLAN,İHTİYAÇTAN ORTAK PLANA
+processTitle,En enkel start. Et tydelig neste steg.,A simple start. A clear next step.,Kolay bir başlangıç. Açık bir sonraki adım.
+process1,Fortell hva du ønsker,Tell us what you would like,Ne istediğinizi belirtin
+process1text,"Velg støtte og en ønsket dato for første kontakt. Det er en forespørsel, ikke en bestilling.","Choose support and a preferred date for first contact. This is a request, not a booking.",Desteği ve ilk iletişim için tercih ettiğiniz tarihi seçin. Bu bir taleptir; rezervasyon değildir.
+process2,Vi avklarer sammen,We clarify things together,Birlikte netleştiririz
+process2text,"En ansvarlig person vurderer behov, område, oppgaver og hvem som kan avtale hjelpen.","A responsible person reviews needs, location, tasks and who is authorised to arrange support.","Sorumlu bir kişi ihtiyacı, bölgeyi, görevleri ve desteği kimin planlayabileceğini değerlendirir."
+process3,Du tar stilling til forslaget,You consider the proposal,Teklifi değerlendirirsiniz
+process3text,Du skal få pris og vilkår før du godtar en konkret avtale. Ingen automatisk bestilling.,You should receive the price and terms before accepting a specific arrangement. Nothing is booked automatically.,Somut bir anlaşmayı kabul etmeden önce ücret ve koşullar size açıklanmalıdır. Otomatik rezervasyon yapılmaz.
+familyEyebrow,FOR DEG SOM ER PÅRØRENDE,FOR RELATIVES,YAKINLAR İÇİN
+familyTitle,Vær med. Gi plass til den andres valg.,Be involved. Leave room for their choices.,Yanında olun. Kendi tercihlerine yer açın.
+familyText,"Du kan bidra til å planlegge støtte. Personen som skal få hjelp, skal være med og bestemme. Opplysninger om besøk deles bare innenfor en avklart tillatelse.",You can help plan support. The person receiving help should take part in decisions. Visit information is shared only within an agreed permission.,Desteğin planlanmasına katkıda bulunabilirsiniz. Yardım alacak kişi kararlara katılmalıdır. Ziyaret bilgileri yalnızca belirlenmiş izin kapsamında paylaşılır.
+familyPoint1,"Bestilling, betaling og innsyn er ulike tillatelser.","Booking, payment and access are separate permissions.","Rezervasyon, ödeme ve bilgi erişimi ayrı yetkilerdir."
+familyPoint2,"Den som betaler, får ikke automatisk se besøksdetaljer.",Paying does not automatically grant access to visit details.,Ödeme yapmak ziyaret ayrıntılarına otomatik erişim sağlamaz.
+familyPoint3,"En kjent hjelper er et ønske vi planlegger for, ikke en garanti.","A familiar helper is something to plan for, not a guarantee.",Tanıdık bir yardımcıyla devam etmek planlanan bir tercihtir; garanti değildir.
+safetyEyebrow,TYDELIGE GRENSER,CLEAR BOUNDARIES,AÇIK SINIRLAR
+safetyTitle,God støtte begynner med å vite hva vi kan gjøre.,Good support starts with knowing what we can do.,"İyi destek, ne yapabileceğimizi bilmekle başlar."
+inside,Dette er innenfor konseptet,Within the concept,Konseptin kapsamı
+insideText,"Sosialt samvær, enkle ærender og avgrenset digital hjelp.","Companionship, simple errands and clearly scoped digital help.","Sohbet, basit günlük işler ve kapsamı belirlenmiş dijital yardım."
+review,Dette må avklares først,Clarify first,Önce netleşmesi gerekenler
+reviewText,"Adkomst, nøkler, transport, behov for tilpasning og hvem som kan avtale eller få informasjon.","Home access, keys, transport, adjustments and who may arrange support or receive information.","Eve erişim, anahtarlar, ulaşım, uyarlama ihtiyaçları ve kimin planlama yapabileceği veya bilgi alabileceği."
+outside,Dette tilbyr vi ikke,Outside the service,Sunmadığımız hizmetler
+outsideText,"Helsevurdering, behandling, medisinhåndtering, personlig hygiene, løft, BankID, passord, banktilgang eller kontanthåndtering.","Health assessments, treatment, medication management, personal hygiene, lifting, BankID, passwords, bank access or handling cash.","Sağlık değerlendirmesi, tedavi, ilaç yönetimi, kişisel hijyen, kaldırma, BankID, şifre, banka hesabına erişim ve nakit işlemleri."
+emergency,Ved fare for liv og helse: ring 113. Ved akutt hjelp som ikke er livstruende: legevakt 116 117. NAVIAR CARE er ikke en akuttjeneste.,"For danger to life or health in Norway, call 113. For urgent non-life-threatening help, call the medical service on 116 117. NAVIAR CARE is not an emergency service.",Norveç’te yaşam veya sağlık için ciddi tehlike varsa 113’ü arayın. Hayati olmayan acil sağlık yardımı için 116 117. NAVIAR CARE acil müdahale hizmeti değildir.
+bookingEyebrow,UTFORSK EN FØRSTE KONTAKT,EXPLORE A FIRST CONVERSATION,İLK GÖRÜŞMEYİ KEŞFEDİN
+bookingTitle,La oss begynne med det som er viktig for deg.,Let’s begin with what matters to you.,Sizin için önemli olandan başlayalım.
+bookingText,"Test forespørselsflyten. Bruk oppdiktede opplysninger. Ingen hjelper bestilles, ingen betaling tas og ingen e-post sendes automatisk i denne versjonen.","Test the request journey. Use fictional details. No helper is booked, no payment is taken and no email is sent automatically in this version.","Talep akışını deneyin. Hayali bilgiler kullanın. Bu sürümde yardımcı rezervasyonu yapılmaz, ücret alınmaz ve otomatik e-posta gönderilmez."
+forWhom,Hvem utforsker du støtte for?,Who are you exploring support for?,Kimin için destek arıyorsunuz?
+self,For meg,For myself,Kendim için
+family,For en nær person,For someone close to me,Bir yakınım için
+name,Ditt navn,Your name,Adınız
+email,Din e-post,Your email,Kendi e-posta adresiniz
+postcode,Postnummer,Postcode,Posta kodu
+service,Ønsket støtte,Preferred support,İstenen destek
+date,Ønsket dato for første kontakt,Preferred first-contact date,İlk iletişim için tercih edilen tarih
+dateHint,En ønsket dato de neste 90 dagene. Ingen ledig time er bekreftet.,A preferred date in the next 90 days. No available appointment is confirmed.,Önümüzdeki 90 gün içinde tercih edilen tarih. Müsait bir saat doğrulanmış değildir.
+consent,Jeg har lest informasjonen om denne testforespørselen og personvern.,I have read the information about this test request and privacy.,Bu deneme talebi ve kişisel veriler hakkındaki bilgileri okudum.
+privacy,Personvern,Privacy,Kişisel veriler
+terms,Vilkår,Terms,Koşullar
+submit,Send testforespørsel,Send a test request,Deneme talebi gönder
+sending,Lagrer testforespørselen …,Saving your test request …,Deneme talebi kaydediliyor …
+cost,Pris avklares før avtale,Price agreed before commitment,Anlaşmadan önce ücret açıklanır
+costText,"Pris, tjenesteområde og vilkår er ikke fastsatt for lansering. Denne utviklingsversjonen krever ingen betaling.","Launch prices, service areas and terms have not been set. This development version requires no payment.","Açılış fiyatları, hizmet bölgesi ve koşullar henüz belirlenmedi. Bu geliştirme sürümünde ödeme gerekmez."
+sensitive,"Ikke oppgi diagnose, helseopplysninger, BankID eller andre personers kontaktinformasjon.","Do not enter diagnoses, health information, BankID or anyone else’s contact details.","Tanı, sağlık bilgisi, BankID veya başka kişilerin iletişim bilgilerini yazmayın."
+faqEyebrow,DET DU KANSKJE LURER PÅ,YOU MAY BE WONDERING,MERAK EDEBİLECEKLERİNİZ
+faqTitle,"Klare svar, før du går videre.",Clear answers before your next step.,Sonraki adımdan önce açık yanıtlar.
+faq1,Kan jeg bestille hjelp nå?,Can I book help now?,Şimdi yardım rezervasyonu yapabilir miyim?
+answer1,"Nei. Dette er en utviklingsversjon. Du kan teste en forespørsel med oppdiktede opplysninger, men ingen faktisk avtale blir opprettet.","No. This is a development version. You can test a request with fictional details, but no actual appointment is created.",Hayır. Bu bir geliştirme sürümüdür. Hayali bilgilerle talep akışını deneyebilirsiniz; gerçek randevu oluşturulmaz.
+faq2,Kan jeg betale for en annen?,Can I pay for someone else?,Başka biri için ödeme yapabilir miyim?
+answer2,"Dette inngår i planleggingen. Betaling, rett til å bestille og rett til å få besøksinformasjon må avklares hver for seg.","This is part of the service planning. Payment, booking authority and access to visit information must each be clarified separately.","Bu, hizmet planlamasının bir parçasıdır. Ödeme, rezervasyon yetkisi ve ziyaret bilgilerine erişim ayrı ayrı netleştirilmelidir."
+faq3,Kommer den samme hjelperen hver gang?,Will the same helper come every time?,Her seferinde aynı yardımcı mı gelir?
+answer3,"Kontinuitet er en del av konseptet. Tilgjengelighet, fravær og en eventuell erstatter må avtales; samme person kan ikke garanteres.","Continuity is part of the concept. Availability, absence and any replacement must be agreed; the same person cannot be guaranteed.","Süreklilik konseptin parçasıdır. Müsaitlik, izin veya yokluk ve yerine gelecek kişi ayrıca kararlaştırılır; aynı kişi garanti edilemez."
+faq4,Hva skjer hvis planen endres?,What happens if the plan changes?,Plan değişirse ne olur?
+answer4,"Ny oppgave, tid eller pris må avklares med den som har riktig tillatelse. Avbestilling, uteblivelse, klager og refusjon skal ha tydelige vilkår før tjenesten åpner.","A new task, time or price must be agreed with the person holding the relevant permission. Cancellation, missed visits, complaints and refunds need clear terms before opening.","Yeni görev, zaman veya ücret, ilgili yetkiye sahip kişiyle kararlaştırılmalıdır. İptal, gelmeme, şikâyet ve iade koşulları hizmet açılmadan açıklanmalıdır."
+footerText,Hverdagsstøtte med rom for egne valg.,Everyday support with room for your choices.,Kendi tercihlerinize yer açan günlük destek.
+contact,Kontakt og forespørsel,Contact and requests,İletişim ve talep
+preferences,Personvernvalg,Privacy choices,Gizlilik tercihleri
+operations,Drift — begrenset tilgang,Operations — restricted access,Operasyon — sınırlı erişim
+top,Til toppen,Back to top,Başa dön
+footerStatus,P-011 · Utviklingsversjon · 2026,P-011 · Development version · 2026,P-011 · Geliştirme sürümü · 2026
+cookieTitle,Vil du hjelpe oss å forbedre siden?,Help us improve this website?,Bu sayfayı geliştirmemize yardımcı olur musunuz?
+cookieText,"Med ditt valg kan vi telle sidevisninger og aktivitet i innholdsseksjoner. Vi samler ikke inn skjemafelt, helseopplysninger eller posisjon i analysen.","With your permission, we can count page views and activity in content sections. Analytics does not collect form fields, health information or your location.","İzninizle sayfa görüntülemelerini ve içerik bölümlerindeki etkileşimi sayabiliriz. Analizde form alanları, sağlık bilgileri veya konum toplanmaz."
+accept,Tillat analyse,Allow analytics,Analize izin ver
+reject,Avslå analyse,Decline analytics,Analizi reddet
+saved,Personvernvalget er lagret. Du kan endre det nederst på siden.,Your privacy choice is saved. You can change it in the footer.,Gizlilik tercihiniz kaydedildi. Sayfanın altından değiştirebilirsiniz.
+successTitle,Testforespørselen er lagret.,Your test request is saved.,Deneme talebiniz kaydedildi.
+successText,Ønsket dato er ikke en bekreftet avtale. Ingen hjelper er bestilt. E-post er ikke sendt.,The preferred date is not a confirmed appointment. No helper is booked. No email has been sent.,Tercih edilen tarih kesin randevu değildir. Yardımcı rezervasyonu yapılmadı. E-posta gönderilmedi.
+reference,Referanse,Reference,Referans
+duplicate,Denne forespørselen er allerede registrert. Den ble ikke opprettet på nytt.,This request is already registered. No duplicate was created.,Bu talep zaten kayıtlı. İkinci bir kayıt oluşturulmadı.
+error,"Forespørselen ble ikke bekreftet. Kontroller feltene og prøv igjen. Hvis serveren ikke er tilgjengelig, blir ingen bestilling opprettet.","Your request was not confirmed. Check the fields and try again. If the server is unavailable, no booking is created.",Talebiniz doğrulanmadı. Alanları kontrol edip tekrar deneyin. Sunucuya erişilemiyorsa rezervasyon oluşturulmaz.
+unavailable,Tjenestetilkoblingen er ikke aktiv i denne forhåndsvisningen. Ingen forespørsel er sendt.,The service connection is inactive in this preview. No request has been sent.,Bu önizlemede hizmet bağlantısı etkin değil. Talep gönderilmedi.
+invalid_date,Velg en gyldig dato fra i morgen og innen 90 dager.,Choose a valid date from tomorrow and within 90 days.,Yarından başlayarak 90 gün içinde geçerli bir tarih seçin.
+invalid_email,Oppgi en gyldig e-postadresse.,Enter a valid email address.,Geçerli bir e-posta adresi yazın.
+invalid_postcode,Bruk et norsk postnummer med fire sifre.,Use a four-digit Norwegian postcode.,Dört rakamlı Norveç posta kodu kullanın.
+invalid_name,Bruk et navn mellom 2 og 80 tegn.,Use a name between 2 and 80 characters.,2 ile 80 karakter arasında bir ad yazın.
+consent_required,Les informasjonen og merk av før du sender.,Read the information and check the box before sending.,Göndermeden önce bilgileri okuyup kutuyu işaretleyin.
+cancel,Avbryt testforespørselen,Cancel the test request,Deneme talebini iptal et
+cancelled,Testforespørselen er avbrutt.,The test request is cancelled.,Deneme talebi iptal edildi.
+refresh,Oppdater status,Refresh status,Durumu yenile
+pay,Åpne testbetaling,Open test payment,Test ödemesini aç
+paymentPending,Betaling er ikke aktiv. Et vurdert tilbud og en bekreftet avtale kreves først.,Payments are inactive. A reviewed quote and confirmed arrangement are required first.,Ödeme etkin değil. Önce değerlendirilmiş teklif ve kesinleşmiş anlaşma gerekir.
+privacyTitle,Personvern i utviklingsversjonen,Privacy in this development version,Geliştirme sürümünde kişisel veriler
+privacyText,"Dette er et arbeidsutkast. Bruk bare oppdiktede testopplysninger. Testforespørsler lagres på utviklingsserveren med navn, egen e-post, postnummer, ønsket støtte og dato. Administrasjonen har begrenset tilgang. Ingen data sendes til en analysetjeneste før du velger analyse. Analyse lagrer kun dag, hendelse, språk og seksjon som samlede tellere. Aktivitet er ikke bevis på at en tekst er lest eller forstått. Du kan avslå eller trekke tilbake analysevalget her; det stopper nye hendelser. Allerede aggregerte tellinger kan ikke knyttes tilbake til deg. Operatøren må kjøre sletting av gamle testforespørsler. Virksomhetsnavn, kontaktpunkt, behandlingsgrunnlag, databehandleravtaler og endelige lagringstider må bekreftes før lansering.","This is a working draft. Use fictional test details only. Test requests store your name, own email, postcode, selected support and date on the development server. Administration access is restricted. No analytics events are sent before you allow analytics. Analytics stores only day, event, language and section as aggregate counters. Activity does not prove content was read or understood. You may decline or withdraw analytics here; this stops new events. Existing aggregate counts cannot be linked back to you. The operator must run deletion of old test requests. Legal entity, contact point, legal basis, processor agreements and final retention periods must be confirmed before launch.","Bu bir çalışma taslağıdır. Yalnızca hayali test bilgileri kullanın. Deneme talepleri; ad, kendi e-posta adresiniz, posta kodu, destek seçimi ve tarihle geliştirme sunucusuna kaydedilir. Yönetim erişimi sınırlıdır. İzin vermeden analiz olayı gönderilmez. Analizde yalnızca gün, olay, dil ve bölüm toplu sayaç olarak saklanır. Etkileşim, metnin okunduğunu veya anlaşıldığını kanıtlamaz. Analizi buradan reddedebilir veya izni geri alabilirsiniz; yeni olaylar durur. Önceden toplanmış sayaçlar sizinle eşleştirilemez. Eski test taleplerinin silinmesini operatör çalıştırmalıdır. Şirket kimliği, iletişim noktası, işleme dayanağı, veri işleyen sözleşmeleri ve kesin saklama süreleri açılıştan önce doğrulanmalıdır."
+termsTitle,Vilkår for denne testversjonen,Terms for this test version,Bu test sürümünün koşulları
+termsText,"Siden viser et konsept under utvikling. En testforespørsel er ikke en bindende avtale eller en reservasjon av hjelp. Ingen faktisk tjeneste eller tilgjengelighet loves. Priser, avgiftsbehandling, tjenesteområde, forsikring, klagekanal, avbestilling og refusjonsvilkår må godkjennes før reell bestilling åpnes.","This website shows a concept in development. A test request is not a binding agreement or reservation of help. No real service or availability is promised. Prices, tax treatment, service areas, insurance, complaint channels, cancellation and refund terms need approval before real bookings open.","Sayfa geliştirilmekte olan bir konsepti gösterir. Deneme talebi bağlayıcı anlaşma veya yardım rezervasyonu değildir. Gerçek hizmet ya da müsaitlik vaat edilmez. Fiyatlar, vergi uygulaması, hizmet bölgeleri, sigorta, şikâyet kanalı, iptal ve iade koşulları gerçek rezervasyon açılmadan onaylanmalıdır."
+reviewTitle,Se over testforespørselen,Review your test request,Deneme talebini gözden geçirin
+reviewIntro,Dette er opplysningene du vil sende. Ønsket dato er ikke en bekreftet avtale.,These are the details you are about to send. Your preferred date is not a confirmed appointment.,Göndereceğiniz bilgiler aşağıda. Tercih ettiğiniz tarih kesinleşmiş randevu değildir.
+reviewButton,Se over før du sender,Review before sending,Göndermeden önce gözden geçir
+edit,Endre opplysninger,Edit details,Bilgileri düzenle
+languageLabel,Velg språk,Choose language,Dil seçin
+demoTitle,Interaktiv demo · Ingen opplysninger sendes,Interactive demo · No details are sent,Etkileşimli demo · Hiçbir bilgi gönderilmez
+demoText,Prøv med eksempeldata. Eksempeldata og valg slettes når du bytter språk eller laster siden på nytt.,Try the sample details. Sample details and choices are cleared when you change language or reload the page.,Örnek bilgilerle deneyin. Dil değiştirdiğinizde veya sayfayı yenilediğinizde örnek bilgiler ve tercihler silinir.
+sample,Fyll inn eksempeldata,Fill in sample details,Örnek bilgileri doldur
+fail,Prøv en tilkoblingsfeil,Try a connection error,Bağlantı hatasını dene
+sampleReady,Eksempeldata er fylt inn. Se over opplysningene nedenfor.,Sample details are filled in. Review the details below.,Örnek bilgiler dolduruldu. Aşağıdaki bilgileri gözden geçirin.
+failureReady,Neste innsending viser en tilkoblingsfeil. Du kan deretter prøve igjen.,Your next submission will show a connection error. You can then try again.,Sonraki gönderimde bağlantı hatası görünecek. Ardından yeniden deneyebilirsiniz.
+demoSuccess,Testforespørselen vises i demoen.,Your test request appears in the demo.,Deneme talebi demoda gösteriliyor.
+demoSuccessText,"Bare en demonstrasjon i nettleseren. Ingen forespørsel er sendt eller lagret på en server. Ingen e-post, betaling eller avtale er opprettet.","A browser demonstration only. No request was sent or stored on a server. No email, payment or appointment was created.","Yalnızca tarayıcı içinde bir gösterimdir. Talep gönderilmedi veya sunucuya kaydedilmedi. E-posta, ödeme ya da randevu oluşturulmadı."
+demoPrivacy,"Denne selvstendige demonstrasjonen sender ingen skjema- eller analysedata. Opplysninger og valg brukes bare i minnet mens siden er åpen, og forsvinner når den lastes på nytt. Bruk oppdiktede opplysninger.",This standalone demonstration sends no form or analytics data. Details and choices stay in memory while the page is open and disappear when it reloads. Use fictional details.,"Bu bağımsız demo, form veya analiz verisi göndermez. Bilgiler ve tercihler sayfa açıkken bellekte tutulur; sayfa yenilendiğinde silinir. Hayali bilgiler kullanın."
+demoChoiceTitle,Prøv personvernvalgene,Try the privacy choices,Gizlilik tercihlerini deneyin
+demoChoiceText,Dette er en demonstrasjon. Valget gjelder bare her; ingen analysedata samles inn eller sendes.,This is a demonstration. Your choice applies here only; no analytics data is collected or sent.,Bu bir demodur. Seçiminiz yalnızca burada geçerlidir; analiz verisi toplanmaz veya gönderilmez.
+demoSaved,Demovalget er endret. Ingen analyse sendes.,Your demo choice has changed. No analytics is sent.,Demo tercihiniz değiştirildi. Analiz verisi gönderilmez.
+summary,Opplysninger,Details,Bilgiler
+dateZone,Datoen følger norsk tid (Europe/Oslo).,The date uses Norwegian time (Europe/Oslo).,Tarih Norveç saatine göredir (Europe/Oslo).
+required,Alle feltene er obligatoriske.,All fields are required.,Tüm alanlar zorunludur.

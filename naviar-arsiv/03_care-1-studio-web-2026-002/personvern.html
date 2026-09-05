@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="nb" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#12352f">
+    <meta name="description" content="NAVIAR CARE prototype: informasjon om personvern og dataflyt.">
+    <title>Personvern og data — NAVIAR CARE</title>
+    <link rel="icon" href="brand/NAVIAR-CARE-001_master_candidate_v0.2.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body id="top">
+    <a class="skip-link" href="#main-content" data-i18n="skipLink">Gå til hovedinnhold</a>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="index.html" aria-label="NAVIAR CARE">
+          <img src="brand/NAVIAR-CARE-001_master_candidate_v0.2.svg" alt="NAVIAR CARE" width="184" height="53">
+        </a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" data-i18n-aria-label="menuLabel">
+          <span></span><span></span><span></span>
+        </button>
+        <nav id="primary-nav" class="primary-nav" aria-label="Hovedmeny" data-i18n-aria-label="mainNavLabel">
+          <a href="index.html#services" data-i18n="navServices">Tjenester</a>
+          <a href="index.html#method" data-i18n="navMethod">Slik fungerer det</a>
+          <a href="index.html#scope" data-i18n="navScope">Rammer</a>
+          <a href="index.html#request" class="nav-cta" data-i18n="navContact">Start en samtale</a>
+        </nav>
+        <div class="language-switcher" aria-label="Velg språk" data-i18n-aria-label="languageLabel">
+          <button type="button" data-lang="nb" aria-pressed="true">NO</button>
+          <button type="button" data-lang="en" aria-pressed="false">EN</button>
+          <button type="button" data-lang="tr" aria-pressed="false">TR</button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section class="section-pad legal-hero" aria-labelledby="privacy-title">
+        <div class="container">
+          <p class="section-label">WEB-2026-002 / <span data-i18n="privacyLabel">Personvern</span></p>
+          <h1 id="privacy-title" data-i18n="privacyTitle">En prototype skal være ærlig om data.</h1>
+          <p class="hero-lede" data-i18n="privacyIntro">Denne siden beskriver datastatusen i NAVIAR CARE-prototypen. Den er ikke et ferdig personvernerklæringsdokument for en lansert tjeneste.</p>
+        </div>
+      </section>
+      <section class="section-pad section-light" aria-labelledby="data-title">
+        <div class="container legal-grid">
+          <div>
+            <p class="section-label">01 / <span data-i18n="dataLabel">Datastatus</span></p>
+            <h2 id="data-title" data-i18n="dataTitle">Ingen ekte henvendelse sendes fra denne demoen.</h2>
+          </div>
+          <div class="legal-copy">
+            <p data-i18n="dataP1">Interesseformuläret stoppes lokalt i nettleseren. Det finnes ingen tilkoblet e-posttjeneste, database, CRM, analyseverktøy eller betalingsløsning i denne leveransen.</p>
+            <p data-i18n="dataP2">Ikke skriv fødselsnummer, diagnoser, helseopplysninger eller andre fortrolige opplysninger i prototypen.</p>
+            <p data-i18n="dataP3">Før en faktisk pilot må behandlingsansvarlig, formål, dataminimering, lagringstid, tilgang, databehandleravtaler, sikkerhet, informasjon til brukere og sletting dokumenteres og vurderes juridisk.</p>
+          </div>
+        </div>
+      </section>
+      <section class="section-pad" aria-labelledby="before-title">
+        <div class="container legal-grid">
+          <div>
+            <p class="section-label">02 / <span data-i18n="beforeLabel">Før lansering</span></p>
+            <h2 id="before-title" data-i18n="beforeTitle">Det som mangler før en operativ tjeneste.</h2>
+          </div>
+          <div class="legal-checklist">
+            <div><span>01</span><p data-i18n="beforeOne">Personvernvurdering og tydelig informasjon til brukeren</p></div>
+            <div><span>02</span><p data-i18n="beforeTwo">Sikker registrering, rollebasert tilgang og sletting</p></div>
+            <div><span>03</span><p data-i18n="beforeThree">Avklart ansvar, forsikring, betaling og hjelpearbeiderstatus</p></div>
+            <div><span>04</span><p data-i18n="beforeFour">Test med representative brukere før ekte booking åpnes</p></div>
+          </div>
+        </div>
+      </section>
+      <section class="section-pad section-dark" aria-labelledby="separate-title">
+        <div class="container legal-grid">
+          <div>
+            <p class="section-label section-label-light">03 / <span data-i18n="separateLabel">Avgrensning</span></p>
+            <h2 id="separate-title" data-i18n="separateTitle">NAVIAR CARE er ikke NAVIAR CONSULT.</h2>
+          </div>
+          <div class="legal-copy legal-copy-dark">
+            <p data-i18n="separateText">Dette arkivet gjelder NAVIAR CAREs hverdagsstøttepilot. Det skal ikke blandes med NAVIAR CONSULTs arbeidslivsrådgivning eller NAVIAR CARE 2-konseptet for digital legekonsultasjon.</p>
+            <a class="button button-primary" href="index.html" data-i18n="backHome">Tilbake til forsiden</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <a class="footer-brand" href="index.html">NAVIAR CARE</a>
+          <p data-i18n="footerText">Hverdagsstøtte med riktig ramme.</p>
+        </div>
+        <div class="footer-meta">
+          <span>WEB-2026-002</span>
+          <span data-i18n="footerStatus">Prototype / ikke åpen bestilling</span>
+          <a href="personvern.html" data-i18n="privacyLink">Personvern og data</a>
+        </div>
+      </div>
+    </footer>
+    <script src="app.js" defer></script>
+  </body>
+</html>

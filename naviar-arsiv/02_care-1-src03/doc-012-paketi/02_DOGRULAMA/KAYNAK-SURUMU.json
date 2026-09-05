@@ -1,0 +1,17 @@
+{
+  "project_code": "NAVIAR-CARE-001-WEB-01",
+  "brand": "NAVIAR CARE",
+  "conversation_project_label": "NAVIAR CARE 1",
+  "application_version": "2.4.0",
+  "documentation_version": "1.0",
+  "source_commit": "2d1ea68e47568086462c3ed304f1479010bb0222",
+  "saved_site_version": 10,
+  "site_url": "https://naviar-care-1.andersen-betul.chatgpt.site",
+  "checked_on": "2026-09-05",
+  "node": "v24.19.0",
+  "test_count": 37,
+  "passed": 37,
+  "failed": 0,
+  "browser_qa_this_turn": false,
+  "live_providers_tested": false
+}

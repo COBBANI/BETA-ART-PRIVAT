@@ -1,0 +1,350 @@
+<title>NAVIAR CARE Pilotkonsoll</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Playfair+Display:wght@700&display=swap">
+<style>
+  :root{--ink:#173d3a;--lime:#d8ef75;--mint:#d9ebe2;--cream:#f7f5ef;
+        --muted:#576b68;--line:#cbd8d0;--white:#fffdf8;--teal:#0a7d72;--warn:#8a6d1a}
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;background:var(--cream);color:var(--ink);
+       font:14.5px/1.55 "DM Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  h1,h2,h3,p{margin:0}
+  .serif{font-family:"Playfair Display",Georgia,serif;letter-spacing:-.02em}
+  .mono{font-family:"DM Mono",monospace;font-size:10.5px;letter-spacing:.08em;
+        text-transform:uppercase;color:var(--muted)}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+  header{background:var(--ink);color:var(--white)}
+  .bar{display:flex;align-items:center;justify-content:space-between;height:60px;gap:16px;flex-wrap:wrap}
+  .bar .mono{color:#7db5ad}
+  .notice{background:var(--lime);color:var(--ink);font-size:12.5px;padding:8px 20px;text-align:center}
+  .tabs{display:flex;gap:8px;margin:22px 0 6px;flex-wrap:wrap}
+  .tab{padding:8px 18px;border:1px solid var(--line);border-radius:100px;background:var(--white);
+       color:var(--muted);font-size:13.5px;font-weight:600;cursor:pointer}
+  .tab[aria-selected="true"]{background:var(--ink);color:var(--white);border-color:var(--ink)}
+  .card{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:24px;margin:14px 0}
+  label{display:block;font-size:12px;font-weight:600;margin:10px 0 4px}
+  input,select,textarea{width:100%;padding:8px 12px;border:1px solid var(--line);border-radius:6px;
+    font:inherit;font-size:14px;color:var(--ink);background:#fff}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:9px 18px;background:var(--ink);
+       color:var(--white);font-size:13.5px;font-weight:600;border:none;border-radius:6px;cursor:pointer;margin-top:14px}
+  .btn.alt{background:var(--white);color:var(--ink);border:1px solid var(--line)}
+  .btn.sm{padding:5px 12px;font-size:12px;margin:0}
+  .btn.danger{background:#fff;color:#8b2020;border:1px solid #d9b0b0}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th{font-family:"DM Mono",monospace;font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;
+     color:var(--muted);text-align:left;padding:8px;border-bottom:1px solid var(--line)}
+  td{padding:8px;border-bottom:1px solid #e9e6dd;vertical-align:top}
+  .pill{display:inline-block;font-size:11px;font-weight:600;padding:2px 9px;border-radius:100px;white-space:nowrap}
+  .s-Ny{background:#fdf3d7;color:var(--warn)} .s-Vurdert{background:#e8eefc;color:#2a4d8f}
+  .s-Matchet{background:var(--mint);color:var(--teal)} .s-Bekreftet{background:var(--lime);color:var(--ink)}
+  .s-Pågår{background:#e4f0d7;color:#3f6b2a}
+  .s-Fullført{background:#e9e6dd;color:var(--muted)} .s-Avbrutt{background:#fbf0f0;color:#8b2020}
+  .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
+  .tile{background:var(--white);border:1px solid var(--line);border-radius:10px;padding:18px}
+  .tile b{font-family:"Playfair Display",Georgia,serif;font-size:30px;display:block;margin:4px 0 2px}
+  .tile small{font-size:12px;color:var(--muted);line-height:1.4;display:block}
+  .tile .ok{color:var(--teal)} .tile .bad{color:#8b2020}
+  .audit{font-family:"DM Mono",monospace;font-size:10.5px;color:var(--muted);background:var(--cream);
+         border-radius:8px;padding:12px 16px;margin-top:14px;line-height:1.9;max-height:220px;overflow:auto}
+  footer{padding:28px 20px;text-align:center;color:var(--muted);font-size:12px}
+  [hidden]{display:none!important}
+  button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+  @media print{.tabs,.btn,header{display:none}}
+</style>
+
+<header><div class="wrap bar">
+  <div style="display:flex;align-items:center;gap:9px">
+    <svg width="26" height="26" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+      <path d="M 29.19 10.81 A 13 13 0 1 0 10.81 10.81" stroke="#d8ef75" stroke-width="3.6" stroke-linecap="round"/>
+      <circle cx="29.19" cy="10.81" r="4.2" fill="#fffdf8"/>
+    </svg>
+    <div><b style="font-size:14px;letter-spacing:.04em">NAVIAR</b>
+      <span class="mono" style="display:block;font-size:7.5px">CARE · PILOTKONSOLL</span></div>
+  </div>
+  <span class="mono">Internt verktøy · manuell matching · data kun i denne nettleseren</span>
+</div></header>
+<div class="notice"><b>Regler:</b> bruk alias — aldri fulle navn, aldri helseopplysninger.
+Ekte tilgangskontroll og delt lagring kommer med backend (Build-fasen).</div>
+
+<main class="wrap">
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" aria-selected="true"  data-v="ko"      onclick="tab('ko')">Kø</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="hjelpere" onclick="tab('hjelpere')">Hjelpere</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="maling"   onclick="tab('maling')">Måling</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="data"     onclick="tab('data')">Data</button>
+  </div>
+
+  <!-- KØ -->
+  <section id="v-ko">
+    <div class="card">
+      <p class="mono">Ny forespørsel</p>
+      <div class="grid">
+        <div><label for="f-alias">Bruker (alias)</label><input id="f-alias" placeholder="f.eks. ML-mor"></div>
+        <div><label for="f-cat">Tjeneste</label><select id="f-cat"></select></div>
+        <div><label for="f-tid">Ønsket tid</label><input id="f-tid" placeholder="tor 10:00"></div>
+        <div><label for="f-timer">Timer</label><input id="f-timer" type="number" min="1" max="8" value="2"></div>
+      </div>
+      <button class="btn" onclick="addReq()">Legg i køen</button>
+    </div>
+    <div class="card">
+      <p class="mono">Forespørselskø</p>
+      <div style="overflow-x:auto"><table>
+        <thead><tr><th>ID</th><th>Bruker</th><th>Tjeneste</th><th>Tid</th><th>Hjelper</th><th>Status</th><th>Neste</th></tr></thead>
+        <tbody id="q"></tbody>
+      </table></div>
+      <div class="audit" id="audit" aria-label="Hendelseslogg (uforanderlig)"></div>
+    </div>
+  </section>
+
+  <!-- HJELPERE -->
+  <section id="v-hjelpere" hidden>
+    <div class="card">
+      <p class="mono">Ny hjelper</p>
+      <div class="grid">
+        <div><label for="h-alias">Hjelper (alias)</label><input id="h-alias" placeholder="f.eks. SK"></div>
+        <div><label for="h-cats">Kategorier (komma)</label><input id="h-cats" placeholder="Handling og ærend, Tur"></div>
+        <div><label for="h-vandel">Vandelsattest vist (dato)</label><input id="h-vandel" type="date"></div>
+      </div>
+      <button class="btn" onclick="addHelper()">Registrer</button>
+    </div>
+    <div class="card">
+      <p class="mono">Hjelperliste</p>
+      <div style="overflow-x:auto"><table>
+        <thead><tr><th>Alias</th><th>Kategorier</th><th>Vandel vist</th><th>Oppdrag</th><th>Siste oppdrag</th><th>Aktiv</th></tr></thead>
+        <tbody id="hl"></tbody>
+      </table></div>
+      <p style="font-size:12px;color:var(--muted);margin-top:10px">Attesten lagres aldri — kun datoen den ble fremvist (samsvarsprinsipp 1).</p>
+    </div>
+  </section>
+
+  <!-- MÅLING -->
+  <section id="v-maling" hidden>
+    <div class="card">
+      <p class="mono">Pilotmåling — beregnes direkte fra køen (jf. pilot-olcum-plani.md)</p>
+      <div class="tiles" id="tiles" style="margin-top:14px"></div>
+      <p style="font-size:12px;color:var(--muted);margin-top:14px">
+        Måltall er eksempler fra målplanen. Tilfredshet registreres per fullført
+        oppdrag i køen (1–5). Provisjon: 20 % av 250 kr/t (eksempel).
+        Finansmetrikkene F4–F6 (anskaffelseskost, driftskost, bruttobidrag)
+        kan ikke beregnes herfra — føres manuelt i pilotregnearket.</p>
+    </div>
+  </section>
+
+  <!-- DATA -->
+  <section id="v-data" hidden>
+    <div class="card">
+      <p class="mono">Eksport og sletting</p>
+      <p style="font-size:13.5px;margin-top:10px">Alt ligger kun i denne nettleseren
+      (<code style="font-family:'DM Mono',monospace;font-size:12px">localStorage</code>).
+      Ta jevnlig eksport — og lim CSV-en inn i pilotregnearket.</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <button class="btn alt" onclick="exportJSON()">Last ned JSON</button>
+        <button class="btn alt" onclick="exportCSV()">Kopier CSV til utklippstavle</button>
+        <button class="btn danger" onclick="wipe()">Slett alle data</button>
+      </div>
+      <textarea id="csvout" rows="6" style="margin-top:14px;font-family:'DM Mono',monospace;font-size:11.5px" readonly
+        aria-label="CSV-utdata" placeholder="CSV vises her ved eksport"></textarea>
+    </div>
+  </section>
+</main>
+<footer>NAVIAR CARE pilotkonsoll · redaktørsystemet — atskilt fra besøkendes side · September 2026</footer>
+
+<script>
+'use strict';
+const CATS = ['Sosial følge','Tur og aktivitet','Handling og ærend','Enkelt husarbeid',
+              'Transport og avtaler','Trening og aktivitetsfølge','Pårørendekoordinering','Annet'];
+const KEY = 'nc_admin_v1';
+const RATE = 250, FEE = 0.20;
+const FLOW = ['Ny','Vurdert','Matchet','Bekreftet','Pågår','Fullført'];
+const STEP_LABEL = { Pågår: 'Sjekk inn', Fullført: 'Sjekk ut' };
+
+let db = { seq: 15, reqs: [], helpers: [], audit: [] };
+try { const s = JSON.parse(localStorage.getItem(KEY)); if (s && s.reqs) db = s; } catch {}
+
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(db)) } catch {} }
+function now(){ return Date.now() }
+function fmt(t){ const d=new Date(t);
+  return d.toISOString().slice(5,10)+' '+String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0') }
+function log(msg){ db.audit.push(fmt(now())+' · '+msg+' · av: redaktør'); save(); renderAudit() }
+function esc(s){ return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])) }
+
+// ── Kø ──
+const catSel = document.getElementById('f-cat');
+CATS.forEach(c => { const o=document.createElement('option'); o.textContent=c; catSel.appendChild(o) });
+
+function addReq(){
+  const alias = document.getElementById('f-alias').value.trim();
+  if (!alias) return;
+  const id = 'REQ-' + String(db.seq++).padStart(3,'0');
+  db.reqs.push({ id, alias, cat: catSel.value, tid: document.getElementById('f-tid').value.trim(),
+    timer: Number(document.getElementById('f-timer').value)||2,
+    status: 'Ny', helper: '', ts: { Ny: now() }, score: 0 });
+  log(id+' opprettet ('+alias+', '+catSel.value+')');
+  document.getElementById('f-alias').value=''; document.getElementById('f-tid').value='';
+  save(); renderQ(); renderTiles();
+}
+
+function advance(id){
+  const r = db.reqs.find(x=>x.id===id); if (!r) return;
+  const i = FLOW.indexOf(r.status); if (i<0 || i>=FLOW.length-1) return;
+  const next = FLOW[i+1];
+  if (next==='Matchet'){
+    const active = db.helpers.filter(h=>h.aktiv);
+    if (!active.length){ alert('Registrer minst én aktiv hjelper først.'); return }
+    const pick = prompt('Hjelper-alias:\n' + active.map(h=>h.alias).join(', '), active[0].alias);
+    const h = active.find(x=>x.alias===(pick||'').trim()); if (!h) return;
+    r.helper = h.alias; h.count=(h.count||0)+1; h.last=now();
+    log(r.id+' matchet med '+h.alias+' (manuelt godkjent)');
+  }
+  r.status = next; r.ts[next] = now();
+  if (next==='Pågår'){
+    log(r.id+' sjekket inn av '+(r.helper||'hjelper'));
+  } else if (next==='Fullført'){
+    const sc = Number(prompt('Tilfredshet 1–5:', '5'));
+    r.score = (sc>=1 && sc<=5) ? sc : 0;
+    r.notat = (prompt('Kort hendelsesnotat (uten helseopplysninger):', '') || '').trim();
+    const pay = r.timer*RATE, fee = Math.round(pay*FEE);
+    log(r.id+' sjekket ut · '+r.timer+'t · tilfredshet '+(r.score||'—')+
+        (r.notat?' · notat registrert':''));
+    log(r.id+' oppgjør (eksempel): '+pay+' kr til hjelper + '+fee+' kr provisjon — frigjøres ved brukers godkjenning');
+  } else if (next!=='Matchet'){ log(r.id+' → '+next) }
+  save(); renderQ(); renderHelpers(); renderTiles();
+}
+function cancel(id){
+  const r = db.reqs.find(x=>x.id===id); if (!r || r.status==='Fullført' || r.status==='Avbrutt') return;
+  r.status='Avbrutt'; r.ts.Avbrutt=now(); log(id+' avbrutt'); save(); renderQ(); renderTiles();
+}
+function klage(id){
+  const r = db.reqs.find(x=>x.id===id); if (!r) return;
+  const txt = (prompt('Klage/hendelse (uten helseopplysninger) — hver klage følges opp:', r.klage||'') || '').trim();
+  if (!txt) return;
+  r.klage = txt; log(r.id+' klage registrert — følges opp');
+  save(); renderQ(); renderTiles();
+}
+
+function renderQ(){
+  const el = document.getElementById('q'); el.innerHTML='';
+  [...db.reqs].reverse().forEach(r=>{
+    const i = FLOW.indexOf(r.status);
+    const nextBtn = (r.status!=='Fullført' && r.status!=='Avbrutt')
+      ? '<button class="btn sm alt" onclick="advance(\''+r.id+'\')">'+(STEP_LABEL[FLOW[i+1]]||FLOW[i+1])+' →</button> '+
+        '<button class="btn sm danger" onclick="cancel(\''+r.id+'\')">Avbryt</button>'
+      : (r.score ? '★ '+r.score : '—') +
+        (r.status==='Fullført'
+          ? ' <button class="btn sm '+(r.klage?'danger':'alt')+'" onclick="klage(\''+r.id+'\')">'+(r.klage?'Klage !':'Klage')+'</button>'
+          : '');
+    el.insertAdjacentHTML('beforeend',
+      '<tr><td class="mono" style="font-size:10px">'+r.id+'</td><td>'+esc(r.alias)+'</td>'+
+      '<td>'+esc(r.cat)+'</td><td>'+esc(r.tid||'—')+' · '+r.timer+'t</td><td>'+esc(r.helper||'—')+'</td>'+
+      '<td><span class="pill s-'+r.status+'">'+r.status+'</span></td><td>'+nextBtn+'</td></tr>');
+  });
+}
+function renderAudit(){
+  document.getElementById('audit').innerHTML = db.audit.slice(-40).map(esc).join('<br>') || 'Ingen hendelser ennå.';
+}
+
+// ── Hjelpere ──
+function addHelper(){
+  const alias = document.getElementById('h-alias').value.trim(); if (!alias) return;
+  db.helpers.push({ alias, cats: document.getElementById('h-cats').value.trim(),
+    vandel: document.getElementById('h-vandel').value, aktiv: true, count: 0, last: 0 });
+  log('Hjelper '+alias+' registrert (vandel vist: '+(document.getElementById('h-vandel').value||'—')+')');
+  document.getElementById('h-alias').value=''; document.getElementById('h-cats').value='';
+  save(); renderHelpers();
+}
+function toggleHelper(a){
+  const h = db.helpers.find(x=>x.alias===a); if (!h) return;
+  h.aktiv = !h.aktiv; log('Hjelper '+a+(h.aktiv?' aktivert':' deaktivert')); save(); renderHelpers(); renderTiles();
+}
+function renderHelpers(){
+  const el = document.getElementById('hl'); el.innerHTML='';
+  db.helpers.forEach(h=>{
+    el.insertAdjacentHTML('beforeend',
+      '<tr><td><b>'+esc(h.alias)+'</b></td><td>'+esc(h.cats||'—')+'</td><td>'+esc(h.vandel||'—')+'</td>'+
+      '<td>'+(h.count||0)+'</td><td>'+(h.last?fmt(h.last):'—')+'</td>'+
+      '<td><button class="btn sm alt" onclick="toggleHelper(\''+esc(h.alias)+'\')">'+(h.aktiv?'Aktiv ✓':'Inaktiv')+'</button></td></tr>');
+  });
+}
+
+// ── Måling ──
+function metric(list){
+  const done = list.filter(r=>r.status==='Fullført');
+  const matched = list.filter(r=>r.ts.Matchet);
+  const mTimes = matched.map(r=>(r.ts.Matchet - r.ts.Ny)/3600000);
+  const avgMatch = mTimes.length ? (mTimes.reduce((a,b)=>a+b,0)/mTimes.length) : null;
+  const scores = done.filter(r=>r.score).map(r=>r.score);
+  const avgScore = scores.length ? scores.reduce((a,b)=>a+b,0)/scores.length : null;
+  const cancelled = list.filter(r=>r.status==='Avbrutt' && r.ts.Bekreftet);
+  const confirmedEver = list.filter(r=>r.ts.Bekreftet);
+  const byUser = {}; list.forEach(r=>{ (byUser[r.alias]=byUser[r.alias]||[]).push(r) });
+  const users = Object.values(byUser);
+  const repeat = users.length ? users.filter(u=>u.length>1).length/users.length : null;
+  const activeH = db.helpers.filter(h=>h.aktiv).length;
+  const hours = done.reduce((a,r)=>a+r.timer,0);
+  const commission = Math.round(hours*RATE*FEE);
+  const orderVal = r => Math.round(r.timer*RATE*(1+FEE));
+  const avgOrder = done.length ? Math.round(done.reduce((a,r)=>a+orderVal(r),0)/done.length) : null;
+  const doneByUser = {}; done.forEach(r=>{ (doneByUser[r.alias]=doneByUser[r.alias]||[]).push(r) });
+  const repeatRev = Object.values(doneByUser).filter(u=>u.length>1)
+    .reduce((a,u)=>a+u.reduce((s,r)=>s+orderVal(r),0),0);
+  const complaints = list.filter(r=>r.klage).length;
+  return { total:list.length, done:done.length, avgMatch, avgScore, repeat,
+    cancelRate: confirmedEver.length ? cancelled.length/confirmedEver.length : null,
+    activeH, totalH: db.helpers.length, hours, commission, avgOrder, repeatRev, complaints };
+}
+function tile(label, value, target, ok){
+  const cls = ok===null ? '' : ok ? 'ok' : 'bad';
+  return '<div class="tile"><span class="mono">'+label+'</span><b class="'+cls+'">'+value+'</b><small>'+target+'</small></div>';
+}
+function renderTiles(){
+  const m = metric(db.reqs);
+  const f = (v,d=1)=> v===null ? '—' : v.toFixed(d);
+  document.getElementById('tiles').innerHTML =
+    tile('Forespørsler', m.total+' / '+m.done+' fullført', 'totalt / fullført', null) +
+    tile('Snitt matchetid', m.avgMatch===null?'—':f(m.avgMatch)+' t', 'mål (eksempel): < 24 t', m.avgMatch===null?null:m.avgMatch<24) +
+    tile('Tilfredshet', m.avgScore===null?'—':f(m.avgScore), 'mål (eksempel): ≥ 4,2', m.avgScore===null?null:m.avgScore>=4.2) +
+    tile('Gjentakelsesrate', m.repeat===null?'—':Math.round(m.repeat*100)+' %', 'mål (eksempel): ≥ 50 %', m.repeat===null?null:m.repeat>=0.5) +
+    tile('Avbruddsrate', m.cancelRate===null?'—':Math.round(m.cancelRate*100)+' %', 'mål (eksempel): < 10 %', m.cancelRate===null?null:m.cancelRate<0.1) +
+    tile('Aktive hjelpere', m.activeH+' / '+m.totalH, 'aktive / registrerte', null) +
+    tile('Fullførte timer', m.hours+' t', RATE+' kr/t (eksempel)', null) +
+    tile('Provisjon (est.)', m.commission+' kr', Math.round(FEE*100)+' % av timepris — eksempel', null) +
+    tile('Snitt ordreverdi', m.avgOrder===null?'—':m.avgOrder+' kr', 'per fullført oppdrag (F1, eksempel)', null) +
+    tile('Gjenkjøpsomsetning', m.repeatRev+' kr', 'fra brukere med >1 oppdrag (F3, eksempel)', null) +
+    tile('Klager', String(m.complaints), 'mål: 0 — hver klage følges opp (metrikk 8)', m.complaints===0);
+}
+
+// ── Data ──
+function exportJSON(){
+  const blob = new Blob([JSON.stringify(db, null, 1)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob); a.download = 'naviar-pilot-'+new Date().toISOString().slice(0,10)+'.json';
+  a.click(); URL.revokeObjectURL(a.href);
+}
+function exportCSV(){
+  const rows = [['id','bruker','tjeneste','tid','timer','hjelper','status','opprettet','matchet','sjekket_inn','fullført','tilfredshet','notat','klage']];
+  db.reqs.forEach(r=>rows.push([r.id,r.alias,r.cat,r.tid,r.timer,r.helper,r.status,
+    r.ts.Ny?fmt(r.ts.Ny):'', r.ts.Matchet?fmt(r.ts.Matchet):'', r.ts['Pågår']?fmt(r.ts['Pågår']):'',
+    r.ts.Fullført?fmt(r.ts.Fullført):'', r.score||'', r.notat||'', r.klage||'']));
+  const csv = rows.map(r=>r.map(c=>'"'+String(c).replace(/"/g,'""')+'"').join(';')).join('\n');
+  document.getElementById('csvout').value = csv;
+  try { navigator.clipboard.writeText(csv) } catch {}
+}
+function wipe(){
+  if (!confirm('Slette ALLE pilotdata i denne nettleseren? Eksporter først.')) return;
+  try { localStorage.removeItem(KEY) } catch {}
+  location.reload();
+}
+
+// ── Tabs ──
+function tab(v){
+  ['ko','hjelpere','maling','data'].forEach(x=>{
+    document.getElementById('v-'+x).hidden = x!==v;
+    document.querySelector('[data-v="'+x+'"]').setAttribute('aria-selected', x===v);
+  });
+}
+
+renderQ(); renderAudit(); renderHelpers(); renderTiles();
+</script>

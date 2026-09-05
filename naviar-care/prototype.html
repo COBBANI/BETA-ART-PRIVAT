@@ -1,0 +1,384 @@
+<title>NAVIAR CARE Pilotprototype</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Playfair+Display:wght@700&display=swap">
+<style>
+  :root{
+    --ink:#173d3a; --lime:#d8ef75; --mint:#d9ebe2; --cream:#f7f5ef;
+    --muted:#576b68; --line:#cbd8d0; --white:#fffdf8; --teal:#0a7d72;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;background:var(--cream);color:var(--ink);
+       font:15px/1.55 "DM Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  h1,h2,h3,p{margin:0}
+  .serif{font-family:"Playfair Display",Georgia,serif;letter-spacing:-.02em}
+  .mono{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.1em;
+        text-transform:uppercase;color:var(--muted)}
+  .wrap{max-width:920px;margin:0 auto;padding:0 20px}
+  header{background:var(--white);border-bottom:1px solid var(--line);
+         position:sticky;top:0;z-index:10}
+  .bar{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{display:flex;align-items:center;gap:9px}
+  .logo b{font-size:15px;letter-spacing:.04em;display:block;line-height:1}
+  .logo small{font-size:8px;font-weight:500;letter-spacing:.16em;color:var(--muted);
+              text-transform:uppercase;display:block;margin-top:1px}
+  .tabs{display:flex;gap:8px}
+  .tab{padding:8px 16px;border:1px solid var(--line);border-radius:100px;
+       background:var(--white);color:var(--muted);font-size:13.5px;font-weight:600;cursor:pointer}
+  .tab[aria-selected="true"]{background:var(--ink);color:var(--white);border-color:var(--ink)}
+  .stepper{display:flex;gap:6px;flex-wrap:wrap;margin:26px 0 8px}
+  .step{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.06em;
+        padding:4px 10px;border-radius:100px;background:#e9e6dd;color:var(--muted)}
+  .step.on{background:var(--lime);color:var(--ink)}
+  .step.done{background:var(--mint);color:var(--teal)}
+  .card{background:var(--white);border:1px solid var(--line);border-radius:12px;
+        padding:28px;margin:18px 0}
+  .card h2{font-size:24px;margin-bottom:6px}
+  .sub{color:var(--muted);font-size:14.5px;margin-bottom:20px}
+  label{display:block;font-size:12.5px;font-weight:600;margin:14px 0 6px}
+  input,select,textarea{width:100%;padding:10px 14px;border:1px solid var(--line);
+    border-radius:6px;font:inherit;font-size:15px;color:var(--ink);background:#fff}
+  textarea{resize:vertical}
+  .hint{font-size:12px;color:var(--muted);margin-top:6px}
+  .chips{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+  .chip{border:1px solid var(--line);border-radius:10px;background:var(--white);
+        padding:12px 14px;text-align:left;cursor:pointer;font:inherit}
+  .chip[aria-pressed="true"]{border-color:var(--ink);background:var(--mint)}
+  .chip b{display:block;font-size:14px}
+  .chip span{font-size:12px;color:var(--muted)}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;
+       background:var(--ink);color:var(--white);font-size:14.5px;font-weight:600;
+       border:none;border-radius:6px;cursor:pointer;margin-top:20px}
+  .btn.alt{background:var(--white);color:var(--ink);border:1px solid var(--line)}
+  .btn.lime{background:var(--lime);color:var(--ink);font-weight:700}
+  .row{display:flex;gap:12px;flex-wrap:wrap}
+  .note{display:flex;gap:10px;background:var(--mint);border-radius:8px;
+        padding:10px 14px;font-size:12.5px;margin-top:16px}
+  .helper{display:flex;gap:14px;align-items:flex-start;border:1px solid var(--line);
+          border-radius:10px;padding:16px;margin-top:12px;background:var(--white);cursor:pointer}
+  .helper[aria-pressed="true"]{border-color:var(--ink);box-shadow:0 2px 12px rgba(23,61,58,.08)}
+  .avatar{width:44px;height:44px;border-radius:50%;background:var(--mint);
+          display:flex;align-items:center;justify-content:center;font-weight:700;
+          color:var(--teal);flex-shrink:0}
+  .badge{font-family:"DM Mono",monospace;font-size:10px;padding:2px 7px;
+         background:var(--mint);color:var(--ink);border-radius:4px;margin-inline-start:6px}
+  table{width:100%;border-collapse:collapse;font-size:13.5px}
+  th{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.06em;
+     text-transform:uppercase;color:var(--muted);text-align:left;
+     padding:8px 10px;border-bottom:1px solid var(--line)}
+  td{padding:10px;border-bottom:1px solid #e9e6dd;vertical-align:top}
+  .pill{display:inline-block;font-size:11.5px;font-weight:600;padding:3px 10px;border-radius:100px}
+  .p-ny{background:#fdf3d7;color:#8a6d1a}.p-match{background:var(--mint);color:var(--teal)}
+  .p-ok{background:var(--lime);color:var(--ink)}.p-ferdig{background:#e9e6dd;color:var(--muted)}
+  .price{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #e9e6dd;font-size:14.5px}
+  .price.total{border-bottom:none;font-weight:700;font-size:17px;border-top:2px solid var(--ink);margin-top:4px;padding-top:14px}
+  .stars button{font-size:30px;background:none;border:none;cursor:pointer;color:#d5d1c5;padding:2px}
+  .stars button.on{color:#e0b100}
+  .timeline{list-style:none;padding:0;margin:16px 0 0}
+  .timeline li{display:flex;gap:12px;padding:10px 0;color:var(--muted);font-size:14.5px}
+  .timeline li.done{color:var(--ink)}
+  .dot{width:12px;height:12px;border-radius:50%;background:#d5d1c5;margin-top:4px;flex-shrink:0}
+  .done .dot{background:var(--teal)}
+  .audit{font-family:"DM Mono",monospace;font-size:11px;color:var(--muted);
+         background:var(--cream);border-radius:8px;padding:12px 16px;margin-top:16px;line-height:1.9}
+  footer{padding:32px 20px;text-align:center;color:var(--muted);font-size:12px}
+  [hidden]{display:none!important}
+  button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{
+    outline:2px solid var(--teal);outline-offset:2px}
+</style>
+
+<header><div class="wrap bar">
+  <div class="logo">
+    <svg width="28" height="28" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+      <path d="M 29.19 10.81 A 13 13 0 1 0 10.81 10.81" stroke="#173d3a" stroke-width="3.6" stroke-linecap="round"/>
+      <circle cx="29.19" cy="10.81" r="4.2" fill="#d8ef75"/>
+    </svg>
+    <div><b>NAVIAR</b><small>CARE · PILOTPROTOTYPE</small></div>
+  </div>
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" id="tab-user" aria-selected="true" onclick="mode('user')">Bruker</button>
+    <button class="tab" role="tab" id="tab-admin" aria-selected="false" onclick="mode('admin')">Admin</button>
+  </div>
+</div></header>
+
+<main class="wrap" id="user-view">
+  <p class="sub" style="margin:18px 0 0">Prøv forespørselen — ingenting lagres eller sendes.
+    Du trenger ikke skrive ekte navn, adresse eller andre personopplysninger;
+    valgene forsvinner når du lukker siden.</p>
+  <nav class="stepper" id="stepper" aria-label="Fremdrift"></nav>
+
+  <!-- 1 Registrering -->
+  <section class="card" data-step="0">
+    <p class="mono">Steg 1 av 8</p>
+    <h2 class="serif">Hvem trenger hjelp?</h2>
+    <p class="sub">Kort registrering — ingen søknad, ingen helsedata.</p>
+    <label for="r-name">Ditt navn</label>
+    <input id="r-name" value="Marianne Larsen" autocomplete="name">
+    <label for="r-tel">Telefon</label>
+    <input id="r-tel" value="+47 912 34 567" autocomplete="tel">
+    <label for="r-for">Hjelpen gjelder</label>
+    <select id="r-for">
+      <option>Min mor</option><option>Min far</option><option>Meg selv</option><option>En annen</option>
+    </select>
+    <button class="btn" onclick="go(1)">Neste →</button>
+  </section>
+
+  <!-- 2 Forespørsel -->
+  <section class="card" data-step="1" hidden>
+    <p class="mono">Steg 2 av 8</p>
+    <h2 class="serif">Hva trengs?</h2>
+    <p class="sub">Velg tjeneste og beskriv behovet — ikke diagnosen.</p>
+    <div class="chips" id="cats" role="group" aria-label="Tjenestekategori"></div>
+    <label for="r-desc">Beskriv behovet</label>
+    <textarea id="r-desc" rows="3">Mor (82) trenger følge til svømmehallen på torsdager, ca. 2 timer.</textarea>
+    <p class="hint">Ikke skriv diagnoser eller helseopplysninger — hjelperen spør om det som trengs.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0 14px">
+      <div><label for="r-sted">Hvor skjer det?</label>
+        <input id="r-sted" value="Drammen sentrum / svømmehallen"></div>
+      <div><label for="r-rep">Engangs eller fast?</label>
+        <select id="r-rep"><option>Fast — hver uke</option><option>Fast — annenhver uke</option><option>Engangs</option></select></div>
+      <div><label for="r-int">Interesser (hjelper matches også på dette)</label>
+        <input id="r-int" value="Svømming, kryssord, radio"></div>
+      <div><label for="r-trans">Trengs transport?</label>
+        <select id="r-trans"><option>Ja — hjelper med førerkort og bil</option><option>Nei — møtes på stedet</option><option>Følge med buss/taxi</option></select></div>
+    </div>
+    <label for="r-fam">Skal familien involveres?</label>
+    <select id="r-fam"><option>Ja — jeg vil ha beskjed etter hvert oppdrag</option><option>Kun ved endringer</option><option>Nei</option></select>
+    <button class="btn" onclick="go(2)">Neste →</button>
+  </section>
+
+  <!-- 3 Vurdering & sikkerhet -->
+  <section class="card" data-step="2" hidden>
+    <p class="mono">Steg 3 av 8</p>
+    <h2 class="serif">Vurdering og sikkerhet</h2>
+    <p class="sub">Oppgaven kontrolleres mot risikogrensene før matching.</p>
+    <ul class="timeline">
+      <li class="done"><span class="dot"></span>Kategori: <b id="v-cat" style="margin:0 4px">Trening og aktivitetsfølge</b> — innenfor lavrisiko-rammen</li>
+      <li class="done"><span class="dot"></span>Ingen medisinsk pleie, pengehåndtering eller autorisasjonskrav</li>
+      <li class="done"><span class="dot"></span>Hjelpere i dette området har fremvist vandelsattest (attesten lagres aldri)</li>
+    </ul>
+    <div class="note"><span aria-hidden="true">✓</span><span>Vurderingen bekreftes av en koordinator — et menneske, ikke en algoritme. I piloten skjer all matching manuelt.</span></div>
+    <button class="btn" onclick="go(3)">Finn hjelpere →</button>
+  </section>
+
+  <!-- 4 Match -->
+  <section class="card" data-step="3" hidden>
+    <p class="mono">Steg 4 av 8</p>
+    <h2 class="serif">Foreslåtte hjelpere</h2>
+    <p class="sub">Matchet på oppgave, nærhet og interesser. Du velger — ingenting skjer uten din godkjenning.</p>
+    <div id="helpers"></div>
+    <button class="btn" id="btn-match" onclick="go(4)" disabled>Velg og fortsett →</button>
+  </section>
+
+  <!-- 5 Timeplan -->
+  <section class="card" data-step="4" hidden>
+    <p class="mono">Steg 5 av 8</p>
+    <h2 class="serif">Når passer det?</h2>
+    <p class="sub">Avtal tid direkte — hjelperen bekrefter.</p>
+    <label for="t-date">Dato</label>
+    <input id="t-date" type="date" value="2026-09-04">
+    <label for="t-time">Klokkeslett</label>
+    <input id="t-time" type="time" value="10:00">
+    <label for="t-hours">Varighet (timer)</label>
+    <select id="t-hours" onchange="calc()"><option>1</option><option selected>2</option><option>3</option><option>4</option></select>
+    <button class="btn" onclick="calc();go(5)">Se pris →</button>
+  </section>
+
+  <!-- 6 Bekreftelse & pris -->
+  <section class="card" data-step="5" hidden>
+    <p class="mono">Steg 6 av 8</p>
+    <h2 class="serif">Bekreft og betal</h2>
+    <p class="sub">Gebyret vises alltid før du bekrefter. Eksempelpriser fra piloten.</p>
+    <div class="price"><span id="p-line">Hjelper · 2 t × 250 kr</span><span id="p-help">500 kr</span></div>
+    <div class="price"><span>Plattformgebyr (20 %)</span><span id="p-fee">100 kr</span></div>
+    <div class="price total"><span>Totalt</span><span id="p-total">600 kr</span></div>
+    <div class="note"><span aria-hidden="true">✓</span><span>Betaling reserveres nå og trekkes først når hjelpen er fullført.</span></div>
+    <button class="btn lime" onclick="go(6)">Bekreft bestilling</button>
+  </section>
+
+  <!-- 7 Gjennomføring -->
+  <section class="card" data-step="6" hidden>
+    <p class="mono">Steg 7 av 8</p>
+    <h2 class="serif">Hjelpen er avtalt</h2>
+    <p class="sub" id="g-sub">Torsdag 4. september kl. 10:00 · 2 timer</p>
+    <ul class="timeline">
+      <li class="done"><span class="dot"></span>Avtalt og bekreftet av begge parter</li>
+      <li class="done"><span class="dot"></span>Påminnelse sendes dagen før</li>
+      <li id="g-run"><span class="dot"></span>Hjelper sjekker inn ved oppstart</li>
+      <li id="g-done"><span class="dot"></span>Hjelper sjekker ut og leverer kort notat</li>
+      <li id="g-paid"><span class="dot"></span>Du godkjenner — betaling frigjøres, hjelper får oppgjør</li>
+    </ul>
+    <button class="btn alt" id="btn-checkin" onclick="checkIn()">Hjelper sjekker inn (simulering)</button>
+    <button class="btn alt" id="btn-checkout" onclick="checkOut()" hidden>Hjelper sjekker ut (simulering)</button>
+    <button class="btn" id="btn-eval" onclick="go(7)" hidden>Godkjenn og gi vurdering →</button>
+  </section>
+
+  <!-- 8 Vurdering -->
+  <section class="card" data-step="7" hidden>
+    <p class="mono">Steg 8 av 8</p>
+    <h2 class="serif">Hvordan gikk det?</h2>
+    <p class="sub">Vurderingen din holder kvaliteten oppe — og går rett inn i pilotmålingene.</p>
+    <div class="stars" id="stars" role="radiogroup" aria-label="Vurdering 1 til 5"></div>
+    <label for="e-txt">Kommentar (valgfritt)</label>
+    <textarea id="e-txt" rows="2" placeholder="Kort tilbakemelding..."></textarea>
+    <button class="btn lime" onclick="go(8)">Send vurdering</button>
+  </section>
+
+  <!-- Ferdig -->
+  <section class="card" data-step="8" hidden style="text-align:center">
+    <h2 class="serif">Takk!</h2>
+    <p class="sub" style="margin-top:8px">Forespørselen er fullført. Neste gang tar det under ett minutt —
+    hjelperen og planen ligger klar.</p>
+    <button class="btn alt" onclick="reset()">Start på nytt</button>
+  </section>
+</main>
+
+<main class="wrap" id="admin-view" hidden>
+  <section class="card">
+    <p class="mono">Adminpanel · manuell matching</p>
+    <h2 class="serif">Forespørselskø</h2>
+    <p class="sub">Piloten kjører manuelt: hver match godkjennes her av en koordinator.</p>
+    <div style="overflow-x:auto"><table>
+      <thead><tr><th>ID</th><th>Bruker</th><th>Tjeneste</th><th>Tid</th><th>Status</th><th>Handling</th></tr></thead>
+      <tbody id="queue"></tbody>
+    </table></div>
+    <div class="audit" id="audit" aria-label="Hendelseslogg">
+      12:02 · REQ-014 opprettet (bruker: ML) · logg: system<br>
+      12:04 · REQ-014 risikovurdert LAV · godkjent av: K. Berg<br>
+    </div>
+    <p class="hint" style="margin-top:10px">Hendelsesloggen er uforanderlig og viser hvem som godkjente hva
+    (jf. samsvarsprinsipp 3: menneskelig kontroll + sporbarhet).</p>
+  </section>
+</main>
+
+<footer>NAVIAR CARE · Faz 3-prototype · mock-data, ingen ekte personer eller betalinger · September 2026</footer>
+
+<script>
+'use strict';
+const CATS = [
+  ['Sosial følge','Besøk og selskap'],['Tur og aktivitet','Gåturer i nærmiljøet'],
+  ['Handling og ærend','Dagligvarer, apotek, post'],['Enkelt husarbeid','Lette oppgaver hjemme'],
+  ['Transport og avtaler','Følge til avtaler'],['Trening og aktivitetsfølge','Svømming, trim'],
+  ['Pårørendekoordinering','Én plan for familien'],
+  ['Annet','Beskriv oppgaven — grensen er risiko'],
+];
+const HELPERS = [
+  ['Sara K.','1,2 km','4,9','Student · svømmer selv · tegnspråk'],
+  ['Jon A.','2,0 km','4,8','Pensjonert lærer · turgruppe-leder'],
+  ['Amina H.','0,8 km','4,7','Helsefagstudent · førerkort og bil'],
+];
+// Husk forrige kategori (kun lokalt i nettleseren)
+let savedCat = 5;
+try { const s = Number(localStorage.getItem('nc_proto_cat')); if (s >= 0 && s < 8) savedCat = s; } catch {}
+let state = { step:0, cat:savedCat, helper:-1, stars:0, jobDone:false };
+
+const catBox = document.getElementById('cats');
+CATS.forEach((c,i)=>{
+  const b=document.createElement('button');
+  b.className='chip'; b.type='button';
+  b.innerHTML='<b>'+c[0]+'</b><span>'+c[1]+'</span>';
+  b.setAttribute('aria-pressed', i===state.cat);
+  b.onclick=()=>{state.cat=i;[...catBox.children].forEach((x,j)=>x.setAttribute('aria-pressed',j===i));
+    document.getElementById('v-cat').textContent=CATS[i][0];
+    try{localStorage.setItem('nc_proto_cat',String(i))}catch{}};
+  catBox.appendChild(b);
+});
+document.getElementById('v-cat').textContent=CATS[state.cat][0];
+
+const hBox = document.getElementById('helpers');
+HELPERS.forEach((h,i)=>{
+  const d=document.createElement('button');
+  d.className='helper'; d.type='button'; d.style.width='100%';
+  d.setAttribute('aria-pressed','false');
+  d.innerHTML='<span class="avatar">'+h[0][0]+'</span><span style="text-align:left">'+
+    '<b>'+h[0]+'</b><span class="badge">VANDEL ✓</span><span class="badge">'+h[2]+' ★</span>'+
+    '<br><span style="font-size:13px;color:var(--muted)">'+h[1]+' unna · '+h[3]+'</span></span>';
+  d.onclick=()=>{state.helper=i;[...hBox.children].forEach((x,j)=>x.setAttribute('aria-pressed',j===i));
+    document.getElementById('btn-match').disabled=false;};
+  hBox.appendChild(d);
+});
+
+const starBox=document.getElementById('stars');
+for(let i=1;i<=5;i++){
+  const s=document.createElement('button'); s.type='button'; s.textContent='★';
+  s.setAttribute('role','radio'); s.setAttribute('aria-label',i+' av 5');
+  s.onclick=()=>{state.stars=i;[...starBox.children].forEach((x,j)=>x.classList.toggle('on',j<i));};
+  starBox.appendChild(s);
+}
+
+const STEPS=['Registrering','Behov','Sikkerhet','Match','Tid','Pris','Gjennomføring','Vurdering'];
+function renderStepper(){
+  const el=document.getElementById('stepper'); el.innerHTML='';
+  STEPS.forEach((s,i)=>{
+    const d=document.createElement('span');
+    d.className='step'+(i===state.step?' on':i<state.step?' done':'');
+    d.textContent=(i+1)+' '+s; el.appendChild(d);
+  });
+}
+function go(n){
+  state.step=n;
+  document.querySelectorAll('#user-view .card').forEach(c=>{
+    c.hidden = Number(c.dataset.step)!==n;
+  });
+  renderStepper();
+  window.scrollTo({top:0,behavior:'auto'});
+}
+function calc(){
+  const t=Number(document.getElementById('t-hours').value);
+  const rate=250, fee=Math.round(rate*t*0.20);
+  document.getElementById('p-line').textContent='Hjelper · '+t+' t × '+rate+' kr';
+  document.getElementById('p-help').textContent=(rate*t)+' kr';
+  document.getElementById('p-fee').textContent=fee+' kr';
+  document.getElementById('p-total').textContent=(rate*t+fee)+' kr';
+  const d=document.getElementById('t-date').value, k=document.getElementById('t-time').value;
+  document.getElementById('g-sub').textContent=d+' kl. '+k+' · '+t+' timer';
+}
+function checkIn(){
+  document.getElementById('g-run').classList.add('done');
+  document.getElementById('btn-checkin').hidden=true;
+  document.getElementById('btn-checkout').hidden=false;
+}
+function checkOut(){
+  state.jobDone=true;
+  document.getElementById('g-done').classList.add('done');
+  document.getElementById('g-paid').classList.add('done');
+  document.getElementById('btn-checkout').hidden=true;
+  document.getElementById('btn-eval').hidden=false;
+}
+function reset(){ location.reload(); }
+
+function mode(m){
+  const u=m==='user';
+  document.getElementById('user-view').hidden=!u;
+  document.getElementById('admin-view').hidden=u;
+  document.getElementById('tab-user').setAttribute('aria-selected',u);
+  document.getElementById('tab-admin').setAttribute('aria-selected',!u);
+}
+
+const QUEUE=[
+  ['REQ-012','Odd N. (v/ datter)','Handling og ærend','tir 10:00','p-ferdig','Fullført'],
+  ['REQ-013','Ruth S.','Sosial følge','ons 14:00','p-ok','Bekreftet'],
+  ['REQ-014','Marianne L. (mor)','Trening og aktivitetsfølge','tor 10:00','p-match','Foreslått'],
+  ['REQ-015','Per T.','Transport og avtaler','fre 09:30','p-ny','Ny'],
+];
+const qEl=document.getElementById('queue');
+QUEUE.forEach(r=>{
+  const tr=document.createElement('tr');
+  tr.innerHTML='<td class="mono" style="font-size:11px">'+r[0]+'</td><td>'+r[1]+'</td><td>'+r[2]+'</td><td>'+r[3]+'</td>'+
+    '<td><span class="pill '+r[4]+'">'+r[5]+'</span></td>'+
+    '<td>'+(r[4]==='p-match'||r[4]==='p-ny'
+      ? '<button class="btn alt" style="margin:0;padding:6px 14px;font-size:12.5px" onclick="approve(this,\''+r[0]+'\')">Godkjenn match</button>'
+      : '—')+'</td>';
+  qEl.appendChild(tr);
+});
+function approve(btn,id){
+  btn.closest('td').previousElementSibling.innerHTML='<span class="pill p-ok">Bekreftet</span>';
+  btn.outerHTML='—';
+  const now=new Date(); const hh=String(now.getHours()).padStart(2,'0')+':'+String(now.getMinutes()).padStart(2,'0');
+  document.getElementById('audit').innerHTML += hh+' · '+id+' match godkjent · godkjent av: K. Berg<br>';
+}
+
+renderStepper(); calc();
+</script>

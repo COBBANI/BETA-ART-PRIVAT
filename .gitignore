@@ -21,3 +21,6 @@ engine/data/
 # Üretilen dağıtım klasörleri — marka-tescil.mjs ve marka-paket.mjs üretiyor
 tescil/
 paket/
+
+# Subagent geçici worktree kopyaları (otomatik temizlenir)
+.claude/worktrees/

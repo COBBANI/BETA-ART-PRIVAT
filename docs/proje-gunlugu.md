@@ -593,3 +593,18 @@ paket EUR fiyatlı olduğu için Vipps için ayrı, NOK fiyatlı ürünler
 gerekiyor. **"DNB" diye ayrı bir ödeme yöntemi yok** — DNB bir banka,
 Vipps'in kökeni; muhtemelen Vipps'in kendisi kastedildi. Detay ve
 kullanıcının atacağı adımlar: `docs/odeme-sistemi.md` §10.
+
+## 05.09.2026 — NAVIAR: kaynak arşivi + site tamamlama + birleşik konsept
+
+Kullanıcı ChatGPT tarafındaki tüm proje dosyalarını paylaştı (231 dosya);
+hepsi bayt doğrulamasıyla `naviar-arsiv/` numaralı ağacına arşivlendi
+(BA-001…042 sicili, paketler kendi SHA listeleriyle sınandı). Bu
+kaynaklardan siteye taşınanlar: logo v0.2 master aday geometrisi bire
+bir, YZ-etiketi korunmuş fotoğraf bandı (142 KB gömülü), yardımcı hattı
+cümlesi, prototip veri-minimizasyon notu — ship kapısı 7/7, axe 0 ihlal,
+dış istek sıfır. Ardından tüm kaynaklardan damıtılan 12 bölümlük
+birleşik konsept yazıldı (`naviar-care/docs/naviar-care-konsept.md`,
+her madde Mevcut/Öneri/Açık işaretli) ve artifact sayfası olarak
+yayımlandı. Teslim kaydı: `naviar-care/docs/teslim-2026-09-05.md`.
+Canlı dağıtım Vercel günlük kota engeline takılı — kod hazır, tek adım
+kota açılınca dağıtımı tetiklemek.

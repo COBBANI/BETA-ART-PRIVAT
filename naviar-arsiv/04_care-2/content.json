@@ -1,0 +1,29 @@
+{
+  "nb": {
+    "title": "Helsehjelp starter med å bli forstått",
+    "description": "NAVIAR CARE 2 er et konsept for digitale legesamtaler med språk og forståelse i sentrum. Tjenesten er under utvikling.",
+    "skip": "Hopp til innhold",
+    "photoalt": "En kvinne lytter til en samtale på en bærbar datamaskin hjemme.",
+    "caption": "Illustrasjonsbilde laget med KI. Ingen avbildet pasienthistorie.",
+    "externalSources": "Lenker til Helsenorge åpner en uavhengig offentlig tjeneste. De betyr ikke at det finnes et samarbeid. Hovedbildet er en KI-laget illustrasjon og viser ikke en faktisk pasient eller medarbeider.",
+    "beforeLaunch": "Behandlingsansvarlig, formål, rettslig grunnlag, databehandlere, oppbevaring, rettigheter og kontaktpunkt må dokumenteres. Den kliniske tjenesten må få en egen kontrollert personvern- og sikkerhetsløsning."
+  },
+  "en": {
+    "title": "Healthcare starts with being understood",
+    "description": "NAVIAR CARE 2 is a concept for digital medical consultations built around language and understanding. The service is in development.",
+    "skip": "Skip to content",
+    "photoalt": "A woman listening to a conversation on a laptop at home.",
+    "caption": "AI-generated illustration. Not an actual patient story.",
+    "externalSources": "Helsenorge links lead to an independent public service and do not imply a partnership. The main image is an AI-generated illustration, not an actual patient or staff member.",
+    "beforeLaunch": "The controller, purposes, legal basis, processors, retention, rights and contact point must be documented. The clinical service requires a separately reviewed privacy and security solution."
+  },
+  "tr": {
+    "title": "Sağlık hizmeti anlaşılmakla başlar",
+    "description": "NAVIAR CARE 2, dil ve anlaşılmayı merkeze alan dijital doktor görüşmeleri için geliştirilen bir hizmet konseptidir.",
+    "skip": "İçeriğe geç",
+    "photoalt": "Evinde dizüstü bilgisayardan yapılan bir görüşmeyi dinleyen kadın.",
+    "caption": "Yapay zekâ ile oluşturulmuş görsel. Gerçek bir hasta öyküsü değildir.",
+    "externalSources": "Helsenorge bağlantıları bağımsız bir kamu hizmetine gider; ortaklık anlamına gelmez. Ana görsel yapay zekâ ile üretilmiştir, gerçek bir hasta veya çalışanı göstermez.",
+    "beforeLaunch": "Veri sorumlusu, amaçlar, hukuki dayanak, veri işleyenler, saklama, haklar ve iletişim noktası belgelenmelidir. Klinik hizmet için ayrı olarak değerlendirilmiş bir gizlilik ve güvenlik çözümü gerekir."
+  }
+}
