@@ -557,3 +557,16 @@ Kullanıcı "bu kaynakları baz alarak siteyi ve konsepti yap, bitir; eksiksiz t
 - ZIP ile gelen `Tasarim-v4.jpg` arşive girdi; SHA256SUMS 17/17.
 - Canlı: naviarcare.vercel.app (Vercel `naviarcare`, `python3 build_static.py`).
 Açık kalan: naviarcare.com DNS (kullanıcı), marka hukuki taraması, CONCEPT §16 klinik açılış işleri.
+
+## 05.09.2026 (gece, beceri) — teslim-arsivle: dış teslimleri arşivleme becerisi
+
+- `.claude/skills/teslim-arsivle/`: SKILL.md + `scripts/arsivle.py`. CARE 2 teslimini elle
+  arşivlerken üç kez tekrarlanan işi (önek temizleme, kopya ayıklama, ad düzeltme, SHA-256'lı
+  numaralı dizin, SHA256SUMS doğrulama, gömülü görsel çıkarma, `.env`/anahtar dışlama) tek
+  komuta indirir; hedefte önceki envanter varsa numara ve türü oradan sürdürür.
+- Değerlendirme: 3 senaryo (yükleme arşivi, ZIP ile genişletme, gömülü varlık), beceri ile /
+  becerisiz, iki tur. Nicel ölçütler her iki yapılandırmada da geçti; fark biçimde: becerisiz
+  koşular her seferinde farklı yapı üretti ve dosya adlarına numara yazıp kullanıcının kendi
+  dizin bağlantılarını kırdı. 1. turda betikte bulunan kusur (ZIP'le gelen dosyanın türü
+  önceki envanterden alınmıyordu) düzeltildi; 2. turda beceri ile 29/29, süre 93 sn (becerisiz 127).
+- Örnek veri ve ölçütler `evals/` altında; çalışma alanı (`*-workspace/`) depoya girmez.
