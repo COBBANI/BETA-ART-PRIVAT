@@ -42,3 +42,27 @@ ChatGPT Sites ortamına bağlıdır (Worker + Sites D1).
 
 Sonradan gelen parçalar bu ağaca aynı yerleşimle eklenir; md5 ile
 yükleme kopyasına eşitlik doğrulanır.
+
+## belge-arsivi-v6/ (eklendi: 05.09.2026 gece, ikinci parti)
+
+CARE 2 **belge arşivi v6 / arşiv revizyonu 3** paketinden gelen iki dosya:
+
+- `NAVIAR-CARE-002_Arsiv-Dizini_v6.html` — paketin kendi dizin sayfası
+  (18 belge sayar: 3 güncel v6 teslimi + 14 geçmiş/kaynak kaydı +
+  1 ortak CARE 1–2 test raporu; ayrıca envanter JSON ve SHA256SUMS'a
+  bağlantı verir). md5 `20eeb4fc…`.
+- `NAVIAR-CARE-2-demo.html` — dizinde "Geçmiş demo tasarımı" olarak
+  kayıtlı dosya; boyut dizindeki kayıtla birebir (21 769 bayt).
+  md5 `8d0aa885…`. İçinde stüdyo karar kaydı + üç dilli (nb/en/tr)
+  çevrimdışı demo; "not a live service" beyanı korunuyor.
+
+**Ad notu:** yükleme sistemi tirelerı düşürüyor (`NAVIARCARE2demo.html`,
+`NAVIARCARE002_ArsivDizini_v6.html` geldi); adlar paketin kendi
+dizinindeki özgün yazıma göre geri kuruldu. Demo 3, dizin 2 kez
+yüklendi — hepsi bayt bayt aynı, birer kopya arşivlendi.
+
+**Eksik:** paketin kalan 17 belgesi (v6 teslim html+md, web metinleri,
+DOS-001/002 PDF'leri, REG-001, REV-001/002, SRC-001…003 kopyaları,
+Tasarim-v4.jpg, Platform-Karari, Studio-Demo_v1.0.html,
+Teslim-Kaydi_v5.0.html, TEST-RAPORU) + `NAVIAR-CARE-002_Arsiv-Envanteri_v6.json`
++ `SHA256SUMS.txt` henüz yüklenmedi — SHA doğrulaması onlar gelince yapılacak.

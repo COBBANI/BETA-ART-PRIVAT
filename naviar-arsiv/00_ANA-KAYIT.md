@@ -70,6 +70,7 @@ kayıt güncellenir. Buradaki hiçbir kod bu depoda çalıştırılmaz.
 | BA-025 | 05 | `NVC-001_Kapanis-ve-Teslim.md` | Consult kapanış-teslim (ticari açılış tamamlanmadı) |
 | BA-026 | 05 | `NVC-001-DEC-02_Surekli-Gelisim-Kaydi.md` | Consult sürekli gelişim kaydı |
 | BA-041 | 05 | `NVC-001-LIST-12_Belge_Listesi.md` | Consult tam arşiv dizini (ARC-NVC-001-ALL-DOCS-20260905): 9 güncel rehber/sicil + 145 tarihsel dosya + kaynağında korunan zip/görsel listesi |
+| BA-043 | 04 | `belge-arsivi-v6/` | CARE 2 belge arşivi v6 (rev 3) — şimdilik yalnız dizin sayfası + NAVIAR-CARE-2-demo.html (21 769 bayt, dizin kaydıyla birebir); kalan 17 belge + envanter JSON + SHA256SUMS bekleniyor |
 | BA-042 | 05 | `01_Guncel_Rehberler/` | LIST-12'nin 6 güncel rehberi: DOC-12 (docx+md), GOV-12, OPS-12, SVC-12, WEB-12 — 3 sicil dosyası (CODE-12 csv, REG-12 json, Sayfa Sicili csv) ve 145 tarihsel dosya henüz gelmedi |
 
 Kaynak kod dosyaları (uygulama, test, yapılandırma) klasör bazında
@@ -97,4 +98,5 @@ doğrulanarak açıldı. Köken kimliği için SHA-256 önekleri:
 | `NAVIAR-CARE-001_master_candidate_v0.3.svg` | FILE-016 | 03/brand |
 | KAYNAK-KOD zip'leri v1.0 ve v2.2 (v2.4.0 GELDİ → BA-029) | FILE-014/019 | 02 |
 | CARE 2: build_content.py, build_operations.py, db/schema.ts, drizzle göçü, dist/ | 04 ARSIV-NOTU | 04 |
-| DOC-012 tekil bölümleri 06–20 + 02_DOGRULAMA + TUM-BELGELER md (SHA256SUMS'ta 45 kayıt; 7'si geldi) | — | 02/doc-012-paketi |
+| DOC-012 kalan 10 dosyası: TUM-BELGELER md + 03_ONCEKI_BELGELER'den 9 kayıt (SHA256SUMS'ta 45 kayıt; 35'i doğrulandı) | — | 02/doc-012-paketi |
+| CARE 2 belge arşivi v6'nın kalan 17 belgesi + `Arsiv-Envanteri_v6.json` + `SHA256SUMS.txt` (dizin + demo GELDİ → BA-043) | 04 dizin sayfası | 04/belge-arsivi-v6 |
