@@ -314,3 +314,19 @@ yeniden ölçülmesi gerektiğini işaret eder.
 geçen sürenin uzunluğuyla ters orantılı güven taşır — yakın tarihli bir
 not bile, kaynak o zamandan beri değiştiyse yeniden ölçülmeli.
 
+
+
+### Observation 14: Bileşik komutta pkill zinciri öldürüyor (exit 144), sonraki adımlar sessizce yapılmıyor
+
+**Status:** OPEN
+**Date:** 2026-09-02
+**Session context:** Sosyal medya işi — günlük + commit + push tek bileşik komutta, başında `pkill -f "vite preview"` vardı
+**Skill:** Genel çalışma pratiği (qblogg-operasyon adayı)
+**Type:** internal
+**Phase/Area:** Bash bileşik komutlar / süreç temizliği
+
+**Issue:** `pkill -f "vite preview"; cat >> günlük && git commit && git push` bileşiği exit 144 ile kesildi; pkill kendi eşleşme aralığında komutun kendisini/оturumu vurdu ve SONRAKİ HİÇBİR ADIM çalışmadı. Günlük eklenmedi, commit atılmadı — fark edilmese "iş yapıldı" sanılacaktı. Aynı oturumda daha önce `pkill` tek başına da exit 144 vermişti.
+
+**Suggested improvement:** qblogg-operasyon'a kural: süreç öldürme (`pkill`/`kill`) hiçbir zaman commit/push/dosya yazma ile aynı bileşik komuta konmaz; ayrı Bash çağrısında çalıştırılır ve sonucu önemsizse `|| true` eklenir. Kesilen bileşikten sonra `git status`/`git log -1` ile ne kadarının gerçekleştiği doğrulanır.
+
+**Principle:** Yan etkili temizlik komutları (özellikle desenle süreç öldürenler) belirsiz çıkış davranışı taşır; kalıcı iş üreten adımlarla aynı zincire bağlanırsa sessiz iş kaybı üretir. Zincir kesildiğinde ilk refleks "ne kadarı gerçekleşti"yi doğrulamaktır, komutu aynen tekrarlamak değil.

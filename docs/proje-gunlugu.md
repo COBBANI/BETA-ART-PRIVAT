@@ -487,6 +487,175 @@ cevabı bunu kapsasa da teknik olarak henüz mümkün değil.
 Gerçek dosya/geçmiş taşıma işlemi, yukarıdaki üç karar netleşmeden
 başlatılmadı.
 
+## 01.09.2026 — Beta Art Privat: tam çeviri (2 faz, 8 dil)
+
+Kullanıcı talebi "/TRANSLATE bütün tekstler tam olarak bütün dillere".
+Faz 1: Home'daki sabit İngilizce hero + fotoğrafçı biyosu + Life Flower
+manifestosu i18n sözlüğüne taşındı (10 anahtar × 8 dil); pt sözlüğünde
+yanlışlıkla İspanyolca kalmış feedback anahtarları düzeltildi. Faz 2:
+data.ts'teki 217 içerik metni (3 doğrulama yöntemi, 3 sergi, 4 lisans
+katmanı, 16 SSS, 35 kategori, 12 plaka detayı) `Record<Lang,string>`
+tipine çevrildi — çeviriler 7 paralel alt-ajanla üretildi, sayısal
+değerlerin korunduğu betikle doğrulandı; kalan sabit UI kırıntıları
+(provenance zaman çizelgesi, sepet sayacı, yer tutucular) sözlüğe alındı
+(8 dil × 195 anahtar). Eser adları, teknik terimler ve yer adları bilinçli
+çevrilmedi. tasarim-sistemi.md'deki iki katmanlı model bölümü tam çeviri
+modeliyle değiştirildi. Testler: 34/35 (tek fail scratchpad paketindeki
+Google Fonts'un sandbox ağ engeli — ortam artefaktı), dil bazlı içerik
+spot kontrolleri ve i18n anahtar eşitliği yeşil. Commit'ler: d0a6e9d,
+1f252b0 (+ dokümantasyon commit'i); artifact aynı adreste güncellendi.
+
+## 01.09.2026 (öğle) — Beta Art Privat Vercel'de yayında
+
+`create_git_project` üçüncü denemede de `repo_no_access` verdi (kullanıcı
+daveti kabul ettiğini bildirdi ama işbirlikçi listesi hâlâ yalnızca
+`andersenbetul-alt`; kabul GitHub API'ye yansımadı — muhtemelen yanlış
+hesapla yapıldı). Depo bu arada public olduğu için QBLOGG'un kanıtlanmış
+tarifine geçildi: yalnızca `vercel.json` gönderilir, `buildCommand`
+önce `rm -rf kaynak` yapar (derleme önbelleği klon klasörünü geri
+getiriyor; ikinci dağıtım bu yüzden git exit 128 verdi, düzeltildi),
+sonra public depoyu `claude/beta-art-privat-g7k5vk` dalından `--depth 1`
+klonlar, `apps/beta-art-archive` içinde `npm ci && npm run build`
+çalıştırır, `dist/`i çıktıya taşır. Sonuç: proje `beta-art-privat`
+(`prj_C9ByJukTJ8xulLpXCDQnunRCIBlh`, BET - ART takımı), derleme 14 sn,
+üretim adresi **https://beta-art-privat.vercel.app** (alias otomatik
+geldi). SSO Deployment Protection proje oluşturulduğunda kapalı geldi
+(01.09 öğleden sonra `get_project_deployment_protection` ile doğrulandı;
+önceki "kapatıldı" ifadesi yanlıştı — kapatma işlemi yapılmadı, gerek de
+yoktu), adres herkese açık — 200 ve doğru HTML doğrulandı. **Siteyi
+güncellemek = dala push + aynı vercel.json ile dağıtımı yeniden
+tetiklemek** (git bağlantısı yok; davet sorunu çözülürse git-link'e
+yükseltilebilir). Önceki başarısız denemeden kalan boş `beta-art`
+projesi (prj_QLewfMpfzgVSOO2FsZoZpmeszbNG) hâlâ silinmeyi bekliyor —
+panelden kullanıcı silecek.
+
+## 02.09.2026 (sabah) — Kanıt denetimi bulguları düzeltildi
+
+"Trust the evidence behind every image" denetim workflow'u (126 ajan; iki
+oturum-limiti kesintisinden sonra devam ettirildi) 40 bulgu inceledi, 10'u
+3 hakemli çürütme turundan ayakta çıktı. Hepsi uygulandı:
+
+- **Satış kapısı (F1):** İndir/sepet düğmeleri artık `verified &&
+  plate.image` şartına bağlı — dosyası depoda olmayan bir plaka satışa
+  sunulmuyor. "Available" durumu beta-art.com'dan geldiği için elle
+  düşürülmedi; yalnızca satış girişleri kapatıldı. Şu an hiçbir plaka
+  satılabilir durumda değil: Portrait in Amber ile The Maker'ın
+  orijinalleri yüklendiğinde düğme kendiliğinden geri gelir.
+- **Provenance dürüstlüğü (F2, F6):** Sergi düğümü artık "tamamlandı"
+  değil — serginin kendi verisi "Upcoming / Autumn 2026" diyor; yer de
+  sabit ", Oslo." yerine `where` alanından geliyor. Çekim bağlamı düğümü,
+  metni "Capture details to be supplied" olan plakada boş nokta gösteriyor.
+- **Kimlik rozetleri (F8):** "Identity verified" rozeti Home ve Artists'ten
+  kaldırıldı; artistsIntro "kimliği doğrulanmış" iddiasından arındırıldı
+  (8 dil). Doğrulama prosedürü kurulunca geri gelir.
+- **RAW mutlak iddiası (F3, F5, F9):** Tek gerçek orijinal (Golden Hour)
+  iPhone HEIC olduğu için "her plaka RAW ile başlar" evrensel iddiası
+  yanlıştı. Yöntem I + iki SSS + vsStock kutusu + fotoğrafçı metni 8 dilde
+  "orijinal dosya — kamera üretiyorsa RAW" biçimine yumuşatıldı.
+- **Var olmayan otomasyon (F4, F7, F10):** Hero'daki kaynaksız "March 2026"
+  tarihi kaldırıldı; teslimat SSS'indeki 72 saatlik link + PDF sertifika
+  vaadi gerçek akışla (e-postayla, normalde 24 saat içinde) değiştirildi;
+  fatura SSS'indeki "organizasyon numarası + MVA" satırı düz makbuz vaadine
+  çevrildi (MVA kaydı yok — komisyon-ve-mva.md'deki bayat "sitede MVA
+  ifadesi yok" cümlesi de düzeltildi); cayma hakkı SSS'indeki uydurma
+  "checkout'ta kutu işaretleme" adımı e-posta onayına çevrildi.
+
+data.ts başlığına sapma kaydı düşüldü: birebir katmandan her sapmanın
+gerekçesi tek tek yazılı (uydurma yasağı > birebir sadakat). Doğrulama:
+`tsc -b` + Vite build temiz, Playwright duman testi 7/7 (tarih yok, rozet
+yok, görselsiz "available" plakada satış düğmesi yok, sergi düğümü
+"Upcoming, Oslo, Norway"). Günlük araştır-geliştir turunun bu günkü
+iyileştirmesi bu düzeltme setidir; araştırma notu: dünkü derin araştırma
+(doğrulanmamış, kaynaklı) Norveç'te sipariş çekim pilot bandını
+kr 7.000–14.000 gösteriyor (NTB üye ~6.900 / liste ~13.800; arşiv tek
+kullanım 3.770+MVA) — fiyat sayfası kurulurken elle teyit edilecek.
+
+## 02.09.2026 (öğleden sonra) — Sosyal medya kanalları geliştirildi
+
+Kullanıcı talebi "sosyal medya kanalları geliştir". Üç parça:
+(1) `docs/beta-art/sosyal-medya.md` — kanal planı tek kaynağı: IG + LinkedIn
+öncelikli (Pinterest 2. ay, TikTok/X bilinçli kapalı), yapıştırmaya hazır
+biyografiler (EN+NO), 5 içerik sütunu, 4 haftalık 12 gönderilik takvim.
+Dürüstlük çerçevesi başa yazıldı: tek gerçek fotoğraf (Golden Hour) var,
+görsel gerektiren diğer gönderiler marka kartı; kullanıcı adı müsaitliği bu
+ortamdan doğrulanamadığı için adaylar "doğrulanmadı" işaretli; sayı/istatistik
+uydurulmaz. (2) `config.ts → SOCIAL_LINKS` (boş) + Footer'da yalnızca URL
+doldurulunca görünen "Follow" bloğu (footerFollow ×8 dil) — ölü bağlantı
+yayınlanmaz. (3) `index.html`e paylaşım meta'ları: og:site_name/url/image +
+twitter kartı, görsel Golden Hour web kopyası (-phi adresi; alan adı
+bağlanınca güncellenecek, sosyal-medya.md açık işlerde). Doğrulama: build
+temiz, Playwright: Follow bloğu boş linklerle gizli, footer sağlam.
+Hesap açılışı adım adım kullanıcıya yazıldı; URL gelince config doldurulup
+dağıtım yenilenecek.
+
+## 02.09.2026 (akşam) — Müşteri davranış sistemi kuruldu
+
+Kullanıcı talebi (NO): "bir müşteri davranış sistemi kur — müşterinin bir
+sonraki sefer ne görmek/satın almak istediğini bulalım, tüm sayfalarda".
+Statik sitede dürüst v1: TAMAMEN cihaz-içi. `src/lib/behavior.ts`
+localStorage'a görüntü/filtre/sepet olaylarını (ağırlık 1/2/4) yazar,
+kategori yakınlığına göre katalogdan öneri üretir; hiçbir ağ isteği, çerez,
+analitik, parmak izi yok. `src/components/ForYou.tsx` "Picked for you"
+şeridi ana sayfa (koleksiyon altı) + plaka + sepette; soğuk başlangıçta hiç
+görünmez (dolgu yok), temel satırı "nothing is sent anywhere" ve "Forget my
+activity" düğmesi (kaydı siler) şeffaflık/kontrol için. record() bir pencere
+olayı yayar, şerit dinler → o anki plaka görüntüsü aynı ziyarette öneriyi
+canlı günceller. İzleme: router (gezinme), PlateDetail (görüntü+sepet),
+Home Collection (filtre). Metinler 8 dilde (recoTitle/recoBasis/recoReset).
+Çapraz-ziyaretçi analitiği, hesap profili, satın alma tahmini bilinçle
+kapsam dışı (backend + rıza ister — uydurma yasağı); davranis-sistemi.md'de
+sonraki adım olarak yazılı. Doğrulama: build temiz, Playwright 7/7.
+
+## 02.09.2026 (gece) — Yönetici satış takip sistemi + iki-sistem ayrımı
+
+Kullanıcı talebi: "satış takip sistemi kur — web sayfasını yöneten kişi
+için", ardından "web sayfasını düzenleyen kişi ve kullanıcılar için ayrı
+sistem kuruyoruz". Böylece iki ayrık sistem netleşti: ziyaretçi →
+davranış/öneri (ba_davranis_v1), yönetici → satış defteri (ba_satis_v1);
+kod ve depolama tamamen ayrı, admin sayfası davranış profili kaydetmiyor.
+Yönetici sistemi: gizli /#admin (nav/footer'da yok, hashchange ile
+bookmark'tan da açılır), cihaz-yerel satış defteri. `src/lib/sales.ts` para
+modelini (komisyon-ve-mva.md) uygular: net = brüt−kesinti, %30/%70, kendi
+plakasında komisyon yok, MVA yok; Stripe kesinti tahmini %1,5+1,80.
+`src/pages/Admin.tsx`: satış ekleme formu (kesinti otomatik), özet kartları
+(brüt/kesinti/net/BA payı/ödemeler), fotoğrafçı başına ödeme listesi, CSV
+dışa aktarım, satır silme. Admin iç araç olduğu için etiketler i18n dışı düz
+EN/NO (belgede gerekçeli). Güvenlik notu açıkça yazıldı: /#admin parola
+korumalı değil, veri yalnızca yöneticinin tarayıcısında. Otomatik Stripe
+kaydı, parolalı çok-cihaz panel, ödeme durumu takibi bilinçle kapsam dışı
+(backend ister) — satis-takip.md'de sonraki adım. Doğrulama: build temiz,
+Playwright 8/8 (kullanıcıya görünmez, panel açılıyor, kendi plakası net
+185,35, dış fotoğrafçı payout 129,7x, ayrı depolama anahtarı, reload kalıcı).
+
+## 02.09.2026 (gece, ek) — Satışlar grafikte gösteriliyor
+
+Kullanıcı talebi "satışları grafikte göster". Yönetici panelinde (/#admin)
+aylık brüt gelir çubuk grafiği. Form: büyüklük/zaman → çubuk; tek seri
+(brüt) → tek renk (tema accent tokenı, açık/koyu temada zaten doğrulanmış),
+efsane gerekmez. `sales.ts → monthlyTotals()` satışları takvim ayına göre
+gruplar (net/BA payı/adet dahil). `Admin.tsx → RevenueChart`: satır içi SVG,
+yuvarlak-tepeli çubuklar, taban çizgisi resesif, her çubukta doğrudan kr
+etiketi, ay etiketi, çubuk başına hover (adet + net). Tablo görünümü zaten
+satış listesi. Doğrulama: build temiz, Playwright 6/6 (aylık gruplama,
+toplam etiketleri, hover ayrıntısı) + ekran görüntüsüyle görsel kontrol.
+
+## 02.09.2026 (gece, ek) — small-business eklentisi Beta Art'a göre özelleştirildi
+
+Kullanıcı talebi: "small-business eklentisini şirketime göre özelleştir" →
+Beta Art seçildi, "kur + şirket profili yaz" yaklaşımı. Eklenti
+(knowledge-work-plugins marketplace, ~31 iş akışı becerisi + QuickBooks/
+HubSpot/Stripe/Square/PayPal/Docusign/Gsuite/Canva araçları) kurulu değildi;
+kurulum kartı gösterildi (kullanıcı etkinleştirecek). Uzak marketplace
+eklentisinin kaynağı yerel düzenlenemediği için özelleştirme vektörü:
+`docs/beta-art/sirket-profili.md` — iş akışlarının okuyacağı tek şirket
+bağlamı. Gerçek/doğrulanmış verilerden derlendi (komisyon-ve-mva.md,
+config.ts, CLAUDE.md); bilinmeyen alanlar [DOLDURULACAK] işaretli (uydurma
+yasağı). Kritik ezmeler: MVA kaydı yok (fatura/tax akışları MVA
+hesaplamamalı, ciro 50.000 kr eşiğini izle-uyar), enkeltpersonforetak →
+bordro yok/forskuddsskatt, gerçek araç yığını (Stripe henüz canlı değil,
+QuickBooks/HubSpot yok — varsayma, sor), satış defteri cihaz-yerel /#admin.
+Her iş akışının Beta Art'a göre yorumu özetlendi.
+
 ## 02.09.2026 — Sosyal medya kanalları: strateji + ilk gerçek içerik partisi
 
 Kullanıcı "BETA ART SOSIAL MEDIA KANALLARI GELISTIR" dedi. AskUserQuestion'da
@@ -593,3 +762,199 @@ paket EUR fiyatlı olduğu için Vipps için ayrı, NOK fiyatlı ürünler
 gerekiyor. **"DNB" diye ayrı bir ödeme yöntemi yok** — DNB bir banka,
 Vipps'in kökeni; muhtemelen Vipps'in kendisi kastedildi. Detay ve
 kullanıcının atacağı adımlar: `docs/odeme-sistemi.md` §10.
+
+## 03.09.2026 (06:17 cron) — Günlük araştır-geliştir turu
+
+**Sağlık:** Canlı site (beta-art-privat-phi.vercel.app) bu cron turunda
+WebFetch ile doğrulanamadı — egress proxy vercel.app'i bu tetiklenmiş
+ortamda engelliyor (bilinen sınır, sitenin kendisi değil). Site ana
+oturumda 03.09 00:14'te Vercel API + ekran görüntüleriyle READY
+doğrulanmıştı; ayrı bir arıza belirtisi yok.
+
+**Araştırma — C2PA / Content Credentials benimsenmesi 2026 (kaynaklı,
+doğrulanmamış üçüncü-taraf iddiaları):** Donanım tarafında C2PA gerçek ama
+"benimsenme döngüsü" hâlâ çözülmüş değil: Leica M11-P (Ekim 2023) ilk
+tüketici gövdesiydi; 2026'da Nikon Z9/Z8, Sony Alpha akışları, Canon'un
+11.05.2026'da duyurduğu Authenticity Imaging System (haber odaları için
+yakalamadan yayına C2PA), telefon tarafında Samsung Galaxy S25 ve Google
+Pixel 10 imzalıyor. Ama Pixel/Leica dışındaki tüketici telefonları hâlâ
+natif imzalamıyor, yani kullanıcı üretimi içeriğin çoğu imzasız kalıyor
+(kaynaklar: softwareseni.com, c2paviewer.com, attesttrail.com,
+lumethic.com). **Beta Art için çıkarım:** sitenin C2PA dilini "kameranın
+desteklediği yerde" diye sınırlı tutması doğru kalıyor — çoğu gövde hâlâ
+imzalamadığı için C2PA'yı evrensel vaat gibi sunmak yanlış olurdu; mevcut
+kapsamlı ifade korunuyor. İleride Leica/Nikon gövdesi kullanılırsa
+C2PA'yı o plaka için somut kanıt olarak öne çıkarmak gerçek bir
+farklılaştırma olur (uydurma değil, donanım imzasına dayalı).
+
+**Geliştirme (küçük, güvenli — a11y):** `src/lib/langContext.tsx` —
+`<html lang>` yalnızca kullanıcı dili değiştirince güncelleniyordu; ilk
+yüklemede localStorage'dan gelen dil (ör. Norveççe) için `index.html`'in
+sabit `lang="en"`'i kalıyordu. Bir mount effect'i eklendi; artık `lang`
+her değişimde (ilk yükleme dahil) `document.documentElement.lang`'a
+yansıyor. Ekran okuyucular doğru dili duyurur, çok dilli SEO doğru dil
+sinyali alır. `setLang` içindeki artık gereksiz satır temizlendi.
+Doğrulama: apps/beta-art-archive `npm run build` temiz. Canlıya alma bir
+sonraki ana oturum turunda yapılacak (bu cron turunda Vercel MCP yok).
+
+**Kullanıcı adımları (açık, üsteleme yok):** 4 yasal metin, Stripe ödeme
+yöntemi (Vipps/Klarna/DNB kararı komisyon-ve-mva.md'de), beta-art.com
+alan adı, 3 orijinal foto, IG/LinkedIn hesapları — hepsi hâlâ kullanıcıda.
+
+## 03.09.2026 (akşam turu) — Sağlık + C2PA sertifika-yönetişimi araştırması
+
+**Sağlık:** `https://beta-art-privat-phi.vercel.app` bu cron turundan
+doğrulanamadı — ortamın egress proxy'si adresi engelledi (`EGRESS_BLOCKED`,
+beta-art.com'la aynı sınır). Bu bir **doğrulama sınırı**, "site çöktü"
+kanıtı değil; canlı durum ancak Vercel MCP'li ana oturum turunda teyit
+edilir. Kullanıcıya yanlış "site kapalı" uyarısı verilmedi.
+
+**Araştırma (yeni açı — bugünkü ilk turdaki C2PA kaydını tekrar etmez):**
+2026'da C2PA sertifika **yönetişimi** öne çıktı. Canon'un 11.05.2026
+Authenticity Imaging System'i sertifikaları **üretici tarafından merkezî**
+verip yönetiyor ve güvenilir zaman damgası ekliyor — yani provenance zinciri
+giderek donanım üreticisinin işlettiği bir hizmete bağlanıyor. Aynı yıl
+Nikon Z6 III'ün imzalama açığı yüzünden **tüm C2PA sertifikaları iptal
+edildi** ve hizmet erken 2026 itibarıyla geri gelmedi. OpenAI+Google ise
+C2PA'yı SynthID ile "çift katman" olarak birleştiriyor (kaynaklar:
+[c2paviewer.com — Canon AIS](https://c2paviewer.com/articles/canon-authenticity-imaging-system),
+[eyesift.com — C2PA 2026](https://www.eyesift.com/faq/c2pa-content-credentials-2026-cryptographic-provenance-adoption/),
+[c2paviewer.com — OpenAI/Google](https://c2paviewer.com/articles/openai-google-c2pa-synthid-2026)).
+**Beta Art için çıkarım:** Z6 III'ün toptan sertifika iptali, tek bir
+imzalama zincirine bel bağlamanın kırılganlığını kanıtlıyor. Beta Art'ın
+**üç yöntemli** doğrulaması (RAW arşivi → yakalama kaydı+C2PA → fotoğrafçı
+imzalı lisans) bu yüzden doğru kalıyor: C2PA katmanı iptal edilse bile RAW
+arşivi ve imzalı lisans bağımsız kanıt olarak durur. Bu, siteye yeni bir
+iddia eklemeyi gerektirmiyor — mevcut "redundant doğrulama" konumunu
+donanım dünyasındaki gerçek bir olayla destekliyor.
+
+**Geliştirme (bu tur):** Kod değişikliği yapılmadı. Küçük a11y adayı
+denetlendi — üç `<img>` (Home/PlateDetail/ForYou) zaten `alt={plate.title}`
+taşıyor; grep'in yakaladığı "alt'sız img" çok-satırlı etiket kaynaklı bir
+false positive'di. langContext `<html lang>` a11y düzeltmesi bu sabahki
+turda zaten yapılmıştı. Çalışan kodu/verbatim beta-art.com metnini gereksiz
+ellememek için zorlama değişiklik yapılmadı (cerrahi değişiklik ilkesi).
+
+**Kullanıcı adımları (açık, üsteleme yok):** 4 yasal metin, Stripe ödeme
+yöntemi, beta-art.com alan adı, 3 orijinal foto, IG/LinkedIn — hepsi hâlâ
+kullanıcıda. Ayrıca: v1.0.0 tag'i (ortam etiket push'ını engelledi, elle
+basılacak) ve `beta-art/` (WEB-2026-003) fiziksel taşıma onayı bekliyor.
+
+## 04.09.2026 (sabah turu) — Sağlık + rakip analizi (Stocksy / AI-free pazar yeri)
+
+**Sağlık:** Canlı site (`beta-art-privat-phi.vercel.app`) bu cron turundan yine
+`EGRESS_BLOCKED` — bu oturumda tekrar tekrar doğrulanan ortam sınırı, outage
+değil. Canlı teyit Vercel MCP'li ana turda yapılır; kullanıcıya yanlış "kapalı"
+uyarısı verilmedi.
+
+**Araştırma (yeni açı — rakip/pazar; önceki iki tur C2PA'ydı):** Beta Art'ın
+en yakın konum akranı **Stocksy United** incelendi. Stocksy AI üretimi içeriği
+**kabul etmiyor** (yalnız insan yapımı), el ile seçilmiş küresel sanatçı
+topluluğuyla çalışan bir **platform kooperatifi** (sanatçı-sahipli, Victoria/BC)
+ve sektör ortalamasının üstünde telif payı veriyor; lisanslama standart +
+genişletilmiş (kaynaklar:
+[Stocksy AI SSS](https://support.stocksy.com/hc/en-us/articles/8631710866708-Can-I-upload-AI-generated-content-to-Stocksy),
+[Stocksy United — Wikipedia](https://en.wikipedia.org/wiki/Stocksy_United)).
+**Beta Art için çıkarım:** "AI-free + insan sanatçı + adil pay" ekseninde
+Stocksy zaten güçlü; Beta Art'ın burada tek başına "AI yok" demesi
+farklılaştırma değil — pazar bunu Stocksy'de zaten buluyor. Beta Art'ın gerçek
+ayrımı **plaka-başı köken doğrulaması** (RAW arşivi + capture kaydı/C2PA +
+fotoğrafçı imzalı lisans): Stocksy içeriği küratörlüyor ama her görsel için
+bağımsız doğrulanabilir bir köken sertifikası **yayınlamıyor**. Yani mevcut
+komisyon belgesindeki Stocksy kıyası (%50/%75 vs Beta Art %70) doğru kalıyor,
+ama pazarlama mesajının merkezi "AI yok" değil "**kanıtlanabilir köken**"
+olmalı — bu, sitedeki mevcut 3-yöntem doğrulama vurgusuyla zaten örtüşüyor,
+yeni iddia gerektirmiyor. `komisyon-ve-mva.md`'deki Stocksy kıyası kaynağıyla
+teyit edildi; değişiklik gerekmiyor.
+
+**Geliştirme (bu tur):** Kod değişikliği yapılmadı — dünkü turda a11y/img
+denetimi temizdi, zorlama değişiklik cerrahi-değişiklik ilkesine aykırı olur.
+Bu tur belge (araştırma günlüğü) teslimi.
+
+**Kullanıcı adımları (açık, üsteleme yok):** 4 yasal metin, Stripe ödeme
+yöntemi, beta-art.com alan adı, 3 orijinal foto, IG/LinkedIn; ayrıca v1.0.0
+tag (ortam etiket push'ını engelledi, elle basılacak) ve `beta-art/`
+(WEB-2026-003) fiziksel taşıma onayı — hepsi hâlâ kullanıcıda.
+
+## 05.09.2026 (sabah turu) — Sağlık + düzenleyici rüzgâr (EU AI Act md. 50)
+
+**Sağlık:** Canlı site (`beta-art-privat-phi.vercel.app`) bu cron turundan yine
+`EGRESS_BLOCKED` — bu oturumda tekrar tekrar doğrulanan konteyner egress sınırı,
+outage değil. Canlı teyit Vercel MCP'li ana turda yapılır; kullanıcıya yanlış
+"kapalı" uyarısı verilmedi.
+
+**Araştırma (yeni açı — düzenleyici; önceki turlar C2PA + Stocksy'ydi):**
+AB Yapay Zekâ Yasası'nın (EU AI Act) **50. madde şeffaflık yükümlülükleri
+2 Ağustos 2026'da yürürlüğe girdi** (doğrulandı — birden çok bağımsız hukuk
+kaynağı ve AB Komisyonu tutarlı). Sentetik ses/görsel/video/metin üreten yapay
+zekâ sistemleri çıktıyı hem **makine-okunur biçimde işaretlemek** hem de
+**yapay zekâ üretimi olarak saptanabilir kılmak** zorunda; ihlalde ceza
+15 milyon € veya dünya cirosunun %3'üne kadar. Piyasada 2 Ağustos 2026 öncesi
+bulunan sistemlere makine-okunur işaretleme için 2 Aralık 2026'ya kadar süre
+tanındı (AI Omnibus, Mayıs 2026); 2 Ağustos öncesi üretilmiş içerik geriye
+dönük etiketlenmiyor. Kaynaklar:
+[Sidley — 2 Ağustos 2026 uyum](https://datamatters.sidley.com/2026/06/24/eu-ai-act-transparency-obligations-preparing-for-compliance-by-2-august-2026/),
+[Article 50 metni](https://artificialintelligenceact.eu/article/50/),
+[AB Komisyonu — şeffaflık kılavuzu](https://digital-strategy.ec.europa.eu/en/policies/guidelines-ai-transparency-obligations).
+**Beta Art için çıkarım:** Bu düzenleme, AI üretimi içeriği *zorunlu olarak
+etiketli/saptanabilir* hâle getirerek "doğrulanmış insan fotoğrafçılığı"
+konumlanmasının pazar değerini artıran bir arka plan. 04.09 turunun çıkarımıyla
+birleşince yön netleşiyor: Beta Art'ın mesajı "AI yok" (Stocksy bunu zaten
+karşılıyor) değil, **kanıtlanabilir köken** olmalı — ve C2PA'nın makine-okunur
+işaretlemesi md. 50(2) ile teknik olarak örtüşüyor, yani Beta Art'ın 3-yöntem
+doğrulama vurgusu düzenleyici çerçeveyle aynı dili konuşuyor. **Bu bir pazar/
+bağlam bulgusudur; Beta Art'ın kendi md. 50 uyumu hakkında bir iddia DEĞİLDİR**
+(site AI içerik üretmiyor, arşivliyor — yükümlülük üreticiye ait). Site
+metnine bu turda hiçbir doğrulanmamış "uyumlu/sertifikalı" ibaresi eklenmedi.
+
+**Geliştirme (bu tur):** Kod değişikliği yapılmadı. Güvenli küçük adaylar
+(JSON-LD, temel SEO meta, footer yasal-bağlantı düzeltmesi) kullanıcının açık
+onayına sunulmuş durumda — onaysız başlamak "cerrahi değişiklik/önce sadelik"
+ilkesine ve bekleyen karara aykırı olur. Bu tur belge (araştırma günlüğü)
+teslimi; siteyi etkilemiyor, dağıtım gereksiz.
+
+**Kullanıcı adımları (açık, üsteleme yok):** 4 yasal metin, Stripe ödeme
+yöntemi, beta-art.com alan adı, 3 orijinal foto, IG/LinkedIn; ayrıca v1.0.0
+tag (ortam etiket push'ını engelledi, elle basılacak) ve `beta-art/`
+(WEB-2026-003) fiziksel taşıma onayı — hepsi hâlâ kullanıcıda.
+
+## 06.09.2026 (sabah turu) — Sağlık + rakip politikası (Getty vs Adobe Stock / C2PA denetim altyapısı)
+
+**Sağlık:** Canlı site (`beta-art-privat-phi.vercel.app`) bu cron turundan yine
+`EGRESS_BLOCKED` — konteyner egress sınırı, outage değil (bu oturumda tekrar
+tekrar doğrulandı). Canlı teyit Vercel bağlayıcılı ana turda; kullanıcıya
+yanlış "kapalı" uyarısı verilmedi.
+
+**Araştırma (yeni açı — iki büyük stok evinin ayrışan AI politikası):**
+2026 itibarıyla **Getty Images / iStock birincil olarak AI ile üretilmiş
+içeriği kabul etmiyor** (yalnız geleneksel çekimde AI-destekli teknik
+iyileştirmeye — gürültü azaltma, çözünürlük artırma, rötuş — izin var); buna
+karşın **Adobe Stock gen-AI içeriği kabul ediyor ama zorunlu ifşa istiyor** ve
+gönderileri **C2PA imzaları, Content Credentials, IPTC ve XMP meta verisi için
+tarıyor** — ifşasız AI içerik hesap askısına yol açabiliyor. Kaynaklar:
+[Getty — Generative AI SSS](https://www.gettyimages.com/ai/generation/faqs),
+[Adobe Stock — gen-AI içerik yönergeleri](https://helpx.adobe.com/stock/contributor/submit-your-content/submit-generative-ai-content/generative-ai-content-guidelines.html),
+[Getty — ticari-güvenli gen-AI duyurusu](https://newsroom.gettyimages.com/en/getty-images/getty-images-launches-commercially-safe-generative-ai-offering).
+**Beta Art için çıkarım:** Pazar ayrışıyor — Getty/iStock (Stocksy gibi) AI'yı
+reddediyor, Adobe Stock kabul edip **C2PA/meta veriyi denetim altyapısı** olarak
+kullanıyor. Yani iki uçta da köken/provenans meta verisi ortak doğrulama
+zeminine dönüşüyor; C2PA "isteğe bağlı iyi fikir" değil, sektörün fiili denetim
+katmanı. Beta Art'ın plaka-başı köken doğrulaması bu zeminin bir adım
+yukarısında: Getty bir *politika* beyan ediyor ("AI kabul etmiyoruz"), Beta Art
+her görsel için *bağımsız doğrulanabilir* köken sertifikası yayınlıyor. 04.09
+(Stocksy) ve 05.09 (EU AI Act md.50) çıkarımlarıyla üçlü tablo netleşiyor:
+mesajın merkezi "AI yok" değil **kanıtlanabilir köken**, ve C2PA'yı vurgulamak
+sektörün gittiği yönle örtüşüyor. **Bu bir pazar/bağlam bulgusudur; Beta Art'ın
+Getty/Adobe ile ortaklığı veya bu platformlarda listelendiği iddiası DEĞİLDİR.**
+Siteye doğrulanmamış hiçbir "X platformunda" ibaresi eklenmedi.
+
+**Geliştirme (bu tur):** Kod değişikliği yapılmadı. Güvenli küçük adaylar
+(JSON-LD, temel SEO meta, footer yasal-bağlantı düzeltmesi) hâlâ kullanıcının
+açık onayında — onaysız başlamak "cerrahi değişiklik/önce sadelik" ilkesine ve
+bekleyen karara aykırı olur. Bu tur belge (araştırma günlüğü) teslimi; siteyi
+etkilemiyor, dağıtım gereksiz.
+
+**Kullanıcı adımları (açık, üsteleme yok):** 4 yasal metin, Stripe ödeme
+yöntemi, beta-art.com alan adı, 3 orijinal foto, IG/LinkedIn; ayrıca v1.0.0
+tag (ortam etiket push'ını engelledi, elle basılacak) ve `beta-art/`
+(WEB-2026-003) fiziksel taşıma onayı — hepsi hâlâ kullanıcıda.

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <!-- Beta Art SealMark — same geometry as src/components/SealMark.tsx.
+       Fixed dark stroke (no currentColor in a favicon context); crimson
+       centre dot is the brand constant. -->
+  <g stroke="#0F0F0F" stroke-width="4">
+    <circle cx="50" cy="50" r="46" />
+    <path d="M50 30 75.81 11.92M67.32 40 84.99 47.86M67.32 60 76.66 84.02M50 70 24.19 88.08M32.68 60 15.01 52.14M32.68 40 23.34 15.98" />
+  </g>
+  <circle cx="50" cy="50" r="7" fill="#8B1A1A" />
+</svg>

@@ -1,0 +1,19 @@
+{
+  "name": "small-business",
+  "version": "0.4.0",
+  "description": "Beta Art's own small-business workflows — cash, MVA and forskuddsskatt for a Norwegian enkeltpersonforetak, BAB pilot sales and contracts, BAC subscription clients, and BAP editions. Runs off accounting and bank exports, Stripe, and a pipeline file; drafts in Norwegian, Turkish or English by venture. You approve every step that touches money or a customer.",
+  "author": {
+    "name": "Anthropic"
+  },
+  "keywords": [
+    "smb",
+    "beta art",
+    "norway",
+    "enk",
+    "mva",
+    "finance",
+    "marketing",
+    "operations",
+    "small business"
+  ]
+}

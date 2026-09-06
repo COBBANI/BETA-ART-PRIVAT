@@ -12,6 +12,78 @@ Sitenin işi trafik toplamak değil, **brief formunu doldurtmaktır**.
 Hedef kitle: kendi içerik ekibi olmayan, düzenli yayın yapmak isteyen KOBİ ve
 SaaS şirketleri. İkincil kitle: stüdyoya katılmak isteyen yazarlar.
 
+**Bu depo yalnızca QBLOGG değil.** GitHub deposu `beta-art` — bu dosya
+öncelikli olarak QBLOGG'u belgeler çünkü aktif yayında olan site odur, ama
+ikinci bir markanın (**Naviar**) kimlik/marka çalışması da aynı ağaçta
+duruyor: `brand/naviar/` (üretim betiği + varlıklar), `docs/naviar/` (logo
+kararı, izin/temizlik yığını). Naviar'ın kendi sitesi ayrı depolardadır
+(`betulandersen-droid` hesabı altında, aşağıdaki Vercel notuna bakın) —
+burada yalnızca marka/kimlik tasarım çalışması yapılmış. Naviar için iş
+üstlenirken bu belgedeki QBLOGG kurallarını (i18n, görünürlük kapısı vb.)
+otomatik uygulanmış saymayın; ayrı sorun.
+
+**Dördüncü girişim: Beta Art (Archive + Business)** — bu depoda YOK, kod
+kaynağı/deposu hâlâ bilinmiyor, ama **kök alan adı canlı ve doğrulandı**:
+30.08.2026 akşamı kullanıcı `https://beta-art.com/`'un gerçek metnini
+birebir yapıştırdı (bu ortamdan `EGRESS_BLOCKED` yüzünden hâlâ doğrudan
+görülemiyor, yalnızca kullanıcının yapıştırdığı kadarı biliniyor). Öncesinde
+bilinen iki şey önizlemeydi, kök alan adı değildi:
+`beta-art-archive-five.vercel.app` (Archive'a odaklı erken sürüm) ve
+`beta-art-contact1-9jsgs8q95-andersenbetul-9635s-projects.vercel.app`
+(Archive + Business birlikte, daha yeni) — ikisi de kişisel Vercel
+hesabında (`andersenbetul-9635s-projects`). Tam kaynak/depo hâlâ bilinmiyor;
+detaylı katalog ve kaynak karşılaştırması `docs/proje-arsivi.md` (madde 14)
+ve `docs/beta-art/privat-icerik-analizi.md`'de.
+
+- **Archive (kök alan adında doğrulandı):** tek fotoğrafçılı (biyografi:
+  "84,000+ frames captured since 2012"), kanıt/köken temelli insan
+  fotoğrafçılığı arşivi. Kök sayfa seri/katman adı kullanmıyor — "Volume I"
+  başlığı altında düz kategori filtresi (All/Landscape/City/Portrait), 12
+  plaka: First Light, Into the Pines, Sea of Fog, Still Water, PALM, Blue
+  Hour Grid, Night Crossing, Golden Hour, Portrait in Amber, The Maker,
+  Slow Morning, Low Tide — yalnızca ikisi ("Portrait in Amber", "The
+  Maker") "Available", kalanı "Awaiting verified original". Doğrulama 3
+  yöntem (RAW arşivi → capture kaydı + C2PA → fotoğrafçı imzalı lisans).
+  Lisans katmanları: Personal (kr 190'dan, sabit), Commercial/Extended/
+  Custom & Exclusive — **sayı yok, "Price on request"** (önceki iki
+  önizlemedeki sabit rakamlardan farklı, kesinleşmiş görünüyor). Ayrıca
+  kök sayfada bir "Exhibitions & Events" bölümü var (3 sergi, ayrı bir
+  mülk değil) ve `/categories` altında 35 kategorilik bir dizin (5 bölüm:
+  Global, Norveç-özel, Norveç sektörleri, Editoryal, Özel/Yeni).
+  **Kök sayfanın nav/footer'ında Business'a hiç bağlantı yok** — Business
+  bölümü ayrı bir alan adında mı, hiç yayında değil mi, bilinmiyor. Yol
+  haritası (Beta Archive → Passport → Vault → Verify → Rights) önceki
+  önizlemelerden biliniyor, kök sayfada doğrulanmadı.
+- **Business:** Norveç'te tamamlanmış inşaat projeleri için kapanış sonrası
+  belge/kurtarılabilirlik hizmeti ("Dokumentasjon som overlever
+  prosjektet") — FDV/proje yönetiminin yerine değil yanına; soru "bir
+  sonraki sorumlu kişi doğru orijinali sonra bulabilir mi?" **Kök alan
+  adında henüz görülmedi**, yalnızca eski önizlemeden ve üst-belgelerden
+  biliniyor.
+- Ortak yöntem: Source → Context → Verify → Rights → Retrieve → Export.
+  Sitenin kendi diliyle: "No unsupported claim becomes a fact for
+  marketing" — bu depodaki "uydurma yasağı" ilkesiyle örtüşüyor, ayrı
+  ürün olsa da aynı disiplin.
+- Yasal sayfalar kök alan adında canlı: `/privacy`, `/cookie-settings`,
+  `/license-terms` (İngilizce) ve `/lisensbetingelser` (Norveççe — aynı
+  sayfa mı ayrı mı belirsiz), `/kontakt` (footer'da "Angrerett og
+  refusjon" etiketiyle — isim/URL uyuşmazlığı var, not edildi). E-posta
+  `hallo@beta-art.com` olarak sabit görünüyor.
+- `beta-privat/`teki BAB/BAC/BAP ile ilişkisi kullanıcı tarafından
+  **ayrı, dördüncü bir girişim** olarak doğrulandı (30.08.2026) — yani
+  beta-privat'ın kapsamına girmiyor, karıştırılmasın.
+
+**Üçüncü girişim: Beta Art Privat** (`beta-privat/`, 30.08.2026'da açıldı).
+QBLOGG ve Naviar'ın aksine bu bir web sitesi değil — Beta Art'ın kendi iç
+işletim katmanı: nakit/MVA/forskuddsskatt (Norveç enkeltpersonforetak),
+BAB/BAC/BAP girişimlerinin satış/sözleşme/abonelik işleri. Şu an yalnızca
+iskelet + kapsam belgesi var (`beta-privat/README.md`); gerçek otomasyon
+kullanıcıdan somut girdiler (banka/muhasebe dışa aktarım formatı, BAB/BAC/BAP
+açılımları, Stripe erişimi) gelmeden kurulmuyor — para ve vergiye dokunan bir
+sistemde tahminle ilerlemek "uydurma yasağı" ilkesini ihlal eder. Ham
+banka/muhasebe verisi, API anahtarı, vergi kimlik numarası bu klasöre asla
+commit edilmez (`.gitignore`'da işaretli).
+
 ## Teknik yapı
 
 Saf HTML + CSS + JavaScript. **Derleme adımı, çatı (framework) ve bağımlılık yok** —
@@ -227,6 +299,45 @@ Bu ilkeler işe yarıyorsa: diff'lerde gereksiz değişiklik azalır, fazla
 karmaşıklıktan doğan yeniden yazımlar azalır ve açıklayıcı sorular hatadan sonra
 değil önce gelir.
 
+## Beceri gözlemi
+
+Araç kullanıp çıktı üretilen her göreve başlamadan önce `task-observer` becerisi
+çağrılır. Bu, beceri iyileştirme fırsatlarının oturum boyunca yakalanmasını
+sağlar. Bir beceri yüklenirken `skill-observations/log.md`'de o beceriye
+etiketli açık (OPEN) gözlem var mı diye bakılır; varsa beceri dosyası henüz
+güncellenmemiş olsa bile o gözlemin içgörüsü mevcut işe uygulanır — kalıcı
+entegrasyon haftalık incelemede olur.
+
+## small-business eklentisi — Beta Art bağlamı
+
+`small-business` eklentisinin (knowledge-work-plugins) herhangi bir becerisi
+(`small-business:friday-brief`, `plan-payroll`, `close-month`, `tax-prep`,
+`invoice-chase`, `cash-flow-snapshot`, `run-campaign` vb.) bu depoda
+çalıştırıldığında, ÖNCE `docs/beta-art/sirket-profili.md` okunur ve şirket
+bağlamı olarak alınır — eklentinin genel küçük-işletme varsayımlarını (ABD
+odaklı, MVA'lı, QuickBooks/HubSpot bağlı) ezer. Kritik: Beta Art
+enkeltpersonforetak, **MVA kayıtlı değil** (MVA hesaplama; ciro 50.000 kr
+eşiğini izle), bordro yok → forskuddsskatt, para birimi NOK, Stripe henüz
+canlı değil, QuickBooks/HubSpot bağlı değil (varsayma, sor). Profildeki
+`[DOLDURULACAK]` alanlar birer açık iştir; değeri uydurma, kullanıcıdan iste.
+Not: bu eklenti QBLOGG değil Beta Art işidir.
+
+## Kullanıcıya hitap (02.09.2026 talimatı)
+
+Kullanıcının adı **Betul**. Her yanıta "Betul" ile başla (kullanıcı açık
+talebi, 02.09.2026). Bu, oturumlar arası kalıcı bir tercihtir.
+
+## Beta Art sitesi — her değişiklikte dağıt + göster (02.09.2026 talimatı)
+
+Beta Art sitesinde (`apps/beta-art-archive`) kod/içerik değiştiren her iş
+bittiğinde, kullanıcı istemese bile: (1) değişiklikleri Vercel'e dağıt
+(standart tek dosyalık `vercel.json` tarifi; proje `beta-art-privat`, takım
+`team_xNtowH7U0jXQrI53DFJFzH2o`), READY doğrula; (2) sitenin güncel halini
+göster — `run-beta-art-archive` sürücüsüyle ekran görüntüsü alıp
+`SendUserFile` ile Betul'e ilet. "Her seferinde yap" (Betul, 02.09.2026).
+Yalnızca belge/skill değişen, siteyi etkilemeyen commit'lerde dağıtım
+gereksiz — o zaman sadece belirt.
+
 ## Kullanıcıya iş devrederken
 
 Kullanıcının kendi yapması gereken bir adım varsa (izin verme, DNS, panel ayarı,
@@ -253,18 +364,42 @@ açık talebi.
   `main` kullanıcının açık izniyle QBLOGG sitesine çevrildi: `-s ours
   --allow-unrelated-histories` merge'ü ile eski saat uygulamasının geçmişi
   korunarak ağaç QBLOGG yapıldı. Geliştirme dalı `claude/qblogg-web-sayfasi-upcarm`.
-- **Site Vercel'de yayında (22.08.2026).** Proje `qblogg`, takım "BET - ART"
-  (`team_xNtowH7U0jXQrI53DFJFzH2o`), üretim adresi qblogg.vercel.app (23.08 gecesi proje panelde silinmişti; aynı adla yeniden kuruldu — proje id değişti, eski qblogg-flame/qblogg-bet-art adresleri geçersiz).
-  Kurulum tek dosyalık: dağıtıma yalnızca `vercel.json` gönderilir (depodaki
-  dosyanın kendisi — tek kaynak); `buildCommand` public depoyu (`main`)
-  klonlayıp 6 sayfa + `404.html` + `sitemap.xml` + `robots.txt` + `assets/`i
-  `dist/`e kopyalar. Yani **siteyi güncellemek =
-  main'e push + aynı dağıtımı yeniden tetiklemek.** Vercel'in GitHub
-  entegrasyonu `andersenbetul-alt` hesabına yetkili değil (`repo_no_access`,
-  entegrasyon `betulandersen-droid`a bağlı); kullanıcı yetkiyi verirse
-  `create_git_project` ile push başına otomatik dağıtıma geçilebilir.
+- **Site Vercel'de yayında (22.08.2026; konum bilgisi 26.08.2026'da
+  düzeltilmişti, 30.08.2026 akşamı tekrar değişti — bkz. aşağı).** Proje
+  `qblogg` (`prj_hJ6RIlkwFzvMkWV9fOcmxic9VJSX`). Kurulum tek dosyalık:
+  dağıtıma yalnızca `vercel.json` gönderilir (depodaki dosyanın kendisi —
+  tek kaynak); `buildCommand` public depoyu (`main`) `--depth 1` sığ
+  klonla çekip 8 sayfa + `404.html` + `sitemap.xml` + `robots.txt` +
+  `assets/`i `dist/`e kopyalar (`npm install`/çatı yok — build ~2 saniye,
+  30.08'de `get_deployment_build_logs` ile ölçüldü). Yani **siteyi
+  güncellemek = main'e push + aynı dağıtımı yeniden tetiklemek.**
   qblogg.com alan adının bağlanması kullanıcı tarafında (Vercel panel +
-  GoDaddy DNS; ad sunucuları taşınmaz, e-posta MX kayıtları GoDaddy'de kalmalı).
+  GoDaddy DNS; ad sunucuları taşınmaz, e-posta MX kayıtları GoDaddy'de
+  kalmalı).
+- **30.08.2026 akşamı yeniden ölçüldü — konum tekrar değişti:** `qblogg`
+  artık **"BET - ART" takımında** (`team_xNtowH7U0jXQrI53DFJFzH2o`,
+  `list_projects` ile doğrulandı), üretim alan adı **`qblogg-smoky.vercel.app`**
+  (`get_project`/`get_deployment`'ın `domains`/`alias` alanından — önceki
+  kayıttaki `qblogg.vercel.app` şu an projeye atanmış değil). Proje
+  kaydının `createdAt` zaman damgası 30.08'e çok yakın — muhtemelen bu
+  aralıkta yeniden oluşturulmuş/taşınmış, ama bu bir yorum, doğrulanmadı.
+  **26.08'deki "kişisel hesapta, BET-ART'ta değil" kaydı o günkü ölçüme
+  göre doğruydu; bugünkü ölçüm farklı sonuç veriyor — iki ölçüm de
+  API'den, ikisi de gerçek zamanında doğruydu, konum zamanla değişmiş
+  görünüyor.** Vercel'in GitHub entegrasyonu proje kaydında
+  `betulandersen-droid/eve-slack-agent`'a bağlı görünüyor (`list_projects`
+  → `link` alanı) — bu **muhtemelen eski/kalıntı bir bağlantı**, gerçek
+  içerik hep yukarıdaki `buildCommand`'ın açık klonundan geliyor, bu link
+  alanı hiç kullanılmıyor.
+- **"BET - ART" takımı** (`team_xNtowH7U0jXQrI53DFJFzH2o`) 30.08 itibarıyla
+  `qblogg`, `hxi-music`, `naviar-care-1`, `naviar-consult` projelerini
+  barındırıyor. Üçü (`hxi-music`/`naviar-care-1`/`naviar-consult`)
+  `betulandersen-droid` GitHub hesabındaki depolara bağlı (bu depoya
+  değil) — `qblogg` de aynı (kalıntı) bağlantıyı taşıyor ama gerçek
+  kaynağı bu depo. Yani aynı kullanıcının birden çok girişimi aynı Vercel
+  hesabı/takımı ve aynı Claude Code oturum ortamı üzerinden yönetiliyor,
+  ama her girişimin kendi deposu ve dağıtımı var — "hepsi aynı depoda"
+  değil, "araçlar ve hesap paylaşılıyor" doğru çerçeve.
 - Haftalık SEO/AI görünürlük izlemesi kurulu: pazartesi 07:00 (Norveç saati).
 - FAQPage şeması duruyor ama Google 7 Mayıs 2026'da FAQ zengin sonuçlarını kaldırdı.
   Yapay zekâ aramaları için tutuluyor; zengin sonuç beklemeyin.
