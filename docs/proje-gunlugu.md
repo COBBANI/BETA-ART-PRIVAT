@@ -917,3 +917,44 @@ teslimi; siteyi etkilemiyor, dağıtım gereksiz.
 yöntemi, beta-art.com alan adı, 3 orijinal foto, IG/LinkedIn; ayrıca v1.0.0
 tag (ortam etiket push'ını engelledi, elle basılacak) ve `beta-art/`
 (WEB-2026-003) fiziksel taşıma onayı — hepsi hâlâ kullanıcıda.
+
+## 06.09.2026 (sabah turu) — Sağlık + rakip politikası (Getty vs Adobe Stock / C2PA denetim altyapısı)
+
+**Sağlık:** Canlı site (`beta-art-privat-phi.vercel.app`) bu cron turundan yine
+`EGRESS_BLOCKED` — konteyner egress sınırı, outage değil (bu oturumda tekrar
+tekrar doğrulandı). Canlı teyit Vercel bağlayıcılı ana turda; kullanıcıya
+yanlış "kapalı" uyarısı verilmedi.
+
+**Araştırma (yeni açı — iki büyük stok evinin ayrışan AI politikası):**
+2026 itibarıyla **Getty Images / iStock birincil olarak AI ile üretilmiş
+içeriği kabul etmiyor** (yalnız geleneksel çekimde AI-destekli teknik
+iyileştirmeye — gürültü azaltma, çözünürlük artırma, rötuş — izin var); buna
+karşın **Adobe Stock gen-AI içeriği kabul ediyor ama zorunlu ifşa istiyor** ve
+gönderileri **C2PA imzaları, Content Credentials, IPTC ve XMP meta verisi için
+tarıyor** — ifşasız AI içerik hesap askısına yol açabiliyor. Kaynaklar:
+[Getty — Generative AI SSS](https://www.gettyimages.com/ai/generation/faqs),
+[Adobe Stock — gen-AI içerik yönergeleri](https://helpx.adobe.com/stock/contributor/submit-your-content/submit-generative-ai-content/generative-ai-content-guidelines.html),
+[Getty — ticari-güvenli gen-AI duyurusu](https://newsroom.gettyimages.com/en/getty-images/getty-images-launches-commercially-safe-generative-ai-offering).
+**Beta Art için çıkarım:** Pazar ayrışıyor — Getty/iStock (Stocksy gibi) AI'yı
+reddediyor, Adobe Stock kabul edip **C2PA/meta veriyi denetim altyapısı** olarak
+kullanıyor. Yani iki uçta da köken/provenans meta verisi ortak doğrulama
+zeminine dönüşüyor; C2PA "isteğe bağlı iyi fikir" değil, sektörün fiili denetim
+katmanı. Beta Art'ın plaka-başı köken doğrulaması bu zeminin bir adım
+yukarısında: Getty bir *politika* beyan ediyor ("AI kabul etmiyoruz"), Beta Art
+her görsel için *bağımsız doğrulanabilir* köken sertifikası yayınlıyor. 04.09
+(Stocksy) ve 05.09 (EU AI Act md.50) çıkarımlarıyla üçlü tablo netleşiyor:
+mesajın merkezi "AI yok" değil **kanıtlanabilir köken**, ve C2PA'yı vurgulamak
+sektörün gittiği yönle örtüşüyor. **Bu bir pazar/bağlam bulgusudur; Beta Art'ın
+Getty/Adobe ile ortaklığı veya bu platformlarda listelendiği iddiası DEĞİLDİR.**
+Siteye doğrulanmamış hiçbir "X platformunda" ibaresi eklenmedi.
+
+**Geliştirme (bu tur):** Kod değişikliği yapılmadı. Güvenli küçük adaylar
+(JSON-LD, temel SEO meta, footer yasal-bağlantı düzeltmesi) hâlâ kullanıcının
+açık onayında — onaysız başlamak "cerrahi değişiklik/önce sadelik" ilkesine ve
+bekleyen karara aykırı olur. Bu tur belge (araştırma günlüğü) teslimi; siteyi
+etkilemiyor, dağıtım gereksiz.
+
+**Kullanıcı adımları (açık, üsteleme yok):** 4 yasal metin, Stripe ödeme
+yöntemi, beta-art.com alan adı, 3 orijinal foto, IG/LinkedIn; ayrıca v1.0.0
+tag (ortam etiket push'ını engelledi, elle basılacak) ve `beta-art/`
+(WEB-2026-003) fiziksel taşıma onayı — hepsi hâlâ kullanıcıda.
