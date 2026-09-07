@@ -18,7 +18,7 @@ export function validateInventory(data) {
     !data.canonicalWorkspace?.slug
   )
     throw new Error("Invalid inventory or missing target workspace");
-  const ids = new Set();
+  const ids = new Set(), references = new Set();
   for (const project of data.projects) {
     if (
       !project ||
@@ -39,9 +39,20 @@ export function validateInventory(data) {
       "domain",
       "notes",
       "rootDirectory",
+      "projectNumber",
+      "archiveName",
+      "archiveReference",
+      "previousName",
     ])
       if (project[key] != null && typeof project[key] !== "string")
         throw new Error(`Invalid ${key}`);
+    if (project.projectNumber != null && !/^P-\d{3}$/.test(project.projectNumber))
+      throw new Error("Invalid canonical project number");
+    if (project.archiveReference != null) {
+      if (!project.archiveReference.trim() || references.has(project.archiveReference))
+        throw new Error("Missing or duplicate archive reference");
+      references.add(project.archiveReference);
+    }
   }
   return data;
 }
@@ -86,9 +97,8 @@ export function filterProjects(
     (p) =>
       terms.every((t) =>
         normalize(
-          [p.archiveId, p.name, p.repository, p.domain, p.vercelProject].join(
-            " ",
-          ),
+          [p.archiveId, p.projectNumber, p.archiveReference, p.archiveName,
+            p.name, p.previousName, p.repository, p.domain, p.vercelProject].join(" "),
         ).includes(t),
       ) &&
       (kind === "all" || recordKind(p, data.canonicalWorkspace) === kind) &&
@@ -107,8 +117,12 @@ function csvCell(value) {
 }
 export function exportCsv(projects, workspace) {
   const fields = [
+    "archiveReference",
+    "projectNumber",
     "archiveId",
+    "archiveName",
     "name",
+    "previousName",
     "vercelProject",
     "repository",
     "rootDirectory",
@@ -116,8 +130,12 @@ export function exportCsv(projects, workspace) {
   ];
   const rows = [
     [
-      "Arşiv numarası",
+      "Arşiv referansı",
+      "Ana proje numarası",
+      "Master kayıt kodu",
+      "Güncel arşiv adı",
       "Proje",
+      "Önceki ad",
       "Vercel adı (kayıt)",
       "Kaynak deposu",
       "Kök dizin (kayıt)",

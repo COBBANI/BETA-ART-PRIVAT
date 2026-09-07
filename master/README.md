@@ -5,6 +5,25 @@ inventory is incomplete: historical project names are not verified Vercel mappin
 This static dashboard shows recorded evidence; it does not connect to the Vercel
 API or transfer a project when opened.
 
+## Archive names and numbers
+
+The original `archiveId` remains the stable Master record code. `archiveReference`
+connects that record to the private archive directory. `projectNumber` records a
+confirmed relationship to a canonical project family; it does not identify a
+Vercel application. Names and earlier labels remain searchable and appear in exports.
+
+| Master code | Canonical project | Family |
+| --- | --- | --- |
+| `WEB-001` | `P-013` | QBLOGG |
+| `NAV-001` | `P-011` | NAVIAR Care |
+| `NAV-002` | `P-010` | NAVIAR Consult |
+
+Other mappings remain null until their source identities are verified. In
+particular, the BETA ART group and HXI Music record must not be assigned to a
+particular BETA ART or HXI application based on similar names. The complete private
+directory is maintained separately; this public JSON contains only the existing
+eight Master records and no private source inventory.
+
 ## Local checks
 
 Requires Node.js 24; no package install or API credentials are needed.
@@ -24,8 +43,9 @@ Source files, tests and unrelated repository products are excluded.
 
 | Setting               | Intended value                      |
 | --------------------- | ----------------------------------- |
-| Team                  | VERSEL TEAM / `bet-art`             |
-| Team ID               | `team_xNtowH7U0jXQrI53DFJFzH2o`     |
+| Requested scope       | `beta-art-master` (access unresolved) |
+| Currently visible team | VERSEL TEAM / `bet-art`             |
+| Visible team ID        | `team_xNtowH7U0jXQrI53DFJFzH2o`     |
 | Proposed project name | `beta-art-master`                   |
 | Git repository        | `andersenbetul-alt/BETA-ART-PRIVAT` |
 | Root Directory        | `master`                            |
@@ -34,6 +54,11 @@ Source files, tests and unrelated repository products are excluded.
 | Build Command         | `node build.mjs`                    |
 | Output Directory      | `dist`                              |
 | Install Command       | Empty override; no dependencies     |
+
+The latest requested dashboard URL is `https://vercel.com/beta-art-master`.
+Project access in that scope returns 403, while the proposed project name returns
+404 in the visible `bet-art` team. The CLI is logged out. These are separate
+observations; the visible team is not assumed to own the requested scope.
 
 The project name is proposed, not a confirmed Vercel project ID. Root Directory is
 a Vercel project setting, not a `vercel.json` property. Do not use the repository

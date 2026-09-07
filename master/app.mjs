@@ -38,14 +38,20 @@ function detailRow(label, value) {
   byId("detail-fields").append(node("dt", label), dd);
 }
 function showDetails(p) {
-  byId("detail-id").textContent = p.archiveId;
+  byId("detail-id").textContent = p.projectNumber || p.archiveId;
   byId("detail-title").textContent = p.name;
   byId("detail-fields").replaceChildren();
+  detailRow("Ana proje numarası", p.projectNumber || "Eşleştirme bekliyor");
+  detailRow("Master kayıt kodu", p.archiveId);
+  detailRow("Arşiv referansı", p.archiveReference);
+  detailRow("Güncel arşiv adı", p.archiveName);
+  detailRow("Önceki ad", p.previousName);
   detailRow("Durum", statusLabel(p, inventory.canonicalWorkspace));
   detailRow(
-    "Hedef takım",
+    "Bağlı hesapta görülen takım",
     `${inventory.canonicalWorkspace.name} / ${inventory.canonicalWorkspace.slug}`,
   );
+  detailRow("İstenen Vercel alanı", inventory.requestedVercelScope?.slug);
   detailRow("Vercel adı (kayıt)", p.vercelProject);
   detailRow("Vercel kimliği", p.verification?.projectId);
   const href = repositoryUrl(p.repository);
@@ -94,6 +100,7 @@ function render() {
     card.setAttribute("aria-labelledby", title.id);
     const meta = node("div", null, "meta");
     meta.append(
+      node("p", `Master kayıt kodu: ${p.archiveId}`),
       node("p", `Vercel kaydı: ${p.vercelProject || "Doğrulanmadı"}`),
       node(
         "p",
@@ -105,7 +112,7 @@ function render() {
     button.setAttribute("aria-label", `${p.name} ayrıntılarını aç`);
     button.addEventListener("click", () => showDetails(p));
     card.append(
-      node("span", p.archiveId, "id"),
+      node("span", p.projectNumber || p.archiveId, "id"),
       title,
       meta,
       node("span", statusLabel(p, inventory.canonicalWorkspace), "badge"),
@@ -173,13 +180,17 @@ async function load() {
     inventory = validateInventory(await response.json());
     const workspace = inventory.canonicalWorkspace;
     byId("workspace").textContent =
-      `Hedef: ${workspace.name} / ${workspace.slug} · Üretim dalı: ${inventory.policy?.productionBranch || "Doğrulanmadı"}`;
+      `İstenen Vercel alanı: ${inventory.requestedVercelScope?.slug || workspace.slug} · Üretim dalı: ${inventory.policy?.productionBranch || "Doğrulanmadı"}`;
     byId("inventory-state").textContent =
       inventory.sourceCollectionComplete === true
         ? "Kaynak toplama kaydı tamamlandı."
         : "Kaynak toplama ve aktarım devam ediyor.";
     byId("inventory-note").textContent =
-      `Hedef takımda son kontrolde görülen proje: ${workspace.currentlyVisibleProjectCount ?? "Bilinmiyor"}. Tarihsel adlar ve kaynak kayıtları, doğrulanmış Vercel yayınlarından ayrı tutulur.`;
+      `Bağlı hesap: ${workspace.name} / ${workspace.slug}; son kontrolde görülen proje: ${workspace.currentlyVisibleProjectCount ?? "Bilinmiyor"}. ` +
+      (inventory.requestedVercelScope?.access === "forbidden"
+        ? `${inventory.requestedVercelScope.slug} alanına erişim bekliyor (403). `
+        : "") +
+      "Arşiv numaraları güncellendi; Vercel proje eşleştirmesi ve yayın henüz doğrulanmadı.";
     const stats = [
       [inventory.projects.length, "Envanter kaydı"],
       [

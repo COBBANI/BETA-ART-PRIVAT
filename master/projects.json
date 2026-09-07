@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-07",
+  "generatedAt": "2026-09-07T14:58:08.252Z",
   "canonicalWorkspace": {
     "name": "VERSEL TEAM",
     "slug": "bet-art",
@@ -8,10 +8,11 @@
     "checkedAt": "2026-09-07T14:14:52.742442+00:00"
   },
   "policy": {
-    "workspace": "All production Vercel projects should live under VERSEL TEAM / bet-art after source collection and mapping are complete.",
+    "workspace": "Requested beta-art-master scope requires account access and verified team/project identity. The connected account currently exposes VERSEL TEAM / bet-art only.",
     "repository": "Keep products isolated as projects; use BETA-ART-PRIVAT as the central inventory/monorepo where appropriate.",
     "productionBranch": "main",
-    "deployment": "Git-connected automatic deployment to Vercel production after approved changes reach main."
+    "deployment": "Git-connected automatic deployment to Vercel production after approved changes reach main.",
+    "numbering": "Preserve Master archiveId codes and canonical P project-family numbers. Unresolved application mappings remain null; full private source inventories stay outside this public repository."
   },
   "projects": [
     {
@@ -22,17 +23,27 @@
       "rootDirectory": ".",
       "domain": "qblogg.com",
       "status": "historical-record-needs-scope-transfer-verification",
-      "notes": "Current Vercel connector cannot see this project in BET - ART; historical inventory records it in another/older scope."
+      "notes": "Ana sicilde P-013 QBLOGG ailesi. Kök kaynak depoda mevcut; Vercel proje kimliği ve kaynak kökü eşleştirmesi doğrulanmadı.",
+      "previousName": "QBLOGG",
+      "projectNumber": "P-013",
+      "archiveName": "P-013 — QBLOGG",
+      "archiveReference": "MASTER-WEB-001",
+      "numberingVerifiedAt": "2026-09-07T14:58:08.252Z"
     },
     {
       "archiveId": "BET-001",
-      "name": "Beta Art",
+      "name": "BETA ART — Web Proje Grubu",
       "vercelProject": "beta-art / beta-art-archive",
       "repository": "andersenbetul-alt/beta-art-archive",
       "rootDirectory": ".",
       "domain": "beta-art.com",
       "status": "separate-product-keep-isolated",
-      "notes": "Keep as its own product/project; centralize management, not runtime code."
+      "notes": "Bu kayıt birden fazla tarihsel BETA ART adını içerir. P-003–P-007 projeleriyle aynı uygulama olduğu varsayılmadı; Vercel kimlikleriyle ayrıştırılmalı.",
+      "previousName": "Beta Art",
+      "projectNumber": null,
+      "archiveName": "BET-001 — BETA ART — Web Proje Grubu",
+      "archiveReference": "MASTER-BET-001",
+      "numberingVerifiedAt": "2026-09-07T14:58:08.252Z"
     },
     {
       "archiveId": "NAV-001",
@@ -42,7 +53,12 @@
       "rootDirectory": "naviar",
       "domain": null,
       "status": "historical-record-external-github-scope",
-      "notes": "Repository is under another GitHub account in the historical inventory and requires account/scope access before transfer can be verified."
+      "notes": "Ana sicilde P-011 NAVIAR Care ailesi. Tarihsel Vercel varyantları ayrı kaynaklar olarak korunur. Kayıtlı GitHub deposu son kontrolde 404 döndürdü.",
+      "previousName": "NAVIAR Care",
+      "projectNumber": "P-011",
+      "archiveName": "P-011 — NAVIAR Care",
+      "archiveReference": "MASTER-NAV-001",
+      "numberingVerifiedAt": "2026-09-07T14:58:08.252Z"
     },
     {
       "archiveId": "NAV-002",
@@ -52,50 +68,84 @@
       "rootDirectory": null,
       "domain": "naviarconsult.com",
       "status": "historical-record-needs-relink",
-      "notes": "Historical records show a placeholder Eve repo association; reconnect to the real NAVIAR Consult source before production use."
+      "notes": "Ana sicilde P-010 NAVIAR Consult ailesi. Gerçek kaynak deposu ve Vercel proje kimliği bağlanmalı.",
+      "previousName": "NAVIAR Consult",
+      "projectNumber": "P-010",
+      "archiveName": "P-010 — NAVIAR Consult",
+      "archiveReference": "MASTER-NAV-002",
+      "numberingVerifiedAt": "2026-09-07T14:58:08.252Z"
     },
     {
       "archiveId": "HXI-001",
-      "name": "HXI Music",
+      "name": "HXI — Müzik Projesi",
       "vercelProject": "hxi-music",
       "repository": "andersenbetul-alt/HXI",
       "rootDirectory": ".",
       "domain": null,
       "status": "historical-vercel-record-current-github-repo-visible",
-      "notes": "GitHub repository is visible; Vercel project is not visible in the current BET - ART scope."
+      "notes": "GitHub deposu kayıtlı. P-001 ve P-002 HXI kayıtlarıyla uygulama kimliği eşleştirmesi henüz doğrulanmadı.",
+      "previousName": "HXI Music",
+      "projectNumber": null,
+      "archiveName": "HXI-001 — HXI — Müzik Projesi",
+      "archiveReference": "MASTER-HXI-001",
+      "numberingVerifiedAt": "2026-09-07T14:58:08.252Z"
     },
     {
       "archiveId": "NHP-001",
-      "name": "Nærhjelp Pilot V2",
+      "name": "Nærhjelp — Pilot V2",
       "vercelProject": "naerhjelp-pilot-v2",
       "repository": "unverified",
       "rootDirectory": null,
       "domain": null,
       "status": "historical-record-only",
-      "notes": "Seen in historical Vercel inventory; not visible through the currently connected Vercel scope."
+      "notes": "Tarihsel Nærhjelp Pilot V2 kaydı. Kaynak deposu, Vercel proje kimliği ve yayın doğrulanmadı.",
+      "previousName": "Nærhjelp Pilot V2",
+      "projectNumber": null,
+      "archiveName": "NHP-001 — Nærhjelp — Pilot V2",
+      "archiveReference": "MASTER-NHP-001",
+      "numberingVerifiedAt": "2026-09-07T14:58:08.252Z"
     },
     {
       "archiveId": "NPP-001",
-      "name": "NAVIAR PårørendePilot",
+      "name": "NAVIAR — PårørendePilot",
       "vercelProject": "naviar-paaroerende-pilot",
       "repository": "unverified",
       "rootDirectory": null,
       "domain": null,
       "status": "historical-record-only",
-      "notes": "Seen in historical Vercel inventory; not visible through the currently connected Vercel scope."
+      "notes": "Tarihsel NAVIAR PårørendePilot kaydı. Benzer adlı diğer sitelerle birleştirilmedi; kaynak kimliği doğrulanmalı.",
+      "previousName": "NAVIAR PårørendePilot",
+      "projectNumber": null,
+      "archiveName": "NPP-001 — NAVIAR — PårørendePilot",
+      "archiveReference": "MASTER-NPP-001",
+      "numberingVerifiedAt": "2026-09-07T14:58:08.252Z"
     },
     {
       "archiveId": "MASTER-001",
-      "name": "BETA ART Master Dashboard",
+      "name": "BETA ART Master — Proje Arşivi",
       "vercelProject": "beta-art-master",
       "repository": "andersenbetul-alt/BETA-ART-PRIVAT",
       "rootDirectory": "master",
       "domain": null,
       "status": "source-created-ready-to-link",
-      "notes": "Central project inventory/dashboard. Create/link this as a Vercel project under BET - ART with Root Directory = master."
+      "notes": "Bu panelin kaynak kökü master. İstenen beta-art-master Vercel kapsamı 403 döndürüyor; yayın adresi ve otomatik güncelleme doğrulanmadı.",
+      "previousName": "BETA ART Master Dashboard",
+      "projectNumber": null,
+      "archiveName": "MASTER-001 — BETA ART Master — Proje Arşivi",
+      "archiveReference": "MASTER-MASTER-001",
+      "numberingVerifiedAt": "2026-09-07T14:58:08.252Z"
     }
   ],
   "archiveRoot": "WEB-2026-000",
   "sourceCollectionComplete": false,
-  "deploymentVerificationComplete": false
+  "deploymentVerificationComplete": false,
+  "numberingUpdatedAt": "2026-09-07T14:58:08.252Z",
+  "requestedVercelScope": {
+    "slug": "beta-art-master",
+    "url": "https://vercel.com/beta-art-master",
+    "access": "forbidden",
+    "projectId": null,
+    "checkedAt": "2026-09-07T14:58:08.252Z",
+    "automaticUpdatesVerified": false
+  }
 }

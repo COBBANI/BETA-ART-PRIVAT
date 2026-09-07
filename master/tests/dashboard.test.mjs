@@ -97,6 +97,24 @@ test("CSV handles commas, quotes, newlines and spreadsheet formulas", () => {
   assert.ok(csv.includes('"a,""b""\nc"'));
 });
 
+test("canonical numbers and legacy names resolve to the same preserved records", () => {
+  for (const [number, id] of [["P-013", "WEB-001"], ["P-011", "NAV-001"], ["P-010", "NAV-002"]]) {
+    const match = filterProjects(data, { query: number });
+    assert.deepEqual(match.map((p) => p.archiveId), [id]);
+    assert.deepEqual(filterProjects(data, { query: id }), match);
+    assert.deepEqual(filterProjects(data, { query: `MASTER-${id}` }), match);
+    const csv = exportCsv(match, data.canonicalWorkspace);
+    assert.ok(csv.includes(`"${number}"`));
+    assert.ok(csv.includes(`"${id}"`));
+  }
+  assert.deepEqual(filterProjects(data, { query: "HXI Music" }).map((p) => p.archiveId), ["HXI-001"]);
+  for (const id of ["BET-001", "HXI-001", "NHP-001", "NPP-001", "MASTER-001"])
+    assert.equal(data.projects.find((p) => p.archiveId === id).projectNumber, null);
+  assert.equal(data.projects.length, 8);
+  assert.equal(data.deploymentVerificationComplete, false);
+  assert.equal(data.requestedVercelScope.access, "forbidden");
+});
+
 test("build is independent of cwd, excludes private inputs and removes stale output", async () => {
   const probe = new URL("private-build-probe.txt", root);
   try {
