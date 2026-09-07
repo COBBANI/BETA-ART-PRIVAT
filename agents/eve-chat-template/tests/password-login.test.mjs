@@ -69,7 +69,7 @@ after(() => {
 function request(password = "wrong", headers = {}) {
   return new Request("https://chat.example/api/password-auth/login", {
     method: "POST",
-    headers: { origin: "https://chat.example", host: "chat.example", "content-type": "application/json", ...headers },
+    headers: { origin: "https://chat.example", host: "chat.example", "content-type": "application/json", "x-vercel-forwarded-for": "192.0.2.10", ...headers },
     body: JSON.stringify({ password }),
   });
 }
@@ -110,10 +110,13 @@ test("concurrent attempts share a limit even when client IP headers change", asy
     assert.ok(Number(response.headers.get("retry-after")) <= 900);
     assert.equal(response.headers.get("cache-control"), "no-store");
   }
-  assert.equal(counts.size, 1);
+  assert.equal(counts.size, 2);
+  assert.equal([...counts].find(([key]) => key.startsWith("rate:password-login-project:"))[1], 10);
   const correctButBlocked = await POST(request(process.env.EVE_CHAT_PASSWORD));
   assert.equal(correctButBlocked.status, 429);
   assertNoSession(correctButBlocked);
+  const otherClient = await POST(request(process.env.EVE_CHAT_PASSWORD, { "x-vercel-forwarded-for": "198.51.100.20" }));
+  assert.equal(otherClient.status, 200);
 });
 
 test("store failure or an invalid counter cannot issue a session", async () => {
@@ -165,7 +168,48 @@ test("preview and production use separate project allowances", async () => {
   await POST(request());
   process.env.VERCEL_ENV = "preview";
   await POST(request());
-  assert.equal(counts.size, 2);
+  assert.equal(counts.size, 4);
+});
+
+test("distributed clients remain subject to a project ceiling", async () => {
+  for (let i = 0; i < 100; i++) {
+    assert.equal((await POST(request("wrong", { "x-vercel-forwarded-for": `192.0.2.${i}` }))).status, 401);
+  }
+  const response = await POST(request(process.env.EVE_CHAT_PASSWORD, { "x-vercel-forwarded-for": "198.51.100.1" }));
+  assert.equal(response.status, 429);
+  assertNoSession(response);
+});
+
+test("Vercel ingress identity is required and never replaced by arbitrary forwarding headers", async () => {
+  for (const address of ["", "not-an-ip", "192.0.2.1, 198.51.100.1", "fe80::1%eth0"]) {
+    const response = await POST(request(process.env.EVE_CHAT_PASSWORD, { "x-vercel-forwarded-for": address, "x-forwarded-for": "192.0.2.2" }));
+    assert.equal(response.status, 503);
+    assertNoSession(response);
+  }
+  assert.equal(counts.size, 0);
+});
+
+test("IPv6 rotations within one network share a private Redis key", async () => {
+  for (let i = 0; i < 10; i++) {
+    assert.equal((await POST(request("wrong", { "x-vercel-forwarded-for": `2001:db8:1234:5678::${i}` }))).status, 401);
+  }
+  assert.equal((await POST(request("wrong", { "x-vercel-forwarded-for": "2001:0db8:1234:5678:0:0:1:abcd" }))).status, 429);
+  assert.equal((await POST(request(process.env.EVE_CHAT_PASSWORD, { "x-vercel-forwarded-for": "2001:db8:1234:5679::1" }))).status, 200);
+  for (const key of counts.keys()) assert.doesNotMatch(key, /2001:|192\.0\.2\./);
+});
+
+test("IPv4-mapped IPv6 cannot create a second allowance", async () => {
+  for (let i = 0; i < 10; i++) await POST(request());
+  assert.equal((await POST(request("wrong", { "x-vercel-forwarded-for": "::ffff:192.0.2.10" }))).status, 429);
+});
+
+test("other production hosts keep a shared limit without trusting forwarded IPs", async () => {
+  delete process.env.VERCEL;
+  for (let i = 0; i < 10; i++) {
+    assert.equal((await POST(request("wrong", { "x-vercel-forwarded-for": `192.0.2.${i}` }))).status, 401);
+  }
+  assert.equal((await POST(request(process.env.EVE_CHAT_PASSWORD))).status, 429);
+  assert.equal(counts.size, 1);
 });
 
 test("only explicit local development can sign in without Redis", async () => {

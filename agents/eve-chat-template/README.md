@@ -130,7 +130,7 @@ pnpm dev
 - Password access with browser-backed chat history by default
 - Optional Better Auth sign-in with Vercel
 - Optional Neon-backed cross-device chat history
-- Upstash Redis login protection for hosted password mode and per-user limits in production mode
+- Upstash Redis login protection: 10 attempts per client network and a 100-attempt project ceiling on Vercel; per-user limits in production mode
 - Drizzle schema and migrations for production mode under `lib/db`
 - Saved eve session cursors and event snapshots in either storage mode
 - Sidebar history with delete and new-chat actions

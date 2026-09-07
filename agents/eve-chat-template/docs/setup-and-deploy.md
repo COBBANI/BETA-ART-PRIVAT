@@ -45,23 +45,39 @@ If the project has no Redis resource, connect an Upstash Redis database through
 its Storage/Marketplace settings. Keep the REST token in Vercel environment
 variables, not in source code or chat messages.
 
-Password sign-in allows **10 attempts per 15-minute fixed window**, shared by
-all clients of the project and environment. This includes successful and
-malformed attempts. An attacker who knows the public URL can temporarily consume
-the shared allowance; already-issued sessions continue to work. For independent
-users, use the production identity mode below. Preview and Production use
-separate buckets. On other hosts, use a separate Redis database per application.
+On Vercel, password sign-in allows **10 attempts per client network per
+15-minute fixed window**, followed by a **100-attempt project/environment
+ceiling**. Exhausted networks stop before consuming the project allowance again,
+so one IPv4 address or IPv6 /64 cannot lock out unrelated networks. The client
+key uses a password-keyed HMAC; raw IP addresses are not stored in Redis.
+Only Vercel's `x-vercel-forwarded-for` ingress header is trusted. Missing or
+invalid ingress identity fails closed. Client-supplied `x-forwarded-for` and
+`x-real-ip` headers cannot create a new allowance.
 
-The 11th attempt returns `429` with `Retry-After`. Missing Redis configuration,
+Successful and malformed requests count. People behind the same NAT or IPv6 /64
+share a client allowance; a distributed attack can still exhaust the global
+ceiling. Already-issued sessions remain usable while counters are exhausted.
+Use production identity mode for independent users. Preview and Production
+remain separate. On other hosts, forwarding headers are not trusted: the
+original shared 10-attempt limit remains, with a separate Redis store per app.
+
+Source: [Vercel request headers](https://vercel.com/docs/headers/request-headers#x-vercel-forwarded-for).
+
+The 11th client attempt (or 101st project attempt) returns `429` with `Retry-After`. Missing Redis configuration,
 unavailable Redis, or an invalid counter returns `503` without a session cookie;
 missing credentials also appear in setup status. The Redis increment and expiry
 run atomically. Requests have a three-second store timeout and are not retried.
 Explicit local `next dev` outside Vercel can run without Redis.
 
-Verify locally with `pnpm test`, `pnpm typecheck`, and `pnpm build`. The login
-suite uses a Redis test double; after deployment, verify real Redis counters and
-expiry, successful sign-in, the 11th-attempt `429`, and session cookies on a
-protected preview. Do not run the attempt test against a live operator's bucket.
+Verify with `pnpm test`, `pnpm typecheck`, and `pnpm build`. The unit login
+suite uses a Redis test double. With isolated Redis listening on localhost,
+run `pnpm test:redis`: this uses the real SDK and Lua across independent worker
+processes, checks actual expiry and expiry repair, and verifies timeout/no-retry
+behavior through a local REST bridge. It does not establish that the hosted
+Upstash account is configured correctly. CI runs these checks against this
+application, not a separate copy. After deployment, verify the protected preview,
+ingress headers, separate-client sign-in, and session cookies. Use an isolated
+preview bucket for attempt tests.
 
 ## Production Persistence Upgrade
 

@@ -606,9 +606,13 @@ Starter mode uses a shared deployment password. The login route verifies
 database. `lib/session.ts` and `lib/eve-auth.ts` verify the same cookie for the
 Next.js UI and eve route boundary.
 
-Hosted password sign-in first consumes a shared project/environment Redis
-allowance: 10 attempts per 15-minute fixed window. Exhaustion returns `429` and
-`Retry-After`; missing or unavailable Redis returns `503` without a session.
+On Vercel, hosted password sign-in first consumes a Redis allowance of ten
+attempts per client network per 15-minute window, then a separate 100-attempt
+project/environment ceiling. Only the Vercel ingress IP header identifies a
+network; IPv6 addresses are grouped by /64 and keys use an HMAC. Exhausted clients
+do not consume the project budget again. Other hosts keep the strict shared
+10-attempt limit. Exhaustion returns `429` and `Retry-After`; missing identity
+on Vercel or missing/unavailable Redis returns `503` without a session.
 
 Production mode uses Better Auth with Sign in with Vercel.
 

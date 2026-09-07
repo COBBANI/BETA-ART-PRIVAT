@@ -40,3 +40,34 @@ node --check uye/app.js
 ```
 
 Platform behavior: https://vercel.com/docs/git
+
+## Review follow-up — 7 September 2026
+
+The requested dashboard scope is `https://vercel.com/beta-art-master`; its team
+ID and existing project links are not verified. `master/projects.json` records
+the requested target separately from the connected, empty `bet-art` scope.
+Do not reuse the connected scope ID as the target ID. The source dashboard
+uses Root Directory `master`; the QBLOGG, panel, membership, and eve apps keep
+their own roots.
+
+The workflow has separate source, authentication, and browser jobs. The
+authentication job installs the embedded app's frozen lockfile with pnpm
+10.12.4 and runs unit tests, real-Redis integration tests, typecheck, and build.
+The browser job runs Chromium against local copies served with the repository's
+headers; GitHub and Supabase calls are mocked. It does not prove live provider
+configuration, magic-link delivery, redirect allowlists, or RLS permissions.
+
+Additional local checks:
+
+```bash
+node scripts/browser-smoke.mjs
+cd agents/eve-chat-template
+npm test
+REDIS_TEST_URL=redis://127.0.0.1:6379 npm run test:redis
+npm run typecheck
+npm run build
+```
+
+Use an isolated local Redis instance for integration tests. Never point these
+tests at a deployed operator's store. Configure Redis and Supabase in the
+verified existing Vercel projects before a production rollout.

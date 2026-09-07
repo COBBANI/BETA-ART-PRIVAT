@@ -12,8 +12,9 @@ import {
   AUTH_HINT_COOKIE_VALUE,
   isSecureAuthHintCookie,
 } from "@/lib/auth-hint";
-import { enforceRateLimit, RateLimitError } from "@/lib/rate-limit";
-import { getSetupStatus, isLocalDevelopment } from "@/lib/setup";
+import { RateLimitError } from "@/lib/rate-limit";
+import { enforcePasswordLoginLimit } from "@/lib/password-login-limit";
+import { getSetupStatus } from "@/lib/setup";
 
 export async function POST(request: Request) {
   const setupStatus = await getSetupStatus();
@@ -27,15 +28,7 @@ export async function POST(request: Request) {
   }
 
   try {
-    // The starter has one shared principal. Use a shared project/environment
-    // bucket so rotating client IP headers cannot reset the login allowance.
-    await enforceRateLimit({
-      key: `${process.env.VERCEL_PROJECT_ID || "app"}:${process.env.VERCEL_TARGET_ENV || process.env.VERCEL_ENV || "local"}`,
-      limit: 10,
-      prefix: "password-login",
-      required: !isLocalDevelopment(),
-      windowSeconds: 15 * 60,
-    });
+    await enforcePasswordLoginLimit(request);
   } catch (error) {
     if (error instanceof RateLimitError) {
       return NextResponse.json(

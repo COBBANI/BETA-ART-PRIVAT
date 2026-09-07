@@ -426,7 +426,174 @@ daraltıldı, B2C/B2B sırası çözüldü (outcome kanıtı B2C'den, ilk para
 B2B'den), üç gerçek Meta M&A iddiası doğrulandı/düzeltildi (Manus
 anlaşması 11.08.2026'da bozuldu, capex rakamı güncellendi). Paralel
 olarak `demo/q-work-audit.html` yazıldı, Playwright ile doğrulandı,
-depoya ve `vercel.json` dağıtım tarifine gömüldü — gerçe
+depoya ve `vercel.json` dağıtım tarifine gömüldü — gerçek mailto CTA'sı
+ile 20 görüşme adayı bulmaya hazır.
+
+Kullanıcı son turda ("TRUTHMODE") dürüst bir öz-değerlendirme yaptı:
+Q bugün "yatırım yapılabilir şirket değil, iyi formüle edilmiş bir tez."
+Eksik liste: gerçek kullanıcı davranışı, retention verisi, ödeyen
+müşteri, outcome verification, benzersiz veri, çalışan recommendation
+engine, kanıtlanmış 10x üstünlük, network effect — hiçbiri yok. Q Talent,
+Passport, Marketplace, Community, API, global expansion, Meta acquisition
+konuları **donduruldu**. Tek kalan iş: 100 kullanıcı → 25-30 gerçek
+iyileşme → tekrar kullanım → ödeme testi → recommendation gerçekten
+iyileşiyor mu — bu sırayla, teoriyle değil.
+
+**Bu, oturumun başından beri savunulan pozisyonla tam örtüşüyor.** Kayıt
+altına alınacak yeni bir kavram yok; sıradaki tek ilerleme kaydı gerçek
+insanlarla temas olacak. Q konusu bu haliyle beklemede — bir sonraki not
+ancak gerçek bir görüşme/deneme sonucu geldiğinde düşülmeli.
+
+Kullanıcı bu ilkeyi Meta'nın dikkat-ekonomisi modeliyle karşılaştırarak
+netleştirdi: **"Sana ilgini çekecek şeyi bulayım" (Meta) değil, "Seni
+geliştirecek şeyi bulayım" (QBLOGG)** — temel metrik Dikkat/Engagement değil
+Gelişim/Outcome olmalı. Bu yeni bir karar değil, mevcut modelin adlandırılmış
+hali: sitenin zaten kurucu ilkesi ("işi trafik toplamak değil, brief formunu
+doldurtmaktır") bir outcome metriği; §4.1'deki gerçek fayda filtresi bunun
+B2C affiliate tarafındaki karşılığı. Üçü aynı ilkenin farklı yüzleri. Ayrıca
+tartışılan "insanları birbirine bağlayan platform" (Meta UGC/sosyal grafik
+modeli) fikri bilinçli olarak uygulanmadı — QBLOGG'da hesap/UGC/moderasyon
+altyapısı yok, bu ayrı ve çok daha büyük bir kapı; kullanıcının asıl vardığı
+sonucun "gelişim/outcome metriği" olduğu değerlendirildi.
+
+## 30.08.2026 — "BUTUN PROJELERI BURAYA TASI": envanter çıkarıldı, gerçek gerilim ortaya çıktı
+
+Kullanıcı "her proje/dosya/tool burada birleşiyor" tespitini yaptı, ardından
+açık talimat verdi: **"BUTUN PROJELERI BURAYA TASI."** AskUserQuestion ile
+kapsam ("hangi repolar 'hepsi'?") ve yöntem ("taşımak teknik olarak ne
+demek?") netleştirildi — kullanıcı ikisine de **"HEPSI"** yanıtını verdi.
+
+Körlemesine bir kod/geçmiş birleştirmesi yapmak yerine (geri döndürülemez bir
+işlem, uzlaştırma planı olmadan yapılmaz) önce gerçek envanter çıkarıldı:
+beş repo (`beta-art-archive`, `QBLOGG`, `qb`, `eve-slack-agent`,
+`eve-chat-template`) `andersenbetul-alt` hesabından klonlandı, `HEAD`
+doğrulandı, içerikleri gerçekten okundu. Sonuç `docs/proje-envanteri.md`.
+
+Bulgular: `QBLOGG` ve `qb` tamamen boş (taşınacak içerik yok);
+`eve-slack-agent`/`eve-chat-template` Vercel'in stok "eve" şablonları,
+hiç özelleştirilmemiş. Asıl bulgu `beta-art-archive`: bu **QBLOGG değil**,
+tamamen ayrı bir marka ve iş (fotoğraf lisanslama + inşaat dokümantasyon
+arşivi, Vite/React/Supabase/Lovable). Kendi yönetişim belgesi
+(`BETA_ART_MASTER.md`, kullanıcının 25.08.2026'da onayladığı) açıkça
+"ikinci bir Beta Art sitesi yaratma" diyor — yani "her şeyi buraya taşı"
+talimatı, kullanıcının kendi onayladığı başka bir kararla doğrudan çarpışıyor.
+Bu bir teknik engel değil, iki talimat arasındaki gerçek çelişki; körlemesine
+biri diğerini ezmeden kullanıcıya üç somut karar soruldu (belge sonunda).
+
+NAVIAR Care ve `betulandersen-droid` hesabı altındaki her şey hâlâ bu
+oturumdan erişilemez durumda (farklı GitHub hesabı, bağlanmadı) — "HEPSI"
+cevabı bunu kapsasa da teknik olarak henüz mümkün değil.
+
+Gerçek dosya/geçmiş taşıma işlemi, yukarıdaki üç karar netleşmeden
+başlatılmadı.
+
+## 02.09.2026 — Sosyal medya kanalları: strateji + ilk gerçek içerik partisi
+
+Kullanıcı "BETA ART SOSIAL MEDIA KANALLARI GELISTIR" dedi. AskUserQuestion'da
+üç seçenek de (kanal stratejisi, gerçek içerik üretimi, sitedeki sosyal
+bağlantı altyapısını tamamlama) seçildi.
+
+- **Strateji + kurulum rehberi:** `docs/sosyal-medya-stratejisi.md`. Beş
+  kanal (`config.js`'deki `social` alanlarıyla birebir: LinkedIn, X, YouTube,
+  Substack — Medium yerine önerildi), öncelik sırası, adım adım hesap açma,
+  `config.js`'e bağlama talimatı, yayın ritmi önerisi.
+- **Gerçek içerik:** `qblogg-turev` becerisiyle en yeni yazıdan
+  (`ai-arac-yigini-maliyeti`) yedi türev üretildi —
+  `content/ai-arac-yigini-maliyeti/tr/`. Tüm rakamlar kaynak yazıdaki Zylo
+  verisiyle birebir eşleşiyor (otomatik çapraz kontrol yapıldı), emoji
+  taraması temiz.
+- **Sosyal bağlantı altyapısı:** kod tarafı zaten hazırdı (`applySocial()`),
+  yalnızca 02.09.2026'daki "profesyonellik" düzeltmesiyle boş başlık kusuru
+  giderildi (aşağıya bakın). Gerçek hesap adresleri kullanıcıdan bekleniyor
+  — doldurulmadan tamamlanamaz, bu rehberde adımlar var.
+
+Aynı gün, önce "WEB SAYFASINI PROFESYONELLESTIR" talebiyle site görsel/kod
+denetiminden geçirildi: (1) altbilgide hiç sosyal hesap yokken "Sosyal"
+başlığının boş göründüğü bulundu ve düzeltildi (8 sayfa + `app.js`), (2)
+öne çıkan blog kartının özet metninin bir CSS özgüllük çakışmasıyla ezildiği,
+koyu temada 1,4:1 karşıtlığa (WCAG AA eşiği 4,5:1) düştüğü bulundu ve
+düzeltildi (~6,7:1'e çıktı). PR #16'ya push edildi (`ad0ece0`).
+
+Ayrıca PR #16'nın CI'ı ayrı bir gerçek hatayla kırılmıştı: `vercel.json`
+`buildCommand`'ı 691 karaktere ulaşmış, Vercel'in 256 karakter şema
+sınırını aşıyordu. Mantık `scripts/vercel-build.sh`'a taşındı, `buildCommand`
+28 karaktere indi (`414bdf0`). Kalan CI kırmızısı kod hatası değil: altı
+Vercel projesi (`andersenbetul-9635's projects` takımı) aynı repodan aynı
+anda deploy tetikleyip günlük deploy limitine (`api-deployments-free-per-day`,
+>100) takıldı — hangi Vercel projesinin kanonik olacağı kararı hâlâ bekliyor.
+
+## 02.09.2026 — Davranış temelli içerik önerisi (yalnızca tarayıcıda)
+
+Kullanıcı "her web sayfasında müşterinin bir sonraki adımda ne görmek/almak
+isteyeceğini bulan bir sistem" istedi (Norveççe). Bu, sitenin "çatısız,
+sunucusuz" temel kuralıyla doğrudan gerilim taşıyordu — AskUserQuestion ile
+netleştirildi: **amaç** içerik önerisi (paket/CTA kişiselleştirme ve gerçek
+çapraz-ziyaretçi analiz/tahmin motoru seçilmedi), **veri kapsamı** yalnızca
+ziyaretçinin kendi tarayıcısı (sunucuya hiç gitmeyen, paylaşılmayan veri).
+
+Uygulama: `qb_interest` adlı yeni bir localStorage anahtarı, hangi kategoriyi
+kaç kez okuduğunu/seçtiğini sayıyor (`trackInterest`/`getInterest`,
+`app.js`). İki yüzey:
+
+- **post.html — "Benzer yazılar":** var olan kategori-eşleşmeli mantık,
+  geçmiş yoksa birebir eski davranışı veren bir puanlama ile genelleştirildi
+  (ilgi puanı × 10 + aynı kategori bonusu 5). Playwright ile doğrulandı:
+  dört "business" yazısı okuyan bir ziyaretçi, başka bir kategoriden yazı
+  okurken "Benzer yazılar"da Business yazıları görüyor.
+- **blog.html — "Sizin için önerilen":** yeni bir şerit, yalnızca varsayılan
+  görünümde (filtresiz/aramasız) ve yalnızca gerçek geçmiş varken görünüyor
+  — ilk ziyarette hiç render edilmiyor, boş kutu kalmıyor.
+
+`gizlilik.html` (TR+EN) yeni anahtarı üçüncü/dördüncü madde olarak açıkladı;
+`npm run guvenlik` ve `npm run check` yeşil. `posts.recommended` anahtarı
+10 dilin hepsine eklendi, Arapça RTL'de görsel olarak doğrulandı.
+
+## 02.09.2026 — "Web sayfasını düzenleyen kişi ve kullanıcılar için ayrı
+sistem": üç büyük karar netleşti, ilki (içerik paneli) kodlandı
+
+Kullanıcı "web sayfasını düzenleyen kişi ve kullanıcılar için ayrı sistem
+kuruyoruz" dedi. Bu, üç ayrı, kısmen zaten var olan büyük kararla
+kesişiyordu — körlemesine kodlamak yerine AskUserQuestion ile netleştirildi:
+
+1. **Üye sistemi (kullanıcılar):** mevcut planı (`docs/uye-sistemi.md`,
+   24.08.2026'dan beri iskelet hâlinde, Supabase yapılandırılmamış)
+   tamamlamaya karar verildi. Kurulum adımları kullanıcıya tekrar
+   sunuldu — bu oturumdan yapılabilecek bir şey yok, Supabase hesabı
+   kullanıcı adımı.
+2. **Yazar platformu (docs/yazar-platformu.md):** Model A (davetli/
+   küratörlü) onaylandı. Ama belgenin kendi §9'u (Action Pages önerisi)
+   yazar platformunu Action Pages'in SONRASINA koyuyordu — bu gerilim
+   çözülmeden inşaya başlanmadı, belgeye açıkça not düşüldü.
+3. **QBLOGG'un kendi içerik yöneticisi (editör/CMS):** "GitHub'a yazan
+   hafif panel" mimarisi onaylandı ve **kodlandı**: `panel/` — üçüncü
+   ayrı Vercel uygulaması, `uye/` deseninin devamı ama bağımlılıksız
+   (Supabase SDK bile yok, düz `fetch()` ile `api.github.com`). GitHub
+   PAT ile giriş, iki işlev: (a) `config.js`'i satır-bazlı yamalayıp
+   `main`'e karşı PR açan bir form, (b) yeni yazı fikrini GitHub Issue'ya
+   çeviren bir form (yazının kendisini üretmiyor — bilinçli, 10 dilli/
+   görünürlük-denetimli üretimin `qblogg-blog-yazisi` becerisine ait
+   kalması için).
+
+`patchConfig` mantığı Node'da gerçek `config.js`'e karşı doğrulandı
+(hedef alanlar doğru değişti, geri kalanı bayt bayt korundu). Panel arayüzü
+Playwright'ta hatasız render oluyor. **Doğrulanamayan tek şey:** panelin
+gerçek GitHub API çağrılarının tarayıcı CORS ön-denetiminden geçip
+geçmeyeceği — bu ortamın vekil sunucusu test için kullanılamadı (OPTIONS'a
+405 dönüyor, ama bu vekile mi GitHub'a mı ait belirsiz). Detay ve ilk-giriş
+doğrulama koşulu: `docs/icerik-paneli.md`.
+
+## 02.09.2026 — Vipps/Klarna araştırması (DNB düzeltmesi)
+
+Kullanıcı "Vipps, DNB, ödeme sistemi, Klarna" istedi. Araştırıldı
+(dashboard.stripe.com bu ortamdan erişilemiyor, Stripe'ın kendi genel
+belgelerinden alıntı): **Klarna** Stripe Payment Links'te ek kurulum
+gerektirmeden hazır. **Vipps** destekleniyor ama "private preview"
+aşamasında (erişim istenmeli) ve yalnızca NOK'ta çalışıyor — mevcut üç
+paket EUR fiyatlı olduğu için Vipps için ayrı, NOK fiyatlı ürünler
+gerekiyor. **"DNB" diye ayrı bir ödeme yöntemi yok** — DNB bir banka,
+Vipps'in kökeni; muhtemelen Vipps'in kendisi kastedildi. Detay ve
+kullanıcının atacağı adımlar: `docs/odeme-sistemi.md` §10.
+
 ## 7 Eylül 2026 — Vercel dağıtım denetimi düzeltmeleri
 
 Mevcut #26 düzeltme dalı genişletildi. Derleme betiğinin kaynak yüklemesine dahil
@@ -448,3 +615,32 @@ Giriş testleri Redis test dublörü kullanır. Vercel bağlantısı yalnız bo�
 Supabase ve Redis ayarları, Vercel erişim koruması ve canlı uçtan uca akış
 doğrulanmadan üretim yayını tamamlanmış sayılmaz. HXI üretim içerik kapısı
 gerçek veri sorumlusu/gizlilik iletişimi beklemeye devam ediyor.
+
+## 7 Eylül 2026 — PR #26 inceleme düzeltmeleri ve master hedefi
+
+İncelemede proje günlüğünün son kısmının kesildiği doğrulandı; önceki ana
+sürümdeki tüm tarihçe geri yüklendi. Yeni kayıtlar tarihçenin sonuna eklendi.
+Ana dalda oluşturulan master paneli bu dala katıldı; kullanıcının belirttiği
+hedef `https://vercel.com/beta-art-master` olarak kaydedildi. Hedef takım
+kimliği doğrulanamadığı için eski `bet-art` takım kimliği bu hedefe atanmadı.
+
+Vercel parola girişinde önce ağ başına 15 dakikada 10 deneme, ardından proje
+ve ortam başına 100 deneme sınırı uygulanır. Ağı belirlemek için yalnız
+Vercel ingress başlığı kullanılır; IPv6 /64 adresleri tek ağ sayılır ve Redis
+anahtarı HMAC ile üretilir. Engellenen ağ proje bütçesini tekrar tüketmez.
+Diğer sunucularda doğrulanmış IP sözleşmesi bulunmadığından eski ortak
+10 deneme sınırı korunur. NAT paylaşımı ve dağıtılmış saldırıda ortak üst
+sınırın dolması kalan sınırlardır; güvenlik belgelerinde açıklandı.
+
+CI artık depodaki gerçek eve uygulamasının giriş testlerini, TypeScript
+denetimini, Next.js üretim derlemesini ve Redis entegrasyon testlerini
+çalıştırır. Gerçek Redis testleri bağımsız worker süreçleri, Lua atomikliği,
+TTL, süresiz kalmış sayaç onarımı, HTTP zaman aşımı ve tekrar denememe
+davranışını sınar. Panel, üyelik ve master için Chromium kontrolü eklendi;
+sağlayıcı çağrıları test dublörüdür, gerçek e-posta veya GitHub yazımı yapılmaz.
+
+Vercel erişimi yalnız boş `bet-art` takımını gösteriyor. İstenen
+`beta-art-master` proje listesi alınamıyor; `andersenbetul-9635s-projects`
+günlükleri 403 yetki hatası veriyor. Hedef takım erişimi, gerçek Supabase/Redis
+ayarları, canlı yönlendirmeler ve RLS doğrulanmadan üretim yayını tamamlandı
+olarak kaydedilmez.
