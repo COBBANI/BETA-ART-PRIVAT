@@ -593,3 +593,54 @@ paket EUR fiyatlı olduğu için Vipps için ayrı, NOK fiyatlı ürünler
 gerekiyor. **"DNB" diye ayrı bir ödeme yöntemi yok** — DNB bir banka,
 Vipps'in kökeni; muhtemelen Vipps'in kendisi kastedildi. Detay ve
 kullanıcının atacağı adımlar: `docs/odeme-sistemi.md` §10.
+
+## 7 Eylül 2026 — Vercel dağıtım denetimi düzeltmeleri
+
+Mevcut #26 düzeltme dalı genişletildi. Derleme betiğinin kaynak yüklemesine dahil
+edilmesi, yalnız seçili kaynakla temiz `dist` üretimi ve panel/üyelik
+JavaScript'inin CSP uyumlu harici dosyalarda çalışması korundu. Üyelik için
+`node build.mjs` ve yalnız genel Supabase ayarlarını üreten `dist/config.js`
+eklendi. Eksik ayarlar, özel anahtarlar ve CSP dışı sunucu adresleri derlemeyi
+durdurur. Eski dağıtım belgeleri doğru depo/kök/çıktı ile güncellendi.
+
+Ana depodaki `agents/eve-chat-template` kopyası ve bağımsız eve deposu aynı
+giriş güvenliği düzeltmesini alır: ortak Redis sayacı, 15 dakikalık sabit
+pencerede 10 deneme, `429/Retry-After` ve eksik/ulaşılamayan Redis için `503`.
+Kurulum durumu ve belgeler bu gereksinimi yansıtır; yeni paket bağımlılığı yok.
+
+Yerel doğrulama: mevcut 8 site kontrolü (0 uyarı), 5 dağıtım testi, 11 giriş
+güvenliği testi, eve TypeScript denetimi ve Next.js üretim derlemesi geçti.
+Giriş testleri Redis test dublörü kullanır. Vercel bağlantısı yalnız boş
+`bet-art` takımını döndürdü; `beta-art-master` projeleri listelenemedi. Gerçek
+Supabase ve Redis ayarları, Vercel erişim koruması ve canlı uçtan uca akış
+doğrulanmadan üretim yayını tamamlanmış sayılmaz. HXI üretim içerik kapısı
+gerçek veri sorumlusu/gizlilik iletişimi beklemeye devam ediyor.
+
+## 7 Eylül 2026 — PR #26 inceleme düzeltmeleri ve master hedefi
+
+İncelemede proje günlüğünün son kısmının kesildiği doğrulandı; önceki ana
+sürümdeki tüm tarihçe geri yüklendi. Yeni kayıtlar tarihçenin sonuna eklendi.
+Ana dalda oluşturulan master paneli bu dala katıldı; kullanıcının belirttiği
+hedef `https://vercel.com/beta-art-master` olarak kaydedildi. Hedef takım
+kimliği doğrulanamadığı için eski `bet-art` takım kimliği bu hedefe atanmadı.
+
+Vercel parola girişinde önce ağ başına 15 dakikada 10 deneme, ardından proje
+ve ortam başına 100 deneme sınırı uygulanır. Ağı belirlemek için yalnız
+Vercel ingress başlığı kullanılır; IPv6 /64 adresleri tek ağ sayılır ve Redis
+anahtarı HMAC ile üretilir. Engellenen ağ proje bütçesini tekrar tüketmez.
+Diğer sunucularda doğrulanmış IP sözleşmesi bulunmadığından eski ortak
+10 deneme sınırı korunur. NAT paylaşımı ve dağıtılmış saldırıda ortak üst
+sınırın dolması kalan sınırlardır; güvenlik belgelerinde açıklandı.
+
+CI artık depodaki gerçek eve uygulamasının giriş testlerini, TypeScript
+denetimini, Next.js üretim derlemesini ve Redis entegrasyon testlerini
+çalıştırır. Gerçek Redis testleri bağımsız worker süreçleri, Lua atomikliği,
+TTL, süresiz kalmış sayaç onarımı, HTTP zaman aşımı ve tekrar denememe
+davranışını sınar. Panel, üyelik ve master için Chromium kontrolü eklendi;
+sağlayıcı çağrıları test dublörüdür, gerçek e-posta veya GitHub yazımı yapılmaz.
+
+Vercel erişimi yalnız boş `bet-art` takımını gösteriyor. İstenen
+`beta-art-master` proje listesi alınamıyor; `andersenbetul-9635s-projects`
+günlükleri 403 yetki hatası veriyor. Hedef takım erişimi, gerçek Supabase/Redis
+ayarları, canlı yönlendirmeler ve RLS doğrulanmadan üretim yayını tamamlandı
+olarak kaydedilmez.

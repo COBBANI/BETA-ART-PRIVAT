@@ -33,7 +33,12 @@ python3 -m http.server 8000
 ## Yayınlama
 
 GitHub Pages: repo ayarlarından Pages → Branch olarak bu dalı ve kök (`/`) klasörünü seçin.
-Netlify/Vercel: derleme komutu boş, yayın klasörü kök.
+Vercel: mevcut QBLOGG projesini `andersenbetul-alt/BETA-ART-PRIVAT` deposunun
+köküne (`.`) bağlayın. Build Command: `bash scripts/vercel-build.sh`,
+Output Directory: `dist`, Install Command: boş. Yayın dosyaları seçili kaynak
+sürümünden kopyalanır; ayrıntılar [DAGITIM.md](DAGITIM.md) içinde.
+`panel/` ve `uye/` kendi Vercel proje kökleridir. `QBLOGG` ve `qb` adlı boş
+depolar bu sitenin kaynak deposu değildir.
 
 Yayına almadan önce `robots.txt` ve `sitemap.xml` içindeki `https://qblogg.com` adresini
 kendi alan adınızla değiştirin.

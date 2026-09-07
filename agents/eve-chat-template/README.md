@@ -2,15 +2,16 @@
 
 A Next.js chat template for [eve](https://eve.dev) that starts with password access and browser-persisted chats, then upgrades to Sign in with Vercel, Neon, and Upstash when you need a production multi-user application.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?demo-description=A%20persisted%20Next.js%20chat%20template%20for%20eve%2C%20built%20with%20shadcn%2Fui%2C%20Tailwind%20CSS%2C%20Streamdown%2C%20Better%20Auth%2C%20Drizzle%2C%20and%20Neon.&demo-image=https%3A%2F%2Fimages.ctfassets.net%2Fe5382hct74si%2FYXYTquqpBmvVFbASdIvrC%2Fbb50d21ba7866882d90e25d842b6fc02%2Feve-chat-no-bg.png&demo-title=eve%20Chat%20Template&demo-url=https%3A%2F%2Fchat.eve.dev&env=EVE_CHAT_PASSWORD&envDescription=Choose%20a%20strong%20password%20to%20protect%20your%20agent%20%2816%2B%20characters%20recommended%29.&envLink=https%3A%2F%2Fgithub.com%2Fvercel%2Feve-examples%2Fblob%2Fmain%2Feve-chat-template%2Fdocs%2Fsetup-and-deploy.md&from=templates&project-name=eve%20Chat%20Template&repository-name=eve-chat-template&repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Feve-examples%2Ftree%2Fmain%2Feve-chat-template)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?demo-description=A%20persisted%20Next.js%20chat%20template%20for%20eve%2C%20built%20with%20shadcn%2Fui%2C%20Tailwind%20CSS%2C%20Streamdown%2C%20Better%20Auth%2C%20Drizzle%2C%20and%20Neon.&demo-image=https%3A%2F%2Fimages.ctfassets.net%2Fe5382hct74si%2FYXYTquqpBmvVFbASdIvrC%2Fbb50d21ba7866882d90e25d842b6fc02%2Feve-chat-no-bg.png&demo-title=eve%20Chat%20Template&demo-url=https%3A%2F%2Fchat.eve.dev&env=EVE_CHAT_PASSWORD%2CUPSTASH_REDIS_REST_URL%2CUPSTASH_REDIS_REST_TOKEN&envDescription=Set%20a%20strong%20password%20and%20Upstash%20Redis%20REST%20credentials%20for%20distributed%20login%20protection.&envLink=https%3A%2F%2Fgithub.com%2Fandersenbetul-alt%2Feve-chat-template%2Fblob%2Fmain%2Fdocs%2Fsetup-and-deploy.md&from=templates&project-name=eve%20Chat%20Template&repository-name=eve-chat-template&repository-url=https%3A%2F%2Fgithub.com%2Fandersenbetul-alt%2Feve-chat-template)
 
 ## Quick Start
 
-Deploy the starter without provisioning a database or other Marketplace products:
+The hosted starter uses a shared password and Upstash Redis to limit password guessing; it does not require Postgres:
 
 1. Click **Deploy with Vercel**.
 2. Enter a strong `EVE_CHAT_PASSWORD` (16+ characters recommended).
-3. Open the deployed app and enter that password.
+3. Configure `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` in the same Vercel project for Preview and Production (a complete `KV_REST_API_URL` / `KV_REST_API_TOKEN` pair also works).
+4. Redeploy, open the app, and enter the password. See [Setup and Deployment](docs/setup-and-deploy.md) for the existing-project steps.
 
 Chats and eve session cursors are stored in that browser. They are not shared across browsers or users.
 Starter mode is intended for one trusted operator: anyone with the password
@@ -20,7 +21,7 @@ shares the same agent identity and connection grants.
 
 | Mode | Selected when | Authentication | Chat persistence |
 | --- | --- | --- | --- |
-| Starter | `EVE_CHAT_PASSWORD` is configured | Shared password and secure session cookie | Browser localStorage |
+| Starter | `EVE_CHAT_PASSWORD` and a complete Redis REST credential pair are configured | Shared password and secure session cookie | Browser localStorage |
 | Production | Neon, Upstash, and all Sign in with Vercel variables are configured | Sign in with Vercel | Neon |
 | Local development | Neither mode is configured and `next dev` is running locally | Local development identity | Browser localStorage |
 
@@ -129,7 +130,7 @@ pnpm dev
 - Password access with browser-backed chat history by default
 - Optional Better Auth sign-in with Vercel
 - Optional Neon-backed cross-device chat history
-- Optional Upstash Redis rate limiting in production mode
+- Upstash Redis login protection: 10 attempts per client network and a 100-attempt project ceiling on Vercel; per-user limits in production mode
 - Drizzle schema and migrations for production mode under `lib/db`
 - Saved eve session cursors and event snapshots in either storage mode
 - Sidebar history with delete and new-chat actions

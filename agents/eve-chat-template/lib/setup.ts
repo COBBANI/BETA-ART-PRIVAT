@@ -89,15 +89,16 @@ function createSetupStatus({
   }
 
   if (passwordReady || localDevReady) {
+    const passwordRateLimitReady = rateLimitReady || localDevReady;
     return {
-      appReady: true,
+      appReady: passwordRateLimitReady,
       authMode: passwordReady ? "password" : "local-dev",
-      authReady: true,
+      authReady: passwordRateLimitReady,
       connectionsAvailable,
       databaseConfigured,
       databaseReady,
       databaseSchemaReady,
-      missing: [],
+      missing: passwordRateLimitReady ? [] : ["Upstash Redis REST URL and token"],
       rateLimitReady,
       storageMode: "browser",
     };
@@ -120,6 +121,6 @@ function createSetupStatus({
   };
 }
 
-function isLocalDevelopment() {
+export function isLocalDevelopment() {
   return process.env.NODE_ENV === "development" && process.env.VERCEL !== "1";
 }

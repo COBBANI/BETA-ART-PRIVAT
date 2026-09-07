@@ -11,13 +11,16 @@
 <main class="wrap">
   <section class="hero">
     <h1>BETA ART Master</h1>
-    <p>BET - ART Vercel workspace için merkezi proje ve arşiv paneli</p>
+    <p>beta-art-master için merkezi proje ve arşiv paneli</p>
   </section>
+  <p id="sync-status" role="status">Proje kayıtları yükleniyor…</p>
+  <p><a href="https://vercel.com/beta-art-master">Vercel alanını aç</a> · <a href="https://github.com/andersenbetul-alt/BETA-ART-PRIVAT/pull/26">GitHub güncellemesini incele</a></p>
   <div id="projects" class="grid"></div>
   <div class="foot">Kaynak: <code>master/projects.json</code> · Production branch: <code>main</code></div>
 </main>
 <script>
-fetch('./projects.json').then(r=>r.json()).then(data=>{
+fetch('./projects.json').then(r=>{if(!r.ok)throw new Error('Inventory unavailable');return r.json();}).then(data=>{
+  document.getElementById('sync-status').textContent='Son erişim kontrolü: '+data.lastAccessCheck.date+' · Hedef Vercel alanına erişim doğrulanamadı. Canlı yayın doğrulanamadı.';
   const root=document.getElementById('projects');
   data.projects.forEach(p=>{
     const el=document.createElement('article');el.className='card';

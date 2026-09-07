@@ -12,6 +12,8 @@ import {
   AUTH_HINT_COOKIE_VALUE,
   isSecureAuthHintCookie,
 } from "@/lib/auth-hint";
+import { RateLimitError } from "@/lib/rate-limit";
+import { enforcePasswordLoginLimit } from "@/lib/password-login-limit";
 import { getSetupStatus } from "@/lib/setup";
 
 export async function POST(request: Request) {
@@ -23,6 +25,21 @@ export async function POST(request: Request) {
 
   if (!hasSameOriginRequest(request)) {
     return NextResponse.json({ error: "Invalid request origin." }, { status: 403 });
+  }
+
+  try {
+    await enforcePasswordLoginLimit(request);
+  } catch (error) {
+    if (error instanceof RateLimitError) {
+      return NextResponse.json(
+        { error: "Too many sign-in attempts. Please try again later." },
+        { status: 429, headers: { "Retry-After": String(error.retryAfter), "Cache-Control": "no-store" } },
+      );
+    }
+    return NextResponse.json(
+      { error: "Sign-in is temporarily unavailable. Please try again later." },
+      { status: 503, headers: { "Retry-After": "60", "Cache-Control": "no-store" } },
+    );
   }
 
   const body = (await request.json().catch(() => null)) as { password?: unknown } | null;

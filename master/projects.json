@@ -1,13 +1,14 @@
 {
   "generatedAt": "2026-09-07",
   "canonicalWorkspace": {
-    "name": "BET - ART",
-    "slug": "bet-art",
-    "teamId": "team_xNtowH7U0jXQrI53DFJFzH2o",
-    "currentlyVisibleProjectCount": 0
+    "name": "BETA ART Master",
+    "slug": "beta-art-master",
+    "teamId": null,
+    "dashboardUrl": "https://vercel.com/beta-art-master",
+    "accessStatus": "not-verified"
   },
   "policy": {
-    "workspace": "All production Vercel projects should live under BET - ART.",
+    "workspace": "The requested target is beta-art-master. Verify its team ID and existing projects before linking or transferring deployments.",
     "repository": "Keep products isolated as projects; use BETA-ART-PRIVAT as the central inventory/monorepo where appropriate.",
     "productionBranch": "main",
     "deployment": "Git-connected automatic deployment to Vercel production after approved changes reach main."
@@ -90,8 +91,27 @@
       "repository": "andersenbetul-alt/BETA-ART-PRIVAT",
       "rootDirectory": "master",
       "domain": null,
-      "status": "source-created-ready-to-link",
-      "notes": "Central project inventory/dashboard. Create/link this as a Vercel project under BET - ART with Root Directory = master."
+      "status": "source-updated-target-access-required",
+      "notes": "Use existing beta-art-master project after verifying the requested target workspace and Root Directory master; target access is not currently verified."
     }
-  ]
+  ],
+  "lastAccessCheck": {
+    "date": "2026-09-07",
+    "connectedWorkspace": {
+      "name": "VERSEL TEAM",
+      "slug": "bet-art",
+      "teamId": "team_xNtowH7U0jXQrI53DFJFzH2o",
+      "visibleProjectCount": 0
+    },
+    "targetProjectListing": "failed",
+    "otherDeploymentScope": "andersenbetul-9635s-projects",
+    "otherScopeAccess": "403-forbidden"
+  },
+  "review": {
+    "repository": "andersenbetul-alt/BETA-ART-PRIVAT",
+    "pullRequest": 26,
+    "url": "https://github.com/andersenbetul-alt/BETA-ART-PRIVAT/pull/26",
+    "status": "local-code-checks-passed-browser-pending-target-access-required",
+    "productionDeploymentVerified": false
+  }
 }
