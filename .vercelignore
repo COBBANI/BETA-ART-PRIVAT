@@ -1,7 +1,8 @@
-# Yayına çıkmayacaklar: motor, betikler, dokümanlar, türev içerik kaynakları.
-# Site saf statik; bunların hiçbiri tarayıcıya gitmiyor.
+# Derlemeye yüklenmeyecek kaynaklar. Tarayıcıya yalnız dist/ sunulur.
 engine/
-scripts/
+scripts/*
+!scripts/vercel-build.sh
+dist/
 # Inter'in resmi dağıtımı — 60 MB, hak paketi kanıtı. Site alt kümeleri
 # assets/fonts/ altından yüklüyor; bu klasörün yayına çıkması gereksiz
 # yük ve gereksiz bir yeniden dağıtımdır.
