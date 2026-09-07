@@ -11,6 +11,19 @@ import { fileURLToPath } from 'node:url';
 const HERE = dirname(fileURLToPath(import.meta.url));
 const nowISO = () => new Date().toISOString();
 
+// Savepoints keep multi-table writes atomic, including inside caller transactions.
+function atomic(db, work) {
+  db.exec('SAVEPOINT qblogg_billing');
+  try {
+    const result = work();
+    db.exec('RELEASE qblogg_billing');
+    return result;
+  } catch (error) {
+    db.exec('ROLLBACK TO qblogg_billing; RELEASE qblogg_billing');
+    throw error;
+  }
+}
+
 /* Kredi fiyat listesi — bir işlem kaç kredi yer. */
 export const CREDIT_COST = {
   trend_scan: 1,
@@ -48,26 +61,31 @@ export function creditBalance(db, accountId) {
 }
 
 export function addCredits(db, accountId, amount, { reason = 'topup', refType = null, refId = null } = {}) {
-  if (amount <= 0) throw new Error('Yükleme pozitif olmalı');
-  const balance = creditBalance(db, accountId) + amount;
-  db.prepare(`INSERT INTO credit_ledger (account_id, delta, reason, ref_type, ref_id, balance_after, created_at)
-              VALUES (?,?,?,?,?,?,?)`).run(accountId, amount, reason, refType, refId, balance, nowISO());
-  return balance;
+  return atomic(db, () => {
+    if (!Number.isSafeInteger(amount) || amount <= 0) throw new Error('Yükleme pozitif olmalı');
+    const balance = creditBalance(db, accountId) + amount;
+    if (!Number.isSafeInteger(balance)) throw new Error('Kredi bakiyesi güvenli tam sayı sınırını aşıyor');
+    db.prepare(`INSERT INTO credit_ledger (account_id, delta, reason, ref_type, ref_id, balance_after, created_at)
+                VALUES (?,?,?,?,?,?,?)`).run(accountId, amount, reason, refType, refId, balance, nowISO());
+    return balance;
+  });
 }
 
 /** Kredi harcar. Bakiye yetmezse hiçbir şey yazmaz ve false döner. */
 export function spendCredits(db, accountId, operation, { refId = null, meta = null } = {}) {
-  const cost = CREDIT_COST[operation];
-  if (!cost) throw new Error('Bilinmeyen işlem: ' + operation);
-  const balance = creditBalance(db, accountId);
-  if (balance < cost) return { ok: false, balance, needed: cost };
+  return atomic(db, () => {
+    const cost = Object.hasOwn(CREDIT_COST, operation) ? CREDIT_COST[operation] : null;
+    if (!cost) throw new Error('Bilinmeyen işlem: ' + operation);
+    const balance = creditBalance(db, accountId);
+    if (balance < cost) return { ok: false, balance, needed: cost };
 
-  const after = balance - cost;
-  db.prepare(`INSERT INTO credit_ledger (account_id, delta, reason, ref_type, ref_id, balance_after, created_at)
-              VALUES (?,?,?,?,?,?,?)`).run(accountId, -cost, 'usage', 'job', refId, after, nowISO());
-  db.prepare(`INSERT INTO usage_events (account_id, operation, credits, meta, created_at)
-              VALUES (?,?,?,?,?)`).run(accountId, operation, cost, meta ? JSON.stringify(meta) : null, nowISO());
-  return { ok: true, balance: after, spent: cost };
+    const after = balance - cost;
+    db.prepare(`INSERT INTO credit_ledger (account_id, delta, reason, ref_type, ref_id, balance_after, created_at)
+                VALUES (?,?,?,?,?,?,?)`).run(accountId, -cost, 'usage', 'job', refId, after, nowISO());
+    db.prepare(`INSERT INTO usage_events (account_id, operation, credits, meta, created_at)
+                VALUES (?,?,?,?,?)`).run(accountId, operation, cost, meta ? JSON.stringify(meta) : null, nowISO());
+    return { ok: true, balance: after, spent: cost };
+  });
 }
 
 /* ---------------------------------------------------------------- haklar */
@@ -109,22 +127,26 @@ export function markWebhook(db, provider, eventId, status, error = null) {
  *  Aynı provider_ref ikinci kez gelirse hiçbir şey yapmaz. */
 export function recordPayment(db, { accountId, provider, providerRef, amount, currency, kind,
                                     productCode = null, credits = 0, feature = null, expiresAt = null }) {
-  const exists = db.prepare('SELECT id FROM payments WHERE provider = ? AND provider_ref = ?')
-    .get(provider, providerRef);
-  if (exists) return { ok: false, reason: 'zaten_islenmis', paymentId: Number(exists.id) };
+  return atomic(db, () => {
+    if (!Number.isSafeInteger(amount) || amount < 0) throw new Error('Ödeme tutarı negatif olmayan tam sayı olmalı');
+    if (!Number.isSafeInteger(credits) || credits < 0) throw new Error('Kredi miktarı negatif olmayan tam sayı olmalı');
+    const exists = db.prepare('SELECT id FROM payments WHERE provider = ? AND provider_ref = ?')
+      .get(provider, providerRef);
+    if (exists) return { ok: false, reason: 'zaten_islenmis', paymentId: Number(exists.id) };
 
-  const product = productCode
-    ? db.prepare('SELECT id FROM products WHERE code = ?').get(productCode) : null;
+    const product = productCode
+      ? db.prepare('SELECT id FROM products WHERE code = ?').get(productCode) : null;
 
-  const res = db.prepare(`INSERT INTO payments
-    (account_id, provider, provider_ref, amount, currency, status, kind, product_id, created_at)
-    VALUES (?,?,?,?,?,'succeeded',?,?,?)`)
-    .run(accountId, provider, providerRef, amount, currency, kind, product?.id ?? null, nowISO());
-  const paymentId = Number(res.lastInsertRowid);
+    const res = db.prepare(`INSERT INTO payments
+      (account_id, provider, provider_ref, amount, currency, status, kind, product_id, created_at)
+      VALUES (?,?,?,?,?,'succeeded',?,?,?)`)
+      .run(accountId, provider, providerRef, amount, currency, kind, product?.id ?? null, nowISO());
+    const paymentId = Number(res.lastInsertRowid);
 
-  if (credits > 0) addCredits(db, accountId, credits, { reason: 'purchase', refType: 'payment', refId: String(paymentId) });
-  if (feature) grantEntitlement(db, accountId, feature, { sourceType: 'payment', sourceId: String(paymentId), expiresAt });
-  return { ok: true, paymentId };
+    if (credits > 0) addCredits(db, accountId, credits, { reason: 'purchase', refType: 'payment', refId: String(paymentId) });
+    if (feature) grantEntitlement(db, accountId, feature, { sourceType: 'payment', sourceId: String(paymentId), expiresAt });
+    return { ok: true, paymentId };
+  });
 }
 
 /** Para biçimlendirme — tam sayı kuruştan okunabilir metne. */

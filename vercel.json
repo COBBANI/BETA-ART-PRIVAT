@@ -1,6 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "bash scripts/vercel-build.sh",
+  "buildCommand": "node scripts/build-static.mjs",
   "outputDirectory": "dist",
   "cleanUrls": false,
   "trailingSlash": false,
@@ -89,5 +89,6 @@
       "permanent": true
     }
   ],
-  "framework": null
+  "framework": null,
+  "installCommand": ""
 }

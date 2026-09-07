@@ -1,0 +1,27 @@
+name: QBLOGG and museum preview checks
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
+        with:
+          node-version: "24"
+      - name: Check site and security rules
+        run: |
+          node scripts/check.mjs
+          node scripts/guvenlik.mjs
+      - name: Test billing, engine, dashboard and isolated build
+        run: node --test scripts/tests/*.test.mjs engine/*.test.mjs master/tests/*.test.mjs
+      - name: Build static projects
+        run: |
+          node scripts/build-static.mjs
+          node master/build.mjs
+          node beta-art-museum/build.mjs

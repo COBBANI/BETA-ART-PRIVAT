@@ -33,7 +33,11 @@ python3 -m http.server 8000
 ## Yayınlama
 
 GitHub Pages: repo ayarlarından Pages → Branch olarak bu dalı ve kök (`/`) klasörünü seçin.
-Netlify/Vercel: derleme komutu boş, yayın klasörü kök.
+Vercel: QBLOGG için kök dizin `.`, framework `Other`, kurulum komutu boş,
+derleme komutu `node scripts/build-static.mjs`, yayın klasörü `dist`.
+`npm run build` aynı çıktıyı yerelde üretir. Tüm depo kökünü yayınlamayın.
+Master panel ayrı projedir: kök `master`, derleme `node build.mjs`, çıktı `dist`.
+Birleştirilen HTML müze tasarımı ayrı projedir: kök `beta-art-museum`.
 
 Yayına almadan önce `robots.txt` ve `sitemap.xml` içindeki `https://qblogg.com` adresini
 kendi alan adınızla değiştirin.

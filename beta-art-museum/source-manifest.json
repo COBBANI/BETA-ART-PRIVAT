@@ -1,0 +1,56 @@
+[
+  {
+    "page": "index.html",
+    "sources": [
+      "beta-art-museum(4).html",
+      "beta-art-museum_1(4).html",
+      "beta-art-museum_2(4).html",
+      "beta-art-museum_3(4).html",
+      "beta-art-museum_4(4).html",
+      "beta-art-museum_5(4).html"
+    ],
+    "sha256": "87e2a70da8cff0092d69bb6afe769dc0544ffaadfb2802544ba519bfe140f843"
+  },
+  {
+    "page": "contact.html",
+    "sources": [
+      "beta-art-contact(4).html",
+      "beta-art-contact_1(4).html",
+      "beta-art-contact_2(4).html",
+      "beta-art-contact_3(4).html"
+    ],
+    "sha256": "2cfcd0b2ef1062562dbb7fab768c9b02f711e675c497f24554def48bbcf2ee97"
+  },
+  {
+    "page": "faq.html",
+    "sources": [
+      "beta-art-faq(4).html",
+      "beta-art-faq_1(4).html"
+    ],
+    "sha256": "c3032f1a6107ee5b3da5cadfdca463407c091373ba5a83dfe73782e40fa48379"
+  },
+  {
+    "page": "license-terms.html",
+    "sources": [
+      "beta-art-license-terms(4).html"
+    ],
+    "sha256": "bbc6a131d8f6f263ebd0a9d825ca2a6dfccdb3d5feeed15d20efca8eee878687"
+  },
+  {
+    "page": "mark.html",
+    "sources": [
+      "beta-art-mark(4).html",
+      "beta-art-mark_1(4).html"
+    ],
+    "sha256": "c64e30266b496225c42590ffdb1b4f90013cb19850a3cc3e3a7322f689f01d72"
+  },
+  {
+    "page": "cookie-demo.html",
+    "sources": [
+      "beta-art-cookie – Kopi(4).html",
+      "beta-art-cookie(4).html",
+      "beta-art-cookie_1(4).html"
+    ],
+    "sha256": "041652f149ea7e99b506e98abba68f3c392f8c91a9e5c0732581c9ce2f6653ff"
+  }
+]
