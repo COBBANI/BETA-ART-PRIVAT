@@ -1,7 +1,8 @@
-# Yayına çıkmayacaklar: motor, betikler, dokümanlar, türev içerik kaynakları.
-# Site saf statik; bunların hiçbiri tarayıcıya gitmiyor.
+# Kaynak yüklemesinden çıkarılacaklar. Tarayıcıya yalnız dist/ çıktısı sunulur.
+# Vercel buildCommand tarafından çağrılan betik kaynak paketinde kalmalıdır.
 engine/
-scripts/
+scripts/*
+!scripts/vercel-build.sh
 # Inter'in resmi dağıtımı — 60 MB, hak paketi kanıtı. Site alt kümeleri
 # assets/fonts/ altından yüklüyor; bu klasörün yayına çıkması gereksiz
 # yük ve gereksiz bir yeniden dağıtımdır.
