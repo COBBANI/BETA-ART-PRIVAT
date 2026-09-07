@@ -1,0 +1,97 @@
+{
+  "generatedAt": "2026-09-07",
+  "canonicalWorkspace": {
+    "name": "BET - ART",
+    "slug": "bet-art",
+    "teamId": "team_xNtowH7U0jXQrI53DFJFzH2o",
+    "currentlyVisibleProjectCount": 0
+  },
+  "policy": {
+    "workspace": "All production Vercel projects should live under BET - ART.",
+    "repository": "Keep products isolated as projects; use BETA-ART-PRIVAT as the central inventory/monorepo where appropriate.",
+    "productionBranch": "main",
+    "deployment": "Git-connected automatic deployment to Vercel production after approved changes reach main."
+  },
+  "projects": [
+    {
+      "archiveId": "WEB-001",
+      "name": "QBLOGG",
+      "vercelProject": "qblogg",
+      "repository": "andersenbetul-alt/BETA-ART-PRIVAT",
+      "rootDirectory": ".",
+      "domain": "qblogg.com",
+      "status": "historical-record-needs-scope-transfer-verification",
+      "notes": "Current Vercel connector cannot see this project in BET - ART; historical inventory records it in another/older scope."
+    },
+    {
+      "archiveId": "BET-001",
+      "name": "Beta Art",
+      "vercelProject": "beta-art / beta-art-archive",
+      "repository": "andersenbetul-alt/beta-art-archive",
+      "rootDirectory": ".",
+      "domain": "beta-art.com",
+      "status": "separate-product-keep-isolated",
+      "notes": "Keep as its own product/project; centralize management, not runtime code."
+    },
+    {
+      "archiveId": "NAV-001",
+      "name": "NAVIAR Care",
+      "vercelProject": "naviar-care-1 / naviar-care / naviar-care-2",
+      "repository": "betulandersen-droid/naviar-care-1",
+      "rootDirectory": "naviar",
+      "domain": null,
+      "status": "historical-record-external-github-scope",
+      "notes": "Repository is under another GitHub account in the historical inventory and requires account/scope access before transfer can be verified."
+    },
+    {
+      "archiveId": "NAV-002",
+      "name": "NAVIAR Consult",
+      "vercelProject": "naviar-consult",
+      "repository": "unverified",
+      "rootDirectory": null,
+      "domain": "naviarconsult.com",
+      "status": "historical-record-needs-relink",
+      "notes": "Historical records show a placeholder Eve repo association; reconnect to the real NAVIAR Consult source before production use."
+    },
+    {
+      "archiveId": "HXI-001",
+      "name": "HXI Music",
+      "vercelProject": "hxi-music",
+      "repository": "andersenbetul-alt/HXI",
+      "rootDirectory": ".",
+      "domain": null,
+      "status": "historical-vercel-record-current-github-repo-visible",
+      "notes": "GitHub repository is visible; Vercel project is not visible in the current BET - ART scope."
+    },
+    {
+      "archiveId": "NHP-001",
+      "name": "Nærhjelp Pilot V2",
+      "vercelProject": "naerhjelp-pilot-v2",
+      "repository": "unverified",
+      "rootDirectory": null,
+      "domain": null,
+      "status": "historical-record-only",
+      "notes": "Seen in historical Vercel inventory; not visible through the currently connected Vercel scope."
+    },
+    {
+      "archiveId": "NPP-001",
+      "name": "NAVIAR PårørendePilot",
+      "vercelProject": "naviar-paaroerende-pilot",
+      "repository": "unverified",
+      "rootDirectory": null,
+      "domain": null,
+      "status": "historical-record-only",
+      "notes": "Seen in historical Vercel inventory; not visible through the currently connected Vercel scope."
+    },
+    {
+      "archiveId": "MASTER-001",
+      "name": "BETA ART Master Dashboard",
+      "vercelProject": "beta-art-master",
+      "repository": "andersenbetul-alt/BETA-ART-PRIVAT",
+      "rootDirectory": "master",
+      "domain": null,
+      "status": "source-created-ready-to-link",
+      "notes": "Central project inventory/dashboard. Create/link this as a Vercel project under BET - ART with Root Directory = master."
+    }
+  ]
+}
