@@ -7,10 +7,39 @@
     {
       "source": "/(.*)",
       "headers": [
-        {"key":"X-Content-Type-Options","value":"nosniff"},
-        {"key":"Referrer-Policy","value":"strict-origin-when-cross-origin"},
-        {"key":"X-Frame-Options","value":"SAMEORIGIN"}
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'"
+        },
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/projects.json",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-store"
+        }
       ]
     }
-  ]
+  ],
+  "installCommand": "",
+  "buildCommand": "node build.mjs",
+  "outputDirectory": "dist"
 }

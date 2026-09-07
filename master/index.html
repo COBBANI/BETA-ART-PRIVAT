@@ -1,30 +1,94 @@
 <!doctype html>
 <html lang="tr">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>BETA ART Master</title>
-  <style>
-    :root{font-family:Inter,system-ui,sans-serif;color:#171717;background:#f5f5f5}body{margin:0;padding:32px}.wrap{max-width:1100px;margin:auto}.hero{background:#111;color:#fff;border-radius:18px;padding:28px;margin-bottom:22px}.hero h1{margin:0 0 8px;font-size:34px}.hero p{margin:0;color:#ccc}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}.card{background:#fff;border:1px solid #ddd;border-radius:16px;padding:18px}.id{font-size:12px;font-weight:700;letter-spacing:.08em;color:#666}.name{font-size:20px;font-weight:750;margin:6px 0 10px}.meta{font-size:14px;line-height:1.55;color:#444}.badge{display:inline-block;margin-top:12px;padding:5px 9px;border-radius:999px;background:#eee;font-size:12px}.foot{margin-top:22px;color:#666;font-size:13px}.error{padding:16px;background:#fff3f3;border:1px solid #ffc9c9;border-radius:12px}</style>
-</head>
-<body>
-<main class="wrap">
-  <section class="hero">
-    <h1>BETA ART Master</h1>
-    <p>BET - ART Vercel workspace için merkezi proje ve arşiv paneli</p>
-  </section>
-  <div id="projects" class="grid"></div>
-  <div class="foot">Kaynak: <code>master/projects.json</code> · Production branch: <code>main</code></div>
-</main>
-<script>
-fetch('./projects.json').then(r=>r.json()).then(data=>{
-  const root=document.getElementById('projects');
-  data.projects.forEach(p=>{
-    const el=document.createElement('article');el.className='card';
-    el.innerHTML=`<div class="id">${p.archiveId}</div><div class="name">${p.name}</div><div class="meta"><b>Vercel:</b> ${p.vercelProject||'—'}<br><b>Repo:</b> ${p.repository||'—'}<br><b>Domain:</b> ${p.domain||'—'}<br><b>Root:</b> ${p.rootDirectory||'—'}</div><span class="badge">${p.status}</span>`;
-    root.appendChild(el);
-  });
-}).catch(()=>document.getElementById('projects').innerHTML='<div class="error">projects.json yüklenemedi.</div>');
-</script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>BETA ART Master — Proje Arşivi</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module" src="./app.mjs"></script>
+  </head>
+  <body>
+    <main class="wrap">
+      <header class="hero">
+        <p class="eyebrow">WEB-2026-000 · MASTER-001</p>
+        <h1>BETA ART Master</h1>
+        <p>Projeler, kaynaklar ve Vercel aktarım durumu.</p>
+        <p id="workspace">Proje kaydı yükleniyor…</p>
+      </header>
+      <section class="notice" aria-label="Envanter durumu">
+        <strong id="inventory-state">Envanter doğrulaması bekleniyor.</strong>
+        <p id="inventory-note">
+          Bu kayıtlar, Vercel'e tamamlanmış bir aktarımın kanıtı değildir.
+        </p>
+      </section>
+      <section
+        id="summary"
+        class="summary"
+        aria-label="Proje sayıları"
+      ></section>
+      <section class="toolbar" aria-label="Arama, filtreler ve dışa aktarma">
+        <label class="search"
+          >Proje ara<input
+            id="search"
+            type="search"
+            placeholder="Ad, arşiv numarası, depo veya alan adı"
+            disabled
+        /></label>
+        <label
+          >Kayıt türü<select id="kind" disabled>
+            <option value="all">Tüm kayıtlar</option>
+            <option value="historical">Tarihsel proje kayıtları</option>
+            <option value="management">Yönetim paneli</option>
+            <option value="verified">Doğrulanmış Vercel projeleri</option>
+          </select></label
+        >
+        <label
+          >Durum<select id="status" disabled>
+            <option value="all">Tüm durumlar</option>
+          </select></label
+        >
+        <div class="exports">
+          <button id="export-json" type="button" disabled>JSON indir</button
+          ><button id="export-csv" type="button" disabled>CSV indir</button>
+        </div>
+      </section>
+      <p id="result-count" role="status" aria-live="polite">
+        Kayıtlar yükleniyor…
+      </p>
+      <section
+        id="projects"
+        class="grid"
+        aria-label="Proje kayıtları"
+        aria-busy="true"
+      ></section>
+      <div id="error" class="error" role="alert" hidden>
+        <p>Proje listesi şu anda yüklenemiyor.</p>
+        <button id="retry" type="button">Yeniden dene</button>
+      </div>
+      <footer>
+        <p id="checked-at"></p>
+        <p>
+          Dışa aktarma, seçili filtredeki kayıtları içerir. Güncelleme ve
+          aktarım doğrulaması her proje için ayrıca izlenir.
+        </p>
+      </footer>
+    </main>
+    <dialog id="details" aria-labelledby="detail-title">
+      <form method="dialog">
+        <button class="close" aria-label="Proje ayrıntılarını kapat">
+          Kapat
+        </button>
+      </form>
+      <p id="detail-id" class="eyebrow"></p>
+      <h2 id="detail-title"></h2>
+      <dl id="detail-fields"></dl>
+      <p id="detail-notes"></p>
+    </dialog>
+    <noscript
+      ><p class="error">
+        Proje listesini görüntülemek için JavaScript'i etkinleştirin.
+      </p></noscript
+    >
+  </body>
 </html>

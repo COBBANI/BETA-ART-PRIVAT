@@ -1,13 +1,14 @@
 {
   "generatedAt": "2026-09-07",
   "canonicalWorkspace": {
-    "name": "BET - ART",
+    "name": "VERSEL TEAM",
     "slug": "bet-art",
     "teamId": "team_xNtowH7U0jXQrI53DFJFzH2o",
-    "currentlyVisibleProjectCount": 0
+    "currentlyVisibleProjectCount": 0,
+    "checkedAt": "2026-09-07T14:14:52.742442+00:00"
   },
   "policy": {
-    "workspace": "All production Vercel projects should live under BET - ART.",
+    "workspace": "All production Vercel projects should live under VERSEL TEAM / bet-art after source collection and mapping are complete.",
     "repository": "Keep products isolated as projects; use BETA-ART-PRIVAT as the central inventory/monorepo where appropriate.",
     "productionBranch": "main",
     "deployment": "Git-connected automatic deployment to Vercel production after approved changes reach main."
@@ -93,5 +94,8 @@
       "status": "source-created-ready-to-link",
       "notes": "Central project inventory/dashboard. Create/link this as a Vercel project under BET - ART with Root Directory = master."
     }
-  ]
+  ],
+  "archiveRoot": "WEB-2026-000",
+  "sourceCollectionComplete": false,
+  "deploymentVerificationComplete": false
 }
