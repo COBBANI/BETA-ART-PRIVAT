@@ -13,8 +13,10 @@ qblogg.com (mevcut site)          DEĞİŞMEDİ — sıfır bağımlılık, stat
         │  (yalnız bağlantı)
         ▼
 uye.qblogg.com (yeni, ayrı Vercel projesi)
-  uye/index.html   tek dosyalık istemci: magic link girişi + brief arşivi
-  uye/config.js    Supabase adresi + anon anahtarı (tek yapılandırma noktası)
+  uye/index.html   istemci iskeleti
+  uye/app.js       magic link girişi + brief arşivi (CSP uyumlu modül)
+  uye/build.mjs    Vercel ortamından dist/config.js üretir
+  uye/config.js    yalnız doğrudan yerel önizleme için boş yapılandırma
   uye/vercel.json  bu uygulamaya özel başlıklar/CSP
         │
         ▼
@@ -25,9 +27,9 @@ Supabase (auth.users + Postgres)
 - Ana sitenin dağıtımı `uye/` klasörünü hiç kopyalamaz; iki uygulama ayrı
   Vercel projeleridir. Sitenin "çerez yok, üçüncü taraf yok" vaadi bozulmaz —
   o vaat qblogg.com içindir, üye uygulamasının kendi gizlilik notu olacaktır.
-- Üye uygulaması bilinçli olarak derlemesizdir: tek HTML + depoya vendor'lanmış
-  supabase-js (uye/lib/, sürüm+lisans+sha256 kaydı lib/KAYNAK.md'de). CDN yok;
-  CSP yalnız *.supabase.co'ya bağlantıya izin verir.
+- Üye uygulaması bağımlılık kurmayan `node build.mjs` ile paketlenir; çıktı `dist`.
+  Supabase istemcisi depoda tutulur (uye/lib/, sürüm+lisans+sha256 kaydı
+  lib/KAYNAK.md içinde). CDN yok; CSP yalnız *.supabase.co bağlantılarına izin verir.
 - Gövde metinleri `textContent` ile basılır (markdown şimdilik düz metin
   gösterilir) — HTML enjeksiyon yüzeyi yoktur.
 
@@ -65,11 +67,34 @@ profiles → ilgili satırda `plan_status` = `active` (ödeme onayı sizden geç
    `https://qblogg-uye.vercel.app`, alan adı bağlanınca
    `https://uye.qblogg.com`) → Save. (Magic link e-postaları varsayılan
    Supabase göndericisiyle çalışır; özel gönderici v2 konusu.)
-4. **Anahtarları alın:** **Project Settings → API** → şu ikisini bana
-   yapıştırın: *Project URL* ve *anon public* anahtarı. (service_role
-   anahtarını PAYLAŞMAYIN — istemediğim tek anahtar o.)
-5. Gerisi bende: anahtarları `uye/config.js`'e işler, `qblogg-uye` Vercel
-   projesini dağıtır, giriş akışını uçtan uca test ederim.
+4. **Genel istemci ayarlarını alın:** Supabase projesinin **Connect** veya
+   **Settings → API Keys** ekranından Project URL ve `sb_publishable_...`
+   anahtarını alın. Eski `anon` anahtarı da desteklenir. `service_role` veya
+   `sb_secret_...` değerini tarayıcı uygulamasında kullanmayın.
+5. **Mevcut üyelik projesini ayarlayın:** Vercel → ilgili proje → **Settings →
+   Build and Deployment**: Root Directory `uye`, Build Command `node build.mjs`,
+   Output Directory `dist`, Install Command boş. Ardından **Settings →
+   Environment Variables** altında `UYE_SUPABASE_URL` ve
+   `UYE_SUPABASE_PUBLISHABLE_KEY` ekleyin. Eski anon anahtarı kullanılacaksa
+   ikinci ad `UYE_SUPABASE_ANON_KEY` olabilir. Preview ve Production ortamlarını
+   doğru Supabase projeleriyle ayrı ayrı eşleştirin; değerleri sohbete göndermeyin.
+6. **Yeniden dağıtın:** **Deployments → Redeploy**. Eksik ayarda derleme hangi
+   değişkenin gerektiğini söyler; gizli/yanlış türde anahtarı ve CSP dışı adresi
+   reddeder. Başarılı pakette yalnız istemci dosyaları bulunur; SQL ve kaynak
+   betikleri `dist/` içine alınmaz. Genel anahtar tarayıcıdan okunabilir; veri
+   güvenliği `schema.sql` içindeki RLS ve Supabase Auth üzerinden sağlanır.
+7. **Girişi doğrulayın:** önizleme URL'sini Supabase'in izinli Redirect URLs
+   listesine tam adresiyle ekleyin. Magic link ile giriş, çıkış, örnek brief ve
+   aktif olmayan kullanıcının ücretli brief erişimini sınayın.
+
+Yerel paketleme: Node.js 24+ ile proje kökünden
+`node --env-file=uye/.env.local uye/build.mjs`; `.env.local` içine yalnız yukarıdaki
+iki genel istemci ayarını yazın ve bu dosyayı Git'e eklemeyin. Doğrudan statik
+önizlemede kaynak `config.js` boş kaldığında kurulum ekranı gösterilir.
+
+Bu değişiklik Supabase projesi veya kullanıcı oluşturmaz; gerçek proje URL'si,
+anahtarı, Auth izinleri ve RLS kurulumu ayrıca doğrulanmalıdır.
+Kaynak: [Supabase API keys](https://supabase.com/docs/guides/getting-started/api-keys).
 
 ## v1 sınırları (bilinçli)
 

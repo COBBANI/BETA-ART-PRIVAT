@@ -1,34 +1,52 @@
 # Yayına alma — qblogg.com
 
-Site saf statik: derleme adımı yok, sunucu tarafı kod yok. Herhangi bir statik
-barındırıcıya olduğu gibi yüklenir. Aşağıdaki adımlar Vercel içindir.
+Site saf statik; Vercel için bağımlılık kurmadan yalnız yayın dosyalarını
+`dist/` içine kopyalayan bir paketleme adımı vardır.
 
-## 1. Yayınla
+## 1. Mevcut projeyi güncelle
 
-Depo bu ortamdan GitHub'a gönderilemiyor (GitHub App'in yazma izni kapalı), bu
-yüzden ilk yayın kendi makinenizden yapılır. Proje klasörünün içinde:
+| Ayar | Değer |
+|---|---|
+| Git deposu | `andersenbetul-alt/BETA-ART-PRIVAT` |
+| Ana site Root Directory | `.` |
+| Framework | Other |
+| Build Command | `bash scripts/vercel-build.sh` |
+| Output Directory | `dist` |
+| Install Command | Boş (`vercel.json` içinde tanımlı) |
+
+`QBLOGG` ve `qb` depoları uygulama kodu içermez. Ana site kaynağı yukarıdaki
+depodur. Yönetim paneli için kök `panel`, üyelik için kök `uye` olan mevcut
+Vercel projeleri kullanılır; üyelik ayarları [docs/uye-sistemi.md](docs/uye-sistemi.md).
+
+Önce seçili sürümü yerelde doğrulayın:
 
 ```bash
-npx vercel login          # bir kereye mahsus
-npx vercel --prod
+npm run check
+node --test scripts/deployment.test.mjs
+bash scripts/vercel-build.sh
 ```
 
-Sorduklarına şöyle cevap verin:
+Vercel'de mevcut QBLOGG projesinin **Settings → Git** bağlantısını ve
+**Settings → Build and Deployment** içindeki kökü yukarıdaki tabloyla
+karşılaştırın. Git bağlantısı etkinse düzeltme dalına gönderim önizleme üretir.
 
-| Soru | Cevap |
-|---|---|
-| Set up and deploy? | **y** |
-| Which scope? | **BET - ART** |
-| Link to existing project? | **n** |
-| Project name? | **qblogg** |
-| In which directory is your code? | **./** (Enter) |
-| Want to modify settings? | **n** — `vercel.json` zaten doğru ayarlı |
+CLI kullanılıyorsa `TAKIM_KODU` yerine mevcut projenin doğrulanmış takım kodunu
+yazın; proje adını da mevcut proje kaydıyla eşleştirin:
 
-Çıktıda `https://qblogg-....vercel.app` adresi verilir. Alan adını bağlamadan
-önce bu adreste siteyi bir kez açıp kontrol edin.
+```bash
+npx vercel link --scope TAKIM_KODU --project qblogg
+npx vercel
+```
 
-**Not:** GitHub yazma izni açılırsa bu adım tamamen kalkar. Depoyu Vercel'e
-bağladığınızda her push kendiliğinden yayına gider ve elle dağıtım gerekmez.
+`READY` önizleme üzerinde ana sayfa, blog, yazı ve form akışlarını kontrol edin.
+Üretim yayını için doğrulanan sürümü mevcut üretim dalına birleştirin veya aynı
+kaynak klasöründe `npx vercel --prod` çalıştırın. Yalnız `vercel.json` yüklemek
+artık yeterli değildir: yapılandırma, betik ve site kaynakları birlikte gerekir.
+Derleme başka bir deponun güncel `main` dalını indirmez.
+
+7 Eylül 2026 erişim kontrolünde bağlantı yalnız boş `bet-art` takımını döndürdü;
+`beta-art-master` projeleri listelenemedi. Bu, yukarıdaki Git bağlantısının veya
+canlı yayının etkin olduğunun doğrulandığı anlamına gelmez.
 
 ## 2. Alan adını bağla — qblogg.com (GoDaddy)
 
@@ -106,5 +124,6 @@ komutla yapılıyor.
   Yeni bir sayfaya satır içi `<script>` eklerseniz **sessizce çalışmaz**;
   kodu `assets/js/app.js` içine koyun.
 
-`.vercelignore` motoru, betikleri, dokümanları ve türev içerik kaynaklarını
-yayının dışında tutuyor — bunların hiçbiri tarayıcıya gitmemeli.
+`.vercelignore` motoru, dokümanları ve gerekli olmayan betikleri yükleme dışında
+tutar. `scripts/vercel-build.sh` derleme için yüklenir; tarayıcıya yalnız `dist/`
+sunulur. Her derleme eski çıktıyı temizler.
