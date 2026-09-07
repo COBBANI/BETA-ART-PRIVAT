@@ -18,7 +18,10 @@ The `panel` and `uye` directories are separate application roots. Their
 JavaScript is loaded from local `app.js` files so the existing
 `script-src 'self'` policy can remain in place. The root QBLOGG build does not
 include these applications. The membership application still needs valid
-Supabase configuration, and the content panel still needs its intended access
+Supabase configuration through `UYE_SUPABASE_URL` and
+`UYE_SUPABASE_PUBLISHABLE_KEY` (or `UYE_SUPABASE_ANON_KEY`). It now builds with
+`node build.mjs` and publishes `dist`; missing or privileged keys stop the build.
+See [membership setup](uye-sistemi.md). The content panel still needs its intended access
 protection and an authorized GitHub account.
 
 Before accepting a migration, verify the Vercel team, project, root directory,
@@ -30,6 +33,7 @@ Validation commands:
 
 ```bash
 node scripts/check.mjs
+node --test scripts/deployment.test.mjs
 bash scripts/vercel-build.sh
 node --check panel/app.js
 node --check uye/app.js

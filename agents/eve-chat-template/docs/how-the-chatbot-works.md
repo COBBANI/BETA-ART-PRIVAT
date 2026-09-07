@@ -606,6 +606,10 @@ Starter mode uses a shared deployment password. The login route verifies
 database. `lib/session.ts` and `lib/eve-auth.ts` verify the same cookie for the
 Next.js UI and eve route boundary.
 
+Hosted password sign-in first consumes a shared project/environment Redis
+allowance: 10 attempts per 15-minute fixed window. Exhaustion returns `429` and
+`Retry-After`; missing or unavailable Redis returns `503` without a session.
+
 Production mode uses Better Auth with Sign in with Vercel.
 
 `lib/auth-url.ts` resolves the base app URL in this order:
@@ -670,8 +674,9 @@ type SetupStatus = {
 };
 ```
 
-The starter is ready when `EVE_CHAT_PASSWORD` is non-empty. A strong value with
-16+ characters is recommended. Local development is ready on loopback without
+The hosted starter is ready when `EVE_CHAT_PASSWORD` is non-empty and a complete
+Redis REST credential pair is configured. A strong password with 16+ characters
+is recommended. Local development is ready on loopback without
 configuration. Production mode is
 selected when all of these are configured:
 
@@ -699,7 +704,9 @@ Disabled composers should always provide a reason through tooltip text.
 
 ## Rate Limiting
 
-Production-mode rate limiting uses Upstash Redis in `lib/rate-limit.ts`.
+Hosted password login and production-mode per-user limits use Upstash Redis in
+`lib/rate-limit.ts`. Password login requires the store; explicit local development
+may omit it. Counters and their expiry are written in one Redis Lua operation.
 
 The app supports either current Upstash env names:
 

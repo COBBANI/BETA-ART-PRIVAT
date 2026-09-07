@@ -19,10 +19,12 @@ The commands below use `vercel`. If you do not have a global install, replace `v
 
 ## One-Click Deploy
 
-The README deploy button creates a working starter without Marketplace products or migrations. It asks for:
+The README deploy button uses this repository. Hosted password access requires Redis for a limit shared by all server instances; it still needs no Postgres database or migrations. Configure:
 
 ```bash
 EVE_CHAT_PASSWORD=
+UPSTASH_REDIS_REST_URL=
+UPSTASH_REDIS_REST_TOKEN=
 ```
 
 Use a strong value; 16+ characters are recommended. The app exchanges it for a secure, HTTP-only session cookie. Chats and eve session cursors are stored in the current browser's localStorage, so history does not follow the user to another browser.
@@ -32,6 +34,34 @@ the same eve principal and any user-scoped connection grants. Upgrade to
 production mode before giving independent users access.
 
 If `EVE_CHAT_PASSWORD` is absent and the full production environment is not configured, the deployment fails closed and does not allow chat requests.
+
+## Existing Password Deployment
+
+Use the existing Vercel project. In **Settings → Environment Variables**, add a
+complete `UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN` pair for each hosted
+environment, then redeploy that project. A complete `KV_REST_API_URL` /
+`KV_REST_API_TOKEN` pair is also accepted. Partial pairs are never combined.
+If the project has no Redis resource, connect an Upstash Redis database through
+its Storage/Marketplace settings. Keep the REST token in Vercel environment
+variables, not in source code or chat messages.
+
+Password sign-in allows **10 attempts per 15-minute fixed window**, shared by
+all clients of the project and environment. This includes successful and
+malformed attempts. An attacker who knows the public URL can temporarily consume
+the shared allowance; already-issued sessions continue to work. For independent
+users, use the production identity mode below. Preview and Production use
+separate buckets. On other hosts, use a separate Redis database per application.
+
+The 11th attempt returns `429` with `Retry-After`. Missing Redis configuration,
+unavailable Redis, or an invalid counter returns `503` without a session cookie;
+missing credentials also appear in setup status. The Redis increment and expiry
+run atomically. Requests have a three-second store timeout and are not retried.
+Explicit local `next dev` outside Vercel can run without Redis.
+
+Verify locally with `pnpm test`, `pnpm typecheck`, and `pnpm build`. The login
+suite uses a Redis test double; after deployment, verify real Redis counters and
+expiry, successful sign-in, the 11th-attempt `429`, and session cookies on a
+protected preview. Do not run the attempt test against a live operator's bucket.
 
 ## Production Persistence Upgrade
 
@@ -64,7 +94,7 @@ vercel link --scope <team-slug>
 
 ## Production Storage
 
-Neon and Upstash Redis are required only for production mode.
+Neon is required only for database-backed production mode. Upstash Redis is also required for hosted password sign-in.
 
 Provision Neon:
 
@@ -304,7 +334,7 @@ If sign-in redirects to an auth error after the OAuth consent screen, confirm th
 
 If `pnpm db:migrate` says `DATABASE_URL` is missing, either run `vercel env run -e production -- pnpm db:migrate` for production or pull a Development-scoped Neon env var into `.env.local`.
 
-If rate limiting setup is missing, provision Upstash Redis and pull env vars again.
+If password sign-in returns `503`, verify that a complete Redis REST credential pair is attached to this environment and redeploy. If credentials are present, check Redis availability. A `429` means the shared attempt allowance is exhausted; wait for `Retry-After`.
 
 If Notion tool calls fail, confirm that `NOTION_CONNECTOR` is set in Vercel, the connector is attached to the project, and local env vars have been pulled again.
 
