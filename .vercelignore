@@ -2,6 +2,7 @@
 # Site saf statik; bunların hiçbiri tarayıcıya gitmiyor.
 engine/
 scripts/
+!scripts/vercel-derle.sh
 # Inter'in resmi dağıtımı — 60 MB, hak paketi kanıtı. Site alt kümeleri
 # assets/fonts/ altından yüklüyor; bu klasörün yayına çıkması gereksiz
 # yük ve gereksiz bir yeniden dağıtımdır.
