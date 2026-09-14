@@ -1,0 +1,10 @@
+{
+  "kind": "Source-rendered structure and content export validation",
+  "date": "2026-09-05",
+  "routes": 30,
+  "route_issues": [],
+  "translation_keys": 333,
+  "missing_translation_keys": [],
+  "browser_validation": false,
+  "production_database_validation": false
+}

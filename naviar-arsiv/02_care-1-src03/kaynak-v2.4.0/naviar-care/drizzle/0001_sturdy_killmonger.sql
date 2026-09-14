@@ -1,0 +1,1 @@
+CREATE UNIQUE INDEX `booking_slot_active` ON `bookings` (`slot_id`) WHERE "bookings"."status" = 'confirmed';

@@ -1,0 +1,31 @@
+{
+  "documentation_chapters": 20,
+  "historical_documents": 10,
+  "application_tests_passed": 37,
+  "application_tests_failed": 0,
+  "structural_routes": 30,
+  "translation_keys": 333,
+  "languages": [
+    "nb",
+    "en",
+    "tr"
+  ],
+  "database_tables": [
+    "audit",
+    "bookings",
+    "events",
+    "messages",
+    "outbox",
+    "rate_limits",
+    "slots",
+    "webhook_events"
+  ],
+  "source_files": 62,
+  "source_commit": "2d1ea68e47568086462c3ed304f1479010bb0222",
+  "source_archive_file": "NAVIAR-CARE-001-WEB-01_KAYNAK-KOD_v2.4.0.zip",
+  "source_archive_sha256": "eb75e82a9754acd239730195d760959f2a14a6ba5c30f5ac7634265d7fd3729f",
+  "source_archive_bytes": 4508715,
+  "book_structure_valid": true,
+  "all_document_registry_paths_exist": true,
+  "new_browser_or_live_provider_verification": false
+}

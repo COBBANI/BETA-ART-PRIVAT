@@ -1,0 +1,50 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> naviar-care@2.4.0 test
+> node --test tests/*.test.mjs
+
+✔ booking Enter advances valid steps; one available slot still needs explicit selection (44.828865ms)
+✔ pending booking blocks duplicate submissions and renders a clear test confirmation (9.889465ms)
+✔ retry after a lost response keeps the original booking idempotency key (9.524775ms)
+✔ an older availability response cannot replace the latest list (4.396166ms)
+✔ language links follow the newly chosen service in all languages (13.477102ms)
+✔ a failed booking list can be refreshed without a full page reload (3.084229ms)
+✔ HTTP preview without randomUUID starts and advances booking with secure IDs (9.022969ms)
+✔ all public routes render in three equivalent languages (31.141145ms)
+✔ booking persisted, replay deduplicated, slot collision rejected, and email suppressed in preview (14.383028ms)
+✔ ownership boundary, cancellation and slot reuse (7.714036ms)
+✔ admin authorization, CSRF, real-data preview guard and unknown inputs (4.364849ms)
+✔ Oslo times reject nonexistent and ambiguous daylight-saving hours (16.537024ms)
+✔ overlapping coordinator times cannot be added (8.504608ms)
+✔ analytics needs explicit permission and deduplicates without identity or form data (3.529589ms)
+✔ contact message is durable, escaped on client and replay is deduplicated (2.358706ms)
+✔ payments are blocked before configuration even with client supplied amount (2.734391ms)
+✔ email provider failure remains visible and retry uses the same deduplication key (3.830353ms)
+✔ signed payment events validate raw body, time and idempotent state (6.298703ms)
+✔ demand forecasting rejects empty and thin history (0.516379ms)
+✔ service guide renders equivalent choices and a descriptive title in all languages (5.728785ms)
+✔ message workflow is administrator-only, versioned, audited and rejects stale changes (5.074187ms)
+✔ only free future slots can be closed, and closed slots reject bookings (13.365424ms)
+✔ closing a slot between availability lookup and insert cannot leave a booking or email (2.664165ms)
+✔ a removed time can be offered again without changing earlier booking history (8.863789ms)
+✔ operational metrics exclude test data and keep empty denominators unknown (4.064025ms)
+✔ content review suggestions wait for adequate views and use a labelled provisional rule (1.042711ms)
+✔ checkout uses the stored amount and retrieves known sessions even after 24 hours (5.945852ms)
+✔ uncertain checkout retries keep the original attempt and stop before key expiry (4.871983ms)
+✔ retrieved completed checkout stays pending and verified expiry requires renewed acceptance (7.197308ms)
+✔ checkout rejects provider amount, session identity and insecure redirect mismatches (19.88472ms)
+✔ asynchronous payment stays pending; expiry reopens the offer and accepts webhook replays (3.859557ms)
+✔ enquiries expose only the authenticated sender and carry coordinator status updates (3.194785ms)
+✔ preview and administrator analytics are excluded; live next-step events are bounded and deduplicated (3.832095ms)
+✔ readiness reports missing prerequisites without exposing runtime values (1.828046ms)
+✔ retry never sends an obsolete confirmation for an already cancelled booking (3.806357ms)
+✔ forecast keeps the held-out test weeks out of method selection and names its current-week horizon (0.334394ms)
+✔ integrated multilingual pages preserve service detail, demo labels and private enquiry navigation (9.344534ms)
+ℹ tests 37
+ℹ suites 0
+ℹ pass 37
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 384.956798

@@ -1,0 +1,18 @@
+✔ minimal request validates real dates, Oslo date window, consent and sensitive extra fields (14.177861ms)
+✔ idempotency creates exactly one request, one email and one demand count; changed input conflicts (2.53375ms)
+✔ human-confirmed slots reject overlaps and buffer conflicts, allow a 15 minute gap (1.627138ms)
+✔ webhook rejects modified raw body, stale signature and missing configuration (0.715327ms)
+✔ payment settles only a matching signed event, is idempotent and cannot be downgraded (2.626027ms)
+✔ checkout uses server quote, test keys and hosted Stripe destination only (0.71063ms)
+✔ outbox sends only to configured test recipient and records accepted, not delivered (1.811052ms)
+✔ analytics rejects identifiers and non-consent; forecast uses complete weeks and holdout (1.479487ms)
+✔ all three languages have complete text keys and render semantic page with no undefined copy (0.935316ms)
+✔ HTTP: origin protection, scoped status, private administration, review gates and provider failure (58.688505ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 170.763256

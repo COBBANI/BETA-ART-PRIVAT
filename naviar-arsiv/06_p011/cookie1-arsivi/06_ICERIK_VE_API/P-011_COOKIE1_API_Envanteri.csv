@@ -1,0 +1,16 @@
+﻿method,path,access,purpose
+GET,/api/status,Herkese açık,Geliştirme ve sağlayıcı yapılandırma durumu
+POST,/api/requests,Origin + tekilleştirme anahtarı,Talep doğrulama ve yerel kayıt
+POST,/api/request/status,Talebe özel Bearer jetonu,Kendi talebinin durumunu sorgulama
+POST,/api/request/cancel,Talebe özel Bearer jetonu,İptal; varsa iade için insan incelemesi
+POST,/api/checkout,Talebe özel jeton + teklif/randevu koşulları,Stripe test Checkout
+POST,/api/payments/webhook,Ham gövde imzası + zaman/tutar/olay denetimi,Yalnızca test ödeme olayı işleme
+POST,/api/events,Origin + izinli alanlar + consent=true,Toplu etkileşim sayacı
+POST,/api/admin/login,En az 32 karakter yapılandırılmış erişim anahtarı,30 dakika yönetim oturumu
+POST,/api/admin/logout,Yönetim oturumu,Oturumu sonlandırma
+GET,/api/admin/overview,Yönetim oturumu,"Sınırlı liste, toplu ölçüler, başlangıç tahmini"
+POST,/api/admin/quote,Yönetim oturumu,Test teklif tutarı
+POST,/api/admin/confirm,Yönetim oturumu + scopeReviewed/authorityReviewed,İnsan onayı ve zaman çakışması kontrolü
+POST,/api/admin/outbox/dispatch,Yönetim oturumu + test alıcısı,Kuyruktan test e-postası gönderme
+POST,/api/admin/demand/complete-week,Yönetim oturumu + reviewed=true,Tamamlanmış haftanın kalite kaydı
+POST,/api/admin/retention,Yönetim oturumu,Sınırlı test verisi temizliği

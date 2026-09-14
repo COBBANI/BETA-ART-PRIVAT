@@ -1,0 +1,31 @@
+﻿number,status,title,package_path,bytes
+01,Yeni belge,"Proje kimliği, sürüm ve teslim kapsamı",01_BELGELER/01_PROJE-KIMLIGI.md,2262
+02,Yeni belge,"Konsept, hedef kitle ve iş modeli",01_BELGELER/02_KONSEPT-VE-IS-MODELI.md,2829
+03,Yeni belge,Hizmet yolculuğu ve operasyon planı,01_BELGELER/03_HIZMET-TASARIMI.md,2849
+04,Yeni belge,"Marka, görsel tasarım ve erişilebilirlik",01_BELGELER/04_MARKA-VE-TASARIM.md,2966
+05,Yeni belge,Web sayfası baştan sona nasıl yapıldı?,01_BELGELER/05_WEB-SAYFASI-NASIL-YAPILDI.md,3927
+06,Yeni belge,Sayfa haritası ve kod dosyalarının görevleri,01_BELGELER/06_SAYFA-VE-DOSYA-HARITASI.md,3172
+07,Yeni belge,Teknik mimari ve veri modeli,01_BELGELER/07_MIMARI-VE-VERI.md,3344
+08,Yeni belge,Rezervasyonun işleyişi ve hata durumları,01_BELGELER/08_REZERVASYON-AKISI.md,3040
+09,Yeni belge,API sözleşmesi ve örnek istekler,01_BELGELER/09_API-REFERANSI.md,3865
+10,Yeni belge,Fiyat teklifi ve ödeme sistemi,01_BELGELER/10_ODEME-SISTEMI.md,3133
+11,Yeni belge,E-posta ve başvuru iletişimi,01_BELGELER/11_EPOSTA-SISTEMI.md,2652
+12,Yeni belge,"Proje sahibi, kullanıcı ve yönetici rehberi",01_BELGELER/12_KULLANIM-REHBERI.md,3100
+13,Yeni belge,"Gizlilik, güvenlik ve veri sorumlulukları",01_BELGELER/13_GIZLILIK-VE-GUVENLIK.md,3410
+14,Yeni belge,"Üç dil, açık dil ve içerik yönetimi",01_BELGELER/14_DIL-ICERIK-VE-SEO.md,2903
+15,Yeni belge,"Kurulum, ortam ayarları, yayın ve bakım",01_BELGELER/15_KURULUM-YAYIN-BAKIM.md,3670
+16,Yeni belge,"Test, kalite kanıtı ve kabul planı",01_BELGELER/16_TEST-VE-KALITE.md,2984
+17,Yeni belge,"İçerik analizi, talep tahmini ve başarı ölçümü",01_BELGELER/17_ANALIZ-VE-BASARI-OLCUMU.md,2911
+18,Yeni belge,İşletim belgeleri ve doldurulacak kayıtlar,01_BELGELER/18_ISLETIM-SABLONLARI.md,2969
+19,Yeni belge,"Açılış eksikleri, karar kaydı ve devir",01_BELGELER/19_ACILIS-KARAR-VE-DEVIR.md,3388
+20,Yeni belge,"Kaynaklar, kod paketini kullanma ve yeniden üretim",01_BELGELER/20_KAYNAKLAR-VE-KODU-KULLANMA.md,3481
+H01,Tarihsel kayıt,NAVIAR-CARE-001-WEB-01_DOC-011_Konsept-ve-Web-Tasarimi_v1.0.docx,03_ONCEKI_BELGELER/NAVIAR-CARE-001-WEB-01_DOC-011_Konsept-ve-Web-Tasarimi_v1.0.docx,169375
+H02,Tarihsel kayıt,NAVIAR-CARE-001-WEB-01_DOC-011_Konsept-ve-Web-Tasarimi_v1.0.md,03_ONCEKI_BELGELER/NAVIAR-CARE-001-WEB-01_DOC-011_Konsept-ve-Web-Tasarimi_v1.0.md,23378
+H03,Tarihsel kayıt,NAVIAR-CARE-001-WEB-01_DOC-001_KONSEPT_v1.0.html,03_ONCEKI_BELGELER/NAVIAR-CARE-001-WEB-01_DOC-001_KONSEPT_v1.0.html,11846
+H04,Tarihsel kayıt,NAVIAR-CARE-001-WEB-01_DOC-005_LOGO-SECIM_v1.0.html,03_ONCEKI_BELGELER/NAVIAR-CARE-001-WEB-01_DOC-005_LOGO-SECIM_v1.0.html,356977
+H05,Tarihsel kayıt,NAVIAR-CARE-001-WEB-01_DOC-007_GELISTIRME.html,03_ONCEKI_BELGELER/NAVIAR-CARE-001-WEB-01_DOC-007_GELISTIRME.html,11392
+H06,Tarihsel kayıt,NAVIAR-CARE-001-WEB-01_DOC-010_TESLIM_v2.4.html,03_ONCEKI_BELGELER/NAVIAR-CARE-001-WEB-01_DOC-010_TESLIM_v2.4.html,9806
+H07,Tarihsel kayıt,NAVIAR-CARE-001-WEB-01_REV-20260904-01.md,03_ONCEKI_BELGELER/NAVIAR-CARE-001-WEB-01_REV-20260904-01.md,37955
+H08,Tarihsel kayıt,NAVIAR-CARE-001-WEB-01_DOC-009_PLATFORM-STUDIO.html,03_ONCEKI_BELGELER/NAVIAR-CARE-001-WEB-01_DOC-009_PLATFORM-STUDIO.html,15182
+H09,Tarihsel kayıt,NAVIAR-CARE-001-WEB-01_DOC-009_STUDIO_v2.2.html,03_ONCEKI_BELGELER/NAVIAR-CARE-001-WEB-01_DOC-009_STUDIO_v2.2.html,17592
+H10,Tarihsel kayıt,NAVIAR-CARE-001-WEB-01_DOC-010_FINAL-TESLIM_v2.4.html,03_ONCEKI_BELGELER/NAVIAR-CARE-001-WEB-01_DOC-010_FINAL-TESLIM_v2.4.html,10286

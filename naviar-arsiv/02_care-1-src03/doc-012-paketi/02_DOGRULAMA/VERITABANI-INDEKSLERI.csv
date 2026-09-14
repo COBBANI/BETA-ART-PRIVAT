@@ -1,0 +1,17 @@
+﻿table,index,unique,partial,columns
+audit,sqlite_autoindex_audit_1,1,0,id
+bookings,booking_slot_active,1,1,slot_id
+bookings,booking_created,0,0,created
+bookings,booking_owner,0,0,owner
+bookings,booking_idem,1,0,"owner,idem"
+bookings,sqlite_autoindex_bookings_1,1,0,id
+events,event_date,0,0,created
+events,event_once,1,0,"session,kind,section,day"
+events,sqlite_autoindex_events_1,1,0,id
+messages,message_idem,1,0,"owner,idem"
+messages,sqlite_autoindex_messages_1,1,0,id
+outbox,sqlite_autoindex_outbox_1,1,0,id
+rate_limits,sqlite_autoindex_rate_limits_1,1,0,key
+slots,slots_start,1,1,start
+slots,sqlite_autoindex_slots_1,1,0,id
+webhook_events,sqlite_autoindex_webhook_events_1,1,0,id

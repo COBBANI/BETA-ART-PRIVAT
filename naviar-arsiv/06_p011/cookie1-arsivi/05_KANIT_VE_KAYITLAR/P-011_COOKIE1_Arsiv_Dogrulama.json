@@ -1,0 +1,21 @@
+{
+  "archive_id": "P-011-COOKIE1-ARSIV-20260905-v1.0",
+  "source_version": "0.4.0",
+  "verified_original_or_extracted_files": 47,
+  "extracted_source_files": 37,
+  "original_zip_crc": "passed v0.3.0 and v0.4.0",
+  "source_bytes_match_original_zip": true,
+  "automated_tests": {
+    "passed": 13,
+    "failed": 0,
+    "node": "24.19.0"
+  },
+  "static_build": "passed",
+  "public_content_keys_per_locale": 154,
+  "docx_visual_review": {
+    "pages": 9,
+    "status": "all pages inspected; no clipping/overlap observed"
+  },
+  "current_turn_browser_test": "not performed",
+  "production_or_domain_confirmation": "not verified"
+}

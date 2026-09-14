@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="{{description}}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src data:; style-src 'unsafe-inline'; script-src 'unsafe-inline'; connect-src 'none'; form-action 'none'; base-uri 'none'; object-src 'none'">
+  <title>NAVIAR CARE — Praktisk hjelp. På dine premisser.</title>
+  <link rel="icon" href="{{logo}}">
+  <style>{{css}}</style>
+</head>
+<body>
+  <a class="skip" href="#main" data-copy="skip"></a>
+  <div class="pilot-bar" data-copy="previewBar"></div>
+  <header class="site-header">
+    <div class="header-inner preview-header">
+      <a class="brand" href="#main" aria-label="NAVIAR CARE"><img src="{{logo}}" alt="NAVIAR CARE" width="174" height="48"></a>
+      <button class="preview-menu" id="menu-toggle" aria-expanded="false" aria-controls="primary-nav" data-copy="menu"></button>
+      <nav class="preview-nav" id="primary-nav" aria-label="NAVIAR CARE">
+        <a href="#services" data-copy="services"></a>
+        <a href="#family" data-copy="family"></a>
+        <a href="#safety" data-copy="safety"></a>
+        <a href="#request" data-copy="previewAction"></a>
+      </nav>
+      <div class="preview-languages" role="group" aria-label="Språk / Language / Dil">
+        <button data-lang="nb" lang="nb" aria-label="Norsk Bokmål" aria-pressed="true">NO</button>
+        <button data-lang="en" lang="en" aria-label="English" aria-pressed="false">EN</button>
+        <button data-lang="tr" lang="tr" aria-label="Türkçe" aria-pressed="false">TR</button>
+      </div>
+    </div>
+  </header>
+  <main id="main" tabindex="-1">
+    <section class="wrap hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow" data-copy="heroEyebrow"></p>
+        <h1 id="hero-title"><span data-copy="heroTitle"></span><em data-copy="heroAccent"></em></h1>
+        <p class="lead" data-copy="heroBody"></p>
+        <div class="actions"><a href="#request" class="button primary" data-copy="previewAction"></a><a href="#services" class="text-link" data-copy="explore"></a></div>
+        <p class="hero-note" data-copy="familyNote"></p>
+      </div>
+      <figure class="hero-image"><img src="{{hero}}" data-copy-alt="heroAlt" alt="{{heroAlt}}" width="1000" height="1000"><figcaption data-copy="imageCaption"></figcaption></figure>
+    </section>
+    <div class="promise-strip"><div class="wrap promises">{{promises}}</div></div>
+    <section class="wrap section" id="services" aria-labelledby="services-title">
+      <div class="section-heading"><div><p class="eyebrow" data-copy="services"></p><h2 id="services-title" data-copy="serviceTitle"></h2></div><p data-copy="requestScope"></p></div>
+      <div class="service-grid">{{services}}</div>
+      <p class="small" data-copy="scopeNote"></p>
+    </section>
+    <section class="how-section"><div class="wrap section"><p class="eyebrow">NAVIAR CARE</p><h2 data-copy="howTitle"></h2><div class="steps">{{steps}}</div></div></section>
+    <section class="wrap section family-callout preview-family" id="family" aria-labelledby="family-title">
+      <div><p class="eyebrow" data-copy="family"></p><h2 id="family-title" data-copy="familyTitle"></h2><p class="lead" data-copy="familyBody"></p></div>
+      <div class="sharing-panel"><h3 data-copy="promise1"></h3><p data-copy="recipientRule"></p><p><strong data-copy="familyNote"></strong></p><a class="text-link" data-app-link="/family" data-copy="familyLink"></a></div>
+    </section>
+    <section class="preview-safety" id="safety"><div class="wrap section"><div class="section-heading"><div><p class="eyebrow" data-copy="safety"></p><h2 data-copy="safetyTitle"></h2></div><p data-copy="safetyIntro"></p></div><div class="three-cards">{{safety}}</div><div class="notice" data-copy="beforeLaunchBody"></div><p data-copy="moneyRules"></p></div></section>
+    <section class="wrap section preview-form-section" id="request" aria-labelledby="request-title">
+      <div class="section-heading"><p class="eyebrow" data-copy="previewAction"></p><h2 id="request-title" data-copy="bookingTitle"></h2><p data-copy="previewIntro"></p></div>
+      <div class="booking-layout">
+        <form id="preview-form" class="booking-card" novalidate>
+          <noscript><p>Denne lokale forhåndsvisningen trenger JavaScript for språkvalg og oppsummering. Ingen bestilling sendes.</p></noscript>
+          <div class="error error-summary" id="form-errors" role="alert" tabindex="-1" hidden></div>
+          <fieldset class="preview-fields" disabled><legend data-copy="serviceStep"></legend>
+            <label for="choice-service"><span data-copy="services"></span><select id="choice-service" name="service" required><option value="" data-copy="serviceStep"></option>{{options}}</select></label>
+          </fieldset>
+          <fieldset class="preview-fields" disabled><legend data-copy="timeStep"></legend>
+            <div class="fields two"><label for="choice-date"><span data-copy="date"></span><input type="date" id="choice-date" name="date" required></label><label for="choice-time"><span data-copy="time"></span><input type="time" id="choice-time" name="time" value="10:00" required></label></div>
+            <p class="small" data-copy="timezone"></p>
+            <label for="choice-duration"><span data-copy="duration"></span><select id="choice-duration" name="duration">{{durations}}</select></label>
+          </fieldset>
+          <fieldset class="preview-fields" disabled><legend data-copy="personStep"></legend>
+            <label for="choice-forWhom"><span data-copy="personStep"></span><select id="choice-forWhom" name="forWhom"><option value="self" data-copy="self"></option><option value="other" data-copy="someone"></option></select></label>
+          </fieldset>
+          <div class="form-actions"><button class="button primary" id="preview-submit" type="submit" disabled data-copy="previewSummary"></button></div>
+        </form>
+        <aside class="booking-aside"><h3 data-copy="price"></h3><p data-copy="pricePending"></p><hr><h3 data-copy="requestScope"></h3><p data-copy="faq3Body"></p><p class="small" data-copy="previewPrivacy"></p></aside>
+      </div>
+      <section class="preview-result narrow" id="preview-result" tabindex="-1" aria-labelledby="result-title" hidden>
+        <h3 id="result-title" data-copy="previewResult"></h3>
+        <dl class="review-list"><div><dt data-copy="services"></dt><dd data-result="service"></dd></div><div><dt data-copy="when"></dt><dd data-result="time"></dd></div><div><dt data-copy="duration"></dt><dd data-result="duration"></dd></div><div><dt data-copy="personStep"></dt><dd data-result="forWhom"></dd></div><div><dt data-copy="price"></dt><dd data-copy="pricePending"></dd></div></dl>
+        <p id="recipient-rule" data-copy="recipientRule" hidden></p><p data-copy="previewState"></p><div class="actions"><button type="button" class="button secondary" id="reset-preview" data-copy="resetPreview"></button><a class="text-link" data-app-link="/booking" data-copy="openApp"></a></div><p class="small" data-copy="appNote"></p>
+      </section>
+    </section>
+    <section class="wrap section faq"><div><p class="eyebrow">NAVIAR CARE</p><h2 data-copy="faq"></h2></div><div>{{faq}}</div></section>
+    <section class="wrap section narrow preview-privacy" id="privacy"><h2 data-copy="privacyTitle"></h2><p data-copy="previewPrivacy"></p><a class="text-link" data-app-link="/privacy" data-copy="openApp"></a></section>
+  </main>
+  <footer><div class="wrap footer-main"><div class="footer-brand"><span>NAVIAR <b>CARE</b></span><p data-copy="footer"></p><p class="small" data-copy="previewBar"></p></div><div class="footer-links"><h2 data-copy="services"></h2><a href="#services" data-copy="explore"></a><a href="#request" data-copy="previewAction"></a><a href="#family" data-copy="family"></a></div><div class="footer-links"><h2 data-copy="openApp"></h2><a data-app-link="/helper" data-copy="helper"></a><a data-app-link="/account" data-copy="account"></a><a href="#privacy" data-copy="privacy"></a><a data-app-link="/terms" data-copy="terms"></a></div></div><div class="wrap footer-bottom"><span>© 2026 NAVIAR CARE · SRC-03</span><span>Norsk Bokmål · English · Türkçe</span></div></footer>
+  <script>{{script}}</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "name": "naviar-care",
+  "version": "2.4.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "db:generate": "drizzle-kit generate",
+    "test": "node --test tests/*.test.mjs",
+    "dev": "vite"
+  },
+  "devDependencies": {
+    "drizzle-kit": "0.31.10",
+    "drizzle-orm": "0.45.2",
+    "esbuild": "0.27.4",
+    "linkedom": "^0.18.13",
+    "vite": "^8.2.2"
+  }
+}

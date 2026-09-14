@@ -1,0 +1,55 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1788573889250,
+      "tag": "0000_high_hydra",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1788573952938,
+      "tag": "0001_sturdy_killmonger",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1788574178872,
+      "tag": "0002_legal_callisto",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1788576476911,
+      "tag": "0003_fuzzy_blazing_skull",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "6",
+      "when": 1788576751339,
+      "tag": "0004_familiar_morlocks",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "6",
+      "when": 1788603115852,
+      "tag": "0005_windy_golden_guardian",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "6",
+      "when": 1788621608361,
+      "tag": "0006_bent_wolf_cub",
+      "breakpoints": true
+    }
+  ]
+}

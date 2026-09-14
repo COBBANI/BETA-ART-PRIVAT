@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="NAVIAR CARE – en roligere vei gjennom tjenester og avtaler for pårørende." />
+    <title>NAVIAR CARE – Pårørendepilot</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="nav">
+      <a class="brand" href="#top" aria-label="NAVIAR CARE hjem">
+        <span class="brand-mark">N</span>
+        <span>NAVIAR <em>CARE</em></span>
+      </a>
+      <a class="nav-link" href="#pilot">Bli med i piloten <span>↗</span></a>
+    </header>
+
+    <main id="top">
+      <section class="hero shell">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="dot"></span> Pårørendepilot · 2026</p>
+          <h1>En roligere vei<br /><i>gjennom alt.</i></h1>
+          <p class="lead">Når mange tjenester skal henge sammen, hjelper NAVIAR CARE deg med å finne retning, samle trådene og se neste steg.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#pilot">Se om piloten passer <span>→</span></a>
+            <a class="text-link" href="#how">Slik fungerer det <span>↓</span></a>
+          </div>
+        </div>
+        <div class="hero-card" aria-label="Pilotens tre steg">
+          <div class="card-label">NAVIAR CARE START</div>
+          <div class="route-line"><span class="route-node active">01</span><div><strong>Få oversikt</strong><small>Hva er viktigst akkurat nå?</small></div></div>
+          <div class="route-line"><span class="route-node">02</span><div><strong>Finn retning</strong><small>Hvem kan hjelpe med hva?</small></div></div>
+          <div class="route-line"><span class="route-node">03</span><div><strong>Ta neste steg</strong><small>En enkel plan du kan bruke.</small></div></div>
+          <div class="card-footer"><span>45 min samtale</span><span>·</span><span>14 dagers oppfølging</span></div>
+        </div>
+      </section>
+
+      <section class="statement shell" id="how">
+        <p class="eyebrow">Hvor trykker skoen?</p>
+        <h2>Du trenger ikke ha alle svarene.<br /><span>Det holder å vite hvor det stopper opp.</span></h2>
+        <div class="needs-grid">
+          <button class="need-card" data-need="Oversikt"><span class="need-icon">◎</span><strong>Jeg mangler oversikt</strong><small>Det er vanskelig å vite hvor jeg skal begynne.</small></button>
+          <button class="need-card" data-need="Samarbeid"><span class="need-icon">↔</span><strong>Tjenestene henger ikke sammen</strong><small>Jeg må forklare det samme flere ganger.</small></button>
+          <button class="need-card" data-need="Støtte"><span class="need-icon">♡</span><strong>Jeg trenger støtte</strong><small>Jeg står mye alene med ansvaret.</small></button>
+        </div>
+        <div class="selection" id="selection" role="status" aria-live="polite">Velg det som beskriver situasjonen best, så viser vi neste steg.</div>
+      </section>
+
+      <section class="output shell" id="output">
+        <p class="eyebrow">Hva får du?</p>
+        <h2>Et konkret resultat,<br /><span>ikke bare en samtale.</span></h2>
+        <p class="output-lead">Etter piloten sitter du igjen med seks ting som gjør situasjonen lettere å håndtere.</p>
+        <div class="output-grid">
+          <div class="output-item"><span class="output-num">01</span><strong>Behovsoversikt</strong><small>Hva som er viktigst akkurat nå, skrevet ned på ett sted.</small></div>
+          <div class="output-item"><span class="output-num">02</span><strong>Prioriterte utfordringer</strong><small>De tre–fire tingene som trykker mest, rangert.</small></div>
+          <div class="output-item"><span class="output-num">03</span><strong>Tjeneste- og kontaktliste</strong><small>Hvem som kan hjelpe med hva, med kontaktinformasjon.</small></div>
+          <div class="output-item"><span class="output-num">04</span><strong>Enkel ansvarsplan</strong><small>Hvem gjør hva — synlig for hele familien.</small></div>
+          <div class="output-item"><span class="output-num">05</span><strong>Neste steg</strong><small>Én konkret handling du kan ta denne uken.</small></div>
+          <div class="output-item"><span class="output-num">06</span><strong>Oppfølgingsdato</strong><small>Vi sjekker inn etter 14 dager for å se hvordan det går.</small></div>
+        </div>
+      </section>
+
+      <section class="pilot shell" id="pilot">
+        <div>
+          <p class="eyebrow">Bli med i piloten</p>
+          <h2>Vi bygger dette<br /><i>sammen med deg.</i></h2>
+          <p class="lead">Pårørendepiloten er en liten, trygg test av NAVIAR CARE Start. Du får hjelp til å sortere situasjonen og lage en konkret plan.</p>
+          <ul class="check-list"><li>Én strukturert behovssamtale</li><li>En personlig oversikt på én side</li><li>Oppfølging etter 14 dager</li></ul>
+        </div>
+        <form class="pilot-form" id="pilot-form">
+          <label for="name">Navn</label><input id="name" name="name" placeholder="Ditt navn" required />
+          <label for="email">E-post</label><input id="email" name="email" type="email" placeholder="deg@eksempel.no" required />
+          <label for="role">Jeg er</label><select id="role" name="role"><option>Pårørende</option><option>Fagperson</option><option>Representant for kommune/organisasjon</option></select>
+          <button class="button primary" type="submit">Meld interesse <span>→</span></button>
+          <p class="form-note">Dette er en uforpliktende interessehenvendelse. Ikke skriv helseopplysninger i skjemaet.</p>
+          <div class="form-success" id="form-success" hidden>Takk — interessen din er registrert i prototypen. Vi tar kontakt med neste steg.</div>
+        </form>
+      </section>
+    </main>
+    <footer class="footer shell"><span>NAVIAR CARE</span><span>Trygg navigasjon. Tydeligere neste steg.</span></footer>
+    <script src="./script.js"></script>
+  </body>
+</html>

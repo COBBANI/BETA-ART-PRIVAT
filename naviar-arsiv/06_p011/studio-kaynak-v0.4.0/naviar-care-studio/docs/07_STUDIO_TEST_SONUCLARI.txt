@@ -1,0 +1,25 @@
+
+> naviar-care-cookie1-development@0.4.0 test
+> node --test tests/*.test.mjs
+
+✔ review rejects invalid contact, date and missing acknowledgement; displays values as data (2.108445ms)
+✔ portable demo creates once, requires its token, cancels and resets with new instance (1.405888ms)
+✔ simulated connection failure leaves no record and retry can succeed; payment stays blocked (0.265727ms)
+✔ minimal request validates real dates, Oslo date window, consent and sensitive extra fields (14.886156ms)
+✔ idempotency creates exactly one request, one email and one demand count; changed input conflicts (2.79497ms)
+✔ human-confirmed slots reject overlaps and buffer conflicts, allow a 15 minute gap (1.911532ms)
+✔ webhook rejects modified raw body, stale signature and missing configuration (2.167324ms)
+✔ payment settles only a matching signed event, is idempotent and cannot be downgraded (2.044871ms)
+✔ checkout uses server quote, test keys and hosted Stripe destination only (0.774015ms)
+✔ outbox sends only to configured test recipient and records accepted, not delivered (1.781267ms)
+✔ analytics rejects identifiers and non-consent; forecast uses complete weeks and holdout (1.665554ms)
+✔ all three languages have complete text keys and render semantic page with no undefined copy (1.069275ms)
+✔ HTTP: origin protection, scoped status, private administration, review gates and provider failure (67.616329ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 185.461484

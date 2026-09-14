@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1252 360" role="img" aria-labelledby="title desc">
+  <title id="title">NAVIAR CARE logo candidate v0.2</title>
+  <desc id="desc">Flat NAVIAR sub-brand lockup with one diamond signature in the inherited N symbol and a custom wide CARE descriptor.</desc>
+
+  <!-- Parent NAVIAR symbol: the sole diamond signature in this lockup. -->
+  <path fill="#26313B" fill-rule="evenodd" d="M32 224V32h47l98 105V32h47v192h-47L79 119v105zm96-111 15 15-15 15-15-15z" transform="translate(54 52)"/>
+
+  <!-- NAVIAR responsive wordmark. The secondary N diamond is intentionally removed. -->
+  <g fill="#26313B" transform="translate(350 78) scale(1.08)">
+    <path d="M20 100V20h20l51 54V20h19v80H91L39 46v54z"/>
+    <path d="M140 100l48-80h20l48 80h-22l-36-61-36 61z"/>
+    <path d="M186 78h24v11h-24z"/>
+    <path d="M278 20h22l37 61 37-61h22l-49 80h-20z"/>
+    <path d="M429 20h18v80h-18z"/>
+    <path d="M480 100l48-80h20l48 80h-22l-36-61-36 61z"/>
+    <path d="M526 78h24v11h-24z"/>
+    <path fill-rule="evenodd" d="M630 100V20h62c29 0 45 12 45 31 0 16-10 27-29 30l36 19h-36l-42-31v31zm18-63v29h43c18 0 27-5 27-15 0-9-9-14-27-14z"/>
+  </g>
+
+  <!-- CARE is custom-drawn and right-aligned to the NAVIAR wordmark. -->
+  <g fill="#334556">
+    <path d="M876 230h-35q-25 0-25 25t25 25h35v-11h-34q-14 0-14-14t14-14h34z"/>
+    <path d="M895 280l30-50h20l30 50h-15l-25-36-25 36z"/>
+    <path d="M923 261h24v9h-24z"/>
+    <path fill-rule="evenodd" d="M995 280v-50h40q30 0 30 19 0 15-19 19l23 12h-21l-26-19v19zm13-39v16h27q16 0 16-8t-16-8z"/>
+    <path d="M1090 230h60v11h-47v8h42v11h-42v9h47v11h-60z"/>
+  </g>
+</svg>

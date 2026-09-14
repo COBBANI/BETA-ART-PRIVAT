@@ -1,0 +1,1917 @@
+{
+  "schemaVersion": 2,
+  "isDemonstration": true,
+  "clinicians": [
+    {
+      "id": "example-01",
+      "name": "Rosa Delgado",
+      "specialty": "Internal medicine",
+      "country": "Mexico",
+      "languages": [
+        "es",
+        "en",
+        "nah"
+      ],
+      "example": true,
+      "clinicalLanguageVerified": false,
+      "licenseVerified": false
+    },
+    {
+      "id": "example-02",
+      "name": "Aylin Demir",
+      "specialty": "General practice",
+      "country": "Türkiye",
+      "languages": [
+        "tr",
+        "en",
+        "de"
+      ],
+      "example": true,
+      "clinicalLanguageVerified": false,
+      "licenseVerified": false
+    },
+    {
+      "id": "example-03",
+      "name": "Priya Nair",
+      "specialty": "Paediatrics",
+      "country": "India",
+      "languages": [
+        "hi",
+        "en",
+        "ml",
+        "ta"
+      ],
+      "example": true,
+      "clinicalLanguageVerified": false,
+      "licenseVerified": false
+    },
+    {
+      "id": "example-04",
+      "name": "Tahmina Rahman",
+      "specialty": "General practice",
+      "country": "Bangladesh",
+      "languages": [
+        "bn",
+        "en",
+        "hi"
+      ],
+      "example": true,
+      "clinicalLanguageVerified": false,
+      "licenseVerified": false
+    },
+    {
+      "id": "example-05",
+      "name": "Ahmad Rahimi",
+      "specialty": "General practice",
+      "country": "Afghanistan",
+      "languages": [
+        "fa",
+        "ps",
+        "ur",
+        "en"
+      ],
+      "example": true,
+      "clinicalLanguageVerified": false,
+      "licenseVerified": false
+    },
+    {
+      "id": "example-06",
+      "name": "Rashid Al-Mansouri",
+      "specialty": "Internal medicine",
+      "country": "United Arab Emirates",
+      "languages": [
+        "ar",
+        "en",
+        "fa"
+      ],
+      "example": true,
+      "clinicalLanguageVerified": false,
+      "licenseVerified": false
+    },
+    {
+      "id": "example-07",
+      "name": "Maria Santos",
+      "specialty": "Paediatrics",
+      "country": "Philippines",
+      "languages": [
+        "tl",
+        "ceb",
+        "en"
+      ],
+      "example": true,
+      "clinicalLanguageVerified": false,
+      "licenseVerified": false
+    },
+    {
+      "id": "example-08",
+      "name": "Budi Santoso",
+      "specialty": "Internal medicine",
+      "country": "Indonesia",
+      "languages": [
+        "id",
+        "jv",
+        "ms",
+        "en"
+      ],
+      "example": true,
+      "clinicalLanguageVerified": false,
+      "licenseVerified": false
+    },
+    {
+      "id": "example-09",
+      "name": "Marcus Adeyemi",
+      "specialty": "Emergency medicine",
+      "country": "Nigeria",
+      "languages": [
+        "en",
+        "yo",
+        "ha"
+      ],
+      "example": true,
+      "clinicalLanguageVerified": false,
+      "licenseVerified": false
+    },
+    {
+      "id": "example-10",
+      "name": "Marie-Claire Dubois",
+      "specialty": "Emergency medicine",
+      "country": "Canada",
+      "languages": [
+        "fr",
+        "en",
+        "ht"
+      ],
+      "example": true,
+      "clinicalLanguageVerified": false,
+      "licenseVerified": false
+    },
+    {
+      "id": "example-11",
+      "name": "Noa Ben-David",
+      "specialty": "Endocrinology",
+      "country": "Israel",
+      "languages": [
+        "he",
+        "ar",
+        "ru",
+        "en"
+      ],
+      "example": true,
+      "clinicalLanguageVerified": false,
+      "licenseVerified": false
+    },
+    {
+      "id": "example-12",
+      "name": "Sofía Herrera",
+      "specialty": "Cardiology",
+      "country": "Spain",
+      "languages": [
+        "es",
+        "en",
+        "ca"
+      ],
+      "example": true,
+      "clinicalLanguageVerified": false,
+      "licenseVerified": false
+    },
+    {
+      "id": "example-13",
+      "name": "Bikash Shrestha",
+      "specialty": "Respiratory medicine",
+      "country": "Nepal",
+      "languages": [
+        "ne",
+        "hi",
+        "en"
+      ],
+      "example": true,
+      "clinicalLanguageVerified": false,
+      "licenseVerified": false
+    },
+    {
+      "id": "example-14",
+      "name": "Anna Kowalczyk",
+      "specialty": "Respiratory medicine",
+      "country": "Germany",
+      "languages": [
+        "de",
+        "pl",
+        "en"
+      ],
+      "example": true,
+      "clinicalLanguageVerified": false,
+      "licenseVerified": false
+    },
+    {
+      "id": "example-15",
+      "name": "Mehmet Kaya",
+      "specialty": "Cardiology",
+      "country": "Türkiye",
+      "languages": [
+        "tr",
+        "en",
+        "ku"
+      ],
+      "example": true,
+      "clinicalLanguageVerified": false,
+      "licenseVerified": false
+    },
+    {
+      "id": "example-16",
+      "name": "Wei Chen",
+      "specialty": "Gastroenterology",
+      "country": "Singapore",
+      "languages": [
+        "zh",
+        "en",
+        "yue",
+        "ms"
+      ],
+      "example": true,
+      "clinicalLanguageVerified": false,
+      "licenseVerified": false
+    },
+    {
+      "id": "example-17",
+      "name": "Stavros Papadakis",
+      "specialty": "Neurology",
+      "country": "Greece",
+      "languages": [
+        "el",
+        "en",
+        "sq"
+      ],
+      "example": true,
+      "clinicalLanguageVerified": false,
+      "licenseVerified": false
+    },
+    {
+      "id": "example-18",
+      "name": "Ravi Deshmukh",
+      "specialty": "Endocrinology",
+      "country": "India",
+      "languages": [
+        "hi",
+        "mr",
+        "en"
+      ],
+      "example": true,
+      "clinicalLanguageVerified": false,
+      "licenseVerified": false
+    },
+    {
+      "id": "example-19",
+      "name": "Olga Petrova",
+      "specialty": "Kidney medicine",
+      "country": "Ukraine",
+      "languages": [
+        "uk",
+        "ru",
+        "en"
+      ],
+      "example": true,
+      "clinicalLanguageVerified": false,
+      "licenseVerified": false
+    },
+    {
+      "id": "example-20",
+      "name": "Yuki Tanaka",
+      "specialty": "Neurology",
+      "country": "Japan",
+      "languages": [
+        "ja",
+        "en"
+      ],
+      "example": true,
+      "clinicalLanguageVerified": false,
+      "licenseVerified": false
+    },
+    {
+      "id": "example-21",
+      "name": "Elena Rossi",
+      "specialty": "Haematology",
+      "country": "Italy",
+      "languages": [
+        "it",
+        "en",
+        "fr"
+      ],
+      "example": true,
+      "clinicalLanguageVerified": false,
+      "licenseVerified": false
+    },
+    {
+      "id": "example-22",
+      "name": "Ji-woo Park",
+      "specialty": "Oncology",
+      "country": "Korea",
+      "languages": [
+        "ko",
+        "en"
+      ],
+      "example": true,
+      "clinicalLanguageVerified": false,
+      "licenseVerified": false
+    },
+    {
+      "id": "example-23",
+      "name": "Siriporn Chaiyaporn",
+      "specialty": "Dermatology",
+      "country": "Thailand",
+      "languages": [
+        "th",
+        "en",
+        "lo"
+      ],
+      "example": true,
+      "clinicalLanguageVerified": false,
+      "licenseVerified": false
+    },
+    {
+      "id": "example-24",
+      "name": "Nadia Haddad",
+      "specialty": "Ear, nose & throat",
+      "country": "Morocco",
+      "languages": [
+        "ar",
+        "fr",
+        "en"
+      ],
+      "example": true,
+      "clinicalLanguageVerified": false,
+      "licenseVerified": false
+    },
+    {
+      "id": "example-25",
+      "name": "Élodie Laurent",
+      "specialty": "Dermatology",
+      "country": "France",
+      "languages": [
+        "fr",
+        "en",
+        "es"
+      ],
+      "example": true,
+      "clinicalLanguageVerified": false,
+      "licenseVerified": false
+    },
+    {
+      "id": "example-26",
+      "name": "Grace Mwangi",
+      "specialty": "Dentistry",
+      "country": "Kenya",
+      "languages": [
+        "sw",
+        "en"
+      ],
+      "example": true,
+      "clinicalLanguageVerified": false,
+      "licenseVerified": false
+    },
+    {
+      "id": "example-27",
+      "name": "Fatima Zahra Idrissi",
+      "specialty": "Ophthalmology",
+      "country": "Morocco",
+      "languages": [
+        "ar",
+        "fr",
+        "ber",
+        "en"
+      ],
+      "example": true,
+      "clinicalLanguageVerified": false,
+      "licenseVerified": false
+    },
+    {
+      "id": "example-28",
+      "name": "Kwame Boateng",
+      "specialty": "Physiotherapy",
+      "country": "Ghana",
+      "languages": [
+        "en",
+        "tw"
+      ],
+      "example": true,
+      "clinicalLanguageVerified": false,
+      "licenseVerified": false
+    },
+    {
+      "id": "example-29",
+      "name": "Carlos Mendes",
+      "specialty": "Rheumatology",
+      "country": "Brazil",
+      "languages": [
+        "pt",
+        "es",
+        "en"
+      ],
+      "example": true,
+      "clinicalLanguageVerified": false,
+      "licenseVerified": false
+    },
+    {
+      "id": "example-30",
+      "name": "Tomasz Nowak",
+      "specialty": "Orthopaedics",
+      "country": "Poland",
+      "languages": [
+        "pl",
+        "en",
+        "de",
+        "uk"
+      ],
+      "example": true,
+      "clinicalLanguageVerified": false,
+      "licenseVerified": false
+    },
+    {
+      "id": "example-31",
+      "name": "Elmir Aliyev",
+      "specialty": "Orthopaedics",
+      "country": "Azerbaijan",
+      "languages": [
+        "az",
+        "tr",
+        "uz",
+        "ru"
+      ],
+      "example": true,
+      "clinicalLanguageVerified": false,
+      "licenseVerified": false
+    },
+    {
+      "id": "example-32",
+      "name": "Lucía Fernández",
+      "specialty": "Gynaecology & obstetrics",
+      "country": "Argentina",
+      "languages": [
+        "es",
+        "pt",
+        "en"
+      ],
+      "example": true,
+      "clinicalLanguageVerified": false,
+      "licenseVerified": false
+    },
+    {
+      "id": "example-33",
+      "name": "Amina Yusuf",
+      "specialty": "Infectious diseases",
+      "country": "Kenya",
+      "languages": [
+        "sw",
+        "en",
+        "so"
+      ],
+      "example": true,
+      "clinicalLanguageVerified": false,
+      "licenseVerified": false
+    },
+    {
+      "id": "example-34",
+      "name": "James Whitfield",
+      "specialty": "Urology",
+      "country": "United States",
+      "languages": [
+        "en",
+        "es"
+      ],
+      "example": true,
+      "clinicalLanguageVerified": false,
+      "licenseVerified": false
+    },
+    {
+      "id": "example-35",
+      "name": "Leila Hosseini",
+      "specialty": "Allergy & immunology",
+      "country": "Iran",
+      "languages": [
+        "fa",
+        "en",
+        "ar"
+      ],
+      "example": true,
+      "clinicalLanguageVerified": false,
+      "licenseVerified": false
+    },
+    {
+      "id": "example-36",
+      "name": "Aisha Khan",
+      "specialty": "Gynaecology & obstetrics",
+      "country": "Pakistan",
+      "languages": [
+        "ur",
+        "pa",
+        "en",
+        "hi"
+      ],
+      "example": true,
+      "clinicalLanguageVerified": false,
+      "licenseVerified": false
+    },
+    {
+      "id": "example-37",
+      "name": "Nguyen Minh Anh",
+      "specialty": "Psychology & counselling",
+      "country": "Vietnam",
+      "languages": [
+        "vi",
+        "en"
+      ],
+      "example": true,
+      "clinicalLanguageVerified": false,
+      "licenseVerified": false
+    },
+    {
+      "id": "example-38",
+      "name": "Daniel Okafor",
+      "specialty": "Psychiatry",
+      "country": "United Kingdom",
+      "languages": [
+        "en",
+        "ig"
+      ],
+      "example": true,
+      "clinicalLanguageVerified": false,
+      "licenseVerified": false
+    },
+    {
+      "id": "example-39",
+      "name": "Andrei Popescu",
+      "specialty": "Psychiatry",
+      "country": "Romania",
+      "languages": [
+        "ro",
+        "sr",
+        "hu",
+        "en"
+      ],
+      "example": true,
+      "clinicalLanguageVerified": false,
+      "licenseVerified": false
+    },
+    {
+      "id": "example-40",
+      "name": "Ingrid Bakker",
+      "specialty": "Sleep medicine",
+      "country": "Netherlands",
+      "languages": [
+        "nl",
+        "en",
+        "de"
+      ],
+      "example": true,
+      "clinicalLanguageVerified": false,
+      "licenseVerified": false
+    },
+    {
+      "id": "example-41",
+      "name": "Sara Lindqvist",
+      "specialty": "Nutrition & dietetics",
+      "country": "Sweden",
+      "languages": [
+        "sv",
+        "en",
+        "no",
+        "da"
+      ],
+      "example": true,
+      "clinicalLanguageVerified": false,
+      "licenseVerified": false
+    },
+    {
+      "id": "example-42",
+      "name": "Viktor Ivanov",
+      "specialty": "General surgery",
+      "country": "Russia",
+      "languages": [
+        "ru",
+        "en",
+        "uk"
+      ],
+      "example": true,
+      "clinicalLanguageVerified": false,
+      "licenseVerified": false
+    }
+  ],
+  "languages": [
+    {
+      "code": "om",
+      "native": "Afaan Oromoo",
+      "english": "Oromo",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "af",
+      "native": "Afrikaans",
+      "english": "Afrikaans",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "gn",
+      "native": "Avañe'ẽ",
+      "english": "Guarani",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "ay",
+      "native": "Aymar aru",
+      "english": "Aymara",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "az",
+      "native": "Azərbaycan dili",
+      "english": "Azerbaijani",
+      "legacyMode": "Doctor speaks it",
+      "profileIds": [
+        "example-31"
+      ],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "id",
+      "native": "Bahasa Indonesia",
+      "english": "Indonesian",
+      "legacyMode": "Doctor speaks it",
+      "profileIds": [
+        "example-08"
+      ],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "ms",
+      "native": "Bahasa Melayu",
+      "english": "Malay",
+      "legacyMode": "Doctor speaks it",
+      "profileIds": [
+        "example-08",
+        "example-16"
+      ],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "jv",
+      "native": "Basa Jawa",
+      "english": "Javanese",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [
+        "example-08"
+      ],
+      "legacyDifference": true,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "su",
+      "native": "Basa Sunda",
+      "english": "Sundanese",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "bs",
+      "native": "Bosanski",
+      "english": "Bosnian",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "ca",
+      "native": "Català",
+      "english": "Catalan",
+      "legacyMode": "Doctor speaks it",
+      "profileIds": [
+        "example-12"
+      ],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "ceb",
+      "native": "Cebuano",
+      "english": "Cebuano",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [
+        "example-07"
+      ],
+      "legacyDifference": true,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "cs",
+      "native": "Čeština",
+      "english": "Czech",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "ny",
+      "native": "Chichewa",
+      "english": "Chichewa",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "sn",
+      "native": "chiShona",
+      "english": "Shona",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "cy",
+      "native": "Cymraeg",
+      "english": "Welsh",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "da",
+      "native": "Dansk",
+      "english": "Danish",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [
+        "example-41"
+      ],
+      "legacyDifference": true,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "de",
+      "native": "Deutsch",
+      "english": "German",
+      "legacyMode": "Doctor speaks it",
+      "profileIds": [
+        "example-02",
+        "example-14",
+        "example-30",
+        "example-40"
+      ],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "et",
+      "native": "Eesti",
+      "english": "Estonian",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "en",
+      "native": "English",
+      "english": "English",
+      "legacyMode": "Doctor speaks it",
+      "profileIds": [
+        "example-01",
+        "example-02",
+        "example-03",
+        "example-04",
+        "example-05",
+        "example-06",
+        "example-07",
+        "example-08",
+        "example-09",
+        "example-10",
+        "example-11",
+        "example-12",
+        "example-13",
+        "example-14",
+        "example-15",
+        "example-16",
+        "example-17",
+        "example-18",
+        "example-19",
+        "example-20",
+        "example-21",
+        "example-22",
+        "example-23",
+        "example-24",
+        "example-25",
+        "example-26",
+        "example-27",
+        "example-28",
+        "example-29",
+        "example-30",
+        "example-32",
+        "example-33",
+        "example-34",
+        "example-35",
+        "example-36",
+        "example-37",
+        "example-38",
+        "example-39",
+        "example-40",
+        "example-41",
+        "example-42"
+      ],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "es",
+      "native": "Español",
+      "english": "Spanish",
+      "legacyMode": "Doctor speaks it",
+      "profileIds": [
+        "example-01",
+        "example-12",
+        "example-25",
+        "example-29",
+        "example-32",
+        "example-34"
+      ],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "eu",
+      "native": "Euskara",
+      "english": "Basque",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "tl",
+      "native": "Filipino",
+      "english": "Filipino",
+      "legacyMode": "Doctor speaks it",
+      "profileIds": [
+        "example-07"
+      ],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "fr",
+      "native": "Français",
+      "english": "French",
+      "legacyMode": "Doctor speaks it",
+      "profileIds": [
+        "example-10",
+        "example-21",
+        "example-24",
+        "example-25",
+        "example-27"
+      ],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "ff",
+      "native": "Fulfulde",
+      "english": "Fula",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "ga",
+      "native": "Gaeilge",
+      "english": "Irish",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "sm",
+      "native": "Gagana Samoa",
+      "english": "Samoan",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "gl",
+      "native": "Galego",
+      "english": "Galician",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "ha",
+      "native": "Hausa",
+      "english": "Hausa",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [
+        "example-09"
+      ],
+      "legacyDifference": true,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "hr",
+      "native": "Hrvatski",
+      "english": "Croatian",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "ig",
+      "native": "Igbo",
+      "english": "Igbo",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [
+        "example-38"
+      ],
+      "legacyDifference": true,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "rw",
+      "native": "Ikinyarwanda",
+      "english": "Kinyarwanda",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "xh",
+      "native": "isiXhosa",
+      "english": "Xhosa",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "zu",
+      "native": "isiZulu",
+      "english": "Zulu",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "is",
+      "native": "Íslenska",
+      "english": "Icelandic",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "it",
+      "native": "Italiano",
+      "english": "Italian",
+      "legacyMode": "Doctor speaks it",
+      "profileIds": [
+        "example-21"
+      ],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "sw",
+      "native": "Kiswahili",
+      "english": "Swahili",
+      "legacyMode": "Doctor speaks it",
+      "profileIds": [
+        "example-26",
+        "example-33"
+      ],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "ht",
+      "native": "Kreyòl Ayisyen",
+      "english": "Haitian Creole",
+      "legacyMode": "Doctor speaks it",
+      "profileIds": [
+        "example-10"
+      ],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "ku",
+      "native": "Kurdî",
+      "english": "Kurdish",
+      "legacyMode": "Doctor speaks it",
+      "profileIds": [
+        "example-15"
+      ],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "lv",
+      "native": "Latviešu",
+      "english": "Latvian",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "to",
+      "native": "Lea Faka-Tonga",
+      "english": "Tongan",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "lt",
+      "native": "Lietuvių",
+      "english": "Lithuanian",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "ln",
+      "native": "Lingála",
+      "english": "Lingala",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "hu",
+      "native": "Magyar",
+      "english": "Hungarian",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [
+        "example-39"
+      ],
+      "legacyDifference": true,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "mg",
+      "native": "Malagasy",
+      "english": "Malagasy",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "mt",
+      "native": "Malti",
+      "english": "Maltese",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "fj",
+      "native": "Na Vosa Vakaviti",
+      "english": "Fijian",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "nah",
+      "native": "Nāhuatl",
+      "english": "Nahuatl",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [
+        "example-01"
+      ],
+      "legacyDifference": true,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "nl",
+      "native": "Nederlands",
+      "english": "Dutch",
+      "legacyMode": "Doctor speaks it",
+      "profileIds": [
+        "example-40"
+      ],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "no",
+      "native": "Norsk",
+      "english": "Norwegian",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [
+        "example-41"
+      ],
+      "legacyDifference": true,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "uz",
+      "native": "Oʻzbekcha",
+      "english": "Uzbek",
+      "legacyMode": "Doctor speaks it",
+      "profileIds": [
+        "example-31"
+      ],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "pl",
+      "native": "Polski",
+      "english": "Polish",
+      "legacyMode": "Doctor speaks it",
+      "profileIds": [
+        "example-14",
+        "example-30"
+      ],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "pt",
+      "native": "Português",
+      "english": "Portuguese",
+      "legacyMode": "Doctor speaks it",
+      "profileIds": [
+        "example-29",
+        "example-32"
+      ],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "ro",
+      "native": "Română",
+      "english": "Romanian",
+      "legacyMode": "Doctor speaks it",
+      "profileIds": [
+        "example-39"
+      ],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "qu",
+      "native": "Runa Simi",
+      "english": "Quechua",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "sq",
+      "native": "Shqip",
+      "english": "Albanian",
+      "legacyMode": "Doctor speaks it",
+      "profileIds": [
+        "example-17"
+      ],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "sgn",
+      "native": "Sign language",
+      "english": "Sign language",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "sk",
+      "native": "Slovenčina",
+      "english": "Slovak",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "sl",
+      "native": "Slovenščina",
+      "english": "Slovenian",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "so",
+      "native": "Soomaali",
+      "english": "Somali",
+      "legacyMode": "Doctor speaks it",
+      "profileIds": [
+        "example-33"
+      ],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "fi",
+      "native": "Suomi",
+      "english": "Finnish",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "sv",
+      "native": "Svenska",
+      "english": "Swedish",
+      "legacyMode": "Doctor speaks it",
+      "profileIds": [
+        "example-41"
+      ],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "mi",
+      "native": "Te Reo Māori",
+      "english": "Māori",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "vi",
+      "native": "Tiếng Việt",
+      "english": "Vietnamese",
+      "legacyMode": "Doctor speaks it",
+      "profileIds": [
+        "example-37"
+      ],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "tpi",
+      "native": "Tok Pisin",
+      "english": "Tok Pisin",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "tr",
+      "native": "Türkçe",
+      "english": "Turkish",
+      "legacyMode": "Doctor speaks it",
+      "profileIds": [
+        "example-02",
+        "example-15",
+        "example-31"
+      ],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "tk",
+      "native": "Türkmençe",
+      "english": "Turkmen",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "tw",
+      "native": "Twi",
+      "english": "Twi",
+      "legacyMode": "Doctor speaks it",
+      "profileIds": [
+        "example-28"
+      ],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "wo",
+      "native": "Wolof",
+      "english": "Wolof",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "yo",
+      "native": "Yorùbá",
+      "english": "Yoruba",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [
+        "example-09"
+      ],
+      "legacyDifference": true,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "el",
+      "native": "Ελληνικά",
+      "english": "Greek",
+      "legacyMode": "Doctor speaks it",
+      "profileIds": [
+        "example-17"
+      ],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "be",
+      "native": "Беларуская",
+      "english": "Belarusian",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "bg",
+      "native": "Български",
+      "english": "Bulgarian",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "ky",
+      "native": "Кыргызча",
+      "english": "Kyrgyz",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "kk",
+      "native": "Қазақша",
+      "english": "Kazakh",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "mk",
+      "native": "Македонски",
+      "english": "Macedonian",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "mn",
+      "native": "Монгол",
+      "english": "Mongolian",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "ru",
+      "native": "Русский",
+      "english": "Russian",
+      "legacyMode": "Doctor speaks it",
+      "profileIds": [
+        "example-11",
+        "example-19",
+        "example-31",
+        "example-42"
+      ],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "sr",
+      "native": "Српски",
+      "english": "Serbian",
+      "legacyMode": "Doctor speaks it",
+      "profileIds": [
+        "example-39"
+      ],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "tg",
+      "native": "Тоҷикӣ",
+      "english": "Tajik",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "uk",
+      "native": "Українська",
+      "english": "Ukrainian",
+      "legacyMode": "Doctor speaks it",
+      "profileIds": [
+        "example-19",
+        "example-30",
+        "example-42"
+      ],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "ka",
+      "native": "ქართული",
+      "english": "Georgian",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "hy",
+      "native": "Հայերեն",
+      "english": "Armenian",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "he",
+      "native": "עברית",
+      "english": "Hebrew",
+      "legacyMode": "Doctor speaks it",
+      "profileIds": [
+        "example-11"
+      ],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "ur",
+      "native": "اردو",
+      "english": "Urdu",
+      "legacyMode": "Doctor speaks it",
+      "profileIds": [
+        "example-05",
+        "example-36"
+      ],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "ar",
+      "native": "العربية",
+      "english": "Arabic",
+      "legacyMode": "Doctor speaks it",
+      "profileIds": [
+        "example-06",
+        "example-11",
+        "example-24",
+        "example-27",
+        "example-35"
+      ],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "ps",
+      "native": "پښتو",
+      "english": "Pashto",
+      "legacyMode": "Doctor speaks it",
+      "profileIds": [
+        "example-05"
+      ],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "sd",
+      "native": "سنڌي",
+      "english": "Sindhi",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "fa",
+      "native": "فارسی",
+      "english": "Persian",
+      "legacyMode": "Doctor speaks it",
+      "profileIds": [
+        "example-05",
+        "example-06",
+        "example-35"
+      ],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "ber",
+      "native": "ⵜⴰⵎⴰⵣⵉⵖⵜ",
+      "english": "Tamazight",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [
+        "example-27"
+      ],
+      "legacyDifference": true,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "ti",
+      "native": "ትግርኛ",
+      "english": "Tigrinya",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "am",
+      "native": "አማርኛ",
+      "english": "Amharic",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "ne",
+      "native": "नेपाली",
+      "english": "Nepali",
+      "legacyMode": "Doctor speaks it",
+      "profileIds": [
+        "example-13"
+      ],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "mr",
+      "native": "मराठी",
+      "english": "Marathi",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [
+        "example-18"
+      ],
+      "legacyDifference": true,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "hi",
+      "native": "हिन्दी",
+      "english": "Hindi",
+      "legacyMode": "Doctor speaks it",
+      "profileIds": [
+        "example-03",
+        "example-04",
+        "example-13",
+        "example-18",
+        "example-36"
+      ],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "as",
+      "native": "অসমীয়া",
+      "english": "Assamese",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "bn",
+      "native": "বাংলা",
+      "english": "Bengali",
+      "legacyMode": "Doctor speaks it",
+      "profileIds": [
+        "example-04"
+      ],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "pa",
+      "native": "ਪੰਜਾਬੀ",
+      "english": "Punjabi",
+      "legacyMode": "Doctor speaks it",
+      "profileIds": [
+        "example-36"
+      ],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "gu",
+      "native": "ગુજરાતી",
+      "english": "Gujarati",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "or",
+      "native": "ଓଡ଼ିଆ",
+      "english": "Odia",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "ta",
+      "native": "தமிழ்",
+      "english": "Tamil",
+      "legacyMode": "Doctor speaks it",
+      "profileIds": [
+        "example-03"
+      ],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "te",
+      "native": "తెలుగు",
+      "english": "Telugu",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "kn",
+      "native": "ಕನ್ನಡ",
+      "english": "Kannada",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "ml",
+      "native": "മലയാളം",
+      "english": "Malayalam",
+      "legacyMode": "Doctor speaks it",
+      "profileIds": [
+        "example-03"
+      ],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "si",
+      "native": "සිංහල",
+      "english": "Sinhala",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "th",
+      "native": "ไทย",
+      "english": "Thai",
+      "legacyMode": "Doctor speaks it",
+      "profileIds": [
+        "example-23"
+      ],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "lo",
+      "native": "ລາວ",
+      "english": "Lao",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [
+        "example-23"
+      ],
+      "legacyDifference": true,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "my",
+      "native": "မြန်မာ",
+      "english": "Burmese",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "km",
+      "native": "ខ្មែរ",
+      "english": "Khmer",
+      "legacyMode": "Interpreter joins",
+      "profileIds": [],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "ko",
+      "native": "한국어",
+      "english": "Korean",
+      "legacyMode": "Doctor speaks it",
+      "profileIds": [
+        "example-22"
+      ],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "zh",
+      "native": "中文",
+      "english": "Chinese (Mandarin)",
+      "legacyMode": "Doctor speaks it",
+      "profileIds": [
+        "example-16"
+      ],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "ja",
+      "native": "日本語",
+      "english": "Japanese",
+      "legacyMode": "Doctor speaks it",
+      "profileIds": [
+        "example-20"
+      ],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    },
+    {
+      "code": "yue",
+      "native": "粵語",
+      "english": "Cantonese",
+      "legacyMode": "Doctor speaks it",
+      "profileIds": [
+        "example-16"
+      ],
+      "legacyDifference": false,
+      "clinicalLanguageVerified": false,
+      "availability": "not_offered"
+    }
+  ],
+  "provenance": "User-provided sample roster and language catalogue. No live clinician, licence, language proficiency, price or availability is verified."
+}

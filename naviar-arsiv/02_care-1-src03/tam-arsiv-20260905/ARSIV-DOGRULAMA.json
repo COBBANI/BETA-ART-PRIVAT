@@ -1,0 +1,14 @@
+{
+  "project": "NAVIAR-CARE-001-WEB-01",
+  "archive_version": "1.0",
+  "created_at_utc": "2026-09-05T21:38:38.830593+00:00",
+  "retrieved_files": 198,
+  "content_files": 245,
+  "unique_content_hashes": 205,
+  "source_files_verified": 62,
+  "source_zip_sha256": "eb75e82a9754acd239730195d760959f2a14a6ba5c30f5ac7634265d7fd3729f",
+  "source_commit_from_previous_delivery": "2d1ea68e47568086462c3ed304f1479010bb0222",
+  "copy_hash_check": "passed",
+  "site_link_records": 2,
+  "new_application_tests_run": false
+}
