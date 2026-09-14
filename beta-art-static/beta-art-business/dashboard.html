@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Client dashboard — Beta Art Business</title>
+<meta name="description" content="A working preview of the client area: projects, orders, messages, files, revisions and invoices. Sample data only — no account, no backend, nothing stored.">
+<meta name="author" content="Betül Öner">
+<meta name="copyright" content="© 2026 Beta Art — Betül Öner. All rights reserved worldwide.">
+<meta name="robots" content="index,follow,noai,noimageai">
+<link rel="canonical" href="https://business.beta-art.com/dashboard.html">
+<meta name="theme-color" content="#0F0F0F">
+<meta property="og:url" content="https://business.beta-art.com/dashboard.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Beta Art Business">
+<meta property="og:title" content="Client dashboard — Beta Art Business">
+<meta property="og:description" content="A working preview of the client area: projects, orders, messages, files, revisions and invoices. Sample data only — no account, no backend, nothing stored.">
+<meta property="og:image" content="https://business.beta-art.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Beta Art Business — turn your idea into a working digital solution.">
+<meta name="twitter:image" content="https://business.beta-art.com/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230F0F0F'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%238B1A1A'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="bar" id="top">
+<div class="wrap bar-inner">
+<a class="mark" href="index.html" aria-label="Beta Art Business, home">
+<svg class="seal-mark" viewBox="0 0 100 100" aria-hidden="true">
+<g fill="none" stroke="currentColor" stroke-width="4">
+<circle cx="50" cy="50" r="46"/>
+<path d="M50 30 75.81 11.92M67.32 40 84.99 47.86M67.32 60 76.66 84.02M50 70 24.19 88.08M32.68 60 15.01 52.14M32.68 40 23.34 15.98"/>
+</g>
+<circle cx="50" cy="50" r="7" fill="#C43A2E"/>
+</svg>
+<span class="mark-text">BETA ART <strong>BUSINESS</strong></span>
+</a>
+<nav class="nav" id="primary-nav" aria-label="Primary">
+<a href="services.html#private">Private</a>
+<a href="services.html#business">Business</a>
+<a href="index.html#finder">Find your service</a>
+<a href="index.html#industries">Industries</a>
+<a href="index.html#process">How it works</a>
+<a href="index.html#pricing">Pricing</a>
+<a href="index.html#studio">AI Studio</a>
+<a href="index.html#faq">FAQ</a>
+</nav>
+<div class="bar-actions">
+<div class="lang-slot" id="lang-slot"></div>
+<a class="btn btn-seal btn-sm" href="quote.html">Get a quote</a>
+<button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
+<span class="burger" aria-hidden="true"></span>
+</button>
+</div>
+</div>
+</header>
+<main id="main">
+<section class="svc-hero">
+<div class="grid-bg" aria-hidden="true"></div>
+<div class="wrap">
+<nav class="crumbs" aria-label="Breadcrumb">
+<a href="index.html">Home</a> <span aria-hidden="true">·</span> <span aria-current="page">Client dashboard</span>
+</nav>
+<p class="tag">Preview</p>
+<h1>What the client area will look like.</h1>
+<p class="lead">This is a working preview with sample data, not a login. There is no account, no
+server behind it and nothing is stored — the numbers below are invented and labelled as such.
+We would rather show you the design honestly than put a login box on a door with no room behind it.</p>
+<div class="note-band">
+<p class="footnote"><strong>Why it is not live yet.</strong> A real client area holds contracts,
+invoices and project files. That needs a backend with authentication, encrypted storage, audit
+logging and a documented deletion process — which is a build in its own right, and it will ship
+when it can meet the privacy standard the rest of this studio already commits to. Until then,
+projects run over email and a review link, and that works.</p>
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="wrap">
+<div class="head"><p class="tag">Six panels</p><h2>Everything a project generates, in one place.</h2></div>
+<div class="dash">
+<div class="dash-tabs" role="tablist" aria-label="Dashboard sections">
+<button class="dash-tab is-active" type="button" role="tab" id="t-projects" aria-controls="p-projects" aria-selected="true">Projects</button>
+<button class="dash-tab" type="button" role="tab" id="t-orders" aria-controls="p-orders" aria-selected="false">Orders</button>
+<button class="dash-tab" type="button" role="tab" id="t-messages" aria-controls="p-messages" aria-selected="false">Messages</button>
+<button class="dash-tab" type="button" role="tab" id="t-files" aria-controls="p-files" aria-selected="false">Files</button>
+<button class="dash-tab" type="button" role="tab" id="t-revisions" aria-controls="p-revisions" aria-selected="false">Revisions</button>
+<button class="dash-tab" type="button" role="tab" id="t-invoices" aria-controls="p-invoices" aria-selected="false">Invoices</button>
+</div>
+<div class="dash-body">
+<section class="dash-panel" id="p-projects" role="tabpanel" aria-labelledby="t-projects" hidden>
+<h3>Projects</h3>
+<p class="footnote">Where each piece of work stands, what is waiting on you, and what is waiting on us.</p>
+<ul class="dash-list">
+<li><div><strong>Website rebuild</strong><span>In build · step 4 of 7</span></div><span class="dash-state is-us">Next checkpoint 24 Sep</span></li>
+<li><div><strong>Brand guide</strong><span>Waiting on you · 2 comments open</span></div><span class="dash-state is-you">Since 11 Sep</span></li>
+<li><div><strong>SEO audit</strong><span>Delivered 02 Sep</span></div><span class="dash-state is-done">Support window ends 02 Oct</span></li>
+</ul>
+</section>
+<section class="dash-panel" id="p-orders" role="tabpanel" aria-labelledby="t-orders" hidden>
+<h3>Orders</h3>
+<p class="footnote">Every scope you approved, with the price you approved it at.</p>
+<ul class="dash-list">
+<li><div><strong>BA-2026-0114 · Website rebuild</strong><span>kr 34 000 · approved 18 Aug</span></div><span class="dash-state is-us">50% on approval, 50% on delivery</span></li>
+<li><div><strong>BA-2026-0109 · SEO audit</strong><span>kr 8 900 · paid 02 Sep</span></div><span class="dash-state is-done">Complete</span></li>
+</ul>
+</section>
+<section class="dash-panel" id="p-messages" role="tabpanel" aria-labelledby="t-messages" hidden>
+<h3>Messages</h3>
+<p class="footnote">One thread per project. No email chains with attachments.</p>
+<ul class="dash-list">
+<li><div><strong>Website rebuild</strong><span>Betül · “Homepage draft is on the review link.”</span></div><span class="dash-state is-us">2 days ago</span></li>
+<li><div><strong>Brand guide</strong><span>You · “Can we try the warmer grey?”</span></div><span class="dash-state is-you">5 days ago</span></li>
+</ul>
+</section>
+<section class="dash-panel" id="p-files" role="tabpanel" aria-labelledby="t-files" hidden>
+<h3>Files</h3>
+<p class="footnote">Everything delivered so far, plus the source. Yours to download at any time.</p>
+<ul class="dash-list">
+<li><div><strong>brand-guide-v3.pdf</strong><span>4.2 MB · 11 Sep</span></div><span class="dash-state is-none"></span></li>
+<li><div><strong>logo-pack.zip</strong><span>18.6 MB · 02 Sep</span></div><span class="dash-state is-none"></span></li>
+<li><div><strong>seo-audit.pdf</strong><span>1.1 MB · 02 Sep</span></div><span class="dash-state is-none"></span></li>
+</ul>
+</section>
+<section class="dash-panel" id="p-revisions" role="tabpanel" aria-labelledby="t-revisions" hidden>
+<h3>Revisions</h3>
+<p class="footnote">How many rounds are included, and how many are left.</p>
+<ul class="dash-list">
+<li><div><strong>Website rebuild</strong><span>Round 1 of 2 used</span></div><span class="dash-state is-us">1 remaining</span></li>
+<li><div><strong>Brand guide</strong><span>Round 2 of 2 used</span></div><span class="dash-state is-you">Further rounds quoted first</span></li>
+</ul>
+</section>
+<section class="dash-panel" id="p-invoices" role="tabpanel" aria-labelledby="t-invoices" hidden>
+<h3>Invoices</h3>
+<p class="footnote">Issued, paid and outstanding. Every one downloadable as PDF.</p>
+<ul class="dash-list">
+<li><div><strong>2026-0114-1</strong><span>kr 17 000 · paid 20 Aug</span></div><span class="dash-state is-done">Website rebuild, 50%</span></li>
+<li><div><strong>2026-0114-2</strong><span>kr 17 000 · due on delivery</span></div><span class="dash-state is-us">Website rebuild, 50%</span></li>
+<li><div><strong>2026-0109</strong><span>kr 8 900 · paid 02 Sep</span></div><span class="dash-state is-done">SEO audit</span></li>
+</ul>
+</section>
+</div>
+</div>
+<p class="footnote">Legend: <span class="dash-state is-you">waiting on you</span>
+<span class="dash-state is-us">waiting on us</span>
+<span class="dash-state is-done">complete</span> — the point of the design is that you can
+tell in one glance which of those a project is in.</p>
+</div>
+</section>
+
+<section class="enquiry">
+<div class="wrap"><div class="head">
+<p class="tag">In the meantime</p>
+<h2>Projects run over email and one review link.</h2>
+<p class="lead">One place to comment, progress at agreed checkpoints, and a handover note at the
+end. The dashboard will make that tidier; it will not change how the work is run.</p>
+<div class="actions"><a class="btn btn-seal" href="quote.html">Get a quote</a><a class="btn btn-line" href="index.html#process">How a project runs</a></div>
+</div></div>
+</section>
+</main>
+<script src="dashboard.js"></script>
+<footer class="footer">
+<div class="wrap footer-grid">
+<div>
+<p class="mark-text">BETA ART <strong>BUSINESS</strong></p>
+<p class="footnote">Digital work for people and companies — websites, brands, content, AI automation.
+Part of Beta Art, the archive of verified human photography.</p>
+<ul class="social" aria-label="Beta Art on social media">
+<li><a href="https://www.instagram.com/betaart.no" rel="me noopener">Instagram</a></li>
+<li><a href="https://www.linkedin.com/company/beta-art" rel="me noopener">LinkedIn</a></li>
+<li><a href="https://www.behance.net/betaart" rel="me noopener">Behance</a></li>
+<li><a href="https://www.pinterest.com/betaart" rel="me noopener">Pinterest</a></li>
+</ul>
+</div>
+<nav aria-label="Services"><p class="tag">Services</p><a href="services.html#private">Private</a><a href="services.html#business">Business</a><a href="services.html">All services</a><a href="ai-staff.html">AI employees</a><a href="index.html#studio">AI Studio</a><a href="index.html#pricing">Pricing</a></nav>
+<nav aria-label="Company"><p class="tag">Company</p><a href="about.html">About</a><a href="cases.html">Cases</a><a href="resources.html">Free resources</a><a href="index.html#industries">Industries</a><a href="quote.html">Get a quote</a></nav>
+<nav aria-label="Legal"><p class="tag">Legal</p><a href="https://start.beta-art.com/legal.html#terms">Terms</a><a href="https://start.beta-art.com/legal.html#privacy">Privacy</a><a href="https://start.beta-art.com/legal.html#refunds">Refunds</a><a href="https://start.beta-art.com/legal.html#ai">AI &amp; data</a><a href="https://start.beta-art.com/legal.html#accessibility">Accessibility</a><a href="https://start.beta-art.com/report.html">Report content</a><a href="mailto:hallo@beta-art.com">Contact</a></nav>
+</div>
+<div class="wrap footer-base">
+<p class="human-mark"><svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7.1" fill="none" stroke="currentColor" stroke-width="1.4"></circle><path d="M4.7 8.2 7 10.5 11.3 5.7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"></path></svg><span data-i18n="mark.human">Human approved</span></p>
+    <p class="human-mark-note" data-i18n="mark.human.note">Nothing is published here until a person has seen it and approved it.</p>
+    <p class="footnote" data-i18n="legal.copyright">© 2026 Beta Art — Betül Öner. All rights reserved worldwide to the fullest extent permitted by applicable law. The Beta Art name, mark, service structure and page design are protected works.</p>
+<button class="to-top" id="to-top" type="button">Back to top ↑</button>
+</div>
+</footer>
+<script src="i18n.js"></script>
+<script src="script.js"></script>
+<!-- derived structured data — tools/enrich.py -->
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "itemListElement": [
+  {
+   "@type": "ListItem",
+   "position": 1,
+   "name": "Home",
+   "item": "https://business.beta-art.com/index.html"
+  },
+  {
+   "@type": "ListItem",
+   "position": 2,
+   "name": "Client dashboard"
+  }
+ ]
+}
+</script>
+</body>
+</html>

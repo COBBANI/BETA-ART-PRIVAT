@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Beta Art — Archive Platform</title>
+<style>
+:root{
+  --bg:#f2efe8;
+  --paper:#fbfaf7;
+  --ink:#151515;
+  --muted:#777269;
+  --line:#d8d3ca;
+  --soft:#e9e5dc;
+  --ok:#2f654c;
+  --warn:#97651f;
+  --bad:#8d3e3e;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Inter,Arial,Helvetica,sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+.shell{max-width:1500px;margin:0 auto;padding:28px}
+.topbar{
+  display:flex;justify-content:space-between;align-items:flex-start;gap:30px;
+  border-bottom:1px solid var(--line);padding-bottom:24px;margin-bottom:18px
+}
+.brand small{display:block;text-transform:uppercase;letter-spacing:.15em;color:var(--muted);font-size:11px;margin-bottom:8px}
+.brand h1{font:400 clamp(36px,5vw,68px)/.95 Georgia,serif;margin:0;letter-spacing:-.04em}
+.top-actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+.btn{
+  border:1px solid var(--ink);background:transparent;color:var(--ink);
+  padding:10px 14px;font-size:13px
+}
+.btn.primary{background:var(--ink);color:white}
+.btn.success{background:var(--ok);border-color:var(--ok);color:white}
+.btn.danger{background:var(--bad);border-color:var(--bad);color:white}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.tabs{
+  display:flex;gap:0;border:1px solid var(--line);background:var(--paper);
+  margin-bottom:28px;overflow:auto
+}
+.tab-btn{
+  border:0;border-right:1px solid var(--line);background:transparent;padding:14px 18px;
+  white-space:nowrap;text-transform:uppercase;font-size:11px;letter-spacing:.08em;color:var(--muted)
+}
+.tab-btn.active{background:var(--ink);color:white}
+.view{display:none}
+.view.active{display:block}
+.grid-main{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:30px;align-items:start}
+.panel{
+  background:var(--paper);border:1px solid var(--line);padding:22px;margin-bottom:20px
+}
+.panel h2,.panel h3{font-family:Georgia,serif;font-weight:400;margin:0}
+.panel h2{font-size:30px}
+.panel h3{font-size:22px}
+.section-head{
+  display:flex;justify-content:space-between;align-items:flex-end;gap:20px;
+  border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:18px
+}
+.section-head p{margin:0;color:var(--muted);font-size:12px;max-width:420px;text-align:right}
+.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.form-grid.cols3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.field{margin-bottom:16px}
+.field label{
+  display:block;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);
+  font-size:10px;margin-bottom:7px
+}
+input,select,textarea{
+  width:100%;border:1px solid var(--line);background:white;padding:11px 12px;color:var(--ink);outline:none
+}
+input:focus,select:focus,textarea:focus{border-color:#8a857b}
+textarea{min-height:110px;resize:vertical}
+.helper{font-size:11px;color:var(--muted);margin-top:5px}
+.upload-zone{
+  position:relative;min-height:280px;background:var(--soft);border:1px dashed #999287;
+  display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;cursor:pointer
+}
+.upload-zone img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#ddd8cf}
+.upload-copy{position:relative;z-index:2}
+.upload-copy strong{display:block;font:400 25px Georgia,serif;margin-bottom:7px}
+.upload-copy span{color:var(--muted);font-size:12px}
+#fileInput{display:none}
+.categories{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;max-height:430px;overflow:auto;padding-right:4px}
+.cat{
+  border:1px solid var(--line);background:white;padding:12px;display:flex;justify-content:space-between;gap:10px;align-items:flex-start
+}
+.cat strong{font-family:Georgia,serif;font-weight:400}
+.cat small{display:block;color:var(--muted);margin-top:4px;font-size:10px}
+.cat.selected{background:var(--ink);color:white;border-color:var(--ink)}
+.cat.selected small{color:#c9c9c9}
+.badge{font-size:9px;text-transform:uppercase;border:1px solid currentColor;padding:3px 5px;white-space:nowrap}
+.preview{position:sticky;top:20px}
+.card{border:1px solid var(--line);background:white}
+.card-image{aspect-ratio:4/5;background:#ded9cf;position:relative;display:flex;align-items:center;justify-content:center;color:var(--muted);overflow:hidden}
+.card-image img{width:100%;height:100%;object-fit:cover}
+.status{position:absolute;top:12px;left:12px;background:rgba(255,255,255,.9);padding:6px 8px;font-size:9px;text-transform:uppercase}
+.card-body{padding:18px}
+.card-title{font:400 28px Georgia,serif;margin:0 0 3px}
+.card-id{font-size:11px;color:var(--muted);margin-bottom:24px}
+.card-meta{font-size:10px;text-transform:uppercase;letter-spacing:.04em}
+.card-price{font:700 14px Georgia,serif;margin-top:8px}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
+.chip{background:var(--ink);color:white;padding:5px 7px;font-size:10px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
+.stat{background:var(--paper);border:1px solid var(--line);padding:18px}
+.stat span{display:block;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.08em}
+.stat strong{display:block;font:400 34px Georgia,serif;margin-top:8px}
+.toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:16px}
+.toolbar input,.toolbar select{width:auto;min-width:180px}
+.table-wrap{overflow:auto;border:1px solid var(--line);background:white}
+table{width:100%;border-collapse:collapse;min-width:900px}
+th,td{padding:12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:middle;font-size:12px}
+th{text-transform:uppercase;font-size:9px;letter-spacing:.09em;color:var(--muted);background:#f7f5f0}
+.thumb{width:70px;height:50px;object-fit:cover;background:#ddd}
+.pill{display:inline-block;padding:5px 7px;border:1px solid var(--line);font-size:10px}
+.pill.ok{color:var(--ok);border-color:var(--ok)}
+.pill.warn{color:var(--warn);border-color:var(--warn)}
+.pill.bad{color:var(--bad);border-color:var(--bad)}
+.review-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.review-card{background:white;border:1px solid var(--line);overflow:hidden}
+.review-card img{width:100%;height:240px;object-fit:cover;background:#ddd}
+.review-card .body{padding:16px}
+.review-card h3{font:400 24px Georgia,serif;margin:0 0 4px}
+.review-actions{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+.empty{padding:30px;text-align:center;color:var(--muted);border:1px dashed var(--line);background:rgba(255,255,255,.35)}
+.notice{padding:12px 14px;border-left:3px solid var(--warn);background:#fff7e7;font-size:12px;margin-bottom:14px}
+.inline-checks{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.inline-checks label{border:1px solid var(--line);padding:10px;background:white;font-size:12px}
+.inline-checks input{width:auto;margin-right:7px}
+.footer-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:12px}
+.hidden{display:none!important}
+@media(max-width:1050px){
+  .grid-main{grid-template-columns:1fr}
+  .preview{position:static;max-width:520px}
+  .stats{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:720px){
+  .shell{padding:16px}
+  .topbar{display:block}
+  .top-actions{justify-content:flex-start;margin-top:18px}
+  .form-grid,.form-grid.cols3,.categories,.review-grid,.inline-checks{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr}
+  .section-head{display:block}
+  .section-head p{text-align:left;margin-top:8px}
+}
+</style>
+</head>
+<body>
+<div class="shell">
+  <header class="topbar">
+    <div class="brand">
+      <small>Beta Art · Norway's verified visual archive</small>
+      <h1>Archive Platform</h1>
+    </div>
+    <div class="top-actions">
+      <button class="btn" id="seedDemoBtn">Load demo data</button>
+      <button class="btn" id="exportBtn">Export JSON</button>
+      <button class="btn danger" id="resetBtn">Reset local data</button>
+    </div>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab-btn active" data-view="uploadView">Upload</button>
+    <button class="tab-btn" data-view="dashboardView">Photographer Dashboard</button>
+    <button class="tab-btn" data-view="adminView">Admin Review</button>
+    <button class="tab-btn" data-view="collectionView">Collection Preview</button>
+  </nav>
+
+  <section id="uploadView" class="view active">
+    <div class="grid-main">
+      <main>
+        <div class="panel">
+          <div class="section-head">
+            <div><h2>1. Original file</h2></div>
+            <p>Upload JPG, PNG or WEBP. Image dimensions and orientation are detected automatically.</p>
+          </div>
+
+          <label class="upload-zone" for="fileInput">
+            <img id="uploadPreview" class="hidden" alt="">
+            <div class="upload-copy" id="uploadCopy">
+              <strong>Choose photograph</strong>
+              <span>Click to upload an original or high-resolution preview.</span>
+            </div>
+          </label>
+          <input id="fileInput" type="file" accept="image/jpeg,image/png,image/webp">
+
+          <div class="form-grid cols3" style="margin-top:16px">
+            <div class="field">
+              <label>Width</label>
+              <input id="imgWidth" readonly placeholder="Auto">
+            </div>
+            <div class="field">
+              <label>Height</label>
+              <input id="imgHeight" readonly placeholder="Auto">
+            </div>
+            <div class="field">
+              <label>Orientation</label>
+              <input id="orientation" readonly placeholder="Auto">
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="section-head">
+            <div><h2>2. Archive details</h2></div>
+            <p>Public metadata used on the collection page and in search.</p>
+          </div>
+
+          <div class="form-grid">
+            <div class="field">
+              <label>Artwork title</label>
+              <input id="title" placeholder="First Light">
+            </div>
+            <div class="field">
+              <label>Archive ID</label>
+              <input id="archiveId" readonly>
+            </div>
+          </div>
+
+          <div class="form-grid cols3">
+            <div class="field">
+              <label>Collection</label>
+              <input id="collection" value="The Collection">
+            </div>
+            <div class="field">
+              <label>Volume</label>
+              <input id="volume" value="Volume I">
+            </div>
+            <div class="field">
+              <label>Plate</label>
+              <input id="plate" type="number" min="1" placeholder="13">
+            </div>
+          </div>
+
+          <div class="form-grid cols3">
+            <div class="field">
+              <label>Photographer</label>
+              <input id="photographer" placeholder="Photographer name">
+            </div>
+            <div class="field">
+              <label>Location</label>
+              <input id="location" placeholder="Jotunheimen, Norway">
+            </div>
+            <div class="field">
+              <label>Capture date</label>
+              <input id="captureDate" type="date">
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Description</label>
+            <textarea id="description" placeholder="Describe the photograph, story and context."></textarea>
+          </div>
+
+          <div class="field">
+            <label>Search tags</label>
+            <input id="tags" placeholder="norway, mountain, fog, travel">
+            <div class="helper">Separate tags with commas.</div>
+          </div>
+
+          <button class="btn" id="autoSuggestBtn" type="button">Auto-suggest categories</button>
+        </div>
+
+        <div class="panel">
+          <div class="section-head">
+            <div><h2>3. Categories</h2></div>
+            <p>Multiple categories are allowed. Editorial categories automatically restrict licensing.</p>
+          </div>
+
+          <div class="field">
+            <label>Search categories</label>
+            <input id="categorySearch" placeholder="Search all 35 categories">
+          </div>
+
+          <div id="categoryContainer"></div>
+        </div>
+
+        <div class="panel">
+          <div class="section-head">
+            <div><h2>4. Licensing</h2></div>
+            <p>Set the intended licensing mode and starting price.</p>
+          </div>
+
+          <div class="form-grid cols3">
+            <div class="field">
+              <label>License type</label>
+              <select id="licenseType">
+                <option>Commercial + Editorial</option>
+                <option>Commercial</option>
+                <option>Editorial</option>
+                <option>Editorial only</option>
+                <option>Not available for licensing</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Starting price (NOK)</label>
+              <input id="price" type="number" min="0" value="190">
+            </div>
+            <div class="field">
+              <label>Initial status</label>
+              <select id="status">
+                <option>Pending review</option>
+                <option>Awaiting verified original</option>
+                <option>Draft</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="section-head">
+            <div><h2>5. Verification declarations</h2></div>
+            <p>These are declarations from the uploader. Admin verification is completed later.</p>
+          </div>
+
+          <div class="inline-checks">
+            <label><input id="ownsRights" type="checkbox">I own or control the licensing rights</label>
+            <label><input id="hasRelease" type="checkbox">Required model/property releases are available</label>
+            <label><input id="originalClaim" type="checkbox">This is an original photograph</label>
+            <label><input id="metadataClaim" type="checkbox">Capture metadata is accurate</label>
+          </div>
+
+          <div class="footer-actions">
+            <button class="btn" id="saveDraftBtn">Save draft</button>
+            <button class="btn primary" id="submitBtn">Submit for review</button>
+          </div>
+        </div>
+      </main>
+
+      <aside class="preview">
+        <div class="panel">
+          <div class="section-head"><div><h3>Live preview</h3></div></div>
+          <article class="card">
+            <div class="card-image">
+              <span id="previewEmpty">Image preview</span>
+              <img id="cardImage" class="hidden" alt="">
+              <span class="status" id="previewStatus">Pending review</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title" id="previewTitle">Untitled</h3>
+              <div class="card-id" id="previewId">—</div>
+              <div class="card-meta" id="previewMeta">CAPTURE DETAILS TO BE SUPPLIED</div>
+              <div class="card-price" id="previewPrice">from kr 190</div>
+              <div class="chips" id="previewCategories"></div>
+            </div>
+          </article>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section id="dashboardView" class="view">
+    <div id="stats" class="stats"></div>
+
+    <div class="panel">
+      <div class="section-head">
+        <div><h2>Photographer archive</h2></div>
+        <p>Search and manage everything submitted from this browser.</p>
+      </div>
+
+      <div class="toolbar">
+        <input id="dashboardSearch" placeholder="Search title, ID or location">
+        <select id="dashboardStatus">
+          <option value="">All statuses</option>
+          <option>Draft</option>
+          <option>Pending review</option>
+          <option>Awaiting verified original</option>
+          <option>Verification in progress</option>
+          <option>Verified original</option>
+          <option>Available</option>
+          <option>Rejected</option>
+        </select>
+      </div>
+
+      <div id="dashboardTable"></div>
+    </div>
+  </section>
+
+  <section id="adminView" class="view">
+    <div class="notice">
+      Admin tools below simulate a verification workflow locally. In production, connect these actions to authenticated backend APIs.
+    </div>
+
+    <div class="panel">
+      <div class="section-head">
+        <div><h2>Pending review</h2></div>
+        <p>Approve, reject or mark a submission as waiting for the original file.</p>
+      </div>
+      <div id="reviewGrid"></div>
+    </div>
+  </section>
+
+  <section id="collectionView" class="view">
+    <div class="panel">
+      <div class="section-head">
+        <div><h2>The collection · Volume I</h2></div>
+        <p>Only photographs marked Available appear here.</p>
+      </div>
+      <div class="toolbar">
+        <button class="btn collection-filter" data-filter="">All</button>
+        <button class="btn collection-filter" data-filter="Landscape">Landscape</button>
+        <button class="btn collection-filter" data-filter="Portrait">Portrait</button>
+        <button class="btn collection-filter" data-filter="Square">Square</button>
+      </div>
+      <div id="collectionGrid" class="review-grid"></div>
+    </div>
+  </section>
+</div>
+
+<script>
+const CATEGORIES = [
+  ["01","People","Highest demand"],["02","Business","High demand"],["03","Nature","High demand"],
+  ["04","Lifestyle","High demand"],["05","Food & Drink","High demand"],["06","Travel","Seasonal peak"],
+  ["07","Health & Wellness","Fast growing"],["08","Family","Steady demand"],["09","Sustainability","Strong growth"],
+  ["10","Architecture","Steady demand"],["11","Fashion & Style","High demand"],["12","Education & Children","Steady demand"],
+  ["13","Sports & Activity","Fast growing"],["14","Art & Culture","Steady demand"],["15","Technology & AI","Top 3 fastest growing"],
+  ["16","Real Estate & Interiors","High demand"],["17","Norwegian Nature","Exclusive"],["18","Norwegian Cities","Exclusive"],
+  ["19","Local Business","Exclusive"],["20","Norwegian Work Life","Exclusive"],["21","Seasons & Holidays","Exclusive"],
+  ["22","Maritime & Offshore","High demand"],["23","Energy & Renewables","Fast growing"],["24","Aquaculture & Seafood","High demand"],
+  ["25","Healthcare & Research","Steady demand"],["26","Tourism & Hospitality","Seasonal peak"],["27","News & Current Events","Editorial only"],
+  ["28","Portraits & Profiles","Steady demand"],["29","Documentary","Steady demand"],["30","Science & Environment","Fast growing"],
+  ["31","Politics & Society","Editorial only"],["32","Accessibility & Inclusion","Fast growing"],["33","Ageing & Later Life","High demand"],
+  ["34","Mental Health","Fast growing"],["35","AI & Human Interaction","Top 3 fastest growing"]
+];
+
+const DB_KEY = "betaArtArchiveV2";
+const selectedCategories = new Map();
+let currentImageData = "";
+let collectionFilter = "";
+
+const $ = id => document.getElementById(id);
+
+function loadDB(){
+  try { return JSON.parse(localStorage.getItem(DB_KEY)) || []; }
+  catch { return []; }
+}
+function saveDB(items){ localStorage.setItem(DB_KEY, JSON.stringify(items)); }
+
+function nextArchiveId(){
+  const year = new Date().getFullYear();
+  const items = loadDB().filter(x => String(x.archiveId || "").startsWith(year + "."));
+  const nums = items.map(x => Number(String(x.archiveId).split(".")[1] || 0)).filter(Boolean);
+  const next = Math.max(153, ...nums) + 1;
+  return `${year}.${String(next).padStart(4,"0")}`;
+}
+
+function setNewArchiveId(){
+  $("archiveId").value = nextArchiveId();
+  updatePreview();
+}
+
+function renderCategories(search=""){
+  const term = search.toLowerCase().trim();
+  const filtered = CATEGORIES.filter(c => c.join(" ").toLowerCase().includes(term));
+  $("categoryContainer").innerHTML = `<div class="categories">${
+    filtered.map(c => `
+      <button type="button" class="cat ${selectedCategories.has(c[0]) ? "selected":""}" data-cat="${c[0]}">
+        <span><strong>${c[0]} · ${c[1]}</strong><small>${c[2]}</small></span>
+        <span class="badge">${c[2]}</span>
+      </button>`).join("")
+  }</div>`;
+  document.querySelectorAll("[data-cat]").forEach(btn=>{
+    btn.addEventListener("click",()=>{
+      const cat = CATEGORIES.find(c=>c[0]===btn.dataset.cat);
+      if(selectedCategories.has(cat[0])) selectedCategories.delete(cat[0]);
+      else selectedCategories.set(cat[0], {id:cat[0],title:cat[1],badge:cat[2]});
+      if(selectedCategories.has("27") || selectedCategories.has("31")) $("licenseType").value = "Editorial only";
+      renderCategories($("categorySearch").value);
+      updatePreview();
+    });
+  });
+}
+
+function updatePreview(){
+  $("previewTitle").textContent = $("title").value.trim() || "Untitled";
+  $("previewId").textContent = $("archiveId").value || "—";
+  $("previewStatus").textContent = $("status").value;
+  const loc = $("location").value.trim();
+  const date = $("captureDate").value;
+  const parts = [];
+  if(loc) parts.push(loc);
+  if(date){
+    const d = new Date(date+"T12:00:00");
+    parts.push(d.toLocaleDateString("en-US",{month:"long",year:"numeric"}));
+  }
+  $("previewMeta").textContent = (parts.join(", ") || "Capture details to be supplied").toUpperCase();
+  $("previewPrice").textContent = `from kr ${$("price").value || 0}`;
+  $("previewCategories").innerHTML = [...selectedCategories.values()].map(c=>`<span class="chip">${c.title}</span>`).join("");
+}
+
+function gatherRecord(statusOverride){
+  return {
+    id: crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random(),
+    archiveId: $("archiveId").value,
+    title: $("title").value.trim() || "Untitled",
+    collection: $("collection").value.trim() || "The Collection",
+    volume: $("volume").value.trim() || "Volume I",
+    plate: $("plate").value || "",
+    photographer: $("photographer").value.trim(),
+    location: $("location").value.trim(),
+    captureDate: $("captureDate").value,
+    description: $("description").value.trim(),
+    tags: $("tags").value.split(",").map(x=>x.trim()).filter(Boolean),
+    width: $("imgWidth").value,
+    height: $("imgHeight").value,
+    orientation: $("orientation").value || "Unknown",
+    imageData: currentImageData,
+    categories: [...selectedCategories.values()],
+    licenseType: $("licenseType").value,
+    price: Number($("price").value || 0),
+    status: statusOverride || $("status").value,
+    uploaderDeclarations: {
+      ownsRights: $("ownsRights").checked,
+      hasRelease: $("hasRelease").checked,
+      originalClaim: $("originalClaim").checked,
+      metadataClaim: $("metadataClaim").checked
+    },
+    verification: {
+      identityVerified:false,
+      originalVerified:false,
+      metadataVerified:false,
+      locationVerified:false,
+      rightsVerified:false
+    },
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
+  };
+}
+
+function validateForSubmit(){
+  if(!$("title").value.trim()){ alert("Please enter an artwork title."); return false; }
+  if(!currentImageData){ alert("Please upload an image."); return false; }
+  if(selectedCategories.size===0){ alert("Select at least one category."); return false; }
+  if(!$("ownsRights").checked || !$("originalClaim").checked){
+    alert("Rights ownership and original photograph declarations are required.");
+    return false;
+  }
+  return true;
+}
+
+function resetForm(){
+  ["title","plate","photographer","location","captureDate","description","tags"].forEach(id=>$(id).value="");
+  $("collection").value="The Collection";
+  $("volume").value="Volume I";
+  $("price").value="190";
+  $("status").value="Pending review";
+  $("licenseType").value="Commercial + Editorial";
+  ["ownsRights","hasRelease","originalClaim","metadataClaim"].forEach(id=>$(id).checked=false);
+  $("imgWidth").value=$("imgHeight").value=$("orientation").value="";
+  currentImageData="";
+  $("uploadPreview").src="";
+  $("uploadPreview").classList.add("hidden");
+  $("cardImage").src="";
+  $("cardImage").classList.add("hidden");
+  $("previewEmpty").classList.remove("hidden");
+  $("uploadCopy").classList.remove("hidden");
+  $("fileInput").value="";
+  selectedCategories.clear();
+  renderCategories();
+  setNewArchiveId();
+  updatePreview();
+}
+
+function saveRecord(status){
+  if(status==="Pending review" && !validateForSubmit()) return;
+  const db = loadDB();
+  const rec = gatherRecord(status);
+  db.unshift(rec);
+  saveDB(db);
+  alert(status==="Draft" ? "Draft saved." : "Submitted for review.");
+  resetForm();
+  renderAll();
+}
+
+$("fileInput").addEventListener("change", e=>{
+  const file = e.target.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = ev=>{
+    currentImageData = ev.target.result;
+    const img = new Image();
+    img.onload = ()=>{
+      $("imgWidth").value = img.naturalWidth;
+      $("imgHeight").value = img.naturalHeight;
+      const orientation = img.naturalWidth > img.naturalHeight ? "Landscape" :
+                          img.naturalWidth < img.naturalHeight ? "Portrait" : "Square";
+      $("orientation").value = orientation;
+      updatePreview();
+    };
+    img.src = currentImageData;
+    $("uploadPreview").src=currentImageData;
+    $("cardImage").src=currentImageData;
+    $("uploadPreview").classList.remove("hidden");
+    $("cardImage").classList.remove("hidden");
+    $("previewEmpty").classList.add("hidden");
+    $("uploadCopy").classList.add("hidden");
+  };
+  reader.readAsDataURL(file);
+});
+
+["title","archiveId","location","captureDate","price","status"].forEach(id=>{
+  $(id).addEventListener("input",updatePreview);
+  $(id).addEventListener("change",updatePreview);
+});
+$("categorySearch").addEventListener("input",e=>renderCategories(e.target.value));
+
+$("autoSuggestBtn").addEventListener("click",()=>{
+  const text = [
+    $("title").value,$("location").value,$("description").value,$("tags").value
+  ].join(" ").toLowerCase();
+
+  const rules = [
+    ["03",["mountain","forest","fjord","lake","nature","fog","sea","ocean"]],
+    ["06",["travel","destination","trip","tourism"]],
+    ["17",["norway","jotunheimen","fjord","tromsø","lofoten"]],
+    ["18",["oslo","bergen","tromsø","trondheim","stavanger"]],
+    ["10",["building","architecture","urban","house"]],
+    ["15",["technology","software","computer","data","ai"]],
+    ["35",["ai","assistant","chatbot","machine learning"]],
+    ["22",["ship","offshore","harbour","harbor","rig","maritime"]],
+    ["24",["salmon","seafood","aquaculture","fishing"]],
+    ["23",["wind","hydro","solar","renewable","energy"]],
+    ["25",["hospital","research","laboratory","healthcare"]],
+    ["28",["portrait","studio","profile"]]
+  ];
+
+  let hits=0;
+  rules.forEach(([id,words])=>{
+    if(words.some(w=>text.includes(w))){
+      const c=CATEGORIES.find(x=>x[0]===id);
+      if(c){ selectedCategories.set(id,{id,title:c[1],badge:c[2]}); hits++; }
+    }
+  });
+  if(selectedCategories.has("27") || selectedCategories.has("31")) $("licenseType").value="Editorial only";
+  renderCategories($("categorySearch").value);
+  updatePreview();
+  alert(hits ? `Suggested ${hits} matching category selections.` : "No strong category match found. Add more title, location, description or tags.");
+});
+
+$("saveDraftBtn").addEventListener("click",()=>saveRecord("Draft"));
+$("submitBtn").addEventListener("click",()=>saveRecord("Pending review"));
+
+document.querySelectorAll(".tab-btn").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    document.querySelectorAll(".tab-btn").forEach(x=>x.classList.remove("active"));
+    document.querySelectorAll(".view").forEach(x=>x.classList.remove("active"));
+    btn.classList.add("active");
+    $(btn.dataset.view).classList.add("active");
+    renderAll();
+  });
+});
+
+function statusClass(status){
+  if(["Available","Verified original"].includes(status)) return "ok";
+  if(["Rejected"].includes(status)) return "bad";
+  return "warn";
+}
+
+function renderStats(){
+  const db=loadDB();
+  const available=db.filter(x=>x.status==="Available").length;
+  const pending=db.filter(x=>["Pending review","Awaiting verified original","Verification in progress"].includes(x.status)).length;
+  const drafts=db.filter(x=>x.status==="Draft").length;
+  const revenue=db.filter(x=>x.status==="Available").reduce((s,x)=>s+Number(x.price||0),0);
+  $("stats").innerHTML=[
+    ["Total submissions",db.length],
+    ["Pending",pending],
+    ["Available",available],
+    ["Listed value",`kr ${revenue.toLocaleString("no-NO")}`]
+  ].map(([label,value])=>`<div class="stat"><span>${label}</span><strong>${value}</strong></div>`).join("");
+}
+
+function renderDashboard(){
+  const term=$("dashboardSearch").value.toLowerCase().trim();
+  const st=$("dashboardStatus").value;
+  const rows=loadDB().filter(x=>{
+    const hay=[x.title,x.archiveId,x.location,x.photographer].join(" ").toLowerCase();
+    return (!term || hay.includes(term)) && (!st || x.status===st);
+  });
+  if(!rows.length){ $("dashboardTable").innerHTML=`<div class="empty">No matching archive records.</div>`; return; }
+  $("dashboardTable").innerHTML=`
+    <div class="table-wrap"><table>
+      <thead><tr><th>Image</th><th>ID</th><th>Title</th><th>Location</th><th>Orientation</th><th>Status</th><th>Price</th><th>Actions</th></tr></thead>
+      <tbody>${rows.map(x=>`
+        <tr>
+          <td>${x.imageData?`<img class="thumb" src="${x.imageData}">`:"—"}</td>
+          <td>${x.archiveId}</td>
+          <td>${x.title}</td>
+          <td>${x.location||"—"}</td>
+          <td>${x.orientation||"—"}</td>
+          <td><span class="pill ${statusClass(x.status)}">${x.status}</span></td>
+          <td>kr ${Number(x.price||0).toLocaleString("no-NO")}</td>
+          <td><button class="btn" onclick="duplicateRecord('${x.id}')">Duplicate</button> <button class="btn danger" onclick="deleteRecord('${x.id}')">Delete</button></td>
+        </tr>`).join("")}
+      </tbody>
+    </table></div>`;
+}
+
+function renderAdmin(){
+  const rows=loadDB().filter(x=>["Pending review","Awaiting verified original","Verification in progress"].includes(x.status));
+  if(!rows.length){ $("reviewGrid").innerHTML=`<div class="empty">No submissions are waiting for review.</div>`; return; }
+  $("reviewGrid").innerHTML=`<div class="review-grid">${rows.map(x=>`
+    <article class="review-card">
+      ${x.imageData?`<img src="${x.imageData}" alt="">`:"<div class='empty'>No image</div>"}
+      <div class="body">
+        <h3>${x.title}</h3>
+        <div class="card-id">${x.archiveId}</div>
+        <p style="font-size:12px;color:var(--muted)">${x.location||"Location not supplied"} · ${x.orientation||"Unknown"}</p>
+        <div class="chips">${(x.categories||[]).map(c=>`<span class="chip">${c.title}</span>`).join("")}</div>
+        <div class="review-actions">
+          <button class="btn success" onclick="adminAction('${x.id}','Available')">Approve & publish</button>
+          <button class="btn" onclick="adminAction('${x.id}','Awaiting verified original')">Request original</button>
+          <button class="btn" onclick="adminAction('${x.id}','Verification in progress')">Verify</button>
+          <button class="btn danger" onclick="adminAction('${x.id}','Rejected')">Reject</button>
+        </div>
+      </div>
+    </article>`).join("")}</div>`;
+}
+
+function renderCollection(){
+  const rows=loadDB().filter(x=>x.status==="Available" && (!collectionFilter || x.orientation===collectionFilter));
+  if(!rows.length){ $("collectionGrid").innerHTML=`<div class="empty">No available photographs in this view.</div>`; return; }
+  $("collectionGrid").innerHTML=rows.map(x=>`
+    <article class="review-card">
+      ${x.imageData?`<img src="${x.imageData}" alt="${x.title}">`:"<div class='empty'>No image</div>"}
+      <div class="body">
+        <h3>${x.title}</h3>
+        <div class="card-id">${x.archiveId}</div>
+        <div class="card-meta">${([x.location, x.captureDate].filter(Boolean).join(", ") || "Capture details to be supplied").toUpperCase()}</div>
+        <div class="card-price">from kr ${Number(x.price||0).toLocaleString("no-NO")}</div>
+      </div>
+    </article>`).join("");
+}
+
+window.adminAction=function(id,status){
+  const db=loadDB();
+  const rec=db.find(x=>x.id===id);
+  if(!rec) return;
+  rec.status=status;
+  rec.updatedAt=new Date().toISOString();
+  if(status==="Available"){
+    rec.verification={identityVerified:true,originalVerified:true,metadataVerified:true,locationVerified:true,rightsVerified:true};
+  }
+  saveDB(db); renderAll();
+};
+
+window.deleteRecord=function(id){
+  if(!confirm("Delete this local archive record?")) return;
+  saveDB(loadDB().filter(x=>x.id!==id)); renderAll();
+};
+
+window.duplicateRecord=function(id){
+  const db=loadDB();
+  const src=db.find(x=>x.id===id); if(!src) return;
+  const copy=JSON.parse(JSON.stringify(src));
+  copy.id=crypto.randomUUID ? crypto.randomUUID() : String(Date.now());
+  copy.archiveId=nextArchiveId();
+  copy.title=copy.title+" — Copy";
+  copy.status="Draft";
+  copy.createdAt=new Date().toISOString();
+  copy.updatedAt=copy.createdAt;
+  db.unshift(copy); saveDB(db); renderAll();
+};
+
+$("dashboardSearch").addEventListener("input",renderDashboard);
+$("dashboardStatus").addEventListener("change",renderDashboard);
+document.querySelectorAll(".collection-filter").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    collectionFilter=btn.dataset.filter;
+    renderCollection();
+  });
+});
+
+$("exportBtn").addEventListener("click",()=>{
+  const blob=new Blob([JSON.stringify(loadDB(),null,2)],{type:"application/json"});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement("a");
+  a.href=url; a.download="beta-art-archive.json"; a.click();
+  URL.revokeObjectURL(url);
+});
+
+$("resetBtn").addEventListener("click",()=>{
+  if(confirm("Remove all locally stored Beta Art demo data?")){
+    localStorage.removeItem(DB_KEY); resetForm(); renderAll();
+  }
+});
+
+$("seedDemoBtn").addEventListener("click",()=>{
+  const sample=[
+    ["2026.0142","First Light","Jotunheimen, Norway","Landscape","Awaiting verified original",190],
+    ["2026.0144","Sea of Fog","Ventura, CA","Landscape","Pending review",190],
+    ["2026.0149","Golden Hour","Norway","Landscape","Available",190],
+    ["2026.0150","Portrait in Amber","Studio, Oslo","Portrait","Available",190]
+  ].map((x,i)=>({
+    id:crypto.randomUUID?crypto.randomUUID():String(Date.now()+i),
+    archiveId:x[0],title:x[1],location:x[2],orientation:x[3],status:x[4],price:x[5],
+    collection:"The Collection",volume:"Volume I",plate:i+1,photographer:"",captureDate:"",
+    description:"",tags:[],imageData:"",licenseType:"Commercial + Editorial",
+    categories:i===3?[{id:"28",title:"Portraits & Profiles",badge:"Steady demand"}]:[{id:"17",title:"Norwegian Nature",badge:"Exclusive"}],
+    uploaderDeclarations:{ownsRights:true,hasRelease:false,originalClaim:true,metadataClaim:true},
+    verification:{identityVerified:x[4]==="Available",originalVerified:x[4]==="Available",metadataVerified:x[4]==="Available",locationVerified:x[4]==="Available",rightsVerified:x[4]==="Available"},
+    createdAt:new Date().toISOString(),updatedAt:new Date().toISOString()
+  }));
+  const existing=loadDB();
+  saveDB([...sample,...existing]); renderAll(); setNewArchiveId();
+  alert("Demo data loaded.");
+});
+
+function renderAll(){
+  renderStats(); renderDashboard(); renderAdmin(); renderCollection();
+}
+
+renderCategories();
+setNewArchiveId();
+updatePreview();
+renderAll();
+</script>
+</body>
+</html>

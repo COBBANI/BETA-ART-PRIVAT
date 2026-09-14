@@ -1,0 +1,29 @@
+{
+  "purpose": "Replace all prototype SVG visuals with real licensed originals before public launch.",
+  "minimum_launch_set": 24,
+  "required_fields_per_asset": [
+    "original_file",
+    "photographer_name",
+    "country",
+    "city/location",
+    "capture_date",
+    "industry",
+    "title",
+    "description",
+    "license_rights",
+    "model_release_status",
+    "property_release_status",
+    "ai_disclosure",
+    "identity_verification",
+    "metadata_review"
+  ],
+  "launch_mix": {
+    "Architecture": 5,
+    "Hospitality": 4,
+    "Energy & Renewables": 4,
+    "Healthcare & Research": 3,
+    "People / Workplace": 4,
+    "Nordic Landscape / Context": 4
+  },
+  "rule": "No asset may display Verified Human Photograph until the real file and required verification checks are present."
+}

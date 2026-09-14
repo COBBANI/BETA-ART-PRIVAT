@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BETA ART Galleri — Exhibitions, Artists & Events</title>
+<meta name="description" content="A curated programme of artists, works, exhibitions, openings and events presented by BETA ART Galleri.">
+<meta property="og:title" content="BETA ART Galleri — Exhibitions, Artists & Events">
+<meta property="og:description" content="Artists, works, exhibitions, openings and cultural events from BETA ART Galleri.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   BETA ART — Museum standard
+   Palette: bone-white gallery, near-black ink, a single
+   archival wax-seal red used only on the verification mark.
+   Type: Fraunces (display, variable serif with character),
+   Inter (body), JetBrains Mono (proof / accession).
+   Signature: the accession label — appears with every photo.
+   ============================================================ */
+:root{
+  /* palette */
+  --paper:#FBFAF7;
+  --paper-2:#F3F0E9;
+  --paper-3:#EAE6DD;
+  --ink:#0F0F0F;
+  --ink-2:#1F1D1B;
+  --muted:#85817A;
+  --muted-2:#B4B0A7;
+  --rule:#E4E0D8;
+  --rule-strong:#CFC9BC;
+  --seal:#8B1A1A;
+  --seal-deep:#6A1414;
+
+  /* type */
+  --f-display:"Fraunces",Georgia,"Times New Roman",serif;
+  --f-body:"Inter",-apple-system,BlinkMacSystemFont,sans-serif;
+  --f-mono:"JetBrains Mono","SFMono-Regular",Menlo,monospace;
+
+  /* rhythm */
+  --unit:8px;
+  --gutter:48px;
+  --max:1400px;
+
+  /* motion */
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--f-body);
+  font-size:16px;
+  line-height:1.55;
+  font-feature-settings:"ss01","cv11";
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  overflow-x:hidden;
+}
+img,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;background:none;border:none;color:inherit;cursor:pointer}
+::selection{background:var(--ink);color:var(--paper)}
+:focus-visible{outline:2px solid var(--seal);outline-offset:3px;border-radius:1px}
+
+/* skip link — accessibility */
+.skip{
+  position:absolute;left:16px;top:-40px;background:var(--ink);color:var(--paper);
+  padding:8px 14px;font-family:var(--f-mono);font-size:12px;z-index:100;
+  transition:top .2s;
+}
+.skip:focus{top:16px}
+
+/* ---------- typographic system ---------- */
+.mono{
+  font-family:var(--f-mono);
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  font-weight:500;
+}
+.mono-sm{font-family:var(--f-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase}
+.serif{font-family:var(--f-display);font-weight:400}
+.lead{font-family:var(--f-display);font-size:clamp(20px,2vw,26px);line-height:1.4;color:var(--ink-2)}
+
+/* ---------- shared layout ---------- */
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
+.divide-top{border-top:1px solid var(--rule)}
+.section{padding:calc(var(--unit)*12) 0}
+.section-lg{padding:calc(var(--unit)*18) 0}
+
+/* rule-label — a small monospace label preceded by a hairline */
+.rule-label{
+  display:inline-flex;align-items:center;gap:12px;
+  font-family:var(--f-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--muted);
+}
+.rule-label::before{
+  content:"";width:36px;height:1px;background:var(--ink);
+}
+
+/* ============================================================
+   THE SIGNATURE ELEMENT — accession label
+   ============================================================ */
+.accession{
+  display:grid;grid-template-columns:auto 1fr;gap:0 20px;
+  font-family:var(--f-mono);font-size:11px;line-height:1.85;
+  color:var(--ink);letter-spacing:.02em;
+  padding:14px 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--rule);
+  max-width:360px;
+}
+.accession .a-key{color:var(--muted);text-transform:uppercase;letter-spacing:.16em}
+.accession .a-val{color:var(--ink);text-align:right}
+.accession .a-val.strong{font-weight:500}
+
+/* wax seal — the ONLY color note outside the photographs */
+.seal-mark{
+  display:inline-flex;align-items:baseline;gap:6px;
+  font-family:var(--f-mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--seal);font-weight:500;
+}
+.seal-mark::before{
+  content:"";width:6px;height:6px;border-radius:50%;
+  background:var(--seal);
+  box-shadow:0 0 0 3px rgba(139,26,26,.12);
+  align-self:center;
+}
+.seal-lg{
+  display:inline-flex;flex-direction:column;align-items:center;justify-content:center;
+  width:70px;height:70px;border-radius:50%;
+  border:1px solid var(--seal);color:var(--seal);
+  font-family:var(--f-mono);font-size:8px;letter-spacing:.24em;text-transform:uppercase;
+  line-height:1.3;text-align:center;
+  position:relative;background:rgba(255,255,255,.4);
+}
+.seal-lg::before{
+  content:"";position:absolute;inset:6px;border-radius:50%;border:1px dashed var(--seal);opacity:.35;
+}
+.seal-lg b{font-family:var(--f-display);font-size:18px;font-weight:400;letter-spacing:0;color:var(--seal);text-transform:none;font-style:italic}
+
+/* ---------- nav ---------- */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:60;
+  background:rgba(251,250,247,.72);
+  backdrop-filter:saturate(180%) blur(20px);
+  -webkit-backdrop-filter:saturate(180%) blur(20px);
+  border-bottom:1px solid transparent;
+  transition:border-color .3s,background .3s;
+}
+.nav.scrolled{border-color:var(--rule);background:rgba(251,250,247,.92)}
+.nav-inner{
+  max-width:var(--max);margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px var(--gutter);
+}
+.brand{
+  font-family:var(--f-mono);font-size:13px;letter-spacing:.4em;font-weight:500;
+  display:inline-flex;align-items:baseline;gap:8px;
+}
+.brand-mark{
+  display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--seal);
+  transform:translateY(-1px);
+}
+.nav-links{display:flex;gap:36px;align-items:center}
+.nav-links a{
+  font-size:13px;color:var(--muted);
+  font-weight:500;transition:color .2s;
+  position:relative;
+}
+.nav-links a:hover{color:var(--ink)}
+.nav-links .order{
+  color:var(--ink);border:1px solid var(--ink);
+  padding:9px 18px;font-family:var(--f-mono);font-size:11px;
+  letter-spacing:.16em;text-transform:uppercase;
+  transition:background .2s,color .2s;
+}
+.nav-links .order:hover{background:var(--ink);color:var(--paper)}
+.nav-links .order .count{margin-left:8px;color:var(--seal);font-weight:600}
+
+/* ============================================================
+   HERO — worship of the image, museum label alongside
+   ============================================================ */
+.hero{padding:120px 0 0}
+.hero-inner{
+  max-width:var(--max);margin:0 auto;padding:0 var(--gutter);
+  display:grid;grid-template-columns:1fr 380px;gap:60px;
+  align-items:end;min-height:calc(100vh - 120px);
+}
+.hero-image-wrap{position:relative}
+.hero-image{
+  width:100%;aspect-ratio:4/5;object-fit:cover;
+  background:var(--paper-2);
+}
+.hero-image-caption{
+  display:flex;justify-content:space-between;align-items:baseline;
+  margin-top:14px;padding-top:12px;border-top:1px solid var(--ink);
+  font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);
+}
+.hero-image-caption b{color:var(--ink);font-weight:500}
+.hero-text{padding-bottom:60px;display:flex;flex-direction:column;gap:32px}
+.hero-text .rule-label{margin-bottom:0}
+.hero-headline{
+  font-family:var(--f-display);
+  font-size:clamp(44px,5.4vw,86px);
+  font-weight:400;
+  line-height:.98;
+  letter-spacing:-.02em;
+  color:var(--ink);
+}
+.hero-headline em{
+  font-style:italic;
+  font-weight:300;
+  font-variation-settings:"opsz" 144;
+}
+.hero-sub{font-family:var(--f-display);font-size:19px;line-height:1.45;color:var(--muted);max-width:32ch}
+.hero-cta{
+  display:inline-flex;align-items:center;gap:14px;align-self:flex-start;
+  padding:16px 22px;background:var(--ink);color:var(--paper);
+  font-family:var(--f-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  transition:background .2s;
+}
+.hero-cta:hover{background:var(--seal)}
+.hero-cta::after{content:"→";letter-spacing:0;font-family:var(--f-body);font-size:14px}
+
+/* ---------- rise-in on load ---------- */
+.rise{opacity:0;transform:translateY(20px)}
+.rise.in{opacity:1;transform:none;transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.rise.d1.in{transition-delay:.1s}
+.rise.d2.in{transition-delay:.25s}
+.rise.d3.in{transition-delay:.4s}
+.rise.d4.in{transition-delay:.55s}
+@media(prefers-reduced-motion:reduce){
+  .rise{opacity:1;transform:none;transition:none}
+}
+
+/* ============================================================
+   MANIFESTO — the thesis
+   ============================================================ */
+.manifesto{padding:calc(var(--unit)*20) 0 calc(var(--unit)*14)}
+.manifesto-inner{max-width:1000px;margin:0 auto;padding:0 var(--gutter)}
+.manifesto p{
+  font-family:var(--f-display);
+  font-size:clamp(28px,3.4vw,44px);
+  line-height:1.24;letter-spacing:-.01em;
+  color:var(--ink);font-weight:400;
+  margin-top:32px;
+}
+.manifesto p em{font-style:italic;color:var(--muted);font-weight:300}
+.manifesto p .seal-word{color:var(--seal);font-style:normal}
+.manifesto-sig{
+  display:flex;justify-content:space-between;align-items:baseline;
+  margin-top:56px;padding-top:20px;border-top:1px solid var(--rule);
+  font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted);
+}
+
+/* ============================================================
+   VERIFICATION — three columns of "how it works"
+   Treated like museum wall text.
+   ============================================================ */
+.verify{background:var(--paper-2)}
+.verify-inner{max-width:var(--max);margin:0 auto;padding:calc(var(--unit)*14) var(--gutter)}
+.verify-head{
+  display:grid;grid-template-columns:1fr 1.4fr;gap:60px;
+  align-items:baseline;margin-bottom:80px;
+}
+.verify-head h2{
+  font-family:var(--f-display);
+  font-size:clamp(34px,4vw,54px);font-weight:400;
+  line-height:1.05;letter-spacing:-.015em;
+}
+.verify-head p{font-family:var(--f-display);font-size:19px;line-height:1.5;color:var(--muted);max-width:44ch}
+.verify-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:56px}
+.verify-item{position:relative}
+.verify-num{
+  font-family:var(--f-mono);font-size:10px;letter-spacing:.24em;
+  color:var(--seal);margin-bottom:24px;
+}
+.verify-item h3{
+  font-family:var(--f-display);font-size:26px;font-weight:400;
+  line-height:1.15;margin-bottom:14px;letter-spacing:-.005em;
+}
+.verify-item p{color:var(--ink-2);font-size:15px;line-height:1.6}
+
+/* ============================================================
+   COLLECTION — gallery presented as a catalogue
+   ============================================================ */
+.collection{padding:calc(var(--unit)*16) 0}
+.collection-head{
+  max-width:var(--max);margin:0 auto;padding:0 var(--gutter) 60px;
+  display:grid;grid-template-columns:1fr auto;gap:40px;align-items:end;
+}
+.collection-head h2{
+  font-family:var(--f-display);
+  font-size:clamp(40px,5vw,68px);
+  font-weight:400;line-height:1;letter-spacing:-.02em;
+}
+.collection-head h2 em{font-style:italic;font-weight:300;color:var(--muted)}
+.filters{
+  display:flex;gap:4px;flex-wrap:wrap;
+  padding:6px;border:1px solid var(--rule);
+}
+.filter-btn{
+  font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);padding:8px 14px;transition:color .2s,background .2s;
+}
+.filter-btn:hover{color:var(--ink)}
+.filter-btn.active{background:var(--ink);color:var(--paper)}
+
+/* gallery grid — irregular, editorial */
+.gallery{
+  max-width:var(--max);margin:0 auto;padding:0 var(--gutter);
+  display:grid;grid-template-columns:repeat(12,1fr);gap:60px 40px;
+}
+.piece{grid-column:span 4;position:relative;cursor:pointer}
+.piece.wide{grid-column:span 8}
+.piece.tall{grid-column:span 4;grid-row:span 2}
+.piece-img{
+  width:100%;aspect-ratio:4/5;object-fit:cover;background:var(--paper-2);
+  transition:opacity .5s var(--ease);
+}
+.piece.wide .piece-img{aspect-ratio:3/2}
+.piece.tall .piece-img{aspect-ratio:3/4}
+.piece:hover .piece-img{opacity:.92}
+.piece-caption{
+  display:grid;grid-template-columns:1fr auto;gap:16px;align-items:baseline;
+  margin-top:14px;padding-top:12px;border-top:1px solid var(--ink);
+}
+.piece-title{
+  font-family:var(--f-display);font-size:22px;font-weight:400;line-height:1.2;
+  letter-spacing:-.005em;
+}
+.piece-title em{font-style:italic}
+.piece-meta{
+  font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);margin-top:4px;
+}
+.piece-acc{
+  font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;
+  color:var(--ink);text-align:right;
+}
+.piece-price{
+  font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;
+  color:var(--muted);margin-top:4px;text-align:right;text-transform:uppercase;
+}
+
+/* ============================================================
+   DETAIL — the museum treatment
+   ============================================================ */
+.detail-overlay{
+  position:fixed;inset:0;z-index:80;background:rgba(15,15,15,.6);
+  display:none;
+  opacity:0;transition:opacity .35s var(--ease);
+}
+.detail-overlay.open{display:block}
+.detail-overlay.shown{opacity:1}
+.detail-panel{
+  position:fixed;top:0;right:0;bottom:0;width:min(1100px,100%);z-index:81;
+  background:var(--paper);overflow-y:auto;
+  transform:translateX(100%);transition:transform .5s var(--ease);
+  display:grid;grid-template-columns:1.2fr 1fr;
+}
+.detail-panel.open{transform:none}
+.detail-close{
+  position:fixed;top:24px;right:24px;z-index:82;
+  width:44px;height:44px;background:var(--paper);border:1px solid var(--ink);
+  display:flex;align-items:center;justify-content:center;
+  transition:background .2s,color .2s;
+}
+.detail-close:hover{background:var(--ink);color:var(--paper)}
+.detail-imgwrap{background:var(--paper-2);padding:60px 40px;display:flex;align-items:center;justify-content:center}
+.detail-img{width:100%;max-height:80vh;object-fit:contain}
+.detail-body{padding:60px 48px;display:flex;flex-direction:column;gap:32px;overflow-y:auto}
+.detail-head-row{display:flex;justify-content:space-between;align-items:flex-start;gap:20px}
+.detail-title{font-family:var(--f-display);font-size:44px;font-weight:400;line-height:1.05;letter-spacing:-.015em}
+.detail-title em{font-style:italic}
+.detail-loc{font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;margin-top:8px}
+.detail-desc{color:var(--ink-2);font-size:15px;line-height:1.65}
+.license-list{display:flex;flex-direction:column;gap:10px}
+.license{
+  display:grid;grid-template-columns:auto 1fr auto;gap:20px;align-items:center;
+  padding:20px 22px;border:1px solid var(--rule);cursor:pointer;
+  transition:border-color .2s,background .2s;
+}
+.license:hover{border-color:var(--ink)}
+.license.selected{border-color:var(--ink);background:var(--paper-2)}
+.license-radio{
+  width:16px;height:16px;border-radius:50%;border:1px solid var(--rule-strong);
+  position:relative;transition:border-color .2s;
+}
+.license.selected .license-radio{border-color:var(--ink)}
+.license.selected .license-radio::after{
+  content:"";position:absolute;inset:3px;border-radius:50%;background:var(--ink);
+}
+.license-name{font-family:var(--f-display);font-size:19px;font-weight:400}
+.license-desc{font-family:var(--f-body);font-size:13px;color:var(--muted);margin-top:4px;line-height:1.4}
+.license-price{font-family:var(--f-mono);font-size:13px;letter-spacing:.06em;color:var(--ink)}
+.add-btn{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px 24px;background:var(--ink);color:var(--paper);
+  font-family:var(--f-mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+  transition:background .2s;width:100%;
+}
+.add-btn:hover{background:var(--seal)}
+.add-btn::after{content:"→";letter-spacing:0;font-family:var(--f-body);font-size:16px}
+
+/* ============================================================
+   ABOUT — the maker
+   ============================================================ */
+.about{background:var(--ink);color:var(--paper);padding:calc(var(--unit)*18) 0}
+.about-inner{
+  max-width:var(--max);margin:0 auto;padding:0 var(--gutter);
+  display:grid;grid-template-columns:1fr 1.1fr;gap:80px;align-items:center;
+}
+.about-imgwrap{position:relative}
+.about-img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.about-cap{
+  margin-top:14px;padding-top:12px;border-top:1px solid rgba(251,250,247,.2);
+  display:flex;justify-content:space-between;
+  font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;color:var(--muted-2);text-transform:uppercase;
+}
+.about-cap b{color:var(--paper);font-weight:500}
+.about-body .rule-label{color:var(--muted-2)}
+.about-body .rule-label::before{background:var(--paper)}
+.about-body h2{
+  font-family:var(--f-display);font-size:clamp(36px,4.4vw,64px);font-weight:400;
+  line-height:1.05;letter-spacing:-.02em;margin:24px 0 32px;
+}
+.about-body h2 em{font-style:italic;color:var(--muted-2);font-weight:300}
+.about-body p{color:var(--muted-2);font-size:16px;line-height:1.65;max-width:52ch;margin-bottom:16px}
+.about-body p b{color:var(--paper);font-weight:500}
+
+/* ============================================================
+   ORDER — drawer
+   ============================================================ */
+.drawer-overlay{
+  position:fixed;inset:0;z-index:90;background:rgba(15,15,15,.55);
+  opacity:0;pointer-events:none;transition:opacity .3s;
+}
+.drawer-overlay.open{opacity:1;pointer-events:auto}
+.drawer{
+  position:fixed;top:0;right:0;bottom:0;width:min(460px,100%);z-index:91;
+  background:var(--paper);
+  transform:translateX(100%);transition:transform .4s var(--ease);
+  display:flex;flex-direction:column;
+}
+.drawer.open{transform:none}
+.drawer-head{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:26px 32px;border-bottom:1px solid var(--rule);
+}
+.drawer-head h3{font-family:var(--f-display);font-size:28px;font-weight:400}
+.drawer-close{
+  width:36px;height:36px;border:1px solid var(--rule-strong);
+  display:flex;align-items:center;justify-content:center;
+  transition:border-color .2s,background .2s;
+}
+.drawer-close:hover{border-color:var(--ink);background:var(--ink);color:var(--paper)}
+.drawer-body{flex:1;overflow-y:auto;padding:16px 32px}
+.drawer-empty{
+  padding:40px 0;text-align:center;color:var(--muted);
+  font-family:var(--f-display);font-size:18px;font-style:italic;
+}
+.cart-item{
+  display:grid;grid-template-columns:80px 1fr;gap:20px;
+  padding:22px 0;border-bottom:1px solid var(--rule);
+}
+.cart-item img{width:80px;height:100px;object-fit:cover;background:var(--paper-2)}
+.cart-name{font-family:var(--f-display);font-size:19px;font-weight:400;line-height:1.2}
+.cart-acc{font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;margin-top:4px}
+.cart-lic{font-family:var(--f-body);font-size:13px;color:var(--ink-2);margin-top:10px}
+.cart-row-btm{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
+.cart-price{font-family:var(--f-mono);font-size:12px;color:var(--ink)}
+.cart-remove{font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-decoration:underline;text-underline-offset:3px}
+.cart-remove:hover{color:var(--seal)}
+.drawer-foot{border-top:1px solid var(--rule);padding:24px 32px}
+.cart-total-row{
+  display:flex;justify-content:space-between;align-items:baseline;
+  padding-bottom:16px;margin-bottom:20px;border-bottom:1px solid var(--rule);
+}
+.cart-total-row .lbl{font-family:var(--f-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.cart-total-row .val{font-family:var(--f-display);font-size:26px;font-weight:400}
+.drawer-note{
+  font-size:12px;color:var(--muted);line-height:1.55;margin-top:14px;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer{border-top:1px solid var(--rule);padding:80px 0 40px}
+.footer-inner{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;padding-bottom:56px;border-bottom:1px solid var(--rule)}
+.footer-brand{display:flex;flex-direction:column;gap:14px;max-width:40ch}
+.footer-brand p{color:var(--muted);font-size:14px;line-height:1.55}
+.footer-col h4{font-family:var(--f-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:18px;font-weight:500}
+.footer-col a{display:block;font-size:14px;padding:5px 0;color:var(--ink-2)}
+.footer-col a:hover{color:var(--seal)}
+.footer-legal{
+  padding-top:32px;
+  display:flex;justify-content:space-between;align-items:center;
+  font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;color:var(--muted);text-transform:uppercase;
+}
+
+/* toast */
+.toast{
+  position:fixed;bottom:32px;left:50%;transform:translate(-50%,20px);z-index:100;
+  padding:16px 26px;background:var(--ink);color:var(--paper);
+  font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;
+}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media(max-width:1100px){
+  :root{--gutter:32px}
+  .hero-inner{grid-template-columns:1fr;gap:40px;min-height:auto;padding-bottom:60px}
+  .hero-text{padding-bottom:0;order:-1}
+  .verify-head{grid-template-columns:1fr;gap:24px;margin-bottom:56px}
+  .verify-grid{grid-template-columns:1fr;gap:48px}
+  .gallery{grid-template-columns:repeat(6,1fr);gap:48px 24px}
+  .piece,.piece.wide,.piece.tall{grid-column:span 3;grid-row:auto}
+  .detail-panel{grid-template-columns:1fr;width:100%}
+  .detail-imgwrap{padding:40px 24px}
+  .about-inner{grid-template-columns:1fr;gap:56px}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:40px}
+}
+@media(max-width:640px){
+  :root{--gutter:20px}
+  .nav-inner{padding:14px 20px}
+  .nav-links{gap:16px}
+  .nav-links a:not(.order){display:none}
+  .hero{padding:100px 0 0}
+  .collection-head{grid-template-columns:1fr;gap:24px}
+  .gallery{grid-template-columns:1fr;gap:56px}
+  .piece,.piece.wide,.piece.tall{grid-column:span 1}
+  .detail-body{padding:32px 24px}
+  .detail-title{font-size:32px}
+  .footer-grid{grid-template-columns:1fr;gap:32px}
+  .footer-legal{flex-direction:column;gap:16px;align-items:flex-start}
+}
+
+.property-switch{display:flex;align-items:center;gap:.6rem;font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;margin:0 auto 22px;max-width:var(--max);padding:0 var(--gutter)}.property-switch a{color:var(--muted);text-decoration:none;padding:.4rem 0;border-bottom:1px solid transparent}.property-switch a:hover,.property-switch a[aria-current="page"]{color:var(--seal);border-color:var(--seal)}
+</style>
+</head>
+<body>
+<nav class="property-switch" aria-label="BETA ART properties"><a href="/privat/">Privat</a><a href="/events/" aria-current="page">Galleri &amp; Event</a><a href="/business/">Business</a></nav>
+<div class="event-banner" style="background:#8B1A1A;color:#FBFAF7;padding:12px 24px;text-align:center;font:500 11px JetBrains Mono,monospace;letter-spacing:.14em;text-transform:uppercase">Galleri og Utstilling · Exhibitions · Openings · Events</div>
+
+<a href="#collection" class="skip">Skip to collection</a>
+
+<!-- ==================== NAV ==================== -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand"><span class="brand-mark"></span> BETA · ART</a>
+    <div class="nav-links">
+      <a href="#collection">Exhibitions</a>
+      <a href="#verify">Artists</a>
+      <a href="#about">Events</a>
+      <button class="order" id="orderBtn">Order <span class="count" id="orderCount">0</span></button>
+    </div>
+  </div>
+</nav>
+
+<!-- ==================== HERO ==================== -->
+<header class="hero" id="top">
+  <div class="hero-inner">
+    <div class="hero-image-wrap rise">
+      <img class="hero-image" src="../beta-art-privat/assets/og.png" alt="First light on the fjords, Lofoten, Norway">
+      <div class="hero-image-caption">
+        <span><b>Plate 01</b> · First Light</span>
+        <span>Lofoten · March 2026</span>
+      </div>
+    </div>
+    <div class="hero-text">
+      <span class="rule-label rise d1">The Archive · Volume I</span>
+      <h1 class="hero-headline rise d2">Every work <em>begins with a human maker.</em></h1>
+      <p class="hero-sub rise d3">An archive of original photographs, each catalogued, sealed and licensed directly from the photographer.</p>
+      <a href="#collection" class="hero-cta rise d4">View the collection</a>
+    </div>
+  </div>
+</header>
+
+<!-- ==================== MANIFESTO ==================== -->
+<section class="manifesto">
+  <div class="manifesto-inner">
+    <span class="rule-label">A note from the maker</span>
+    <p>In an age where anyone can generate an image, <span class="seal-word">provenance is the product</span>. Every photograph in this archive was taken with a physical camera, in a real place, on a real day. <em>The RAW file is kept. The record is kept. Nothing is generated. Nothing is composited.</em></p>
+    <div class="manifesto-sig">
+      <span>Beta Art · Archive of verified human photography</span>
+      <span>Est. 2026</span>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== VERIFICATION ==================== -->
+<section class="verify" id="verify">
+  <div class="verify-inner">
+    <div class="verify-head">
+      <h2>How each work is documented.</h2>
+      <p>A photograph is only as trustworthy as the record behind it. Every plate in the archive carries three forms of evidence — the same standard applied to museum holdings and archival collections.</p>
+    </div>
+    <div class="verify-grid">
+      <div class="verify-item">
+        <div class="verify-num">Method I</div>
+        <h3>The work is catalogued.</h3>
+        <p>Every plate begins as a RAW file from a real camera. The originals are stored in an offline archive, available for inspection on request.</p>
+      </div>
+      <div class="verify-item">
+        <div class="verify-num">Method II</div>
+        <h3>The artist and exhibition record travels with the work.</h3>
+        <p>Camera, lens, exposure, place and date accompany each photograph. Where the equipment supports it, C2PA Content Credentials are embedded at capture.</p>
+      </div>
+      <div class="verify-item">
+        <div class="verify-num">Method III</div>
+        <h3>The presentation rights are clear.</h3>
+        <p>You license directly from the photographer. Each order arrives with a written license, a proper invoice, and a numbered certificate — no intermediaries.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== COLLECTION ==================== -->
+<section class="collection" id="collection">
+  <div class="collection-head">
+    <div>
+      <span class="rule-label" style="margin-bottom:20px;display:inline-flex">The collection · Volume I</span>
+      <h2>Works, series and <em>exhibitions.</em></h2>
+    </div>
+    <div class="filters" id="filters"></div>
+  </div>
+  <div class="gallery" id="gallery"></div>
+</section>
+
+<!-- ==================== ABOUT ==================== -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-imgwrap">
+      <img class="about-img" src="https://images.unsplash.com/photo-1502920917128-1aa500764cbd?q=80&w=1200&auto=format&fit=crop" alt="The photographer at work">
+      <div class="about-cap">
+        <span><b>The photographer</b></span>
+        <span>Working since 2012</span>
+      </div>
+    </div>
+    <div class="about-body">
+      <span class="rule-label">The photographer</span>
+      <h2>We present <em>what is actually made.</em></h2>
+      <p><b>Fjords before sunrise, cities after rain, faces that agreed to be seen.</b> Nothing on this site was generated, composited or hallucinated by a machine.</p>
+      <p>My archive holds more than 84,000 frames captured since 2012. When you license a plate, you deal with me directly — a written license, a proper invoice, and the full-resolution file delivered to your inbox within twenty-four hours.</p>
+      <p>If you want to see the RAW file behind any plate, ask. That's the point.</p>
+    </div>
+  </div>
+</section>
+
+<section id="event-programme" class="section divide-top"><div class="wrap"><p class="rule-label">Event programme</p><h2 class="serif" style="font-size:clamp(34px,5vw,64px);margin:20px 0 16px">Meet the work in person.</h2><p class="lead" style="max-width:55ch">Exhibitions, openings and artist-led events will be announced here as the programme is confirmed.</p><div style="margin-top:28px;padding:20px;border:1px solid var(--rule);font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;color:var(--muted)">NEXT EVENT · DATE AND VENUE TO BE ANNOUNCED</div></div></section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="brand"><span class="brand-mark"></span> BETA · ART</span>
+        <p>An archive of verified human photography. Every plate catalogued, sealed and licensed directly from the photographer.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Programme</h4>
+        <a href="#collection">Exhibitions</a>
+        <a href="#verify">Artists</a>
+        <a href="#about">Events</a>
+      </div>
+      <div class="footer-col">
+        <h4>Visit</h4>
+        <a href="#">Exhibition programme</a>
+        <a href="#">Artist presentations</a>
+        <a href="#">Events and openings</a>
+        <a href="#">Gallery enquiries</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="#" id="footMail">events@betaart.no</a>
+        <a href="#">Privacy</a>
+        <a href="#">Participation terms</a>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <span>© 2026 Beta Art · Org.nr 000 000 000</span>
+      <span>All works attributed · Records kept at source</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ==================== DETAIL PANEL ==================== -->
+<div class="detail-overlay" id="detailOverlay"></div>
+<aside class="detail-panel" id="detailPanel" aria-hidden="true">
+  <button class="detail-close" id="detailClose" aria-label="Close">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1 L13 13 M13 1 L1 13"/></svg>
+  </button>
+  <div id="detailContent"></div>
+</aside>
+
+<!-- ==================== ORDER DRAWER ==================== -->
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<aside class="drawer" id="drawer" aria-label="Your programme">
+  <div class="drawer-head">
+    <h3>Your programme</h3>
+    <button class="drawer-close" id="drawerClose" aria-label="Close order">
+      <svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1 L13 13 M13 1 L1 13"/></svg>
+    </button>
+  </div>
+  <div class="drawer-body" id="drawerBody"></div>
+  <div class="drawer-foot">
+    <div class="cart-total-row">
+      <span class="lbl">Total (excl. VAT)</span>
+      <span class="val" id="cartTotal">kr 0</span>
+    </div>
+    <button class="add-btn" id="checkoutBtn">Send order request</button>
+    <p class="drawer-note">Your email application will open with the order details pre-filled. A written license, invoice and secure download link follow within 24 hours.</p>
+  </div>
+</aside>
+
+<div class="toast" id="toast"></div>
+<script>
+/* ============================================================
+   1) CONFIG — replace with your own before publishing
+   ============================================================ */
+const CONTACT_EMAIL = "events@betaart.no";
+const CURRENCY = n => "kr " + n.toLocaleString("nb-NO");
+const YEAR_PREFIX = "2026";  /* accession numbers: 2026.0142 etc. */
+
+/* Three license tiers */
+const LICENSES = [
+  {id:"personal",   name:"Personal License",   desc:"Personal, non-commercial use. One user, one project.",             price:190},
+  {id:"commercial", name:"Commercial License", desc:"One entity. Marketing, web, social, print to 5,000 copies.",       price:890},
+  {id:"extended",   name:"Extended License",   desc:"Unlimited print, campaigns, resale products, one client sublicense.",price:2900},
+];
+
+/* Plates in the archive */
+const PLATES = [
+  {n:"0142", size:"wide", title:"First Light", cat:"landscape", loc:"Lofoten, Norway",         date:"March 2026",   camera:"Nikon Z8",       lens:"24–70mm ƒ/2.8",  exp:"ƒ/8 · 1/160 · ISO 64",   note:"Taken at 05:47, twenty minutes before civil dawn. Wind 6 m/s NW.", img:"../beta-art-privat/assets/og.png"},
+  {n:"0143",         title:"Into the Pines",  cat:"landscape", loc:"Nordmarka, Oslo",         date:"October 2025", camera:"Canon R5",       lens:"35mm ƒ/1.8",     exp:"ƒ/4 · 1/250 · ISO 200",  note:"Morning walk after two days of rain.",                              img:"https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=1200&auto=format&fit=crop"},
+  {n:"0144", size:"tall", title:"Sea of Fog", cat:"landscape", loc:"Hardangervidda",          date:"September 2025",camera:"Sony A7R V",     lens:"70–200mm ƒ/4",   exp:"ƒ/9 · 1/320 · ISO 100",  note:"Temperature inversion at the plateau edge.",                       img:"https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=1200&auto=format&fit=crop"},
+  {n:"0145",         title:"Still Water",     cat:"landscape", loc:"Jotunheimen",             date:"July 2025",    camera:"Hasselblad X2D", lens:"38mm ƒ/2.5",     exp:"ƒ/11 · 1/60 · ISO 64",   note:"Long midnight sun. No filters used.",                              img:"https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1200&auto=format&fit=crop"},
+  {n:"0146",         title:"Polar Night",     cat:"landscape", loc:"Senja, Norway",           date:"January 2026", camera:"Nikon Z8",       lens:"14–24mm ƒ/2.8",  exp:"ƒ/2.8 · 15s · ISO 1600", note:"Aurora activity Kp 6. Single exposure, no stacking.",              img:"https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200&auto=format&fit=crop"},
+  {n:"0147", size:"wide", title:"Blue Hour Grid", cat:"city", loc:"Chicago, US",              date:"November 2025",camera:"Sony A7R V",     lens:"16–35mm ƒ/2.8",  exp:"ƒ/8 · 2s · ISO 100",     note:"Twenty-fourth floor, west-facing. Tripod on tile.",                img:"https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?q=80&w=1600&auto=format&fit=crop"},
+  {n:"0148",         title:"Night Crossing",  cat:"city",      loc:"Singapore",               date:"February 2026",camera:"Canon R5",       lens:"24mm ƒ/1.4",     exp:"ƒ/5.6 · 4s · ISO 200",   note:"Long exposure, foot traffic captured as motion.",                  img:"https://images.unsplash.com/photo-1514565131-fce0801e5785?q=80&w=1200&auto=format&fit=crop"},
+  {n:"0149", size:"tall", title:"Golden Hour", cat:"city",     loc:"San Francisco",           date:"June 2025",    camera:"Nikon Z8",       lens:"85mm ƒ/1.8",     exp:"ƒ/7.1 · 1/500 · ISO 100",note:"Handheld from the Fillmore hill at 19:22.",                        img:"https://images.unsplash.com/photo-1444723121867-7a241cacace9?q=80&w=1200&auto=format&fit=crop"},
+  {n:"0150",         title:"Portrait in Amber", cat:"portrait", loc:"Studio, Oslo",           date:"April 2026",   camera:"Hasselblad X2D", lens:"80mm ƒ/1.9",     exp:"ƒ/2.8 · 1/200 · ISO 100",note:"Model release on file. Natural light, one reflector.",             img:"https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1200&auto=format&fit=crop", release:true},
+  {n:"0151",         title:"The Maker",       cat:"portrait",  loc:"Bergen, Norway",          date:"May 2026",     camera:"Leica Q3",       lens:"28mm ƒ/1.7",     exp:"ƒ/2 · 1/125 · ISO 400",  note:"Photographed in his workshop. Model release on file.",             img:"https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1200&auto=format&fit=crop", release:true},
+  {n:"0152", size:"wide", title:"Slow Morning", cat:"landscape",loc:"Lago di Braies, Italy", date:"August 2025",  camera:"Sony A7R V",     lens:"24–70mm ƒ/2.8",  exp:"ƒ/6.3 · 1/250 · ISO 100",note:"05:20, before the first tourist boat launched.",                   img:"https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=1600&auto=format&fit=crop"},
+  {n:"0153",         title:"Low Tide",        cat:"landscape", loc:"Ko Samui, Thailand",      date:"December 2025",camera:"Leica Q3",       lens:"28mm ƒ/1.7",     exp:"ƒ/8 · 1/640 · ISO 100",  note:"Storm the night before had cleared the sky by dawn.",              img:"https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop"},
+];
+
+const CATS = [
+  {id:"all",label:"All plates"},{id:"landscape",label:"Landscape"},
+  {id:"city",label:"City"},{id:"portrait",label:"Portrait"},
+];
+
+/* ============================================================
+   State
+   ============================================================ */
+let activeCat = "all";
+let cart = [];
+let currentPlate = null;
+let selectedLicense = "commercial";
+
+const $ = id => document.getElementById(id);
+const plateBy = n => PLATES.find(p => p.n === n);
+const licBy = id => LICENSES.find(l => l.id === id);
+const accessionOf = p => `${YEAR_PREFIX}.${p.n}`;
+
+/* ============================================================
+   Filters
+   ============================================================ */
+function renderFilters(){
+  $("filters").innerHTML = CATS.map(c =>
+    `<button class="filter-btn ${c.id===activeCat?'active':''}" data-cat="${c.id}">${c.label}</button>`
+  ).join("");
+  $("filters").querySelectorAll(".filter-btn").forEach(b =>
+    b.addEventListener("click", () => { activeCat = b.dataset.cat; renderFilters(); renderGallery(); })
+  );
+}
+
+/* ============================================================
+   Gallery — irregular editorial grid
+   ============================================================ */
+let observer;
+function renderGallery(){
+  const list = PLATES.filter(p => activeCat==="all" || p.cat===activeCat);
+  $("gallery").innerHTML = list.map(p => `
+    <article class="piece ${p.size||''}" data-n="${p.n}" tabindex="0" role="button" aria-label="View plate ${accessionOf(p)}: ${p.title}">
+      <img class="piece-img" src="${p.img}" alt="${p.title} — ${p.loc}" loading="lazy">
+      <div class="piece-caption">
+        <div>
+          <div class="piece-title">${p.title}</div>
+          <div class="piece-meta">${p.loc} · ${p.date}</div>
+        </div>
+        <div>
+          <div class="piece-acc">${accessionOf(p)}</div>
+          <div class="piece-price">from ${CURRENCY(LICENSES[0].price)}</div>
+        </div>
+      </div>
+    </article>
+  `).join("");
+
+  const items = $("gallery").querySelectorAll(".piece");
+  items.forEach(el => {
+    el.addEventListener("click", () => openDetail(el.dataset.n));
+    el.addEventListener("keydown", e => { if(e.key==="Enter"||e.key===" "){ e.preventDefault(); openDetail(el.dataset.n); } });
+  });
+}
+
+/* ============================================================
+   Detail panel — museum treatment
+   ============================================================ */
+function openDetail(n){
+  currentPlate = plateBy(n);
+  selectedLicense = "commercial";
+  drawDetail();
+  $("detailOverlay").classList.add("open");
+  $("detailPanel").classList.add("open");
+  $("detailPanel").setAttribute("aria-hidden","false");
+  requestAnimationFrame(() => $("detailOverlay").classList.add("shown"));
+  document.body.style.overflow = "hidden";
+}
+function closeDetail(){
+  $("detailOverlay").classList.remove("shown");
+  $("detailPanel").classList.remove("open");
+  $("detailPanel").setAttribute("aria-hidden","true");
+  setTimeout(() => { $("detailOverlay").classList.remove("open"); }, 350);
+  document.body.style.overflow = "";
+}
+function drawDetail(){
+  const p = currentPlate;
+  const idx = PLATES.indexOf(p) + 1;
+  $("detailContent").innerHTML = `
+    <div class="detail-imgwrap">
+      <img class="detail-img" src="${p.img}" alt="${p.title} — ${p.loc}">
+    </div>
+    <div class="detail-body">
+      <div class="detail-head-row">
+        <div>
+          <span class="rule-label">Plate ${idx} of ${PLATES.length}</span>
+          <h2 class="detail-title" style="margin-top:14px">${p.title}</h2>
+          <div class="detail-loc">${p.loc} · ${p.date}</div>
+        </div>
+        <div class="seal-lg" title="Human verified — Seal ${p.n.slice(-2)}">
+          <b>H</b>
+          <span>Verified<br>Seal ${p.n.slice(-2)}</span>
+        </div>
+      </div>
+      <div class="accession">
+        <span class="a-key">Accession</span> <span class="a-val strong">${accessionOf(p)}</span>
+        <span class="a-key">Camera</span> <span class="a-val">${p.camera}</span>
+        <span class="a-key">Lens</span> <span class="a-val">${p.lens}</span>
+        <span class="a-key">Exposure</span> <span class="a-val">${p.exp}</span>
+        <span class="a-key">RAW</span> <span class="a-val">Original on record</span>
+        ${p.release ? `<span class="a-key">Release</span><span class="a-val">Model release on file</span>` : ""}
+      </div>
+      <p class="detail-desc">${p.note}</p>
+      <div>
+        <span class="rule-label" style="margin-bottom:16px;display:inline-flex">Select a license</span>
+        <div class="license-list">
+          ${LICENSES.map(l => `
+            <div class="license ${l.id===selectedLicense?'selected':''}" data-lic="${l.id}" role="radio" aria-checked="${l.id===selectedLicense}" tabindex="0">
+              <div class="license-radio"></div>
+              <div>
+                <div class="license-name">${l.name}</div>
+                <div class="license-desc">${l.desc}</div>
+              </div>
+              <div class="license-price">${CURRENCY(l.price)}</div>
+            </div>`).join("")}
+        </div>
+      </div>
+      <button class="add-btn" id="addBtn">Add to order · ${CURRENCY(licBy(selectedLicense).price)}</button>
+    </div>
+  `;
+  $("detailContent").querySelectorAll(".license").forEach(el => {
+    const pick = () => { selectedLicense = el.dataset.lic; drawDetail(); };
+    el.addEventListener("click", pick);
+    el.addEventListener("keydown", e => { if(e.key==="Enter"||e.key===" "){ e.preventDefault(); pick(); } });
+  });
+  $("addBtn").addEventListener("click", () => {
+    cart.push({n:currentPlate.n, lic:selectedLicense});
+    updateCart();
+    closeDetail();
+    toast(`Added · ${accessionOf(currentPlate)}`);
+  });
+}
+
+/* ============================================================
+   Order drawer
+   ============================================================ */
+function updateCart(){
+  $("orderCount").textContent = cart.length;
+  const body = $("drawerBody");
+  if(!cart.length){
+    body.innerHTML = `<div class="drawer-empty">— empty —</div>`;
+  } else {
+    body.innerHTML = cart.map((c,i) => {
+      const p = plateBy(c.n), l = licBy(c.lic);
+      return `
+        <div class="cart-item">
+          <img src="${p.img}" alt="${p.title}">
+          <div>
+            <div class="cart-name">${p.title}</div>
+            <div class="cart-acc">Accession ${accessionOf(p)}</div>
+            <div class="cart-lic">${l.name}</div>
+            <div class="cart-row-btm">
+              <span class="cart-price">${CURRENCY(l.price)}</span>
+              <button class="cart-remove" data-i="${i}">Remove</button>
+            </div>
+          </div>
+        </div>`;
+    }).join("");
+    body.querySelectorAll(".cart-remove").forEach(b =>
+      b.addEventListener("click", () => { cart.splice(+b.dataset.i,1); updateCart(); })
+    );
+  }
+  const total = cart.reduce((s,c) => s + licBy(c.lic).price, 0);
+  $("cartTotal").textContent = CURRENCY(total);
+}
+function openDrawer(){ $("drawer").classList.add("open"); $("drawerOverlay").classList.add("open"); }
+function closeDrawer(){ $("drawer").classList.remove("open"); $("drawerOverlay").classList.remove("open"); }
+
+/* Checkout — manual, works with zero backend integrations */
+function checkout(){
+  if(!cart.length){ toast("Order is empty"); return; }
+  const total = cart.reduce((s,c) => s + licBy(c.lic).price, 0);
+  const lines = cart.map(c => {
+    const p = plateBy(c.n), l = licBy(c.lic);
+    return `• "${p.title}" (${accessionOf(p)}, ${p.loc}) — ${l.name} — ${CURRENCY(l.price)}`;
+  }).join("\n");
+  const body =
+`Hello,
+
+I would like to license the following plate(s):
+
+${lines}
+
+Total: ${CURRENCY(total)} (excl. VAT)
+
+Intended use:
+Company / name:
+Invoicing details:
+
+Thank you.`;
+  window.location.href =
+    `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("Order — Beta Art Archive")}&body=${encodeURIComponent(body)}`;
+  toast("Order draft opened");
+}
+
+/* ============================================================
+   UI plumbing
+   ============================================================ */
+let toastTimer;
+function toast(msg){
+  const t = $("toast");
+  t.textContent = msg;
+  t.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove("show"), 2400);
+}
+
+/* rise-in animations on load */
+window.addEventListener("load", () => {
+  document.querySelectorAll(".rise").forEach(el => el.classList.add("in"));
+});
+
+/* nav shadow on scroll */
+window.addEventListener("scroll", () =>
+  $("nav").classList.toggle("scrolled", window.scrollY > 20)
+);
+
+/* keyboard */
+document.addEventListener("keydown", e => {
+  if(e.key === "Escape"){ closeDetail(); closeDrawer(); }
+});
+
+/* wire up */
+$("detailClose").addEventListener("click", closeDetail);
+$("detailOverlay").addEventListener("click", closeDetail);
+$("orderBtn").addEventListener("click", openDrawer);
+$("drawerClose").addEventListener("click", closeDrawer);
+$("drawerOverlay").addEventListener("click", closeDrawer);
+$("checkoutBtn").addEventListener("click", checkout);
+$("footMail").addEventListener("click", e => { e.preventDefault(); window.location.href = "mailto:"+CONTACT_EMAIL; });
+
+/* boot */
+renderFilters();
+renderGallery();
+updateCart();
+</script>
+</body>
+</html>

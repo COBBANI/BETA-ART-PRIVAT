@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>BETA ART — Marka Kimliği</title>
+<style>
+  :root{
+    --black:#050505;
+    --panel:#0b0d10;
+    --chrome-white:#f4f6f8;
+    --steel:#8f9aa6;
+    --silver-line:#c7ccd2;
+    --sapphire:#3a6fa8;
+    --sapphire-deep:#16283d;
+    --sapphire-bright:#7fa8d9;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{background:var(--black);color:var(--chrome-white);}
+  body{
+    font-family:'Avenir Next','Century Gothic','Futura',sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .mono{font-family:'IBM Plex Mono','Courier New',monospace;}
+
+  section{
+    max-width:1040px;
+    margin:0 auto;
+    padding:120px 48px;
+    position:relative;
+  }
+  .divider{
+    display:flex;align-items:center;gap:18px;
+    max-width:1040px;margin:0 auto;padding:0 48px;
+  }
+  .divider .ring-seg{
+    flex:1;height:1px;
+    background:linear-gradient(90deg, transparent, var(--sapphire) 40%, var(--silver-line) 60%, transparent);
+    opacity:.55;
+  }
+  .divider .dot{width:6px;height:6px;border-radius:50%;background:var(--sapphire-bright);box-shadow:0 0 12px var(--sapphire-bright);}
+
+  .eyebrow{
+    font-size:12px; letter-spacing:6px; color:var(--sapphire-bright);
+    text-transform:uppercase; margin-bottom:18px; font-weight:600;
+  }
+  h1{
+    font-size:clamp(40px,6vw,84px); letter-spacing:6px; font-weight:600;
+    background:linear-gradient(90deg,#ffffff,#c6cdd4,#ffffff);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  h2{
+    font-size:28px; letter-spacing:3px; font-weight:600; color:var(--chrome-white);
+    margin-bottom:8px;
+  }
+  p.lead{color:var(--steel); font-size:16px; line-height:1.7; max-width:640px; margin-top:14px;}
+
+  /* ---------- COVER ---------- */
+  .cover{
+    min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; padding-top:60px; padding-bottom:60px;
+  }
+  .cover .logo-wrap{width:300px; margin-bottom:36px;}
+  .cover .tagline{
+    margin-top:22px; font-size:13px; letter-spacing:8px; color:var(--steel);
+  }
+  .cover .tagline .accent{color:var(--sapphire-bright);}
+  .cover .doc-label{
+    position:absolute; bottom:56px; left:0; right:0; text-align:center;
+    font-size:11px; letter-spacing:5px; color:#4a5561;
+  }
+
+  /* ---------- LOGO SYSTEM ---------- */
+  .clearspace-box{
+    background:var(--panel); border:1px solid #1a1e24; border-radius:4px;
+    padding:60px; display:flex; align-items:center; justify-content:center;
+    margin-top:40px; position:relative;
+  }
+  .clearspace-box svg{width:180px; height:auto;}
+  .clearspace-note{
+    display:flex; gap:40px; margin-top:28px; flex-wrap:wrap;
+  }
+  .clearspace-note div{flex:1; min-width:220px;}
+  .clearspace-note .label{font-size:11px; letter-spacing:3px; color:var(--sapphire-bright); margin-bottom:6px;}
+  .clearspace-note .val{font-size:14px; color:var(--steel); line-height:1.6;}
+
+  .size-row{display:flex; align-items:flex-end; gap:48px; margin-top:44px; flex-wrap:wrap;}
+  .size-row .item{text-align:center;}
+  .size-row svg{display:block; margin:0 auto 10px;}
+  .size-row .cap{font-size:11px; letter-spacing:2px; color:var(--steel);}
+
+  /* ---------- COLOR ---------- */
+  .swatch-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:44px;
+  }
+  .swatch{
+    border:1px solid #1a1e24; border-radius:4px; overflow:hidden;
+  }
+  .swatch .chip{height:110px;}
+  .swatch .info{padding:16px 18px; background:var(--panel);}
+  .swatch .name{font-size:13px; letter-spacing:1px; margin-bottom:4px;}
+  .swatch .hex{font-size:12px; color:var(--steel);}
+
+  /* ---------- TYPE ---------- */
+  .type-block{margin-top:50px;}
+  .type-sample{
+    border-top:1px solid #1a1e24; padding:32px 0; display:flex; align-items:baseline; justify-content:space-between; gap:24px; flex-wrap:wrap;
+  }
+  .type-sample .word{font-size:44px; letter-spacing:2px;}
+  .type-sample.wordmark .word{letter-spacing:10px; font-weight:600;}
+  .type-sample .meta{font-size:12px; letter-spacing:2px; color:var(--steel); text-align:right;}
+
+  /* ---------- TAGLINE USAGE ---------- */
+  .tag-demo{
+    background:var(--panel); border:1px solid #1a1e24; border-radius:4px; padding:56px;
+    text-align:center; margin-top:36px;
+  }
+  .tag-demo .word{font-size:20px; letter-spacing:9px; margin-bottom:14px;}
+  .tag-demo .tag{font-size:13px; letter-spacing:6px; color:var(--steel);}
+  .tag-demo .tag .accent{color:var(--sapphire-bright);}
+
+  /* ---------- DO / DONT ---------- */
+  .dd-grid{display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:40px;}
+  .dd-card{border-radius:4px; padding:28px; border:1px solid #1a1e24;}
+  .dd-card.do{border-color:#1f3a2b;}
+  .dd-card.dont{border-color:#3a1f1f;}
+  .dd-card .tag-label{font-size:11px; letter-spacing:3px; margin-bottom:14px; display:block;}
+  .dd-card.do .tag-label{color:#5fd08a;}
+  .dd-card.dont .tag-label{color:#e0716a;}
+  .dd-card ul{list-style:none; color:var(--steel); font-size:14px; line-height:2;}
+  .dd-card ul li:before{content:"— "; color:#3d4650;}
+
+  /* ---------- APPLICATIONS ---------- */
+  .app-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:44px;}
+  .app-card{
+    background:var(--panel); border:1px solid #1a1e24; border-radius:4px; padding:36px;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px; min-height:200px;
+  }
+  .app-card .cap{font-size:11px; letter-spacing:3px; color:var(--steel);}
+  .app-icon-dark{width:64px; height:64px; border-radius:16px; background:#050505; display:flex; align-items:center; justify-content:center; border:1px solid #23272e;}
+  .app-icon-light{width:64px; height:64px; border-radius:16px; background:#eef1f4; display:flex; align-items:center; justify-content:center;}
+
+  footer{
+    text-align:center; padding:80px 24px 100px; color:#3a4048; font-size:11px; letter-spacing:4px;
+  }
+</style>
+</head>
+<body>
+
+<!-- Reusable monogram as inline SVG symbol -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="mark" viewBox="0 60 800 500">
+      <linearGradient id="chromeRing" x1="10%" y1="0%" x2="90%" y2="100%">
+        <stop offset="0%" stop-color="#f4f6f8"/><stop offset="18%" stop-color="#ffffff"/>
+        <stop offset="34%" stop-color="#8f9aa6"/><stop offset="50%" stop-color="#33465e"/>
+        <stop offset="66%" stop-color="#aeb8c2"/><stop offset="82%" stop-color="#ffffff"/>
+        <stop offset="100%" stop-color="#c7ccd2"/>
+      </linearGradient>
+      <linearGradient id="chromeVert" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#e8ebee"/><stop offset="22%" stop-color="#ffffff"/>
+        <stop offset="45%" stop-color="#98a3af"/><stop offset="58%" stop-color="#4a5c72"/>
+        <stop offset="75%" stop-color="#c7ccd2"/><stop offset="100%" stop-color="#f2f4f6"/>
+      </linearGradient>
+      <linearGradient id="chromeLobeTop" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#ffffff"/><stop offset="28%" stop-color="#dfe4e8"/>
+        <stop offset="50%" stop-color="#7f8fa0"/><stop offset="66%" stop-color="#28405e"/>
+        <stop offset="82%" stop-color="#95a6b8"/><stop offset="100%" stop-color="#f6f8fa"/>
+      </linearGradient>
+      <linearGradient id="chromeLobeBottom" x1="0%" y1="100%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#ffffff"/><stop offset="28%" stop-color="#dfe4e8"/>
+        <stop offset="50%" stop-color="#7f8fa0"/><stop offset="66%" stop-color="#28405e"/>
+        <stop offset="82%" stop-color="#95a6b8"/><stop offset="100%" stop-color="#f6f8fa"/>
+      </linearGradient>
+      <circle cx="400" cy="370" r="272" fill="none" stroke="url(#chromeRing)" stroke-width="4.5"/>
+      <circle cx="400" cy="370" r="281" fill="none" stroke="#ffffff" stroke-opacity="0.08" stroke-width="1"/>
+      <rect x="366" y="228" width="42" height="284" rx="10" fill="url(#chromeVert)"/>
+      <path d="M 404 228 C 470 228, 528 254, 528 306 C 528 348, 486 370, 424 372 L 404 372 Z" fill="url(#chromeLobeTop)"/>
+      <path d="M 404 368 C 470 368, 528 394, 528 446 C 528 488, 486 512, 424 512 L 404 512 Z" fill="url(#chromeLobeBottom)"/>
+      <path d="M 424 250 L 494 306 L 424 306 Z" fill="#0a0b0d"/>
+      <path d="M 424 490 L 494 434 L 424 434 Z" fill="#0a0b0d"/>
+      <rect x="424" y="366" width="70" height="8" rx="3" fill="url(#chromeRing)" opacity="0.9"/>
+      <path d="M 404 228 L 404 512" stroke="#ffffff" stroke-width="1" opacity="0.35"/>
+      <path d="M 424 306 L 494 306" stroke="#3a5478" stroke-width="1.2" opacity="0.7"/>
+      <path d="M 424 434 L 494 434" stroke="#3a5478" stroke-width="1.2" opacity="0.7"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ================= COVER ================= -->
+<section class="cover">
+  <div class="logo-wrap"><svg viewBox="0 60 800 500"><use href="#mark"/></svg></div>
+  <h1>BETA ART</h1>
+  <div class="tagline">TRUST&nbsp;&nbsp;<span class="accent">EVERY</span>&nbsp;&nbsp;IMAGE</div>
+  <div class="doc-label mono">MARKA KİMLİĞİ · SÜRÜM 01 · 2026</div>
+</section>
+
+<div class="divider"><div class="ring-seg"></div><div class="dot"></div><div class="ring-seg"></div></div>
+
+<!-- ================= LOGO / CLEAR SPACE ================= -->
+<section>
+  <div class="eyebrow">01 — Amblem</div>
+  <h2>Monogram &amp; Koruma Alanı</h2>
+  <p class="lead">B harfi etrafında kurulmuş heykelsi monogram; içteki üçgen negatif boşluklar ve bağlayıcı çubuk, A harfini örtük biçimde taşır. Yörünge halkası; güven, doğrulama ve süreklilik ilkelerini temsil eder — asla dekoratif değil, yapısaldır.</p>
+
+  <div class="clearspace-box">
+    <svg viewBox="0 60 800 500"><use href="#mark"/></svg>
+  </div>
+
+  <div class="clearspace-note">
+    <div>
+      <div class="label">KORUMA ALANI</div>
+      <div class="val">Amblemin her kenarında, halka çapının en az %25'i kadar boş alan bırakılmalı. Hiçbir metin, görsel veya kenar bu alana girmemeli.</div>
+    </div>
+    <div>
+      <div class="label">MİNİMUM BOYUT</div>
+      <div class="val">Dijital kullanımda 32px, baskıda 10mm altına düşürülmemeli. Daha küçük alanlarda yalnızca amblem (yörünge halkasız sade B) kullanılabilir.</div>
+    </div>
+    <div>
+      <div class="label">ZEMİN</div>
+      <div class="val">Birincil zemin Piano Black (#050505). Açık zeminlerde yalnızca onaylı monokrom/koyu versiyon kullanılır.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><div class="ring-seg"></div><div class="dot"></div><div class="ring-seg"></div></div>
+
+<!-- ================= COLOR ================= -->
+<section>
+  <div class="eyebrow">02 — Renk Sistemi</div>
+  <h2>Malzeme Paleti</h2>
+  <p class="lead">Palet, fiziksel malzemelerden türetilmiştir: ayna krom, kristal cam, fırçalanmış titanyum ve safir yansımalar. Renkler her zaman bu malzeme mantığıyla kullanılmalı — düz, dekoratif renk lekesi olarak değil.</p>
+
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="chip" style="background:#050505;"></div>
+      <div class="info"><div class="name">Piano Black</div><div class="hex mono">#050505</div></div>
+    </div>
+    <div class="swatch">
+      <div class="chip" style="background:linear-gradient(135deg,#ffffff,#c7ccd2,#8f9aa6);"></div>
+      <div class="info"><div class="name">Mirror Chrome</div><div class="hex mono">#F4F6F8 → #8F9AA6</div></div>
+    </div>
+    <div class="swatch">
+      <div class="chip" style="background:#16283d;"></div>
+      <div class="info"><div class="name">Deep Sapphire</div><div class="hex mono">#16283D</div></div>
+    </div>
+    <div class="swatch">
+      <div class="chip" style="background:#3a6fa8;"></div>
+      <div class="info"><div class="name">Sapphire</div><div class="hex mono">#3A6FA8</div></div>
+    </div>
+    <div class="swatch">
+      <div class="chip" style="background:#7fa8d9;"></div>
+      <div class="info"><div class="name">Sapphire Bright (aksan)</div><div class="hex mono">#7FA8D9</div></div>
+    </div>
+    <div class="swatch">
+      <div class="chip" style="background:#8f9aa6;"></div>
+      <div class="info"><div class="name">Brushed Titanium</div><div class="hex mono">#8F9AA6</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><div class="ring-seg"></div><div class="dot"></div><div class="ring-seg"></div></div>
+
+<!-- ================= TYPE ================= -->
+<section>
+  <div class="eyebrow">03 — Tipografi</div>
+  <h2>Geometrik Sans, Cömert Boşluk</h2>
+  <p class="lead">Wordmark geniş harf aralığıyla, tek bir geometrik sans-serif ailesinde ayarlanır. Gövde metni aynı ailenin daha dar aralıklı, okunur versiyonudur; teknik/verifikasyon verileri (ID, tarih, provenance) için mono karakter kullanılır.</p>
+
+  <div class="type-block">
+    <div class="type-sample wordmark">
+      <div class="word" style="color:var(--chrome-white);">BETA ART</div>
+      <div class="meta">WORDMARK · 600 · +10 LETTER-SPACING</div>
+    </div>
+    <div class="type-sample">
+      <div class="word" style="font-size:32px; letter-spacing:1px; font-weight:500;">Aa Bb Cc — Başlık Ağırlığı</div>
+      <div class="meta">BAŞLIK · 500</div>
+    </div>
+    <div class="type-sample">
+      <div class="word" style="font-size:18px; letter-spacing:0; font-weight:400; color:var(--steel);">Gövde metni okunabilirlik önceliklidir.</div>
+      <div class="meta">GÖVDE · 400</div>
+    </div>
+    <div class="type-sample">
+      <div class="word mono" style="font-size:15px; letter-spacing:2px; color:var(--sapphire-bright);">ID · 0X7F3A—VERIFIED</div>
+      <div class="meta">UTILITY / MONO</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><div class="ring-seg"></div><div class="dot"></div><div class="ring-seg"></div></div>
+
+<!-- ================= TAGLINE ================= -->
+<section>
+  <div class="eyebrow">04 — Slogan Kullanımı</div>
+  <h2>"Trust Every Image"</h2>
+  <p class="lead">Slogan her zaman küçük harflerle, geniş harf aralığıyla ve wordmark'ın altında ortalanmış olarak yer alır. "EVERY" kelimesi safir vurgu rengiyle öne çıkar — markanın doğrulama vaadini tek kelimede vurgular.</p>
+
+  <div class="tag-demo">
+    <div class="word">BETA ART</div>
+    <div class="tag">TRUST&nbsp;&nbsp;<span class="accent">EVERY</span>&nbsp;&nbsp;IMAGE</div>
+  </div>
+</section>
+
+<div class="divider"><div class="ring-seg"></div><div class="dot"></div><div class="ring-seg"></div></div>
+
+<!-- ================= DO / DONT ================= -->
+<section>
+  <div class="eyebrow">05 — Kurallar</div>
+  <h2>Doğru ve Yanlış Kullanım</h2>
+
+  <div class="dd-grid">
+    <div class="dd-card do">
+      <span class="tag-label">YAPILMASI GEREKENLER</span>
+      <ul>
+        <li>Amblemi her zaman koyu zemin üzerinde kullanın</li>
+        <li>Yörünge halkasının oranlarını sabit tutun</li>
+        <li>Koruma alanına her zaman uyun</li>
+        <li>Safir aksanını yalnızca tek bir vurgu noktasında kullanın</li>
+      </ul>
+    </div>
+    <div class="dd-card dont">
+      <span class="tag-label">YAPILMAMASI GEREKENLER</span>
+      <ul>
+        <li>Amblemi döndürmeyin veya eğmeyin</li>
+        <li>Halkayı monogramdan ayrı, dekoratif bir öge gibi kullanmayın</li>
+        <li>Gradyanları düz renklerle değiştirmeyin</li>
+        <li>Wordmark'ı daraltılmış harf aralığıyla kullanmayın</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><div class="ring-seg"></div><div class="dot"></div><div class="ring-seg"></div></div>
+
+<!-- ================= APPLICATIONS ================= -->
+<section>
+  <div class="eyebrow">06 — Uygulamalar</div>
+  <h2>Uygulama Önizlemeleri</h2>
+  <div class="app-grid">
+    <div class="app-card">
+      <div class="app-icon-dark"><svg width="34" viewBox="0 60 800 500"><use href="#mark"/></svg></div>
+      <div class="cap mono">APP İKONU — KOYU</div>
+    </div>
+    <div class="app-card">
+      <div class="app-icon-light"><svg width="34" viewBox="0 60 800 500" style="filter:invert(0.85);"><use href="#mark"/></svg></div>
+      <div class="cap mono">APP İKONU — AÇIK</div>
+    </div>
+    <div class="app-card">
+      <svg width="40" viewBox="0 60 800 500"><use href="#mark"/></svg>
+      <div class="cap mono">FAVICON / SOSYAL AVATAR</div>
+    </div>
+  </div>
+</section>
+
+<footer>BETA ART © 2026 — MARKA KİMLİĞİ REHBERİ</footer>
+
+</body>
+</html>

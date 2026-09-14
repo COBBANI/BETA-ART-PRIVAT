@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Beta Art Business — işletmeniz için yaratıcı üretim</title>
+<meta name="description" content="Marka, sosyal medya, reklam, e-ticaret ve sunum tasarımı. Brief gönderin, üretelim, onaylayın, dosyalarınızı alın.">
+<meta name="color-scheme" content="light">
+<style>
+:root{
+  --paper:#FFFFFF;
+  --grey:#F1F1EF;
+  --ink:#0C0C0D;
+  --muted:#63656A;
+  --rule:#D9D9D5;
+  --blue:#2038E0;
+  --blue-dim:#E7EAFD;
+  --sans:ui-sans-serif,-apple-system,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:16px;top:16px;position:fixed;z-index:99;background:var(--ink);color:#fff;padding:10px 14px}
+
+.pilot{background:var(--ink);color:#EDEDEB;font-family:var(--mono);font-size:11px;letter-spacing:.05em;padding:8px 0}
+.pilot b{color:#fff;font-weight:400;background:var(--blue);padding:2px 6px}
+
+header.top{border-bottom:1px solid var(--rule);position:sticky;top:0;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);z-index:40}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;height:68px}
+.brand{font-weight:800;letter-spacing:-.04em;font-size:20px;text-decoration:none}
+.brand i{font-style:normal;color:var(--muted);font-weight:500}
+nav.main{display:flex;gap:24px;font-size:14px}
+nav.main a{text-decoration:none;color:var(--muted)}
+nav.main a:hover{color:var(--ink)}
+@media(max-width:900px){nav.main{display:none}}
+
+h1{font-size:clamp(40px,6.6vw,78px);line-height:.96;letter-spacing:-.045em;font-weight:800;margin:0 0 20px}
+h2{font-size:clamp(26px,3.4vw,40px);line-height:1.06;letter-spacing:-.035em;font-weight:800;margin:0 0 14px}
+h3{font-size:17px;letter-spacing:-.015em;font-weight:700;margin:0 0 7px}
+p{margin:0 0 14px}
+.lead{font-size:clamp(17px,1.6vw,20px);line-height:1.45;color:var(--muted);max-width:52ch;margin-bottom:26px}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin:0 0 14px}
+.note{font-size:14px;color:var(--muted);max-width:62ch}
+
+.band{padding:78px 0;border-top:1px solid var(--rule)}
+.band.first{border-top:0;padding-top:52px}
+.band.grey{background:var(--grey)}
+
+.btn{display:inline-block;font-weight:700;font-size:15px;letter-spacing:-.01em;padding:15px 24px;border:2px solid var(--ink);text-decoration:none;background:transparent}
+.btn.solid{background:var(--ink);color:#fff}
+.btn.solid:hover{background:var(--blue);border-color:var(--blue)}
+.btn:hover{background:var(--ink);color:#fff}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+
+/* hero + signature job ticket */
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+@media(max-width:960px){.hero{grid-template-columns:1fr;gap:36px}}
+
+.ticket{border:2px solid var(--ink);background:#fff}
+.ticket-h{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 16px;background:var(--ink);color:#fff;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+.ticket-b{padding:20px 18px}
+.tk-row{display:grid;grid-template-columns:96px 1fr;gap:10px;padding:9px 0;border-bottom:1px solid var(--rule);font-size:14px}
+.tk-row:last-of-type{border-bottom:0}
+.tk-row span{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{font-family:var(--mono);font-size:11px;border:1px solid var(--rule);padding:4px 8px;background:var(--grey)}
+.chip.on{background:var(--blue-dim);border-color:var(--blue);color:var(--blue)}
+.tk-foot{border-top:2px solid var(--ink);padding:12px 16px;display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+.tk-foot b{color:var(--blue);font-weight:400}
+
+/* selector */
+.picker{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule)}
+@media(max-width:860px){.picker{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.picker{grid-template-columns:1fr}}
+.pick{background:#fff;border:0;text-align:left;padding:22px 20px;font:inherit;cursor:pointer;display:block;width:100%}
+.pick:hover{background:var(--blue-dim)}
+.pick[aria-pressed="true"]{background:var(--ink);color:#fff}
+.pick[aria-pressed="true"] small{color:#B9BCC6}
+.pick strong{display:block;font-size:16px;font-weight:700;letter-spacing:-.015em;margin-bottom:5px}
+.pick small{color:var(--muted);font-size:13px;line-height:1.4;display:block}
+#pickout{margin-top:22px;border:2px solid var(--ink);padding:24px 22px}
+#pickout[hidden]{display:none}
+#pickout h3{margin-bottom:10px}
+#pickout ul{margin:0 0 14px;padding-left:18px;font-size:14px;color:var(--muted)}
+#pickout li{margin-bottom:5px}
+
+/* how it works */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
+@media(max-width:900px){.steps{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.steps{grid-template-columns:1fr}}
+.step .n{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--blue);display:block;margin-bottom:10px}
+.step p{margin:0;font-size:14px;color:var(--muted)}
+
+/* service standard */
+.svc{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule)}
+@media(max-width:760px){.svc{grid-template-columns:1fr}}
+.svc>div{background:#fff;padding:22px 20px}
+.svc dt{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.svc dd{margin:0 0 14px;font-size:14px}
+
+/* plans */
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:860px){.plans{grid-template-columns:1fr}}
+.plan{border:1px solid var(--rule);padding:26px 22px;background:#fff;display:flex;flex-direction:column}
+.plan.mid{border:2px solid var(--ink)}
+.plan .k{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.plan .price{font-size:30px;font-weight:800;letter-spacing:-.035em;margin-bottom:4px}
+.plan .hyp{font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:var(--blue);margin-bottom:14px}
+.plan ul{margin:0 0 20px;padding-left:17px;font-size:14px;color:var(--muted)}
+.plan li{margin-bottom:6px}
+.plan .btn{margin-top:auto;text-align:center;font-size:14px;padding:12px 18px}
+
+/* empty proof */
+.empty{border:2px dashed var(--rule);padding:30px 26px;background:var(--grey)}
+.empty h3{margin-bottom:8px}
+
+footer.foot{border-top:1px solid var(--rule);padding:44px 0 64px;font-size:14px;color:var(--muted)}
+footer.foot .wrap{display:flex;justify-content:space-between;gap:28px;flex-wrap:wrap}
+footer.foot .mono{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--ink)}
+
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">İçeriğe geç</a>
+
+<div class="pilot"><div class="wrap"><b>TASLAK</b> &nbsp; Fiyatlar hipotezdir. Portfolyo ve referanslar ilk işler teslim edildikçe eklenecek — uydurma örnek kullanılmıyor.</div></div>
+
+<header class="top"><div class="wrap">
+  <a class="brand" href="#top">Beta Art <i>Business</i></a>
+  <nav class="main" aria-label="Bölümler">
+    <a href="#ne">Ne lazım?</a>
+    <a href="#nasil">Nasıl çalışır</a>
+    <a href="#kapsam">Kapsam</a>
+    <a href="#plan">Planlar</a>
+    <a href="#isler">İşler</a>
+  </nav>
+  <a class="btn solid" href="#brief" style="padding:11px 18px;font-size:14px">Brief gönder</a>
+</div></header>
+
+<main id="main">
+
+<section class="band first" id="top">
+  <div class="wrap hero">
+    <div>
+      <p class="eyebrow">İşletmeler için yaratıcı üretim</p>
+      <h1>Tasarımcı aramayı bırakın. Brief gönderin.</h1>
+      <p class="lead">Marka, sosyal medya, reklam, e-ticaret ve sunum görselleri. Her seferinde yeni bir freelancer aramadan, tek bir yerden ve aynı marka tutarlılığıyla.</p>
+      <div class="actions">
+        <a class="btn solid" href="#brief">İlk işi başlat</a>
+        <a class="btn" href="#nasil">Nasıl çalıştığını gör</a>
+      </div>
+      <p class="note">Ne istediğinizden emin değilseniz de olur — aşağıdaki seçiciyle başlayın.</p>
+    </div>
+
+    <figure class="ticket" style="margin:0">
+      <div class="ticket-h"><span>İş kartı · örnek</span><span>#0001</span></div>
+      <div class="ticket-b">
+        <div class="tk-row"><span>İstek</span><div>Yaz kampanyası için sosyal medya seti</div></div>
+        <div class="tk-row"><span>Marka</span><div>Logo, renkler ve font kayıtlı — tekrar göndermeye gerek yok</div></div>
+        <div class="tk-row"><span>Formatlar</span><div class="chips">
+          <em class="chip on">1080×1350</em><em class="chip on">1080×1920</em><em class="chip">1200×628</em><em class="chip">A4</em>
+        </div></div>
+        <div class="tk-row"><span>Revizyon</span><div>Onaya kadar</div></div>
+        <div class="tk-row"><span>Teslim</span><div>Kaynak dosya + kullanıma hazır export</div></div>
+      </div>
+      <figcaption class="tk-foot"><span>Durum · örnek gösterim</span><b>Üretimde</b></figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="band grey" id="ne">
+  <div class="wrap">
+    <p class="eyebrow">Başlangıç</p>
+    <h2>İşletmenizin neye ihtiyacı var?</h2>
+    <p class="note" style="margin-bottom:28px">Hizmet listesi yerine hedefinizi seçin. Doğru kapsamı biz çıkarırız.</p>
+
+    <div class="picker" role="group" aria-label="İhtiyaç seçimi">
+      <button type="button" class="pick" data-k="marka" aria-pressed="false"><strong>Markamı geliştirmek</strong><small>Logo, kimlik, kullanım kuralları</small></button>
+      <button type="button" class="pick" data-k="sosyal" aria-pressed="false"><strong>Sosyal medya içeriği</strong><small>Aylık paket, şablonlar, kampanya</small></button>
+      <button type="button" class="pick" data-k="reklam" aria-pressed="false"><strong>Reklam görselleri</strong><small>Meta, Google, banner, retargeting</small></button>
+      <button type="button" class="pick" data-k="urun" aria-pressed="false"><strong>Ürün görsellerim</strong><small>Retouch, arka plan, pazaryeri</small></button>
+      <button type="button" class="pick" data-k="sunum" aria-pressed="false"><strong>Sunum hazırlamak</strong><small>Satış, yatırımcı, rapor</small></button>
+      <button type="button" class="pick" data-k="bilmiyorum" aria-pressed="false"><strong>Emin değilim</strong><small>Durumu anlatın, kapsamı çıkaralım</small></button>
+    </div>
+
+    <div id="pickout" hidden aria-live="polite"></div>
+  </div>
+</section>
+
+<section class="band" id="nasil">
+  <div class="wrap">
+    <p class="eyebrow">Süreç</p>
+    <h2>Dört adım. Toplantı yok.</h2>
+    <div class="steps" style="margin-top:36px">
+      <article class="step"><span class="n">01</span><h3>Brief</h3><p>Ne istediğinizi yazın. Emin değilseniz birkaç soruyla birlikte netleştiriyoruz.</p></article>
+      <article class="step"><span class="n">02</span><h3>Üretim</h3><p>İş üretilir. Marka dosyalarınız kayıtlıysa her seferinde yeniden göndermenize gerek kalmaz.</p></article>
+      <article class="step"><span class="n">03</span><h3>Revizyon</h3><p>Yorumunuzu doğrudan görselin üstüne bırakın. Onaya kadar düzeltilir.</p></article>
+      <article class="step"><span class="n">04</span><h3>Teslim</h3><p>Kaynak dosya ve kullanıma hazır formatlar birlikte gelir. Telif size aittir.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="band grey" id="kapsam">
+  <div class="wrap">
+    <p class="eyebrow">Her iş kaleminde</p>
+    <h2>Ne alacağınız baştan yazılı.</h2>
+    <dl class="svc" style="margin-top:32px">
+      <div><dt>Ne alırsınız</dt><dd>Kaynak dosya, dışa aktarılmış formatlar ve kullanım hakkı. Telif müşteride kalır.</dd>
+           <dt>Kimin için</dt><dd>Kendi tasarım ekibi olmayan, ama düzenli görsele ihtiyaç duyan işletmeler.</dd></div>
+      <div><dt>Sizden ne gerekir</dt><dd>Kısa bir brief, varsa logo ve marka dosyaları, kullanılacak metin ve görseller.</dd>
+           <dt>Teslim</dt><dd>İndirilebilir dosya paketi. Formatlar iş başlamadan önce yazılı olarak belirlenir.</dd></div>
+      <div><dt>Süre</dt><dd>İş kapsamına göre teslim tarihi brief onaylanırken verilir. Karşılanamayacak söz verilmez.</dd>
+           <dt>Revizyon</dt><dd>Kapsam içinde onaya kadar. Kapsam değişirse yeni iş kalemi olarak yazılır.</dd></div>
+      <div><dt>Fiyat</dt><dd>İş kalemi başına veya aylık plan. Kapsam yazılı, sürpriz kalem yok.</dd>
+           <dt>Gizlilik</dt><dd>Dosyalarınız üçüncü tarafla paylaşılmaz ve izniniz olmadan portfolyoda kullanılmaz.</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="band" id="plan">
+  <div class="wrap">
+    <p class="eyebrow">Planlar · fiyat hipotezi</p>
+    <h2>Tek iş mi, düzenli destek mi?</h2>
+    <p class="note" style="margin-bottom:30px">Aşağıdaki rakamlar test edilmek üzere konulmuş başlangıç değerleridir, kesin fiyat listesi değildir.</p>
+    <div class="plans">
+      <article class="plan">
+        <p class="k">Tek iş</p>
+        <p class="price">[tutar]</p>
+        <p class="hyp">iş kalemi başına · hipotez</p>
+        <ul><li>Tanımlı tek kapsam</li><li>Kapsam içi revizyon</li><li>Kaynak dosya teslim</li></ul>
+        <a class="btn" href="#brief">Brief gönder</a>
+      </article>
+      <article class="plan mid">
+        <p class="k">Aylık</p>
+        <p class="price">[tutar]/ay</p>
+        <p class="hyp">aylık talep kotası · hipotez</p>
+        <ul><li>Ayda belirli sayıda iş</li><li>Marka dosyaları kayıtlı</li><li>Öncelikli sıra</li><li>İstediğiniz zaman durdurun</li></ul>
+        <a class="btn solid" href="#brief">Aylık planı konuşalım</a>
+      </article>
+      <article class="plan">
+        <p class="k">Ekip</p>
+        <p class="price">[tutar]/ay</p>
+        <p class="hyp">çok kullanıcılı · hipotez</p>
+        <ul><li>Birden fazla kullanıcı</li><li>Onay akışı</li><li>Ortak marka kütüphanesi</li></ul>
+        <a class="btn" href="#brief">Teklif isteyin</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="band grey" id="isler">
+  <div class="wrap">
+    <p class="eyebrow">İşler</p>
+    <h2>Burası henüz boş, ve öyle kalacak — gerçek iş çıkana kadar.</h2>
+    <div class="empty" style="margin-top:26px">
+      <h3>Portfolyo, öncesi/sonrası ve müşteri örnekleri</h3>
+      <p class="note">Bu alanda stok görsel, temsili örnek veya başkasının işi gösterilmiyor. İlk teslim edilen işlerden itibaren — müşterinin yazılı izniyle — buraya gerçek örnekler eklenecek.</p>
+      <p class="note" style="margin-bottom:0">İlk işlerde referans olmadığı için: kapsamı küçük tutuyoruz, fiyatı yazılı veriyoruz ve memnun kalmazsanız bir sonraki iş kalemine geçmiyorsunuz.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="brief">
+  <div class="wrap" style="max-width:760px">
+    <p class="eyebrow">Başlayın</p>
+    <h2>İlk briefinizi gönderin.</h2>
+    <p class="lead">Ne yapmak istediğinizi birkaç cümleyle yazın. Kapsamı, formatları ve teslim tarihini birlikte netleştirip yazılı olarak onaylıyoruz — iş ondan sonra başlıyor.</p>
+    <div class="actions">
+      <a class="btn solid" href="mailto:REPLACE@example.com?subject=Brief">E-posta ile gönder</a>
+    </div>
+    <p class="note"><!-- ERSTATT: gerçek e-posta ve şirket bilgisi -->E-posta adresi ve şirket bilgisi yayına almadan önce doldurulacak.</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot"><div class="wrap">
+  <div>
+    <p class="mono">BETA ART BUSINESS</p>
+    <p>İşletmeler için yaratıcı üretim.</p>
+  </div>
+  <div>
+    <p><a href="#ne">Ne lazım?</a> · <a href="#nasil">Nasıl çalışır</a> · <a href="#plan">Planlar</a></p>
+  </div>
+  <div>
+    <p class="mono">TASLAK</p>
+    <!-- ERSTATT: org.nr, adres, KVKK/GDPR bildirimi, kullanım şartları -->
+    <p>Şirket bilgisi, gizlilik bildirimi ve kullanım şartları yayından önce eklenecek.</p>
+  </div>
+</div></footer>
+
+<script>
+(function(){
+  var DATA={
+    marka:{h:'Marka geliştirme',
+      li:['Logo veya mevcut logonun yenilenmesi','Renk, tipografi ve kullanım kuralları','Kartvizit ve temel basılı öğeler','Sosyal medya profil görselleri'],
+      p:'Genelde tek iş kalemi olarak başlar; kimlik oturduktan sonra aylık plan anlamlı hale gelir.'},
+    sosyal:{h:'Sosyal medya içeriği',
+      li:['Aylık gönderi seti','Yeniden kullanılabilir şablonlar','Kampanya görselleri','Platform ölçülerine göre export'],
+      p:'Düzenli ihtiyaç olduğu için aylık plana en uygun kalem budur.'},
+    reklam:{h:'Reklam görselleri',
+      li:['Meta ve Google formatları','Banner setleri','Aynı kampanyanın varyasyonları','Retargeting görselleri'],
+      p:'Varyasyon sayısı fiyatı belirler; kaç format gerektiğini brief’te netleştiriyoruz.'},
+    urun:{h:'Ürün görselleri',
+      li:['Retouch ve renk düzeltme','Arka plan temizleme veya değiştirme','Pazaryeri ölçülerine uyarlama','Kampanya bannerları'],
+      p:'Adet başına fiyatlanır. Örnek bir görselle başlayıp sonucu görmeniz en hızlısı.'},
+    sunum:{h:'Sunum tasarımı',
+      li:['Satış veya yatırımcı sunumu','Şablon haline getirme','Grafik ve tablo düzenleme','Kurumsal rapor düzeni'],
+      p:'İçerik sizden, düzen ve görsel dil bizden. Slayt sayısı kapsamı belirler.'},
+    bilmiyorum:{h:'Emin değilim',
+      li:['Ne yapmaya çalıştığınızı birkaç cümleyle anlatın','Varsa mevcut görsellerinizi gönderin','Nerede kullanılacağını söyleyin (site, sosyal, basılı)'],
+      p:'Kapsamı biz çıkarıp yazılı olarak öneriyoruz. Onaylamadan iş başlamaz.'}
+  };
+  var out=document.getElementById('pickout');
+  var btns=[].slice.call(document.querySelectorAll('.pick'));
+  btns.forEach(function(b){
+    b.addEventListener('click',function(){
+      var on=b.getAttribute('aria-pressed')==='true';
+      btns.forEach(function(x){x.setAttribute('aria-pressed','false')});
+      if(on){out.hidden=true;return}
+      b.setAttribute('aria-pressed','true');
+      var d=DATA[b.dataset.k];
+      out.innerHTML='<h3>'+d.h+'</h3><ul>'+d.li.map(function(i){return '<li>'+i+'</li>'}).join('')+
+        '</ul><p class="note">'+d.p+'</p><a class="btn solid" href="#brief" style="font-size:14px;padding:12px 18px">Bu konuda brief gönder</a>';
+      out.hidden=false;
+    });
+  });
+})();
+</script>
+</body>
+</html>

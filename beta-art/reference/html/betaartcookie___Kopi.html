@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cookie Consent — BETA ART</title>
+<meta name="description" content="GDPR-compliant cookie consent banner for BETA ART. Live preview and integration guide.">
+<meta name="robots" content="noindex, nofollow">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23FBFAF7'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%238B1A1A'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..800,50..100,0..1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{--paper:#FBFAF7;--paper-2:#F3F0E9;--ink:#0F0F0F;--ink-2:#1F1D1B;--muted:#85817A;--rule:#E4E0D8;--seal:#8B1A1A;--f-serif:'Fraunces',Georgia,serif;--f-sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;--f-mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--f-sans);background:var(--paper);color:var(--ink);line-height:1.6;font-size:16px;-webkit-font-smoothing:antialiased}
+
+/* ============================================
+   BETA ART COOKIE BANNER — start
+   Copy from here down to `BETA ART COOKIE BANNER — end`
+   into your site.
+============================================ */
+#ba-cookie{
+  position:fixed;left:20px;right:20px;bottom:20px;
+  z-index:1000;
+  max-width:640px;margin:0 auto;
+  background:var(--paper);
+  border:1px solid var(--ink);
+  box-shadow:0 12px 40px rgba(15,15,15,.18);
+  font-family:var(--f-sans);color:var(--ink);
+  display:none;
+  animation:ba-cookie-in .28s ease-out;
+}
+#ba-cookie.show{display:block}
+@keyframes ba-cookie-in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+#ba-cookie .ba-c-inner{padding:24px 28px 22px}
+#ba-cookie .ba-c-eyebrow{
+  font-family:var(--f-mono);font-size:10.5px;
+  letter-spacing:.22em;text-transform:uppercase;
+  color:var(--seal);margin-bottom:12px;
+  display:flex;align-items:center;gap:8px;
+}
+#ba-cookie .ba-c-eyebrow::before{
+  content:"";display:inline-block;width:8px;height:8px;
+  background:var(--seal);border-radius:50%;
+}
+#ba-cookie .ba-c-title{
+  font-family:var(--f-serif);font-size:20px;font-weight:500;
+  color:var(--ink);line-height:1.25;margin-bottom:10px;
+}
+#ba-cookie .ba-c-body{
+  font-size:14px;color:var(--ink-2);line-height:1.55;margin-bottom:20px;
+  max-width:56ch;
+}
+#ba-cookie .ba-c-body a{
+  color:var(--ink);border-bottom:1px solid var(--rule);
+}
+#ba-cookie .ba-c-body a:hover{border-bottom-color:var(--ink)}
+#ba-cookie .ba-c-actions{
+  display:flex;gap:12px;flex-wrap:wrap;align-items:center;
+}
+#ba-cookie button{
+  font-family:var(--f-mono);font-size:11px;
+  letter-spacing:.14em;text-transform:uppercase;font-weight:500;
+  padding:12px 20px;border:1px solid var(--ink);cursor:pointer;
+  transition:background .18s, color .18s;
+  background:var(--paper);color:var(--ink);
+}
+#ba-cookie button:hover{background:var(--paper-2)}
+#ba-cookie button.primary{background:var(--ink);color:var(--paper)}
+#ba-cookie button.primary:hover{background:var(--seal);color:var(--paper)}
+#ba-cookie button.text{
+  background:transparent;border:0;padding:12px 4px;
+  color:var(--muted);
+}
+#ba-cookie button.text:hover{background:transparent;color:var(--ink)}
+@media (max-width:640px){
+  #ba-cookie{left:12px;right:12px;bottom:12px}
+  #ba-cookie .ba-c-inner{padding:20px 22px}
+  #ba-cookie .ba-c-actions{flex-direction:column;align-items:stretch}
+  #ba-cookie button{width:100%;text-align:center}
+}
+
+/* Trigger anchor in footer */
+.ba-cookie-open{
+  font-family:var(--f-mono);font-size:11px;
+  letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);background:none;border:0;padding:0;cursor:pointer;
+}
+.ba-cookie-open:hover{color:var(--ink)}
+/* ============================================
+   BETA ART COOKIE BANNER — end
+============================================ */
+
+/* Documentation-page styles (not part of the widget) */
+.nav{position:sticky;top:0;z-index:10;background:rgba(251,250,247,.92);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--rule)}
+.nav-inner{max-width:1400px;margin:0 auto;padding:18px 40px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:inline-flex;align-items:center;gap:12px;font-family:var(--f-mono);font-size:12.5px;letter-spacing:.24em;text-transform:uppercase;font-weight:500}
+.brand-mark{display:inline-block;width:11px;height:11px;border:1.5px solid var(--ink);border-radius:50%;position:relative}
+.brand-mark::after{content:"";position:absolute;inset:2px;background:var(--seal);border-radius:50%}
+.nav-links{display:flex;gap:36px;align-items:center}
+.lang{display:flex;align-items:center;gap:0;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);border-left:1px solid var(--rule);padding-left:20px;margin-left:4px}
+.lang button{background:none;border:0;padding:4px 6px;cursor:pointer;font-family:inherit;font-size:inherit;letter-spacing:inherit;color:var(--muted);transition:color .18s}
+.lang button:hover{color:var(--ink)}
+.lang button.on{color:var(--ink);font-weight:600}
+.lang-sep{color:var(--rule);padding:0 2px}
+
+.page{max-width:920px;margin:0 auto;padding:80px 40px 200px}
+.page-header{padding-bottom:60px;margin-bottom:60px;border-bottom:1px solid var(--rule)}
+.rule-label{display:inline-flex;align-items:center;gap:10px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:28px}
+.rule-label::before{content:"";width:22px;height:1px;background:var(--muted)}
+h1{font-family:var(--f-serif);font-weight:400;font-size:clamp(40px,5.5vw,62px);line-height:1.08;letter-spacing:-.015em;color:var(--ink);margin-bottom:24px}
+.page-intro{font-family:var(--f-serif);font-size:19px;line-height:1.6;color:var(--ink-2);max-width:60ch}
+
+section.s{margin-top:64px}
+section.s > h2{font-family:var(--f-serif);font-weight:500;font-size:28px;line-height:1.2;color:var(--ink);margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--rule);display:flex;align-items:baseline;gap:16px}
+section.s > h2 .num{font-family:var(--f-mono);font-size:12px;color:var(--seal);letter-spacing:.14em;font-weight:500}
+section.s p{color:var(--ink-2);margin-bottom:16px;max-width:68ch}
+
+.demo-actions{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0}
+.demo-btn{
+  font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;font-weight:500;
+  padding:12px 20px;border:1px solid var(--ink);cursor:pointer;
+  background:var(--paper);color:var(--ink);
+  transition:background .18s;
+}
+.demo-btn:hover{background:var(--paper-2)}
+.demo-btn.primary{background:var(--ink);color:var(--paper)}
+.demo-btn.primary:hover{background:var(--seal)}
+
+.state-display{
+  background:var(--paper-2);padding:20px 24px;
+  font-family:var(--f-mono);font-size:12.5px;color:var(--ink);
+  border-left:3px solid var(--seal);margin:16px 0;
+  word-break:break-all;
+}
+.state-display .lbl{
+  font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted);display:block;margin-bottom:8px;
+}
+
+.category-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:16px;border-top:1.5px solid var(--ink);border-bottom:1px solid var(--rule)}
+.cat{padding:24px 26px;border-right:1px solid var(--rule)}
+.cat:last-child{border-right:0}
+.cat-label{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--seal);margin-bottom:10px}
+.cat-name{font-family:var(--f-serif);font-size:19px;font-weight:500;margin-bottom:8px}
+.cat-desc{font-size:14px;color:var(--ink-2);line-height:1.55;margin-bottom:14px}
+.cat-list{font-family:var(--f-mono);font-size:12px;color:var(--muted);line-height:1.7}
+@media (max-width:640px){.category-grid{grid-template-columns:1fr}.cat{border-right:0;border-bottom:1px solid var(--rule)}.cat:last-child{border-bottom:0}}
+
+pre.code{
+  background:#0F0F0F;color:#F3F0E9;
+  padding:22px 26px;overflow-x:auto;
+  font-family:var(--f-mono);font-size:12.5px;line-height:1.6;
+  border-left:3px solid var(--seal);margin:20px 0;
+}
+pre.code .comment{color:#85817A;font-style:italic}
+pre.code .key{color:#F5D0A9}
+pre.code .string{color:#B9E4A0}
+
+.footer{border-top:1px solid var(--rule);padding:40px 0 32px;background:var(--paper);margin-top:80px}
+.footer-inner{max-width:1400px;margin:0 auto;padding:0 40px}
+.footer-links{display:flex;flex-wrap:wrap;gap:24px 40px;font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding-bottom:24px;border-bottom:1px solid var(--rule)}
+.footer-links a, .footer-links button{color:var(--muted);transition:color .18s;background:none;border:0;padding:0;cursor:pointer;font-family:inherit;font-size:inherit;letter-spacing:inherit;text-transform:inherit}
+.footer-links a:hover, .footer-links button:hover{color:var(--ink)}
+.footer-legal{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;padding-top:24px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.06em;color:var(--muted)}
+
+@media (max-width:700px){.nav-inner{padding:16px 20px}.nav-links{gap:14px}.page{padding:48px 20px 200px}.footer-inner{padding:0 20px}}
+:focus-visible{outline:2px solid var(--seal);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="brand"><span class="brand-mark"></span> BETA · ART</a>
+    <div class="nav-links">
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-lang="en" class="on">EN</button>
+        <span class="lang-sep">/</span>
+        <button type="button" data-lang="no">NO</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main class="page">
+  <div class="page-header">
+    <span class="rule-label" data-i18n="eyebrow">Cookie consent · Live preview & integration</span>
+    <h1 data-i18n="title">Cookie Banner</h1>
+    <p class="page-intro" data-i18n="intro">A GDPR-compliant cookie banner in the BETA ART design language. This page shows it working, explains what it does, and gives you the code to paste into every HTML page.</p>
+  </div>
+
+  <section class="s" id="preview">
+    <h2><span class="num">§ 01</span><span data-i18n="s1.title">Live preview</span></h2>
+    <p data-i18n="s1.intro">Click the buttons below to interact with the banner. State is saved to localStorage and displayed underneath so you can see what the visitor's browser stores.</p>
+
+    <div class="demo-actions">
+      <button class="demo-btn primary" onclick="baCookieShow()" data-i18n="btn.show">Show banner</button>
+      <button class="demo-btn" onclick="baCookieReset()" data-i18n="btn.reset">Reset consent</button>
+      <button class="demo-btn" onclick="refreshState()" data-i18n="btn.refresh">Refresh state</button>
+    </div>
+
+    <div class="state-display">
+      <span class="lbl" data-i18n="state.label">Current consent state</span>
+      <div id="state-box">Not decided yet</div>
+    </div>
+  </section>
+
+  <section class="s" id="categories">
+    <h2><span class="num">§ 02</span><span data-i18n="s2.title">Two categories, no dark patterns</span></h2>
+    <p data-i18n="s2.intro">GDPR forbids pre-checked boxes and requires equally easy Accept and Reject. This banner uses only two categories — necessary (always on) and analytics (opt-in). No advertising cookies. No third-party trackers. No fingerprinting.</p>
+
+    <div class="category-grid">
+      <div class="cat">
+        <div class="cat-label" data-i18n="cat.a.label">Category A · Necessary</div>
+        <div class="cat-name" data-i18n="cat.a.name">Always active</div>
+        <p class="cat-desc" data-i18n="cat.a.desc">Required for the site to function. Cart state, language preference, session security. Legal basis: legitimate interest (GDPR Art. 6.1.f). Cannot be turned off.</p>
+        <div class="cat-list" data-i18n-html="cat.a.list">betaart:cart:v1<br>betaart:lang:v1<br>betaart:consent:v1</div>
+      </div>
+      <div class="cat">
+        <div class="cat-label" data-i18n="cat.b.label">Category B · Analytics</div>
+        <div class="cat-name" data-i18n="cat.b.name">Opt-in only</div>
+        <p class="cat-desc" data-i18n="cat.b.desc">Privacy-friendly analytics via Plausible (no cookies, no fingerprinting, EU-hosted). Used only to understand page traffic. Legal basis: consent (GDPR Art. 6.1.a).</p>
+        <div class="cat-list" data-i18n-html="cat.b.list">No cookies set.<br>Plausible.io script loaded<br>only after consent.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="s" id="integration">
+    <h2><span class="num">§ 03</span><span data-i18n="s3.title">Integration — three steps per page</span></h2>
+    <p data-i18n="s3.intro">Paste three snippets into every HTML page: the CSS, the HTML markup, and the JavaScript. The banner uses the same localStorage LANG_KEY as your other pages, so language switches everywhere at once.</p>
+
+    <h3 style="margin-top:32px;margin-bottom:8px;font-family:var(--f-serif);font-size:18px;" data-i18n="step1.title">Step 1 — CSS (inside &lt;style&gt; or in your stylesheet)</h3>
+    <p style="font-size:14px" data-i18n="step1.intro">Copy the block marked <code>BETA ART COOKIE BANNER — start / end</code> from this file's &lt;style&gt; block. About 60 lines.</p>
+
+    <h3 style="margin-top:32px;margin-bottom:8px;font-family:var(--f-serif);font-size:18px;" data-i18n="step2.title">Step 2 — HTML (just before &lt;/body&gt;)</h3>
+<pre class="code"><span class="comment">&lt;!-- BETA ART COOKIE BANNER — HTML --&gt;</span>
+&lt;div id=<span class="string">"ba-cookie"</span> role=<span class="string">"dialog"</span> aria-live=<span class="string">"polite"</span> aria-label=<span class="string">"Cookie consent"</span>&gt;
+  &lt;div class=<span class="string">"ba-c-inner"</span>&gt;
+    &lt;div class=<span class="string">"ba-c-eyebrow"</span> data-i18n=<span class="string">"cookie.eyebrow"</span>&gt;Cookies&lt;/div&gt;
+    &lt;div class=<span class="string">"ba-c-title"</span> data-i18n=<span class="string">"cookie.title"</span>&gt;A quick word about cookies&lt;/div&gt;
+    &lt;div class=<span class="string">"ba-c-body"</span> data-i18n-html=<span class="string">"cookie.body"</span>&gt;
+      This site uses only what's necessary to function — cart state,
+      language preference. If you accept analytics, we also load
+      Plausible, a privacy-friendly analytics tool. No advertising
+      cookies. Ever. See our &lt;a href=<span class="string">"/privacy.html"</span>&gt;privacy policy&lt;/a&gt;.
+    &lt;/div&gt;
+    &lt;div class=<span class="string">"ba-c-actions"</span>&gt;
+      &lt;button class=<span class="string">"primary"</span> onclick=<span class="string">"baCookieDecision('all')"</span> data-i18n=<span class="string">"cookie.acceptAll"</span>&gt;Accept all&lt;/button&gt;
+      &lt;button onclick=<span class="string">"baCookieDecision('necessary')"</span> data-i18n=<span class="string">"cookie.necessary"</span>&gt;Necessary only&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+    <h3 style="margin-top:32px;margin-bottom:8px;font-family:var(--f-serif);font-size:18px;" data-i18n="step3.title">Step 3 — JavaScript (before your existing &lt;script&gt;)</h3>
+<pre class="code"><span class="comment">// BETA ART COOKIE BANNER — JavaScript</span>
+<span class="key">const</span> BA_COOKIE_KEY = <span class="string">"betaart:consent:v1"</span>;
+<span class="key">const</span> BA_PLAUSIBLE_DOMAIN = <span class="string">"betaart.no"</span>; <span class="comment">// change to your domain</span>
+
+<span class="key">function</span> baCookieState(){
+  <span class="key">try</span> { <span class="key">return</span> JSON.parse(localStorage.getItem(BA_COOKIE_KEY)); }
+  <span class="key">catch</span>(e) { <span class="key">return</span> <span class="key">null</span>; }
+}
+<span class="key">function</span> baCookieDecision(kind){
+  <span class="key">const</span> state = {
+    necessary: <span class="key">true</span>,
+    analytics: kind === <span class="string">"all"</span>,
+    ts: <span class="key">new</span> Date().toISOString(),
+    v: 1
+  };
+  <span class="key">try</span> { localStorage.setItem(BA_COOKIE_KEY, JSON.stringify(state)); } <span class="key">catch</span>(e){}
+  document.getElementById(<span class="string">"ba-cookie"</span>).classList.remove(<span class="string">"show"</span>);
+  <span class="key">if</span> (state.analytics) baLoadPlausible();
+}
+<span class="key">function</span> baCookieShow(){ document.getElementById(<span class="string">"ba-cookie"</span>).classList.add(<span class="string">"show"</span>); }
+<span class="key">function</span> baCookieReset(){
+  <span class="key">try</span> { localStorage.removeItem(BA_COOKIE_KEY); } <span class="key">catch</span>(e){}
+  baCookieShow();
+}
+<span class="key">function</span> baLoadPlausible(){
+  <span class="key">if</span> (document.getElementById(<span class="string">"ba-plausible"</span>)) <span class="key">return</span>;
+  <span class="key">const</span> s = document.createElement(<span class="string">"script"</span>);
+  s.id = <span class="string">"ba-plausible"</span>;
+  s.defer = <span class="key">true</span>;
+  s.src = <span class="string">"https://plausible.io/js/script.js"</span>;
+  s.setAttribute(<span class="string">"data-domain"</span>, BA_PLAUSIBLE_DOMAIN);
+  document.head.appendChild(s);
+}
+<span class="comment">// On page load: decide whether to show banner or load analytics</span>
+(<span class="key">function</span>(){
+  <span class="key">const</span> state = baCookieState();
+  <span class="key">if</span> (!state) baCookieShow();
+  <span class="key">else if</span> (state.analytics) baLoadPlausible();
+})();
+</pre>
+
+    <h3 style="margin-top:32px;margin-bottom:8px;font-family:var(--f-serif);font-size:18px;" data-i18n="step4.title">Bonus — Footer link to reopen banner</h3>
+    <p style="font-size:14px" data-i18n="step4.intro">Users must be able to change their mind. Add this button anywhere in your footer:</p>
+<pre class="code">&lt;button class=<span class="string">"ba-cookie-open"</span> onclick=<span class="string">"baCookieReset()"</span>&gt;
+  <span class="comment">&lt;!-- EN --&gt;</span>Manage cookies
+  <span class="comment">&lt;!-- NO --&gt;Håndter informasjonskapsler</span>
+&lt;/button&gt;</pre>
+  </section>
+
+  <section class="s" id="checklist">
+    <h2><span class="num">§ 04</span><span data-i18n="s4.title">Integration checklist</span></h2>
+    <p data-i18n="s4.intro">Apply to every page that visitors can land on directly. That means all six existing pages, plus any future ones.</p>
+    <ul style="list-style:none;margin-top:16px;font-family:var(--f-mono);font-size:13px;color:var(--ink-2);line-height:2">
+      <li data-i18n="chk.1">☐ index.html (main site — beta-art-v3.html)</li>
+      <li data-i18n="chk.2">☐ privacy.html</li>
+      <li data-i18n="chk.3">☐ license-terms.html</li>
+      <li data-i18n="chk.4">☐ faq.html</li>
+      <li data-i18n="chk.5">☐ contact.html</li>
+      <li data-i18n="chk.6">☐ qr.html (already noindex; still recommended)</li>
+      <li data-i18n="chk.7">☐ Add "Manage cookies" button to footer of each page</li>
+      <li data-i18n="chk.8">☐ Change <code>BA_PLAUSIBLE_DOMAIN</code> to your real domain</li>
+      <li data-i18n="chk.9">☐ Add translations to your existing T{} object</li>
+    </ul>
+  </section>
+
+  <section class="s" id="translations">
+    <h2><span class="num">§ 05</span><span data-i18n="s5.title">Translations for T{} object</span></h2>
+    <p data-i18n="s5.intro">Add these five keys to both <code>T.en</code> and <code>T.no</code> in each page's script block:</p>
+<pre class="code"><span class="comment">// English</span>
+<span class="string">"cookie.eyebrow"</span>: <span class="string">"Cookies"</span>,
+<span class="string">"cookie.title"</span>: <span class="string">"A quick word about cookies"</span>,
+<span class="string">"cookie.body"</span>: <span class="string">"This site uses only what's necessary to function — cart state, language preference. If you accept analytics, we also load Plausible, a privacy-friendly analytics tool. No advertising cookies. Ever. See our &lt;a href='/privacy.html'&gt;privacy policy&lt;/a&gt;."</span>,
+<span class="string">"cookie.acceptAll"</span>: <span class="string">"Accept all"</span>,
+<span class="string">"cookie.necessary"</span>: <span class="string">"Necessary only"</span>,
+
+<span class="comment">// Norsk</span>
+<span class="string">"cookie.eyebrow"</span>: <span class="string">"Informasjonskapsler"</span>,
+<span class="string">"cookie.title"</span>: <span class="string">"Kort om informasjonskapsler"</span>,
+<span class="string">"cookie.body"</span>: <span class="string">"Denne siden bruker bare det som trengs for å fungere — handlekurv, språkvalg. Godtar du analytikk, laster vi også Plausible, et personvernvennlig analyseverktøy. Ingen reklamesporing. Aldri. Se &lt;a href='/privacy.html'&gt;personvernerklæringen</a>."</span>,
+<span class="string">"cookie.acceptAll"</span>: <span class="string">"Godta alt"</span>,
+<span class="string">"cookie.necessary"</span>: <span class="string">"Kun nødvendige"</span>,</pre>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/faq.html">FAQ</a>
+      <button class="ba-cookie-open" onclick="baCookieReset()" data-i18n="footer.manage">Manage cookies</button>
+    </div>
+    <div class="footer-legal">
+      <span>© 2026 Beta Art</span>
+      <span data-i18n="footer.note">Cookie consent · Live preview</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================
+     BETA ART COOKIE BANNER — HTML markup (paste at bottom of every page)
+============================================ -->
+<div id="ba-cookie" role="dialog" aria-live="polite" aria-label="Cookie consent">
+  <div class="ba-c-inner">
+    <div class="ba-c-eyebrow" data-i18n="cookie.eyebrow">Cookies</div>
+    <div class="ba-c-title" data-i18n="cookie.title">A quick word about cookies</div>
+    <div class="ba-c-body" data-i18n-html="cookie.body">
+      This site uses only what's necessary to function — cart state, language preference. If you accept analytics, we also load Plausible, a privacy-friendly analytics tool. No advertising cookies. Ever. See our <a href="/privacy.html">privacy policy</a>.
+    </div>
+    <div class="ba-c-actions">
+      <button class="primary" onclick="baCookieDecision('all')" data-i18n="cookie.acceptAll">Accept all</button>
+      <button onclick="baCookieDecision('necessary')" data-i18n="cookie.necessary">Necessary only</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ============================================
+// BETA ART COOKIE BANNER — JavaScript
+// ============================================
+const BA_COOKIE_KEY = "betaart:consent:v1";
+const BA_PLAUSIBLE_DOMAIN = "betaart.no";
+
+function baCookieState(){
+  try { return JSON.parse(localStorage.getItem(BA_COOKIE_KEY)); }
+  catch(e){ return null; }
+}
+function baCookieDecision(kind){
+  const state = { necessary:true, analytics:kind==="all", ts:new Date().toISOString(), v:1 };
+  try { localStorage.setItem(BA_COOKIE_KEY, JSON.stringify(state)); } catch(e){}
+  document.getElementById("ba-cookie").classList.remove("show");
+  if (state.analytics) baLoadPlausible();
+  refreshState();
+}
+function baCookieShow(){ document.getElementById("ba-cookie").classList.add("show"); }
+function baCookieReset(){
+  try { localStorage.removeItem(BA_COOKIE_KEY); } catch(e){}
+  baCookieShow(); refreshState();
+}
+function baLoadPlausible(){
+  if (document.getElementById("ba-plausible")) return;
+  const s = document.createElement("script");
+  s.id = "ba-plausible"; s.defer = true;
+  s.src = "https://plausible.io/js/script.js";
+  s.setAttribute("data-domain", BA_PLAUSIBLE_DOMAIN);
+  document.head.appendChild(s);
+}
+(function(){
+  const state = baCookieState();
+  if (!state) baCookieShow();
+  else if (state.analytics) baLoadPlausible();
+})();
+
+// ============================================
+// PAGE-SPECIFIC (for this demo/documentation page only)
+// ============================================
+function refreshState(){
+  const state = baCookieState();
+  const box = document.getElementById("state-box");
+  if (!state) box.textContent = currentLang === "no" ? "Ikke bestemt ennå" : "Not decided yet";
+  else box.textContent = JSON.stringify(state, null, 2);
+}
+
+const LANG_KEY = "betaart:lang:v1";
+const DEFAULT_LANG = "en";
+let currentLang = DEFAULT_LANG;
+
+const T = {
+  en: {
+    "eyebrow":"Cookie consent · Live preview & integration",
+    "title":"Cookie Banner",
+    "intro":"A GDPR-compliant cookie banner in the BETA ART design language. This page shows it working, explains what it does, and gives you the code to paste into every HTML page.",
+    "s1.title":"Live preview","s1.intro":"Click the buttons below to interact with the banner. State is saved to localStorage and displayed underneath so you can see what the visitor's browser stores.",
+    "btn.show":"Show banner","btn.reset":"Reset consent","btn.refresh":"Refresh state",
+    "state.label":"Current consent state",
+    "s2.title":"Two categories, no dark patterns","s2.intro":"GDPR forbids pre-checked boxes and requires equally easy Accept and Reject. This banner uses only two categories — necessary (always on) and analytics (opt-in). No advertising cookies. No third-party trackers. No fingerprinting.",
+    "cat.a.label":"Category A · Necessary","cat.a.name":"Always active","cat.a.desc":"Required for the site to function. Cart state, language preference, session security. Legal basis: legitimate interest (GDPR Art. 6.1.f). Cannot be turned off.","cat.a.list":"betaart:cart:v1<br>betaart:lang:v1<br>betaart:consent:v1",
+    "cat.b.label":"Category B · Analytics","cat.b.name":"Opt-in only","cat.b.desc":"Privacy-friendly analytics via Plausible (no cookies, no fingerprinting, EU-hosted). Used only to understand page traffic. Legal basis: consent (GDPR Art. 6.1.a).","cat.b.list":"No cookies set.<br>Plausible.io script loaded<br>only after consent.",
+    "s3.title":"Integration — three steps per page","s3.intro":"Paste three snippets into every HTML page: the CSS, the HTML markup, and the JavaScript. The banner uses the same localStorage LANG_KEY as your other pages, so language switches everywhere at once.",
+    "step1.title":"Step 1 — CSS (inside <style> or in your stylesheet)","step1.intro":"Copy the block marked <code>BETA ART COOKIE BANNER — start / end</code> from this file's <style> block. About 60 lines.",
+    "step2.title":"Step 2 — HTML (just before </body>)",
+    "step3.title":"Step 3 — JavaScript (before your existing <script>)",
+    "step4.title":"Bonus — Footer link to reopen banner","step4.intro":"Users must be able to change their mind. Add this button anywhere in your footer:",
+    "s4.title":"Integration checklist","s4.intro":"Apply to every page that visitors can land on directly. That means all six existing pages, plus any future ones.",
+    "chk.1":"☐ index.html (main site — beta-art-v3.html)","chk.2":"☐ privacy.html","chk.3":"☐ license-terms.html","chk.4":"☐ faq.html","chk.5":"☐ contact.html","chk.6":"☐ qr.html (already noindex; still recommended)","chk.7":"☐ Add \"Manage cookies\" button to footer of each page","chk.8":"☐ Change BA_PLAUSIBLE_DOMAIN to your real domain","chk.9":"☐ Add translations to your existing T{} object",
+    "s5.title":"Translations for T{} object","s5.intro":"Add these five keys to both <code>T.en</code> and <code>T.no</code> in each page's script block:",
+    "cookie.eyebrow":"Cookies","cookie.title":"A quick word about cookies","cookie.body":"This site uses only what's necessary to function — cart state, language preference. If you accept analytics, we also load Plausible, a privacy-friendly analytics tool. No advertising cookies. Ever. See our <a href='/privacy.html'>privacy policy</a>.","cookie.acceptAll":"Accept all","cookie.necessary":"Necessary only",
+    "footer.manage":"Manage cookies","footer.note":"Cookie consent · Live preview"
+  },
+  no: {
+    "eyebrow":"Informasjonskapsler · Live forhåndsvisning og integrasjon",
+    "title":"Informasjonskapsel-banner",
+    "intro":"En GDPR-samsvarende banner i BETA ART sitt designspråk. Denne siden viser den i drift, forklarer hva den gjør, og gir deg koden du limer inn i hver HTML-side.",
+    "s1.title":"Live forhåndsvisning","s1.intro":"Klikk knappene under for å samhandle med banneret. Tilstanden lagres i localStorage og vises nedenfor så du ser hva besøkendes nettleser lagrer.",
+    "btn.show":"Vis banner","btn.reset":"Nullstill samtykke","btn.refresh":"Oppdater tilstand",
+    "state.label":"Nåværende samtykkestatus",
+    "s2.title":"To kategorier, ingen mørke mønstre","s2.intro":"GDPR forbyr forhåndskryssede bokser og krever like enkel Godta og Avslå. Dette banneret bruker bare to kategorier — nødvendige (alltid på) og analytikk (opt-in). Ingen reklamekapsler. Ingen tredjepartssporere. Ingen fingeravtrykk.",
+    "cat.a.label":"Kategori A · Nødvendige","cat.a.name":"Alltid aktiv","cat.a.desc":"Kreves for at siden skal fungere. Handlekurv, språkvalg, sesjonssikkerhet. Rettslig grunnlag: berettiget interesse (GDPR Art. 6.1.f). Kan ikke slås av.","cat.a.list":"betaart:cart:v1<br>betaart:lang:v1<br>betaart:consent:v1",
+    "cat.b.label":"Kategori B · Analytikk","cat.b.name":"Kun med samtykke","cat.b.desc":"Personvernvennlig analytikk via Plausible (ingen kapsler, ingen fingeravtrykk, EU-hostet). Brukes kun for å forstå sidetrafikk. Rettslig grunnlag: samtykke (GDPR Art. 6.1.a).","cat.b.list":"Ingen kapsler settes.<br>Plausible.io-skript lastes<br>kun etter samtykke.",
+    "s3.title":"Integrasjon — tre steg per side","s3.intro":"Lim tre snuttar inn i hver HTML-side: CSS-en, HTML-oppmerkingen og JavaScript-en. Banneret bruker samme localStorage LANG_KEY som dine andre sider, så språket byttes overalt samtidig.",
+    "step1.title":"Steg 1 — CSS (inne i <style> eller stilarket ditt)","step1.intro":"Kopier blokken merket <code>BETA ART COOKIE BANNER — start / end</code> fra denne filens <style>-blokk. Cirka 60 linjer.",
+    "step2.title":"Steg 2 — HTML (rett før </body>)",
+    "step3.title":"Steg 3 — JavaScript (før din eksisterende <script>)",
+    "step4.title":"Bonus — Footer-lenke for å åpne banneret igjen","step4.intro":"Brukere må kunne ombestemme seg. Legg denne knappen hvor som helst i footeren:",
+    "s4.title":"Integrasjonssjekkliste","s4.intro":"Bruk på hver side som besøkende kan lande på direkte. Det betyr alle seks eksisterende sider, pluss enhver fremtidig.",
+    "chk.1":"☐ index.html (hovednettsted — beta-art-v3.html)","chk.2":"☐ privacy.html","chk.3":"☐ license-terms.html","chk.4":"☐ faq.html","chk.5":"☐ contact.html","chk.6":"☐ qr.html (allerede noindex; likevel anbefalt)","chk.7":"☐ Legg til «Håndter kapsler»-knapp i footeren på hver side","chk.8":"☐ Endre BA_PLAUSIBLE_DOMAIN til ditt ekte domene","chk.9":"☐ Legg oversettelsene inn i ditt eksisterende T{}-objekt",
+    "s5.title":"Oversettelser for T{}-objektet","s5.intro":"Legg til disse fem nøklene i både <code>T.en</code> og <code>T.no</code> i skript-blokken på hver side:",
+    "cookie.eyebrow":"Informasjonskapsler","cookie.title":"Kort om informasjonskapsler","cookie.body":"Denne siden bruker bare det som trengs for å fungere — handlekurv, språkvalg. Godtar du analytikk, laster vi også Plausible, et personvernvennlig analyseverktøy. Ingen reklamesporing. Aldri. Se <a href='/privacy.html'>personvernerklæringen</a>.","cookie.acceptAll":"Godta alt","cookie.necessary":"Kun nødvendige",
+    "footer.manage":"Håndter informasjonskapsler","footer.note":"Informasjonskapsler · Live forhåndsvisning"
+  }
+};
+
+function t(key){ return (T[currentLang] && T[currentLang][key]) ?? (T[DEFAULT_LANG] && T[DEFAULT_LANG][key]) ?? key; }
+function applyLang(){
+  document.documentElement.lang = currentLang;
+  document.title = currentLang === "no" ? "Informasjonskapsler — BETA ART" : "Cookie Consent — BETA ART";
+  document.querySelectorAll("[data-i18n]").forEach(el => el.textContent = t(el.getAttribute("data-i18n")));
+  document.querySelectorAll("[data-i18n-html]").forEach(el => el.innerHTML = t(el.getAttribute("data-i18n-html")));
+  document.querySelectorAll(".lang button[data-lang]").forEach(b => b.classList.toggle("on", b.dataset.lang === currentLang));
+  refreshState();
+}
+function switchLang(lang){ if(!T[lang]) return; currentLang = lang; try{ localStorage.setItem(LANG_KEY, lang); }catch(e){} applyLang(); }
+document.querySelectorAll(".lang button[data-lang]").forEach(b => b.addEventListener("click", () => switchLang(b.dataset.lang)));
+try{ const s = localStorage.getItem(LANG_KEY); if(s && T[s]) currentLang = s; }catch(e){}
+applyLang();
+</script>
+</body>
+</html>

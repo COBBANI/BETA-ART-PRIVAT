@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Beta Art — Norway's Verified Visual Archive</title>
+<style>
+:root{
+  --bg:#f3f0e9;--paper:#fbfaf7;--ink:#151515;--muted:#777167;--line:#d6d0c6;
+  --soft:#e9e4da;--dark:#14201c;--green:#2e654c;--gold:#9a6b2e;--red:#8b4242;
+  --radius:0px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+img{display:block}
+.hidden{display:none!important}
+.app{min-height:100vh}
+.wrap{max-width:1520px;margin:auto;padding:0 28px}
+.header{
+  position:sticky;top:0;z-index:50;background:rgba(243,240,233,.96);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line)
+}
+.header-inner{height:74px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{font:400 29px Georgia,serif;letter-spacing:-.035em;cursor:pointer}
+.logo small{display:block;font:9px Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:2px}
+.nav{display:flex;align-items:center;gap:2px;overflow:auto}
+.nav button{
+  border:0;background:transparent;padding:11px 12px;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.07em;white-space:nowrap
+}
+.nav button.active,.nav button:hover{color:var(--ink)}
+.header-actions{display:flex;align-items:center;gap:8px}
+.btn{border:1px solid var(--ink);background:transparent;color:var(--ink);padding:10px 14px}
+.btn.primary{background:var(--ink);color:white}
+.btn.green{background:var(--green);border-color:var(--green);color:#fff}
+.btn.red{background:var(--red);border-color:var(--red);color:white}
+.btn.small{padding:7px 9px;font-size:10px}
+.role-pill{font-size:10px;text-transform:uppercase;letter-spacing:.07em;border:1px solid var(--line);padding:8px 9px;color:var(--muted)}
+.view{display:none}.view.active{display:block}
+.hero{min-height:650px;display:grid;grid-template-columns:1.05fr .95fr;border-bottom:1px solid var(--line)}
+.hero-copy{padding:86px 6vw 70px 0;display:flex;flex-direction:column;justify-content:center}
+.kicker{text-transform:uppercase;font-size:10px;letter-spacing:.16em;color:var(--muted);margin-bottom:18px}
+.hero h1{font:400 clamp(54px,7.5vw,118px)/.84 Georgia,serif;letter-spacing:-.058em;margin:0;max-width:900px}
+.hero p{font-size:15px;line-height:1.7;color:var(--muted);max-width:620px;margin:25px 0}
+.hero-image{min-height:650px;background:#d4cfc5;overflow:hidden;position:relative}
+.hero-image .placeholder{position:absolute;inset:0}
+.hero-image::after{content:"Verified Norwegian visual archive";position:absolute;left:20px;bottom:20px;background:rgba(251,250,247,.9);padding:9px 11px;font-size:10px;text-transform:uppercase;letter-spacing:.08em}
+.search-hero{display:flex;background:white;border:1px solid var(--ink);max-width:760px}
+.search-hero input{border:0;flex:1;padding:17px 18px;outline:none;min-width:0}
+.search-hero button{border:0;border-left:1px solid var(--ink);background:var(--ink);color:white;padding:0 22px}
+.metric-strip{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--line)}
+.metric{padding:25px 10px;border-right:1px solid var(--line)}.metric:last-child{border-right:0}
+.metric strong{font:400 33px Georgia,serif;display:block}.metric span{font-size:9px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted)}
+.section{padding:70px 0}
+.section-head{display:flex;justify-content:space-between;gap:30px;align-items:flex-end;margin-bottom:25px}
+.section-head h2{font:400 clamp(34px,4vw,58px) Georgia,serif;letter-spacing:-.035em;margin:0}
+.section-head p{max-width:520px;color:var(--muted);font-size:12px;line-height:1.6;margin:0;text-align:right}
+.collection-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.collection-card{position:relative;aspect-ratio:1.25;background:#d4d0c7;overflow:hidden;cursor:pointer}
+.collection-card .placeholder{position:absolute;inset:0;transition:transform .45s ease}
+.collection-card:hover .placeholder{transform:scale(1.025)}
+.collection-card .caption{position:absolute;inset:auto 0 0;padding:18px;background:linear-gradient(transparent,rgba(0,0,0,.68));color:white}
+.collection-card h3{font:400 27px Georgia,serif;margin:25px 0 2px}.collection-card span{font-size:10px;text-transform:uppercase;letter-spacing:.08em}
+.editorial-banner{background:var(--dark);color:#fff;padding:55px;display:grid;grid-template-columns:1fr auto;gap:30px;align-items:center}
+.editorial-banner h2{font:400 48px Georgia,serif;margin:0 0 8px}.editorial-banner p{color:#c8cec9;max-width:760px;margin:0;line-height:1.6}
+.search-layout{display:grid;grid-template-columns:260px minmax(0,1fr);gap:24px;padding:35px 0 70px}
+.filters{position:sticky;top:98px;align-self:start;border-top:1px solid var(--ink)}
+.filter-block{padding:16px 0;border-bottom:1px solid var(--line)}
+.filter-block label{display:block;font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:8px}
+.filter-block input,.filter-block select{width:100%;border:1px solid var(--line);background:white;padding:10px}
+.search-top{display:flex;gap:9px;margin-bottom:17px}.search-top input{flex:1;border:1px solid var(--ink);padding:13px}
+.result-summary{display:flex;justify-content:space-between;gap:20px;color:var(--muted);font-size:11px;margin-bottom:14px}
+.photo-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px 12px}
+.photo-card{cursor:pointer}
+.photo-image{aspect-ratio:1.24;background:#d7d2c8;overflow:hidden;position:relative}
+.photo-image .placeholder{position:absolute;inset:0;transition:transform .35s ease}.photo-card:hover .placeholder{transform:scale(1.02)}
+.photo-status{position:absolute;top:9px;left:9px;background:rgba(255,255,255,.91);padding:5px 7px;font-size:8px;text-transform:uppercase;letter-spacing:.06em}
+.photo-info{padding:10px 1px}
+.photo-title-row{display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.photo-info h3{font:400 21px Georgia,serif;margin:0}.photo-price{font-size:10px;font-weight:700}
+.photo-meta{font-size:9px;text-transform:uppercase;color:var(--muted);margin-top:5px;letter-spacing:.04em}
+.auth-mini{display:inline-flex;gap:4px;align-items:center;font-size:9px;color:var(--green);margin-top:6px}
+.empty{border:1px dashed var(--line);padding:35px;text-align:center;color:var(--muted);background:rgba(255,255,255,.4)}
+.detail{padding:26px 0 70px}
+.detail-back{margin-bottom:14px}
+.detail-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(380px,.75fr);gap:30px}
+.detail-image{min-height:720px;background:#d5d0c7;position:sticky;top:100px;align-self:start}
+.detail-image .placeholder{position:absolute;inset:0}
+.detail-aside{padding-top:3px}
+.detail-aside .archive-id{text-transform:uppercase;font-size:10px;letter-spacing:.1em;color:var(--muted)}
+.detail-aside h1{font:400 clamp(44px,5vw,74px)/.95 Georgia,serif;margin:9px 0 13px;letter-spacing:-.04em}
+.detail-description{color:var(--muted);line-height:1.65;font-size:13px}
+.meta-table{border-top:1px solid var(--ink);margin:22px 0}
+.meta-row{display:grid;grid-template-columns:145px 1fr;gap:15px;border-bottom:1px solid var(--line);padding:11px 0;font-size:11px}
+.meta-row span:first-child{color:var(--muted)}
+.auth-box{border:1px solid var(--line);background:white;padding:18px;margin:22px 0}
+.auth-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px}
+.auth-score{font:400 48px Georgia,serif;color:var(--green)}.auth-score small{font:11px Arial,sans-serif;color:var(--muted)}
+.auth-checks{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:13px}
+.auth-check{border-top:1px solid var(--line);padding-top:8px;font-size:10px}.auth-check.ok{color:var(--green)}.auth-check.no{color:var(--muted)}
+.license-panel{background:var(--dark);color:white;padding:20px}
+.license-panel h3{font:400 30px Georgia,serif;margin:0 0 14px}
+.license-options{display:grid;grid-template-columns:repeat(2,1fr);gap:7px}
+.license-option{border:1px solid #59625e;background:transparent;color:#fff;padding:11px;text-align:left}
+.license-option.active{background:white;color:var(--ink)}
+.license-total{display:flex;justify-content:space-between;align-items:end;border-top:1px solid #59625e;margin-top:15px;padding-top:15px}
+.license-total strong{font:400 33px Georgia,serif}
+.related{margin-top:60px}
+.checkout{max-width:1050px;margin:auto;padding:45px 0 80px}
+.checkout-grid{display:grid;grid-template-columns:1fr 360px;gap:25px}
+.panel{background:var(--paper);border:1px solid var(--line);padding:20px}
+.panel h2{font:400 33px Georgia,serif;margin:0 0 18px}
+.form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.field{margin-bottom:13px}.field label{display:block;font-size:9px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin-bottom:6px}
+.field input,.field select,.field textarea{width:100%;border:1px solid var(--line);background:white;padding:11px;outline:none}.field textarea{min-height:90px}
+.order-row{display:flex;justify-content:space-between;gap:15px;border-bottom:1px solid var(--line);padding:10px 0;font-size:11px}
+.order-total{font:400 34px Georgia,serif;text-align:right;margin-top:14px}
+.confirmation{max-width:820px;margin:80px auto;padding:40px;border:1px solid var(--line);background:var(--paper);text-align:center}
+.confirmation .check{width:60px;height:60px;border-radius:50%;display:grid;place-items:center;background:var(--green);color:white;margin:0 auto 20px;font-size:27px}
+.confirmation h1{font:400 52px Georgia,serif;margin:0 0 10px}.confirmation p{color:var(--muted);line-height:1.6}
+.dashboard{padding:35px 0 75px}
+.dash-tabs{display:flex;gap:0;border:1px solid var(--line);background:white;margin-bottom:18px;overflow:auto}.dash-tabs button{border:0;border-right:1px solid var(--line);background:white;padding:12px 14px;font-size:10px;text-transform:uppercase}.dash-tabs button.active{background:var(--ink);color:white}
+.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:18px}.stat{border:1px solid var(--line);background:white;padding:16px}.stat span{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}.stat strong{font:400 31px Georgia,serif;display:block;margin-top:6px}
+.table-wrap{overflow:auto;border:1px solid var(--line);background:white}table{width:100%;border-collapse:collapse;min-width:900px}th,td{text-align:left;padding:11px;border-bottom:1px solid var(--line);font-size:11px;vertical-align:middle}th{font-size:9px;text-transform:uppercase;color:var(--muted);letter-spacing:.08em;background:#f7f4ee}
+.score{display:inline-block;border:1px solid var(--green);color:var(--green);padding:4px 6px;font-size:9px}
+.demand-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}.demand-card{background:white;border:1px solid var(--line);padding:16px}.demand-card span{font-size:9px;color:var(--muted);text-transform:uppercase}.demand-card strong{display:block;font:400 30px Georgia,serif;margin-top:6px}
+.opportunity{font-weight:700}.high{color:var(--red)}.medium{color:var(--gold)}.low{color:var(--green)}
+.progress{height:6px;background:var(--soft);margin-top:5px}.progress span{display:block;height:100%;background:currentColor}
+.brief-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.brief{background:white;border:1px solid var(--line);padding:16px}.brief h3{font:400 24px Georgia,serif;margin:0 0 6px}.brief-meta{display:flex;flex-wrap:wrap;gap:7px;font-size:9px;color:var(--muted);text-transform:uppercase}
+.upload-layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:22px}.upload-zone{min-height:280px;border:1px dashed #999;background:var(--soft);position:relative;display:grid;place-items:center;overflow:hidden}.upload-zone img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#ddd}.upload-copy{position:relative;text-align:center}.upload-copy strong{display:block;font:400 25px Georgia,serif}.category-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:7px;max-height:370px;overflow:auto}.category-btn{border:1px solid var(--line);background:white;padding:10px;text-align:left}.category-btn.active{background:var(--ink);color:white}
+.role-modal{position:fixed;inset:0;background:rgba(20,20,20,.72);z-index:100;display:grid;place-items:center;padding:20px}.role-card{background:var(--paper);width:min(540px,100%);padding:27px}.role-card h2{font:400 39px Georgia,serif;margin:0}.roles{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:20px 0}.role-choice{border:1px solid var(--line);background:white;padding:15px}.role-choice.active{background:var(--ink);color:white}
+footer{border-top:1px solid var(--line);padding:35px 0 60px;color:var(--muted);font-size:11px}
+footer .foot{display:flex;justify-content:space-between;gap:30px}
+
+.brand-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.brand-card{background:#fff;border:1px solid var(--line);padding:18px;min-height:180px;display:flex;flex-direction:column;justify-content:space-between}
+.brand-card h3{font:400 24px Georgia,serif;margin:0 0 7px}
+.brand-card .country{font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.brand-card p{font-size:11px;line-height:1.55;color:var(--muted)}
+.brand-needs{display:flex;flex-wrap:wrap;gap:5px;margin-top:12px}
+.brand-needs span{border:1px solid var(--line);padding:4px 6px;font-size:9px;background:#faf8f4}
+.brand-tier{display:inline-block;margin-top:10px;font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--green)}
+@media(max-width:1100px){.brand-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:720px){.brand-grid{grid-template-columns:1fr}}
+
+@media(max-width:1100px){
+  .hero{grid-template-columns:1fr}.hero-image{min-height:480px}.search-layout{grid-template-columns:1fr}.filters{position:static;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;border-top:0}.filter-block{border:1px solid var(--line);padding:10px}.photo-grid{grid-template-columns:repeat(2,1fr)}.detail-grid{grid-template-columns:1fr}.detail-image{position:relative;top:0;min-height:600px}.checkout-grid,.upload-layout{grid-template-columns:1fr}.stats{grid-template-columns:repeat(3,1fr)}.collection-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:720px){
+  .wrap{padding:0 14px}.header-inner{height:auto;padding:12px 0;display:grid;grid-template-columns:1fr auto}.nav{grid-column:1/-1;order:3}.header-actions .role-pill{display:none}.hero-copy{padding:55px 0}.hero{min-height:0}.hero-image{min-height:380px}.metric-strip{grid-template-columns:repeat(2,1fr)}.photo-grid,.collection-grid,.brief-grid,.demand-grid,.auth-checks,.form-grid,.license-options,.category-grid{grid-template-columns:1fr}.filters{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.section-head{display:block}.section-head p{text-align:left;margin-top:8px}.editorial-banner{grid-template-columns:1fr;padding:30px}.detail-image{min-height:440px}.roles{grid-template-columns:1fr}.footer .foot{display:block}
+}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="header">
+  <div class="wrap header-inner">
+    <div class="logo" onclick="go('homeView')">Beta Art<small>Norway's verified visual archive</small></div>
+    <nav class="nav">
+      <button data-go="homeView" class="active">Discover</button>
+      <button data-go="searchView">Search</button>
+      <button data-go="brandsView">Nordic Buyers</button>
+      <button data-go="dashboardView" class="role-photographer role-admin hidden">Workspace</button>
+      <button data-go="uploadView" class="role-photographer hidden">Upload</button>
+      <button data-go="briefView" class="role-buyer role-photographer hidden">Shoot briefs</button>
+    </nav>
+    <div class="header-actions">
+      <span id="rolePill" class="role-pill">Public</span>
+      <button class="btn small" id="roleBtn">Switch role</button>
+      <button class="btn small primary role-buyer hidden" onclick="go('lightboxView')">Lightbox <span id="lightboxCount">0</span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+<section id="homeView" class="view active">
+  <div class="wrap">
+    <div class="hero">
+      <div class="hero-copy">
+        <div class="kicker">Verified · Authentic · Norway</div>
+        <h1>Every subject.<br>Every industry.</h1>
+        <p>Authentic Norwegian photography for advertising, editorial, corporate communications and culture — verified at source, licensed with clarity.</p>
+        <div class="search-hero">
+          <input id="heroSearch" placeholder="Try “Norwegian renewable energy team”">
+          <button id="heroSearchBtn">Search archive</button>
+        </div>
+      </div>
+      <div class="hero-image"><div class="placeholder" data-art="fjord"></div></div>
+    </div>
+
+    <div class="metric-strip">
+      <div class="metric"><strong id="homeAvailable">0</strong><span>Available images</span></div>
+      <div class="metric"><strong>35</strong><span>Industry categories</span></div>
+      <div class="metric"><strong id="homeAvgAuth">—</strong><span>Average authenticity</span></div>
+      <div class="metric"><strong id="homeBriefs">0</strong><span>Open shoot briefs</span></div>
+    </div>
+
+    <section class="section">
+      <div class="section-head"><div><div class="kicker">Industry-led archive</div><h2>Explore by industry</h2></div><p>The archive is organized around the industries and buyer groups most likely to license photography across the Nordic market.</p></div>
+      <div class="collection-grid">
+        <div class="collection-card" onclick="quickSearch('Sustainability & Environment')"><div class="placeholder" data-art="mountain"></div><div class="caption"><span>Exclusive</span><h3>Sustainability & Environment</h3></div></div>
+        <div class="collection-card" onclick="quickSearch('Industry & Manufacturing')"><div class="placeholder" data-art="work"></div><div class="caption"><span>Industry</span><h3>Industry & Manufacturing</h3></div></div>
+        <div class="collection-card" onclick="quickSearch('Maritime')"><div class="placeholder" data-art="maritime"></div><div class="caption"><span>High demand</span><h3>Maritime & Offshore</h3></div></div>
+        <div class="collection-card" onclick="quickSearch('Healthcare')"><div class="placeholder" data-art="health"></div><div class="caption"><span>Verified people</span><h3>Healthcare & Research</h3></div></div>
+        <div class="collection-card" onclick="quickSearch('Commercial Real Estate')"><div class="placeholder" data-art="city"></div><div class="caption"><span>Local perspective</span><h3>Commercial Real Estate</h3></div></div>
+        <div class="collection-card" onclick="quickSearch('Technology & AI')"><div class="placeholder" data-art="ai"></div><div class="caption"><span>Emerging</span><h3>Technology & AI</h3></div></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><div><div class="kicker">Recently verified</div><h2>Selected plates</h2></div><p>Each published image carries a source-based authenticity record and a clear licensing path.</p></div>
+      <div id="homePhotoGrid" class="photo-grid"></div>
+    </section>
+
+
+    <section class="section">
+      <div class="section-head">
+        <div><div class="kicker">Commercial opportunity</div><h2>Built for Nordic visual buyers</h2></div>
+        <p>Beta Art can package verified imagery for hotel groups, property developers, retailers, design brands and architecture studios that need a constant flow of fresh visual content.</p>
+      </div>
+      <div class="brand-grid">
+        <article class="brand-card"><div><div class="country">Sweden · Retail & Interiors</div><h3>IKEA</h3><p>Interior, home life, family, sustainability and people-in-space imagery.</p></div><div><div class="brand-needs"><span>Interiors</span><span>Lifestyle</span><span>People</span></div><div class="brand-tier">Priority target</div></div></article>
+        <article class="brand-card"><div><div class="country">Nordics · Hospitality</div><h3>Scandic Hotels</h3><p>Hotel interiors, rooms, restaurants, staff, destination and city imagery.</p></div><div><div class="brand-needs"><span>Hospitality</span><span>Food</span><span>Travel</span></div><div class="brand-tier">Priority target</div></div></article>
+        <article class="brand-card"><div><div class="country">Norway · Hospitality</div><h3>Strawberry</h3><p>Premium hotel, architecture, restaurant, lifestyle and destination coverage.</p></div><div><div class="brand-needs"><span>Hotels</span><span>Architecture</span><span>People</span></div><div class="brand-tier">Priority target</div></div></article>
+        <article class="brand-card"><div><div class="country">Nordics · Construction</div><h3>Skanska</h3><p>Buildings, infrastructure, construction, offices and sustainability reporting.</p></div><div><div class="brand-needs"><span>Architecture</span><span>Infrastructure</span><span>Work life</span></div><div class="brand-tier">Priority target</div></div></article>
+      </div>
+      <div style="margin-top:16px"><button class="btn" onclick="go('brandsView')">See all target brands</button></div>
+    </section>
+
+    <section class="section">
+      <div class="editorial-banner">
+        <div><div class="kicker" style="color:#9aa59f">Not in the archive?</div><h2>Commission what you actually need.</h2><p>When a search returns nothing suitable, turn it into a shoot brief. Beta Art connects unmet visual demand to photographers who can create authentic local coverage.</p></div>
+        <button class="btn" style="color:white;border-color:white" onclick="requestShootFromSearch('')">Request a shoot</button>
+      </div>
+    </section>
+  </div>
+</section>
+
+
+<section id="brandsView" class="view">
+  <div class="wrap section">
+    <div class="section-head">
+      <div><div class="kicker">B2B sales targets</div><h2>Nordic brands with high visual demand</h2></div>
+      <p>These are strategic prospect profiles for Beta Art. The strongest offer is often not a single stock image, but a verified image package, architecture documentation set, campaign library or recurring content agreement.</p>
+    </div>
+
+    <div class="brand-grid">
+      <article class="brand-card"><div><div class="country">Sweden / Nordics · Retail & Home</div><h3>IKEA</h3><p>Large visual needs across home life, interiors, people, sustainability and retail environments.</p></div><div><div class="brand-needs"><span>Real Estate & Interiors</span><span>Lifestyle</span><span>Family</span><span>Sustainability</span></div><div class="brand-tier">★★★★★ Very high potential</div></div></article>
+
+      <article class="brand-card"><div><div class="country">Sweden / Nordics · Hospitality</div><h3>Scandic Hotels</h3><p>Hotel launches and ongoing marketing require rooms, lobbies, restaurants, staff, cities and destination imagery.</p></div><div><div class="brand-needs"><span>Tourism</span><span>Interiors</span><span>Food</span><span>People</span></div><div class="brand-tier">★★★★★ Very high potential</div></div></article>
+
+      <article class="brand-card"><div><div class="country">Norway / Nordics · Hospitality</div><h3>Strawberry</h3><p>Premium hospitality content with strong demand for architecture, lifestyle, food and destination storytelling.</p></div><div><div class="brand-needs"><span>Hotels</span><span>Architecture</span><span>Travel</span><span>Food</span></div><div class="brand-tier">★★★★★ Very high potential</div></div></article>
+
+      <article class="brand-card"><div><div class="country">Sweden / Nordics · Construction</div><h3>Skanska</h3><p>Project documentation, sustainable construction, engineering, infrastructure and workplace photography.</p></div><div><div class="brand-needs"><span>Architecture</span><span>Sustainability</span><span>Work life</span><span>Infrastructure</span></div><div class="brand-tier">★★★★★ Very high potential</div></div></article>
+
+      <article class="brand-card"><div><div class="country">Norway · Commercial Property</div><h3>Entra</h3><p>Office buildings, interiors, tenants, urban development and sustainability content for corporate communications.</p></div><div><div class="brand-needs"><span>Architecture</span><span>Offices</span><span>Urban</span><span>Business</span></div><div class="brand-tier">★★★★★ Very high potential</div></div></article>
+
+      <article class="brand-card"><div><div class="country">Norway / Sweden · Housing</div><h3>OBOS</h3><p>Residential projects, neighbourhoods, interiors, families and urban living imagery.</p></div><div><div class="brand-needs"><span>Residential</span><span>Family</span><span>Architecture</span><span>Lifestyle</span></div><div class="brand-tier">★★★★★ Very high potential</div></div></article>
+
+      <article class="brand-card"><div><div class="country">Denmark · Design & Furniture</div><h3>Fritz Hansen</h3><p>High-end furniture, crafted interiors and architectural spaces with strong editorial precision.</p></div><div><div class="brand-needs"><span>Interiors</span><span>Design</span><span>Architecture</span></div><div class="brand-tier">★★★★★ Very high potential</div></div></article>
+
+      <article class="brand-card"><div><div class="country">Norway · Architecture</div><h3>Snøhetta</h3><p>Architecture, interiors, landscapes and people-in-space documentation for global project communication.</p></div><div><div class="brand-needs"><span>Architecture</span><span>Landscape</span><span>Interiors</span></div><div class="brand-tier">★★★★ High-value assignments</div></div></article>
+
+      <article class="brand-card"><div><div class="country">Denmark · Architecture</div><h3>Henning Larsen</h3><p>Architecture, urbanism, sustainability and cultural projects suited to commissioned documentation packages.</p></div><div><div class="brand-needs"><span>Architecture</span><span>Urbanism</span><span>Sustainability</span></div><div class="brand-tier">★★★★ High-value assignments</div></div></article>
+
+      <article class="brand-card"><div><div class="country">Denmark · Architecture</div><h3>BIG</h3><p>Global-scale architectural projects where project photography and high-end visual storytelling matter.</p></div><div><div class="brand-needs"><span>Architecture</span><span>Urban</span><span>Culture</span></div><div class="brand-tier">★★★★ High-value assignments</div></div></article>
+
+      <article class="brand-card"><div><div class="country">Sweden · Fashion / Home</div><h3>H&M · H&M Home · COS · ARKET</h3><p>Retail environments, fashion, interiors, people, products and Nordic lifestyle campaign content.</p></div><div><div class="brand-needs"><span>Fashion</span><span>Interiors</span><span>People</span><span>Lifestyle</span></div><div class="brand-tier">★★★★★ Very high visual volume</div></div></article>
+
+      <article class="brand-card"><div><div class="country">Sweden · Automotive</div><h3>Volvo Cars</h3><p>Vehicles in architecture, city, nature and Scandinavian lifestyle environments for brand and campaign use.</p></div><div><div class="brand-needs"><span>Travel</span><span>Architecture</span><span>Lifestyle</span><span>Nature</span></div><div class="brand-tier">★★★★★ Very high potential</div></div></article>
+    </div>
+
+
+    <section class="section" style="padding-top:35px">
+      <div class="section-head">
+        <div><div class="kicker">Industry taxonomy</div><h2>35 buyer categories</h2></div>
+        <p>These categories now drive upload classification, archive filtering and buyer-oriented discovery across Beta Art.</p>
+      </div>
+      <div class="brand-grid">
+<article class="brand-card"><div><div class="country">Category 01</div><h3>Retail & Home Living</h3></div><div class="brand-tier">Buyer category</div></article><article class="brand-card"><div><div class="country">Category 02</div><h3>Hotels & Hospitality</h3></div><div class="brand-tier">Buyer category</div></article><article class="brand-card"><div><div class="country">Category 03</div><h3>Construction</h3></div><div class="brand-tier">Buyer category</div></article><article class="brand-card"><div><div class="country">Category 04</div><h3>Commercial Real Estate</h3></div><div class="brand-tier">Buyer category</div></article><article class="brand-card"><div><div class="country">Category 05</div><h3>Residential & Property Development</h3></div><div class="brand-tier">Buyer category</div></article><article class="brand-card"><div><div class="country">Category 06</div><h3>Architecture</h3></div><div class="brand-tier">Buyer category</div></article><article class="brand-card"><div><div class="country">Category 07</div><h3>Interior Architecture</h3></div><div class="brand-tier">Buyer category</div></article><article class="brand-card"><div><div class="country">Category 08</div><h3>Furniture & Design</h3></div><div class="brand-tier">Buyer category</div></article><article class="brand-card"><div><div class="country">Category 09</div><h3>Fashion & Textiles</h3></div><div class="brand-tier">Buyer category</div></article><article class="brand-card"><div><div class="country">Category 10</div><h3>Automotive</h3></div><div class="brand-tier">Buyer category</div></article><article class="brand-card"><div><div class="country">Category 11</div><h3>Tourism</h3></div><div class="brand-tier">Buyer category</div></article><article class="brand-card"><div><div class="country">Category 12</div><h3>Restaurants & Food Service</h3></div><div class="brand-tier">Buyer category</div></article><article class="brand-card"><div><div class="country">Category 13</div><h3>Energy & Renewables</h3></div><div class="brand-tier">Buyer category</div></article><article class="brand-card"><div><div class="country">Category 14</div><h3>Maritime & Offshore</h3></div><div class="brand-tier">Buyer category</div></article><article class="brand-card"><div><div class="country">Category 15</div><h3>Aquaculture & Seafood</h3></div><div class="brand-tier">Buyer category</div></article><article class="brand-card"><div><div class="country">Category 16</div><h3>Healthcare & Research</h3></div><div class="brand-tier">Buyer category</div></article><article class="brand-card"><div><div class="country">Category 17</div><h3>Technology & AI</h3></div><div class="brand-tier">Buyer category</div></article><article class="brand-card"><div><div class="country">Category 18</div><h3>Banking & Finance</h3></div><div class="brand-tier">Buyer category</div></article><article class="brand-card"><div><div class="country">Category 19</div><h3>Insurance</h3></div><div class="brand-tier">Buyer category</div></article><article class="brand-card"><div><div class="country">Category 20</div><h3>Telecommunications</h3></div><div class="brand-tier">Buyer category</div></article><article class="brand-card"><div><div class="country">Category 21</div><h3>Media & Publishing</h3></div><div class="brand-tier">Buyer category</div></article><article class="brand-card"><div><div class="country">Category 22</div><h3>Advertising & Creative Agencies</h3></div><div class="brand-tier">Buyer category</div></article><article class="brand-card"><div><div class="country">Category 23</div><h3>Public Sector</h3></div><div class="brand-tier">Buyer category</div></article><article class="brand-card"><div><div class="country">Category 24</div><h3>Municipalities & Urban Development</h3></div><div class="brand-tier">Buyer category</div></article><article class="brand-card"><div><div class="country">Category 25</div><h3>Education & Universities</h3></div><div class="brand-tier">Buyer category</div></article><article class="brand-card"><div><div class="country">Category 26</div><h3>Culture & Museums</h3></div><div class="brand-tier">Buyer category</div></article><article class="brand-card"><div><div class="country">Category 27</div><h3>Sports & Outdoor</h3></div><div class="brand-tier">Buyer category</div></article><article class="brand-card"><div><div class="country">Category 28</div><h3>Airlines & Transportation</h3></div><div class="brand-tier">Buyer category</div></article><article class="brand-card"><div><div class="country">Category 29</div><h3>Logistics</h3></div><div class="brand-tier">Buyer category</div></article><article class="brand-card"><div><div class="country">Category 30</div><h3>Sustainability & Environment</h3></div><div class="brand-tier">Buyer category</div></article><article class="brand-card"><div><div class="country">Category 31</div><h3>E-commerce</h3></div><div class="brand-tier">Buyer category</div></article><article class="brand-card"><div><div class="country">Category 32</div><h3>FMCG / Consumer Goods</h3></div><div class="brand-tier">Buyer category</div></article><article class="brand-card"><div><div class="country">Category 33</div><h3>Beauty & Personal Care</h3></div><div class="brand-tier">Buyer category</div></article><article class="brand-card"><div><div class="country">Category 34</div><h3>Pharma & Medical</h3></div><div class="brand-tier">Buyer category</div></article><article class="brand-card"><div><div class="country">Category 35</div><h3>Industry & Manufacturing</h3></div><div class="brand-tier">Buyer category</div></article></div></section>
+    <section class="section" style="padding-bottom:0">
+      <div class="editorial-banner">
+        <div>
+          <div class="kicker" style="color:#9aa59f">Recommended B2B product</div>
+          <h2>Architecture Documentation Package</h2>
+          <p>30 verified final images covering exterior, interior, detail, people-in-space and neighbourhood context, with web, PR, annual-report and social usage options. This moves Beta Art beyond low-value single-image licensing into higher-value corporate assignments.</p>
+        </div>
+        <button class="btn" style="color:white;border-color:white" onclick="requestShootFromSearch('Architecture Documentation Package')">Create a shoot brief</button>
+      </div>
+    </section>
+  </div>
+</section>
+
+<section id="searchView" class="view">
+  <div class="wrap search-layout">
+    <aside class="filters">
+      <div class="filter-block"><label>Category</label><select id="filterCategory"><option value="">All categories</option></select></div>
+      <div class="filter-block"><label>Orientation</label><select id="filterOrientation"><option value="">Any orientation</option><option>Landscape</option><option>Portrait</option><option>Square</option></select></div>
+      <div class="filter-block"><label>Minimum authenticity</label><select id="filterAuth"><option value="0">Any score</option><option value="60">60+</option><option value="75">75+</option><option value="90">90+</option></select></div>
+      <div class="filter-block"><label>Maximum starting price</label><input id="filterPrice" type="number" min="0" placeholder="No limit"></div>
+      <div class="filter-block"><label>License</label><select id="filterLicense"><option value="">Any license</option><option>Commercial + Editorial</option><option>Commercial</option><option>Editorial only</option></select></div>
+    </aside>
+    <div>
+      <div class="search-top"><input id="searchInput" placeholder="Search title, location, category, tags"><button class="btn primary" id="searchBtn">Search</button></div>
+      <div class="result-summary"><span id="resultCount">0 results</span><span>Verified archive results</span></div>
+      <div id="searchGrid" class="photo-grid"></div>
+      <div id="searchEmpty" class="empty hidden">
+        <p>No verified image matches this search.</p>
+        <button class="btn primary" id="emptyShootBtn">Request this shoot</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="detailView" class="view">
+  <div class="wrap detail">
+    <button class="btn small detail-back" onclick="go('searchView')">← Back to search</button>
+    <div id="detailContent"></div>
+  </div>
+</section>
+
+<section id="checkoutView" class="view">
+  <div class="wrap checkout">
+    <button class="btn small" onclick="go('detailView')">← Back to image</button>
+    <div class="section-head" style="margin-top:20px"><div><div class="kicker">License checkout</div><h2>Review your license</h2></div><p>This prototype creates a demo license record. A production version would connect to Stripe and secure high-resolution delivery.</p></div>
+    <div class="checkout-grid">
+      <div class="panel">
+        <h2>Buyer details</h2>
+        <div class="form-grid">
+          <div class="field"><label>Name</label><input id="buyerName" value="Demo Buyer"></div>
+          <div class="field"><label>Company</label><input id="buyerCompany" placeholder="Company / agency"></div>
+          <div class="field"><label>Email</label><input id="buyerEmail" type="email" placeholder="buyer@example.com"></div>
+          <div class="field"><label>Project</label><input id="buyerProject" placeholder="Campaign / article / report"></div>
+        </div>
+        <div class="field"><label>Usage notes</label><textarea id="buyerNotes" placeholder="Optional notes about where and how the image will be used."></textarea></div>
+        <label style="font-size:11px"><input id="termsCheck" type="checkbox" style="width:auto"> I accept the demo license terms for this prototype.</label>
+      </div>
+      <aside class="panel">
+        <h2>Order</h2>
+        <div id="checkoutSummary"></div>
+        <div class="order-total" id="checkoutTotal">kr 0</div>
+        <button id="completePurchaseBtn" class="btn green" style="width:100%;margin-top:16px">Create demo license</button>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section id="confirmationView" class="view">
+  <div class="wrap">
+    <div class="confirmation">
+      <div class="check">✓</div>
+      <div class="kicker">License created</div>
+      <h1>Ready to use.</h1>
+      <p id="confirmationText"></p>
+      <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:20px">
+        <button class="btn primary" id="downloadLicenseBtn">Download license receipt</button>
+        <button class="btn" id="downloadImageBtn">Download licensed preview</button>
+        <button class="btn" onclick="go('homeView')">Return home</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="lightboxView" class="view">
+  <div class="wrap section">
+    <div class="section-head"><div><div class="kicker">Buyer workspace</div><h2>Lightbox</h2></div><p>Save images for a project shortlist before licensing or sharing internally.</p></div>
+    <div id="lightboxGrid" class="photo-grid"></div>
+  </div>
+</section>
+
+<section id="dashboardView" class="view">
+  <div class="wrap dashboard">
+    <div class="section-head"><div><div class="kicker">Workspace</div><h2 id="dashboardTitle">Photographer dashboard</h2></div><p>Performance, verification status, demand intelligence and archive operations.</p></div>
+    <div id="dashboardStats" class="stats"></div>
+    <div class="dash-tabs">
+      <button class="active" data-dash="archiveDash">Archive</button>
+      <button data-dash="demandDash">Demand intelligence</button>
+      <button data-dash="adminDash" class="role-admin hidden">Verification queue</button>
+    </div>
+    <div id="archiveDash" class="dash-section">
+      <div id="archiveTable"></div>
+    </div>
+    <div id="demandDash" class="dash-section hidden">
+      <div id="demandSummary" class="demand-grid"></div>
+      <div id="demandTable"></div>
+    </div>
+    <div id="adminDash" class="dash-section hidden">
+      <div id="adminQueue"></div>
+    </div>
+  </div>
+</section>
+
+<section id="briefView" class="view">
+  <div class="wrap section">
+    <div class="section-head"><div><div class="kicker">Request-to-Shoot</div><h2>Turn missing images into assignments.</h2></div><p>Buyers can publish a precise visual need. Photographers can signal interest and create new archive supply from real demand.</p></div>
+    <div id="buyerBriefForm" class="panel role-buyer hidden">
+      <h2>Create a shoot brief</h2>
+      <div class="form-grid">
+        <div class="field"><label>Subject</label><input id="briefSubject" placeholder="Norwegian seniors using AI"></div>
+        <div class="field"><label>Location</label><input id="briefLocation" placeholder="Oslo, Norway"></div>
+        <div class="field"><label>Deadline</label><input id="briefDeadline" type="date"></div>
+        <div class="field"><label>Budget NOK</label><input id="briefBudget" type="number" value="2500"></div>
+      </div>
+      <div class="field"><label>Brief</label><textarea id="briefDescription" placeholder="Describe people, setting, mood, usage and deliverables."></textarea></div>
+      <button id="publishBriefBtn" class="btn primary">Publish brief</button>
+    </div>
+    <div class="section-head" style="margin-top:35px"><div><h2 style="font-size:34px">Open briefs</h2></div></div>
+    <div id="briefGrid" class="brief-grid"></div>
+  </div>
+</section>
+
+<section id="uploadView" class="view">
+  <div class="wrap section">
+    <div class="section-head"><div><div class="kicker">Contributor workspace</div><h2>Upload a new plate</h2></div><p>Submit an original, assign archive metadata and categories, then send it through verification.</p></div>
+    <div class="upload-layout">
+      <div>
+        <div class="panel">
+          <h2>Original file</h2>
+          <label class="upload-zone" for="fileInput">
+            <img id="uploadPreview" class="hidden" alt="">
+            <div id="uploadCopy" class="upload-copy"><strong>Choose photograph</strong><span>JPG, PNG or WEBP</span></div>
+          </label>
+          <input id="fileInput" class="hidden" type="file" accept="image/jpeg,image/png,image/webp">
+          <div class="form-grid" style="margin-top:14px">
+            <div class="field"><label>Width</label><input id="upWidth" readonly></div>
+            <div class="field"><label>Height</label><input id="upHeight" readonly></div>
+          </div>
+        </div>
+        <div class="panel">
+          <h2>Metadata</h2>
+          <div class="form-grid">
+            <div class="field"><label>Title</label><input id="upTitle"></div>
+            <div class="field"><label>Archive ID</label><input id="upArchiveId" readonly></div>
+            <div class="field"><label>Location</label><input id="upLocation"></div>
+            <div class="field"><label>Capture date</label><input id="upDate" type="date"></div>
+          </div>
+          <div class="field"><label>Description</label><textarea id="upDescription"></textarea></div>
+          <div class="field"><label>Tags</label><input id="upTags" placeholder="norway, office, AI"></div>
+        </div>
+        <div class="panel">
+          <h2>Industry categories</h2>
+          <div id="uploadCategories" class="category-grid"></div>
+        </div>
+        <div class="panel">
+          <h2>Rights & licensing</h2>
+          <div class="form-grid">
+            <div class="field"><label>License</label><select id="upLicense"><option>Commercial + Editorial</option><option>Commercial</option><option>Editorial only</option></select></div>
+            <div class="field"><label>Starting price NOK</label><input id="upPrice" type="number" value="190"></div>
+          </div>
+          <label style="font-size:11px;margin-right:16px"><input id="upRights" type="checkbox" style="width:auto"> I control licensing rights</label>
+          <label style="font-size:11px"><input id="upOriginal" type="checkbox" style="width:auto"> Original photograph</label>
+          <div style="margin-top:16px"><button id="submitUploadBtn" class="btn primary">Submit for verification</button></div>
+        </div>
+      </div>
+      <aside class="panel">
+        <h2>Verification preview</h2>
+        <div id="uploadAuthPreview" class="auth-box" style="margin:0"></div>
+      </aside>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap foot"><div>© 2026 Beta Art · Prototype visual licensing platform</div><div>Verified originals · Clear licensing · Norwegian visual coverage</div></div>
+</footer>
+</div>
+
+<div id="roleModal" class="role-modal">
+  <div class="role-card">
+    <div class="kicker">Demo access</div>
+    <h2>Choose how you want to explore.</h2>
+    <p style="color:var(--muted);font-size:12px;line-height:1.6">The same archive changes behavior depending on whether you are buying, contributing, or verifying images.</p>
+    <div class="roles">
+      <button class="role-choice active" data-role="Buyer">Buyer</button>
+      <button class="role-choice" data-role="Photographer">Photographer</button>
+      <button class="role-choice" data-role="Admin">Admin</button>
+    </div>
+    <div class="field"><label>Name</label><input id="roleName" value="Demo User"></div>
+    <button id="enterBtn" class="btn primary" style="width:100%">Enter Beta Art</button>
+  </div>
+</div>
+
+<script>
+const DB="betaArtUXV1", SEARCHES="betaArtUXSearchV1", BRIEFS="betaArtUXBriefV1", LIGHTBOX="betaArtUXLightboxV1", LICENSES="betaArtUXLicenseV1";
+const CATEGORIES=[["01","Retail & Home Living"],["02","Hotels & Hospitality"],["03","Construction"],["04","Commercial Real Estate"],["05","Residential & Property Development"],["06","Architecture"],["07","Interior Architecture"],["08","Furniture & Design"],["09","Fashion & Textiles"],["10","Automotive"],["11","Tourism"],["12","Restaurants & Food Service"],["13","Energy & Renewables"],["14","Maritime & Offshore"],["15","Aquaculture & Seafood"],["16","Healthcare & Research"],["17","Technology & AI"],["18","Banking & Finance"],["19","Insurance"],["20","Telecommunications"],["21","Media & Publishing"],["22","Advertising & Creative Agencies"],["23","Public Sector"],["24","Municipalities & Urban Development"],["25","Education & Universities"],["26","Culture & Museums"],["27","Sports & Outdoor"],["28","Airlines & Transportation"],["29","Logistics"],["30","Sustainability & Environment"],["31","E-commerce"],["32","FMCG / Consumer Goods"],["33","Beauty & Personal Care"],["34","Pharma & Medical"],["35","Industry & Manufacturing"]];
+let role="Buyer", user="Demo User", selectedPhoto=null, selectedLicense={usage:"Website",territory:"Norway",duration:"1 year",price:190}, uploadImage="", uploadSelected=new Set(), lastLicense=null;
+const $=id=>document.getElementById(id);
+const load=(k)=>{try{return JSON.parse(localStorage.getItem(k))||[]}catch{return[]}};
+const save=(k,v)=>localStorage.setItem(k,JSON.stringify(v));
+const uid=()=>crypto.randomUUID?crypto.randomUUID():Date.now()+"-"+Math.random();
+
+function artSvg(kind){
+  const configs={
+    fjord:["#7b9197","#d7d9d0","#263f44","#b9c8c3"], mountain:["#818f80","#d9d4c8","#394d43","#c8c3b3"],
+    work:["#938b7f","#d9d3c7","#303536","#c5ae93"], maritime:["#526b76","#ccd5d3","#172f39","#9caeb5"],
+    health:["#d3d9d5","#f0ece4","#6d8580","#b8c5c0"], city:["#746f68","#d7d0c4","#2f3436","#a69a8a"],
+    ai:["#455963","#c8d0ce","#24343a","#80999b"], forest:["#465949","#cbd0c1","#243727","#8b9e84"],
+    portrait:["#9b7b68","#d4bda5","#4f3329","#c79876"], coast:["#667e83","#d5d4c7","#31494d","#b1bebc"]
+  };
+  const c=configs[kind]||configs.fjord;
+  const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+  <rect width="1200" height="900" fill="${c[1]}"/>
+  <rect y="540" width="1200" height="360" fill="${c[0]}"/>
+  <path d="M0 610 L210 330 L390 570 L590 220 L780 565 L985 280 L1200 590 L1200 900 L0 900Z" fill="${c[2]}"/>
+  <path d="M0 670 Q220 600 430 690 T850 670 T1200 690 L1200 900 L0 900Z" fill="${c[3]}" opacity=".82"/>
+  <circle cx="920" cy="175" r="70" fill="#f0e6cc" opacity=".86"/>
+  </svg>`;
+  return "data:image/svg+xml;charset=UTF-8,"+encodeURIComponent(svg);
+}
+document.querySelectorAll(".placeholder").forEach(el=>{el.style.backgroundImage=`url("${artSvg(el.dataset.art)}")`;el.style.backgroundSize="cover";el.style.backgroundPosition="center"});
+
+function seed(){
+  if(load(DB).length)return;
+  const samples=[
+    ["2026.0142","First Light","Jotunheimen, Norway","Landscape","Sustainability & Environment","17","fjord",190,"Commercial + Editorial",96,"A quiet first light over Jotunheimen, documented as a verified original."],
+    ["2026.0144","Sea of Fog","Ventura, CA","Landscape","Tourism","11","coast",190,"Commercial + Editorial",91,"A layered coastal fog study with restrained tonal detail."],
+    ["2026.0149","Golden Hour","Norway","Landscape","Tourism","11","mountain",220,"Commercial + Editorial",88,"Warm late-day light across a Norwegian landscape."],
+    ["2026.0150","Portrait in Amber","Studio, Oslo","Portrait","Advertising & Creative Agencies","22","portrait",240,"Commercial + Editorial",94,"Environmental portrait produced for profile and editorial licensing."],
+    ["2026.0151","The Maker","Bergen, Norway","Portrait","Industry & Manufacturing","20","work",260,"Commercial + Editorial",89,"A craftsman at work in a small Norwegian workshop."],
+    ["2026.0152","Blue Hour Grid","Oslo, Norway","Landscape","Commercial Real Estate","04","city",210,"Commercial + Editorial",93,"Urban geometry and blue-hour light in central Oslo."],
+    ["2026.0153","Offshore Shift","Stavanger, Norway","Landscape","Maritime & Offshore","14","maritime",340,"Commercial + Editorial",97,"Verified industrial coverage of Norway's offshore work culture."],
+    ["2026.0154","Human + Machine","Oslo, Norway","Landscape","Technology & AI","17","ai",310,"Commercial + Editorial",86,"A contemporary workplace scene focused on practical human-AI collaboration."],
+    ["2026.0155","Clinical Morning","Trondheim, Norway","Landscape","Healthcare & Research","16","health",280,"Commercial + Editorial",92,"Research and healthcare environment with a clean documentary treatment."],
+    ["2026.0156","Pine Silence","Telemark, Norway","Portrait","Sustainability & Environment","17","forest",190,"Commercial + Editorial",95,"Dense forest atmosphere photographed in soft Nordic light."]
+  ].map((v,i)=>({
+    id:uid(),archiveId:v[0],title:v[1],location:v[2],orientation:v[3],category:v[4],categoryId:v[5],
+    art:v[6],price:v[7],license:v[8],auth:v[9],description:v[10],status:"Available",
+    photographer:i%2?"Ingrid Solheim":"Anders Vik",captureDate:"2026-0"+((i%6)+1)+"-12",
+    tags:[v[4].toLowerCase(),"norway","verified"],sales:i%4,revenue:(i%4)*v[7],owner:i%2?"Ingrid Solheim":"Anders Vik",
+    verification:{original:true,identity:true,metadata:true,location:v[2].includes("Norway"),rights:true},
+    imageData:""
+  }));
+  save(DB,samples);
+  const demoSearches=[
+    ["Norwegian seniors using AI",0,"35"],["female offshore engineer Norway",0,"22"],["Oslo nurse portrait",1,"25"],
+    ["salmon farm workers Norway",0,"24"],["renewable energy team Norway",1,"23"],["wheelchair public transport Oslo",0,"32"],
+    ["authentic office meeting Norway",2,"20"],["Lofoten winter travel",2,"17"],["mental health therapy Norway",0,"34"]
+  ].map((x,i)=>({id:uid(),term:x[0],results:x[1],categoryId:x[2],at:new Date(Date.now()-i*86400000).toISOString()}));
+  save(SEARCHES,demoSearches);
+}
+seed();
+
+function photoImage(p){return p.imageData||artSvg(p.art||"fjord")}
+function getPhotos(){return load(DB)}
+function authClass(n){return n>=90?"high":n>=75?"medium":"low"}
+
+function go(id){
+  document.querySelectorAll(".view").forEach(v=>v.classList.remove("active"));
+  $(id).classList.add("active");
+  document.querySelectorAll("[data-go]").forEach(b=>b.classList.toggle("active",b.dataset.go===id));
+  window.scrollTo({top:0,behavior:"smooth"});
+  if(id==="homeView")renderHome();
+  if(id==="searchView")renderSearch();
+  if(id==="lightboxView")renderLightbox();
+  if(id==="dashboardView")renderDashboard();
+  if(id==="briefView")renderBriefs();
+  if(id==="uploadView")renderUpload();
+}
+window.go=go;
+document.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>go(b.dataset.go));
+
+function applyRole(){
+  document.querySelectorAll(".role-buyer,.role-photographer,.role-admin").forEach(x=>x.classList.add("hidden"));
+  document.querySelectorAll(".role-"+role.toLowerCase()).forEach(x=>x.classList.remove("hidden"));
+  $("rolePill").textContent=role+" · "+user;
+  $("dashboardTitle").textContent=role==="Admin"?"Archive operations":"Photographer dashboard";
+  updateLightboxCount();
+}
+document.querySelectorAll(".role-choice").forEach(b=>b.onclick=()=>{document.querySelectorAll(".role-choice").forEach(x=>x.classList.remove("active"));b.classList.add("active");role=b.dataset.role});
+$("enterBtn").onclick=()=>{user=$("roleName").value.trim()||"Demo User";$("roleModal").classList.add("hidden");applyRole();renderAll()};
+$("roleBtn").onclick=()=>{$("roleModal").classList.remove("hidden")};
+
+function renderHome(){
+  const photos=getPhotos().filter(x=>x.status==="Available");
+  $("homeAvailable").textContent=photos.length;
+  $("homeAvgAuth").textContent=photos.length?Math.round(photos.reduce((s,x)=>s+x.auth,0)/photos.length)+"/100":"—";
+  $("homeBriefs").textContent=load(BRIEFS).filter(x=>x.status==="Open").length;
+  $("homePhotoGrid").innerHTML=photos.slice(0,6).map(photoCard).join("");
+}
+function photoCard(p){
+  return `<article class="photo-card" onclick="openPhoto('${p.id}')">
+    <div class="photo-image"><div class="placeholder" style="background:url('${photoImage(p)}') center/cover"></div><span class="photo-status">${p.status}</span></div>
+    <div class="photo-info"><div class="photo-title-row"><h3>${p.title}</h3><span class="photo-price">from kr ${p.price}</span></div>
+    <div class="photo-meta">${p.archiveId} · ${p.location}</div><div class="auth-mini">✓ Authenticity ${p.auth}/100</div></div>
+  </article>`;
+}
+
+$("heroSearchBtn").onclick=()=>quickSearch($("heroSearch").value);
+$("heroSearch").onkeydown=e=>{if(e.key==="Enter")quickSearch(e.target.value)};
+function quickSearch(q){$("searchInput").value=q||"";go("searchView");renderSearch(true)}
+window.quickSearch=quickSearch;
+
+function categoryOptions(){
+  $("filterCategory").innerHTML='<option value="">All categories</option>'+CATEGORIES.map(c=>`<option value="${c[0]}">${c[1]}</option>`).join("");
+}
+categoryOptions();
+["filterCategory","filterOrientation","filterAuth","filterPrice","filterLicense"].forEach(id=>$(id).onchange=()=>renderSearch());
+$("searchBtn").onclick=()=>renderSearch(true);
+$("searchInput").onkeydown=e=>{if(e.key==="Enter")renderSearch(true)};
+$("emptyShootBtn").onclick=()=>requestShootFromSearch($("searchInput").value);
+
+function filteredPhotos(){
+  const q=$("searchInput").value.toLowerCase().trim(),cat=$("filterCategory").value,ori=$("filterOrientation").value,
+    auth=Number($("filterAuth").value||0),price=Number($("filterPrice").value||0),lic=$("filterLicense").value;
+  return getPhotos().filter(p=>p.status==="Available" &&
+    (!q||[p.title,p.location,p.category,(p.tags||[]).join(" "),p.description].join(" ").toLowerCase().includes(q)) &&
+    (!cat||p.categoryId===cat)&&(!ori||p.orientation===ori)&&p.auth>=auth&&(!price||p.price<=price)&&(!lic||p.license===lic));
+}
+function renderSearch(logSearch=false){
+  const rows=filteredPhotos();
+  $("resultCount").textContent=rows.length+" result"+(rows.length===1?"":"s");
+  $("searchGrid").innerHTML=rows.map(photoCard).join("");
+  $("searchEmpty").classList.toggle("hidden",rows.length>0);
+  if(logSearch&&role==="Buyer"&&$("searchInput").value.trim().length>=3){
+    const searches=load(SEARCHES); searches.unshift({id:uid(),term:$("searchInput").value.trim(),results:rows.length,categoryId:inferCategory($("searchInput").value),at:new Date().toISOString()});save(SEARCHES,searches.slice(0,500));
+  }
+}
+function inferCategory(q){
+  q=q.toLowerCase();
+  const rules=[
+      ["17",["ai","artificial intelligence","chatbot","software","technology"]],
+      ["16",["hospital","nurse","doctor","healthcare","research","laboratory"]],
+      ["14",["offshore","ship","maritime","harbour","harbor","rig"]],
+      ["15",["salmon","seafood","aquaculture","fish farm","fishing"]],
+      ["13",["renewable","wind","hydro","solar","energy"]],
+      ["24",["municipality","city development","urban development","public space"]],
+      ["04",["office","property","commercial real estate","building"]],
+      ["06",["architecture","architect","building design"]],
+      ["07",["interior","interior architecture"]],
+      ["09",["fashion","textile","clothing"]],
+      ["10",["automotive","car","vehicle"]],
+      ["11",["travel","tourism","destination","hotel"]],
+      ["12",["restaurant","food service","dining"]],
+      ["18",["bank","finance","financial"]],
+      ["20",["telecom","telecommunications","mobile network"]],
+      ["21",["media","publishing","editorial"]],
+      ["22",["advertising","creative agency","campaign"]],
+      ["23",["public sector","government"]],
+      ["25",["university","education","school"]],
+      ["26",["museum","culture","gallery"]],
+      ["27",["sport","outdoor","fitness"]],
+      ["28",["airline","airport","transportation"]],
+      ["29",["logistics","warehouse","shipping"]],
+      ["30",["sustainability","environment","climate"]],
+      ["31",["ecommerce","e-commerce","online retail"]],
+      ["32",["fmcg","consumer goods"]],
+      ["33",["beauty","cosmetics","personal care"]],
+      ["34",["pharma","medical","pharmaceutical"]],
+      ["35",["manufacturing","factory","industry"]]
+    ];
+  const hit=rules.find(x=>x[1].some(w=>q.includes(w)));return hit?hit[0]:"";
+}
+
+function openPhoto(id){
+  selectedPhoto=getPhotos().find(x=>x.id===id);if(!selectedPhoto)return;
+  selectedLicense={usage:"Website",territory:"Norway",duration:"1 year",price:selectedPhoto.price};
+  renderDetail();go("detailView");
+}
+window.openPhoto=openPhoto;
+function renderDetail(){
+  const p=selectedPhoto;if(!p)return;
+  const checks=[
+    ["Verified original",p.verification?.original],["Photographer identity",p.verification?.identity],
+    ["Capture metadata",p.verification?.metadata],["Location verified",p.verification?.location],["Licensing rights",p.verification?.rights]
+  ];
+  $("detailContent").innerHTML=`
+  <div class="detail-grid">
+    <div class="detail-image"><div class="placeholder" style="background:url('${photoImage(p)}') center/cover"></div></div>
+    <aside class="detail-aside">
+      <div class="archive-id">${p.archiveId} · ${p.category}</div>
+      <h1>${p.title}</h1>
+      <p class="detail-description">${p.description}</p>
+      <div class="meta-table">
+        <div class="meta-row"><span>Photographer</span><strong>${p.photographer}</strong></div>
+        <div class="meta-row"><span>Location</span><strong>${p.location}</strong></div>
+        <div class="meta-row"><span>Captured</span><strong>${p.captureDate||"Details supplied on request"}</strong></div>
+        <div class="meta-row"><span>Orientation</span><strong>${p.orientation}</strong></div>
+        <div class="meta-row"><span>License status</span><strong>${p.license}</strong></div>
+      </div>
+      <div class="auth-box">
+        <div class="auth-head"><div><div class="kicker" style="margin:0 0 5px">Beta Art verification</div><strong>Authenticity record</strong></div><div class="auth-score">${p.auth}<small>/100</small></div></div>
+        <div class="auth-checks">${checks.map(c=>`<div class="auth-check ${c[1]?"ok":"no"}">${c[1]?"✓":"○"} ${c[0]}</div>`).join("")}</div>
+      </div>
+      <div class="license-panel">
+        <h3>License this image</h3>
+        <div class="license-options">
+          ${["Website","Social campaign","Editorial","Advertising"].map((x,i)=>`<button class="license-option ${i===0?"active":""}" data-usage="${x}">${x}</button>`).join("")}
+        </div>
+        <div class="field" style="margin-top:12px"><label style="color:#aeb6b2">Territory</label><select id="detailTerritory"><option>Norway</option><option>Nordics</option><option>Europe</option><option>Worldwide</option></select></div>
+        <div class="field"><label style="color:#aeb6b2">Duration</label><select id="detailDuration"><option>3 months</option><option selected>1 year</option><option>3 years</option><option>Perpetual</option></select></div>
+        <div class="license-total"><span>License price</span><strong id="detailPrice">kr ${p.price}</strong></div>
+        <div style="display:flex;gap:7px;margin-top:14px">
+          <button class="btn" style="border-color:white;color:white;flex:1" onclick="toggleLightbox('${p.id}')">Save</button>
+          <button class="btn" style="background:white;flex:2" id="licenseNowBtn">License now</button>
+        </div>
+      </div>
+    </aside>
+  </div>
+  <div class="related"><div class="section-head"><div><h2>Related images</h2></div></div><div class="photo-grid">${getPhotos().filter(x=>x.id!==p.id&&x.status==="Available").slice(0,3).map(photoCard).join("")}</div></div>`;
+  document.querySelectorAll(".license-option").forEach(b=>b.onclick=()=>{document.querySelectorAll(".license-option").forEach(x=>x.classList.remove("active"));b.classList.add("active");selectedLicense.usage=b.dataset.usage;recalcDetail()});
+  $("detailTerritory").onchange=recalcDetail;$("detailDuration").onchange=recalcDetail;
+  $("licenseNowBtn").onclick=()=>{if(role!=="Buyer"){alert("Switch to Buyer role to create a license.");return}renderCheckout();go("checkoutView")};
+}
+function recalcDetail(){
+  const p=selectedPhoto,usage=selectedLicense.usage,territory=$("detailTerritory").value,duration=$("detailDuration").value;
+  const u={Website:1,"Social campaign":1.7,Editorial:1.35,Advertising:3.6}[usage];
+  const t={Norway:1,Nordics:1.25,Europe:1.65,Worldwide:2.2}[territory];
+  const d={"3 months":.85,"1 year":1,"3 years":1.45,Perpetual:2.1}[duration];
+  selectedLicense={usage,territory,duration,price:Math.round(p.price*u*t*d)};
+  $("detailPrice").textContent="kr "+selectedLicense.price.toLocaleString("no-NO");
+}
+
+function renderCheckout(){
+  const p=selectedPhoto,l=selectedLicense;
+  $("checkoutSummary").innerHTML=`
+  <div class="order-row"><span>Image</span><strong>${p.title}</strong></div>
+  <div class="order-row"><span>Archive ID</span><strong>${p.archiveId}</strong></div>
+  <div class="order-row"><span>Usage</span><strong>${l.usage}</strong></div>
+  <div class="order-row"><span>Territory</span><strong>${l.territory}</strong></div>
+  <div class="order-row"><span>Duration</span><strong>${l.duration}</strong></div>`;
+  $("checkoutTotal").textContent="kr "+l.price.toLocaleString("no-NO");
+}
+$("completePurchaseBtn").onclick=()=>{
+  if(!$("termsCheck").checked){alert("Please accept the demo license terms.");return}
+  const p=selectedPhoto,l=selectedLicense,licenseId="BA-LIC-"+new Date().getFullYear()+"-"+Math.floor(10000+Math.random()*89999);
+  lastLicense={id:licenseId,imageId:p.id,archiveId:p.archiveId,title:p.title,buyer:$("buyerName").value||user,company:$("buyerCompany").value,email:$("buyerEmail").value,project:$("buyerProject").value,notes:$("buyerNotes").value,usage:l.usage,territory:l.territory,duration:l.duration,price:l.price,createdAt:new Date().toISOString()};
+  const licenses=load(LICENSES);licenses.unshift(lastLicense);save(LICENSES,licenses);
+  const db=getPhotos(),x=db.find(v=>v.id===p.id);if(x){x.sales=(x.sales||0)+1;x.revenue=(x.revenue||0)+l.price;save(DB,db)}
+  $("confirmationText").textContent=`License ${licenseId} has been created for “${p.title}” (${p.archiveId}) at kr ${l.price.toLocaleString("no-NO")}.`;
+  go("confirmationView");
+};
+$("downloadLicenseBtn").onclick=()=>{
+  if(!lastLicense)return;const txt=`BETA ART — DEMO LICENSE RECEIPT
+License ID: ${lastLicense.id}
+Image: ${lastLicense.title}
+Archive ID: ${lastLicense.archiveId}
+Buyer: ${lastLicense.buyer}
+Company: ${lastLicense.company||"-"}
+Usage: ${lastLicense.usage}
+Territory: ${lastLicense.territory}
+Duration: ${lastLicense.duration}
+Price: NOK ${lastLicense.price}
+Created: ${lastLicense.createdAt}
+
+Prototype only — not a legally binding production license.`;
+  downloadBlob(txt,"beta-art-"+lastLicense.id+".txt","text/plain");
+};
+$("downloadImageBtn").onclick=()=>{if(!selectedPhoto)return;const a=document.createElement("a");a.href=photoImage(selectedPhoto);a.download=selectedPhoto.archiveId+"-"+selectedPhoto.title.toLowerCase().replace(/\s+/g,"-")+".svg";a.click()};
+function downloadBlob(content,name,type){const b=new Blob([content],{type}),u=URL.createObjectURL(b),a=document.createElement("a");a.href=u;a.download=name;a.click();URL.revokeObjectURL(u)}
+
+function lightboxIds(){return load(LIGHTBOX)}
+function toggleLightbox(id){let ids=lightboxIds();ids=ids.includes(id)?ids.filter(x=>x!==id):[...ids,id];save(LIGHTBOX,ids);updateLightboxCount();if($("lightboxView").classList.contains("active"))renderLightbox()}
+window.toggleLightbox=toggleLightbox;
+function updateLightboxCount(){$("lightboxCount").textContent=lightboxIds().length}
+function renderLightbox(){const ids=lightboxIds(),rows=getPhotos().filter(x=>ids.includes(x.id));$("lightboxGrid").innerHTML=rows.length?rows.map(photoCard).join(""):'<div class="empty">Your lightbox is empty.</div>'}
+
+function demandRows(){
+  const searches=load(SEARCHES),available=getPhotos().filter(x=>x.status==="Available"),map={};
+  searches.forEach(s=>{const cid=s.categoryId||"other";map[cid]??={searches:0,zero:0};map[cid].searches++;if(!s.results)map[cid].zero++});
+  return Object.entries(map).map(([cid,g])=>{const cat=CATEGORIES.find(c=>c[0]===cid),supply=cid==="other"?available.length:available.filter(x=>x.categoryId===cid).length,score=Math.min(100,Math.round((g.searches*13+g.zero*20)/(supply+1)));return {name:cat?cat[1]:"Unclassified",searches:g.searches,zero:g.zero,supply,score}}).sort((a,b)=>b.score-a.score);
+}
+function renderDashboard(){
+  const photos=getPhotos(),owned=role==="Admin"?photos:photos.filter(x=>x.owner===user||x.photographer===user),sales=owned.reduce((s,x)=>s+(x.sales||0),0),rev=owned.reduce((s,x)=>s+(x.revenue||0),0);
+  $("dashboardStats").innerHTML=[["Archive",owned.length],["Available",owned.filter(x=>x.status==="Available").length],["Pending",owned.filter(x=>x.status!=="Available").length],["Sales",sales],["Revenue","kr "+rev.toLocaleString("no-NO")]].map(x=>`<div class="stat"><span>${x[0]}</span><strong>${x[1]}</strong></div>`).join("");
+  $("archiveTable").innerHTML=owned.length?`<div class="table-wrap"><table><thead><tr><th>ID</th><th>Title</th><th>Category</th><th>Status</th><th>Authenticity</th><th>Sales</th><th>Revenue</th></tr></thead><tbody>${owned.map(x=>`<tr><td>${x.archiveId}</td><td>${x.title}</td><td>${x.category}</td><td>${x.status}</td><td><span class="score">${x.auth}/100</span></td><td>${x.sales||0}</td><td>kr ${(x.revenue||0).toLocaleString("no-NO")}</td></tr>`).join("")}</tbody></table></div>`:'<div class="empty">No archive records.</div>';
+  const dr=demandRows();$("demandSummary").innerHTML=[["Recorded searches",load(SEARCHES).length],["Zero-result searches",load(SEARCHES).filter(x=>!x.results).length],["Top opportunity",dr[0]?.name||"—"]].map(x=>`<div class="demand-card"><span>${x[0]}</span><strong>${x[1]}</strong></div>`).join("");
+  $("demandTable").innerHTML=dr.length?`<div class="table-wrap"><table><thead><tr><th>Category</th><th>Demand</th><th>Zero results</th><th>Supply</th><th>Opportunity</th></tr></thead><tbody>${dr.map(x=>`<tr><td>${x.name}</td><td>${x.searches}</td><td>${x.zero}</td><td>${x.supply}</td><td><span class="opportunity ${x.score>=60?"high":x.score>=30?"medium":"low"}">${x.score}/100</span><div class="progress ${x.score>=60?"high":x.score>=30?"medium":"low"}"><span style="width:${x.score}%"></span></div></td></tr>`).join("")}</tbody></table></div>`:'<div class="empty">No demand signals yet.</div>';
+  const pending=photos.filter(x=>x.status!=="Available");$("adminQueue").innerHTML=pending.length?`<div class="table-wrap"><table><thead><tr><th>ID</th><th>Title</th><th>Photographer</th><th>Current score</th><th>Action</th></tr></thead><tbody>${pending.map(x=>`<tr><td>${x.archiveId}</td><td>${x.title}</td><td>${x.photographer}</td><td>${x.auth||55}/100</td><td><button class="btn small green" onclick="approvePhoto('${x.id}')">Verify & publish</button></td></tr>`).join("")}</tbody></table></div>`:'<div class="empty">Verification queue is empty.</div>';
+}
+document.querySelectorAll("[data-dash]").forEach(b=>b.onclick=()=>{document.querySelectorAll("[data-dash]").forEach(x=>x.classList.remove("active"));document.querySelectorAll(".dash-section").forEach(x=>x.classList.add("hidden"));b.classList.add("active");$(b.dataset.dash).classList.remove("hidden")});
+function approvePhoto(id){const db=getPhotos(),p=db.find(x=>x.id===id);if(!p)return;p.status="Available";p.auth=Math.max(92,p.auth||0);p.verification={original:true,identity:true,metadata:true,location:!!p.location,rights:true};save(DB,db);renderDashboard();renderHome()}
+window.approvePhoto=approvePhoto;
+
+function requestShootFromSearch(q){if(role!=="Buyer"){$("roleModal").classList.remove("hidden");return}$("briefSubject").value=q||$("searchInput").value||"";go("briefView")}
+window.requestShootFromSearch=requestShootFromSearch;
+$("publishBriefBtn").onclick=()=>{const subject=$("briefSubject").value.trim();if(!subject){alert("Enter a subject.");return}const bs=load(BRIEFS);bs.unshift({id:uid(),subject,location:$("briefLocation").value,budget:Number($("briefBudget").value||0),deadline:$("briefDeadline").value,description:$("briefDescription").value,buyer:user,status:"Open",interested:[]});save(BRIEFS,bs);["briefSubject","briefLocation","briefDeadline","briefDescription"].forEach(id=>$(id).value="");renderBriefs();renderHome();alert("Shoot brief published.")};
+function renderBriefs(){
+  const bs=load(BRIEFS).filter(x=>x.status==="Open");
+  $("briefGrid").innerHTML=bs.length?bs.map(b=>`<article class="brief"><h3>${b.subject}</h3><div class="brief-meta"><span>${b.location||"Any location"}</span><span>kr ${Number(b.budget||0).toLocaleString("no-NO")}</span>${b.deadline?`<span>Due ${b.deadline}</span>`:""}</div><p style="font-size:11px;color:var(--muted);line-height:1.55">${b.description||"No further details supplied."}</p><div style="font-size:10px;color:var(--muted)">${(b.interested||[]).length} photographer(s) interested</div>${role==="Photographer"?`<button class="btn small primary" style="margin-top:10px" onclick="briefInterest('${b.id}')">${(b.interested||[]).includes(user)?"Interest sent":"I'm interested"}</button>`:""}</article>`).join(""):'<div class="empty">No open shoot briefs yet.</div>';
+}
+function briefInterest(id){const bs=load(BRIEFS),b=bs.find(x=>x.id===id);if(!b)return;b.interested=b.interested||[];if(!b.interested.includes(user))b.interested.push(user);save(BRIEFS,bs);renderBriefs()}
+window.briefInterest=briefInterest;
+
+function nextArchive(){const y=new Date().getFullYear(),nums=getPhotos().map(x=>Number(String(x.archiveId).split(".")[1])||0);return y+"."+String(Math.max(156,...nums)+1).padStart(4,"0")}
+function renderUpload(){
+  $("upArchiveId").value=nextArchive();$("uploadCategories").innerHTML=CATEGORIES.map(c=>`<button type="button" class="category-btn ${uploadSelected.has(c[0])?"active":""}" data-upcat="${c[0]}">${c[0]} · ${c[1]}</button>`).join("");
+  document.querySelectorAll("[data-upcat]").forEach(b=>b.onclick=()=>{uploadSelected.has(b.dataset.upcat)?uploadSelected.delete(b.dataset.upcat):uploadSelected.add(b.dataset.upcat);renderUpload();updateUploadAuth()});
+  updateUploadAuth();
+}
+$("fileInput").onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{uploadImage=ev.target.result;$("uploadPreview").src=uploadImage;$("uploadPreview").classList.remove("hidden");$("uploadCopy").classList.add("hidden");const im=new Image();im.onload=()=>{$("upWidth").value=im.naturalWidth;$("upHeight").value=im.naturalHeight;updateUploadAuth()};im.src=uploadImage};r.readAsDataURL(f)};
+["upLocation","upDate","upRights","upOriginal"].forEach(id=>{$(id).oninput=updateUploadAuth;$(id).onchange=updateUploadAuth});
+function uploadScore(){let s=0;if(uploadImage)s+=20;if($("upWidth").value&&$("upHeight").value)s+=10;if($("upLocation").value)s+=10;if($("upDate").value)s+=10;if(uploadSelected.size)s+=10;if($("upRights").checked)s+=20;if($("upOriginal").checked)s+=20;return s}
+function updateUploadAuth(){const s=uploadScore();$("uploadAuthPreview").innerHTML=`<div class="auth-head"><div><div class="kicker" style="margin:0">Pre-verification</div><strong>Authenticity readiness</strong></div><div class="auth-score">${s}<small>/100</small></div></div><p style="font-size:11px;color:var(--muted);line-height:1.55">Admin verification can raise the final published score by validating the original, identity, metadata, location and rights.</p>`}
+$("submitUploadBtn").onclick=()=>{
+  if(!$("upTitle").value.trim()||!uploadImage||!uploadSelected.size||!$("upRights").checked||!$("upOriginal").checked){alert("Title, image, category, rights and original declaration are required.");return}
+  const first=CATEGORIES.find(c=>uploadSelected.has(c[0])),db=getPhotos(),w=Number($("upWidth").value),h=Number($("upHeight").value);
+  db.unshift({id:uid(),archiveId:$("upArchiveId").value,title:$("upTitle").value,location:$("upLocation").value||"Norway",orientation:w>h?"Landscape":w<h?"Portrait":"Square",category:first[1],categoryId:first[0],art:"fjord",price:Number($("upPrice").value||190),license:$("upLicense").value,auth:uploadScore(),description:$("upDescription").value||"Contributor submission awaiting verification.",status:"Pending review",photographer:user,owner:user,captureDate:$("upDate").value,tags:$("upTags").value.split(",").map(x=>x.trim()).filter(Boolean),sales:0,revenue:0,imageData:uploadImage,verification:{original:false,identity:false,metadata:false,location:false,rights:false}});
+  save(DB,db);uploadImage="";uploadSelected.clear();["upTitle","upLocation","upDate","upDescription","upTags","upWidth","upHeight"].forEach(id=>$(id).value="");$("uploadPreview").classList.add("hidden");$("uploadCopy").classList.remove("hidden");alert("Submitted for verification.");go("dashboardView")
+};
+
+function renderAll(){applyRole();renderHome();renderSearch();renderLightbox();renderDashboard();renderBriefs();renderUpload()}
+renderAll();
+</script>
+</body>
+</html>

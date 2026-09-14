@@ -456,6 +456,17 @@ modeli) fikri bilinçli olarak uygulanmadı — QBLOGG'da hesap/UGC/moderasyon
 altyapısı yok, bu ayrı ve çok daha büyük bir kapı; kullanıcının asıl vardığı
 sonucun "gelişim/outcome metriği" olduğu değerlendirildi.
 
+## 26.08.2026 — "BETA ART BET" konsept notu
+
+Kullanıcıdan tek girdi: isim + slogan ("Turn a memory into art."). Kapsam
+belirsiz olduğu için kod değişikliği yapılmadı; kullanıcının seçimiyle
+yalnızca bir değerlendirme belgesi yazıldı: `docs/beta-art-bet-konsepti.md`.
+Belge varsayımı açıkça işaretliyor: BETA ART zaten gerçek şirket/hesap adı
+(Stripe + Vercel takımı); bu yeni girdi muhtemelen QBLOGG'un yanına, aynı
+şemsiye altına, tüketiciye dönük ayrı bir ürün fikri (anıdan sanat eseri
+üretimi) — ama tek doğru okuma olduğu iddia edilmiyor. Açık sorular ve
+karar kullanıcıya bırakıldı; kapanmış bir aşama değil.
+
 ## 30.08.2026 — "BUTUN PROJELERI BURAYA TASI": envanter çıkarıldı, gerçek gerilim ortaya çıktı
 
 Kullanıcı "her proje/dosya/tool burada birleşiyor" tespitini yaptı, ardından

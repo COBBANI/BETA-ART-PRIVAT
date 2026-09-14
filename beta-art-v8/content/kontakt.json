@@ -1,0 +1,79 @@
+{
+  "eyebrow": "Kontakt & impressum",
+  "headline": "Ta kontakt",
+  "intro": "For lisensforespørsler, tilpassede oppdrag eller andre spørsmål. Jeg svarer normalt innen én arbeidsdag.",
+  "formLabel": "Kontaktskjema",
+  "directEmail": "Eller e-post direkte:",
+  "email": "hello@betaart.no",
+  "statusSent": "Melding mottatt.",
+  "statusSentSub": "Jeg svarer normalt innen én arbeidsdag. Sjekk søppelpost om du ikke hører noe.",
+  "statusSentReset": "Send ny melding",
+  "statusError": "Noe gikk galt. Prøv igjen eller send e-post direkte til hello@betaart.no",
+  "fieldName": "Navn",
+  "fieldEmail": "E-post",
+  "fieldSubject": "Emne",
+  "fieldSubjectPlaceholder": "Lisensforespørsel, tilpasset oppdrag, annet…",
+  "fieldMessage": "Melding",
+  "submitLabel": "Send melding",
+  "submittingLabel": "Sender…",
+  "impressumLabel": "Impressum",
+  "impressumRows": [
+    {
+      "id": "r1",
+      "label": "Virksomhet",
+      "value": "Beta Art"
+    },
+    {
+      "id": "r2",
+      "label": "Adresse",
+      "value": "[Street address], [Postcode & city], Norge"
+    },
+    {
+      "id": "r3",
+      "label": "Org.nr",
+      "value": "[000 000 000] MVA"
+    },
+    {
+      "id": "r4",
+      "label": "E-post",
+      "value": "hello@betaart.no"
+    },
+    {
+      "id": "r5",
+      "label": "Nettsted",
+      "value": "betaart.no"
+    },
+    {
+      "id": "r6",
+      "label": "Ansvarlig",
+      "value": "[Fotografens navn]"
+    },
+    {
+      "id": "r7",
+      "label": "Innhold",
+      "value": "Fotografisk arkiv — lisensiert menneskeskapt fotografi"
+    }
+  ],
+  "angrerettLabel": "Angrerett · Angrefristloven",
+  "angrerettBody": "Som forbruker har du 14 dagers angrerett på digitale kjøp etter angrefristloven § 22. Retten bortfaller dersom du samtykker til umiddelbar levering og bekrefter at du er klar over at angreretten dermed opphører — dette skjer ved avkrysning i bestillingsprosessen.",
+  "angrerettBody2": "Ved tekniske leveringsfeil eller dobbeltbelastning refunderes fullt beløp. Se lisensbetingelsene for fullstendig refusjonspolicy.",
+  "legalLinksLabel": "Juridiske dokumenter",
+  "legalLinks": [
+    {
+      "id": "l1",
+      "to": "/lisensbetingelser",
+      "label": "Lisensbetingelser"
+    },
+    {
+      "id": "l2",
+      "to": "/personvern",
+      "label": "Personvernerklæring"
+    },
+    {
+      "id": "l3",
+      "to": "/faq",
+      "label": "Vanlige spørsmål (FAQ)"
+    }
+  ],
+  "accessionStrip": "BETA ART · KONTAKT & IMPRESSUM · ANGREFRISTLOVEN § 22 · GDPR ART. 13"
+}

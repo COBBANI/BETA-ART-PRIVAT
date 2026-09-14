@@ -1,0 +1,47 @@
+{
+  "title": "Privacy Policy",
+  "lastUpdated": "2026-07-24",
+  "intro": "This Privacy Policy explains how the photographer operating as BETA ART (we, us) collects and uses your personal data when you visit or buy from betaart.no. We are the data controller.",
+  "sections": [
+    {
+      "id": "s1",
+      "heading": "1. Data We Collect",
+      "body": "When you visit the Site: anonymised traffic data (page views, referrer, country, device type) and technical logs required to run the Site (IP address, briefly, for security). When you place an order: name, email address, billing address and for business customers company name and organisation number. Payment details are processed directly by our payment provider; we never see or store your card number. When you contact us: the name, email address and content you send in a message."
+    },
+    {
+      "id": "s2",
+      "heading": "2. How We Use Your Data",
+      "body": "We use your data to: fulfil orders, deliver files and issue invoices (legal basis: contract); meet accounting and tax obligations (legal basis: legal obligation under Norwegian bookkeeping law); reply to your messages (legal basis: legitimate interest); understand how the Site is used via aggregate analytics (legal basis: legitimate interest); detect fraud and secure the Site (legal basis: legitimate interest). If you subscribe to updates, we send occasional emails about new work (legal basis: consent)."
+    },
+    {
+      "id": "s3",
+      "heading": "3. Third Parties",
+      "body": "We share only the minimum data necessary with: our payment provider (payment processing); our accounting software (invoicing); our email provider (delivery); our website host (GoDaddy). Data processing agreements are in place with each provider. Some may store data outside the EU/EEA. In those cases we rely on the EU-US Data Privacy Framework or Standard Contractual Clauses."
+    },
+    {
+      "id": "s4",
+      "heading": "4. How Long We Keep Your Data",
+      "body": "Order records: 5 years after the transaction (Norwegian bookkeeping law). Contact form messages: 12 months, then deleted. Analytics data: aggregated and anonymised, not tied to individuals. Newsletter subscribers: until you unsubscribe."
+    },
+    {
+      "id": "s5",
+      "heading": "5. Your Rights",
+      "body": "Under GDPR you have the right to access, correct, or delete your personal data; restrict or object to certain processing; data portability; and to withdraw consent at any time. To exercise any of these rights, email hello@betaart.no. We will respond within 30 days. You also have the right to complain to the Norwegian Data Protection Authority (Datatilsynet) at datatilsynet.no."
+    },
+    {
+      "id": "s6",
+      "heading": "6. Cookies",
+      "body": "The Site uses only strictly necessary cookies (session and security). Analytics is cookieless. If tracking cookies are added in the future, a cookie banner will be shown and this policy updated."
+    },
+    {
+      "id": "s7",
+      "heading": "7. Security",
+      "body": "We use HTTPS across the Site. Payments are handled by PCI-DSS-compliant providers. Delivered Files are served via time-limited links, not stored in public folders."
+    },
+    {
+      "id": "s8",
+      "heading": "8. Contact",
+      "body": "Data controller: BETA ART. Email: hello@betaart.no. Norway."
+    }
+  ]
+}

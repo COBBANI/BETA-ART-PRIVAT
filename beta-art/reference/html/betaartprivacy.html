@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — BETA ART</title>
+<meta name="description" content="How BETA ART handles personal data when you visit the site or license a photograph. GDPR compliant. Norwegian law applies.">
+<meta name="robots" content="index, follow">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23FBFAF7'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%238B1A1A'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..800,50..100,0..1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --paper:#FBFAF7;
+  --paper-2:#F3F0E9;
+  --ink:#0F0F0F;
+  --ink-2:#1F1D1B;
+  --muted:#85817A;
+  --rule:#E4E0D8;
+  --seal:#8B1A1A;
+  --f-serif:'Fraunces',Georgia,serif;
+  --f-sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --f-mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--f-sans);
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.6;
+  font-size:16px;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+a{color:inherit;text-decoration:none}
+a.link{
+  border-bottom:1px solid var(--rule);
+  transition:border-color .18s;
+}
+a.link:hover{border-bottom-color:var(--ink)}
+
+/* -------- NAV (matches main site) -------- */
+.nav{
+  position:sticky;top:0;z-index:10;
+  background:rgba(251,250,247,.92);
+  backdrop-filter:saturate(140%) blur(8px);
+  -webkit-backdrop-filter:saturate(140%) blur(8px);
+  border-bottom:1px solid var(--rule);
+}
+.nav-inner{
+  max-width:1400px;margin:0 auto;
+  padding:18px 40px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.brand{
+  display:inline-flex;align-items:center;gap:12px;
+  font-family:var(--f-mono);font-size:12.5px;
+  letter-spacing:.24em;text-transform:uppercase;font-weight:500;
+}
+.brand-mark{
+  display:inline-block;width:11px;height:11px;
+  border:1.5px solid var(--ink);border-radius:50%;
+  position:relative;
+}
+.brand-mark::after{
+  content:"";position:absolute;inset:2px;
+  background:var(--seal);border-radius:50%;
+}
+.nav-links{display:flex;gap:36px;align-items:center}
+.nav-links a{
+  font-family:var(--f-mono);font-size:11px;
+  letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted);transition:color .18s;
+}
+.nav-links a:hover{color:var(--ink)}
+
+.lang{
+  display:flex;align-items:center;gap:0;
+  font-family:var(--f-mono);font-size:10.5px;
+  letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);
+  border-left:1px solid var(--rule);
+  padding-left:20px;margin-left:4px;
+}
+.lang button{
+  background:none;border:0;padding:4px 6px;cursor:pointer;
+  font-family:inherit;font-size:inherit;letter-spacing:inherit;
+  color:var(--muted);transition:color .18s;
+}
+.lang button:hover{color:var(--ink)}
+.lang button.on{color:var(--ink);font-weight:600}
+.lang-sep{color:var(--rule);padding:0 2px}
+@media (max-width:700px){
+  .nav-inner{padding:16px 20px}
+  .nav-links{gap:14px}
+  .nav-links a:not(.lang a){display:none}
+  .lang{padding-left:12px;margin-left:0}
+}
+
+/* -------- POLICY LAYOUT -------- */
+.policy{
+  max-width:820px;
+  margin:0 auto;
+  padding:80px 40px 120px;
+}
+.policy-header{
+  padding-bottom:60px;
+  margin-bottom:60px;
+  border-bottom:1px solid var(--rule);
+}
+.rule-label{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--f-mono);font-size:10.5px;
+  letter-spacing:.24em;text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:28px;
+}
+.rule-label::before{
+  content:"";width:22px;height:1px;background:var(--muted);
+}
+h1{
+  font-family:var(--f-serif);
+  font-weight:400;
+  font-size:clamp(40px, 5.5vw, 62px);
+  line-height:1.08;
+  letter-spacing:-.015em;
+  color:var(--ink);
+  margin-bottom:24px;
+}
+.meta-row{
+  display:flex;flex-wrap:wrap;gap:32px;
+  font-family:var(--f-mono);font-size:11.5px;
+  color:var(--muted);
+  letter-spacing:.04em;
+  margin-top:32px;
+}
+.meta-row b{color:var(--ink);font-weight:500;margin-right:8px}
+
+/* Intro paragraph */
+.policy-intro{
+  font-family:var(--f-serif);
+  font-size:19px;
+  line-height:1.6;
+  color:var(--ink-2);
+}
+
+/* Section styles */
+section.s{
+  margin-top:56px;
+  scroll-margin-top:90px;
+}
+section.s > h2{
+  font-family:var(--f-serif);
+  font-weight:500;
+  font-size:28px;
+  line-height:1.2;
+  color:var(--ink);
+  margin-bottom:20px;
+  display:flex;align-items:baseline;gap:16px;
+}
+section.s > h2 .num{
+  font-family:var(--f-mono);
+  font-size:12px;
+  color:var(--seal);
+  letter-spacing:.14em;
+  font-weight:500;
+  padding-top:6px;
+}
+section.s > h3{
+  font-family:var(--f-sans);
+  font-weight:600;
+  font-size:14px;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  color:var(--ink);
+  margin-top:28px;
+  margin-bottom:12px;
+}
+section.s p{
+  font-size:16px;
+  color:var(--ink-2);
+  margin-bottom:16px;
+  max-width:68ch;
+}
+section.s ul{
+  list-style:none;
+  padding:0;
+  margin:0 0 20px 0;
+  max-width:68ch;
+}
+section.s ul li{
+  padding:8px 0 8px 22px;
+  position:relative;
+  color:var(--ink-2);
+  line-height:1.55;
+}
+section.s ul li::before{
+  content:"—";
+  position:absolute;left:0;top:8px;
+  color:var(--muted);
+}
+section.s ul li b{color:var(--ink);font-weight:600}
+section.s p b{color:var(--ink);font-weight:600}
+section.s p code, section.s ul code{
+  font-family:var(--f-mono);
+  font-size:.9em;
+  background:var(--paper-2);
+  padding:2px 6px;
+  border-radius:2px;
+}
+
+/* Controller block */
+.controller{
+  background:var(--paper-2);
+  padding:24px 28px;
+  margin:12px 0 8px;
+  font-family:var(--f-mono);
+  font-size:12.5px;
+  line-height:1.9;
+  color:var(--ink-2);
+}
+.controller b{color:var(--ink);font-weight:600}
+
+/* Data-flow table */
+.processors{
+  width:100%;
+  border-collapse:collapse;
+  margin:20px 0 8px;
+  font-size:13.5px;
+}
+.processors thead th{
+  text-align:left;
+  padding:12px 16px 12px 0;
+  border-bottom:1.5px solid var(--ink);
+  font-family:var(--f-mono);
+  font-size:10.5px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--ink);
+  font-weight:500;
+}
+.processors tbody td{
+  padding:14px 16px 14px 0;
+  border-bottom:1px solid var(--rule);
+  vertical-align:top;
+  color:var(--ink-2);
+}
+.processors tbody td:first-child{
+  font-weight:500;color:var(--ink);
+  white-space:nowrap;
+}
+.processors tbody td:last-child{
+  font-family:var(--f-mono);
+  font-size:11.5px;
+  color:var(--muted);
+  white-space:nowrap;
+}
+@media (max-width:700px){
+  .processors, .processors tbody, .processors thead, .processors tr, .processors td, .processors th{
+    display:block;
+  }
+  .processors thead{display:none}
+  .processors tbody tr{
+    padding:16px 0;
+    border-bottom:1px solid var(--rule);
+  }
+  .processors tbody td{
+    padding:2px 0;border:0;
+    white-space:normal !important;
+  }
+  .processors tbody td:first-child{
+    font-family:var(--f-serif);
+    font-size:16px;
+    margin-bottom:6px;
+  }
+  .processors tbody td:not(:first-child){
+    font-size:12px;
+    color:var(--muted);
+  }
+  .processors tbody td:not(:first-child)::before{
+    content:attr(data-label);
+    font-family:var(--f-mono);
+    text-transform:uppercase;
+    letter-spacing:.12em;
+    font-size:9.5px;
+    color:var(--muted);
+    display:block;
+    margin-top:6px;
+  }
+}
+
+/* Callout at end */
+.governing{
+  margin-top:80px;
+  padding-top:40px;
+  border-top:1px solid var(--rule);
+  font-family:var(--f-mono);
+  font-size:11.5px;
+  color:var(--muted);
+  letter-spacing:.02em;
+  line-height:1.8;
+}
+.governing b{color:var(--ink);font-weight:500}
+
+/* -------- FOOTER (matches main site, minimal) -------- */
+.footer{
+  border-top:1px solid var(--rule);
+  padding:40px 0 32px;
+  background:var(--paper);
+}
+.footer-inner{
+  max-width:1400px;margin:0 auto;padding:0 40px;
+}
+.footer-links{
+  display:flex;flex-wrap:wrap;gap:24px 40px;
+  font-family:var(--f-mono);font-size:11px;
+  letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);
+  padding-bottom:24px;
+  border-bottom:1px solid var(--rule);
+}
+.footer-links a{color:var(--muted);transition:color .18s}
+.footer-links a:hover{color:var(--ink)}
+.footer-legal{
+  display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;
+  padding-top:24px;
+  font-family:var(--f-mono);font-size:10.5px;
+  letter-spacing:.06em;color:var(--muted);
+}
+@media (max-width:700px){
+  .policy{padding:48px 20px 80px}
+  .footer-inner{padding:0 20px}
+}
+
+/* Focus states */
+:focus-visible{
+  outline:2px solid var(--seal);
+  outline-offset:3px;
+}
+</style>
+</head>
+<body>
+
+<!-- ==================== NAV ==================== -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="brand"><span class="brand-mark"></span> BETA · ART</a>
+    <div class="nav-links">
+      <a href="/#collection" data-i18n="nav.collection">Collection</a>
+      <a href="/#verify" data-i18n="nav.verification">Verification</a>
+      <a href="/#about" data-i18n="nav.photographer">Photographer</a>
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-lang="en" class="on">EN</button>
+        <span class="lang-sep">/</span>
+        <button type="button" data-lang="no">NO</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ==================== POLICY ==================== -->
+<main class="policy">
+
+  <div class="policy-header">
+    <span class="rule-label" data-i18n="eyebrow">Legal document</span>
+    <h1 data-i18n="title">Privacy Policy</h1>
+    <div class="meta-row">
+      <div><b data-i18n="meta.effective">Effective</b><span>[DATE]</span></div>
+      <div><b data-i18n="meta.applies">Applies to</b><span>betaart.no</span></div>
+      <div><b data-i18n="meta.version">Version</b><span>1.0</span></div>
+    </div>
+  </div>
+
+  <p class="policy-intro" data-i18n-html="intro">This notice explains what personal data BETA ART collects when you visit this site or license a photograph, why we hold it, how long we keep it, and the rights you have under the EU General Data Protection Regulation (GDPR) and the Norwegian Personal Data Act. If anything here is unclear, write to <a class="link" href="mailto:hello@betaart.no">hello@betaart.no</a> and we will answer promptly.</p>
+
+  <!-- 1. Data Controller -->
+  <section class="s" id="controller">
+    <h2><span class="num">§ 01</span><span data-i18n="s1.title">Data Controller</span></h2>
+    <p data-i18n="s1.body">The controller responsible for your personal data is:</p>
+    <div class="controller" data-i18n-html="s1.details">
+      <b>[PHOTOGRAPHER NAME]</b><br>
+      BETA ART (enkeltpersonforetak)<br>
+      [Street address], [postcode] [city], Norway<br>
+      Org.nr [000 000 000]<br>
+      <a class="link" href="mailto:hello@betaart.no">hello@betaart.no</a>
+    </div>
+  </section>
+
+  <!-- 2. What we collect -->
+  <section class="s" id="collect">
+    <h2><span class="num">§ 02</span><span data-i18n="s2.title">What we collect</span></h2>
+    <p data-i18n="s2.intro">We collect only what is needed to license a photograph and issue a proper invoice.</p>
+
+    <h3 data-i18n="s2.orderHead">When you place an order</h3>
+    <p data-i18n="s2.orderIntro">By sending the pre-filled order email, you provide:</p>
+    <ul data-i18n-html="s2.orderList">
+      <li>Your name</li>
+      <li>Your email address</li>
+      <li>The company or organisation you are ordering on behalf of (if any)</li>
+      <li>Your invoicing details (organisation number, billing address)</li>
+      <li>The plate(s) you have selected and the licenses you have chosen</li>
+      <li>Your consent to immediate digital delivery and waiver of the 14-day right of withdrawal (angrerett)</li>
+    </ul>
+
+    <h3 data-i18n="s2.browseHead">When you browse the site</h3>
+    <ul data-i18n-html="s2.browseList">
+      <li>Aggregated, anonymised page views via <b>Plausible Analytics</b> — a privacy-first service that does not use cookies, does not track individuals across sites, and does not build advertising profiles.</li>
+      <li>Basic access logs held by our host, <b>Netlify</b>, for security purposes (typically retained 30 days).</li>
+    </ul>
+
+    <h3 data-i18n="s2.localHead">In your browser only — never sent to us</h3>
+    <p data-i18n="s2.localIntro">Three items are stored in your browser's local storage. They stay on your device and can be cleared at any time through your browser settings:</p>
+    <ul data-i18n-html="s2.localList">
+      <li>Your shopping cart contents (<code>betaart:cart</code>)</li>
+      <li>Your delivery consent state (<code>betaart:consent</code>)</li>
+      <li>Your language preference (<code>betaart:lang</code>)</li>
+    </ul>
+  </section>
+
+  <!-- 3. What we do not collect -->
+  <section class="s" id="not-collected">
+    <h2><span class="num">§ 03</span><span data-i18n="s3.title">What we do not collect</span></h2>
+    <ul data-i18n-html="s3.list">
+      <li><b>Cookies for advertising or tracking.</b> We use none.</li>
+      <li><b>Payment card details.</b> Payments, when processed digitally, go through Lemon Squeezy or Vipps. We never see or store your card details.</li>
+      <li><b>Data from third-party trackers</b>, social media pixels, or advertising networks.</li>
+    </ul>
+  </section>
+
+  <!-- 4. Legal basis -->
+  <section class="s" id="basis">
+    <h2><span class="num">§ 04</span><span data-i18n="s4.title">Why we hold it (legal basis)</span></h2>
+    <ul data-i18n-html="s4.list">
+      <li><b>To provide the licensed photograph and issue an invoice</b> — performance of a contract (GDPR Art. 6(1)(b))</li>
+      <li><b>To keep required accounting records</b> — legal obligation under the Norwegian Bookkeeping Act (bokføringsloven) (GDPR Art. 6(1)(c))</li>
+      <li><b>To understand aggregate site use</b> — legitimate interest in operating and improving the site (GDPR Art. 6(1)(f))</li>
+    </ul>
+  </section>
+
+  <!-- 5. Processors -->
+  <section class="s" id="processors">
+    <h2><span class="num">§ 05</span><span data-i18n="s5.title">Who we share it with</span></h2>
+    <p data-i18n="s5.intro">Your data is not sold, rented or shared for marketing. We use only the following processors, each of whom acts under a written data processing agreement:</p>
+    <table class="processors" id="proc-table">
+      <thead>
+        <tr>
+          <th data-i18n="s5.hProcessor">Processor</th>
+          <th data-i18n="s5.hPurpose">Purpose</th>
+          <th data-i18n="s5.hData">Data</th>
+          <th data-i18n="s5.hLocation">Location</th>
+        </tr>
+      </thead>
+      <tbody id="proc-body">
+        <!-- populated by JS so language switch redraws it -->
+      </tbody>
+    </table>
+    <p data-i18n="s5.outro" style="margin-top:16px">We may also disclose data if required by Norwegian law or by a competent authority.</p>
+  </section>
+
+  <!-- 6. Retention -->
+  <section class="s" id="retention">
+    <h2><span class="num">§ 06</span><span data-i18n="s6.title">How long we keep it</span></h2>
+    <ul data-i18n-html="s6.list">
+      <li><b>Accounting records</b> (invoices, order correspondence): five years after the end of the accounting year, as required by the Norwegian Bookkeeping Act.</li>
+      <li><b>Customer contact data</b>: kept while necessary to provide ongoing licensing service. Deleted on request after any legal retention obligation has ended.</li>
+      <li><b>Analytics data</b>: retained in aggregate only; individual page views are not stored.</li>
+      <li><b>Access logs</b>: as retained by the host, typically 30 days.</li>
+    </ul>
+  </section>
+
+  <!-- 7. Transfers -->
+  <section class="s" id="transfers">
+    <h2><span class="num">§ 07</span><span data-i18n="s7.title">Where the data goes</span></h2>
+    <p data-i18n="s7.body">Most of our processors operate within the EU/EEA. Where a processor is based outside the EEA (currently: Netlify, Lemon Squeezy), transfers are made under Standard Contractual Clauses approved by the European Commission.</p>
+  </section>
+
+  <!-- 8. Your rights -->
+  <section class="s" id="rights">
+    <h2><span class="num">§ 08</span><span data-i18n="s8.title">Your rights</span></h2>
+    <p data-i18n="s8.intro">You have the following rights under the GDPR:</p>
+    <ul data-i18n-html="s8.list">
+      <li><b>Access</b> — request a copy of the personal data we hold about you</li>
+      <li><b>Rectification</b> — ask us to correct data that is wrong</li>
+      <li><b>Erasure</b> — ask us to delete data (subject to accounting retention)</li>
+      <li><b>Restriction</b> — ask us to pause certain processing</li>
+      <li><b>Portability</b> — receive your data in a machine-readable format</li>
+      <li><b>Objection</b> — object to processing based on legitimate interest</li>
+      <li><b>Withdraw consent</b> — where processing is based on your consent</li>
+    </ul>
+    <p data-i18n-html="s8.contact">Write to <a class="link" href="mailto:hello@betaart.no">hello@betaart.no</a>. We respond within 30 days.</p>
+    <p data-i18n-html="s8.complain">If you believe we have handled your data unlawfully, you can complain to the Norwegian Data Protection Authority (Datatilsynet), Postboks 458 Sentrum, 0105 Oslo — <a class="link" href="https://datatilsynet.no" target="_blank" rel="noopener">datatilsynet.no</a>.</p>
+  </section>
+
+  <!-- 9. Security -->
+  <section class="s" id="security">
+    <h2><span class="num">§ 09</span><span data-i18n="s9.title">Security</span></h2>
+    <p data-i18n="s9.body">Your data is kept with reasonable technical and organisational safeguards: encrypted transport (HTTPS), access limited to the photographer, offline backup of core records. If a data breach affects your rights, we will notify you and Datatilsynet within 72 hours as required by GDPR Art. 33–34.</p>
+  </section>
+
+  <!-- 10. Changes -->
+  <section class="s" id="changes">
+    <h2><span class="num">§ 10</span><span data-i18n="s10.title">Changes to this notice</span></h2>
+    <p data-i18n="s10.body">We may update this notice from time to time. The effective date at the top always reflects the current version. Material changes will be announced on this page.</p>
+  </section>
+
+  <!-- Governing -->
+  <div class="governing" data-i18n-html="governing">
+    <b>Governing text</b> — In case of conflict between the Norwegian and English versions of this notice, the Norwegian version prevails.<br>
+    <b>Contact</b> — <a class="link" href="mailto:hello@betaart.no">hello@betaart.no</a>
+  </div>
+
+</main>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/" data-i18n="footer.home">Home</a>
+      <a href="/#collection" data-i18n="nav.collection">Collection</a>
+      <a href="/#verify" data-i18n="nav.verification">Verification</a>
+      <a href="/#about" data-i18n="nav.photographer">Photographer</a>
+      <a href="/license-terms.html" data-i18n="footer.terms">License terms</a>
+      <a href="/faq.html" data-i18n="footer.faq">FAQ</a>
+    </div>
+    <div class="footer-legal">
+      <span data-i18n="footer.legal1">© 2026 Beta Art · All plates human-made · No generative AI</span>
+      <span>Org.nr [000 000 000]</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   Language system — same T/t/applyLang mechanism as the main site
+   so switching language on this page is instant and persistent.
+   ============================================================ */
+const LANG_KEY = "betaart:lang:v1";
+const DEFAULT_LANG = "en";
+let currentLang = DEFAULT_LANG;
+
+const T = {
+  en: {
+    "nav.collection":"Collection",
+    "nav.verification":"Verification",
+    "nav.photographer":"Photographer",
+
+    "eyebrow":"Legal document",
+    "title":"Privacy Policy",
+    "meta.effective":"Effective",
+    "meta.applies":"Applies to",
+    "meta.version":"Version",
+
+    "intro":"This notice explains what personal data BETA ART collects when you visit this site or license a photograph, why we hold it, how long we keep it, and the rights you have under the EU General Data Protection Regulation (GDPR) and the Norwegian Personal Data Act. If anything here is unclear, write to <a class=\"link\" href=\"mailto:hello@betaart.no\">hello@betaart.no</a> and we will answer promptly.",
+
+    "s1.title":"Data Controller",
+    "s1.body":"The controller responsible for your personal data is:",
+    "s1.details":"<b>[PHOTOGRAPHER NAME]</b><br>BETA ART (enkeltpersonforetak)<br>[Street address], [postcode] [city], Norway<br>Org.nr [000 000 000]<br><a class=\"link\" href=\"mailto:hello@betaart.no\">hello@betaart.no</a>",
+
+    "s2.title":"What we collect",
+    "s2.intro":"We collect only what is needed to license a photograph and issue a proper invoice.",
+    "s2.orderHead":"When you place an order",
+    "s2.orderIntro":"By sending the pre-filled order email, you provide:",
+    "s2.orderList":"<li>Your name</li><li>Your email address</li><li>The company or organisation you are ordering on behalf of (if any)</li><li>Your invoicing details (organisation number, billing address)</li><li>The plate(s) you have selected and the licenses you have chosen</li><li>Your consent to immediate digital delivery and waiver of the 14-day right of withdrawal (angrerett)</li>",
+    "s2.browseHead":"When you browse the site",
+    "s2.browseList":"<li>Aggregated, anonymised page views via <b>Plausible Analytics</b> — a privacy-first service that does not use cookies, does not track individuals across sites, and does not build advertising profiles.</li><li>Basic access logs held by our host, <b>Netlify</b>, for security purposes (typically retained 30 days).</li>",
+    "s2.localHead":"In your browser only — never sent to us",
+    "s2.localIntro":"Three items are stored in your browser's local storage. They stay on your device and can be cleared at any time through your browser settings:",
+    "s2.localList":"<li>Your shopping cart contents (<code>betaart:cart</code>)</li><li>Your delivery consent state (<code>betaart:consent</code>)</li><li>Your language preference (<code>betaart:lang</code>)</li>",
+
+    "s3.title":"What we do not collect",
+    "s3.list":"<li><b>Cookies for advertising or tracking.</b> We use none.</li><li><b>Payment card details.</b> Payments, when processed digitally, go through Lemon Squeezy or Vipps. We never see or store your card details.</li><li><b>Data from third-party trackers</b>, social media pixels, or advertising networks.</li>",
+
+    "s4.title":"Why we hold it (legal basis)",
+    "s4.list":"<li><b>To provide the licensed photograph and issue an invoice</b> — performance of a contract (GDPR Art. 6(1)(b))</li><li><b>To keep required accounting records</b> — legal obligation under the Norwegian Bookkeeping Act (bokføringsloven) (GDPR Art. 6(1)(c))</li><li><b>To understand aggregate site use</b> — legitimate interest in operating and improving the site (GDPR Art. 6(1)(f))</li>",
+
+    "s5.title":"Who we share it with",
+    "s5.intro":"Your data is not sold, rented or shared for marketing. We use only the following processors, each of whom acts under a written data processing agreement:",
+    "s5.hProcessor":"Processor",
+    "s5.hPurpose":"Purpose",
+    "s5.hData":"Data",
+    "s5.hLocation":"Location",
+    "s5.outro":"We may also disclose data if required by Norwegian law or by a competent authority.",
+
+    "s6.title":"How long we keep it",
+    "s6.list":"<li><b>Accounting records</b> (invoices, order correspondence): five years after the end of the accounting year, as required by the Norwegian Bookkeeping Act.</li><li><b>Customer contact data</b>: kept while necessary to provide ongoing licensing service. Deleted on request after any legal retention obligation has ended.</li><li><b>Analytics data</b>: retained in aggregate only; individual page views are not stored.</li><li><b>Access logs</b>: as retained by the host, typically 30 days.</li>",
+
+    "s7.title":"Where the data goes",
+    "s7.body":"Most of our processors operate within the EU/EEA. Where a processor is based outside the EEA (currently: Netlify, Lemon Squeezy), transfers are made under Standard Contractual Clauses approved by the European Commission.",
+
+    "s8.title":"Your rights",
+    "s8.intro":"You have the following rights under the GDPR:",
+    "s8.list":"<li><b>Access</b> — request a copy of the personal data we hold about you</li><li><b>Rectification</b> — ask us to correct data that is wrong</li><li><b>Erasure</b> — ask us to delete data (subject to accounting retention)</li><li><b>Restriction</b> — ask us to pause certain processing</li><li><b>Portability</b> — receive your data in a machine-readable format</li><li><b>Objection</b> — object to processing based on legitimate interest</li><li><b>Withdraw consent</b> — where processing is based on your consent</li>",
+    "s8.contact":"Write to <a class=\"link\" href=\"mailto:hello@betaart.no\">hello@betaart.no</a>. We respond within 30 days.",
+    "s8.complain":"If you believe we have handled your data unlawfully, you can complain to the Norwegian Data Protection Authority (Datatilsynet), Postboks 458 Sentrum, 0105 Oslo — <a class=\"link\" href=\"https://datatilsynet.no\" target=\"_blank\" rel=\"noopener\">datatilsynet.no</a>.",
+
+    "s9.title":"Security",
+    "s9.body":"Your data is kept with reasonable technical and organisational safeguards: encrypted transport (HTTPS), access limited to the photographer, offline backup of core records. If a data breach affects your rights, we will notify you and Datatilsynet within 72 hours as required by GDPR Art. 33–34.",
+
+    "s10.title":"Changes to this notice",
+    "s10.body":"We may update this notice from time to time. The effective date at the top always reflects the current version. Material changes will be announced on this page.",
+
+    "governing":"<b>Governing text</b> — In case of conflict between the Norwegian and English versions of this notice, the Norwegian version prevails.<br><b>Contact</b> — <a class=\"link\" href=\"mailto:hello@betaart.no\">hello@betaart.no</a>",
+
+    "footer.home":"Home",
+    "footer.terms":"License terms",
+    "footer.faq":"FAQ",
+    "footer.legal1":"© 2026 Beta Art · All plates human-made · No generative AI",
+
+    /* Processor table rows — one per processor. Kept as separate keys so
+       adding, removing or reordering rows is trivial without touching HTML. */
+    "proc.netlify.p":"Netlify",
+    "proc.netlify.u":"Web hosting",
+    "proc.netlify.d":"Access logs",
+    "proc.netlify.l":"EU / US (SCCs)",
+    "proc.plausible.p":"Plausible Analytics",
+    "proc.plausible.u":"Aggregate site analytics",
+    "proc.plausible.d":"Anonymised page views",
+    "proc.plausible.l":"EU",
+    "proc.pay.p":"Lemon Squeezy / Vipps",
+    "proc.pay.u":"Payment processing",
+    "proc.pay.d":"Name, email, billing address",
+    "proc.pay.l":"EU / US (SCCs)",
+    "proc.fiken.p":"Fiken",
+    "proc.fiken.u":"Invoicing and accounting",
+    "proc.fiken.d":"Name, email, org.nr, order lines",
+    "proc.fiken.l":"EU (Norway)",
+    "proc.mail.p":"Google / Microsoft",
+    "proc.mail.u":"Order email correspondence",
+    "proc.mail.d":"Content of the order email",
+    "proc.mail.l":"EU / US (SCCs)"
+  },
+
+  no: {
+    "nav.collection":"Samling",
+    "nav.verification":"Verifisering",
+    "nav.photographer":"Fotograf",
+
+    "eyebrow":"Juridisk dokument",
+    "title":"Personvernerklæring",
+    "meta.effective":"Ikrafttredelse",
+    "meta.applies":"Gjelder for",
+    "meta.version":"Versjon",
+
+    "intro":"Denne erklæringen forklarer hvilke personopplysninger BETA ART samler inn når du besøker denne siden eller lisensierer et fotografi, hvorfor vi behandler dem, hvor lenge vi oppbevarer dem, og hvilke rettigheter du har etter EUs personvernforordning (GDPR) og personopplysningsloven. Er noe uklart, skriv til <a class=\"link\" href=\"mailto:hello@betaart.no\">hello@betaart.no</a> og vi svarer omgående.",
+
+    "s1.title":"Behandlingsansvarlig",
+    "s1.body":"Behandlingsansvarlig for dine personopplysninger er:",
+    "s1.details":"<b>[FOTOGRAFENS NAVN]</b><br>BETA ART (enkeltpersonforetak)<br>[Gateadresse], [postnummer] [poststed], Norge<br>Org.nr [000 000 000]<br><a class=\"link\" href=\"mailto:hello@betaart.no\">hello@betaart.no</a>",
+
+    "s2.title":"Hva vi samler inn",
+    "s2.intro":"Vi samler kun det som trengs for å lisensiere et fotografi og utstede en gyldig faktura.",
+    "s2.orderHead":"Når du legger inn en bestilling",
+    "s2.orderIntro":"Ved å sende den forhåndsutfylte bestillings-e-posten oppgir du:",
+    "s2.orderList":"<li>Navnet ditt</li><li>E-postadressen din</li><li>Virksomheten du bestiller på vegne av (hvis relevant)</li><li>Fakturadetaljer (organisasjonsnummer, fakturaadresse)</li><li>Platen(e) og lisensen(e) du har valgt</li><li>Samtykke til umiddelbar digital levering og fraskrivelse av 14-dagers angrerett</li>",
+    "s2.browseHead":"Når du surfer på siden",
+    "s2.browseList":"<li>Aggregerte, anonymiserte sidevisninger via <b>Plausible Analytics</b> — en personvernvennlig analysetjeneste som ikke bruker informasjonskapsler, ikke sporer enkeltpersoner på tvers av nettsteder, og ikke bygger annonseprofiler.</li><li>Grunnleggende tilgangslogger hos vår vert, <b>Netlify</b>, til sikkerhetsformål (vanligvis oppbevart i 30 dager).</li>",
+    "s2.localHead":"Kun i din nettleser — sendes aldri til oss",
+    "s2.localIntro":"Tre elementer lagres i nettleserens lokale lagring. De forblir på enheten din og kan slettes når som helst via nettleserinnstillingene dine:",
+    "s2.localList":"<li>Innholdet i handlekurven din (<code>betaart:cart</code>)</li><li>Din samtykketilstand for levering (<code>betaart:consent</code>)</li><li>Din språkinnstilling (<code>betaart:lang</code>)</li>",
+
+    "s3.title":"Hva vi ikke samler inn",
+    "s3.list":"<li><b>Informasjonskapsler for annonsering eller sporing.</b> Vi bruker ingen.</li><li><b>Kortdetaljer.</b> Betalinger, når de skjer digitalt, går gjennom Lemon Squeezy eller Vipps. Vi ser eller lagrer aldri kortdetaljene dine.</li><li><b>Data fra tredjepartssporere</b>, sosiale medier-piksler eller annonsenettverk.</li>",
+
+    "s4.title":"Hvorfor vi behandler det (rettslig grunnlag)",
+    "s4.list":"<li><b>For å levere det lisensierte fotografiet og utstede faktura</b> — oppfyllelse av avtale (GDPR art. 6 nr. 1 bokstav b)</li><li><b>For å oppbevare pålagte regnskapsdokumenter</b> — rettslig forpliktelse etter bokføringsloven (GDPR art. 6 nr. 1 bokstav c)</li><li><b>For å forstå aggregert sidebruk</b> — berettiget interesse i å drifte og forbedre siden (GDPR art. 6 nr. 1 bokstav f)</li>",
+
+    "s5.title":"Hvem vi deler med",
+    "s5.intro":"Dataene dine selges, leies eller deles ikke for markedsføring. Vi bruker kun følgende databehandlere, hver med skriftlig databehandleravtale:",
+    "s5.hProcessor":"Databehandler",
+    "s5.hPurpose":"Formål",
+    "s5.hData":"Data",
+    "s5.hLocation":"Lokasjon",
+    "s5.outro":"Vi kan også utlevere data hvis det pålegges av norsk lov eller kompetent myndighet.",
+
+    "s6.title":"Hvor lenge vi oppbevarer",
+    "s6.list":"<li><b>Regnskapsdokumenter</b> (fakturaer, bestillingskorrespondanse): fem år etter regnskapsårets slutt, som pålagt av bokføringsloven.</li><li><b>Kundekontaktdata</b>: oppbevares så lenge det er nødvendig for løpende lisensieringstjeneste. Slettes på forespørsel etter at eventuell lovpålagt oppbevaringsplikt er utløpt.</li><li><b>Analysedata</b>: oppbevares kun i aggregert form; individuelle sidevisninger lagres ikke.</li><li><b>Tilgangslogger</b>: som oppbevart av verten, vanligvis 30 dager.</li>",
+
+    "s7.title":"Hvor dataene går",
+    "s7.body":"De fleste av våre databehandlere opererer innen EU/EØS. Der en databehandler er basert utenfor EØS (per i dag: Netlify, Lemon Squeezy), skjer overføringer under EU-kommisjonens standardkontraktsklausuler (SCC).",
+
+    "s8.title":"Dine rettigheter",
+    "s8.intro":"Du har følgende rettigheter etter GDPR:",
+    "s8.list":"<li><b>Innsyn</b> — be om kopi av personopplysningene vi har om deg</li><li><b>Retting</b> — be oss rette opp uriktige data</li><li><b>Sletting</b> — be oss slette data (med forbehold om regnskapsplikt)</li><li><b>Begrensning</b> — be oss pause visse behandlinger</li><li><b>Dataportabilitet</b> — motta dataene dine i maskinlesbart format</li><li><b>Innsigelse</b> — motsette deg behandling basert på berettiget interesse</li><li><b>Trekke samtykke</b> — der behandling er basert på samtykke</li>",
+    "s8.contact":"Skriv til <a class=\"link\" href=\"mailto:hello@betaart.no\">hello@betaart.no</a>. Vi svarer innen 30 dager.",
+    "s8.complain":"Hvis du mener vi har håndtert dataene dine ulovlig, kan du klage til Datatilsynet, Postboks 458 Sentrum, 0105 Oslo — <a class=\"link\" href=\"https://datatilsynet.no\" target=\"_blank\" rel=\"noopener\">datatilsynet.no</a>.",
+
+    "s9.title":"Sikkerhet",
+    "s9.body":"Dataene dine oppbevares med rimelige tekniske og organisatoriske sikkerhetstiltak: kryptert transport (HTTPS), tilgang begrenset til fotografen, offline sikkerhetskopi av kjernedata. Ved brudd på personopplysningssikkerheten som påvirker dine rettigheter, varsler vi deg og Datatilsynet innen 72 timer som pålagt av GDPR art. 33–34.",
+
+    "s10.title":"Endringer i denne erklæringen",
+    "s10.body":"Vi kan oppdatere denne erklæringen fra tid til annen. Ikrafttredelsesdatoen øverst gjenspeiler den gjeldende versjonen. Vesentlige endringer varsles på denne siden.",
+
+    "governing":"<b>Rådende versjon</b> — Ved konflikt mellom norsk og engelsk versjon av denne erklæringen gjelder den norske versjonen.<br><b>Kontakt</b> — <a class=\"link\" href=\"mailto:hello@betaart.no\">hello@betaart.no</a>",
+
+    "footer.home":"Hjem",
+    "footer.terms":"Lisensvilkår",
+    "footer.faq":"Spørsmål og svar",
+    "footer.legal1":"© 2026 Beta Art · Alle plater laget av mennesker · Ingen generativ KI",
+
+    "proc.netlify.p":"Netlify",
+    "proc.netlify.u":"Webhotell",
+    "proc.netlify.d":"Tilgangslogger",
+    "proc.netlify.l":"EU / USA (SCC)",
+    "proc.plausible.p":"Plausible Analytics",
+    "proc.plausible.u":"Aggregert sideanalyse",
+    "proc.plausible.d":"Anonymiserte sidevisninger",
+    "proc.plausible.l":"EU",
+    "proc.pay.p":"Lemon Squeezy / Vipps",
+    "proc.pay.u":"Betalingsprosessering",
+    "proc.pay.d":"Navn, e-post, fakturaadresse",
+    "proc.pay.l":"EU / USA (SCC)",
+    "proc.fiken.p":"Fiken",
+    "proc.fiken.u":"Fakturering og regnskap",
+    "proc.fiken.d":"Navn, e-post, org.nr, ordrelinjer",
+    "proc.fiken.l":"EU (Norge)",
+    "proc.mail.p":"Google / Microsoft",
+    "proc.mail.u":"Bestillingskorrespondanse",
+    "proc.mail.d":"Innholdet i bestillings-e-posten",
+    "proc.mail.l":"EU / USA (SCC)"
+  }
+};
+
+function t(key){
+  return (T[currentLang] && T[currentLang][key])
+      ?? (T[DEFAULT_LANG] && T[DEFAULT_LANG][key])
+      ?? key;
+}
+
+/* Processor rows — declared here so a language switch redraws them */
+const PROCESSORS = ["netlify","plausible","pay","fiken","mail"];
+
+function renderProcessors(){
+  const body = document.getElementById("proc-body");
+  const labels = [t("s5.hProcessor"), t("s5.hPurpose"), t("s5.hData"), t("s5.hLocation")];
+  body.innerHTML = PROCESSORS.map(id => `
+    <tr>
+      <td data-label="${labels[0]}">${t(`proc.${id}.p`)}</td>
+      <td data-label="${labels[1]}">${t(`proc.${id}.u`)}</td>
+      <td data-label="${labels[2]}">${t(`proc.${id}.d`)}</td>
+      <td data-label="${labels[3]}">${t(`proc.${id}.l`)}</td>
+    </tr>`).join("");
+}
+
+function applyLang(){
+  document.documentElement.lang = currentLang;
+  document.title = currentLang === "no"
+    ? "Personvernerklæring — BETA ART"
+    : "Privacy Policy — BETA ART";
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    el.textContent = t(el.getAttribute("data-i18n"));
+  });
+  document.querySelectorAll("[data-i18n-html]").forEach(el => {
+    el.innerHTML = t(el.getAttribute("data-i18n-html"));
+  });
+  document.querySelectorAll(".lang button[data-lang]").forEach(b => {
+    b.classList.toggle("on", b.dataset.lang === currentLang);
+  });
+  renderProcessors();
+}
+
+function switchLang(lang){
+  if(!T[lang]) return;
+  currentLang = lang;
+  try{ localStorage.setItem(LANG_KEY, lang); }catch(e){}
+  applyLang();
+}
+
+/* Wire up the switcher */
+document.querySelectorAll(".lang button[data-lang]").forEach(b => {
+  b.addEventListener("click", () => switchLang(b.dataset.lang));
+});
+
+/* Boot — restore language before first paint */
+try{
+  const saved = localStorage.getItem(LANG_KEY);
+  if(saved && T[saved]) currentLang = saved;
+}catch(e){}
+applyLang();
+</script>
+
+</body>
+</html>

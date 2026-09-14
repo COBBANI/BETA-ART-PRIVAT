@@ -21,3 +21,10 @@ engine/data/
 # Üretilen dağıtım klasörleri — marka-tescil.mjs ve marka-paket.mjs üretiyor
 tescil/
 paket/
+
+# skill-creator eval çalışma alanları — beceri test çıktıları, site içeriği değil
+*-workspace/
+
+# web-artifacts-builder ile üretilen karar-destek prototipleri — ayrı React
+# projesi, QBLOGG sitesinin parçası değil
+beta-art-nav-mockup/

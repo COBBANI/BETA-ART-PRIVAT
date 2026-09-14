@@ -12,4 +12,8 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  // Force IPv4 so the dev server works in containers without IPv6 support.
+  vite: {
+    server: { host: "127.0.0.1", port: 5173, strictPort: false },
+  },
 });

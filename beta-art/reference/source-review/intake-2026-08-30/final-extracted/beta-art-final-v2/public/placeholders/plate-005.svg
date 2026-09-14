@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" role="img" aria-label="BETA ART / BA-005 / DEVELOPMENT PLACEHOLDER">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#d6cfbd"/>
+      <stop offset="1" stop-color="#8b8168"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="1500" fill="url(#g)"/>
+  <rect x="60" y="60" width="1080" height="1380" fill="none" stroke="#171512" stroke-opacity=".24"/>
+  <line x1="60" y1="1270" x2="1140" y2="1270" stroke="#171512" stroke-opacity=".24"/>
+  <text x="84" y="1335" font-family="monospace" font-size="24" letter-spacing="5" fill="#171512" fill-opacity=".68">BETA ART / BA-005 / DEVELOPMENT PLACEHOLDER</text>
+  <text x="84" y="1384" font-family="monospace" font-size="18" letter-spacing="3" fill="#171512" fill-opacity=".5">NOT PART OF THE VERIFIED ARCHIVE</text>
+</svg>

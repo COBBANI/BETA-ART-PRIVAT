@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BETA ART — Dokumentasjon som overlever prosjektet</title>
+<meta name="description" content="Uavhengig arkivering av prosjektdokumentasjon for bygg og anlegg. Verifisert, ordnet og gjenfinnbart lenge etter overlevering.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23FBFAF7'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%238B1A1A'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FBFAF7;--paper-2:#F3F0E9;--ink:#0F0F0F;--ink-2:#1F1D1B;
+  --muted:#85817A;--muted-2:#B4B0A7;--rule:#E4E0D8;--seal:#8B1A1A;
+  --f-serif:'Fraunces',Georgia,serif;
+  --f-sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --f-mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--f-sans);background:var(--paper);color:var(--ink);line-height:1.6;font-size:16px;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+svg{display:block;max-width:100%}
+:focus-visible{outline:2px solid var(--seal);outline-offset:3px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto}}
+
+.wrap{max-width:1180px;margin:0 auto;padding:0 40px}
+@media(max-width:700px){.wrap{padding:0 22px}}
+
+.mono{font-family:var(--f-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.rule-label{display:inline-flex;align-items:center;gap:12px;font-family:var(--f-mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.rule-label::before{content:"";width:30px;height:1px;background:var(--ink);flex:none}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:20;background:var(--paper);border-bottom:1px solid var(--rule)}
+.nav-inner{max-width:1180px;margin:0 auto;padding:16px 40px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+@media(max-width:700px){.nav-inner{padding:14px 22px}}
+.brand{display:inline-flex;align-items:center;gap:11px;font-family:var(--f-mono);font-size:13px;letter-spacing:.32em;text-transform:uppercase;font-weight:500;white-space:nowrap}
+.brand-mark{width:6px;height:6px;border-radius:50%;background:var(--seal);flex:none}
+.nav-links{display:flex;gap:28px;align-items:center}
+.nav-links a{font-size:13px;color:var(--muted);transition:color .2s}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a.cta{color:var(--ink);border:1px solid var(--ink);padding:8px 16px;font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;transition:.2s}
+.nav-links a.cta:hover{background:var(--ink);color:var(--paper)}
+@media(max-width:820px){.nav-links a:not(.cta){display:none}}
+
+/* HERO */
+.hero{padding:92px 0 64px;border-bottom:1px solid var(--rule)}
+@media(max-width:700px){.hero{padding:56px 0 44px}}
+.hero h1{font-family:var(--f-serif);font-weight:300;font-size:clamp(34px,5.4vw,66px);line-height:1.06;letter-spacing:-.02em;margin:26px 0 24px;max-width:16ch}
+.hero p.lede{font-size:clamp(16px,1.6vw,19px);color:var(--ink-2);max-width:56ch;font-weight:300}
+.actions{display:flex;align-items:center;gap:26px;flex-wrap:wrap;margin-top:38px}
+.btn{display:inline-flex;align-items:center;gap:12px;background:var(--ink);color:var(--paper);padding:15px 26px;font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;transition:.2s}
+.btn:hover{background:var(--seal)}
+.micro{font-size:13px;color:var(--muted);max-width:40ch}
+
+/* SIGNATURE — oppbevaringslinje */
+.tl{margin-top:60px;border:1px solid var(--rule);background:var(--paper-2);padding:30px 30px 22px}
+@media(max-width:700px){.tl{padding:22px 18px 16px}}
+.tl-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:26px}
+.tl-fig{width:100%;height:auto}
+.tl-note{margin-top:16px;font-size:12px;color:var(--muted);max-width:70ch}
+
+/* SECTIONS */
+.sec{padding:88px 0;border-bottom:1px solid var(--rule)}
+@media(max-width:700px){.sec{padding:56px 0}}
+.sec h2{font-family:var(--f-serif);font-weight:300;font-size:clamp(27px,3.6vw,44px);line-height:1.14;letter-spacing:-.015em;margin:22px 0 22px;max-width:22ch}
+.sec p.body{font-size:17px;color:var(--ink-2);max-width:60ch;font-weight:300}
+.sec p.body + p.body{margin-top:16px}
+
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:46px}
+@media(max-width:820px){.steps{grid-template-columns:1fr}}
+.step{background:var(--paper);padding:32px 28px}
+.step .n{font-family:var(--f-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--seal)}
+.step h3{font-family:var(--f-serif);font-weight:400;font-size:21px;line-height:1.25;margin:14px 0 12px}
+.step p{font-size:15px;color:var(--muted);font-weight:300}
+
+/* ÅPENHET */
+.docs{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:44px}
+@media(max-width:700px){.docs{grid-template-columns:1fr}}
+.doc{background:var(--paper);padding:26px 26px;display:flex;justify-content:space-between;align-items:flex-start;gap:18px;transition:background .2s}
+.doc:hover{background:var(--paper-2)}
+.doc h3{font-size:15px;font-weight:500;margin-bottom:6px}
+.doc p{font-size:13.5px;color:var(--muted);font-weight:300}
+.doc .arw{font-family:var(--f-mono);font-size:15px;color:var(--muted-2);flex:none}
+
+/* PRIS */
+.price{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:46px}
+@media(max-width:820px){.price{grid-template-columns:1fr}}
+.pcell{background:var(--paper);padding:32px 28px}
+.pcell .lbl{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.pcell .amt{font-family:var(--f-serif);font-weight:300;font-size:38px;letter-spacing:-.02em;margin:16px 0 10px}
+.pcell p{font-size:14px;color:var(--muted);font-weight:300}
+
+/* KONTAKT */
+.contact{padding:96px 0;border-bottom:1px solid var(--rule)}
+@media(max-width:700px){.contact{padding:60px 0}}
+.contact h2{font-family:var(--f-serif);font-weight:300;font-size:clamp(27px,3.6vw,44px);line-height:1.14;margin:22px 0 20px;max-width:20ch}
+.qs{margin:30px 0 0;padding:0;list-style:none;max-width:56ch}
+.qs li{font-size:16px;color:var(--ink-2);font-weight:300;padding:13px 0 13px 26px;border-top:1px solid var(--rule);position:relative}
+.qs li::before{content:"—";position:absolute;left:0;color:var(--muted-2)}
+
+/* FOTOGRAF */
+.photog{background:var(--ink);color:var(--paper);padding:60px 0}
+.photog .rule-label{color:var(--muted-2)}
+.photog .rule-label::before{background:var(--muted-2)}
+.photog h2{font-family:var(--f-serif);font-weight:300;font-size:clamp(22px,2.6vw,31px);margin:18px 0 14px;max-width:24ch;line-height:1.2}
+.photog p{color:var(--muted-2);font-size:15.5px;max-width:52ch;font-weight:300}
+.photog a.link{display:inline-block;margin-top:22px;font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;border-bottom:1px solid var(--muted);padding-bottom:5px;transition:.2s}
+.photog a.link:hover{border-color:var(--paper)}
+
+/* FOOT */
+.foot{padding:44px 0 56px}
+.foot-in{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:baseline}
+.foot p{font-size:12.5px;color:var(--muted)}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand"><span class="brand-mark"></span>Beta&nbsp;Art</a>
+    <div class="nav-links">
+      <a href="#problem">Problemet</a>
+      <a href="#slik">Slik arkiverer vi</a>
+      <a href="#apenhet">Åpenhet</a>
+      <a href="#pris">Pris</a>
+      <a href="#kontakt" class="cta">Book 20 minutter</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero wrap" id="top">
+  <span class="rule-label">Dokumentasjon som overlever prosjektet</span>
+  <h1>Prosjektet avsluttes. Dokumentasjonen skal ikke.</h1>
+  <p class="lede">Når byggeprosjektet lukkes, lukkes prosjektverktøyet. Ansvaret løper
+  videre i årevis. Beta Art arkiverer prosjektbildene deres — verifisert, ordnet og
+  gjenfinnbare lenge etter overlevering.</p>
+  <div class="actions">
+    <a href="#kontakt" class="btn">Book 20 minutter <span>→</span></a>
+    <span class="micro">Databehandleravtale, eksportrett og navngitt lagringssted fra dag én.</span>
+  </div>
+
+  <div class="tl">
+    <div class="tl-head">
+      <span class="mono">Fig. 1 — Hvor dokumentasjonen befinner seg over tid</span>
+      <span class="mono">År 0 → 10</span>
+    </div>
+    <svg class="tl-fig" viewBox="0 0 900 208" role="img"
+         aria-label="Tidslinje: prosjektverktøyet gir tilgang til bildene fram til overlevering ved år null. Ansvarsperioden løper videre i flere år etter. Beta Art-arkivet er tilgjengelig gjennom hele perioden og videre til år ti.">
+      <line x1="40" y1="150" x2="860" y2="150" stroke="#E4E0D8" stroke-width="1"/>
+      <g font-family="'JetBrains Mono',monospace" font-size="10.5" fill="#85817A" letter-spacing="1">
+        <text x="40"  y="176">ÅR 0</text>
+        <text x="277" y="176">ÅR 3</text>
+        <text x="514" y="176">ÅR 5</text>
+        <text x="820" y="176">ÅR 10</text>
+      </g>
+      <g stroke="#B4B0A7" stroke-width="1">
+        <line x1="40" y1="144" x2="40" y2="156"/>
+        <line x1="286" y1="146" x2="286" y2="154"/>
+        <line x1="523" y1="146" x2="523" y2="154"/>
+        <line x1="860" y1="144" x2="860" y2="156"/>
+      </g>
+
+      <rect x="40" y="44" width="86" height="26" fill="#E4E0D8"/>
+      <text x="136" y="61" font-family="Inter,sans-serif" font-size="13" fill="#85817A">
+        Prosjektverktøy — tilgang opphører ved overlevering
+      </text>
+
+      <rect x="40" y="88" width="483" height="26" fill="#F3F0E9" stroke="#E4E0D8"/>
+      <text x="533" y="105" font-family="Inter,sans-serif" font-size="13" fill="#85817A">
+        Ansvars- og reklamasjonsperiode løper videre
+      </text>
+
+      <rect x="40" y="120" width="820" height="3" fill="#8B1A1A"/>
+      <text x="40" y="27" font-family="Inter,sans-serif" font-size="13" fill="#0F0F0F">
+        Beta Art-arkiv — tilgjengelig hele veien
+      </text>
+      <line x1="40" y1="33" x2="40" y2="120" stroke="#8B1A1A" stroke-width="1"/>
+      <line x1="860" y1="33" x2="860" y2="120" stroke="#8B1A1A" stroke-width="1"/>
+      <line x1="40" y1="33" x2="860" y2="33" stroke="#8B1A1A" stroke-width="1"/>
+    </svg>
+    <p class="tl-note">Frister varierer med kontraktsform og regelverk. Figuren viser
+    prinsippet: verktøyet som holder bildene under bygging, er sjelden det som holder
+    dem når spørsmålet kommer.</p>
+  </div>
+</header>
+
+<section class="sec wrap" id="problem">
+  <span class="rule-label">Problemet</span>
+  <h2>Om fire år ringer noen og spør hvordan det ble gjort.</h2>
+  <p class="body">Bildene ble tatt. De lå i prosjektverktøyet. Så ble prosjektet
+  avsluttet, lisensen utløp, og prosjektlederen byttet jobb.</p>
+  <p class="body">Ingen vet lenger hvor bildene er — eller om det som finnes, er
+  originalen. Dokumentasjon som ikke kan gjenfinnes, er i praksis dokumentasjon som
+  ikke ble tatt.</p>
+</section>
+
+<section class="sec wrap" id="slik">
+  <span class="rule-label">Slik arkiverer vi</span>
+  <h2>Lagring er enkelt. Gjenfinning er produktet.</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="n">Mottak</div>
+      <h3>Originalen, ikke en kopi av en kopi</h3>
+      <p>Sertifisert fotograf eller deres egne folk laster opp. Vi tar imot RAW og
+      originalfil, ikke komprimerte utsnitt hentet fra en meldingstråd.</p>
+    </div>
+    <div class="step">
+      <div class="n">Verifisering</div>
+      <h3>En signert rapport per oppdrag</h3>
+      <p>Hvem fotograferte, hvor, når og med hvilket utstyr. Rapporten sier også
+      uttrykkelig hva den ikke garanterer — det er hele poenget med den.</p>
+    </div>
+    <div class="step">
+      <div class="n">Gjenfinning</div>
+      <h3>Søkbart av den som overtar etter deg</h3>
+      <p>Ordnet etter prosjekt, dato, sted i bygget og fase. Fast navngiving som
+      holder selv om alle som var med, har sluttet.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec wrap" id="apenhet">
+  <span class="rule-label">Åpenhet</span>
+  <h2>Vi har ingen kundelogoer å vise fram ennå. Vi har dette.</h2>
+  <p class="body">Alt som normalt tar tre uker i en leverandørvurdering, ligger åpent.
+  Ingen skjema, ingen samtale først.</p>
+  <div class="docs">
+    <a class="doc" href="#kontakt">
+      <div><h3>Verifiseringsmetodikk</h3><p>Hva rozetten dekker — og hva den ikke dekker</p></div>
+      <span class="arw">↓</span>
+    </a>
+    <a class="doc" href="#kontakt">
+      <div><h3>Databehandleravtale</h3><p>Standardmal, klar for deres jurist</p></div>
+      <span class="arw">↓</span>
+    </a>
+    <a class="doc" href="#kontakt">
+      <div><h3>Lagring og tilgang</h3><p>Hvor dataene ligger, og hvem som kommer til</p></div>
+      <span class="arw">↓</span>
+    </a>
+    <a class="doc" href="#kontakt">
+      <div><h3>Kontinuitet</h3><p>Hva som skjer med arkivet hvis vi forsvinner</p></div>
+      <span class="arw">↓</span>
+    </a>
+  </div>
+</section>
+
+<section class="sec wrap" id="pris">
+  <span class="rule-label">Pris</span>
+  <h2>Én pris per prosjekt. Ikke enda et abonnement.</h2>
+  <p class="body">Prosjektkostnad, ikke driftskostnad — den kan bestilles fra
+  prosjektbudsjettet uten å opprette en ny fast utgiftspost.</p>
+  <div class="price">
+    <div class="pcell">
+      <div class="lbl">Etablering per prosjekt</div>
+      <div class="amt">15 000</div>
+      <p>Mottak, verifisering, ordning og oppbevaring i fem år. Ubegrenset antall
+      filer i prosjektet.</p>
+    </div>
+    <div class="pcell">
+      <div class="lbl">Forlengelse · år 6–10</div>
+      <div class="amt">2 500<span style="font-size:16px;color:var(--muted)"> /år</span></div>
+      <p>Per prosjekt. Sies opp når som helst, med full eksport av alt materiale.</p>
+    </div>
+    <div class="pcell">
+      <div class="lbl">Fotografering</div>
+      <div class="amt">11 000<span style="font-size:16px;color:var(--muted)"> /dag</span></div>
+      <p>Sertifisert fotograf, formidlet og kvalitetssikret av oss. Levert rett inn
+      i arkivet.</p>
+    </div>
+  </div>
+  <p class="body" style="margin-top:28px;font-size:14px;color:var(--muted)">
+  Alle priser eks. mva. Pilotfase — de tre første prosjektene leveres delvis manuelt,
+  og det sier vi høyt.</p>
+</section>
+
+<section class="contact wrap" id="kontakt">
+  <span class="rule-label">Neste steg</span>
+  <h2>Tjue minutter om hva som skjer med bildene deres.</h2>
+  <p class="body">Ingen presentasjon. Fire spørsmål om ett prosjekt dere nettopp har
+  avsluttet:</p>
+  <ul class="qs">
+    <li>Hvem bestilte fotograferingen?</li>
+    <li>Hvor ligger bildene i dag?</li>
+    <li>Hvem finner dem om fire år?</li>
+    <li>Hva skjer hvis noen bestrider hvordan noe ble utført?</li>
+  </ul>
+  <div class="actions">
+    <a href="mailto:post@betaart.no?subject=20%20minutter%20om%20prosjektdokumentasjon" class="btn">Send en e-post <span>→</span></a>
+    <span class="micro">Vi svarer samme dag. Går det ikke, sier vi det med én gang.</span>
+  </div>
+</section>
+
+<section class="photog">
+  <div class="wrap">
+    <span class="rule-label">For fotografer</span>
+    <h2>Sertifiserte fotografer får oppdrag gjennom Beta Art.</h2>
+    <p>Ingen avgift, ingen eksklusivitet. Du beholder opphavsretten til alt du
+    leverer, og filene dine følger deg ut igjen hvis du slutter.</p>
+    <a href="mailto:post@betaart.no?subject=S%C3%B8knad%20om%20sertifisering" class="link">Søk om sertifisering →</a>
+  </div>
+</section>
+
+<footer class="foot wrap">
+  <div class="foot-in">
+    <p>Beta Art — uavhengig arkiv for prosjektdokumentasjon</p>
+    <p>Org.nr. under registrering · post@betaart.no</p>
+  </div>
+</footer>
+
+</body>
+</html>

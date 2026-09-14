@@ -1,0 +1,127 @@
+<svg viewBox="0 0 800 1000" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bgVignette" cx="50%" cy="38%" r="65%">
+      <stop offset="0%" stop-color="#131519"/>
+      <stop offset="45%" stop-color="#0a0b0d"/>
+      <stop offset="100%" stop-color="#050505"/>
+    </radialGradient>
+
+    <linearGradient id="chromeRing" x1="10%" y1="0%" x2="90%" y2="100%">
+      <stop offset="0%" stop-color="#f4f6f8"/>
+      <stop offset="18%" stop-color="#ffffff"/>
+      <stop offset="34%" stop-color="#8f9aa6"/>
+      <stop offset="50%" stop-color="#33465e"/>
+      <stop offset="66%" stop-color="#aeb8c2"/>
+      <stop offset="82%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#c7ccd2"/>
+    </linearGradient>
+
+    <linearGradient id="ringInner" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2b3d52" stop-opacity="0.55"/>
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.05"/>
+      <stop offset="100%" stop-color="#1c2836" stop-opacity="0.55"/>
+    </linearGradient>
+
+    <linearGradient id="chromeVert" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#e8ebee"/>
+      <stop offset="22%" stop-color="#ffffff"/>
+      <stop offset="45%" stop-color="#98a3af"/>
+      <stop offset="58%" stop-color="#4a5c72"/>
+      <stop offset="75%" stop-color="#c7ccd2"/>
+      <stop offset="100%" stop-color="#f2f4f6"/>
+    </linearGradient>
+
+    <linearGradient id="chromeLobeTop" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="28%" stop-color="#dfe4e8"/>
+      <stop offset="50%" stop-color="#7f8fa0"/>
+      <stop offset="66%" stop-color="#28405e"/>
+      <stop offset="82%" stop-color="#95a6b8"/>
+      <stop offset="100%" stop-color="#f6f8fa"/>
+    </linearGradient>
+
+    <linearGradient id="chromeLobeBottom" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="28%" stop-color="#dfe4e8"/>
+      <stop offset="50%" stop-color="#7f8fa0"/>
+      <stop offset="66%" stop-color="#28405e"/>
+      <stop offset="82%" stop-color="#95a6b8"/>
+      <stop offset="100%" stop-color="#f6f8fa"/>
+    </linearGradient>
+
+    <linearGradient id="textChrome" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="50%" stop-color="#c6cdd4"/>
+      <stop offset="100%" stop-color="#ffffff"/>
+    </linearGradient>
+
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect x="0" y="0" width="800" height="1000" fill="url(#bgVignette)"/>
+
+  <!-- Orbital ring -->
+  <circle cx="400" cy="370" r="272" fill="none" stroke="url(#chromeRing)" stroke-width="4.5"/>
+  <circle cx="400" cy="370" r="264" fill="none" stroke="url(#ringInner)" stroke-width="1"/>
+  <circle cx="400" cy="370" r="281" fill="none" stroke="#ffffff" stroke-opacity="0.08" stroke-width="1"/>
+
+  <!-- fine orbital tick marks (precision detail) -->
+  <g stroke="url(#chromeRing)" stroke-width="1.4" opacity="0.55">
+    <line x1="400" y1="94" x2="400" y2="108"/>
+    <line x1="400" y1="632" x2="400" y2="646"/>
+    <line x1="124" y1="370" x2="138" y2="370"/>
+    <line x1="662" y1="370" x2="676" y2="370"/>
+  </g>
+
+  <!-- Monogram: B with subtle A negative space -->
+  <g filter="url(#softGlow)">
+    <!-- Spine of B -->
+    <rect x="366" y="228" width="42" height="284" rx="10" fill="url(#chromeVert)"/>
+
+    <!-- Top lobe -->
+    <path d="M 404 228
+             C 470 228, 528 254, 528 306
+             C 528 348, 486 370, 424 372
+             L 404 372 Z"
+          fill="url(#chromeLobeTop)"/>
+
+    <!-- Bottom lobe -->
+    <path d="M 404 368
+             C 470 368, 528 394, 528 446
+             C 528 488, 486 512, 424 512
+             L 404 512 Z"
+          fill="url(#chromeLobeBottom)"/>
+
+    <!-- Negative-space counters: subtle A peaks pointing inward toward the shared vertex -->
+    <path d="M 424 250 L 494 306 L 424 306 Z" fill="#0a0b0d"/>
+    <path d="M 424 490 L 494 434 L 424 434 Z" fill="#0a0b0d"/>
+
+    <!-- crossbar hint linking the two triangular counters, echoing A's bar -->
+    <rect x="424" y="366" width="70" height="8" rx="3" fill="url(#chromeRing)" opacity="0.9"/>
+
+    <!-- razor edge accents -->
+    <path d="M 404 228 L 404 512" stroke="#ffffff" stroke-width="1" opacity="0.35"/>
+    <path d="M 424 306 L 494 306" stroke="#3a5478" stroke-width="1.2" opacity="0.7"/>
+    <path d="M 424 434 L 494 434" stroke="#3a5478" stroke-width="1.2" opacity="0.7"/>
+  </g>
+
+  <!-- Wordmark -->
+  <text x="400" y="700" text-anchor="middle"
+        font-family="'Futura','Century Gothic','Avenir Next',sans-serif"
+        font-size="54" letter-spacing="14"
+        fill="url(#textChrome)" font-weight="600">BETA ART</text>
+
+  <!-- Tagline -->
+  <text x="400" y="742" text-anchor="middle"
+        font-family="'Futura','Century Gothic','Avenir Next',sans-serif"
+        font-size="16" letter-spacing="7"
+        fill="#7fa8d9" font-weight="500">TRUST EVERY IMAGE</text>
+
+</svg>

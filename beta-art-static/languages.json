@@ -1,0 +1,25 @@
+{
+  "_note": "Which languages a person who speaks them has actually read. The human-approved mark on every page claims a person has seen what is published; section 5 of the legal notice states where that claim stops, and it states it from this file rather than from a sentence somebody has to remember to edit. Run tools/languages.py --write after changing anything here.",
+
+  "_statuses": {
+    "source": "The language the site is written and edited in. Not a translation.",
+    "machine": "Written by a machine. No native speaker has read it.",
+    "reviewed": "A named person who speaks it has read it, on a stated date. Both fields are required — a review nobody signed is not a review."
+  },
+
+  "languages": [
+    { "code": "en", "name": "English",    "endonym": "English",   "status": "source",  "reviewer": null, "date": null },
+    { "code": "no", "name": "Norwegian",  "endonym": "Norsk",     "status": "machine", "reviewer": null, "date": null,
+      "queue": 1, "scope": "plain-language review", "packet": "docs/11-korrektur-norsk.md" },
+    { "code": "tr", "name": "Turkish",    "endonym": "Türkçe",    "status": "machine", "reviewer": null, "date": null, "queue": 2 },
+    { "code": "es", "name": "Spanish",    "endonym": "Español",   "status": "machine", "reviewer": null, "date": null },
+    { "code": "fr", "name": "French",     "endonym": "Français",  "status": "machine", "reviewer": null, "date": null },
+    { "code": "de", "name": "German",     "endonym": "Deutsch",   "status": "machine", "reviewer": null, "date": null },
+    { "code": "pt", "name": "Portuguese", "endonym": "Português", "status": "machine", "reviewer": null, "date": null },
+    { "code": "ru", "name": "Russian",    "endonym": "Русский",   "status": "machine", "reviewer": null, "date": null },
+    { "code": "ar", "name": "Arabic",     "endonym": "العربية",   "status": "machine", "reviewer": null, "date": null },
+    { "code": "zh", "name": "Chinese",    "endonym": "中文",       "status": "machine", "reviewer": null, "date": null },
+    { "code": "ja", "name": "Japanese",   "endonym": "日本語",      "status": "machine", "reviewer": null, "date": null },
+    { "code": "hi", "name": "Hindi",      "endonym": "हिन्दी",      "status": "machine", "reviewer": null, "date": null }
+  ]
+}

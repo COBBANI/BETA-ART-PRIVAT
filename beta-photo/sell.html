@@ -1,0 +1,792 @@
+<!doctype html>
+<html lang="nb" data-lang="nb">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Selg fotografiene dine gjennom BETA PHOTO. Du beholder 70 % av hvert salg — vi tar oss av produksjon, verifisering og levering."
+    />
+    <meta name="theme-color" content="#141411" />
+    <meta property="og:title" content="Selg med BETA PHOTO – 70 % til fotografen" />
+    <meta property="og:description" content="Begrenset opplag. Verifisert med BETA-ID. Du beholder 70 % av salget." />
+    <meta property="og:type" content="website" />
+    <title>Selg med BETA PHOTO</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      /* ── Language picker ──────────────────────────────────────────── */
+      .lang-bar {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        padding: 0.75rem 2rem;
+        border-bottom: 1px solid var(--line);
+        background: var(--surface);
+      }
+      .lang-bar button {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.68rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 0.3rem 0.65rem;
+        border: 1px solid var(--line);
+        border-radius: 3px;
+        background: transparent;
+        color: var(--muted);
+        cursor: pointer;
+        transition: color 0.15s, border-color 0.15s, background 0.15s;
+      }
+      .lang-bar button:hover,
+      .lang-bar button[aria-pressed="true"] {
+        color: var(--text);
+        border-color: var(--seal);
+        background: var(--surface-2);
+      }
+
+      /* ── Sell hero ────────────────────────────────────────────────── */
+      .sell-hero {
+        padding: 5rem 2rem 4rem;
+        max-width: 720px;
+        margin: 0 auto;
+      }
+      .sell-hero .eyebrow { margin-bottom: 1.5rem; }
+      .sell-hero h1 {
+        font-family: 'Fraunces', Georgia, serif;
+        font-weight: 300;
+        font-size: clamp(2.4rem, 5vw, 3.8rem);
+        line-height: 1.05;
+        letter-spacing: -0.02em;
+        text-wrap: balance;
+        margin-bottom: 1.25rem;
+      }
+      .sell-hero h1 em { font-style: italic; color: var(--warm); }
+      .sell-hero .lead {
+        font-size: 1.05rem;
+        color: var(--text-dim);
+        max-width: 54ch;
+        line-height: 1.75;
+        margin-bottom: 2.5rem;
+      }
+
+      /* ── Split card ───────────────────────────────────────────────── */
+      .split-card {
+        display: flex;
+        align-items: stretch;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        overflow: hidden;
+        margin-bottom: 2rem;
+        background: var(--surface);
+      }
+      .split-side {
+        flex: 1;
+        padding: 2rem 1.75rem;
+        text-align: center;
+      }
+      .split-side + .split-side { border-inline-start: 1px solid var(--line); }
+      .split-pct {
+        font-family: 'Fraunces', Georgia, serif;
+        font-weight: 300;
+        font-size: clamp(3rem, 7vw, 5rem);
+        line-height: 1;
+        margin-bottom: 0.5rem;
+      }
+      .split-pct.you { color: var(--warm); }
+      .split-pct.us  { color: var(--muted); }
+      .split-label {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.68rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .split-note {
+        font-size: 0.82rem;
+        color: var(--text-dim);
+        margin-top: 0.6rem;
+        line-height: 1.55;
+      }
+
+      /* ── Sections ─────────────────────────────────────────────────── */
+      .sell-section {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 3rem 2rem;
+        border-top: 1px solid var(--line);
+      }
+      .sell-section h2 {
+        font-family: 'Fraunces', Georgia, serif;
+        font-weight: 300;
+        font-size: clamp(1.5rem, 3vw, 2.1rem);
+        line-height: 1.2;
+        letter-spacing: -0.01em;
+        margin-bottom: 1.25rem;
+        text-wrap: balance;
+      }
+      .sell-section p {
+        color: var(--text-dim);
+        line-height: 1.75;
+        max-width: 58ch;
+        margin-bottom: 1rem;
+      }
+
+      /* ── Steps ────────────────────────────────────────────────────── */
+      .steps {
+        display: grid;
+        gap: 1.25rem;
+        margin-top: 1.75rem;
+      }
+      .step {
+        display: grid;
+        grid-template-columns: 2.5rem 1fr;
+        gap: 1rem;
+        align-items: start;
+      }
+      .step-num {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.7rem;
+        letter-spacing: 0.1em;
+        color: var(--seal);
+        padding-top: 0.25rem;
+      }
+      .step h3 {
+        font-size: 0.95rem;
+        font-weight: 500;
+        margin-bottom: 0.3rem;
+      }
+      .step p {
+        font-size: 0.88rem;
+        color: var(--text-dim);
+        line-height: 1.6;
+        margin: 0;
+      }
+
+      /* ── Earn table ───────────────────────────────────────────────── */
+      .earn-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1.5rem;
+        font-size: 0.9rem;
+      }
+      .earn-table th, .earn-table td {
+        padding: 0.75rem 1rem;
+        border: 1px solid var(--line);
+        text-align: start;
+      }
+      .earn-table th {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.68rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--muted);
+        background: var(--surface);
+        font-weight: 400;
+      }
+      .earn-table td:last-child {
+        font-family: 'JetBrains Mono', monospace;
+        color: var(--warm);
+        font-variant-numeric: tabular-nums;
+      }
+      .earn-table tbody tr:hover td { background: var(--surface-2); }
+
+      /* ── CTA ──────────────────────────────────────────────────────── */
+      .sell-cta {
+        text-align: center;
+        padding: 4rem 2rem;
+        border-top: 1px solid var(--line);
+        max-width: 720px;
+        margin: 0 auto;
+      }
+      .sell-cta h2 {
+        font-family: 'Fraunces', Georgia, serif;
+        font-weight: 300;
+        font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+        line-height: 1.15;
+        letter-spacing: -0.015em;
+        text-wrap: balance;
+        margin-bottom: 0.75rem;
+      }
+      .sell-cta p {
+        color: var(--text-dim);
+        font-size: 0.95rem;
+        max-width: 46ch;
+        margin: 0 auto 2rem;
+        line-height: 1.7;
+      }
+
+      /* ── Lang-toggled content ─────────────────────────────────────── */
+      [data-lang-content] { display: none; }
+      [data-lang-content].is-active { display: block; }
+
+      /* ── Behavior nudge (gallery context for returning visitors) ──── */
+      .sell-nudge {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.7rem;
+        letter-spacing: 0.05em;
+        color: var(--ok);
+        line-height: 1.6;
+        margin-bottom: 1.25rem;
+      }
+    </style>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#sell-main">Skip to content</a>
+
+    <header class="site-header" data-header>
+      <a class="brand" href="index.html" aria-label="BETA PHOTO – tilbake til forsiden">
+        <span class="brand-mark" aria-hidden="true">B</span>
+        <span>BETA PHOTO</span>
+      </a>
+      <nav class="desktop-nav" aria-label="Meny">
+        <a href="index.html#galleri" data-nav-gallery>Galleri</a>
+        <a href="index.html#verifisering" data-nav-verify>Verifisering</a>
+        <a href="sell.html" aria-current="page" data-nav-sell>Selg med oss</a>
+      </nav>
+    </header>
+
+    <!-- Language bar -->
+    <div class="lang-bar" role="toolbar" aria-label="Velg språk">
+      <button type="button" aria-pressed="true" data-lang-btn="nb">NO</button>
+      <button type="button" aria-pressed="false" data-lang-btn="en">EN</button>
+      <button type="button" aria-pressed="false" data-lang-btn="de">DE</button>
+      <button type="button" aria-pressed="false" data-lang-btn="fr">FR</button>
+      <button type="button" aria-pressed="false" data-lang-btn="es">ES</button>
+      <button type="button" aria-pressed="false" data-lang-btn="nl">NL</button>
+      <button type="button" aria-pressed="false" data-lang-btn="da">DA</button>
+      <button type="button" aria-pressed="false" data-lang-btn="sv">SV</button>
+    </div>
+
+    <main id="sell-main">
+
+      <!-- ══ NORWEGIAN ═══════════════════════════════════════════════════ -->
+      <div data-lang-content="nb" class="is-active">
+
+        <div class="sell-hero">
+          <p class="eyebrow">For fotografer · søknadsbasert</p>
+          <p class="sell-nudge" data-sell-nudge="nb" hidden></p>
+          <h1>Du skaper.<br /><em>Vi leverer.</em></h1>
+          <p class="lead">BETA PHOTO selger fotografiene dine som signerte og nummererte begrensede opplag — med BETA-ID-verifisering, arkivkvalitetstrykk og direkte levering til kjøperen. Du beholder 70 % av hvert salg.</p>
+
+          <div class="split-card">
+            <div class="split-side">
+              <div class="split-pct you">70 %</div>
+              <div class="split-label">Til deg</div>
+              <p class="split-note">Utbetales månedlig per bekreftet salg, fratrukket betalingsgebyr.</p>
+            </div>
+            <div class="split-side">
+              <div class="split-pct us">30 %</div>
+              <div class="split-label">BETA PHOTO</div>
+              <p class="split-note">Dekker produksjon, trykk, BETA-ID, innramming, emballasje og levering.</p>
+            </div>
+          </div>
+        </div>
+
+        <section class="sell-section">
+          <h2>Slik fungerer det</h2>
+          <div class="steps">
+            <div class="step"><div class="step-num">01</div><div><h3>Søk</h3><p>Send tre til fem av dine sterkeste fotografier. Vi vurderer kolleksjonsegnethet, teknisk kvalitet og BETA-ID-kompatibilitet.</p></div></div>
+            <div class="step"><div class="step-num">02</div><div><h3>Godkjenning</h3><p>Godkjente fotografier registreres i BETA-ID-systemet med opplagsstørrelse (maks 20 per bilde), ekthetssertifikat og din signatur.</p></div></div>
+            <div class="step"><div class="step-num">03</div><div><h3>Salg</h3><p>Fotografiene dine publiseres i galleriet. Kjøpere velger format og betaler — vi håndterer kasse, betalingsbehandling og faktura.</p></div></div>
+            <div class="step"><div class="step-num">04</div><div><h3>Produksjon og levering</h3><p>Vi produserer arkivtrykket, monterer BETA-ID-sertifikatet og sender til kjøperen. Du gjør ingenting etter signeringen.</p></div></div>
+            <div class="step"><div class="step-num">05</div><div><h3>Utbetaling</h3><p>Månedlig oppgjør: 70 % av nettosalget overføres direkte til din bankkonto, med detaljert salgsrapport.</p></div></div>
+          </div>
+        </section>
+
+        <section class="sell-section">
+          <h2>Eksempel på inntekt</h2>
+          <p>Ved 40 × 60 cm til 3 490 kr og maks opplag på 20 begrensede utgaver:</p>
+          <div style="overflow-x:auto">
+            <table class="earn-table">
+              <thead><tr><th>Solgte bilder</th><th>Salgspris pr. stk.</th><th>Din inntekt (70 %)</th></tr></thead>
+              <tbody>
+                <tr><td>1</td><td>3 490 kr</td><td>2 443 kr</td></tr>
+                <tr><td>5</td><td>3 490 kr</td><td>12 215 kr</td></tr>
+                <tr><td>20 (fullt opplag)</td><td>3 490 kr</td><td>48 860 kr</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="margin-top:1rem;font-size:0.82rem;">Tallene er illustrative og før betalingsgebyr (ca. 1,5–2 %). Endelig utbetaling fremgår av salgsrapporten.</p>
+        </section>
+
+        <div class="sell-cta">
+          <h2>Klar til å sende<br />inn søknaden?</h2>
+          <p>Søknader behandles løpende. Svar innen fem virkedager.</p>
+          <a class="button button-dark" href="index.html#kontakt">Send søknad →</a>
+        </div>
+
+      </div><!-- /nb -->
+
+      <!-- ══ ENGLISH ═════════════════════════════════════════════════════ -->
+      <div data-lang-content="en">
+
+        <div class="sell-hero">
+          <p class="eyebrow">For photographers · application-based</p>
+          <p class="sell-nudge" data-sell-nudge="en" hidden></p>
+          <h1>You create.<br /><em>We deliver.</em></h1>
+          <p class="lead">BETA PHOTO sells your photographs as signed, numbered limited editions — with BETA-ID verification, archival-quality printing, and direct delivery to the buyer. You keep 70 % of every sale.</p>
+
+          <div class="split-card">
+            <div class="split-side">
+              <div class="split-pct you">70 %</div>
+              <div class="split-label">To you</div>
+              <p class="split-note">Paid monthly per confirmed sale, net of payment processing fees.</p>
+            </div>
+            <div class="split-side">
+              <div class="split-pct us">30 %</div>
+              <div class="split-label">BETA PHOTO</div>
+              <p class="split-note">Covers production, printing, BETA-ID issuance, framing options, packaging and delivery.</p>
+            </div>
+          </div>
+        </div>
+
+        <section class="sell-section">
+          <h2>How it works</h2>
+          <div class="steps">
+            <div class="step"><div class="step-num">01</div><div><h3>Apply</h3><p>Submit three to five of your strongest photographs. We assess collection fit, technical quality and BETA-ID compatibility.</p></div></div>
+            <div class="step"><div class="step-num">02</div><div><h3>Approval</h3><p>Approved photographs are registered in the BETA-ID system with edition size (max 20 per image), certificate of authenticity and your signature.</p></div></div>
+            <div class="step"><div class="step-num">03</div><div><h3>Sales</h3><p>Your photographs go live in the gallery. Buyers choose format and pay — we handle checkout, payment processing and invoicing.</p></div></div>
+            <div class="step"><div class="step-num">04</div><div><h3>Production and delivery</h3><p>We produce the archival print, attach the BETA-ID certificate and ship to the buyer. After signing, nothing more is required from you.</p></div></div>
+            <div class="step"><div class="step-num">05</div><div><h3>Payout</h3><p>Monthly settlement: 70 % of net sales transferred directly to your bank account, with a detailed sales report.</p></div></div>
+          </div>
+        </section>
+
+        <section class="sell-section">
+          <h2>Earnings example</h2>
+          <p>At 40 × 60 cm for NOK 3,490 and a maximum edition of 20:</p>
+          <div style="overflow-x:auto">
+            <table class="earn-table">
+              <thead><tr><th>Prints sold</th><th>Price per print</th><th>Your earnings (70 %)</th></tr></thead>
+              <tbody>
+                <tr><td>1</td><td>NOK 3,490</td><td>NOK 2,443</td></tr>
+                <tr><td>5</td><td>NOK 3,490</td><td>NOK 12,215</td></tr>
+                <tr><td>20 (full edition)</td><td>NOK 3,490</td><td>NOK 48,860</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="margin-top:1rem;font-size:0.82rem;">Figures are illustrative and before payment processing fees (approx. 1.5–2 %). Final payout is shown in the sales report.</p>
+        </section>
+
+        <div class="sell-cta">
+          <h2>Ready to apply?</h2>
+          <p>Applications are reviewed on a rolling basis. Response within five business days.</p>
+          <a class="button button-dark" href="index.html#kontakt">Submit application →</a>
+        </div>
+
+      </div><!-- /en -->
+
+      <!-- ══ GERMAN ═══════════════════════════════════════════════════════ -->
+      <div data-lang-content="de">
+
+        <div class="sell-hero">
+          <p class="eyebrow">Für Fotografen · Bewerbungsbasiert</p>
+          <p class="sell-nudge" data-sell-nudge="de" hidden></p>
+          <h1>Du erschaffst.<br /><em>Wir liefern.</em></h1>
+          <p class="lead">BETA PHOTO verkauft deine Fotografien als signierte, nummerierte Limitierungen — mit BETA-ID-Verifizierung, Archivdruck und Direktlieferung an den Käufer. Du behältst 70 % jedes Verkaufs.</p>
+
+          <div class="split-card">
+            <div class="split-side">
+              <div class="split-pct you">70 %</div>
+              <div class="split-label">Für dich</div>
+              <p class="split-note">Monatliche Auszahlung pro bestätigtem Verkauf, nach Abzug der Zahlungsgebühren.</p>
+            </div>
+            <div class="split-side">
+              <div class="split-pct us">30 %</div>
+              <div class="split-label">BETA PHOTO</div>
+              <p class="split-note">Deckt Produktion, Druck, BETA-ID, Rahmung, Verpackung und Versand ab.</p>
+            </div>
+          </div>
+        </div>
+
+        <section class="sell-section">
+          <h2>So funktioniert es</h2>
+          <div class="steps">
+            <div class="step"><div class="step-num">01</div><div><h3>Bewerben</h3><p>Reiche drei bis fünf deiner stärksten Fotos ein. Wir prüfen Kollektionseignung, technische Qualität und BETA-ID-Kompatibilität.</p></div></div>
+            <div class="step"><div class="step-num">02</div><div><h3>Zulassung</h3><p>Zugelassene Fotos werden im BETA-ID-System registriert — mit Auflagengröße (max. 20 pro Bild), Echtheitszertifikat und deiner Signatur.</p></div></div>
+            <div class="step"><div class="step-num">03</div><div><h3>Verkauf</h3><p>Deine Fotos erscheinen in der Galerie. Käufer wählen Format und zahlen — wir übernehmen Kasse, Zahlungsabwicklung und Rechnungsstellung.</p></div></div>
+            <div class="step"><div class="step-num">04</div><div><h3>Produktion und Lieferung</h3><p>Wir erstellen den Archivdruck, befestigen das BETA-ID-Zertifikat und versenden an den Käufer. Nach der Signierung ist nichts weiter von dir nötig.</p></div></div>
+            <div class="step"><div class="step-num">05</div><div><h3>Auszahlung</h3><p>Monatliche Abrechnung: 70 % des Nettoumsatzes werden direkt auf dein Bankkonto überwiesen, mit detailliertem Verkaufsbericht.</p></div></div>
+          </div>
+        </section>
+
+        <section class="sell-section">
+          <h2>Einnahmenbeispiel</h2>
+          <p>Bei 40 × 60 cm für NOK 3.490 und einer maximalen Auflage von 20:</p>
+          <div style="overflow-x:auto">
+            <table class="earn-table">
+              <thead><tr><th>Verkaufte Drucke</th><th>Preis pro Stück</th><th>Deine Einnahmen (70 %)</th></tr></thead>
+              <tbody>
+                <tr><td>1</td><td>3.490 NOK</td><td>2.443 NOK</td></tr>
+                <tr><td>5</td><td>3.490 NOK</td><td>12.215 NOK</td></tr>
+                <tr><td>20 (volle Auflage)</td><td>3.490 NOK</td><td>48.860 NOK</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="margin-top:1rem;font-size:0.82rem;">Zahlen sind illustrativ und vor Zahlungsgebühren (ca. 1,5–2 %). Die endgültige Auszahlung ist im Verkaufsbericht ersichtlich.</p>
+        </section>
+
+        <div class="sell-cta">
+          <h2>Bereit für die Bewerbung?</h2>
+          <p>Bewerbungen werden fortlaufend bearbeitet. Antwort innerhalb von fünf Werktagen.</p>
+          <a class="button button-dark" href="index.html#kontakt">Bewerbung einreichen →</a>
+        </div>
+
+      </div><!-- /de -->
+
+      <!-- ══ FRENCH ════════════════════════════════════════════════════════ -->
+      <div data-lang-content="fr">
+
+        <div class="sell-hero">
+          <p class="eyebrow">Pour les photographes · sur candidature</p>
+          <p class="sell-nudge" data-sell-nudge="fr" hidden></p>
+          <h1>Vous créez.<br /><em>Nous livrons.</em></h1>
+          <p class="lead">BETA PHOTO vend vos photographies en éditions limitées, signées et numérotées — avec vérification BETA-ID, impression qualité archives et livraison directe à l'acheteur. Vous conservez 70 % de chaque vente.</p>
+
+          <div class="split-card">
+            <div class="split-side">
+              <div class="split-pct you">70 %</div>
+              <div class="split-label">Pour vous</div>
+              <p class="split-note">Versé mensuellement par vente confirmée, déduction faite des frais de paiement.</p>
+            </div>
+            <div class="split-side">
+              <div class="split-pct us">30 %</div>
+              <div class="split-label">BETA PHOTO</div>
+              <p class="split-note">Couvre production, impression, BETA-ID, encadrement, emballage et livraison.</p>
+            </div>
+          </div>
+        </div>
+
+        <section class="sell-section">
+          <h2>Comment ça fonctionne</h2>
+          <div class="steps">
+            <div class="step"><div class="step-num">01</div><div><h3>Candidater</h3><p>Soumettez trois à cinq de vos meilleures photographies. Nous évaluons leur adéquation à la collection, leur qualité technique et leur compatibilité BETA-ID.</p></div></div>
+            <div class="step"><div class="step-num">02</div><div><h3>Validation</h3><p>Les photos approuvées sont enregistrées dans le système BETA-ID avec le tirage (max. 20 par image), un certificat d'authenticité et votre signature.</p></div></div>
+            <div class="step"><div class="step-num">03</div><div><h3>Ventes</h3><p>Vos photos sont publiées dans la galerie. Les acheteurs choisissent le format et paient — nous gérons le paiement et la facturation.</p></div></div>
+            <div class="step"><div class="step-num">04</div><div><h3>Production et livraison</h3><p>Nous produisons l'impression d'archives, apposons le certificat BETA-ID et expédions à l'acheteur. Après la signature, rien de plus n'est requis de votre part.</p></div></div>
+            <div class="step"><div class="step-num">05</div><div><h3>Règlement</h3><p>Règlement mensuel : 70 % du chiffre d'affaires net transféré directement sur votre compte bancaire, avec un rapport de vente détaillé.</p></div></div>
+          </div>
+        </section>
+
+        <section class="sell-section">
+          <h2>Exemple de revenus</h2>
+          <p>Pour un format 40 × 60 cm à 3 490 NOK et un tirage maximum de 20 :</p>
+          <div style="overflow-x:auto">
+            <table class="earn-table">
+              <thead><tr><th>Tirages vendus</th><th>Prix unitaire</th><th>Vos revenus (70 %)</th></tr></thead>
+              <tbody>
+                <tr><td>1</td><td>3 490 NOK</td><td>2 443 NOK</td></tr>
+                <tr><td>5</td><td>3 490 NOK</td><td>12 215 NOK</td></tr>
+                <tr><td>20 (tirage complet)</td><td>3 490 NOK</td><td>48 860 NOK</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="margin-top:1rem;font-size:0.82rem;">Chiffres à titre indicatif, avant frais de paiement (env. 1,5–2 %). Le règlement définitif est détaillé dans le rapport de vente.</p>
+        </section>
+
+        <div class="sell-cta">
+          <h2>Prêt à candidater ?</h2>
+          <p>Les candidatures sont examinées en continu. Réponse sous cinq jours ouvrés.</p>
+          <a class="button button-dark" href="index.html#kontakt">Déposer ma candidature →</a>
+        </div>
+
+      </div><!-- /fr -->
+
+      <!-- ══ SPANISH ═══════════════════════════════════════════════════════ -->
+      <div data-lang-content="es">
+
+        <div class="sell-hero">
+          <p class="eyebrow">Para fotógrafos · por solicitud</p>
+          <p class="sell-nudge" data-sell-nudge="es" hidden></p>
+          <h1>Tú creas.<br /><em>Nosotros entregamos.</em></h1>
+          <p class="lead">BETA PHOTO vende tus fotografías como ediciones limitadas firmadas y numeradas — con verificación BETA-ID, impresión de calidad archivo y entrega directa al comprador. Te quedas con el 70 % de cada venta.</p>
+
+          <div class="split-card">
+            <div class="split-side">
+              <div class="split-pct you">70 %</div>
+              <div class="split-label">Para ti</div>
+              <p class="split-note">Pago mensual por venta confirmada, deducidas las comisiones de pago.</p>
+            </div>
+            <div class="split-side">
+              <div class="split-pct us">30 %</div>
+              <div class="split-label">BETA PHOTO</div>
+              <p class="split-note">Cubre producción, impresión, BETA-ID, enmarcado, embalaje y envío.</p>
+            </div>
+          </div>
+        </div>
+
+        <section class="sell-section">
+          <h2>Cómo funciona</h2>
+          <div class="steps">
+            <div class="step"><div class="step-num">01</div><div><h3>Solicitar</h3><p>Envía tres a cinco de tus mejores fotografías. Evaluamos la idoneidad para la colección, la calidad técnica y la compatibilidad con BETA-ID.</p></div></div>
+            <div class="step"><div class="step-num">02</div><div><h3>Aprobación</h3><p>Las fotos aprobadas se registran en el sistema BETA-ID con el tamaño de edición (máx. 20 por imagen), certificado de autenticidad y tu firma.</p></div></div>
+            <div class="step"><div class="step-num">03</div><div><h3>Ventas</h3><p>Tus fotografías se publican en la galería. Los compradores eligen el formato y pagan — nosotros gestionamos el pago y la facturación.</p></div></div>
+            <div class="step"><div class="step-num">04</div><div><h3>Producción y entrega</h3><p>Producimos la impresión de archivo, adjuntamos el certificado BETA-ID y enviamos al comprador. Después de firmar, no se requiere nada más de tu parte.</p></div></div>
+            <div class="step"><div class="step-num">05</div><div><h3>Pago</h3><p>Liquidación mensual: el 70 % de las ventas netas se transfiere directamente a tu cuenta bancaria con un informe de ventas detallado.</p></div></div>
+          </div>
+        </section>
+
+        <section class="sell-section">
+          <h2>Ejemplo de ingresos</h2>
+          <p>Con formato 40 × 60 cm a 3.490 NOK y edición máxima de 20:</p>
+          <div style="overflow-x:auto">
+            <table class="earn-table">
+              <thead><tr><th>Copias vendidas</th><th>Precio por copia</th><th>Tus ingresos (70 %)</th></tr></thead>
+              <tbody>
+                <tr><td>1</td><td>3.490 NOK</td><td>2.443 NOK</td></tr>
+                <tr><td>5</td><td>3.490 NOK</td><td>12.215 NOK</td></tr>
+                <tr><td>20 (edición completa)</td><td>3.490 NOK</td><td>48.860 NOK</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="margin-top:1rem;font-size:0.82rem;">Cifras ilustrativas antes de comisiones de pago (aprox. 1,5–2 %). El pago final se detalla en el informe de ventas.</p>
+        </section>
+
+        <div class="sell-cta">
+          <h2>¿Listo para solicitar?</h2>
+          <p>Las solicitudes se revisan de forma continua. Respuesta en cinco días hábiles.</p>
+          <a class="button button-dark" href="index.html#kontakt">Enviar solicitud →</a>
+        </div>
+
+      </div><!-- /es -->
+
+      <!-- ══ DUTCH ══════════════════════════════════════════════════════════ -->
+      <div data-lang-content="nl">
+
+        <div class="sell-hero">
+          <p class="eyebrow">Voor fotografen · op aanvraag</p>
+          <p class="sell-nudge" data-sell-nudge="nl" hidden></p>
+          <h1>Jij maakt.<br /><em>Wij leveren.</em></h1>
+          <p class="lead">BETA PHOTO verkoopt jouw foto's als gesigneerde, genummerde beperkte oplages — met BETA-ID-verificatie, archivale druk en rechtstreekse levering aan de koper. Jij houdt 70 % van elke verkoop.</p>
+
+          <div class="split-card">
+            <div class="split-side">
+              <div class="split-pct you">70 %</div>
+              <div class="split-label">Voor jou</div>
+              <p class="split-note">Maandelijks uitbetaald per bevestigde verkoop, na aftrek van betalingskosten.</p>
+            </div>
+            <div class="split-side">
+              <div class="split-pct us">30 %</div>
+              <div class="split-label">BETA PHOTO</div>
+              <p class="split-note">Dekt productie, druk, BETA-ID, inlijsting, verpakking en verzending.</p>
+            </div>
+          </div>
+        </div>
+
+        <section class="sell-section">
+          <h2>Hoe het werkt</h2>
+          <div class="steps">
+            <div class="step"><div class="step-num">01</div><div><h3>Aanmelden</h3><p>Stuur drie tot vijf van je sterkste foto's in. Wij beoordelen collectiegeschiktheid, technische kwaliteit en BETA-ID-compatibiliteit.</p></div></div>
+            <div class="step"><div class="step-num">02</div><div><h3>Goedkeuring</h3><p>Goedgekeurde foto's worden geregistreerd in het BETA-ID-systeem met oplaggrootte (max. 20 per afbeelding), echtheidscertificaat en jouw handtekening.</p></div></div>
+            <div class="step"><div class="step-num">03</div><div><h3>Verkoop</h3><p>Jouw foto's verschijnen in de galerie. Kopers kiezen formaat en betalen — wij regelen de kassa, betalingsverwerking en facturering.</p></div></div>
+            <div class="step"><div class="step-num">04</div><div><h3>Productie en levering</h3><p>Wij produceren de archiefduk, bevestigen het BETA-ID-certificaat en verzenden naar de koper. Na ondertekening hoef je niets meer te doen.</p></div></div>
+            <div class="step"><div class="step-num">05</div><div><h3>Uitbetaling</h3><p>Maandelijkse afrekening: 70 % van de netto-omzet wordt rechtstreeks naar je bankrekening overgemaakt, met een gedetailleerd verkooprapport.</p></div></div>
+          </div>
+        </section>
+
+        <section class="sell-section">
+          <h2>Inkomstenvoorbeeld</h2>
+          <p>Bij 40 × 60 cm voor NOK 3.490 en een maximale oplage van 20:</p>
+          <div style="overflow-x:auto">
+            <table class="earn-table">
+              <thead><tr><th>Verkochte prints</th><th>Prijs per stuk</th><th>Jouw inkomsten (70 %)</th></tr></thead>
+              <tbody>
+                <tr><td>1</td><td>3.490 NOK</td><td>2.443 NOK</td></tr>
+                <tr><td>5</td><td>3.490 NOK</td><td>12.215 NOK</td></tr>
+                <tr><td>20 (volledige oplage)</td><td>3.490 NOK</td><td>48.860 NOK</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="margin-top:1rem;font-size:0.82rem;">Bedragen zijn illustratief en vóór betalingskosten (ca. 1,5–2 %). De definitieve uitbetaling staat in het verkooprapport.</p>
+        </section>
+
+        <div class="sell-cta">
+          <h2>Klaar om je aan te melden?</h2>
+          <p>Aanmeldingen worden doorlopend beoordeeld. Reactie binnen vijf werkdagen.</p>
+          <a class="button button-dark" href="index.html#kontakt">Aanmelding indienen →</a>
+        </div>
+
+      </div><!-- /nl -->
+
+      <!-- ══ DANISH ══════════════════════════════════════════════════════════ -->
+      <div data-lang-content="da">
+
+        <div class="sell-hero">
+          <p class="eyebrow">For fotografer · ansøgningsbaseret</p>
+          <p class="sell-nudge" data-sell-nudge="da" hidden></p>
+          <h1>Du skaber.<br /><em>Vi leverer.</em></h1>
+          <p class="lead">BETA PHOTO sælger dine fotografier som signerede, nummererede begrænsede oplag — med BETA-ID-verifikation, arkivkvalitetstryk og direkte levering til køber. Du beholder 70 % af hvert salg.</p>
+
+          <div class="split-card">
+            <div class="split-side">
+              <div class="split-pct you">70 %</div>
+              <div class="split-label">Til dig</div>
+              <p class="split-note">Udbetales månedligt pr. bekræftet salg, fratrukket betalingsgebyrer.</p>
+            </div>
+            <div class="split-side">
+              <div class="split-pct us">30 %</div>
+              <div class="split-label">BETA PHOTO</div>
+              <p class="split-note">Dækker produktion, tryk, BETA-ID, indramning, emballage og forsendelse.</p>
+            </div>
+          </div>
+        </div>
+
+        <section class="sell-section">
+          <h2>Sådan fungerer det</h2>
+          <div class="steps">
+            <div class="step"><div class="step-num">01</div><div><h3>Ansøg</h3><p>Indsend tre til fem af dine stærkeste fotografier. Vi vurderer samlingsegnethed, teknisk kvalitet og BETA-ID-kompatibilitet.</p></div></div>
+            <div class="step"><div class="step-num">02</div><div><h3>Godkendelse</h3><p>Godkendte fotos registreres i BETA-ID-systemet med oplagsstørrelse (maks. 20 pr. billede), ægthedscertifikat og din signatur.</p></div></div>
+            <div class="step"><div class="step-num">03</div><div><h3>Salg</h3><p>Dine fotos publiceres i galleriet. Købere vælger format og betaler — vi håndterer kassen, betalingsbehandling og fakturering.</p></div></div>
+            <div class="step"><div class="step-num">04</div><div><h3>Produktion og levering</h3><p>Vi producerer arkivtrykket, monterer BETA-ID-certifikatet og afsender til køber. Efter signering kræves der intet yderligere af dig.</p></div></div>
+            <div class="step"><div class="step-num">05</div><div><h3>Udbetaling</h3><p>Månedligt opgør: 70 % af nettosalget overføres direkte til din bankkonto med en detaljeret salgsrapport.</p></div></div>
+          </div>
+        </section>
+
+        <section class="sell-section">
+          <h2>Eksempel på indtjening</h2>
+          <p>Ved 40 × 60 cm til 3.490 NOK og et maksimalt oplag på 20:</p>
+          <div style="overflow-x:auto">
+            <table class="earn-table">
+              <thead><tr><th>Solgte tryk</th><th>Pris pr. stk.</th><th>Din indtjening (70 %)</th></tr></thead>
+              <tbody>
+                <tr><td>1</td><td>3.490 NOK</td><td>2.443 NOK</td></tr>
+                <tr><td>5</td><td>3.490 NOK</td><td>12.215 NOK</td></tr>
+                <tr><td>20 (fuldt oplag)</td><td>3.490 NOK</td><td>48.860 NOK</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="margin-top:1rem;font-size:0.82rem;">Tallene er vejledende og før betalingsgebyrer (ca. 1,5–2 %). Den endelige udbetaling fremgår af salgsrapporten.</p>
+        </section>
+
+        <div class="sell-cta">
+          <h2>Klar til at ansøge?</h2>
+          <p>Ansøgninger behandles løbende. Svar inden fem hverdage.</p>
+          <a class="button button-dark" href="index.html#kontakt">Indsend ansøgning →</a>
+        </div>
+
+      </div><!-- /da -->
+
+      <!-- ══ SWEDISH ════════════════════════════════════════════════════════ -->
+      <div data-lang-content="sv">
+
+        <div class="sell-hero">
+          <p class="eyebrow">För fotografer · ansökningsbaserat</p>
+          <p class="sell-nudge" data-sell-nudge="sv" hidden></p>
+          <h1>Du skapar.<br /><em>Vi levererar.</em></h1>
+          <p class="lead">BETA PHOTO säljer dina fotografier som signerade, numrerade limiterade upplagor — med BETA-ID-verifiering, arkivkvalitetstryck och direktleverans till köparen. Du behåller 70 % av varje försäljning.</p>
+
+          <div class="split-card">
+            <div class="split-side">
+              <div class="split-pct you">70 %</div>
+              <div class="split-label">Till dig</div>
+              <p class="split-note">Utbetalas månadsvis per bekräftad försäljning, efter avdrag för betalningsavgifter.</p>
+            </div>
+            <div class="split-side">
+              <div class="split-pct us">30 %</div>
+              <div class="split-label">BETA PHOTO</div>
+              <p class="split-note">Täcker produktion, tryck, BETA-ID, inramning, förpackning och frakt.</p>
+            </div>
+          </div>
+        </div>
+
+        <section class="sell-section">
+          <h2>Så här fungerar det</h2>
+          <div class="steps">
+            <div class="step"><div class="step-num">01</div><div><h3>Ansök</h3><p>Skicka in tre till fem av dina starkaste fotografier. Vi bedömer samlingslämplighet, teknisk kvalitet och BETA-ID-kompatibilitet.</p></div></div>
+            <div class="step"><div class="step-num">02</div><div><h3>Godkännande</h3><p>Godkända foton registreras i BETA-ID-systemet med upplagestorlek (max 20 per bild), äkthetscertifikat och din signatur.</p></div></div>
+            <div class="step"><div class="step-num">03</div><div><h3>Försäljning</h3><p>Dina foton publiceras i galleriet. Köpare väljer format och betalar — vi sköter kassan, betalningshanteringen och faktureringen.</p></div></div>
+            <div class="step"><div class="step-num">04</div><div><h3>Produktion och leverans</h3><p>Vi producerar arkivtrycket, fäster BETA-ID-certifikatet och skickar till köparen. Efter signeringen krävs inget mer av dig.</p></div></div>
+            <div class="step"><div class="step-num">05</div><div><h3>Utbetalning</h3><p>Månadsvis avräkning: 70 % av nettoförsäljningen överförs direkt till ditt bankkonto med en detaljerad försäljningsrapport.</p></div></div>
+          </div>
+        </section>
+
+        <section class="sell-section">
+          <h2>Inkomstexempel</h2>
+          <p>Vid 40 × 60 cm för 3 490 NOK och en maximal upplaga på 20:</p>
+          <div style="overflow-x:auto">
+            <table class="earn-table">
+              <thead><tr><th>Sålda tryck</th><th>Pris per styck</th><th>Din inkomst (70 %)</th></tr></thead>
+              <tbody>
+                <tr><td>1</td><td>3 490 NOK</td><td>2 443 NOK</td></tr>
+                <tr><td>5</td><td>3 490 NOK</td><td>12 215 NOK</td></tr>
+                <tr><td>20 (full upplaga)</td><td>3 490 NOK</td><td>48 860 NOK</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="margin-top:1rem;font-size:0.82rem;">Siffror är illustrativa och före betalningsavgifter (ca 1,5–2 %). Slutlig utbetalning framgår av försäljningsrapporten.</p>
+        </section>
+
+        <div class="sell-cta">
+          <h2>Redo att ansöka?</h2>
+          <p>Ansökningar behandlas löpande. Svar inom fem arbetsdagar.</p>
+          <a class="button button-dark" href="index.html#kontakt">Skicka ansökan →</a>
+        </div>
+
+      </div><!-- /sv -->
+
+    </main>
+
+    <footer class="site-footer">
+      <a class="brand brand-footer" href="index.html"><span class="brand-mark">B</span><span>BETA PHOTO</span></a>
+      <p>Fotografi med dokumentert opprinnelse.</p>
+      <div class="footer-links">
+        <a href="index.html#galleri">Galleri</a>
+        <a href="index.html#verifisering">Verifisering</a>
+        <a href="sell.html">Selg med oss</a>
+      </div>
+      <p class="footer-legal">MVP-demonstrasjon · Salg og betaling er ikke aktivert.</p>
+    </footer>
+
+    <script>
+      /* Language switcher */
+      const langBtns    = document.querySelectorAll('[data-lang-btn]');
+      const langSections = document.querySelectorAll('[data-lang-content]');
+
+      langBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const lang = btn.dataset.langBtn;
+
+          langBtns.forEach(b => b.setAttribute('aria-pressed', 'false'));
+          btn.setAttribute('aria-pressed', 'true');
+
+          langSections.forEach(sec => {
+            sec.classList.toggle('is-active', sec.dataset.langContent === lang);
+          });
+
+          document.documentElement.lang = lang === 'nb' ? 'nb'
+            : lang === 'da' ? 'da'
+            : lang === 'sv' ? 'sv'
+            : lang === 'de' ? 'de'
+            : lang === 'fr' ? 'fr'
+            : lang === 'es' ? 'es'
+            : lang === 'nl' ? 'nl'
+            : 'en';
+        });
+      });
+
+      /* Gallery-context nudge — populated after app.js deferred script runs */
+      document.addEventListener('DOMContentLoaded', function () {
+        var b = window.__bpBehavior;
+        if (!b || !b.isReturning()) return;
+        var n = b.recentViewed(20).length;
+        if (n < 1) return;
+        var s = n === 1;
+        var texts = {
+          nb: s ? 'Du har sett 1 verk i galleriet — fotografen bak tjener 70 % av hvert salg.'
+                : 'Du har sett ' + n + ' verk i galleriet — fotografene bak tjener 70 % av hvert salg.',
+          en: s ? 'You’ve explored 1 work in the gallery — the photographer earns 70 % of every sale.'
+                : 'You’ve explored ' + n + ' works in the gallery — the photographers earn 70 % of every sale.',
+          de: 'Du hast ' + n + (s ? ' Werk' : ' Werke') + ' in der Galerie angesehen — die Fotografen verdienen 70 % jedes Verkaufs.',
+          fr: 'Vous avez exploré ' + n + (s ? ' œuvre' : ' œuvres') + ' dans la galerie — les photographes en gagnent 70 % de chaque vente.',
+          es: 'Has explorado ' + n + (s ? ' obra' : ' obras') + ' en la galería — los fotógrafos ganan el 70 % de cada venta.',
+          nl: 'Je hebt ' + n + (s ? ' werk' : ' werken') + ' in de galerie bekeken — de fotografen verdienen 70 % van elke verkoop.',
+          da: 'Du har set ' + n + (s ? ' værk' : ' værker') + ' i galleriet — fotograferne tjener 70 % af hvert salg.',
+          sv: 'Du har sett ' + n + ' verk i galleriet — fotograferna tjänar 70 % av varje försäljning.',
+        };
+        document.querySelectorAll('[data-sell-nudge]').forEach(function (el) {
+          var lang = el.dataset.sellNudge;
+          if (texts[lang]) { el.textContent = texts[lang]; el.hidden = false; }
+        });
+      });
+    </script>
+  </body>
+</html>

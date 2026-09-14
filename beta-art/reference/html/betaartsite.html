@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BETA ART — Verified Human Photography</title>
+<meta name="description" content="An archive of original photographs, each catalogued, sealed and licensed directly from the photographer.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23FBFAF7'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%238B1A1A'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+SC:wght@400;500&family=Noto+Serif+Devanagari:wght@400;500&family=Noto+Naskh+Arabic:wght@400;500&family=Noto+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FBFAF7;--paper-2:#F3F0E9;--card:#FFFFFF;--ink:#0F0F0F;--ink-2:#1F1D1B;--muted:#85817A;--muted-2:#B4B0A7;--rule:#E4E0D8;--rule-2:#CFC9BC;--seal:#8B1A1A;
+  --f-serif:'Fraunces',Georgia,serif;
+  --f-sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans','Noto Sans SC','Noto Serif Devanagari','Noto Naskh Arabic',sans-serif;
+  --f-mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+html[lang="zh"]{--f-serif:'Noto Serif SC',serif;--f-sans:'Noto Sans SC','Inter',sans-serif}
+html[lang="hi"]{--f-serif:'Noto Serif Devanagari',serif;--f-sans:'Noto Sans','Noto Serif Devanagari','Inter',sans-serif}
+html[lang="ar"]{--f-serif:'Noto Naskh Arabic',serif;--f-sans:'Noto Naskh Arabic','Inter',sans-serif}
+body.dark{--paper:#141311;--paper-2:#1C1A18;--card:#1C1A18;--ink:#F3F0E9;--ink-2:#E4E0D8;--muted:#9A958C;--muted-2:#726E67;--rule:#2A2724;--rule-2:#3A362F;--seal:#D96B5A}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--f-sans);background:var(--paper);color:var(--ink);line-height:1.6;font-size:16px;-webkit-font-smoothing:antialiased;transition:background .3s,color .3s}
+a{color:inherit;text-decoration:none}
+img,svg{display:block;max-width:100%}
+.mono{font-family:var(--f-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+html[lang="zh"] .mono,html[lang="hi"] .mono,html[lang="ar"] .mono{font-family:var(--f-sans);letter-spacing:.02em;text-transform:none;font-size:12px}
+.wrap{max-width:1240px;margin:0 auto;padding:0 40px}
+.rule-label{display:inline-flex;align-items:center;gap:12px;font-family:var(--f-mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.rule-label::before{content:"";width:30px;height:1px;background:var(--ink)}
+html[lang="zh"] .rule-label,html[lang="hi"] .rule-label,html[lang="ar"] .rule-label{font-family:var(--f-sans);letter-spacing:.02em;text-transform:none;font-size:12.5px}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:40;background:var(--paper);border-bottom:1px solid var(--rule)}
+.nav-inner{max-width:1240px;margin:0 auto;padding:15px 40px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{display:inline-flex;align-items:center;gap:11px;font-family:var(--f-mono);font-size:13px;letter-spacing:.3em;text-transform:uppercase;font-weight:500;white-space:nowrap;color:var(--ink)}
+.brand-mark{width:6px;height:6px;border-radius:50%;background:var(--seal);display:inline-block}
+.nav-links{display:flex;gap:26px;align-items:center;flex-wrap:wrap}
+.nav-links a{font-size:13px;color:var(--muted);transition:color .2s;cursor:pointer}
+.nav-links a:hover{color:var(--ink)}
+.order-btn{color:var(--ink)!important;border:1px solid var(--ink);padding:8px 15px;font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;transition:.2s}
+.order-btn:hover{background:var(--ink);color:var(--paper)!important}
+.order-btn .ct{color:var(--seal);margin-inline-start:6px;font-weight:600}
+html[lang="zh"] .order-btn,html[lang="hi"] .order-btn,html[lang="ar"] .order-btn{font-family:var(--f-sans);letter-spacing:.02em;text-transform:none}
+.tools{display:flex;align-items:center;gap:10px}
+.lang{display:flex;align-items:center;gap:1px;border:1px solid var(--rule);border-radius:3px;padding:3px}
+.lang button{background:none;border:0;cursor:pointer;font-family:var(--f-sans);font-size:11.5px;color:var(--muted);padding:5px 7px;border-radius:2px;transition:.15s;line-height:1}
+.lang button:hover{color:var(--ink)}.lang button.on{background:var(--ink);color:var(--paper)}
+.dk{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);background:none;border:1px solid var(--rule-2);padding:7px 9px;border-radius:2px;cursor:pointer}
+.dk:hover{color:var(--ink);border-color:var(--ink)}
+@media(max-width:1080px){.nav-links a.sec{display:none}}
+
+/* HERO */
+.hero{padding:84px 0 40px}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:end}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:34px}}
+.hero-text{display:flex;flex-direction:column;gap:26px}
+.hero-h{font-family:var(--f-serif);font-size:clamp(40px,5.4vw,80px);line-height:1.02;letter-spacing:-.02em;font-weight:400;text-wrap:balance}
+.hero-sub{font-family:var(--f-serif);font-size:19px;line-height:1.5;color:var(--muted);max-width:40ch;text-wrap:pretty}
+.cta{display:inline-flex;align-items:center;gap:12px;align-self:flex-start;background:var(--ink);color:var(--paper);padding:15px 24px;font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;transition:background .2s;cursor:pointer;border:0}
+.cta:hover{background:var(--seal)}.cta .arw{font-family:var(--f-sans);font-size:15px}
+html[lang="zh"] .cta,html[lang="hi"] .cta,html[lang="ar"] .cta{font-family:var(--f-sans);letter-spacing:.02em;text-transform:none;font-size:13px}
+.hero-img{aspect-ratio:4/5;background:linear-gradient(135deg,#EFEBE2,#E3DDD1);border:1px solid var(--rule)}
+body.dark .hero-img{background:linear-gradient(135deg,#232019,#141210)}
+.hero-cap{display:flex;justify-content:space-between;gap:12px;padding:14px 0 0;margin-top:14px;border-top:1px solid var(--ink);font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.hero-cap b{color:var(--ink);font-weight:500}
+.micro{font-family:var(--f-serif);font-size:14px;color:var(--muted);font-style:italic}
+
+/* MANIFESTO */
+.manifesto{padding:78px 0 64px;max-width:1000px;margin:0 auto}
+.manifesto p{font-family:var(--f-serif);font-size:clamp(24px,3vw,38px);line-height:1.3;margin-top:26px;text-wrap:pretty}
+.manifesto .seal{color:var(--seal)}.manifesto .em{color:var(--muted)}
+.sig{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-top:40px;padding-top:18px;border-top:1px solid var(--rule)}
+
+/* VERIFY */
+.verify{background:var(--paper-2);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.verify-in{max-width:1240px;margin:0 auto;padding:84px 40px}
+.verify-head{display:grid;grid-template-columns:1fr 1.3fr;gap:52px;align-items:baseline;margin-bottom:58px}
+@media(max-width:820px){.verify-head{grid-template-columns:1fr;gap:18px;margin-bottom:40px}}
+.verify-head h2{font-family:var(--f-serif);font-size:clamp(30px,3.6vw,48px);font-weight:400;line-height:1.06;letter-spacing:-.015em}
+.verify-head p{font-family:var(--f-serif);font-size:18px;line-height:1.5;color:var(--muted);max-width:46ch}
+.methods{display:grid;grid-template-columns:repeat(3,1fr);gap:44px}
+@media(max-width:820px){.methods{grid-template-columns:1fr;gap:38px}}
+.method .n{font-family:var(--f-mono);font-size:11px;letter-spacing:.18em;color:var(--seal);margin-bottom:18px;text-transform:uppercase}
+html[lang="zh"] .method .n,html[lang="hi"] .method .n,html[lang="ar"] .method .n{font-family:var(--f-sans);letter-spacing:.02em;text-transform:none}
+.method h3{font-family:var(--f-serif);font-size:23px;font-weight:400;line-height:1.2;margin-bottom:12px}
+.method p{color:var(--ink-2);font-size:15px;line-height:1.6}
+
+/* COLLECTION */
+.coll{padding:84px 0 40px}
+.coll-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:40px}
+.coll-head h2{font-family:var(--f-serif);font-size:clamp(34px,4.6vw,60px);font-weight:400;line-height:1;letter-spacing:-.02em;margin-top:14px}
+.coll-head .em{color:var(--muted)}
+.filters{display:flex;gap:4px;border:1px solid var(--rule);padding:5px;flex-wrap:wrap}
+.filter{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:8px 13px;cursor:pointer;background:none;border:0;transition:.2s}
+.filter.on{background:var(--ink);color:var(--paper)}.filter:hover:not(.on){color:var(--ink)}
+html[lang="zh"] .filter,html[lang="hi"] .filter,html[lang="ar"] .filter{font-family:var(--f-sans);letter-spacing:.02em;text-transform:none}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:44px 30px}
+@media(max-width:820px){.gallery{grid-template-columns:1fr 1fr;gap:34px 20px}}
+@media(max-width:520px){.gallery{grid-template-columns:1fr}}
+.piece{cursor:pointer}
+.piece-img{aspect-ratio:4/5;background:linear-gradient(135deg,#EFEBE2,#E6E0D4);border:1px solid var(--rule);transition:opacity .3s;display:flex;align-items:center;justify-content:center;font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;color:var(--muted-2)}
+body.dark .piece-img{background:linear-gradient(135deg,#232019,#161310)}
+.piece:hover .piece-img{opacity:.85}
+.piece-cap{display:grid;grid-template-columns:1fr auto;gap:12px;margin-top:12px;padding-top:11px;border-top:1px solid var(--ink)}
+.piece-t{font-family:var(--f-serif);font-size:20px;line-height:1.2}
+.piece-m{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.piece-acc{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;color:var(--ink);text-align:end}
+.piece-p{font-family:var(--f-mono);font-size:10.5px;color:var(--muted);margin-top:4px;text-align:end}
+
+/* PHOTOGRAPHER */
+.photog{background:var(--ink);color:var(--paper);margin-top:84px}
+body.dark .photog{background:#000}
+.photog-in{max-width:1240px;margin:0 auto;padding:92px 40px;display:grid;grid-template-columns:1fr 1.1fr;gap:68px;align-items:center}
+@media(max-width:820px){.photog-in{grid-template-columns:1fr;gap:38px}}
+.photog-img{aspect-ratio:4/5;background:linear-gradient(135deg,#26221d,#161310);border:1px solid #2c2926}
+.photog .rule-label{color:var(--muted-2)}.photog .rule-label::before{background:var(--paper)}
+.photog h2{font-family:var(--f-serif);font-size:clamp(32px,4.2vw,56px);font-weight:400;line-height:1.05;letter-spacing:-.02em;margin:20px 0 24px}
+.photog p{color:var(--muted-2);font-size:16px;line-height:1.7;max-width:54ch}
+
+/* FAQ */
+.faq{padding:84px 0}
+.faq h2{font-family:var(--f-serif);font-size:clamp(30px,4vw,50px);font-weight:400;letter-spacing:-.015em;margin-top:14px}
+.faq-note{font-size:13px;color:var(--muted);margin:16px 0 30px;padding:12px 16px;background:var(--paper-2);border-inline-start:3px solid var(--seal);display:none}
+.faq-note.show{display:block}
+.faq-grp{margin-top:36px}
+.faq-grp h3{font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--seal);padding-bottom:12px;border-bottom:1px solid var(--rule);margin-bottom:4px}
+html[lang="zh"] .faq-grp h3,html[lang="hi"] .faq-grp h3,html[lang="ar"] .faq-grp h3{font-family:var(--f-sans);letter-spacing:.02em;text-transform:none}
+.qa{border-bottom:1px solid var(--rule)}
+.qa summary{list-style:none;cursor:pointer;padding:20px 40px 20px 0;position:relative;font-family:var(--f-serif);font-size:19px;line-height:1.35}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary::after{content:"+";position:absolute;inset-inline-end:4px;top:18px;font-family:var(--f-mono);font-size:20px;color:var(--muted)}
+.qa[open] summary::after{content:"–";color:var(--seal)}
+.qa .a{padding:0 40px 24px 0;color:var(--ink-2);font-size:15px;line-height:1.7;max-width:70ch}
+
+/* CONTACT */
+.contact{background:var(--paper-2);border-top:1px solid var(--rule);padding:84px 0}
+.contact h2{font-family:var(--f-serif);font-size:clamp(30px,4vw,50px);font-weight:400;letter-spacing:-.015em;margin-top:14px}
+.routes{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1.5px solid var(--ink);border-bottom:1px solid var(--rule);margin:30px 0 20px}
+@media(max-width:760px){.routes{grid-template-columns:1fr;border-bottom:1.5px solid var(--ink)}.route{border-inline-end:0!important;border-bottom:1px solid var(--rule)}}
+.route{padding:24px 22px;border-inline-end:1px solid var(--rule)}
+.route:last-child{border-inline-end:0}
+.route .rl{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--seal);margin-bottom:10px}
+html[lang="zh"] .route .rl,html[lang="hi"] .route .rl,html[lang="ar"] .route .rl{font-family:var(--f-sans);letter-spacing:.02em;text-transform:none}
+.route .rn{font-family:var(--f-serif);font-size:18px;margin-bottom:14px;line-height:1.25}
+.route a{font-family:var(--f-mono);font-size:13px;color:var(--ink);border-bottom:1px solid var(--rule);padding-bottom:2px}
+.biz{width:100%;border-collapse:collapse;margin-top:8px;max-width:640px}
+.biz th{text-align:start;font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:500;padding:13px 20px 13px 0;vertical-align:top;width:42%}
+html[lang="zh"] .biz th,html[lang="hi"] .biz th,html[lang="ar"] .biz th{font-family:var(--f-sans);letter-spacing:.02em;text-transform:none}
+.biz td{padding:13px 0;font-size:14.5px}.biz td .m{font-family:var(--f-mono);font-size:13.5px}
+.biz tr{border-bottom:1px solid var(--rule)}
+
+/* FOOTER */
+.footer{padding:60px 0 40px}
+.footer-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;padding-bottom:36px;border-bottom:1px solid var(--rule)}
+.footer-brand{max-width:44ch}.footer-brand .brand{margin-bottom:12px}.footer-brand p{color:var(--muted);font-size:14px;line-height:1.6}
+.footer-legal{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding-top:22px;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+html[lang="zh"] .footer-legal,html[lang="hi"] .footer-legal,html[lang="ar"] .footer-legal{font-family:var(--f-sans);letter-spacing:.02em;text-transform:none}
+
+/* MODAL + DRAWER */
+.ov{position:fixed;inset:0;background:rgba(15,15,15,.55);z-index:60;opacity:0;pointer-events:none;transition:opacity .3s}
+.ov.on{opacity:1;pointer-events:auto}
+.panel{position:fixed;inset-block:0;inset-inline-end:0;width:min(1040px,100%);background:var(--paper);z-index:61;transform:translateX(100%);transition:transform .4s cubic-bezier(.2,.7,.2,1);overflow-y:auto;display:grid;grid-template-columns:1.1fr 1fr}
+html[dir="rtl"] .panel{transform:translateX(-100%)}
+.panel.on{transform:none}
+@media(max-width:800px){.panel{grid-template-columns:1fr}}
+.panel-img{background:linear-gradient(135deg,#EFEBE2,#E3DDD1);min-height:300px}
+body.dark .panel-img{background:linear-gradient(135deg,#232019,#141210)}
+.panel-body{padding:52px 44px;display:flex;flex-direction:column;gap:26px}
+.panel-close{position:fixed;top:20px;inset-inline-end:20px;z-index:62;width:42px;height:42px;background:var(--paper);border:1px solid var(--ink);cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;color:var(--ink)}
+.panel-title{font-family:var(--f-serif);font-size:40px;font-weight:400;line-height:1.05}
+.panel-loc{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:8px}
+.acc{font-family:var(--f-mono);font-size:12px;line-height:1.9;border-top:1px solid var(--ink);border-bottom:1px solid var(--rule);padding:14px 0}
+.acc .r{display:grid;grid-template-columns:130px 1fr;gap:12px}
+.acc .r .k{color:var(--muted);text-transform:uppercase;letter-spacing:.1em;font-size:10.5px}
+.acc .r .v{text-align:end}
+.lics{display:flex;flex-direction:column;gap:8px}
+.lic{display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center;padding:16px 18px;border:1px solid var(--rule);cursor:pointer;transition:.2s}
+.lic.sel{border-color:var(--ink);background:var(--paper-2)}
+.lic .rd{width:15px;height:15px;border-radius:50%;border:1px solid var(--rule-2);position:relative}
+.lic.sel .rd::after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--ink)}
+.lic .ln{font-family:var(--f-serif);font-size:18px}.lic .ld{font-size:12.5px;color:var(--muted);margin-top:3px}
+.lic .lp{font-family:var(--f-mono);font-size:13px}
+.addbtn{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;background:var(--ink);color:var(--paper);border:0;cursor:pointer;font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;transition:.2s}
+.addbtn:hover{background:var(--seal)}
+html[lang="zh"] .addbtn,html[lang="hi"] .addbtn,html[lang="ar"] .addbtn,html[lang="zh"] .lic .ln{font-family:var(--f-sans)}
+
+.drawer{position:fixed;inset-block:0;inset-inline-end:0;width:min(440px,100%);background:var(--paper);z-index:61;transform:translateX(100%);transition:transform .35s cubic-bezier(.2,.7,.2,1);display:flex;flex-direction:column}
+html[dir="rtl"] .drawer{transform:translateX(-100%)}
+.drawer.on{transform:none}
+.drawer-h{display:flex;justify-content:space-between;align-items:center;padding:24px 28px;border-bottom:1px solid var(--rule)}
+.drawer-h h3{font-family:var(--f-serif);font-size:24px;font-weight:400}
+.drawer-x{width:34px;height:34px;border:1px solid var(--rule-2);background:none;cursor:pointer;color:var(--ink)}
+.drawer-b{flex:1;overflow-y:auto;padding:12px 28px}
+.empty{padding:40px 0;text-align:center;color:var(--muted);font-family:var(--f-serif);font-style:italic}
+.ci{display:grid;grid-template-columns:56px 1fr;gap:14px;padding:18px 0;border-bottom:1px solid var(--rule)}
+.ci-img{width:56px;height:70px;background:linear-gradient(135deg,#EFEBE2,#E6E0D4)}
+.ci-n{font-family:var(--f-serif);font-size:17px}.ci-l{font-size:12.5px;color:var(--ink-2);margin-top:6px}
+.ci-row{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
+.ci-p{font-family:var(--f-mono);font-size:12px}
+.ci-rm{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-decoration:underline;cursor:pointer;background:none;border:0}
+.drawer-f{border-top:1px solid var(--rule);padding:22px 28px}
+.tot{display:flex;justify-content:space-between;align-items:baseline;padding-bottom:14px;margin-bottom:16px;border-bottom:1px solid var(--rule)}
+.tot .l{font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.tot .v{font-family:var(--f-serif);font-size:24px}
+.drawer-note{font-size:12px;color:var(--muted);margin-top:12px;line-height:1.5}
+
+.toast{position:fixed;bottom:28px;left:50%;transform:translate(-50%,16px);background:var(--ink);color:var(--paper);padding:14px 24px;font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;z-index:80;opacity:0;pointer-events:none;transition:.3s}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+html[dir="rtl"] .cta .arw,html[dir="rtl"] .footer .arw{transform:scaleX(-1)}
+:focus-visible{outline:2px solid var(--seal);outline-offset:3px}
+
+/* SCROLL PROGRESS + NAV SHADOW */
+.progress{position:fixed;top:0;inset-inline-start:0;height:2px;width:0;background:var(--seal);z-index:50;transition:width .08s linear}
+.nav{transition:box-shadow .25s,background .3s}
+.nav.scrolled{box-shadow:0 1px 0 var(--rule),0 10px 30px -22px rgba(0,0,0,.55)}
+
+/* QUICK FACTS BAND */
+.qfacts{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);background:var(--paper-2)}
+.qfacts-in{max-width:1240px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:repeat(4,1fr)}
+@media(max-width:820px){.qfacts-in{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.qfacts-in{grid-template-columns:1fr}}
+.qf{display:flex;flex-direction:column;gap:5px;padding:22px 26px;border-inline-end:1px solid var(--rule);transition:background .2s,transform .2s}
+.qf:last-child{border-inline-end:0}
+@media(max-width:820px){.qf:nth-child(2){border-inline-end:0}}
+@media(max-width:480px){.qf{border-inline-end:0;border-bottom:1px solid var(--rule)}.qf:last-child{border-bottom:0}}
+.qf:hover{background:var(--card)}
+.qf .qk{font-family:var(--f-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--seal)}
+html[lang="zh"] .qf .qk,html[lang="hi"] .qf .qk,html[lang="ar"] .qf .qk{font-family:var(--f-sans);letter-spacing:.02em;text-transform:none}
+.qf .qt{font-family:var(--f-serif);font-size:18px;line-height:1.2}
+.qf .qd{font-size:12.5px;color:var(--muted)}
+.qf .qarw{font-family:var(--f-sans);font-size:13px;color:var(--muted-2);margin-top:2px;transition:transform .2s,color .2s}
+.qf:hover .qarw{color:var(--seal);transform:translateX(4px)}
+html[dir="rtl"] .qf:hover .qarw{transform:translateX(-4px)}
+
+/* FAQ SEARCH */
+.faq-search{position:relative;margin:22px 0 6px;max-width:460px}
+.faq-search input{width:100%;font-family:var(--f-sans);font-size:14px;color:var(--ink);background:var(--card);border:1px solid var(--rule-2);border-radius:3px;padding:12px 14px 12px 40px}
+html[dir="rtl"] .faq-search input{padding:12px 40px 12px 14px}
+.faq-search input::placeholder{color:var(--muted-2)}
+.faq-search input:focus{outline:none;border-color:var(--ink)}
+.faq-search .si{position:absolute;top:50%;inset-inline-start:15px;transform:translateY(-50%);color:var(--muted);font-size:15px;pointer-events:none}
+.faq-grp.hide,.qa.hide{display:none}
+.faq-empty{display:none;padding:26px 0;color:var(--muted);font-family:var(--f-serif);font-style:italic}
+.faq-empty.show{display:block}
+mark{background:rgba(139,26,26,.14);color:inherit;padding:0 1px;border-radius:2px}
+body.dark mark{background:rgba(217,107,90,.24)}
+
+/* BACK TO TOP */
+.totop{position:fixed;bottom:24px;inset-inline-end:24px;z-index:55;width:44px;height:44px;border-radius:50%;background:var(--ink);color:var(--paper);border:0;cursor:pointer;font-size:17px;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transform:translateY(10px);transition:.3s}
+.totop.on{opacity:1;pointer-events:auto;transform:none}
+.totop:hover{background:var(--seal)}
+
+/* AUTO-PRICE NOTE */
+.price-auto{font-size:12px;color:var(--muted);line-height:1.5;display:flex;gap:8px;align-items:flex-start;margin-top:-8px}
+.price-auto::before{content:"◆";color:var(--seal);font-size:8px;margin-top:4px;flex:none}
+.piece-p .est{color:var(--muted-2)}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand"><span class="brand-mark"></span> BETA · ART</a>
+    <div class="nav-links">
+      <a class="sec" href="#collection" data-i18n="nav.collection">Collection</a>
+      <a class="sec" href="#verify" data-i18n="nav.verify">Verification</a>
+      <a class="sec" href="#photographer" data-i18n="nav.photographer">Photographer</a>
+      <a class="sec" href="#faq" data-i18n="nav.faq">FAQ</a>
+      <a class="sec" href="#contact" data-i18n="nav.contact">Contact</a>
+      <a class="order-btn" id="orderBtn" data-i18n="nav.order">Order</a>
+      <div class="tools">
+        <div class="lang" role="group" aria-label="Language">
+          <button type="button" data-lang="en">EN</button>
+          <button type="button" data-lang="zh" lang="zh">中文</button>
+          <button type="button" data-lang="hi" lang="hi">हिन्दी</button>
+          <button type="button" data-lang="es" lang="es">ES</button>
+          <button type="button" data-lang="tr" lang="tr">TR</button>
+          <button type="button" data-lang="ar" lang="ar">ع</button>
+        </div>
+        <button class="dk" id="darkBtn" type="button">Dark</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<header class="hero wrap" id="top">
+  <div class="hero-grid">
+    <div class="hero-text">
+      <span class="rule-label" data-i18n="hero.kicker">The Archive · Volume I</span>
+      <h1 class="hero-h" data-i18n="hero.h">Every image here was made by a human.</h1>
+      <p class="hero-sub" data-i18n="hero.sub">An archive of original photographs — each one catalogued, sealed, and licensed directly from the photographer.</p>
+      <button class="cta" data-goto="collection"><span data-i18n="hero.cta">View the collection</span> <span class="arw">→</span></button>
+      <p class="micro" data-i18n="hero.micro">Full-resolution file delivered within 24 hours.</p>
+    </div>
+    <div>
+      <div class="hero-img"></div>
+      <div class="hero-cap"><span><b>Plate 01</b> · First Light</span><span data-i18n="hero.plate">Lofoten · March 2026</span></div>
+    </div>
+  </div>
+</header>
+
+<section class="qfacts" aria-label="Key facts">
+  <div class="qfacts-in">
+    <a class="qf" href="#verify"><span class="qk" data-i18n="qf.p1">Provenance</span><span class="qt" data-i18n="qf.t1">Verified human</span><span class="qd" data-i18n="qf.d1">No AI, no compositing</span><span class="qarw">→</span></a>
+    <a class="qf" href="#collection"><span class="qk" data-i18n="qf.p2">Delivery</span><span class="qt" data-i18n="qf.t2">Within 24 hours</span><span class="qd" data-i18n="qf.d2">Full-resolution file</span><span class="qarw">→</span></a>
+    <a class="qf" href="#contact"><span class="qk" data-i18n="qf.p3">Rights</span><span class="qt" data-i18n="qf.t3">Direct licence</span><span class="qd" data-i18n="qf.d3">Signed by the maker</span><span class="qarw">→</span></a>
+    <a class="qf" href="#faq"><span class="qk" data-i18n="qf.p4">Reach</span><span class="qt" data-i18n="qf.t4">Worldwide</span><span class="qd" data-i18n="qf.d4">Delivered digitally</span><span class="qarw">→</span></a>
+  </div>
+</section>
+
+<section class="manifesto wrap">
+  <span class="rule-label" data-i18n="maker.label">A note from the maker</span>
+  <p data-i18n-html="maker.body"></p>
+  <div class="sig mono"><span data-i18n="maker.sig">Beta Art · Archive of verified human photography — Est. 2026</span></div>
+</section>
+
+<section class="verify" id="verify"><div class="verify-in">
+  <div class="verify-head">
+    <h2 data-i18n="verify.h">How each work is verified.</h2>
+    <p data-i18n="verify.intro"></p>
+  </div>
+  <div class="methods">
+    <div class="method"><div class="n" data-i18n="m1.n">Method I</div><h3 data-i18n="m1.t"></h3><p data-i18n="m1.b"></p></div>
+    <div class="method"><div class="n" data-i18n="m2.n">Method II</div><h3 data-i18n="m2.t"></h3><p data-i18n="m2.b"></p></div>
+    <div class="method"><div class="n" data-i18n="m3.n">Method III</div><h3 data-i18n="m3.t"></h3><p data-i18n="m3.b"></p></div>
+  </div>
+</div></section>
+
+<section class="coll wrap" id="collection">
+  <div class="coll-head">
+    <div><span class="rule-label" data-i18n="coll.kicker">The collection · Volume I</span><h2 data-i18n="coll.h">Twelve plates, catalogued.</h2></div>
+    <div class="filters" id="filters"></div>
+  </div>
+  <div class="gallery" id="gallery"></div>
+</section>
+
+<section class="photog" id="photographer"><div class="photog-in">
+  <div class="photog-img"></div>
+  <div>
+    <span class="rule-label" data-i18n="photog.kicker">The photographer · Working since 2012</span>
+    <h2 data-i18n="photog.h">I photograph what actually exists.</h2>
+    <p data-i18n="photog.b"></p>
+  </div>
+</div></section>
+
+<section class="faq wrap" id="faq">
+  <span class="rule-label" data-i18n="faq.eyebrow">Frequently asked questions</span>
+  <h2 data-i18n="faq.h">Questions &amp; answers</h2>
+  <div class="faq-note" id="faqNote" data-i18n="faq.note">Detailed answers are shown in English while full localisation is in progress.</div>
+  <div class="faq-search"><span class="si" aria-hidden="true">⌕</span><input type="search" id="faqSearch" data-i18n-ph="faq.search" placeholder="Search questions…" aria-label="Search questions" autocomplete="off"></div>
+  <div class="faq-empty" id="faqEmpty" data-i18n="faq.noResult">No matching questions.</div>
+  <div class="faq-grp"><h3 data-i18n="g1">About the photographs</h3>
+    <details class="qa"><summary data-i18n="q1"></summary><div class="a" data-i18n="a1"></div></details>
+    <details class="qa"><summary data-i18n="q2"></summary><div class="a" data-i18n="a2"></div></details>
+    <details class="qa"><summary data-i18n="q3"></summary><div class="a" data-i18n="a3"></div></details>
+    <details class="qa"><summary data-i18n="q4"></summary><div class="a" data-i18n="a4"></div></details>
+  </div>
+  <div class="faq-grp"><h3 data-i18n="g2">Licences and use</h3>
+    <details class="qa"><summary data-i18n="q5"></summary><div class="a" data-i18n="a5"></div></details>
+    <details class="qa"><summary data-i18n="q6"></summary><div class="a" data-i18n="a6"></div></details>
+    <details class="qa"><summary data-i18n="q7"></summary><div class="a" data-i18n="a7"></div></details>
+    <details class="qa"><summary data-i18n="q8"></summary><div class="a" data-i18n="a8"></div></details>
+    <details class="qa"><summary data-i18n="q9"></summary><div class="a" data-i18n="a9"></div></details>
+    <details class="qa"><summary data-i18n="q10"></summary><div class="a" data-i18n="a10"></div></details>
+  </div>
+  <div class="faq-grp"><h3 data-i18n="g3">Ordering and delivery</h3>
+    <details class="qa"><summary data-i18n="q11"></summary><div class="a" data-i18n="a11"></div></details>
+    <details class="qa"><summary data-i18n="q12"></summary><div class="a" data-i18n="a12"></div></details>
+    <details class="qa"><summary data-i18n="q13"></summary><div class="a" data-i18n="a13"></div></details>
+    <details class="qa"><summary data-i18n="q14"></summary><div class="a" data-i18n="a14"></div></details>
+  </div>
+  <div class="faq-grp"><h3 data-i18n="g4">Payment and refunds</h3>
+    <details class="qa"><summary data-i18n="q15"></summary><div class="a" data-i18n="a15"></div></details>
+    <details class="qa"><summary data-i18n="q16"></summary><div class="a" data-i18n="a16"></div></details>
+  </div>
+</section>
+
+<section class="contact" id="contact"><div class="wrap">
+  <span class="rule-label" data-i18n="contact.eyebrow">Contact &amp; business information</span>
+  <h2 data-i18n="contact.h">Contact</h2>
+  <div class="routes">
+    <div class="route"><div class="rl" data-i18n="r.a.l">A · Licensing</div><div class="rn" data-i18n="r.a.n"></div><a href="mailto:hello@betaart.no">hello@betaart.no</a></div>
+    <div class="route"><div class="rl" data-i18n="r.b.l">B · Press</div><div class="rn" data-i18n="r.b.n"></div><a href="mailto:press@betaart.no">press@betaart.no</a></div>
+    <div class="route"><div class="rl" data-i18n="r.c.l">C · Legal</div><div class="rn" data-i18n="r.c.n"></div><a href="mailto:legal@betaart.no">legal@betaart.no</a></div>
+  </div>
+  <table class="biz">
+    <tr><th data-i18n="b.name">Registered business name</th><td><b>BETA ART</b> <span data-i18n="b.name.s">(enkeltpersonforetak, [PHOTOGRAPHER NAME])</span></td></tr>
+    <tr><th data-i18n="b.org">Organisation number</th><td><span class="m">[000 000 000]</span></td></tr>
+    <tr><th data-i18n="b.addr">Registered address</th><td>[STREET ADDRESS], [POSTAL CODE] [CITY], Norway</td></tr>
+    <tr><th data-i18n="b.email">Primary email</th><td><span class="m">hello@betaart.no</span></td></tr>
+    <tr><th data-i18n="b.resp">Response time</th><td data-i18n="b.resp.v">Orders within 24 hours · general within 48 hours (weekdays)</td></tr>
+  </table>
+</div></section>
+
+<footer class="footer wrap">
+  <div class="footer-top">
+    <div class="footer-brand"><span class="brand"><span class="brand-mark"></span> BETA · ART</span><p data-i18n="foot.tag"></p></div>
+    <button class="cta" id="orderBtn2"><span data-i18n="nav.order">Order</span> <span class="arw">→</span></button>
+  </div>
+  <div class="footer-legal"><span data-i18n="foot.legal">© 2026 Beta Art · All plates human-made · No generative AI</span><span>Org.nr [000 000 000]</span></div>
+</footer>
+
+<!-- detail -->
+<div class="ov" id="ov"></div>
+<button class="panel-close" id="panelClose" style="display:none">✕</button>
+<aside class="panel" id="panel"><div class="panel-img"></div><div class="panel-body" id="panelBody"></div></aside>
+<!-- order -->
+<div class="ov" id="ovD"></div>
+<aside class="drawer" id="drawer">
+  <div class="drawer-h"><h3 data-i18n="ui.yourOrder">Your order</h3><button class="drawer-x" id="drawerX">✕</button></div>
+  <div class="drawer-b" id="drawerB"></div>
+  <div class="drawer-f"><div class="tot"><span class="l" data-i18n="ui.total">Total (excl. VAT)</span><span class="v" id="cartTot">kr 0</span></div>
+    <button class="addbtn" id="checkoutBtn" style="width:100%"><span data-i18n="ui.sendOrder">Send order request</span> <span>→</span></button>
+    <p class="drawer-note" data-i18n="ui.orderNote"></p></div>
+</aside>
+<div class="toast" id="toast"></div>
+<div class="progress" id="progress"></div>
+<button class="totop" id="toTop" type="button" aria-label="Back to top">↑</button>
+
+<script>
+const RTL=new Set(["ar"]), LS="betaart:lang6", LS_DK="betaart:dark", FULL=new Set(["en","tr"]);
+const T={
+ en:{"nav.collection":"Collection","nav.verify":"Verification","nav.photographer":"Photographer","nav.faq":"FAQ","nav.contact":"Contact","nav.order":"Order",
+  "hero.kicker":"The Archive · Volume I","hero.h":"Every image here was made by a human.","hero.sub":"An archive of original photographs — each one catalogued, sealed, and licensed directly from the photographer.","hero.cta":"View the collection","hero.micro":"Full-resolution file delivered within 24 hours.","hero.plate":"Lofoten · March 2026",
+  "maker.label":"A note from the maker","maker.body":"In an age when anyone can generate an image, <span class=\"seal\">provenance is the product</span>. Every photograph in this archive was taken with a physical camera, in a real place, on a real day. <span class=\"em\">The RAW file is kept. The record is kept. Nothing is generated. Nothing is composited.</span>","maker.sig":"Beta Art · Archive of verified human photography — Est. 2026",
+  "verify.h":"How each work is verified.","verify.intro":"A photograph is only as trustworthy as the record behind it. Every plate carries three forms of evidence — the standard applied to museum holdings.",
+  "m1.n":"Method I","m1.t":"The RAW original is archived.","m1.b":"Every plate begins as a RAW file from a real camera. The originals are held in an offline archive and can be inspected on request.",
+  "m2.n":"Method II","m2.t":"The capture record travels with the image.","m2.b":"Camera, lens, exposure, place, and date accompany every photograph. Where the equipment allows, C2PA Content Credentials are embedded at capture.",
+  "m3.n":"Method III","m3.t":"The licence is signed by the maker.","m3.b":"You license directly from the photographer. Every order arrives with a written licence, a proper invoice, and a numbered certificate — no intermediaries.",
+  "coll.kicker":"The collection · Volume I","coll.h":"Twelve plates, catalogued.",
+  "f.all":"All plates","f.landscape":"Landscape","f.city":"City","f.portrait":"Portrait",
+  "photog.kicker":"The photographer · Working since 2012","photog.h":"I photograph what actually exists.","photog.b":"My archive holds more than 84,000 frames captured since 2012. When you license a plate, you deal with me directly — a written licence, a proper invoice, and the full-resolution file in your inbox within twenty-four hours.",
+  "faq.eyebrow":"Frequently asked questions","faq.h":"Questions & answers","faq.note":"",
+  "g1":"About the photographs","g2":"Licences and use","g3":"Ordering and delivery","g4":"Payment and refunds",
+  "q1":"Do you use AI?","a1":"No. Every photograph is captured with a physical camera in a real location. Nothing here is generated, composited, or AI-assisted — and each plate keeps its RAW original and capture record as proof.",
+  "q2":"How does 'Human Verified' work?","a2":"Three forms of evidence travel with every plate: the archived RAW original, the capture record (camera, lens, exposure, place, date — with C2PA Content Credentials where supported), and a licence signed by the photographer.",
+  "q3":"Where are the photographs taken?","a3":"Across Norway and abroad — fjords, cities, and studios. Each plate lists its exact place and date in the capture record.",
+  "q4":"Can I request a custom shoot?","a4":"Yes. The archive holds more than 84,000 frames beyond what's published here, and commissions are welcome. Write to hello@betaart.no.",
+  "q5":"Which licence do I need?","a5":"Personal covers private, non-commercial use. Commercial covers business use such as websites, marketing, and packaging. Extended covers high-volume or resale contexts. Unsure? Describe your use and we'll point you to the right one.",
+  "q6":"Can I use it on social media for my business?","a6":"Yes — under a Commercial licence or above. A Personal licence does not cover business use.",
+  "q7":"Can I edit or crop the photograph?","a7":"Yes. You may crop, colour-grade, and adapt the image for your licensed use. You may not misrepresent it as your own original capture, or resell it as a stock file.",
+  "q8":"Can I use it for AI training?","a8":"No. Using any plate to train, fine-tune, or develop machine-learning or generative models is expressly prohibited under every licence.",
+  "q9":"Is the licence exclusive?","a9":"Standard licences are non-exclusive. Exclusive and sole rights are available through a custom licence.",
+  "q10":"Can I transfer the licence to a client?","a10":"Licences are issued to the named licensee and are non-transferable. If you're buying on a client's behalf, license it in their name.",
+  "q11":"How do I receive the file?","a11":"After purchase you receive a secure download link by email, with the full-resolution file delivered within 24 hours.",
+  "q12":"Do I get an invoice?","a12":"Yes — every order includes a proper invoice and a numbered certificate of authenticity.",
+  "q13":"Do you deliver internationally?","a13":"Yes. Files are delivered digitally, worldwide.",
+  "q14":"What if the download link expires?","a14":"Email hello@betaart.no and we'll reissue it. Your licence and file stay on record.",
+  "q15":"Can I get a refund?","a15":"Because each plate is delivered as a digital file, sales are final once the file has been downloaded. If anything is wrong with your order, contact us and we'll make it right.",
+  "q16":"What about the 14-day right of withdrawal?","a16":"Under Norwegian consumer law, private consumers have a 14-day right of withdrawal (angrerett). For digital files this right ends once the download begins with your consent — confirmed at checkout. Business purchases are not covered.",
+  "contact.eyebrow":"Contact & business information","contact.h":"Contact",
+  "r.a.l":"A · Licensing","r.a.n":"Buying, custom licences, questions before ordering","r.b.l":"B · Press","r.b.n":"Interviews, exhibitions, editorial requests","r.c.l":"C · Legal","r.c.n":"Copyright, GDPR, unauthorised-use reports",
+  "b.name":"Registered business name","b.name.s":"(sole proprietorship, [PHOTOGRAPHER NAME])","b.org":"Organisation number","b.addr":"Registered address","b.email":"Primary email","b.resp":"Response time","b.resp.v":"Orders within 24 hours · general within 48 hours (weekdays)",
+  "foot.tag":"An archive of verified human photography. Every plate catalogued, sealed, and licensed directly from the photographer.","foot.legal":"© 2026 Beta Art · All plates human-made · No generative AI",
+  "ui.yourOrder":"Your order","ui.total":"Total (excl. VAT)","ui.sendOrder":"Send order request","ui.orderNote":"Your email app opens with the order pre-filled. A written licence, invoice and secure download link follow within 24 hours.","ui.from":"from","ui.licenceFrom":"Licence from","ui.selectLicence":"Select a licence","ui.addToOrder":"Add to order","ui.plateOf":"Plate","ui.empty":"— empty —","ui.remove":"Remove","ui.added":"Added","ui.acc":"Accession","ui.camera":"Camera","ui.lens":"Lens","ui.exposure":"Exposure","ui.raw":"RAW","ui.rawv":"Original on record",
+  "lic.personal":"Personal","lic.personal.d":"Private, non-commercial use.","lic.commercial":"Commercial","lic.commercial.d":"Business use — web, marketing, print.","lic.extended":"Extended","lic.extended.d":"High volume, resale, one client sublicence."},
+ tr:{"nav.collection":"Koleksiyon","nav.verify":"Doğrulama","nav.photographer":"Fotoğrafçı","nav.faq":"S.S.S.","nav.contact":"İletişim","nav.order":"Sipariş",
+  "hero.kicker":"Arşiv · Cilt I","hero.h":"Buradaki her görüntü bir insan tarafından yapıldı.","hero.sub":"Özgün fotoğraflardan oluşan bir arşiv — her biri kataloglanmış, mühürlenmiş ve doğrudan fotoğrafçıdan lisanslanmış.","hero.cta":"Koleksiyonu görün","hero.micro":"Tam çözünürlüklü dosya 24 saat içinde teslim edilir.","hero.plate":"Lofoten · Mart 2026",
+  "maker.label":"Yapımcıdan bir not","maker.body":"Herkesin bir görüntü üretebildiği bir çağda, <span class=\"seal\">köken ürünün kendisidir</span>. Bu arşivdeki her fotoğraf fiziksel bir kamerayla, gerçek bir yerde, gerçek bir günde çekildi. <span class=\"em\">RAW dosyası saklanır. Kayıt saklanır. Hiçbir şey üretilmedi. Hiçbir şey birleştirilmedi.</span>","maker.sig":"Beta Art · Doğrulanmış insan fotoğrafçılığı arşivi — Kuruluş 2026",
+  "verify.h":"Her eser nasıl doğrulanır.","verify.intro":"Bir fotoğraf ancak ardındaki kayıt kadar güvenilirdir. Her plaka üç tür kanıt taşır — müze koleksiyonlarına uygulanan standardın aynısı.",
+  "m1.n":"Yöntem I","m1.t":"RAW orijinali arşivlenir.","m1.b":"Her plaka gerçek bir kameradan gelen bir RAW dosyası olarak başlar. Orijinaller çevrimdışı bir arşivde tutulur ve talep üzerine incelenebilir.",
+  "m2.n":"Yöntem II","m2.t":"Çekim kaydı görüntüyle birlikte gider.","m2.b":"Kamera, lens, pozlama, yer ve tarih her fotoğrafa eşlik eder. Ekipman izin verdiğinde, C2PA İçerik Kimlik Bilgileri çekim anında gömülür.",
+  "m3.n":"Yöntem III","m3.t":"Lisans yapımcı tarafından imzalanır.","m3.b":"Doğrudan fotoğrafçıdan lisanslarsınız. Her sipariş yazılı bir lisans, usulüne uygun bir fatura ve numaralı bir sertifikayla gelir — aracı yok.",
+  "coll.kicker":"Koleksiyon · Cilt I","coll.h":"On iki plaka, kataloglanmış.","f.all":"Tüm plakalar","f.landscape":"Manzara","f.city":"Şehir","f.portrait":"Portre",
+  "photog.kicker":"Fotoğrafçı · 2012'den beri çalışıyor","photog.h":"Gerçekten var olanı fotoğraflarım.","photog.b":"Arşivimde 2012'den bu yana çekilmiş 84.000'den fazla kare var. Bir plaka lisansladığınızda doğrudan benimle iş yaparsınız — yazılı bir lisans, usulüne uygun bir fatura ve yirmi dört saat içinde gelen kutunuza tam çözünürlüklü dosya.",
+  "faq.eyebrow":"Sıkça sorulan sorular","faq.h":"Sorular ve yanıtlar","faq.note":"",
+  "g1":"Fotoğraflar hakkında","g2":"Lisanslar ve kullanım","g3":"Sipariş ve teslimat","g4":"Ödeme ve iade",
+  "q1":"Yapay zekâ kullanıyor musunuz?","a1":"Hayır. Her fotoğraf gerçek bir yerde fiziksel bir kamerayla çekilir. Burada hiçbir şey üretilmiş, birleştirilmiş veya yapay zekâ destekli değildir — ve her plaka kanıt olarak RAW orijinalini ve çekim kaydını saklar.",
+  "q2":"'İnsan Doğrulaması' nasıl işler?","a2":"Her plakayla üç tür kanıt gelir: arşivlenmiş RAW orijinali, çekim kaydı (kamera, lens, pozlama, yer, tarih — destekleniyorsa C2PA İçerik Kimlik Bilgileriyle) ve fotoğrafçı tarafından imzalanmış bir lisans.",
+  "q3":"Fotoğraflar nerede çekiliyor?","a3":"Norveç'te ve yurt dışında — fiyortlar, şehirler ve stüdyolar. Her plaka çekim kaydında tam yer ve tarihini belirtir.",
+  "q4":"Özel çekim isteyebilir miyim?","a4":"Evet. Arşiv, burada yayımlananların ötesinde 84.000'den fazla kare barındırır ve özel işler kabul edilir. hello@betaart.no adresine yazın.",
+  "q5":"Hangi lisansa ihtiyacım var?","a5":"Kişisel; özel, ticari olmayan kullanımı kapsar. Ticari; web, pazarlama ve ambalaj gibi işletme kullanımını kapsar. Genişletilmiş; yüksek hacim veya yeniden satış içindir. Emin değilseniz kullanımınızı anlatın, doğru olanı gösterelim.",
+  "q6":"İşletmem için sosyal medyada kullanabilir miyim?","a6":"Evet — Ticari lisans veya üstüyle. Kişisel lisans işletme kullanımını kapsamaz.",
+  "q7":"Fotoğrafı düzenleyebilir/kırpabilir miyim?","a7":"Evet. Lisanslı kullanımınız için kırpabilir, renk düzenlemesi yapabilir ve uyarlayabilirsiniz. Onu kendi orijinal çekiminizmiş gibi gösteremez veya stok dosyası olarak yeniden satamazsınız.",
+  "q8":"Yapay zekâ eğitimi için kullanabilir miyim?","a8":"Hayır. Herhangi bir plakayı makine öğrenimi veya üretken modelleri eğitmek, ince ayarlamak ya da geliştirmek için kullanmak tüm lisanslarda açıkça yasaktır.",
+  "q9":"Lisans münhasır mı?","a9":"Standart lisanslar münhasır değildir. Münhasır ve tek haklar özel bir lisansla sağlanır.",
+  "q10":"Lisansı bir müşteriye devredebilir miyim?","a10":"Lisanslar adı belirtilen lisans sahibine verilir ve devredilemez. Bir müşteri adına alıyorsanız onun adına lisanslayın.",
+  "q11":"Dosyayı nasıl alırım?","a11":"Satın alımdan sonra e-postayla güvenli bir indirme bağlantısı alırsınız; tam çözünürlüklü dosya 24 saat içinde teslim edilir.",
+  "q12":"Fatura alıyor muyum?","a12":"Evet — her sipariş usulüne uygun bir fatura ve numaralı bir ekthlik sertifikası içerir.",
+  "q13":"Uluslararası teslimat yapıyor musunuz?","a13":"Evet. Dosyalar dünya çapında dijital olarak teslim edilir.",
+  "q14":"İndirme bağlantısının süresi dolarsa?","a14":"hello@betaart.no adresine yazın, yeniden düzenleyelim. Lisansınız ve dosyanız kayıtlı kalır.",
+  "q15":"İade alabilir miyim?","a15":"Her plaka dijital dosya olarak teslim edildiğinden, dosya indirildikten sonra satış kesindir. Siparişinizde bir sorun varsa bize ulaşın, düzeltelim.",
+  "q16":"14 günlük cayma hakkı ne olacak?","a16":"Norveç tüketici hukukuna göre bireysel tüketicilerin 14 günlük cayma hakkı vardır. Dijital dosyalarda bu hak, indirme sizin onayınızla başladığında sona erer — ödeme sırasında onaylanır. İşletme alımları kapsam dışıdır.",
+  "contact.eyebrow":"İletişim ve işletme bilgileri","contact.h":"İletişim",
+  "r.a.l":"A · Lisanslama","r.a.n":"Satın alma, özel lisanslar, sipariş öncesi sorular","r.b.l":"B · Basın","r.b.n":"Röportaj, sergi, editoryal talepler","r.c.l":"C · Hukuk","r.c.n":"Telif, GDPR, izinsiz kullanım bildirimleri",
+  "b.name":"Kayıtlı işletme adı","b.name.s":"(şahıs işletmesi, [FOTOĞRAFÇI ADI])","b.org":"Kuruluş numarası","b.addr":"Kayıtlı adres","b.email":"Birincil e-posta","b.resp":"Yanıt süresi","b.resp.v":"Siparişler 24 saat · genel 48 saat içinde (hafta içi)",
+  "foot.tag":"Doğrulanmış insan fotoğrafçılığı arşivi. Her plaka kataloglanmış, mühürlenmiş ve doğrudan fotoğrafçıdan lisanslanmış.","foot.legal":"© 2026 Beta Art · Tüm plakalar insan yapımı · Üretken yapay zekâ yok",
+  "ui.yourOrder":"Siparişiniz","ui.total":"Toplam (KDV hariç)","ui.sendOrder":"Sipariş talebi gönder","ui.orderNote":"E-posta uygulamanız sipariş önceden doldurulmuş şekilde açılır. Yazılı lisans, fatura ve güvenli indirme bağlantısı 24 saat içinde gelir.","ui.from":"başlangıç","ui.licenceFrom":"Lisans başlangıç","ui.selectLicence":"Bir lisans seçin","ui.addToOrder":"Siparişe ekle","ui.plateOf":"Plaka","ui.empty":"— boş —","ui.remove":"Kaldır","ui.added":"Eklendi","ui.acc":"Kayıt no","ui.camera":"Kamera","ui.lens":"Lens","ui.exposure":"Pozlama","ui.raw":"RAW","ui.rawv":"Orijinal kayıtlı",
+  "lic.personal":"Kişisel","lic.personal.d":"Özel, ticari olmayan kullanım.","lic.commercial":"Ticari","lic.commercial.d":"İşletme kullanımı — web, pazarlama, baskı.","lic.extended":"Genişletilmiş","lic.extended.d":"Yüksek hacim, yeniden satış, tek müşteri alt lisansı."},
+ es:{"nav.collection":"Colección","nav.verify":"Verificación","nav.photographer":"Fotógrafo","nav.faq":"FAQ","nav.contact":"Contacto","nav.order":"Pedir",
+  "hero.kicker":"El Archivo · Volumen I","hero.h":"Cada imagen aquí fue hecha por un ser humano.","hero.sub":"Un archivo de fotografías originales — cada una catalogada, sellada y licenciada directamente por el fotógrafo.","hero.cta":"Ver la colección","hero.micro":"Archivo en resolución completa entregado en 24 horas.","hero.plate":"Lofoten · Marzo 2026",
+  "maker.label":"Una nota del autor","maker.body":"En una época en la que cualquiera puede generar una imagen, <span class=\"seal\">la procedencia es el producto</span>. Cada fotografía de este archivo fue tomada con una cámara física, en un lugar real, en un día real. <span class=\"em\">El archivo RAW se conserva. El registro se conserva. Nada se genera. Nada se compone.</span>","maker.sig":"Beta Art · Archivo de fotografía humana verificada — Est. 2026",
+  "verify.h":"Cómo se verifica cada obra.","verify.intro":"Una fotografía es tan fiable como el registro que la respalda. Cada lámina lleva tres formas de evidencia — el estándar aplicado a las colecciones de museo.",
+  "m1.n":"Método I","m1.t":"El original RAW se archiva.","m1.b":"Cada lámina comienza como un archivo RAW de una cámara real. Los originales se guardan en un archivo sin conexión y pueden inspeccionarse a solicitud.",
+  "m2.n":"Método II","m2.t":"El registro de captura viaja con la imagen.","m2.b":"Cámara, objetivo, exposición, lugar y fecha acompañan cada fotografía. Cuando el equipo lo permite, las Credenciales de Contenido C2PA se incrustan en la captura.",
+  "m3.n":"Método III","m3.t":"La licencia la firma el autor.","m3.b":"Licencias directamente del fotógrafo. Cada pedido llega con una licencia por escrito, una factura formal y un certificado numerado — sin intermediarios.",
+  "coll.kicker":"La colección · Volumen I","coll.h":"Doce láminas, catalogadas.","f.all":"Todas","f.landscape":"Paisaje","f.city":"Ciudad","f.portrait":"Retrato",
+  "photog.kicker":"El fotógrafo · Trabajando desde 2012","photog.h":"Fotografío lo que realmente existe.","photog.b":"Mi archivo contiene más de 84.000 fotogramas capturados desde 2012. Cuando licencias una lámina, tratas conmigo directamente — una licencia por escrito, una factura formal y el archivo en resolución completa en tu correo en veinticuatro horas.",
+  "faq.eyebrow":"Preguntas frecuentes","faq.h":"Preguntas y respuestas","faq.note":"Las respuestas detalladas se muestran en inglés mientras se completa la localización.",
+  "g1":"Sobre las fotografías","g2":"Licencias y uso","g3":"Pedido y entrega","g4":"Pago y reembolsos",
+  "q1":"¿Usan IA?","q2":"¿Cómo funciona la «verificación humana»?","q3":"¿Dónde se toman las fotografías?","q4":"¿Puedo pedir una sesión personalizada?","q5":"¿Qué licencia necesito?","q6":"¿Puedo usarla en redes para mi negocio?","q7":"¿Puedo editar o recortar la fotografía?","q8":"¿Puedo usarla para entrenar IA?","q9":"¿La licencia es exclusiva?","q10":"¿Puedo transferir la licencia a un cliente?","q11":"¿Cómo recibo el archivo?","q12":"¿Recibo factura?","q13":"¿Entregan internacionalmente?","q14":"¿Y si el enlace de descarga caduca?","q15":"¿Puedo obtener un reembolso?","q16":"¿Y el derecho de desistimiento de 14 días?",
+  "contact.eyebrow":"Contacto e información comercial","contact.h":"Contacto","r.a.l":"A · Licencias","r.a.n":"Compras, licencias a medida, dudas previas","r.b.l":"B · Prensa","r.b.n":"Entrevistas, exposiciones, prensa","r.c.l":"C · Legal","r.c.n":"Derechos de autor, RGPD, uso no autorizado",
+  "b.name":"Nombre comercial registrado","b.name.s":"(autónomo, [NOMBRE DEL FOTÓGRAFO])","b.org":"Número de organización","b.addr":"Dirección registrada","b.email":"Correo principal","b.resp":"Tiempo de respuesta","b.resp.v":"Pedidos en 24 h · general en 48 h (días laborables)",
+  "foot.tag":"Un archivo de fotografía humana verificada. Cada lámina catalogada, sellada y licenciada directamente por el fotógrafo.","foot.legal":"© 2026 Beta Art · Todas las láminas hechas por humanos · Sin IA generativa",
+  "ui.yourOrder":"Tu pedido","ui.total":"Total (sin IVA)","ui.sendOrder":"Enviar solicitud de pedido","ui.orderNote":"Tu app de correo se abre con el pedido rellenado. La licencia, factura y enlace seguro llegan en 24 horas.","ui.from":"desde","ui.licenceFrom":"Licencia desde","ui.selectLicence":"Selecciona una licencia","ui.addToOrder":"Añadir al pedido","ui.plateOf":"Lámina","ui.empty":"— vacío —","ui.remove":"Quitar","ui.added":"Añadido","ui.acc":"Registro","ui.camera":"Cámara","ui.lens":"Objetivo","ui.exposure":"Exposición","ui.raw":"RAW","ui.rawv":"Original registrado",
+  "lic.personal":"Personal","lic.personal.d":"Uso privado, no comercial.","lic.commercial":"Comercial","lic.commercial.d":"Uso empresarial — web, marketing, impresión.","lic.extended":"Ampliada","lic.extended.d":"Alto volumen, reventa, sublicencia a un cliente."},
+ zh:{"nav.collection":"收藏","nav.verify":"验证","nav.photographer":"摄影师","nav.faq":"常见问题","nav.contact":"联系","nav.order":"订购",
+  "hero.kicker":"档案库 · 第一卷","hero.h":"这里的每一张影像都由人类拍摄。","hero.sub":"原创摄影作品的档案库——每一件都经过编目、封存，并由摄影师直接授权。","hero.cta":"浏览收藏","hero.micro":"全分辨率文件将在 24 小时内送达。","hero.plate":"罗弗敦 · 2026 年 3 月",
+  "maker.label":"创作者的话","maker.body":"在人人都能生成图像的时代，<span class=\"seal\">来源本身就是产品</span>。本档案中的每一张照片都用真实相机、在真实地点、于真实的一天拍摄。<span class=\"em\">RAW 原始文件被保留。记录被保留。没有任何生成，没有任何合成。</span>","maker.sig":"Beta Art · 经核验的人类摄影档案库 — 创立于 2026",
+  "verify.h":"每件作品如何被验证。","verify.intro":"一张照片的可信度取决于其背后的记录。每一版都附有三重证据——与博物馆藏品相同的标准。",
+  "m1.n":"方法一","m1.t":"RAW 原始文件被存档。","m1.b":"每一版都始于真实相机拍摄的 RAW 文件。原件保存在离线档案中，可应要求查验。",
+  "m2.n":"方法二","m2.t":"拍摄记录随影像一同留存。","m2.b":"相机、镜头、曝光、地点与日期伴随每一张照片。在设备支持时，C2PA 内容凭证会在拍摄时嵌入。",
+  "m3.n":"方法三","m3.t":"授权由创作者签署。","m3.b":"您直接向摄影师取得授权。每份订单都附有书面授权、正式发票和编号证书——没有任何中间商。",
+  "coll.kicker":"收藏 · 第一卷","coll.h":"十二版，已编目。","f.all":"全部","f.landscape":"风景","f.city":"城市","f.portrait":"人像",
+  "photog.kicker":"摄影师 · 自 2012 年从业","photog.h":"我拍摄真实存在的事物。","photog.b":"我的档案库收藏了自 2012 年以来拍摄的 84,000 多帧。当您授权一版时，您与我直接往来——书面授权、正式发票，以及在二十四小时内送达邮箱的全分辨率文件。",
+  "faq.eyebrow":"常见问题","faq.h":"问与答","faq.note":"本地化仍在进行中，详细答案暂以英文显示。",
+  "g1":"关于照片","g2":"授权与使用","g3":"订购与交付","g4":"付款与退款",
+  "q1":"你们使用 AI 吗？","q2":"“人类验证”如何运作？","q3":"照片在哪里拍摄？","q4":"我可以定制拍摄吗？","q5":"我需要哪种授权？","q6":"我能用于企业社交媒体吗？","q7":"我可以编辑或裁剪照片吗？","q8":"我能用于 AI 训练吗？","q9":"授权是独家的吗？","q10":"我能把授权转让给客户吗？","q11":"我如何收到文件？","q12":"我会收到发票吗？","q13":"你们提供国际交付吗？","q14":"如果下载链接过期怎么办？","q15":"我可以退款吗？","q16":"14 天撤回权如何处理？",
+  "contact.eyebrow":"联系与企业信息","contact.h":"联系","r.a.l":"A · 授权","r.a.n":"购买、定制授权、下单前咨询","r.b.l":"B · 媒体","r.b.n":"采访、展览、编辑请求","r.c.l":"C · 法律","r.c.n":"版权、GDPR、未授权使用举报",
+  "b.name":"注册企业名称","b.name.s":"（个体经营，[摄影师姓名]）","b.org":"组织编号","b.addr":"注册地址","b.email":"主要邮箱","b.resp":"回复时间","b.resp.v":"订单 24 小时内 · 一般 48 小时内（工作日）",
+  "foot.tag":"经核验的人类摄影档案库。每一版都经编目、封存，并由摄影师直接授权。","foot.legal":"© 2026 Beta Art · 所有版皆由人手创作 · 无生成式 AI",
+  "ui.yourOrder":"您的订单","ui.total":"总计（不含增值税）","ui.sendOrder":"发送订购请求","ui.orderNote":"您的邮件应用将打开并预填订单。书面授权、发票与安全下载链接将在 24 小时内送达。","ui.from":"起","ui.licenceFrom":"授权起价","ui.selectLicence":"选择授权","ui.addToOrder":"加入订单","ui.plateOf":"版","ui.empty":"— 空 —","ui.remove":"移除","ui.added":"已加入","ui.acc":"登录号","ui.camera":"相机","ui.lens":"镜头","ui.exposure":"曝光","ui.raw":"RAW","ui.rawv":"原件在案",
+  "lic.personal":"个人","lic.personal.d":"私人、非商业用途。","lic.commercial":"商业","lic.commercial.d":"商业用途——网站、营销、印刷。","lic.extended":"扩展","lic.extended.d":"大批量、转售、单一客户再授权。"},
+ hi:{"nav.collection":"संग्रह","nav.verify":"सत्यापन","nav.photographer":"फ़ोटोग्राफ़र","nav.faq":"सामान्य प्रश्न","nav.contact":"संपर्क","nav.order":"ऑर्डर",
+  "hero.kicker":"अभिलेख · खंड I","hero.h":"यहाँ की हर छवि एक इंसान ने बनाई है।","hero.sub":"मूल तस्वीरों का एक संग्रह — हर एक सूचीबद्ध, मुहरबंद और सीधे फ़ोटोग्राफ़र द्वारा लाइसेंस की गई।","hero.cta":"संग्रह देखें","hero.micro":"पूर्ण-रिज़ॉल्यूशन फ़ाइल 24 घंटों में वितरित।","hero.plate":"लोफ़ोटेन · मार्च 2026",
+  "maker.label":"रचयिता की ओर से","maker.body":"ऐसे युग में जब कोई भी छवि उत्पन्न कर सकता है, <span class=\"seal\">उद्गम ही उत्पाद है</span>। इस संग्रह की हर तस्वीर एक वास्तविक कैमरे से, वास्तविक स्थान पर, वास्तविक दिन को ली गई है। <span class=\"em\">RAW फ़ाइल सुरक्षित रखी जाती है। रिकॉर्ड सुरक्षित रखा जाता है। कुछ भी उत्पन्न नहीं किया गया। कुछ भी संयोजित नहीं किया गया।</span>","maker.sig":"Beta Art · सत्यापित मानव फ़ोटोग्राफ़ी का अभिलेख — स्था. 2026",
+  "verify.h":"हर कृति कैसे सत्यापित होती है।","verify.intro":"कोई तस्वीर उतनी ही विश्वसनीय है जितना उसके पीछे का अभिलेख। हर प्लेट तीन प्रकार के प्रमाण रखती है — वही मानक जो संग्रहालय की धरोहरों पर लागू होता है।",
+  "m1.n":"विधि I","m1.t":"RAW मूल फ़ाइल संग्रहीत की जाती है।","m1.b":"हर प्लेट एक वास्तविक कैमरे की RAW फ़ाइल के रूप में शुरू होती है। मूल प्रतियाँ एक ऑफ़लाइन अभिलेख में रखी जाती हैं और अनुरोध पर देखी जा सकती हैं।",
+  "m2.n":"विधि II","m2.t":"कैप्चर रिकॉर्ड छवि के साथ चलता है।","m2.b":"कैमरा, लेंस, एक्सपोज़र, स्थान और तिथि हर तस्वीर के साथ रहते हैं। जहाँ उपकरण अनुमति देता है, C2PA कंटेंट क्रेडेंशियल्स कैप्चर के समय एम्बेड किए जाते हैं।",
+  "m3.n":"विधि III","m3.t":"लाइसेंस रचयिता द्वारा हस्ताक्षरित होता है।","m3.b":"आप सीधे फ़ोटोग्राफ़र से लाइसेंस लेते हैं। हर ऑर्डर के साथ लिखित लाइसेंस, विधिवत इनवॉइस और क्रमांकित प्रमाणपत्र आता है — कोई बिचौलिया नहीं।",
+  "coll.kicker":"संग्रह · खंड I","coll.h":"बारह प्लेटें, सूचीबद्ध।","f.all":"सभी","f.landscape":"परिदृश्य","f.city":"शहर","f.portrait":"पोर्ट्रेट",
+  "photog.kicker":"फ़ोटोग्राफ़र · 2012 से कार्यरत","photog.h":"मैं वही तस्वीर लेता हूँ जो वास्तव में मौजूद है।","photog.b":"मेरे अभिलेख में 2012 से लिए गए 84,000 से अधिक फ़्रेम हैं। जब आप कोई प्लेट लाइसेंस करते हैं, तो आप सीधे मुझसे व्यवहार करते हैं — लिखित लाइसेंस, विधिवत इनवॉइस, और चौबीस घंटों में आपके इनबॉक्स में पूर्ण-रिज़ॉल्यूशन फ़ाइल।",
+  "faq.eyebrow":"सामान्य प्रश्न","faq.h":"प्रश्न और उत्तर","faq.note":"पूर्ण स्थानीयकरण जारी रहने तक विस्तृत उत्तर अंग्रेज़ी में दिखाए जा रहे हैं।",
+  "g1":"तस्वीरों के बारे में","g2":"लाइसेंस और उपयोग","g3":"ऑर्डर और वितरण","g4":"भुगतान और वापसी",
+  "q1":"क्या आप AI का उपयोग करते हैं?","q2":"'मानव सत्यापित' कैसे काम करता है?","q3":"तस्वीरें कहाँ ली जाती हैं?","q4":"क्या मैं कस्टम शूट का अनुरोध कर सकता हूँ?","q5":"मुझे कौन-सा लाइसेंस चाहिए?","q6":"क्या मैं इसे अपने व्यवसाय के सोशल मीडिया पर उपयोग कर सकता हूँ?","q7":"क्या मैं तस्वीर को संपादित/क्रॉप कर सकता हूँ?","q8":"क्या मैं इसे AI प्रशिक्षण के लिए उपयोग कर सकता हूँ?","q9":"क्या लाइसेंस विशिष्ट है?","q10":"क्या मैं लाइसेंस किसी ग्राहक को हस्तांतरित कर सकता हूँ?","q11":"मुझे फ़ाइल कैसे मिलेगी?","q12":"क्या मुझे इनवॉइस मिलेगा?","q13":"क्या आप अंतरराष्ट्रीय स्तर पर वितरित करते हैं?","q14":"यदि डाउनलोड लिंक समाप्त हो जाए तो?","q15":"क्या मुझे रिफ़ंड मिल सकता है?","q16":"14-दिन के निरसन अधिकार का क्या?",
+  "contact.eyebrow":"संपर्क और व्यावसायिक जानकारी","contact.h":"संपर्क","r.a.l":"A · लाइसेंसिंग","r.a.n":"खरीद, कस्टम लाइसेंस, ऑर्डर से पहले प्रश्न","r.b.l":"B · प्रेस","r.b.n":"साक्षात्कार, प्रदर्शनी, संपादकीय अनुरोध","r.c.l":"C · कानूनी","r.c.n":"कॉपीराइट, GDPR, अनधिकृत उपयोग रिपोर्ट",
+  "b.name":"पंजीकृत व्यवसाय नाम","b.name.s":"(एकल स्वामित्व, [फ़ोटोग्राफ़र का नाम])","b.org":"संगठन संख्या","b.addr":"पंजीकृत पता","b.email":"प्राथमिक ईमेल","b.resp":"प्रतिक्रिया समय","b.resp.v":"ऑर्डर 24 घंटे · सामान्य 48 घंटे (कार्यदिवस)",
+  "foot.tag":"सत्यापित मानव फ़ोटोग्राफ़ी का एक अभिलेख। हर प्लेट सूचीबद्ध, मुहरबंद और सीधे फ़ोटोग्राफ़र द्वारा लाइसेंस की गई।","foot.legal":"© 2026 Beta Art · सभी प्लेटें मानव-निर्मित · कोई जनरेटिव AI नहीं",
+  "ui.yourOrder":"आपका ऑर्डर","ui.total":"कुल (कर रहित)","ui.sendOrder":"ऑर्डर अनुरोध भेजें","ui.orderNote":"आपका ईमेल ऐप ऑर्डर पहले से भरा हुआ खुलेगा। लिखित लाइसेंस, इनवॉइस और सुरक्षित लिंक 24 घंटे में आते हैं।","ui.from":"से","ui.licenceFrom":"लाइसेंस से","ui.selectLicence":"एक लाइसेंस चुनें","ui.addToOrder":"ऑर्डर में जोड़ें","ui.plateOf":"प्लेट","ui.empty":"— खाली —","ui.remove":"हटाएँ","ui.added":"जोड़ा गया","ui.acc":"पंजीकरण","ui.camera":"कैमरा","ui.lens":"लेंस","ui.exposure":"एक्सपोज़र","ui.raw":"RAW","ui.rawv":"मूल दर्ज",
+  "lic.personal":"व्यक्तिगत","lic.personal.d":"निजी, गैर-व्यावसायिक उपयोग।","lic.commercial":"व्यावसायिक","lic.commercial.d":"व्यवसाय उपयोग — वेब, मार्केटिंग, प्रिंट।","lic.extended":"विस्तारित","lic.extended.d":"उच्च मात्रा, पुनर्विक्रय, एक ग्राहक उप-लाइसेंस।"},
+ ar:{"nav.collection":"المجموعة","nav.verify":"التحقّق","nav.photographer":"المصوّر","nav.faq":"الأسئلة الشائعة","nav.contact":"اتصال","nav.order":"اطلب",
+  "hero.kicker":"الأرشيف · المجلد الأول","hero.h":"كل صورة هنا صنعها إنسان.","hero.sub":"أرشيف من الصور الأصلية — كلٌّ منها مُفهرَسة ومختومة ومُرخَّصة مباشرةً من المصوِّر.","hero.cta":"استعرض المجموعة","hero.micro":"يُسلَّم الملف بدقّته الكاملة خلال 24 ساعة.","hero.plate":"لوفوتن · مارس 2026",
+  "maker.label":"كلمة من صاحب العمل","maker.body":"في زمنٍ يستطيع فيه أيُّ أحدٍ توليد صورة، <span class=\"seal\">يصبح المصدر هو المنتَج</span>. كل صورة في هذا الأرشيف التُقطت بكاميرا حقيقية، في مكان حقيقي، في يوم حقيقي. <span class=\"em\">يُحفَظ ملف RAW الأصلي. يُحفَظ السجلّ. لا شيء مُولَّد. لا شيء مُركَّب.</span>","maker.sig":"Beta Art · أرشيف التصوير البشري المُوثَّق — تأسّس 2026",
+  "verify.h":"كيف يُوثَّق كل عمل.","verify.intro":"الصورة موثوقة بقدر السجلّ الذي يقف خلفها. كل لوح يحمل ثلاثة أشكال من الأدلّة — المعيار نفسه المُطبَّق على مقتنيات المتاحف.",
+  "m1.n":"الطريقة الأولى","m1.t":"يُؤرشَف الأصل بصيغة RAW.","m1.b":"يبدأ كل لوح كملف RAW من كاميرا حقيقية. تُحفَظ الأصول في أرشيف غير متّصل ويمكن فحصها عند الطلب.",
+  "m2.n":"الطريقة الثانية","m2.t":"يرافق سجلُّ الالتقاط الصورةَ أينما ذهبت.","m2.b":"تُرافق كلَّ صورة بيانات الكاميرا والعدسة والتعريض والمكان والتاريخ. وحيثما تسمح المعدّات، تُضمَّن اعتمادات محتوى C2PA لحظة الالتقاط.",
+  "m3.n":"الطريقة الثالثة","m3.t":"يوقّع صاحبُ العمل الترخيصَ.","m3.b":"تحصل على الترخيص من المصوِّر مباشرةً. يصل كل طلب مع ترخيص مكتوب وفاتورة رسمية وشهادة مُرقَّمة — دون وسطاء.",
+  "coll.kicker":"المجموعة · المجلد الأول","coll.h":"اثنا عشر لوحًا، مُفهرَسة.","f.all":"الكل","f.landscape":"مناظر","f.city":"مدن","f.portrait":"بورتريه",
+  "photog.kicker":"المصوّر · يعمل منذ 2012","photog.h":"أُصوِّر ما هو موجود فعلاً.","photog.b":"يضمّ أرشيفي أكثر من 84٬000 لقطة منذ 2012. حين ترخِّص لوحًا، تتعامل معي مباشرةً — ترخيص مكتوب، وفاتورة رسمية، والملف بدقّته الكاملة في بريدك خلال أربع وعشرين ساعة.",
+  "faq.eyebrow":"الأسئلة الشائعة","faq.h":"أسئلة وأجوبة","faq.note":"تُعرض الإجابات التفصيلية بالإنجليزية ريثما تكتمل الترجمة.",
+  "g1":"عن الصور","g2":"التراخيص والاستخدام","g3":"الطلب والتسليم","g4":"الدفع والاسترداد",
+  "q1":"هل تستخدمون الذكاء الاصطناعي؟","q2":"كيف يعمل «التحقّق البشري»؟","q3":"أين تُلتقط الصور؟","q4":"هل يمكنني طلب تصوير مخصّص؟","q5":"أيّ ترخيص أحتاج؟","q6":"هل يمكنني استخدامها على وسائل التواصل لعملي؟","q7":"هل يمكنني تعديل الصورة أو قصّها؟","q8":"هل يمكنني استخدامها لتدريب الذكاء الاصطناعي؟","q9":"هل الترخيص حصري؟","q10":"هل يمكنني نقل الترخيص إلى عميل؟","q11":"كيف أستلم الملف؟","q12":"هل أحصل على فاتورة؟","q13":"هل تسلّمون دوليًا؟","q14":"ماذا لو انتهت صلاحية رابط التنزيل؟","q15":"هل يمكنني استرداد المبلغ؟","q16":"ماذا عن حقّ الانسحاب خلال 14 يومًا؟",
+  "contact.eyebrow":"الاتصال ومعلومات النشاط","contact.h":"اتصال","r.a.l":"أ · الترخيص","r.a.n":"الشراء والتراخيص المخصّصة والأسئلة قبل الطلب","r.b.l":"ب · الصحافة","r.b.n":"المقابلات والمعارض والطلبات التحريرية","r.c.l":"ج · القانون","r.c.n":"حقوق النشر وGDPR وبلاغات الاستخدام غير المصرّح",
+  "b.name":"الاسم التجاري المسجّل","b.name.s":"(مؤسسة فردية، [اسم المصوّر])","b.org":"رقم المنشأة","b.addr":"العنوان المسجّل","b.email":"البريد الأساسي","b.resp":"زمن الاستجابة","b.resp.v":"الطلبات خلال 24 ساعة · العام خلال 48 ساعة (أيام العمل)",
+  "foot.tag":"أرشيف للتصوير البشري المُوثَّق. كل لوح مُفهرَس ومختوم ومُرخَّص مباشرةً من المصوِّر.","foot.legal":"© 2026 Beta Art · جميع الألواح من صنع البشر · بلا ذكاء اصطناعي توليدي",
+  "ui.yourOrder":"طلبك","ui.total":"الإجمالي (بدون ضريبة)","ui.sendOrder":"إرسال طلب","ui.orderNote":"سيفتح تطبيق البريد لديك والطلب مُعبّأ مسبقًا. يصل الترخيص المكتوب والفاتورة ورابط التنزيل الآمن خلال 24 ساعة.","ui.from":"من","ui.licenceFrom":"الترخيص من","ui.selectLicence":"اختر ترخيصًا","ui.addToOrder":"أضف إلى الطلب","ui.plateOf":"لوح","ui.empty":"— فارغ —","ui.remove":"إزالة","ui.added":"أُضيف","ui.acc":"رقم الإدراج","ui.camera":"الكاميرا","ui.lens":"العدسة","ui.exposure":"التعريض","ui.raw":"RAW","ui.rawv":"الأصل مسجّل",
+  "lic.personal":"شخصي","lic.personal.d":"استخدام خاص غير تجاري.","lic.commercial":"تجاري","lic.commercial.d":"استخدام تجاري — ويب، تسويق، طباعة.","lic.extended":"موسّع","lic.extended.d":"حجم كبير، إعادة بيع، ترخيص فرعي لعميل واحد."}
+};
+const EXTRA={
+ en:{"qf.p1":"Provenance","qf.t1":"Verified human","qf.d1":"No AI, no compositing","qf.p2":"Delivery","qf.t2":"Within 24 hours","qf.d2":"Full-resolution file","qf.p3":"Rights","qf.t3":"Direct licence","qf.d3":"Signed by the maker","qf.p4":"Reach","qf.t4":"Worldwide","qf.d4":"Delivered digitally","faq.search":"Search questions…","faq.noResult":"No matching questions.","price.auto":"Price is set automatically from the image's own data — sensor resolution, category and rarity."},
+ tr:{"qf.p1":"Köken","qf.t1":"İnsan doğrulamalı","qf.d1":"Yapay zekâ yok, montaj yok","qf.p2":"Teslimat","qf.t2":"24 saat içinde","qf.d2":"Tam çözünürlüklü dosya","qf.p3":"Haklar","qf.t3":"Doğrudan lisans","qf.d3":"Yapımcı imzalı","qf.p4":"Erişim","qf.t4":"Dünya çapında","qf.d4":"Dijital teslim","faq.search":"Soru ara…","faq.noResult":"Eşleşen soru yok.","price.auto":"Fiyat, görüntünün kendi verisinden otomatik belirlenir — sensör çözünürlüğü, kategori ve nadirlik."},
+ es:{"qf.p1":"Procedencia","qf.t1":"Humano verificado","qf.d1":"Sin IA, sin composición","qf.p2":"Entrega","qf.t2":"En 24 horas","qf.d2":"Archivo en resolución completa","qf.p3":"Derechos","qf.t3":"Licencia directa","qf.d3":"Firmada por el autor","qf.p4":"Alcance","qf.t4":"Todo el mundo","qf.d4":"Entrega digital","faq.search":"Buscar preguntas…","faq.noResult":"No hay preguntas coincidentes.","price.auto":"El precio se fija automáticamente a partir de los datos de la imagen — resolución del sensor, categoría y rareza."},
+ zh:{"qf.p1":"来源","qf.t1":"人类验证","qf.d1":"无 AI，无合成","qf.p2":"交付","qf.t2":"24 小时内","qf.d2":"全分辨率文件","qf.p3":"授权","qf.t3":"直接授权","qf.d3":"由创作者签署","qf.p4":"覆盖","qf.t4":"全球","qf.d4":"数字交付","faq.search":"搜索问题…","faq.noResult":"没有匹配的问题。","price.auto":"价格根据图像自身数据自动确定——传感器分辨率、类别与稀有度。"},
+ hi:{"qf.p1":"उद्गम","qf.t1":"मानव सत्यापित","qf.d1":"कोई AI नहीं, कोई संयोजन नहीं","qf.p2":"वितरण","qf.t2":"24 घंटों में","qf.d2":"पूर्ण-रिज़ॉल्यूशन फ़ाइल","qf.p3":"अधिकार","qf.t3":"सीधा लाइसेंस","qf.d3":"रचयिता द्वारा हस्ताक्षरित","qf.p4":"पहुँच","qf.t4":"दुनिया भर में","qf.d4":"डिजिटल वितरण","faq.search":"प्रश्न खोजें…","faq.noResult":"कोई मेल खाता प्रश्न नहीं।","price.auto":"मूल्य छवि के अपने डेटा से स्वतः निर्धारित होता है — सेंसर रिज़ॉल्यूशन, श्रेणी और दुर्लभता।"},
+ ar:{"qf.p1":"المصدر","qf.t1":"موثّق بشريًا","qf.d1":"بلا ذكاء اصطناعي، بلا تركيب","qf.p2":"التسليم","qf.t2":"خلال 24 ساعة","qf.d2":"ملف بدقّة كاملة","qf.p3":"الحقوق","qf.t3":"ترخيص مباشر","qf.d3":"موقّع من صاحب العمل","qf.p4":"الوصول","qf.t4":"عالميًا","qf.d4":"تسليم رقمي","faq.search":"ابحث في الأسئلة…","faq.noResult":"لا توجد أسئلة مطابقة.","price.auto":"يُحدَّد السعر تلقائيًا من بيانات الصورة نفسها — دقة المستشعر والفئة والنُّدرة."}
+};
+for(const l in EXTRA){ Object.assign(T[l], EXTRA[l]); }
+let lang="en";
+function t(k){ return (T[lang]&&T[lang][k]!=null)?T[lang][k]:(T.en[k]!=null?T.en[k]:k); }
+function apply(){
+  const h=document.documentElement; h.lang=lang; h.dir=RTL.has(lang)?"rtl":"ltr";
+  document.querySelectorAll("[data-i18n]").forEach(e=>e.textContent=t(e.getAttribute("data-i18n")));
+  document.querySelectorAll("[data-i18n-html]").forEach(e=>e.innerHTML=t(e.getAttribute("data-i18n-html")));
+  document.querySelectorAll("[data-i18n-ph]").forEach(e=>e.setAttribute("placeholder",t(e.getAttribute("data-i18n-ph"))));
+  document.querySelectorAll(".lang button[data-lang]").forEach(b=>b.classList.toggle("on",b.dataset.lang===lang));
+  document.getElementById("faqNote").classList.toggle("show", !FULL.has(lang) && !!t("faq.note"));
+  renderFilters(); renderGallery(); updateCart();
+  if(panelPlate) drawPanel();
+  const fs=document.getElementById("faqSearch"); if(fs&&fs.value) faqSearch(fs.value);
+}
+function setLang(l){ if(!T[l])return; lang=l; try{localStorage.setItem(LS,l)}catch(e){} apply(); }
+document.querySelectorAll(".lang button[data-lang]").forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.lang)));
+try{const s=localStorage.getItem(LS); if(s&&T[s])lang=s;}catch(e){}
+
+/* data */
+const CUR=n=>"kr "+n.toLocaleString("nb-NO");
+const LIC=[{id:"personal",base:150},{id:"commercial",base:700},{id:"extended",base:2400}];
+const PLATES=[
+ {n:"0142",cat:"landscape",title:"First Light",loc:"Lofoten, Norway",date:"2026",cam:"Nikon Z8",lens:"24–70mm",exp:"ƒ/8 · 1/160 · ISO 64"},
+ {n:"0143",cat:"landscape",title:"Into the Pines",loc:"Nordmarka, Oslo",date:"2025",cam:"Canon R5",lens:"35mm",exp:"ƒ/4 · 1/250 · ISO 200"},
+ {n:"0144",cat:"landscape",title:"Sea of Fog",loc:"Hardangervidda",date:"2025",cam:"Sony A7R V",lens:"70–200mm",exp:"ƒ/9 · 1/320 · ISO 100"},
+ {n:"0145",cat:"landscape",title:"Still Water",loc:"Jotunheimen",date:"2025",cam:"Hasselblad X2D",lens:"38mm",exp:"ƒ/11 · 1/60 · ISO 64"},
+ {n:"0146",cat:"landscape",title:"Polar Night",loc:"Senja, Norway",date:"2026",cam:"Nikon Z8",lens:"14–24mm",exp:"ƒ/2.8 · 15s · ISO 1600"},
+ {n:"0147",cat:"city",title:"Blue Hour Grid",loc:"Chicago, USA",date:"2025",cam:"Sony A7R V",lens:"16–35mm",exp:"ƒ/8 · 2s · ISO 100"},
+ {n:"0148",cat:"city",title:"Night Crossing",loc:"Singapore",date:"2026",cam:"Canon R5",lens:"24mm",exp:"ƒ/5.6 · 4s · ISO 200"},
+ {n:"0149",cat:"city",title:"Golden Hour",loc:"San Francisco",date:"2025",cam:"Nikon Z8",lens:"85mm",exp:"ƒ/7.1 · 1/500 · ISO 100"},
+ {n:"0150",cat:"portrait",title:"Portrait in Amber",loc:"Studio, Oslo",date:"2026",cam:"Hasselblad X2D",lens:"80mm",exp:"ƒ/2.8 · 1/200 · ISO 100"},
+ {n:"0151",cat:"portrait",title:"The Maker",loc:"Bergen, Norway",date:"2026",cam:"Leica Q3",lens:"28mm",exp:"ƒ/2 · 1/125 · ISO 400"},
+ {n:"0152",cat:"landscape",title:"Slow Morning",loc:"Lago di Braies, Italy",date:"2025",cam:"Sony A7R V",lens:"24–70mm",exp:"ƒ/6.3 · 1/250 · ISO 100"},
+ {n:"0153",cat:"landscape",title:"Low Tide",loc:"Ko Samui, Thailand",date:"2025",cam:"Leica Q3",lens:"28mm",exp:"ƒ/8 · 1/640 · ISO 100"},
+];
+const CATS=["all","landscape","city","portrait"];
+
+/* AUTOMATIC PRICING — each plate is priced from its own capture data,
+   so a price is set the moment an image (with its metadata) is added. */
+const CAM_MP={"Nikon Z8":45.7,"Canon R5":45,"Sony A7R V":61,"Hasselblad X2D":100,"Leica Q3":60.3};
+function autoPrice(p,base){
+  const mp=CAM_MP[p.cam]||45;                 // sensor resolution
+  const resF=0.8+(mp/100)*0.7;                // 45MP→1.12 … 100MP→1.50
+  const catF=p.cat==="portrait"?1.15:p.cat==="city"?1.08:1.0;   // category demand
+  const rareF=(/\d+s(\b|$)/.test(p.exp)||/ISO\s*(?:8|16|32)00/.test(p.exp))?1.1:1.0; // long-exposure / low-light rarity
+  const yearF=(p.date>="2026")?1.06:1.0;      // recency
+  return Math.round(base*resF*catF*rareF*yearF/10)*10;
+}
+function priceImage(p){ p.pr={}; LIC.forEach(l=>{p.pr[l.id]=autoPrice(p,l.base);}); return p; }
+PLATES.forEach(priceImage);
+
+let activeCat="all", cart=[], panelPlate=null, selLic="commercial";
+const $=id=>document.getElementById(id);
+const acc=p=>"2026."+p.n;
+
+function renderFilters(){
+  $("filters").innerHTML=CATS.map(c=>`<button class="filter ${c===activeCat?'on':''}" data-c="${c}">${t("f."+c)}</button>`).join("");
+  $("filters").querySelectorAll(".filter").forEach(b=>b.onclick=()=>{activeCat=b.dataset.c;renderFilters();renderGallery();});
+}
+function renderGallery(){
+  const list=PLATES.filter(p=>activeCat==="all"||p.cat===activeCat);
+  $("gallery").innerHTML=list.map(p=>`<article class="piece" data-n="${p.n}">
+    <div class="piece-img">${acc(p)}</div>
+    <div class="piece-cap"><div><div class="piece-t">${p.title}</div><div class="piece-m">${p.loc} · ${p.date}</div></div>
+    <div><div class="piece-acc">${acc(p)}</div><div class="piece-p"><span class="est">${t("ui.from")}</span> ${CUR(p.pr.personal)}</div></div></div></article>`).join("");
+  $("gallery").querySelectorAll(".piece").forEach(el=>el.onclick=()=>openPanel(el.dataset.n));
+}
+function openPanel(n){ panelPlate=PLATES.find(p=>p.n===n); selLic="commercial"; drawPanel(); $("ov").classList.add("on"); $("panel").classList.add("on"); $("panelClose").style.display="flex"; document.body.style.overflow="hidden"; }
+function closePanel(){ $("ov").classList.remove("on"); $("panel").classList.remove("on"); $("panelClose").style.display="none"; document.body.style.overflow=""; panelPlate=null; }
+function drawPanel(){
+  const p=panelPlate, idx=PLATES.indexOf(p)+1;
+  $("panelBody").innerHTML=`
+   <div><span class="rule-label">${t("ui.plateOf")} ${idx} / ${PLATES.length}</span>
+     <h2 class="panel-title" style="margin-top:12px">${p.title}</h2>
+     <div class="panel-loc">${p.loc} · ${p.date}</div></div>
+   <div class="acc">
+     <div class="r"><span class="k">${t("ui.acc")}</span><span class="v">${acc(p)}</span></div>
+     <div class="r"><span class="k">${t("ui.camera")}</span><span class="v">${p.cam}</span></div>
+     <div class="r"><span class="k">${t("ui.lens")}</span><span class="v">${p.lens}</span></div>
+     <div class="r"><span class="k">${t("ui.exposure")}</span><span class="v">${p.exp}</span></div>
+     <div class="r"><span class="k">${t("ui.raw")}</span><span class="v">${t("ui.rawv")}</span></div>
+   </div>
+   <div><span class="rule-label" style="margin-bottom:14px;display:inline-flex">${t("ui.selectLicence")}</span>
+    <div class="lics">${LIC.map(l=>`<div class="lic ${l.id===selLic?'sel':''}" data-l="${l.id}"><div class="rd"></div>
+      <div><div class="ln">${t("lic."+l.id)}</div><div class="ld">${t("lic."+l.id+".d")}</div></div><div class="lp">${CUR(p.pr[l.id])}</div></div>`).join("")}</div></div>
+   <div class="price-auto">${t("price.auto")}</div>
+   <button class="addbtn" id="addBtn"><span>${t("ui.addToOrder")} · ${CUR(p.pr[selLic])}</span> <span>→</span></button>`;
+  $("panelBody").querySelectorAll(".lic").forEach(el=>el.onclick=()=>{selLic=el.dataset.l;drawPanel();});
+  $("addBtn").onclick=()=>{ const label=acc(panelPlate); cart.push({n:panelPlate.n,lic:selLic}); updateCart(); closePanel(); toast(t("ui.added")+" · "+label); };
+}
+function updateCart(){
+  const body=$("drawerB");
+  $("orderBtn").textContent = t("nav.order") + (cart.length? " · "+cart.length : "");
+  if(!cart.length){ body.innerHTML=`<div class="empty">${t("ui.empty")}</div>`; }
+  else body.innerHTML=cart.map((c,i)=>{const p=PLATES.find(x=>x.n===c.n),l=LIC.find(x=>x.id===c.lic);
+    return `<div class="ci"><div class="ci-img"></div><div><div class="ci-n">${p.title}</div><div class="ci-l">${t("lic."+l.id)} · ${acc(p)}</div>
+     <div class="ci-row"><span class="ci-p">${CUR(p.pr[c.lic])}</span><button class="ci-rm" data-i="${i}">${t("ui.remove")}</button></div></div></div>`;}).join("");
+  body.querySelectorAll(".ci-rm").forEach(b=>b.onclick=()=>{cart.splice(+b.dataset.i,1);updateCart();});
+  $("cartTot").textContent=CUR(cart.reduce((s,c)=>s+PLATES.find(x=>x.n===c.n).pr[c.lic],0));
+}
+$("orderBtn").onclick=e=>{e.preventDefault();openDrawer();};
+$("orderBtn2").onclick=openDrawer;
+function openDrawer(){ $("ovD").classList.add("on"); $("drawer").classList.add("on"); }
+function closeDrawer(){ $("ovD").classList.remove("on"); $("drawer").classList.remove("on"); }
+$("checkoutBtn").onclick=()=>{
+  if(!cart.length){toast(t("ui.empty"));return;}
+  const lines=cart.map(c=>{const p=PLATES.find(x=>x.n===c.n),l=LIC.find(x=>x.id===c.lic);return `• "${p.title}" (${acc(p)}) — ${t("lic."+l.id)} — ${CUR(p.pr[c.lic])}`;}).join("\n");
+  const tot=CUR(cart.reduce((s,c)=>s+PLATES.find(x=>x.n===c.n).pr[c.lic],0));
+  location.href="mailto:hello@betaart.no?subject="+encodeURIComponent("Order — Beta Art")+"&body="+encodeURIComponent("Hello,\n\nI would like to license:\n\n"+lines+"\n\nTotal: "+tot+" (excl. VAT)\n\nIntended use:\nName / company:\n\nThank you.");
+};
+let tm; function toast(m){const e=$("toast");e.textContent=m;e.classList.add("on");clearTimeout(tm);tm=setTimeout(()=>e.classList.remove("on"),2200);}
+$("ov").onclick=closePanel; $("panelClose").onclick=closePanel; $("ovD").onclick=closeDrawer; $("drawerX").onclick=closeDrawer;
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){closePanel();closeDrawer();}});
+document.querySelectorAll("[data-goto]").forEach(b=>b.onclick=()=>document.getElementById(b.dataset.goto).scrollIntoView({behavior:"smooth"}));
+const dk=$("darkBtn");
+function setDark(o){document.body.classList.toggle("dark",o);dk.textContent=o?"Light":"Dark";try{localStorage.setItem(LS_DK,o?"1":"0")}catch(e){}}
+try{if(localStorage.getItem(LS_DK)==="1")setDark(true);}catch(e){}
+dk.onclick=()=>setDark(!document.body.classList.contains("dark"));
+
+/* scroll progress + nav shadow + back-to-top */
+const nav=document.querySelector(".nav"), prog=$("progress"), toTop=$("toTop");
+function onScroll(){
+  const st=window.scrollY, h=document.documentElement.scrollHeight-window.innerHeight;
+  prog.style.width=(h>0?(st/h*100):0)+"%";
+  nav.classList.toggle("scrolled", st>8);
+  toTop.classList.toggle("on", st>640);
+}
+window.addEventListener("scroll",onScroll,{passive:true});
+toTop.onclick=()=>window.scrollTo({top:0,behavior:"smooth"});
+
+/* FAQ live search */
+function esc(s){return s.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");}
+function faqSearch(q){
+  q=(q||"").trim().toLowerCase();
+  const groups=document.querySelectorAll(".faq-grp"); let any=false;
+  document.querySelectorAll(".qa").forEach(qa=>{
+    const sum=qa.querySelector("summary"), ans=qa.querySelector(".a");
+    const raw=(sum.textContent+" "+ans.textContent).toLowerCase();
+    const hit=!q||raw.includes(q);
+    qa.classList.toggle("hide",!hit);
+    if(hit&&q){qa.setAttribute("open","");}else if(q){qa.removeAttribute("open");}
+    if(hit)any=true;
+    // highlight
+    if(q&&hit){const re=new RegExp("("+esc(q)+")","ig");
+      sum.innerHTML=sum.textContent.replace(re,"<mark>$1</mark>");
+    } else { sum.innerHTML=sum.textContent; }
+  });
+  groups.forEach(g=>{
+    const visible=g.querySelectorAll(".qa:not(.hide)").length;
+    g.classList.toggle("hide",visible===0);
+  });
+  $("faqEmpty").classList.toggle("show",!any);
+}
+$("faqSearch").addEventListener("input",e=>faqSearch(e.target.value));
+
+apply();
+</script>
+</body>
+</html>

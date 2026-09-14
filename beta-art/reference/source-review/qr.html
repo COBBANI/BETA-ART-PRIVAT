@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QR Codes — BETA ART</title>
+<meta name="description" content="Generate print-ready QR codes that lead directly to a BETA ART plate or to the archive itself.">
+<meta name="robots" content="noindex">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23FBFAF7'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%238B1A1A'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..800,50..100,0..1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --paper:#FBFAF7;
+  --paper-2:#F3F0E9;
+  --ink:#0F0F0F;
+  --ink-2:#1F1D1B;
+  --muted:#85817A;
+  --rule:#E4E0D8;
+  --seal:#8B1A1A;
+  --f-serif:'Fraunces',Georgia,serif;
+  --f-sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --f-mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--f-sans);
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.6;
+  font-size:16px;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+
+/* ---- NAV (same as other pages) ---- */
+.nav{
+  position:sticky;top:0;z-index:10;
+  background:rgba(251,250,247,.92);
+  backdrop-filter:saturate(140%) blur(8px);
+  border-bottom:1px solid var(--rule);
+}
+.nav-inner{
+  max-width:1400px;margin:0 auto;padding:18px 40px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.brand{
+  display:inline-flex;align-items:center;gap:12px;
+  font-family:var(--f-mono);font-size:12.5px;
+  letter-spacing:.24em;text-transform:uppercase;font-weight:500;
+}
+.brand-mark{
+  display:inline-block;width:11px;height:11px;
+  border:1.5px solid var(--ink);border-radius:50%;position:relative;
+}
+.brand-mark::after{
+  content:"";position:absolute;inset:2px;
+  background:var(--seal);border-radius:50%;
+}
+.nav-links{display:flex;gap:36px;align-items:center}
+.nav-links a{
+  font-family:var(--f-mono);font-size:11px;
+  letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted);transition:color .18s;
+}
+.nav-links a:hover{color:var(--ink)}
+.lang{
+  display:flex;align-items:center;gap:0;
+  font-family:var(--f-mono);font-size:10.5px;
+  letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);
+  border-left:1px solid var(--rule);
+  padding-left:20px;margin-left:4px;
+}
+.lang button{
+  background:none;border:0;padding:4px 6px;cursor:pointer;
+  font-family:inherit;font-size:inherit;letter-spacing:inherit;
+  color:var(--muted);transition:color .18s;
+}
+.lang button:hover{color:var(--ink)}
+.lang button.on{color:var(--ink);font-weight:600}
+.lang-sep{color:var(--rule);padding:0 2px}
+@media (max-width:700px){
+  .nav-inner{padding:16px 20px}
+  .nav-links{gap:14px}
+  .nav-links a:not(.lang a){display:none}
+  .lang{padding-left:12px;margin-left:0}
+}
+
+/* ---- LAYOUT ---- */
+.qr-main{
+  max-width:1200px;
+  margin:0 auto;
+  padding:72px 40px 120px;
+}
+.rule-label{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--f-mono);font-size:10.5px;
+  letter-spacing:.24em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:24px;
+}
+.rule-label::before{content:"";width:22px;height:1px;background:var(--muted)}
+h1{
+  font-family:var(--f-serif);font-weight:400;
+  font-size:clamp(40px,5.5vw,62px);
+  line-height:1.08;letter-spacing:-.015em;
+  color:var(--ink);margin-bottom:20px;
+}
+.intro{
+  max-width:640px;
+  font-size:17px;
+  color:var(--ink-2);
+  margin-bottom:56px;
+}
+
+/* Tabs */
+.tabs{
+  display:flex;
+  border-bottom:1.5px solid var(--ink);
+  margin-bottom:0;
+}
+.tab{
+  background:none;border:0;cursor:pointer;
+  padding:16px 24px;
+  font-family:var(--f-mono);font-size:11px;
+  letter-spacing:.18em;text-transform:uppercase;
+  color:var(--muted);
+  border-bottom:2px solid transparent;
+  margin-bottom:-1.5px;
+  transition:color .18s,border-color .18s;
+}
+.tab:hover{color:var(--ink-2)}
+.tab.on{
+  color:var(--ink);
+  border-bottom-color:var(--seal);
+  font-weight:600;
+}
+@media (max-width:600px){
+  .tab{padding:14px 12px;font-size:10px}
+}
+
+/* Work area — two columns */
+.work{
+  display:grid;
+  grid-template-columns:380px 1fr;
+  gap:60px;
+  padding:56px 0 0;
+  align-items:start;
+}
+@media (max-width:900px){
+  .work{grid-template-columns:1fr;gap:40px}
+}
+
+/* Left — QR preview column */
+.preview-col{
+  position:sticky;top:100px;
+}
+.preview-frame{
+  background:#fff;
+  border:1px solid var(--rule);
+  padding:32px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  aspect-ratio:1;
+  justify-content:center;
+}
+.preview-frame svg{
+  width:100%;height:100%;max-width:300px;max-height:300px;
+  display:block;
+}
+.preview-empty{
+  font-family:var(--f-mono);font-size:11px;
+  color:var(--muted);letter-spacing:.1em;text-transform:uppercase;
+}
+.preview-url{
+  margin-top:16px;
+  font-family:var(--f-mono);
+  font-size:11.5px;
+  color:var(--muted);
+  text-align:center;
+  word-break:break-all;
+  line-height:1.5;
+  min-height:36px;
+  padding:0 8px;
+}
+.downloads{
+  display:flex;gap:12px;margin-top:20px;
+}
+.dl{
+  flex:1;
+  background:var(--ink);color:var(--paper);
+  border:0;cursor:pointer;padding:14px 16px;
+  font-family:var(--f-mono);font-size:10.5px;
+  letter-spacing:.16em;text-transform:uppercase;font-weight:500;
+  transition:background .18s;
+}
+.dl:hover:not(:disabled){background:var(--ink-2)}
+.dl:disabled{opacity:.3;cursor:not-allowed}
+.dl.ghost{
+  background:transparent;
+  color:var(--ink);
+  border:1px solid var(--ink);
+}
+.dl.ghost:hover:not(:disabled){background:var(--ink);color:var(--paper)}
+
+/* Right — controls column */
+.controls h2{
+  font-family:var(--f-serif);font-weight:500;
+  font-size:24px;line-height:1.2;
+  margin-bottom:12px;
+}
+.controls > p{
+  color:var(--ink-2);
+  margin-bottom:28px;
+  max-width:56ch;
+}
+
+/* URL input (custom + site modes) */
+.url-input{
+  width:100%;
+  font-family:var(--f-mono);font-size:14px;
+  padding:16px 18px;
+  border:1px solid var(--rule);
+  background:var(--paper);
+  color:var(--ink);
+  outline:none;
+  transition:border-color .18s;
+}
+.url-input:focus{border-color:var(--ink)}
+.url-note{
+  margin-top:12px;
+  font-family:var(--f-mono);font-size:11px;
+  color:var(--muted);letter-spacing:.02em;
+}
+
+/* Plates grid */
+.plates-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(140px, 1fr));
+  gap:16px;
+  margin-top:8px;
+}
+.plate-card{
+  background:var(--paper-2);
+  border:1px solid transparent;
+  cursor:pointer;
+  padding:0;
+  overflow:hidden;
+  text-align:left;
+  font-family:inherit;
+  transition:border-color .15s,transform .15s;
+}
+.plate-card:hover{border-color:var(--ink)}
+.plate-card.on{border-color:var(--seal);background:#fff}
+.plate-thumb{
+  aspect-ratio:1;
+  width:100%;
+  object-fit:cover;
+  display:block;
+  background:var(--rule);
+}
+.plate-meta{
+  padding:10px 12px 12px;
+  display:flex;flex-direction:column;gap:4px;
+}
+.plate-title{
+  font-family:var(--f-serif);font-weight:500;font-size:13px;
+  color:var(--ink);line-height:1.25;
+}
+.plate-acc{
+  font-family:var(--f-mono);font-size:10px;
+  color:var(--muted);letter-spacing:.06em;
+}
+
+/* Domain warning */
+.domain-warn{
+  background:var(--paper-2);
+  padding:14px 18px;
+  margin-top:24px;
+  font-size:13px;
+  color:var(--ink-2);
+  border-left:3px solid var(--seal);
+  font-family:var(--f-mono);
+  font-size:12px;
+  line-height:1.6;
+}
+.domain-warn b{color:var(--ink);font-weight:600}
+
+/* Toast */
+.toast{
+  position:fixed;bottom:32px;left:50%;
+  transform:translateX(-50%) translateY(20px);
+  background:var(--ink);color:var(--paper);
+  padding:12px 20px;
+  font-family:var(--f-mono);font-size:11px;
+  letter-spacing:.14em;text-transform:uppercase;
+  opacity:0;pointer-events:none;
+  transition:opacity .25s,transform .25s;
+  z-index:100;
+}
+.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* Footer */
+.footer{
+  border-top:1px solid var(--rule);padding:40px 0 32px;background:var(--paper);
+}
+.footer-inner{max-width:1400px;margin:0 auto;padding:0 40px}
+.footer-links{
+  display:flex;flex-wrap:wrap;gap:24px 40px;
+  font-family:var(--f-mono);font-size:11px;
+  letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);padding-bottom:24px;
+  border-bottom:1px solid var(--rule);
+}
+.footer-links a{color:var(--muted);transition:color .18s}
+.footer-links a:hover{color:var(--ink)}
+.footer-legal{
+  display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;
+  padding-top:24px;
+  font-family:var(--f-mono);font-size:10.5px;
+  letter-spacing:.06em;color:var(--muted);
+}
+@media (max-width:700px){
+  .qr-main{padding:48px 20px 80px}
+  .footer-inner{padding:0 20px}
+}
+
+:focus-visible{outline:2px solid var(--seal);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<!-- ==================== NAV ==================== -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="brand"><span class="brand-mark"></span> BETA · ART</a>
+    <div class="nav-links">
+      <a href="/#collection" data-i18n="nav.collection">Collection</a>
+      <a href="/#verify" data-i18n="nav.verification">Verification</a>
+      <a href="/#about" data-i18n="nav.photographer">Photographer</a>
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-lang="en" class="on">EN</button>
+        <span class="lang-sep">/</span>
+        <button type="button" data-lang="no">NO</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ==================== MAIN ==================== -->
+<main class="qr-main">
+
+  <span class="rule-label" data-i18n="eyebrow">Tool · For the photographer</span>
+  <h1 data-i18n="title">QR Codes</h1>
+  <p class="intro" data-i18n="intro">Generate print-ready QR codes for the archive, for a specific plate, or for any URL. Scan → land directly on the plate detail page, license options open, buy in one tap. Use them on exhibition labels, business cards, portfolio prints, packaging or catalogue pages.</p>
+
+  <!-- Tabs -->
+  <div class="tabs" role="tablist">
+    <button class="tab on" data-mode="site" role="tab" data-i18n="tab.site">Whole site</button>
+    <button class="tab" data-mode="plate" role="tab" data-i18n="tab.plate">Specific plate</button>
+    <button class="tab" data-mode="custom" role="tab" data-i18n="tab.custom">Any URL</button>
+  </div>
+
+  <!-- Work area -->
+  <div class="work">
+
+    <!-- LEFT: preview -->
+    <div class="preview-col">
+      <div class="preview-frame" id="previewFrame">
+        <span class="preview-empty" data-i18n="preview.empty">Preview appears here</span>
+      </div>
+      <div class="preview-url" id="previewUrl"></div>
+      <div class="downloads">
+        <button class="dl" id="dlSvg" disabled data-i18n="dl.svg">Download SVG</button>
+        <button class="dl ghost" id="dlPng" disabled data-i18n="dl.png">Download PNG</button>
+      </div>
+    </div>
+
+    <!-- RIGHT: controls (mode-dependent) -->
+    <div class="controls">
+
+      <!-- Mode: whole site -->
+      <div class="mode" id="mode-site">
+        <h2 data-i18n="site.title">The archive URL</h2>
+        <p data-i18n="site.body">This QR points to the home page of the archive. Anyone who scans it will arrive on the collection view, ready to browse and license.</p>
+        <input type="text" class="url-input" id="siteUrl" readonly>
+        <p class="url-note" data-i18n="site.note">Auto-detected from the current domain. To generate for a different domain, use "Any URL" instead.</p>
+      </div>
+
+      <!-- Mode: specific plate -->
+      <div class="mode" id="mode-plate" style="display:none">
+        <h2 data-i18n="plate.title">Pick a plate</h2>
+        <p data-i18n="plate.body">The QR encodes a deep link to that plate. When scanned, the archive opens with the plate detail panel already displayed and licence options ready.</p>
+        <div class="plates-grid" id="platesGrid"></div>
+      </div>
+
+      <!-- Mode: any URL -->
+      <div class="mode" id="mode-custom" style="display:none">
+        <h2 data-i18n="custom.title">Any URL</h2>
+        <p data-i18n="custom.body">Paste any web address. Use for campaign links, Instagram posts, or a specific hash-linked plate you have opened.</p>
+        <input type="text" class="url-input" id="customUrl" placeholder="https://…">
+        <p class="url-note" data-i18n="custom.note">Full URL including https:// is recommended. Very long URLs make QR codes denser and harder to scan.</p>
+      </div>
+
+      <!-- Domain warning shown if betaart.no is not the actual origin -->
+      <div class="domain-warn" id="domainWarn" style="display:none">
+        <b data-i18n="warn.label">Notice</b> — <span data-i18n="warn.body">You are running this tool from a different domain than betaart.no. QR codes for "Whole site" and "Specific plate" will encode the current domain. Deploy this file on your production domain before printing, or use "Any URL" to point to the correct address manually.</span>
+      </div>
+
+    </div>
+  </div>
+
+</main>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/" data-i18n="footer.home">Home</a>
+      <a href="/privacy.html" data-i18n="footer.privacy">Privacy policy</a>
+      <a href="/license-terms.html" data-i18n="footer.terms">License terms</a>
+    </div>
+    <div class="footer-legal">
+      <span data-i18n="footer.legal1">© 2026 Beta Art · All plates human-made · No generative AI</span>
+      <span>Org.nr [000 000 000]</span>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<!-- QR library: qrcode-generator by Kazuhiko Arase (Apache 2.0), ~5KB minified.
+     Loaded from jsDelivr with SRI hash for integrity. -->
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"
+        integrity="sha256-45k3IjMEXjXwLNK+ZAxUFbhx7B5F4pDCoW1UN2R7oJk="
+        crossorigin="anonymous"></script>
+
+<script>
+/* ============================================================
+   Language system — same LANG_KEY as the rest of the site
+   ============================================================ */
+const LANG_KEY = "betaart:lang:v1";
+const DEFAULT_LANG = "en";
+let currentLang = DEFAULT_LANG;
+
+const T = {
+  en: {
+    "nav.collection":"Collection",
+    "nav.verification":"Verification",
+    "nav.photographer":"Photographer",
+
+    "eyebrow":"Tool · For the photographer",
+    "title":"QR Codes",
+    "intro":"Generate print-ready QR codes for the archive, for a specific plate, or for any URL. Scan → land directly on the plate detail page, licence options open, buy in one tap. Use them on exhibition labels, business cards, portfolio prints, packaging or catalogue pages.",
+
+    "tab.site":"Whole site",
+    "tab.plate":"Specific plate",
+    "tab.custom":"Any URL",
+
+    "preview.empty":"Preview appears here",
+    "dl.svg":"Download SVG",
+    "dl.png":"Download PNG",
+
+    "site.title":"The archive URL",
+    "site.body":"This QR points to the home page of the archive. Anyone who scans it will arrive on the collection view, ready to browse and license.",
+    "site.note":"Auto-detected from the current domain. To generate for a different domain, use \"Any URL\" instead.",
+
+    "plate.title":"Pick a plate",
+    "plate.body":"The QR encodes a deep link to that plate. When scanned, the archive opens with the plate detail panel already displayed and licence options ready.",
+
+    "custom.title":"Any URL",
+    "custom.body":"Paste any web address. Use for campaign links, Instagram posts, or a specific hash-linked plate you have opened.",
+    "custom.note":"Full URL including https:// is recommended. Very long URLs make QR codes denser and harder to scan.",
+
+    "warn.label":"Notice",
+    "warn.body":"You are running this tool from a different domain than betaart.no. QR codes for \"Whole site\" and \"Specific plate\" will encode the current domain. Deploy this file on your production domain before printing, or use \"Any URL\" to point to the correct address manually.",
+
+    "toast.svg":"SVG downloaded",
+    "toast.png":"PNG downloaded",
+    "toast.libError":"QR library failed to load — check your internet connection",
+    "toast.badUrl":"Please enter a valid URL",
+
+    "footer.home":"Home",
+    "footer.privacy":"Privacy policy",
+    "footer.terms":"License terms",
+    "footer.legal1":"© 2026 Beta Art · All plates human-made · No generative AI"
+  },
+  no: {
+    "nav.collection":"Samling",
+    "nav.verification":"Verifisering",
+    "nav.photographer":"Fotograf",
+
+    "eyebrow":"Verktøy · For fotografen",
+    "title":"QR-koder",
+    "intro":"Generer trykk-klare QR-koder for arkivet, for en spesifikk plate, eller for en hvilken som helst URL. Skann → lander direkte på platedetaljsiden, lisensvalg åpne, kjøp med ett trykk. Bruk dem på utstillingsetiketter, visittkort, portfolio-trykk, emballasje eller katalogsider.",
+
+    "tab.site":"Hele siden",
+    "tab.plate":"Spesifikk plate",
+    "tab.custom":"Egen URL",
+
+    "preview.empty":"Forhåndsvisning vises her",
+    "dl.svg":"Last ned SVG",
+    "dl.png":"Last ned PNG",
+
+    "site.title":"Arkivets URL",
+    "site.body":"Denne QR-koden peker til arkivets hjemmeside. Enhver som skanner den, lander på samlingsvisningen, klar til å bla og lisensiere.",
+    "site.note":"Auto-detektert fra gjeldende domene. For å generere for et annet domene, bruk \"Egen URL\" i stedet.",
+
+    "plate.title":"Velg en plate",
+    "plate.body":"QR-koden koder en direktelenke til den platen. Ved skanning åpnes arkivet med platedetaljene allerede synlige og lisensvalgene klare.",
+
+    "custom.title":"Egen URL",
+    "custom.body":"Lim inn hvilken som helst nettadresse. Brukes for kampanjelenker, Instagram-innlegg, eller en spesifikk hash-lenket plate du har åpnet.",
+    "custom.note":"Full URL inkludert https:// anbefales. Svært lange URL-er gjør QR-koder tettere og vanskeligere å skanne.",
+
+    "warn.label":"Merk",
+    "warn.body":"Du kjører verktøyet fra et annet domene enn betaart.no. QR-koder for \"Hele siden\" og \"Spesifikk plate\" vil kode gjeldende domene. Publiser filen på produksjonsdomenet før du printer, eller bruk \"Egen URL\" for å peke til riktig adresse manuelt.",
+
+    "toast.svg":"SVG lastet ned",
+    "toast.png":"PNG lastet ned",
+    "toast.libError":"QR-biblioteket kunne ikke lastes — sjekk internett-forbindelsen",
+    "toast.badUrl":"Vennligst skriv inn en gyldig URL",
+
+    "footer.home":"Hjem",
+    "footer.privacy":"Personvern",
+    "footer.terms":"Lisensvilkår",
+    "footer.legal1":"© 2026 Beta Art · Alle plater laget av mennesker · Ingen generativ KI"
+  }
+};
+
+function t(key){
+  return (T[currentLang] && T[currentLang][key])
+      ?? (T[DEFAULT_LANG] && T[DEFAULT_LANG][key])
+      ?? key;
+}
+
+function applyLang(){
+  document.documentElement.lang = currentLang;
+  document.title = currentLang === "no" ? "QR-koder — BETA ART" : "QR Codes — BETA ART";
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    el.textContent = t(el.getAttribute("data-i18n"));
+  });
+  document.querySelectorAll(".lang button[data-lang]").forEach(b => {
+    b.classList.toggle("on", b.dataset.lang === currentLang);
+  });
+  /* Re-render current QR when language changes (labels only, QR itself stays) */
+  renderCurrent();
+}
+
+function switchLang(lang){
+  if(!T[lang]) return;
+  currentLang = lang;
+  try{ localStorage.setItem(LANG_KEY, lang); }catch(e){}
+  applyLang();
+}
+
+document.querySelectorAll(".lang button[data-lang]").forEach(b => {
+  b.addEventListener("click", () => switchLang(b.dataset.lang));
+});
+
+try{
+  const saved = localStorage.getItem(LANG_KEY);
+  if(saved && T[saved]) currentLang = saved;
+}catch(e){}
+
+/* ============================================================
+   Plates catalogue — sync with the main site (same accession
+   numbers, so QR codes always point to real plates).
+   ============================================================ */
+const PLATES = [
+  {n:"0142", title:"First Light",       loc:"Lofoten, Norway",     img:"https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=600&auto=format&fit=crop"},
+  {n:"0143", title:"Into the Pines",    loc:"Nordmarka, Oslo",     img:"https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=600&auto=format&fit=crop"},
+  {n:"0144", title:"Sea of Fog",        loc:"Hardangervidda",      img:"https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=600&auto=format&fit=crop"},
+  {n:"0145", title:"Still Water",       loc:"Jotunheimen",         img:"https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=600&auto=format&fit=crop"},
+  {n:"0146", title:"Polar Night",       loc:"Senja, Norway",       img:"https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=600&auto=format&fit=crop"},
+  {n:"0147", title:"Blue Hour Grid",    loc:"Chicago, US",         img:"https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?q=80&w=600&auto=format&fit=crop"},
+  {n:"0148", title:"Night Crossing",    loc:"Singapore",           img:"https://images.unsplash.com/photo-1514565131-fce0801e5785?q=80&w=600&auto=format&fit=crop"},
+  {n:"0149", title:"Golden Hour",       loc:"San Francisco",       img:"https://images.unsplash.com/photo-1444723121867-7a241cacace9?q=80&w=600&auto=format&fit=crop"},
+  {n:"0150", title:"Portrait in Amber", loc:"Studio, Oslo",        img:"https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=600&auto=format&fit=crop"},
+  {n:"0151", title:"The Maker",         loc:"Bergen, Norway",      img:"https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=600&auto=format&fit=crop"},
+  {n:"0152", title:"Slow Morning",      loc:"Lago di Braies",      img:"https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=600&auto=format&fit=crop"},
+  {n:"0153", title:"Low Tide",          loc:"Ko Samui, Thailand",  img:"https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=600&auto=format&fit=crop"},
+];
+
+/* ============================================================
+   State
+   ============================================================ */
+const $ = id => document.getElementById(id);
+let currentMode = "site";
+let currentUrl = "";
+let selectedPlate = null;
+
+/* Auto-detect origin. When the file is served from betaart.no this
+   yields https://betaart.no; when tested locally, it yields file:// or
+   http://localhost — in that case we fall back to a sensible default
+   and show the domain warning. */
+const ORIGIN = (() => {
+  const o = window.location.origin;
+  if(o && /^https?:\/\//i.test(o) && !/localhost|127\.0\.0\.1|file:/.test(o)){
+    return o;
+  }
+  return "https://betaart.no";  /* fallback for local preview */
+})();
+
+/* Show domain-warning strip when we could not detect a production origin */
+if(ORIGIN === "https://betaart.no" && window.location.origin !== "https://betaart.no"){
+  const w = $("domainWarn");
+  if(w) w.style.display = "block";
+}
+
+/* Populate the site-URL input (readonly) and initial plate grid */
+$("siteUrl").value = ORIGIN + "/";
+
+/* ============================================================
+   Plate grid
+   ============================================================ */
+function renderPlatesGrid(){
+  $("platesGrid").innerHTML = PLATES.map(p => `
+    <button class="plate-card ${selectedPlate && selectedPlate.n===p.n ? 'on' : ''}"
+            data-n="${p.n}" type="button">
+      <img class="plate-thumb" src="${p.img}" alt="${p.title}" loading="lazy">
+      <div class="plate-meta">
+        <div class="plate-title">${p.title}</div>
+        <div class="plate-acc">2026.${p.n}</div>
+      </div>
+    </button>
+  `).join("");
+  $("platesGrid").querySelectorAll(".plate-card").forEach(el => {
+    el.addEventListener("click", () => {
+      selectedPlate = PLATES.find(p => p.n === el.dataset.n);
+      renderPlatesGrid();
+      generate();
+    });
+  });
+}
+renderPlatesGrid();
+
+/* ============================================================
+   QR generation
+   ============================================================ */
+let currentSvgString = "";  /* raw SVG source, kept for downloads */
+
+function urlForCurrentMode(){
+  if(currentMode === "site"){
+    return ORIGIN + "/";
+  }
+  if(currentMode === "plate"){
+    return selectedPlate ? `${ORIGIN}/#plate/${selectedPlate.n}` : "";
+  }
+  if(currentMode === "custom"){
+    return ($("customUrl").value || "").trim();
+  }
+  return "";
+}
+
+function generate(){
+  const url = urlForCurrentMode();
+  currentUrl = url;
+
+  const frame = $("previewFrame");
+  const urlEl = $("previewUrl");
+
+  if(!url){
+    frame.innerHTML = `<span class="preview-empty">${t("preview.empty")}</span>`;
+    urlEl.textContent = "";
+    $("dlSvg").disabled = true;
+    $("dlPng").disabled = true;
+    currentSvgString = "";
+    return;
+  }
+
+  /* Check that the QR library actually loaded */
+  if(typeof qrcode === "undefined"){
+    frame.innerHTML = `<span class="preview-empty" style="color:var(--seal)">${t("toast.libError")}</span>`;
+    return;
+  }
+
+  /* Build QR. Type 0 = auto-size for data length, error-correction 'M'
+     is a good balance for print (~15% redundancy, dense but scannable). */
+  const qr = qrcode(0, "M");
+  qr.addData(url);
+  qr.make();
+
+  /* Render as clean, styleable SVG.
+     Cell size 8, margin 4 modules — good for printing at any size. */
+  const moduleCount = qr.getModuleCount();
+  const cellSize = 8;
+  const margin = 4;
+  const size = moduleCount * cellSize + margin * cellSize * 2;
+
+  let svg =
+    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${size} ${size}" ` +
+    `shape-rendering="crispEdges" preserveAspectRatio="xMidYMid meet">`;
+  svg += `<rect width="${size}" height="${size}" fill="#FBFAF7"/>`;
+
+  /* Draw cells as a single path (smaller file, faster render) */
+  let path = "";
+  for(let r=0; r<moduleCount; r++){
+    for(let c=0; c<moduleCount; c++){
+      if(qr.isDark(r, c)){
+        const x = margin * cellSize + c * cellSize;
+        const y = margin * cellSize + r * cellSize;
+        path += `M${x},${y}h${cellSize}v${cellSize}h-${cellSize}z`;
+      }
+    }
+  }
+  svg += `<path d="${path}" fill="#0F0F0F"/>`;
+  svg += `</svg>`;
+
+  currentSvgString = svg;
+  frame.innerHTML = svg;
+  urlEl.textContent = url;
+  $("dlSvg").disabled = false;
+  $("dlPng").disabled = false;
+}
+
+/* ============================================================
+   Downloads
+   ============================================================ */
+function suggestFilename(ext){
+  if(currentMode === "site")   return `betaart-qr-site.${ext}`;
+  if(currentMode === "plate" && selectedPlate) return `betaart-qr-plate-2026.${selectedPlate.n}.${ext}`;
+  if(currentMode === "custom") return `betaart-qr-custom.${ext}`;
+  return `betaart-qr.${ext}`;
+}
+
+function downloadBlob(blob, filename){
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+$("dlSvg").addEventListener("click", () => {
+  if(!currentSvgString) return;
+  const blob = new Blob([currentSvgString], {type:"image/svg+xml"});
+  downloadBlob(blob, suggestFilename("svg"));
+  toast(t("toast.svg"));
+});
+
+$("dlPng").addEventListener("click", () => {
+  if(!currentSvgString) return;
+  /* Rasterise the SVG at 1000×1000 for a clean, hi-res PNG suitable
+     for Instagram, digital documents, or on-screen use. */
+  const img = new Image();
+  const svgBlob = new Blob([currentSvgString], {type:"image/svg+xml"});
+  const url = URL.createObjectURL(svgBlob);
+  img.onload = () => {
+    const canvas = document.createElement("canvas");
+    const size = 1000;
+    canvas.width = canvas.height = size;
+    const ctx = canvas.getContext("2d");
+    ctx.fillStyle = "#FBFAF7";
+    ctx.fillRect(0, 0, size, size);
+    ctx.drawImage(img, 0, 0, size, size);
+    URL.revokeObjectURL(url);
+    canvas.toBlob(blob => {
+      downloadBlob(blob, suggestFilename("png"));
+      toast(t("toast.png"));
+    }, "image/png");
+  };
+  img.src = url;
+});
+
+/* ============================================================
+   Toast
+   ============================================================ */
+let toastTimer = null;
+function toast(msg){
+  const el = $("toast");
+  el.textContent = msg;
+  el.classList.add("on");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.remove("on"), 1800);
+}
+
+/* ============================================================
+   Mode switching
+   ============================================================ */
+document.querySelectorAll(".tab").forEach(tab => {
+  tab.addEventListener("click", () => {
+    document.querySelectorAll(".tab").forEach(t => t.classList.remove("on"));
+    tab.classList.add("on");
+    currentMode = tab.dataset.mode;
+    document.querySelectorAll(".mode").forEach(m => m.style.display = "none");
+    $("mode-" + currentMode).style.display = "block";
+    generate();
+  });
+});
+
+/* Custom URL — regenerate as the user types (debounced) */
+let typingTimer = null;
+$("customUrl").addEventListener("input", () => {
+  clearTimeout(typingTimer);
+  typingTimer = setTimeout(generate, 250);
+});
+
+/* Called after language change so any re-rendered labels stay in sync */
+function renderCurrent(){
+  /* If nothing has been generated yet (empty preview), keep placeholder */
+  if(!currentUrl){
+    $("previewFrame").innerHTML = `<span class="preview-empty">${t("preview.empty")}</span>`;
+  }
+}
+
+/* Boot */
+applyLang();
+generate();
+</script>
+
+</body>
+</html>

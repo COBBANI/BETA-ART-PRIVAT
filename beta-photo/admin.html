@@ -1,0 +1,858 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>BETA PHOTO · Admin</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ── Admin layout ─────────────────────────────────────────────────────── */
+    body { min-height: 100vh; }
+
+    /* Auth screen */
+    #auth-screen {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    #auth-box {
+      width: 100%;
+      max-width: 360px;
+      border: 1px solid var(--line);
+      padding: 2.5rem;
+      background: var(--surface);
+    }
+    #auth-box .brand { margin-bottom: 1.75rem; }
+    #auth-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .7rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+    }
+    #auth-form { display: flex; flex-direction: column; gap: .75rem; }
+    #auth-form input[type="password"] {
+      width: 100%;
+      box-sizing: border-box;
+      background: var(--void);
+      border: 1px solid var(--line);
+      color: var(--text);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .875rem;
+      padding: .65rem 1rem;
+      outline: none;
+    }
+    #auth-form input[type="password"]:focus { border-color: var(--warm); }
+    #auth-form button[type="submit"] {
+      align-self: flex-start;
+      background: var(--warm);
+      color: var(--void);
+      border: none;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .75rem;
+      letter-spacing: .08em;
+      padding: .55rem 1.25rem;
+      cursor: pointer;
+    }
+    #auth-error {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .7rem;
+      color: var(--seal);
+      margin-top: .25rem;
+    }
+    #first-run-note {
+      font-size: .8rem;
+      color: var(--text-dim);
+      line-height: 1.6;
+      margin-bottom: 1.25rem;
+    }
+
+    /* Dashboard */
+    #dashboard { display: flex; flex-direction: column; min-height: 100vh; }
+
+    #admin-topbar {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      padding: .65rem 2rem;
+      background: var(--surface);
+      border-bottom: 1px solid var(--warm);
+      flex-wrap: wrap;
+    }
+    #admin-topbar .brand { flex-shrink: 0; }
+    .admin-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .65rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--warm);
+      border: 1px solid var(--warm);
+      padding: .15rem .5rem;
+    }
+
+    #tab-nav {
+      display: flex;
+      gap: 0;
+      flex: 1;
+    }
+    #tab-nav button {
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      color: var(--muted);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .72rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: .5rem 1rem;
+      cursor: pointer;
+      transition: color .12s, border-color .12s;
+    }
+    #tab-nav button:hover { color: var(--text); }
+    #tab-nav button.is-active { color: var(--warm); border-bottom-color: var(--warm); }
+
+    #topbar-actions { display: flex; align-items: center; gap: 1rem; margin-inline-start: auto; }
+    #topbar-actions a {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .7rem;
+      color: var(--text-dim);
+      text-decoration: none;
+    }
+    #topbar-actions a:hover { color: var(--text); }
+    .btn-sm {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .7rem;
+      letter-spacing: .05em;
+      padding: .3rem .8rem;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--text-dim);
+      cursor: pointer;
+      transition: border-color .12s, color .12s;
+    }
+    .btn-sm:hover { border-color: var(--muted); color: var(--text); }
+    .btn-sm.danger:hover { border-color: var(--seal); color: var(--seal); }
+
+    /* Tab panels */
+    #admin-main { flex: 1; padding: 2rem; max-width: 960px; margin: 0 auto; width: 100%; box-sizing: border-box; }
+    [data-panel] { display: none; }
+    [data-panel].is-active { display: block; }
+
+    /* Shared admin elements */
+    .admin-section { margin-bottom: 2.5rem; }
+    .admin-section h2 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .7rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+      padding-bottom: .5rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    /* Product grid */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    .product-card {
+      border: 1px solid var(--line);
+      background: var(--surface);
+      overflow: hidden;
+    }
+    .product-swatch { height: 64px; }
+    .product-card-body { padding: .875rem; }
+    .product-slug {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .6rem;
+      color: var(--muted);
+      letter-spacing: .06em;
+      margin-bottom: .3rem;
+    }
+    .product-name { font-size: .88rem; font-weight: 500; margin-bottom: .2rem; }
+    .product-cat {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .6rem;
+      letter-spacing: .08em;
+      color: var(--text-dim);
+    }
+    .product-views {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .6rem;
+      color: var(--ok);
+      margin-top: .4rem;
+    }
+    .product-card-actions { padding: .5rem .875rem .875rem; display: flex; gap: .5rem; }
+
+    /* Data table */
+    .admin-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .85rem;
+    }
+    .admin-table th, .admin-table td {
+      padding: .65rem 1rem;
+      border: 1px solid var(--line);
+      text-align: start;
+    }
+    .admin-table th {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .62rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: var(--surface);
+      font-weight: 400;
+    }
+    .admin-table td { color: var(--text-dim); }
+    .admin-table td:first-child {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .78rem;
+      color: var(--text);
+    }
+    .admin-table tbody tr:hover td { background: var(--surface); }
+    .status-ok { color: var(--ok); }
+    .status-warn { color: var(--warm); }
+
+    /* Code block */
+    .code-block {
+      background: var(--void);
+      border: 1px solid var(--line);
+      padding: 1rem 1.25rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .75rem;
+      line-height: 1.7;
+      color: var(--text-dim);
+      white-space: pre;
+      overflow-x: auto;
+      margin-top: .75rem;
+    }
+    .copy-btn {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .62rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      background: none;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      padding: .25rem .6rem;
+      cursor: pointer;
+      margin-top: .5rem;
+      transition: border-color .12s, color .12s;
+    }
+    .copy-btn:hover { border-color: var(--warm); color: var(--warm); }
+    .copy-btn.copied { color: var(--ok); border-color: var(--ok); }
+
+    /* Analyse cards */
+    .stat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+    .stat-card { border: 1px solid var(--line); padding: 1.25rem 1rem; background: var(--surface); }
+    .stat-value { font-family: 'Fraunces', Georgia, serif; font-size: 2rem; font-weight: 300; line-height: 1; margin-bottom: .3rem; color: var(--warm); }
+    .stat-label { font-family: 'JetBrains Mono', monospace; font-size: .62rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+    .stat-sub { font-size: .78rem; color: var(--text-dim); margin-top: .4rem; }
+
+    /* Notice banner */
+    .notice {
+      border: 1px solid var(--line);
+      padding: .875rem 1.25rem;
+      font-size: .82rem;
+      color: var(--text-dim);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+    .notice.warn { border-color: var(--warm); }
+    .notice strong { color: var(--text); }
+
+    /* Generator form */
+    .gen-form { display: grid; gap: .75rem; max-width: 480px; }
+    .gen-form label { font-family: 'JetBrains Mono', monospace; font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: .25rem; }
+    .gen-form input, .gen-form select {
+      width: 100%;
+      box-sizing: border-box;
+      background: var(--void);
+      border: 1px solid var(--line);
+      color: var(--text);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .8rem;
+      padding: .5rem .875rem;
+      outline: none;
+    }
+    .gen-form input:focus, .gen-form select:focus { border-color: var(--warm); }
+    .gen-form select option { background: var(--void); }
+
+    /* Verktoy section */
+    .tool-list { display: flex; flex-direction: column; gap: .75rem; }
+    .tool-row { display: flex; align-items: flex-start; gap: 1.5rem; padding: 1rem 1.25rem; border: 1px solid var(--line); background: var(--surface); }
+    .tool-info { flex: 1; }
+    .tool-name { font-size: .88rem; font-weight: 500; margin-bottom: .2rem; }
+    .tool-desc { font-size: .78rem; color: var(--text-dim); line-height: 1.55; }
+  </style>
+</head>
+<body>
+
+  <!-- ── Auth screen ──────────────────────────────────────────────────────── -->
+  <div id="auth-screen">
+    <div id="auth-box">
+      <a class="brand" href="index.html" aria-label="BETA PHOTO">
+        <span class="brand-mark" aria-hidden="true">B</span>
+        <span>BETA PHOTO</span>
+      </a>
+      <p id="auth-label">Admin</p>
+      <div id="first-run-note" hidden>
+        Første gangs oppsett: velg et adminpassord. Det lagres som en SHA-256
+        hash i nettleseren din — del det ikke med andre.
+      </div>
+      <form id="auth-form">
+        <div>
+          <label for="passphrase" style="font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:.4rem">Passord</label>
+          <input id="passphrase" type="password" autocomplete="current-password" />
+        </div>
+        <p id="auth-error" hidden>Feil passord. Prøv igjen.</p>
+        <button type="submit" id="auth-btn">Logg inn →</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ── Dashboard ────────────────────────────────────────────────────────── -->
+  <div id="dashboard" hidden>
+
+    <header id="admin-topbar">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">B</span>
+        <span>BETA PHOTO</span>
+      </a>
+      <span class="admin-badge">Admin</span>
+
+      <nav id="tab-nav" aria-label="Admin seksjoner">
+        <button data-tab="galleri" class="is-active">Galleri</button>
+        <button data-tab="betaid">BETA-ID</button>
+        <button data-tab="analyse">Analyse</button>
+        <button data-tab="verktoy">Verktøy</button>
+      </nav>
+
+      <div id="topbar-actions">
+        <a href="index.html" target="_blank">Se side ↗</a>
+        <a href="sell.html" target="_blank">Selg-side ↗</a>
+        <button class="btn-sm" id="logout-btn">Logg ut</button>
+      </div>
+    </header>
+
+    <main id="admin-main">
+
+      <!-- ── Galleri ─────────────────────────────────────────────────── -->
+      <div data-panel="galleri" class="is-active">
+
+        <div class="admin-section">
+          <h2>Produktkatalog</h2>
+          <div class="product-grid" id="product-grid"></div>
+        </div>
+
+        <div class="admin-section" id="new-product-section">
+          <h2>Legg til nytt verk — kodegenerator</h2>
+          <p style="font-size:.82rem;color:var(--text-dim);margin-bottom:1.25rem">
+            Fyll ut feltene. Kopier de genererte kodesnuttene til <code style="font-size:.8rem">beta-photo/app.js</code>
+            (produktobjektet) og <code style="font-size:.8rem">beta-photo/index.html</code> (gallerikortet).
+          </p>
+          <div class="gen-form">
+            <div><label>Slug (ingen mellomrom, kun bindestreker)</label><input id="np-slug" placeholder="mitt-fotografi" /></div>
+            <div><label>Tittel</label><input id="np-name" placeholder="Mitt fotografi" /></div>
+            <div><label>Beskrivelse</label><input id="np-desc" placeholder="Kort bildetekst for modalen" /></div>
+            <div><label>Kategori</label>
+              <select id="np-cat">
+                <option value="landskap">Landskap</option>
+                <option value="kyst">Kyst</option>
+                <option value="urban">Urban</option>
+                <option value="abstrakt">Abstrakt</option>
+                <option value="arkitektur">Arkitektur</option>
+              </select>
+            </div>
+            <div><label>Bakgrunnsfarge (hex, for modalpreview)</label><input id="np-bg" placeholder="#1A1F2B" /></div>
+          </div>
+          <button class="btn-sm" id="gen-product-btn" style="margin-top:1rem">Generer kode →</button>
+          <div id="gen-product-out" hidden>
+            <p style="font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:1.5rem;margin-bottom:.4rem">1 — Legg til i products-objektet i app.js</p>
+            <div class="code-block" id="gen-product-appjs"></div>
+            <button class="copy-btn" data-copy="gen-product-appjs">Kopier</button>
+
+            <p style="font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:1.5rem;margin-bottom:.4rem">2 — Legg til gallerikortet i index.html</p>
+            <div class="code-block" id="gen-product-html"></div>
+            <button class="copy-btn" data-copy="gen-product-html">Kopier</button>
+          </div>
+        </div>
+
+      </div><!-- /galleri -->
+
+      <!-- ── BETA-ID ─────────────────────────────────────────────────── -->
+      <div data-panel="betaid" hidden>
+
+        <div class="admin-section">
+          <h2>Registererte BETA-ID-er</h2>
+          <div style="overflow-x:auto">
+            <table class="admin-table" id="betaid-table">
+              <thead>
+                <tr>
+                  <th>BETA-ID</th>
+                  <th>Verk</th>
+                  <th>Opplag</th>
+                  <th>Format</th>
+                  <th>Dato</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="betaid-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="admin-section">
+          <h2>Generer ny BETA-ID — kodegenerator</h2>
+          <p style="font-size:.82rem;color:var(--text-dim);margin-bottom:1.25rem">
+            Generer en ny BETA-ID-oppføring. Kopier kodesnuttene til
+            <code style="font-size:.8rem">DEMO_RECORDS</code>-objektet i <code style="font-size:.8rem">app.js</code>.
+          </p>
+          <div class="gen-form">
+            <div><label>Neste BETA-ID-nummer</label><input id="bid-num" placeholder="0003" /></div>
+            <div><label>Tittel</label><input id="bid-title" placeholder="Mitt fotografi" /></div>
+            <div><label>Opplag (eks. 01 / 20)</label><input id="bid-edition" placeholder="01 / 20" /></div>
+            <div><label>Format</label><input id="bid-format" placeholder="40 × 60 cm" /></div>
+            <div><label>Registreringsdato (ÅÅÅÅ-MM-DD)</label><input id="bid-date" type="date" /></div>
+          </div>
+          <button class="btn-sm" id="gen-betaid-btn" style="margin-top:1rem">Generer kode →</button>
+          <div id="gen-betaid-out" hidden>
+            <p style="font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:1.5rem;margin-bottom:.4rem">Legg til i DEMO_RECORDS i app.js</p>
+            <div class="code-block" id="gen-betaid-appjs"></div>
+            <button class="copy-btn" data-copy="gen-betaid-appjs">Kopier</button>
+          </div>
+        </div>
+
+      </div><!-- /betaid -->
+
+      <!-- ── Analyse ─────────────────────────────────────────────────── -->
+      <div data-panel="analyse" hidden>
+
+        <div class="notice warn">
+          <strong>Nettleserlokal analyse.</strong> Disse dataene er hentet fra
+          <code style="font-size:.8rem">localStorage</code> i denne nettleseren og
+          viser kun atferd fra denne enheten. For aggregerte data på tvers av
+          alle besøkende kreves en backend eller analyseplattform.
+        </div>
+
+        <div class="admin-section">
+          <h2>Oversikt — denne nettleseren</h2>
+          <div class="stat-grid" id="stat-grid"></div>
+        </div>
+
+        <div class="admin-section" id="viewed-section" hidden>
+          <h2>Sette verk</h2>
+          <div style="overflow-x:auto">
+            <table class="admin-table">
+              <thead><tr><th>Slug</th><th>Navn</th><th>Kategori</th><th>Visninger</th><th>Tid (sek)</th></tr></thead>
+              <tbody id="viewed-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="admin-section" id="cat-section" hidden>
+          <h2>Kategorihistorikk</h2>
+          <div id="cat-bars"></div>
+        </div>
+
+      </div><!-- /analyse -->
+
+      <!-- ── Verktøy ─────────────────────────────────────────────────── -->
+      <div data-panel="verktoy" hidden>
+
+        <div class="admin-section">
+          <h2>Adminverktøy</h2>
+          <div class="tool-list">
+
+            <div class="tool-row">
+              <div class="tool-info">
+                <div class="tool-name">Besøk som kunde</div>
+                <div class="tool-desc">
+                  Deaktiverer adminmodus midlertidig og åpner forsiden som en vanlig besøkende.
+                  Atferd vil bli sporet. Logg inn igjen via <code style="font-size:.78rem">admin.html</code>.
+                </div>
+              </div>
+              <button class="btn-sm" id="preview-as-user">Åpne som kunde →</button>
+            </div>
+
+            <div class="tool-row">
+              <div class="tool-info">
+                <div class="tool-name">Tilbakestill brukeratferd</div>
+                <div class="tool-desc">
+                  Sletter <code style="font-size:.78rem">betaphoto_v1</code> fra localStorage.
+                  Påvirker kun denne nettleseren. Data fra andre besøkende berøres ikke.
+                </div>
+              </div>
+              <button class="btn-sm danger" id="reset-behavior">Tilbakestill</button>
+            </div>
+
+            <div class="tool-row">
+              <div class="tool-info">
+                <div class="tool-name">Bytt adminpassord</div>
+                <div class="tool-desc">
+                  Sett et nytt passord for adminpanelet. Lagret som SHA-256-hash i localStorage.
+                </div>
+              </div>
+              <button class="btn-sm" id="change-pw-btn">Bytt passord</button>
+            </div>
+
+            <div class="tool-row">
+              <div class="tool-info">
+                <div class="tool-name">Kjør sjekkskript</div>
+                <div class="tool-desc">
+                  Kjør helsesjekken lokalt i terminalen for å validere nøkler, lenker og sitemap.
+                </div>
+              </div>
+              <div class="code-block" style="margin-top:0;flex:1">npm run check</div>
+            </div>
+
+            <div class="tool-row">
+              <div class="tool-info">
+                <div class="tool-name">Logg ut</div>
+                <div class="tool-desc">
+                  Avslutter adminmodus og sletter adminflaget fra localStorage.
+                </div>
+              </div>
+              <button class="btn-sm danger" id="logout-btn2">Logg ut</button>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="admin-section">
+          <h2>Endring av passord</h2>
+          <div class="gen-form" id="change-pw-form" hidden>
+            <div><label>Nytt passord</label><input id="new-pw" type="password" /></div>
+            <div><label>Bekreft passord</label><input id="confirm-pw" type="password" /></div>
+            <p id="pw-error" hidden style="font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--seal)"></p>
+            <button class="btn-sm" id="save-pw-btn">Lagre →</button>
+          </div>
+        </div>
+
+      </div><!-- /verktoy -->
+
+    </main>
+  </div><!-- /dashboard -->
+
+  <script>
+    'use strict';
+
+    /* ── Data (keep in sync with app.js) ─────────────────────────────────── */
+    const PRODUCTS = {
+      'mellom-fjell':  { name: 'Mellom fjell',    desc: 'Landskap fra norsk høyfjell, tatt i gylden time.',        bg: '#1A1F2B', cat: 'landskap' },
+      'stillhet-0614': { name: 'Stillhet 06:14',  desc: 'Kystlandskap i rolig morgenlys, stille og dypt.',         bg: '#1C2420', cat: 'kyst'     },
+      'byens-puls':    { name: 'Byens puls',       desc: 'Urban rytme fanget i en enkelt eksponering.',             bg: '#1F1A1A', cat: 'urban'    },
+      'nord-64':       { name: 'Nord 64',          desc: 'Abstraksjon inspirert av nordlys og arktisk lys.',        bg: '#161B20', cat: 'abstrakt' },
+      'etter-regnet':  { name: 'Etter regnet',     desc: 'Arkitektur speilet i regnvåt asfalt etter storm.',       bg: '#1A1C1F', cat: 'arkitektur'},
+      'siste-lys':     { name: 'Det siste lyset',  desc: 'Kveldslys som legger seg over et stille fjordlandskap.', bg: '#221E16', cat: 'landskap' },
+    };
+
+    const BETAID_RECORDS = {
+      'BETA-PHOTO-0001': { title: 'Mellom fjell',  edition: '01 / 20', format: '60 × 90 cm', date: '2026-04-12' },
+      'BETA-PHOTO-0002': { title: 'Stillhet 06:14', edition: '03 / 20', format: '40 × 60 cm', date: '2026-04-14' },
+    };
+
+    const BP_KEY = 'betaphoto_v1';
+
+    /* ── SHA-256 helper ───────────────────────────────────────────────────── */
+    async function sha256(text) {
+      const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
+      return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    /* ── Auth ─────────────────────────────────────────────────────────────── */
+    const HASH_KEY  = 'betaphoto_admin_hash';
+    const ADMIN_KEY = 'betaphoto_admin';
+
+    const authScreen  = document.getElementById('auth-screen');
+    const dashboard   = document.getElementById('dashboard');
+    const authForm    = document.getElementById('auth-form');
+    const authBtn     = document.getElementById('auth-btn');
+    const authError   = document.getElementById('auth-error');
+    const firstRunNote = document.getElementById('first-run-note');
+
+    function isFirstRun() { return !localStorage.getItem(HASH_KEY); }
+
+    function showDashboard() {
+      localStorage.setItem(ADMIN_KEY, '1');
+      authScreen.hidden = true;
+      dashboard.hidden  = false;
+      renderAll();
+    }
+
+    function logout() {
+      localStorage.removeItem(ADMIN_KEY);
+      authScreen.hidden = false;
+      dashboard.hidden  = true;
+    }
+
+    // Show first-run note if no hash stored
+    if (isFirstRun()) {
+      firstRunNote.hidden = false;
+      authBtn.textContent  = 'Sett passord →';
+    }
+
+    // If already logged in (admin flag set), go straight to dashboard
+    if (localStorage.getItem(ADMIN_KEY) === '1' && !isFirstRun()) {
+      showDashboard();
+    }
+
+    authForm.addEventListener('submit', async e => {
+      e.preventDefault();
+      const pw = document.getElementById('passphrase').value.trim();
+      if (!pw) return;
+
+      const hash = await sha256(pw);
+
+      if (isFirstRun()) {
+        // Setup: store the hash, then log in
+        localStorage.setItem(HASH_KEY, hash);
+        firstRunNote.hidden = true;
+        authBtn.textContent = 'Logg inn →';
+        showDashboard();
+        return;
+      }
+
+      const stored = localStorage.getItem(HASH_KEY);
+      if (hash === stored) {
+        authError.hidden = true;
+        showDashboard();
+      } else {
+        authError.hidden = false;
+      }
+    });
+
+    document.getElementById('logout-btn').addEventListener('click', logout);
+    document.getElementById('logout-btn2').addEventListener('click', logout);
+
+    /* ── Tab switching ────────────────────────────────────────────────────── */
+    const tabBtns   = document.querySelectorAll('#tab-nav button');
+    const tabPanels = document.querySelectorAll('[data-panel]');
+
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabBtns.forEach(b  => b.classList.remove('is-active'));
+        tabPanels.forEach(p => { p.classList.remove('is-active'); p.hidden = true; });
+        btn.classList.add('is-active');
+        const panel = document.querySelector(`[data-panel="${btn.dataset.tab}"]`);
+        if (panel) { panel.classList.add('is-active'); panel.hidden = false; }
+      });
+    });
+
+    /* ── Copy buttons ─────────────────────────────────────────────────────── */
+    document.addEventListener('click', e => {
+      const btn = e.target.closest('.copy-btn[data-copy]');
+      if (!btn) return;
+      const el = document.getElementById(btn.dataset.copy);
+      if (!el) return;
+      navigator.clipboard.writeText(el.textContent).then(() => {
+        btn.textContent = 'Kopiert ✓';
+        btn.classList.add('copied');
+        setTimeout(() => { btn.textContent = 'Kopier'; btn.classList.remove('copied'); }, 1800);
+      });
+    });
+
+    /* ── Render gallery tab ───────────────────────────────────────────────── */
+    function renderGallery() {
+      let bData = null;
+      try { bData = JSON.parse(localStorage.getItem(BP_KEY)) || {}; } catch {}
+      const viewed = (bData && bData.viewed) || [];
+
+      const grid = document.getElementById('product-grid');
+      grid.innerHTML = '';
+
+      Object.entries(PRODUCTS).forEach(([slug, p]) => {
+        const viewEntry = viewed.find(v => v.id === slug);
+        const viewCount = viewEntry ? viewEntry.count : 0;
+
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        card.innerHTML = `
+          <div class="product-swatch" style="background:${p.bg}"></div>
+          <div class="product-card-body">
+            <div class="product-slug">${slug}</div>
+            <div class="product-name">${p.name}</div>
+            <div class="product-cat">${p.cat}</div>
+            ${viewCount > 0 ? `<div class="product-views">Sett ${viewCount} gang${viewCount !== 1 ? 'er' : ''} (denne nettleser)</div>` : ''}
+          </div>`;
+        grid.appendChild(card);
+      });
+    }
+
+    /* ── Product code generator ───────────────────────────────────────────── */
+    document.getElementById('gen-product-btn').addEventListener('click', () => {
+      const slug = (document.getElementById('np-slug').value || 'mitt-foto').trim().replace(/\s+/g, '-');
+      const name = (document.getElementById('np-name').value || 'Mitt fotografi').trim();
+      const desc = (document.getElementById('np-desc').value || 'Bildetekst.').trim();
+      const cat  = document.getElementById('np-cat').value;
+      const bg   = (document.getElementById('np-bg').value || '#1A1A1A').trim();
+
+      const appjsSnippet =
+        `'${slug}': { name: '${name}', desc: '${desc}', bg: '${bg}' },`;
+
+      const catAttr = cat;
+      const htmlSnippet =
+        `<article class="gallery-card reveal" data-product="${slug}" data-category="${catAttr}">\n` +
+        `  <div class="card-art" style="background:${bg}"></div>\n` +
+        `  <div class="card-body">\n` +
+        `    <h3>${name}</h3>\n` +
+        `    <p>${desc}</p>\n` +
+        `    <button class="card-btn" aria-label="Åpne ${name}">Se detaljer</button>\n` +
+        `  </div>\n` +
+        `</article>`;
+
+      document.getElementById('gen-product-appjs').textContent = appjsSnippet;
+      document.getElementById('gen-product-html').textContent  = htmlSnippet;
+      document.getElementById('gen-product-out').hidden = false;
+    });
+
+    /* ── Render BETA-ID tab ───────────────────────────────────────────────── */
+    function renderBetaID() {
+      const tbody = document.getElementById('betaid-tbody');
+      tbody.innerHTML = '';
+      Object.entries(BETAID_RECORDS).forEach(([id, r]) => {
+        const tr = document.createElement('tr');
+        tr.innerHTML =
+          `<td>${id}</td>` +
+          `<td style="color:var(--text)">${r.title}</td>` +
+          `<td>${r.edition}</td>` +
+          `<td>${r.format}</td>` +
+          `<td>${r.date}</td>` +
+          `<td class="status-ok">Verifisert</td>`;
+        tbody.appendChild(tr);
+      });
+    }
+
+    /* ── BETA-ID generator ────────────────────────────────────────────────── */
+    document.getElementById('gen-betaid-btn').addEventListener('click', () => {
+      const num    = (document.getElementById('bid-num').value || '0003').trim().padStart(4, '0');
+      const title  = (document.getElementById('bid-title').value || 'Ukjent').trim();
+      const edition= (document.getElementById('bid-edition').value || '01 / 20').trim();
+      const format = (document.getElementById('bid-format').value || '40 × 60 cm').trim();
+      const date   = document.getElementById('bid-date').value || new Date().toISOString().slice(0, 10);
+      const id     = `BETA-PHOTO-${num}`;
+
+      const snippet =
+        `'${id}': { title: '${title}', edition: '${edition}', format: '${format}', date: '${date}', status: 'Verifisert' },`;
+
+      document.getElementById('gen-betaid-appjs').textContent = snippet;
+      document.getElementById('gen-betaid-out').hidden = false;
+    });
+
+    /* ── Render analyse tab ───────────────────────────────────────────────── */
+    function renderAnalyse() {
+      let b = null;
+      try { b = JSON.parse(localStorage.getItem(BP_KEY)); } catch {}
+
+      const grid = document.getElementById('stat-grid');
+      grid.innerHTML = '';
+
+      if (!b) {
+        grid.innerHTML = '<p style="font-size:.82rem;color:var(--text-dim)">Ingen atferdsdata i denne nettleseren ennå.</p>';
+        return;
+      }
+
+      function stat(value, label, sub) {
+        return `<div class="stat-card"><div class="stat-value">${value}</div><div class="stat-label">${label}</div>${sub ? `<div class="stat-sub">${sub}</div>` : ''}</div>`;
+      }
+
+      const views  = (b.viewed || []).length;
+      const visits = b.visits || 0;
+      const topCat = (() => {
+        const h = (b.catHistory || []).filter(c => c !== 'alle');
+        const f = {}; h.forEach(c => { f[c] = (f[c] || 0) + 1; });
+        const top = Object.entries(f).sort((a, z) => z[1] - a[1])[0];
+        return top ? `${top[0]} (${top[1]})` : '—';
+      })();
+
+      grid.innerHTML =
+        stat(visits, 'Besøk', 'Total sideinnlastinger') +
+        stat(views, 'Verk sett', 'Unike produkter åpnet') +
+        stat(b.sizePref || '—', 'Størrelsespreferanse', 'Siste valgte størrelse') +
+        stat(topCat, 'Topkategori', 'Mest brukt filter') +
+        stat((b.cartAttempts || []).length, 'Handlevogn-intensjon', 'Verk lagt i kurv');
+
+      // Viewed products table
+      if ((b.viewed || []).length > 0) {
+        const tbody = document.getElementById('viewed-tbody');
+        tbody.innerHTML = '';
+        b.viewed.forEach(v => {
+          const p = PRODUCTS[v.id] || {};
+          const secs = v.ms ? Math.round(v.ms / 1000) : '—';
+          const tr = document.createElement('tr');
+          tr.innerHTML =
+            `<td>${v.id}</td>` +
+            `<td style="color:var(--text)">${p.name || v.id}</td>` +
+            `<td>${v.cat || '—'}</td>` +
+            `<td>${v.count}</td>` +
+            `<td>${secs}</td>`;
+          tbody.appendChild(tr);
+        });
+        document.getElementById('viewed-section').hidden = false;
+      }
+
+      // Category bars
+      if ((b.catHistory || []).length > 0) {
+        const freq = {}; b.catHistory.forEach(c => { freq[c] = (freq[c] || 0) + 1; });
+        const max  = Math.max(...Object.values(freq));
+        const barsEl = document.getElementById('cat-bars');
+        barsEl.innerHTML = Object.entries(freq).sort((a, z) => z[1] - a[1]).map(([cat, n]) => {
+          const pct = Math.round(n / max * 100);
+          return `<div style="display:grid;grid-template-columns:120px 1fr auto;gap:.75rem;align-items:center;margin-bottom:.5rem;font-size:.82rem">
+            <span style="color:var(--text-dim)">${cat}</span>
+            <div style="height:6px;background:var(--line);border-radius:2px">
+              <div style="height:6px;width:${pct}%;background:var(--warm);border-radius:2px"></div>
+            </div>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--muted);min-width:2rem;text-align:end">${n}</span>
+          </div>`;
+        }).join('');
+        document.getElementById('cat-section').hidden = false;
+      }
+    }
+
+    /* ── Verktøy actions ──────────────────────────────────────────────────── */
+    document.getElementById('preview-as-user').addEventListener('click', () => {
+      localStorage.removeItem(ADMIN_KEY);
+      window.open('index.html', '_blank');
+    });
+
+    document.getElementById('reset-behavior').addEventListener('click', () => {
+      if (!confirm('Tilbakestille all brukeratferd i denne nettleseren?')) return;
+      localStorage.removeItem(BP_KEY);
+      renderAnalyse();
+    });
+
+    document.getElementById('change-pw-btn').addEventListener('click', () => {
+      document.getElementById('change-pw-form').hidden = !document.getElementById('change-pw-form').hidden;
+    });
+
+    document.getElementById('save-pw-btn').addEventListener('click', async () => {
+      const pw1 = document.getElementById('new-pw').value.trim();
+      const pw2 = document.getElementById('confirm-pw').value.trim();
+      const err = document.getElementById('pw-error');
+      if (!pw1) { err.textContent = 'Fyll inn nytt passord.'; err.hidden = false; return; }
+      if (pw1 !== pw2) { err.textContent = 'Passordene er ikke like.'; err.hidden = false; return; }
+      localStorage.setItem(HASH_KEY, await sha256(pw1));
+      err.hidden = true;
+      document.getElementById('change-pw-form').hidden = true;
+      document.getElementById('new-pw').value = '';
+      document.getElementById('confirm-pw').value = '';
+      alert('Passord lagret.');
+    });
+
+    /* ── Init all panels ──────────────────────────────────────────────────── */
+    function renderAll() {
+      renderGallery();
+      renderBetaID();
+      renderAnalyse();
+    }
+  </script>
+</body>
+</html>

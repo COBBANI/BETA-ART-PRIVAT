@@ -1,0 +1,261 @@
+{
+  "hero": {
+    "label": "The Archive · Volume I",
+    "headline": "Every image here",
+    "headlineEm": "was made by a human.",
+    "sub": "An archive of original photographs, each catalogued, sealed and licensed directly from the photographer.",
+    "cta": "View the collection",
+    "delivery": "Full-resolution file delivered within 24 hours",
+    "plate": {
+      "label": "Plate 01 · First Light",
+      "location": "March 2026"
+    }
+  },
+  "manifesto": {
+    "label": "A note from the maker",
+    "body": "In an age where anyone can generate an image, provenance is the product. Every photograph in this archive was taken with a physical camera, in a real place, on a real day. The RAW file is kept. The record is kept. Nothing is generated. Nothing is composited.",
+    "sig": "Beta Art · Archive of verified human photography",
+    "year": "Est. 2026"
+  },
+  "verification": {
+    "title": "How each work is verified.",
+    "intro": "A photograph is only as trustworthy as the record behind it. Every plate in the archive carries three forms of evidence — the same standard applied to museum holdings and archival collections.",
+    "items": [
+      {
+        "id": "v1",
+        "number": "Method I",
+        "headline": "The RAW original is archived.",
+        "description": "Every plate begins as a RAW file from a real camera. The originals are stored in an offline archive, available for inspection on request."
+      },
+      {
+        "id": "v2",
+        "number": "Method II",
+        "headline": "The capture record travels with the image.",
+        "description": "Camera, lens, exposure, place and date accompany each photograph. Where the equipment supports it, C2PA Content Credentials are embedded at capture."
+      },
+      {
+        "id": "v3",
+        "number": "Method III",
+        "headline": "The license is signed by the maker.",
+        "description": "You license directly from the photographer. Each order arrives with a written license, a proper invoice, and a numbered certificate — no intermediaries."
+      }
+    ]
+  },
+  "collection": {
+    "label": "The collection · Volume I",
+    "title": "Twelve plates,",
+    "titleEm": "catalogued.",
+    "categories": [
+      {
+        "id": "all",
+        "label": "All plates"
+      },
+      {
+        "id": "landscape",
+        "label": "Landscape"
+      },
+      {
+        "id": "city",
+        "label": "City"
+      },
+      {
+        "id": "portrait",
+        "label": "Portrait"
+      }
+    ],
+    "plates": [
+      {
+        "id": "p0142",
+        "n": "0142",
+        "size": "wide",
+        "title": "First Light",
+        "cat": "landscape",
+        "loc": "Lofoten, Norway",
+        "date": "March 2026",
+        "camera": "Nikon Z8",
+        "lens": "24–70mm f/2.8",
+        "exp": "f/8 · 1/160 · ISO 64",
+        "note": "Taken at 05:47, twenty minutes before civil dawn. Wind 6 m/s NW.",
+        "slot": "gallery/nature-1",
+        "release": false
+      },
+      {
+        "id": "p0143",
+        "n": "0143",
+        "size": "",
+        "title": "Into the Pines",
+        "cat": "landscape",
+        "loc": "",
+        "date": "October 2025",
+        "camera": "Canon R5",
+        "lens": "35mm f/1.8",
+        "exp": "f/4 · 1/250 · ISO 200",
+        "note": "Morning walk after two days of rain.",
+        "slot": "gallery/nature-2",
+        "release": false
+      },
+      {
+        "id": "p0144",
+        "n": "0144",
+        "size": "tall",
+        "title": "Sea of Fog",
+        "cat": "landscape",
+        "loc": "VENTURA,CA, JULY 2019",
+        "date": "",
+        "camera": "Sony A7R V",
+        "lens": "70–200mm f/4",
+        "exp": "f/9 · 1/320 · ISO 100",
+        "note": "Temperature inversion at the plateau edge.",
+        "slot": "gallery/nature-1",
+        "release": false
+      },
+      {
+        "id": "p0145",
+        "n": "0145",
+        "size": "",
+        "title": "Still Water",
+        "cat": "landscape",
+        "loc": "Jotunheimen",
+        "date": "July 2025",
+        "camera": "Hasselblad X2D",
+        "lens": "38mm f/2.5",
+        "exp": "f/11 · 1/60 · ISO 64",
+        "note": "Long midnight sun. No filters used.",
+        "slot": "gallery/nature-2",
+        "release": false
+      },
+      {
+        "id": "p0146",
+        "n": "0146",
+        "size": "",
+        "title": "PALM",
+        "cat": "landscape",
+        "loc": "VENTURA,CA, JULY 2019",
+        "date": "",
+        "camera": "Nikon Z8",
+        "lens": "14–24mm f/2.8",
+        "exp": "f/2.8 · 15s · ISO 1600",
+        "note": "Aurora activity Kp 6. Single exposure, no stacking.",
+        "slot": "gallery/nature-1",
+        "release": false
+      },
+      {
+        "id": "p0147",
+        "n": "0147",
+        "size": "wide",
+        "title": "Blue Hour Grid",
+        "cat": "city",
+        "loc": "Chicago, US",
+        "date": "November 2025",
+        "camera": "Sony A7R V",
+        "lens": "16–35mm f/2.8",
+        "exp": "f/8 · 2s · ISO 100",
+        "note": "Twenty-fourth floor, west-facing. Tripod on tile.",
+        "slot": "gallery/city-1",
+        "release": false
+      },
+      {
+        "id": "p0148",
+        "n": "0148",
+        "size": "",
+        "title": "Night Crossing",
+        "cat": "city",
+        "loc": "Singapore",
+        "date": "February 2026",
+        "camera": "Canon R5",
+        "lens": "24mm f/1.4",
+        "exp": "f/5.6 · 4s · ISO 200",
+        "note": "Long exposure, foot traffic captured as motion.",
+        "slot": "gallery/city-2",
+        "release": false
+      },
+      {
+        "id": "p0149",
+        "n": "0149",
+        "size": "tall",
+        "title": "Golden Hour",
+        "cat": "city",
+        "loc": "San Francisco",
+        "date": "June 2025",
+        "camera": "Nikon Z8",
+        "lens": "85mm f/1.8",
+        "exp": "f/7.1 · 1/500 · ISO 100",
+        "note": "Handheld from the Fillmore hill at 19:22.",
+        "slot": "gallery/city-1",
+        "release": false
+      },
+      {
+        "id": "p0150",
+        "n": "0150",
+        "size": "",
+        "title": "Portrait in Amber",
+        "cat": "portrait",
+        "loc": "Studio, Oslo",
+        "date": "April 2026",
+        "camera": "Hasselblad X2D",
+        "lens": "80mm f/1.9",
+        "exp": "f/2.8 · 1/200 · ISO 100",
+        "note": "Model release on file. Natural light, one reflector.",
+        "slot": "gallery/people-1",
+        "release": true
+      },
+      {
+        "id": "p0151",
+        "n": "0151",
+        "size": "",
+        "title": "The Maker",
+        "cat": "portrait",
+        "loc": "Bergen, Norway",
+        "date": "May 2026",
+        "camera": "Leica Q3",
+        "lens": "28mm f/1.7",
+        "exp": "f/2 · 1/125 · ISO 400",
+        "note": "Photographed in his workshop. Model release on file.",
+        "slot": "gallery/people-2",
+        "release": true
+      },
+      {
+        "id": "p0152",
+        "n": "0152",
+        "size": "wide",
+        "title": "Slow Morning",
+        "cat": "landscape",
+        "loc": "Lago di Braies, Italy",
+        "date": "August 2025",
+        "camera": "Sony A7R V",
+        "lens": "24–70mm f/2.8",
+        "exp": "f/6.3 · 1/250 · ISO 100",
+        "note": "05:20, before the first tourist boat launched.",
+        "slot": "gallery/travel-1",
+        "release": false
+      },
+      {
+        "id": "p0153",
+        "n": "0153",
+        "size": "",
+        "title": "Low Tide",
+        "cat": "landscape",
+        "loc": "Ko Samui, Thailand",
+        "date": "December 2025",
+        "camera": "Leica Q3",
+        "lens": "28mm f/1.7",
+        "exp": "f/8 · 1/640 · ISO 100",
+        "note": "Storm the night before had cleared the sky by dawn.",
+        "slot": "gallery/travel-2",
+        "release": false
+      }
+    ]
+  },
+  "about": {
+    "label": "The photographer",
+    "headline": "I photograph",
+    "headlineEm": "what actually exists.",
+    "paragraphs": [
+      "Fjords before sunrise, cities after rain, faces that agreed to be seen. Nothing on this site was generated, composited or hallucinated by a machine.",
+      "My archive holds more than 84,000 frames captured since 2012. When you license a plate, you deal with me directly — a written license, a proper invoice, and the full-resolution file delivered to your inbox within twenty-four hours.",
+      "If you want to see the RAW file behind any plate, ask. That's the point."
+    ],
+    "cap1": "The photographer",
+    "cap2": "Working since 2012"
+  }
+}

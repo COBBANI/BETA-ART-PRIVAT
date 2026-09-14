@@ -1,0 +1,401 @@
+{
+  "pages/home/hero": {
+    "mediaType": "image",
+    "currentUrl": "/airo-assets/uploads/pages-home-hero-a5f939a1.png",
+    "searchQuery": "",
+    "alternatives": [
+      "https://img1.wsimg.com/isteam/getty/2276343975",
+      "https://img1.wsimg.com/isteam/getty/2271646563",
+      "https://img1.wsimg.com/isteam/getty/2231410297",
+      "https://img1.wsimg.com/isteam/getty/2216920589",
+      "https://img1.wsimg.com/isteam/getty/2282052894"
+    ],
+    "userModified": true,
+    "createdAt": "2026-07-23T23:13:48.346Z",
+    "lastUpdated": "2026-07-24T00:57:59.129Z",
+    "alternativeGettyIds": [
+      "2276343975",
+      "2271646563",
+      "2231410297",
+      "2216920589",
+      "2282052894"
+    ],
+    "requestedSize": {
+      "width": 1920,
+      "height": 1080,
+      "fit": "cover"
+    },
+    "orientations": "horizontal",
+    "compositions": "wide_shot",
+    "moods": "dramatic,bold",
+    "graphicalStyles": "photography",
+    "numberOfPeople": "none",
+    "minimumSize": "x_large",
+    "uploadSources": {
+      "/airo-assets/uploads/pages-home-hero-a5f939a1.png": "68v0scym3h_1784854486613_file_UbRnjb4dRQ.png"
+    },
+    "uploadContentHash": "888db40c90643fe5876cbef4f32f684108197919237c207a205ea747d8bc8940"
+  },
+  "gallery/nature-1": {
+    "mediaType": "image",
+    "currentUrl": "/airo-assets/uploads/gallery-nature-1-5f9e00cf.png",
+    "searchQuery": "",
+    "alternatives": [
+      "https://img1.wsimg.com/isteam/getty/2255285758",
+      "https://img1.wsimg.com/isteam/getty/1425158067",
+      "https://img1.wsimg.com/isteam/getty/2246836753"
+    ],
+    "userModified": true,
+    "createdAt": "2026-07-23T23:13:51.071Z",
+    "lastUpdated": "2026-07-24T00:58:08.902Z",
+    "alternativeGettyIds": [
+      "2255285758",
+      "1425158067",
+      "2246836753"
+    ],
+    "requestedSize": {
+      "width": 600,
+      "height": 800,
+      "fit": "cover"
+    },
+    "orientations": "vertical",
+    "moods": "dramatic,natural",
+    "graphicalStyles": "photography",
+    "uploadSources": {
+      "/airo-assets/uploads/gallery-nature-1-5f9e00cf.png": "68v0scym3h_1784854333513_file_phYr_DWv9x.png"
+    },
+    "uploadContentHash": "d4925ee94174a141b973e78966544d416b009798707c0a77213b5967f6bcd142"
+  },
+  "gallery/city-1": {
+    "mediaType": "image",
+    "currentUrl": "/airo-assets/uploads/gallery-city-1-dfe503ba.jpg",
+    "searchQuery": "great blue heron standing in shallow water",
+    "alternatives": [
+      "https://img1.wsimg.com/isteam/getty/2186519951",
+      "https://img1.wsimg.com/isteam/getty/2274720477",
+      "https://img1.wsimg.com/isteam/getty/2249990826"
+    ],
+    "userModified": true,
+    "createdAt": "2026-07-23T23:13:52.379Z",
+    "lastUpdated": "2026-07-24T00:58:21.963Z",
+    "alternativeGettyIds": [
+      "2186519951",
+      "2274720477",
+      "2249990826"
+    ],
+    "requestedSize": {
+      "width": 600,
+      "height": 800,
+      "fit": "cover"
+    },
+    "orientations": "vertical",
+    "moods": "dramatic,bold",
+    "graphicalStyles": "photography",
+    "uploadSources": {
+      "/airo-assets/uploads/gallery-city-1-dfe503ba.jpg": "68v0scym3h_1784854087241_file_eIvxo-iRSX.jpg"
+    },
+    "uploadContentHash": "c509202f197c8c9838446350c074e5919c964e0a85ceebd9728d1ed356b89c64",
+    "caption": "great blue heron standing in shallow water"
+  },
+  "gallery/people-1": {
+    "mediaType": "image",
+    "currentUrl": "/airo-assets/uploads/gallery-people-1-52b4261e.jpg",
+    "searchQuery": "alpine lake with snow patches mountains",
+    "alternatives": [
+      "https://img1.wsimg.com/isteam/getty/2195674707",
+      "https://img1.wsimg.com/isteam/getty/1346907045",
+      "https://img1.wsimg.com/isteam/getty/1299766301"
+    ],
+    "userModified": true,
+    "createdAt": "2026-07-23T23:13:53.237Z",
+    "lastUpdated": "2026-07-24T11:18:24.959Z",
+    "alternativeGettyIds": [
+      "2195674707",
+      "1346907045",
+      "1299766301"
+    ],
+    "requestedSize": {
+      "width": 600,
+      "height": 800,
+      "fit": "cover"
+    },
+    "orientations": "vertical",
+    "moods": "dramatic,bold",
+    "graphicalStyles": "photography",
+    "numberOfPeople": "one",
+    "uploadSources": {
+      "/airo-assets/uploads/gallery-people-1-52b4261e.jpg": "68v0scym3h_1784891819860_file_q1BIIH8DYp.jpg"
+    },
+    "uploadContentHash": "d899fa3f9f359819f84466c7d1fa77361fdc2851686e9ed4f1439f2da50f80ce",
+    "caption": "alpine lake with snow patches mountains"
+  },
+  "gallery/travel-1": {
+    "mediaType": "image",
+    "currentUrl": "/airo-assets/uploads/gallery-travel-1-ce1deb70.jpg",
+    "searchQuery": "seagull taking off from rocky coastline",
+    "alternatives": [
+      "https://img1.wsimg.com/isteam/getty/172173864"
+    ],
+    "userModified": true,
+    "createdAt": "2026-07-23T23:13:53.673Z",
+    "lastUpdated": "2026-07-24T11:18:36.192Z",
+    "requestedSize": {
+      "width": 600,
+      "height": 800,
+      "fit": "cover"
+    },
+    "orientations": "vertical",
+    "moods": "dramatic,warm",
+    "graphicalStyles": "photography",
+    "alternativeGettyIds": [
+      "172173864"
+    ],
+    "uploadSources": {
+      "/airo-assets/uploads/gallery-travel-1-ce1deb70.jpg": "68v0scym3h_1784891661063_file_O2SafI0HYx.jpg"
+    },
+    "uploadContentHash": "6f6fcaa671c9871e9df77a980f5a750fa1758b850c0634bb62ca25e6b97f4c93",
+    "caption": "seagull taking off from rocky coastline"
+  },
+  "gallery/nature-2": {
+    "mediaType": "image",
+    "currentUrl": "/airo-assets/uploads/gallery-nature-2-e09116c8.png",
+    "searchQuery": "",
+    "alternatives": [
+      "https://img1.wsimg.com/isteam/getty/2283588383",
+      "https://img1.wsimg.com/isteam/getty/2256627633",
+      "https://img1.wsimg.com/isteam/getty/2236104814"
+    ],
+    "userModified": true,
+    "createdAt": "2026-07-23T23:13:55.222Z",
+    "lastUpdated": "2026-07-24T00:58:15.971Z",
+    "alternativeGettyIds": [
+      "2283588383",
+      "2256627633",
+      "2236104814"
+    ],
+    "requestedSize": {
+      "width": 800,
+      "height": 600,
+      "fit": "cover"
+    },
+    "orientations": "horizontal",
+    "moods": "dramatic,bold",
+    "graphicalStyles": "photography",
+    "uploadSources": {
+      "/airo-assets/uploads/gallery-nature-2-e09116c8.png": "68v0scym3h_1784854291217_file_rj4J7Jqgsd.png"
+    },
+    "uploadContentHash": "d8e4da0ab5fba1d2e956e0e988851a4a88e2a42b9e4e3940430542eaac6622dc"
+  },
+  "gallery/city-2": {
+    "mediaType": "image",
+    "currentUrl": "/airo-assets/uploads/gallery-city-2-efffaa7c.png",
+    "searchQuery": "hiker exploring colorful desert badlands landscape",
+    "alternatives": [
+      "https://img1.wsimg.com/isteam/getty/2209624990",
+      "https://img1.wsimg.com/isteam/getty/996317864",
+      "https://img1.wsimg.com/isteam/getty/1363299030"
+    ],
+    "userModified": true,
+    "createdAt": "2026-07-23T23:13:56.489Z",
+    "lastUpdated": "2026-07-24T00:59:04.647Z",
+    "alternativeGettyIds": [
+      "2209624990",
+      "996317864",
+      "1363299030"
+    ],
+    "requestedSize": {
+      "width": 800,
+      "height": 600,
+      "fit": "cover"
+    },
+    "orientations": "horizontal",
+    "moods": "dramatic,bold",
+    "graphicalStyles": "photography",
+    "uploadSources": {
+      "/airo-assets/uploads/gallery-city-2-efffaa7c.png": "68v0scym3h_1784853883035_file_zQjREA4c9m.png"
+    },
+    "uploadContentHash": "8861047b5d85286670bb338cd1e2da5ec248b65892756f34d82bb4d950af0d8e",
+    "caption": "hiker exploring colorful desert badlands landscape"
+  },
+  "pages/about/photographer-portrait": {
+    "mediaType": "image",
+    "currentUrl": "/airo-assets/uploads/pages-about-photographer-portrait-5dc16f6b.jpg",
+    "searchQuery": "seagull perched near boat horn",
+    "alternatives": [
+      "https://img1.wsimg.com/isteam/getty/827563738",
+      "https://img1.wsimg.com/isteam/getty/1300582222",
+      "https://img1.wsimg.com/isteam/getty/1299766301"
+    ],
+    "userModified": true,
+    "createdAt": "2026-07-23T23:13:57.851Z",
+    "lastUpdated": "2026-07-24T11:19:20.710Z",
+    "alternativeGettyIds": [
+      "827563738",
+      "1300582222",
+      "1299766301"
+    ],
+    "requestedSize": {
+      "width": 600,
+      "height": 800,
+      "fit": "cover"
+    },
+    "orientations": "vertical",
+    "moods": "dramatic,bold",
+    "graphicalStyles": "photography",
+    "numberOfPeople": "one",
+    "uploadSources": {
+      "/airo-assets/uploads/pages-about-photographer-portrait-5dc16f6b.jpg": "68v0scym3h_1784891493251_file_75t2y7vBVq.jpg"
+    },
+    "uploadContentHash": "097d662c217cb635453f576a04933d1ec6fded6f2d98ca973b033b12da7200a2",
+    "caption": "seagull perched near boat horn"
+  },
+  "gallery/travel-2": {
+    "mediaType": "image",
+    "currentUrl": "/airo-assets/uploads/gallery-travel-2-6b799f19.jpg",
+    "searchQuery": "seabird soaring through blue sky",
+    "alternatives": [
+      "https://img1.wsimg.com/isteam/getty/155307482"
+    ],
+    "userModified": true,
+    "createdAt": "2026-07-23T23:14:10.033Z",
+    "lastUpdated": "2026-07-24T11:18:41.730Z",
+    "requestedSize": {
+      "width": 600,
+      "height": 800,
+      "fit": "cover"
+    },
+    "orientations": "vertical",
+    "moods": "warm,dramatic",
+    "graphicalStyles": "photography",
+    "alternativeGettyIds": [
+      "155307482"
+    ],
+    "uploadSources": {
+      "/airo-assets/uploads/gallery-travel-2-6b799f19.jpg": "68v0scym3h_1784891634242_file_qpOwOpdktu.jpg"
+    },
+    "uploadContentHash": "532368ed86147bec7d71e1714698edbe1d411fdb522579fb165a3e6ddfd0124c",
+    "caption": "seabird soaring through blue sky"
+  },
+  "gallery/people-2": {
+    "mediaType": "image",
+    "currentUrl": "/airo-assets/uploads/gallery-people-2-0076384e.jpg",
+    "searchQuery": "turquoise glacial lakes mountain valley",
+    "alternatives": [
+      "https://img1.wsimg.com/isteam/getty/2251648709",
+      "https://img1.wsimg.com/isteam/getty/2246499051",
+      "https://img1.wsimg.com/isteam/getty/541865030"
+    ],
+    "userModified": true,
+    "createdAt": "2026-07-23T23:14:12.029Z",
+    "lastUpdated": "2026-07-24T11:18:29.404Z",
+    "alternativeGettyIds": [
+      "2251648709",
+      "2246499051",
+      "541865030"
+    ],
+    "requestedSize": {
+      "width": 800,
+      "height": 600,
+      "fit": "cover"
+    },
+    "orientations": "horizontal",
+    "moods": "dramatic,bold",
+    "graphicalStyles": "photography",
+    "uploadSources": {
+      "/airo-assets/uploads/gallery-people-2-0076384e.jpg": "68v0scym3h_1784891691391_file__c7NeL5oVo.JPG"
+    },
+    "uploadContentHash": "a4a8704c18a04bb599f4a86da7ccf8daec34239e5c3a615f8607f637e6bf272f",
+    "caption": "turquoise glacial lakes mountain valley"
+  },
+  "logo/horizontal": {
+    "mediaType": "logo",
+    "currentUrl": "https://isteam.wsimg.com/genai-assistant/logoagent/customer/f4fd5c70-766b-40b7-a5cf-1f650cdef3dc/session/9a064486-368e-4184-b5d8-1888496e9807/horizontal-transparent-df5dd3d7-5505-4416-bf18-a94431e394fa/logo-logo.png",
+    "searchQuery": "Regenerate for light surface — bone white background #FBFAF7. Wordmark BETA ART ",
+    "alternatives": [],
+    "logoSourceMap": {
+      "https://isteam.wsimg.com/genai-assistant/logoagent/customer/f4fd5c70-766b-40b7-a5cf-1f650cdef3dc/session/e3d97350-fe55-4974-9d19-c35ddbfcd14c/horizontal-transparent-0ce238c9-580c-49c4-abe0-55ee9cf70b8d/logo-logo.png": {
+        "sessionId": "e3d97350-fe55-4974-9d19-c35ddbfcd14c",
+        "logoId": "0ce238c9-580c-49c4-abe0-55ee9cf70b8d",
+        "groupId": "2b617c41-8ae8-4286-b664-9443b624ea45"
+      },
+      "https://isteam.wsimg.com/genai-assistant/logoagent/customer/f4fd5c70-766b-40b7-a5cf-1f650cdef3dc/session/9a064486-368e-4184-b5d8-1888496e9807/horizontal-transparent-df5dd3d7-5505-4416-bf18-a94431e394fa/logo-logo.png": {
+        "sessionId": "9a064486-368e-4184-b5d8-1888496e9807",
+        "logoId": "df5dd3d7-5505-4416-bf18-a94431e394fa",
+        "groupId": "2b617c41-8ae8-4286-b664-9443b624ea45"
+      }
+    },
+    "logoGroupId": "2b617c41-8ae8-4286-b664-9443b624ea45",
+    "solidUrlMap": {
+      "https://isteam.wsimg.com/genai-assistant/logoagent/customer/f4fd5c70-766b-40b7-a5cf-1f650cdef3dc/session/e3d97350-fe55-4974-9d19-c35ddbfcd14c/horizontal-transparent-0ce238c9-580c-49c4-abe0-55ee9cf70b8d/logo-logo.png": "https://isteam.wsimg.com/genai-assistant/logoagent/customer/f4fd5c70-766b-40b7-a5cf-1f650cdef3dc/session/e3d97350-fe55-4974-9d19-c35ddbfcd14c/horizontal-original-0ce238c9-580c-49c4-abe0-55ee9cf70b8d/logo-logo.png"
+    },
+    "mockupUrlMap": {
+      "https://isteam.wsimg.com/genai-assistant/logoagent/customer/f4fd5c70-766b-40b7-a5cf-1f650cdef3dc/session/e3d97350-fe55-4974-9d19-c35ddbfcd14c/horizontal-transparent-0ce238c9-580c-49c4-abe0-55ee9cf70b8d/logo-logo.png": "https://isteam.wsimg.com/genai-assistant/logoagent/customer/f4fd5c70-766b-40b7-a5cf-1f650cdef3dc/session/e3d97350-fe55-4974-9d19-c35ddbfcd14c/horizontal-transparent-0ce238c9-580c-49c4-abe0-55ee9cf70b8d/logo-logo.png"
+    },
+    "landscapeMockupUrlMap": {},
+    "productMockupsMap": {
+      "https://isteam.wsimg.com/genai-assistant/logoagent/customer/f4fd5c70-766b-40b7-a5cf-1f650cdef3dc/session/e3d97350-fe55-4974-9d19-c35ddbfcd14c/horizontal-transparent-0ce238c9-580c-49c4-abe0-55ee9cf70b8d/logo-logo.png": [
+        {
+          "type": "mug",
+          "label": "Mug",
+          "url": "https://isteam.wsimg.com/genai-assistant/logoagent/customer/f4fd5c70-766b-40b7-a5cf-1f650cdef3dc/session/e3d97350-fe55-4974-9d19-c35ddbfcd14c/horizontal-mockup-mug-0ce238c9-580c-49c4-abe0-55ee9cf70b8d/logo-logo.png"
+        },
+        {
+          "type": "card",
+          "label": "Business Card",
+          "url": "https://isteam.wsimg.com/genai-assistant/logoagent/customer/f4fd5c70-766b-40b7-a5cf-1f650cdef3dc/session/e3d97350-fe55-4974-9d19-c35ddbfcd14c/horizontal-mockup-card-0ce238c9-580c-49c4-abe0-55ee9cf70b8d/logo-logo.png"
+        },
+        {
+          "type": "tshirt",
+          "label": "T-Shirt",
+          "url": "https://isteam.wsimg.com/genai-assistant/logoagent/customer/f4fd5c70-766b-40b7-a5cf-1f650cdef3dc/session/e3d97350-fe55-4974-9d19-c35ddbfcd14c/horizontal-mockup-tshirt-0ce238c9-580c-49c4-abe0-55ee9cf70b8d/logo-logo.png"
+        },
+        {
+          "type": "box",
+          "label": "Packaging",
+          "url": "https://isteam.wsimg.com/genai-assistant/logoagent/customer/f4fd5c70-766b-40b7-a5cf-1f650cdef3dc/session/e3d97350-fe55-4974-9d19-c35ddbfcd14c/horizontal-mockup-box-0ce238c9-580c-49c4-abe0-55ee9cf70b8d/logo-logo.png"
+        }
+      ]
+    },
+    "userModified": false,
+    "createdAt": "2026-07-23T23:14:28.535Z",
+    "lastUpdated": "2026-07-23T23:45:22.582Z",
+    "surfaceMode": "light",
+    "generatedForSurfaceColor": "#FBFAF7",
+    "darkSurfaceUrl": "https://isteam.wsimg.com/genai-assistant/logoagent/customer/f4fd5c70-766b-40b7-a5cf-1f650cdef3dc/session/e3d97350-fe55-4974-9d19-c35ddbfcd14c/horizontal-transparent-0ce238c9-580c-49c4-abe0-55ee9cf70b8d/logo-logo.png",
+    "lightSurfaceUrl": "https://isteam.wsimg.com/genai-assistant/logoagent/customer/f4fd5c70-766b-40b7-a5cf-1f650cdef3dc/session/9a064486-368e-4184-b5d8-1888496e9807/horizontal-transparent-df5dd3d7-5505-4416-bf18-a94431e394fa/logo-logo.png"
+  },
+  "logo/favicon": {
+    "mediaType": "logo",
+    "currentUrl": "https://isteam.wsimg.com/genai-assistant/logoagent/customer/f4fd5c70-766b-40b7-a5cf-1f650cdef3dc/session/04c82053-c8e1-449f-b024-1a40d4579eca/favicon-transparent-c6c6ceb1-d096-42cf-abf8-136a66085f68/logo-logo.png",
+    "searchQuery": "favicon",
+    "alternatives": [],
+    "logoSourceMap": {
+      "https://isteam.wsimg.com/genai-assistant/logoagent/customer/f4fd5c70-766b-40b7-a5cf-1f650cdef3dc/session/04c82053-c8e1-449f-b024-1a40d4579eca/favicon-transparent-c6c6ceb1-d096-42cf-abf8-136a66085f68/logo-logo.png": {
+        "sessionId": "04c82053-c8e1-449f-b024-1a40d4579eca",
+        "logoId": "c6c6ceb1-d096-42cf-abf8-136a66085f68",
+        "groupId": "2b617c41-8ae8-4286-b664-9443b624ea45"
+      }
+    },
+    "logoGroupId": "2b617c41-8ae8-4286-b664-9443b624ea45",
+    "userModified": false,
+    "createdAt": "2026-07-23T23:14:44.046Z",
+    "lastUpdated": "2026-07-23T23:14:59.892Z",
+    "surfaceMode": "dark",
+    "generatedForSurfaceColor": "#171310",
+    "darkSurfaceUrl": "https://isteam.wsimg.com/genai-assistant/logoagent/customer/f4fd5c70-766b-40b7-a5cf-1f650cdef3dc/session/04c82053-c8e1-449f-b024-1a40d4579eca/favicon-transparent-c6c6ceb1-d096-42cf-abf8-136a66085f68/logo-logo.png"
+  },
+  "uploads/hero-68v0scym3h-1784898768831-file-kbwbqacksv": {
+    "mediaType": "image",
+    "currentUrl": "/airo-assets/uploads/uploads-hero-68v0scym3h-1784898768831-file-kbwbqacksv-36799547.png",
+    "searchQuery": "sailboats anchored in calm bay water",
+    "alternatives": [],
+    "userModified": true,
+    "createdAt": "2026-07-24T13:12:59.313Z",
+    "lastUpdated": "2026-07-24T13:12:59.313Z",
+    "uploadSources": {
+      "/airo-assets/uploads/uploads-hero-68v0scym3h-1784898768831-file-kbwbqacksv-36799547.png": "68v0scym3h_1784898768831_file_KbWbqAcksV.png"
+    },
+    "uploadContentHash": "5f5ca117dfc7f57bcfe02c8561c1fac7e56198b35ec73b1a8aafc9e21fa0f174",
+    "caption": "sailboats anchored in calm bay water"
+  }
+}

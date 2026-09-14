@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BETA ART — The Verified Human Photography Archive</title>
+<meta name="description" content="An archive of photographs made by a human, verified at the source. Each work is catalogued, sealed and licensed directly from the photographer.">
+<meta name="keywords" content="verified photography, human photography, stock photos Norway, licensed photography, non-AI photography">
+<meta name="author" content="Beta Art">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://betaart.no/">
+<meta name="theme-color" content="#FBFAF7">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Beta Art">
+<meta property="og:title" content="BETA ART — Verified Human Photography">
+<meta property="og:description" content="An archive of photographs made by a human. Each work catalogued, sealed and licensed directly from the photographer.">
+<meta property="og:url" content="https://betaart.no/">
+<meta property="og:locale" content="en_GB">
+<meta property="og:image" content="https://betaart.no/og-cover.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="BETA ART — Verified Human Photography">
+<meta name="twitter:description" content="Original photographs, each catalogued and sealed.">
+<meta name="twitter:image" content="https://betaart.no/og-cover.jpg">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23FBFAF7'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%238B1A1A'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="progress" aria-hidden="true"><span id="progress-bar"></span></div>
+
+<p class="notice" role="note">
+  Development preview — imagery is placeholder material, catalogue records are unverified, and pricing and licence terms are draft until confirmed.
+</p>
+
+<header class="masthead" id="top">
+  <div class="wrap masthead-inner">
+    <a class="wordmark" href="#top" aria-label="Beta Art, home">
+      <svg class="seal-mark" viewBox="0 0 100 100" aria-hidden="true">
+        <g fill="none" stroke="currentColor" stroke-width="4">
+          <circle cx="50" cy="50" r="46"/>
+          <path d="M50 30 75.81 11.92M67.32 40 84.99 47.86M67.32 60 76.66 84.02M50 70 24.19 88.08M32.68 60 15.01 52.14M32.68 40 23.34 15.98"/>
+        </g>
+        <circle cx="50" cy="50" r="7" fill="var(--seal)"/>
+      </svg>
+      <span class="wordmark-text">
+        <span class="wordmark-name">BETA ART</span>
+        <span class="wordmark-sub">Verified Human Photography</span>
+      </span>
+    </a>
+
+    <nav class="nav" id="primary-nav" aria-label="Primary">
+      <a href="#archive">Archive</a>
+      <a href="#verification">Verification</a>
+      <a href="#categories">Categories</a>
+      <a href="#licensing">Licensing</a>
+      <a href="#photographer">Photographer</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
+      <span class="burger" aria-hidden="true"></span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow reveal">Norway's verified visual archive</p>
+        <h1 class="reveal">Made by a human.<br><em>Verified at the source.</em></h1>
+        <p class="lead reveal">Every work in this archive was captured by a person with a physical camera.
+          The RAW original is kept, the capture record travels with the file, and the licence is signed
+          by the photographer. No agency in between, no generated imagery.</p>
+        <div class="actions reveal">
+          <a class="btn btn-solid" href="#archive">Enter the archive</a>
+          <a class="btn btn-outline" href="#verification">How verification works</a>
+        </div>
+        <p class="fine-print reveal">Placeholder imagery throughout this preview — plates are being shot to the launch list.</p>
+      </div>
+
+      <!-- Signature element: the blind-emboss stage carrying the aperture-seal mark -->
+      <figure class="emboss-stage reveal">
+        <svg class="emboss-mark" viewBox="0 0 100 100" role="img" aria-label="The Beta Art mark: an aperture that is also a seal">
+          <g fill="none" stroke="currentColor" stroke-width="2.4">
+            <circle cx="50" cy="50" r="46"/>
+            <circle cx="50" cy="50" r="34" stroke-dasharray="2 6"/>
+            <path d="M50 30 75.81 11.92M67.32 40 84.99 47.86M67.32 60 76.66 84.02M50 70 24.19 88.08M32.68 60 15.01 52.14M32.68 40 23.34 15.98"/>
+          </g>
+          <circle cx="50" cy="50" r="7" fill="var(--seal)"/>
+        </svg>
+        <figcaption class="mono-note">The mark is an aperture and a seal — applied only where a work has passed all three tests.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span>RAW original archived · Capture record retained · Model release on file · Licence signed by the maker · C2PA content credentials from capture · Made in Norway ·</span>
+      <span>RAW original archived · Capture record retained · Model release on file · Licence signed by the maker · C2PA content credentials from capture · Made in Norway ·</span>
+    </div>
+  </div>
+
+  <section class="section" id="verification">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Verification</p>
+        <h2>Three tests. A work enters the archive only if it passes all of them.</h2>
+        <p class="lead">This is the standard the archive is built on. A technically good photograph
+          that fails one test is kept for personal use — it is not catalogued and it is not sold.</p>
+      </div>
+
+      <ol class="records">
+        <li class="reveal">
+          <span class="record-no">Test 01</span>
+          <h3>Provenance</h3>
+          <p>Can we state the exact time, place, camera and subject? Coordinates and capture
+            time are written at the shoot and carried on the accession label.</p>
+          <p class="mono-note">RAW original archived within 24 hours · filename convention 2026-08-14_bergen_fisker_a1.dng</p>
+        </li>
+        <li class="reveal">
+          <span class="record-no">Test 02</span>
+          <h3>Not reproducible by a machine</h3>
+          <p>Is this an identifiable person, a specific place, a particular light — something a
+            generator cannot invent? Generic beauty fails this test.</p>
+          <p class="mono-note">Content Credentials (C2PA) enabled in camera from day one · no retroactive signing</p>
+        </li>
+        <li class="reveal">
+          <span class="record-no">Test 03</span>
+          <h3>A named buyer</h3>
+          <p>Can we name at least one buyer who would pay kr 890 or more for this frame? If not,
+            the work has no place in a licensing archive.</p>
+          <p class="mono-note">Model release signed within 7 days · catalogue decision within 14 days</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section rule-top" id="archive">
+    <div class="wrap">
+      <div class="section-head split reveal">
+        <div>
+          <p class="eyebrow">The archive</p>
+          <h2>Launch plates</h2>
+          <p class="lead">Fourteen plates at launch, drawn from five tiers. Each is shown with its
+            accession label — the record that travels with the file.</p>
+        </div>
+        <div class="filters" role="group" aria-label="Filter by tier">
+          <button class="chip is-active" type="button" data-filter="all" aria-pressed="true">All</button>
+          <button class="chip" type="button" data-filter="a" aria-pressed="false">A · Work</button>
+          <button class="chip" type="button" data-filter="b" aria-pressed="false">B · Craft</button>
+          <button class="chip" type="button" data-filter="c" aria-pressed="false">C · Place</button>
+          <button class="chip" type="button" data-filter="d" aria-pressed="false">D · Built</button>
+          <button class="chip" type="button" data-filter="e" aria-pressed="false">E · Table</button>
+        </div>
+      </div>
+
+      <div class="plates" id="plates">
+        <article class="plate reveal" data-category="a">
+          <!-- Replacement point: <img src="plates/ba-a1.jpg" alt="A working fisher at first light"> -->
+          <div class="plate-frame plate-1" role="img" aria-label="Placeholder — a working fisher at first light"></div>
+          <div class="plate-meta">
+            <h3>Fisher at first light</h3>
+            <p class="accession"><span class="seal-dot" aria-hidden="true"></span>BA-A1-001 · Utsira · 05:12 · Sony A7R V · 35 mm f/1.4 · RAW archived · release on file</p>
+            <p class="plate-note">Two days aboard before the first frame. Not a posed portrait — a moment of work.</p>
+            <p class="price">Extended licence · kr 2 900</p>
+          </div>
+        </article>
+
+        <article class="plate reveal" data-category="a">
+          <div class="plate-frame plate-2" role="img" aria-label="Placeholder — a maker in a workshop, afternoon light"></div>
+          <div class="plate-meta">
+            <h3>Boatbuilder, afternoon</h3>
+            <p class="accession"><span class="seal-dot" aria-hidden="true"></span>BA-A2-002 · Hardanger · 15:40 · dust in side light · release on file</p>
+            <p class="plate-note">Work-worn hands, tools in sharp focus, tiredness allowed to show.</p>
+            <p class="price">Commercial licence · kr 890</p>
+          </div>
+        </article>
+
+        <article class="plate reveal" data-category="a">
+          <div class="plate-frame plate-3" role="img" aria-label="Placeholder — colleagues at real work in a Nordic office"></div>
+          <div class="plate-meta">
+            <h3>Tuesday, 09:14</h3>
+            <p class="accession"><span class="seal-dot" aria-hidden="true"></span>BA-A3-003 · Oslo · 09:14 · no handshakes, no eureka · releases on file</p>
+            <p class="plate-note">Real colleagues doing real work. None of the stock office vocabulary.</p>
+            <p class="price">Commercial licence · kr 890</p>
+          </div>
+        </article>
+
+        <article class="plate reveal" data-category="a">
+          <div class="plate-frame plate-4" role="img" aria-label="Placeholder — a worker on a break with a packed lunch"></div>
+          <div class="plate-meta">
+            <h3>End of shift</h3>
+            <p class="accession"><span class="seal-dot" aria-hidden="true"></span>BA-A4-004 · Ålesund yard · 22:05 · available light · release on file</p>
+            <p class="plate-note">Dignity of labour as a subject in its own right.</p>
+            <p class="price">Editorial licence · kr 890</p>
+          </div>
+        </article>
+
+        <article class="plate reveal" data-category="b">
+          <div class="plate-frame plate-5" role="img" aria-label="Placeholder — hands working leather in close-up"></div>
+          <div class="plate-meta">
+            <h3>Hands and material</h3>
+            <p class="accession"><span class="seal-dot" aria-hidden="true"></span>BA-B1-005 · workshop, north window · face not visible · release on file</p>
+            <p class="plate-note">The hands are the portrait. Nails are not perfect — that is the signature.</p>
+            <p class="price">Commercial licence · kr 890</p>
+          </div>
+        </article>
+
+        <article class="plate reveal" data-category="b">
+          <div class="plate-frame plate-6" role="img" aria-label="Placeholder — a three-step process series"></div>
+          <div class="plate-meta">
+            <h3>Process, in three steps</h3>
+            <p class="accession"><span class="seal-dot" aria-hidden="true"></span>BA-B2-006 · triptych, catalogued as one plate · same workshop as B1</p>
+            <p class="plate-note">Series license higher than single frames — bought for campaigns, not single ads.</p>
+            <p class="price">Series licence · from kr 2 900</p>
+          </div>
+        </article>
+
+        <article class="plate reveal" data-category="b">
+          <div class="plate-frame plate-7" role="img" aria-label="Placeholder — a figure seen through a lit bakery window at dusk"></div>
+          <div class="plate-meta">
+            <h3>Through the bakery window</h3>
+            <p class="accession"><span class="seal-dot" aria-hidden="true"></span>BA-B3-007 · dusk · interior light against darkness · location documented</p>
+            <p class="plate-note">Atmospheric, solitary work. Long-form editorial and essay covers.</p>
+            <p class="price">Editorial licence · kr 890</p>
+          </div>
+        </article>
+
+        <article class="plate reveal" data-category="c">
+          <div class="plate-frame plate-8" role="img" aria-label="Placeholder — a known Norwegian landmark in fog, out of season"></div>
+          <div class="plate-meta">
+            <h3>Preikestolen, February, 06:47</h3>
+            <p class="accession"><span class="seal-dot" aria-hidden="true"></span>BA-C1-008 · GPS + yr.no weather record published on label · off-season</p>
+            <p class="plate-note">The summer sunset version exists half a million times. This one does not.</p>
+            <p class="price">Extended licence · kr 2 900</p>
+          </div>
+        </article>
+
+        <article class="plate reveal" data-category="c">
+          <div class="plate-frame plate-9" role="img" aria-label="Placeholder — an unnamed location near a famous one"></div>
+          <div class="plate-meta">
+            <h3>Forty minutes from Bergen</h3>
+            <p class="accession"><span class="seal-dot" aria-hidden="true"></span>BA-C2-009 · location withheld in public catalogue · coordinates on licence</p>
+            <p class="plate-note">Places tour photographers do not find — promotable without creating overtourism.</p>
+            <p class="price">Commercial licence · kr 890</p>
+          </div>
+        </article>
+
+        <article class="plate reveal" data-category="c">
+          <div class="plate-frame plate-10" role="img" aria-label="Placeholder — weather event over an urban Norwegian setting"></div>
+          <div class="plate-meta">
+            <h3>Aurora over Grünerløkka</h3>
+            <p class="accession"><span class="seal-dot" aria-hidden="true"></span>BA-C3-010 · Oslo · wilderness phenomenon, urban frame · weather record attached</p>
+            <p class="plate-note">Front pages and climate reporting. A narrative a generator does not think of.</p>
+            <p class="price">Extended licence · kr 2 900</p>
+          </div>
+        </article>
+
+        <article class="plate reveal" data-category="d">
+          <div class="plate-frame plate-11" role="img" aria-label="Placeholder — a known building seen from an unexpected angle"></div>
+          <div class="plate-meta">
+            <h3>Known building, unexpected angle</h3>
+            <p class="accession"><span class="seal-dot" aria-hidden="true"></span>BA-D1-011 · blue hour, interior lights on · not the frontal everyone has</p>
+            <p class="plate-note">Architecture press and practice portfolios. Little machine competition.</p>
+            <p class="price">Commercial licence · kr 890</p>
+          </div>
+        </article>
+
+        <article class="plate reveal" data-category="d">
+          <div class="plate-frame plate-12" role="img" aria-label="Placeholder — a lived-in Nordic interior"></div>
+          <div class="plate-meta">
+            <h3>Interior, used and real</h3>
+            <p class="accession"><span class="seal-dot" aria-hidden="true"></span>BA-D2-012 · private home, consent on file · coffee cups left on the table</p>
+            <p class="plate-note">Not styled. A book with a broken spine beats a catalogue set-up.</p>
+            <p class="price">Commercial licence · kr 890</p>
+          </div>
+        </article>
+
+        <article class="plate reveal" data-category="e">
+          <div class="plate-frame plate-13" role="img" aria-label="Placeholder — a family meal in progress"></div>
+          <div class="plate-meta">
+            <h3>Dinner, 18:30, in progress</h3>
+            <p class="accession"><span class="seal-dot" aria-hidden="true"></span>BA-E1-013 · real home · consent from everyone at the table · not a flat lay</p>
+            <p class="plate-note">Napkins out of order, a half-full glass, a child reaching across.</p>
+            <p class="price">Extended licence · kr 2 900</p>
+          </div>
+        </article>
+
+        <article class="plate reveal" data-category="e">
+          <div class="plate-frame plate-14" role="img" aria-label="Placeholder — a fish market at six in the morning"></div>
+          <div class="plate-meta">
+            <h3>Fish market, 06:00</h3>
+            <p class="accession"><span class="seal-dot" aria-hidden="true"></span>BA-E2-014 · Bergen · the producer, not only the product · release on file</p>
+            <p class="plate-note">Food, person and place together — with a signature on the release.</p>
+            <p class="price">Commercial licence · kr 890</p>
+          </div>
+        </article>
+      </div>
+
+      <p class="empty-state" id="empty-state" hidden>No plates in this tier yet.</p>
+      <p class="fine-print centre">Every frame above is a placeholder standing in for a plate on the
+        launch shot list. Replace each <code>.plate-frame</code> with the verified original.</p>
+    </div>
+  </section>
+
+  <section class="figures rule-top">
+    <div class="wrap">
+      <dl class="figure-row">
+        <div class="reveal"><dt>Plates at launch</dt><dd data-count="14">0</dd></div>
+        <div class="reveal"><dt>Catalogue categories</dt><dd data-count="35">0</dd></div>
+        <div class="reveal"><dt>RAW originals retained</dt><dd data-count="100" data-suffix="%">0</dd></div>
+        <div class="reveal"><dt>Generated frames</dt><dd data-count="0">0</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section rule-top" id="categories">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Category directory</p>
+        <h2>35 categories, five sections</h2>
+        <p class="lead">Sixteen global categories, and nineteen that exist because the archive is
+          Norwegian and the photographer lives here.</p>
+      </div>
+
+      <div class="directory">
+        <section class="dir-block reveal">
+          <header><h3>Global</h3><span class="mono-note">16 categories</span></header>
+          <ul class="dir-list">
+            <li>People</li><li>Business</li><li>Nature</li><li>Lifestyle</li>
+            <li>Food &amp; Drink</li><li>Travel</li><li>Health &amp; Wellness</li><li>Family</li>
+            <li>Sustainability</li><li>Architecture</li><li>Fashion &amp; Style</li><li>Education &amp; Children</li>
+            <li>Sports &amp; Activity</li><li>Art &amp; Culture</li><li>Technology &amp; AI</li><li>Real Estate &amp; Interiors</li>
+          </ul>
+        </section>
+
+        <section class="dir-block is-exclusive reveal">
+          <header><h3>Norway — exclusive</h3><span class="mono-note">5 categories · verified</span></header>
+          <ul class="dir-list">
+            <li>Norwegian Nature</li><li>Norwegian Cities</li><li>Local Business</li>
+            <li>Norwegian Work Life</li><li>Seasons &amp; Holidays</li>
+          </ul>
+          <p class="dir-note">17. mai, Nordic summer, the northern light over a working harbour —
+            imagery no international library can replicate.</p>
+        </section>
+
+        <section class="dir-block reveal">
+          <header><h3>Norwegian industries</h3><span class="mono-note">5 categories · high demand</span></header>
+          <ul class="dir-list">
+            <li>Maritime &amp; Fisheries</li><li>Oil &amp; Offshore Energy</li><li>Technology &amp; Startups</li>
+            <li>Tourism &amp; Hospitality</li><li>Retail &amp; E-commerce</li>
+          </ul>
+        </section>
+
+        <section class="dir-block reveal">
+          <header><h3>Norwegian sports</h3><span class="mono-note">4 categories</span></header>
+          <ul class="dir-list">
+            <li>Winter Sports</li><li>Outdoor &amp; Friluftsliv</li>
+            <li>Football &amp; Team Sports</li><li>Sailing &amp; Water Sports</li>
+          </ul>
+        </section>
+
+        <section class="dir-block reveal">
+          <header><h3>Traditional food</h3><span class="mono-note">5 categories</span></header>
+          <ul class="dir-list">
+            <li>Seafood &amp; Fish</li><li>Baked Goods &amp; Bread</li><li>Meat &amp; Game</li>
+            <li>Dairy &amp; Cheese</li><li>Holiday &amp; Festive Food</li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <section class="section rule-top" id="licensing">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Licensing</p>
+        <h2>Four ways to license a plate</h2>
+      </div>
+
+      <div class="tiers">
+        <article class="tier reveal">
+          <h3>Personal</h3>
+          <p class="tier-price">kr 190</p>
+          <p class="tier-note">Prints and private walls. Non-commercial use only.</p>
+          <ul>
+            <li>One plate, one use</li>
+            <li>Up to A2 print output</li>
+            <li>Accession label included</li>
+          </ul>
+          <a class="btn btn-outline btn-block" href="#contact">Request licence</a>
+        </article>
+
+        <article class="tier reveal">
+          <h3>Commercial</h3>
+          <p class="tier-price">kr 890</p>
+          <p class="tier-note">Campaigns, editorial, product surfaces and social.</p>
+          <ul>
+            <li>Web, print and social</li>
+            <li>12-month term, one territory</li>
+            <li>Provenance sheet for legal review</li>
+            <li>Release documentation attached</li>
+          </ul>
+          <a class="btn btn-outline btn-block" href="#contact">Request licence</a>
+        </article>
+
+        <article class="tier is-featured reveal">
+          <span class="tier-flag">Most requested</span>
+          <h3>Extended</h3>
+          <p class="tier-price">kr 2 900</p>
+          <p class="tier-note">National campaigns, packaging and out-of-home.</p>
+          <ul>
+            <li>Unlimited impressions</li>
+            <li>Multi-year, multi-territory</li>
+            <li>Category exclusivity window</li>
+            <li>RAW-derived master delivery</li>
+          </ul>
+          <a class="btn btn-solid btn-block" href="#contact">Request licence</a>
+        </article>
+
+        <article class="tier reveal">
+          <h3>Custom &amp; exclusive</h3>
+          <p class="tier-price">On request</p>
+          <p class="tier-note">Buy-outs, commissions and framework agreements.</p>
+          <ul>
+            <li>Full or category exclusivity</li>
+            <li>Commissioned capture</li>
+            <li>Annual agreements for teams</li>
+          </ul>
+          <a class="btn btn-outline btn-block" href="../beta-art-business/index.html">Beta Art Business →</a>
+        </article>
+      </div>
+      <p class="fine-print centre">Prices in NOK, VAT not included. Vipps, Apple Pay and card accepted.
+        Licences exclude use as training data — always, and in writing.</p>
+    </div>
+  </section>
+
+  <section class="section rule-top" id="photographer">
+    <div class="wrap split-2">
+      <figure class="portrait reveal">
+        <div class="plate-frame plate-2" role="img" aria-label="Placeholder portrait of the photographer at work"></div>
+        <figcaption class="mono-note">Placeholder — to be replaced with the maker's own frame</figcaption>
+      </figure>
+      <div class="reveal">
+        <p class="eyebrow">The photographer</p>
+        <h2>Shot for licensing, not for stock</h2>
+        <p>The working principle behind every plate: provenance before composition. A photograph
+          that cannot say where and when it was made is a nice picture, not an archival record.</p>
+        <p>That means slower work. Two or three days aboard a boat before the first frame. A workshop
+          visited often enough that the door is simply open. Thirty to a hundred frames per subject,
+          not one lucky shot.</p>
+        <ul class="tick-list">
+          <li>Full-frame capture at 60 MP or above, two bodies, no single point of failure</li>
+          <li>RAW original archived within 24 hours, backed up to two locations</li>
+          <li>Model release signed within seven days, catalogue decision within fourteen</li>
+          <li>Content Credentials written in camera — never signed retroactively</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section rule-top" id="faq">
+    <div class="wrap narrow">
+      <div class="section-head reveal">
+        <p class="eyebrow">FAQ</p>
+        <h2>Questions we are asked most</h2>
+      </div>
+
+      <div class="faq">
+        <details class="reveal">
+          <summary>What makes a work "verified"?</summary>
+          <p>It has passed all three tests — provenance, not-reproducible-by-a-machine, and a named
+            buyer — and it carries a RAW original, a capture record and a signed licence. A work
+            missing any of those is not listed.</p>
+        </details>
+        <details class="reveal">
+          <summary>Do you license generated images?</summary>
+          <p>No. The archive exists to be the opposite of that, and the licence says so in writing.</p>
+        </details>
+        <details class="reveal">
+          <summary>May the images be used to train a model?</summary>
+          <p>No. Every licence excludes use as training data. That exclusion is one of the reasons
+            buyers come here in the first place.</p>
+        </details>
+        <details class="reveal">
+          <summary>Can I get the RAW file?</summary>
+          <p>The RAW original stays in the archive. Extended and custom licences include a
+            RAW-derived master at full capture resolution, which covers production needs.</p>
+        </details>
+        <details class="reveal">
+          <summary>Why are some locations withheld?</summary>
+          <p>Some sites are fragile, privately owned, or would suffer from the traffic. The licence
+            holder receives the coordinates; the public catalogue does not.</p>
+        </details>
+        <details class="reveal">
+          <summary>Are people in the photographs paid models?</summary>
+          <p>No. They are people doing their own work, photographed with a signed release. Nothing
+            in the archive is staged.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section rule-top" id="contact">
+    <div class="wrap split-2">
+      <div class="reveal">
+        <p class="eyebrow">Contact</p>
+        <h2>Request a licence or commission a plate</h2>
+        <p>Tell us which plate you have in mind and where it will appear. If the intended use falls
+          outside a standard tier, we will say so and quote it properly.</p>
+        <ul class="contact-list">
+          <li><span class="eyebrow">Licensing</span><a href="mailto:licensing@betaart.no">licensing@betaart.no</a></li>
+          <li><span class="eyebrow">Business desk</span><a href="../beta-art-business/index.html">betaart.no/business</a></li>
+          <li><span class="eyebrow">Field notes</span><a href="../beta-art-blog/index.html">The journal</a></li>
+          <li><span class="eyebrow">Based in</span>Norway · shooting the full coast</li>
+        </ul>
+      </div>
+
+      <form class="form reveal" id="licence-form" novalidate>
+        <div class="field">
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" autocomplete="name" required>
+          <p class="error" data-error="name" role="alert" hidden></p>
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" required>
+          <p class="error" data-error="email" role="alert" hidden></p>
+        </div>
+        <div class="field">
+          <label for="plate">Plate of interest</label>
+          <select id="plate" name="plate">
+            <option>Not decided yet</option>
+            <option>BA-A1 Fisher at first light</option>
+            <option>BA-A2 Boatbuilder, afternoon</option>
+            <option>BA-A3 Tuesday, 09:14</option>
+            <option>BA-A4 End of shift</option>
+            <option>BA-B1 Hands and material</option>
+            <option>BA-B2 Process, in three steps</option>
+            <option>BA-B3 Through the bakery window</option>
+            <option>BA-C1 Preikestolen, February</option>
+            <option>BA-C2 Forty minutes from Bergen</option>
+            <option>BA-C3 Aurora over Grünerløkka</option>
+            <option>BA-D1 Known building, unexpected angle</option>
+            <option>BA-D2 Interior, used and real</option>
+            <option>BA-E1 Dinner, 18:30</option>
+            <option>BA-E2 Fish market, 06:00</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="usage">Intended use</label>
+          <textarea id="usage" name="usage" rows="4" required placeholder="Where the image will appear, for how long, and in which territories."></textarea>
+          <p class="error" data-error="usage" role="alert" hidden></p>
+        </div>
+        <button class="btn btn-solid btn-block" type="submit">Send request</button>
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-grid">
+    <div>
+      <p class="wordmark-name">BETA ART</p>
+      <p class="fine-print">Norges visuelle infrastruktur · betaart.no</p>
+    </div>
+    <nav aria-label="Archive">
+      <p class="eyebrow">Archive</p>
+      <a href="#archive">Plates</a>
+      <a href="#categories">Categories</a>
+      <a href="#verification">Verification</a>
+      <a href="#licensing">Licensing</a>
+    </nav>
+    <nav aria-label="Beta Art network">
+      <p class="eyebrow">Network</p>
+      <a href="../beta-art-business/index.html">Beta Art Business</a>
+      <a href="../beta-art-blog/index.html">Field Notes</a>
+      <a href="mailto:licensing@betaart.no">Contact</a>
+    </nav>
+  </div>
+  <div class="wrap footer-base">
+    <p class="fine-print">&copy; <span id="year">2026</span> Beta Art. All rights reserved.</p>
+    <button class="to-top" id="to-top" type="button">Back to top ↑</button>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://betaart.no/#website",
+      "url": "https://betaart.no/",
+      "name": "Beta Art",
+      "description": "An archive of verified human photography, licensed directly from the photographer.",
+      "inLanguage": "en"
+    },
+    {
+      "@type": "Store",
+      "@id": "https://betaart.no/#store",
+      "name": "Beta Art",
+      "description": "An archive of verified human photography, licensed directly from the photographer.",
+      "url": "https://betaart.no/",
+      "priceRange": "kr 190 – kr 2 900",
+      "areaServed": "Worldwide",
+      "paymentAccepted": "Visa, Mastercard, Vipps, Apple Pay",
+      "currenciesAccepted": "NOK",
+      "address": { "@type": "PostalAddress", "addressCountry": "NO" }
+    },
+    {
+      "@type": "ImageObject",
+      "name": "Fisher at first light",
+      "identifier": "BA-A1-001",
+      "contentUrl": "https://betaart.no/plates/ba-a1-001.jpg",
+      "creator": { "@type": "Person", "name": "Beta Art photographer" },
+      "acquireLicensePage": "https://betaart.no/#licensing",
+      "license": "https://betaart.no/#licensing",
+      "creditText": "Beta Art"
+    }
+  ]
+}
+</script>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,1494 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BETAART — Verifisert Fotografi</title>
+<meta name="description" content="Norges første verifiserte fotografiplattform. Kjøp autentiske, lisensierte bilder direkte fra fotografen.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&family=Space+Mono&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #080808;
+    --surface: #111111;
+    --surface2: #1A1A1A;
+    --border: #242424;
+    --text: #F0EDE6;
+    --text-muted: #7A7570;
+    --text-dim: #3A3835;
+    --gold: #C9A96E;
+    --gold-light: #E8D5A3;
+    --gold-dim: rgba(201,169,110,0.12);
+    --white: #FAFAF8;
+    --verified: #4CAF87;
+    --radius: 2px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    height: 64px;
+    background: rgba(8,8,8,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    letter-spacing: 0.12em;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .logo span { color: var(--gold); }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  .nav-cta {
+    background: var(--gold);
+    color: var(--black) !important;
+    padding: 8px 20px;
+    border-radius: var(--radius);
+    font-weight: 600 !important;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--gold-light) !important; color: var(--black) !important; }
+
+  /* ── HERO ── */
+  .hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 40px 64px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: 
+      linear-gradient(to top, rgba(8,8,8,0.95) 0%, rgba(8,8,8,0.4) 50%, rgba(8,8,8,0.2) 100%),
+      linear-gradient(135deg, #1a1410 0%, #0d1a14 50%, #0a0d1a 100%);
+  }
+
+  .hero-grid-overlay {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      linear-gradient(rgba(201,169,110,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,169,110,0.03) 1px, transparent 1px);
+    background-size: 80px 80px;
+  }
+
+  .hero-content { position: relative; z-index: 1; max-width: 900px; }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--gold-dim);
+    border: 1px solid rgba(201,169,110,0.25);
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 32px;
+  }
+  .hero-badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+    animation: pulse 2s ease infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(48px, 7vw, 96px);
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+    color: var(--white);
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-sub {
+    font-size: 17px;
+    color: var(--text-muted);
+    max-width: 480px;
+    line-height: 1.7;
+    margin-bottom: 40px;
+    font-weight: 300;
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--black);
+    padding: 14px 32px;
+    border-radius: var(--radius);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .btn-primary:hover {
+    background: var(--gold-light);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 32px rgba(201,169,110,0.2);
+  }
+
+  .btn-ghost {
+    color: var(--text-muted);
+    font-size: 14px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.2s;
+    font-weight: 500;
+  }
+  .btn-ghost:hover { color: var(--text); }
+
+  .hero-stats {
+    position: absolute;
+    right: 40px;
+    bottom: 64px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    z-index: 1;
+  }
+  .stat { text-align: right; }
+  .stat-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 28px;
+    color: var(--white);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: 100px 40px;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(32px, 4vw, 52px);
+    line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+
+  .section-sub {
+    color: var(--text-muted);
+    font-size: 16px;
+    max-width: 520px;
+    line-height: 1.7;
+  }
+
+  /* ── VERIFIED STRIP ── */
+  .verified-strip {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 20px 0;
+    overflow: hidden;
+    position: relative;
+  }
+  .verified-strip-inner {
+    display: flex;
+    gap: 60px;
+    white-space: nowrap;
+    animation: marquee 20s linear infinite;
+  }
+  .verified-strip-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .verified-strip-item span {
+    color: var(--gold);
+    font-size: 14px;
+  }
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* ── GALLERY ── */
+  .gallery-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .filter-tabs {
+    display: flex;
+    gap: 4px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 4px;
+  }
+  .filter-tab {
+    padding: 8px 16px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    background: none;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: all 0.15s;
+    text-transform: uppercase;
+  }
+  .filter-tab.active {
+    background: var(--gold);
+    color: var(--black);
+    font-weight: 600;
+  }
+  .filter-tab:hover:not(.active) { color: var(--text); background: var(--surface2); }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  @media (max-width: 900px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .gallery-grid { grid-template-columns: 1fr; } }
+
+  .photo-card {
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s;
+    aspect-ratio: 4/3;
+  }
+  .photo-card:hover {
+    border-color: rgba(201,169,110,0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+  }
+
+  .photo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+  }
+  .photo-card:hover .photo-img { transform: scale(1.04); }
+
+  /* Placeholder photo backgrounds */
+  .photo-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    transition: transform 0.5s;
+  }
+  .photo-card:hover .photo-placeholder { transform: scale(1.04); }
+
+  .ph-1 { background: linear-gradient(135deg, #1a2a1a 0%, #0d1f0d 100%); }
+  .ph-2 { background: linear-gradient(135deg, #1a1a2a 0%, #0d0d1f 100%); }
+  .ph-3 { background: linear-gradient(135deg, #2a1a1a 0%, #1f0d0d 100%); }
+  .ph-4 { background: linear-gradient(135deg, #2a2a1a 0%, #1f1f0d 100%); }
+  .ph-5 { background: linear-gradient(135deg, #1a2a2a 0%, #0d1f1f 100%); }
+  .ph-6 { background: linear-gradient(135deg, #251a2a 0%, #1a0d1f 100%); }
+
+  .photo-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(8,8,8,0.9) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 20px;
+  }
+  .photo-card:hover .photo-overlay { opacity: 1; }
+
+  .photo-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+  .photo-price {
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    color: var(--gold);
+    font-weight: 400;
+  }
+  .photo-buy-btn {
+    margin-top: 12px;
+    background: var(--gold);
+    color: var(--black);
+    border: none;
+    padding: 10px 20px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: var(--radius);
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.2s;
+  }
+  .photo-buy-btn:hover { background: var(--gold-light); }
+
+  .photo-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(8,8,8,0.8);
+    border: 1px solid rgba(76,175,135,0.4);
+    color: var(--verified);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 100px;
+    backdrop-filter: blur(10px);
+  }
+  .photo-badge::before {
+    content: '';
+    width: 5px; height: 5px;
+    background: var(--verified);
+    border-radius: 50%;
+  }
+
+  .photo-score {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: rgba(8,8,8,0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border);
+    padding: 4px 10px;
+    border-radius: 100px;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--gold);
+  }
+
+  /* ── TRUST SECTION ── */
+  .trust-section {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .trust-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  @media (max-width: 768px) { .trust-grid { grid-template-columns: 1fr; gap: 40px; } }
+
+  .trust-passport {
+    background: var(--black);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .tp-header {
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .tp-title {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .tp-id {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--text-dim);
+  }
+
+  .tp-photo {
+    height: 180px;
+    background: linear-gradient(135deg, #1a2a1a, #0d1f0d);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 64px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .tp-body { padding: 0; }
+
+  .tp-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 24px;
+    border-bottom: 1px solid var(--border);
+  }
+  .tp-row:last-child { border-bottom: none; }
+
+  .tp-key {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+  .tp-val {
+    font-size: 12px;
+    color: var(--text);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .tp-val.ok { color: var(--verified); }
+  .tp-val.gold { color: var(--gold); }
+
+  .check { font-size: 12px; }
+
+  .trust-features { list-style: none; }
+  .trust-feature {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .trust-feature:last-child { border-bottom: none; }
+  .tf-icon {
+    width: 40px; height: 40px;
+    background: var(--gold-dim);
+    border: 1px solid rgba(201,169,110,0.2);
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .tf-title {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+  .tf-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  /* ── PRICING ── */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 60px;
+  }
+  @media (max-width: 768px) { .pricing-grid { grid-template-columns: 1fr; } }
+
+  .price-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 36px 28px;
+    position: relative;
+    transition: all 0.3s;
+  }
+  .price-card:hover {
+    border-color: rgba(201,169,110,0.3);
+  }
+  .price-card.featured {
+    border-color: var(--gold);
+    background: var(--surface2);
+  }
+
+  .price-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--gold);
+    color: var(--black);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+
+  .price-name {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+  }
+  .price-amount {
+    font-family: 'DM Serif Display', serif;
+    font-size: 42px;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .price-amount span {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: var(--text-muted);
+    font-weight: 300;
+  }
+  .price-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 28px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .price-features { list-style: none; margin-bottom: 32px; }
+  .price-feature {
+    font-size: 13px;
+    color: var(--text-muted);
+    padding: 7px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .price-feature::before {
+    content: '✓';
+    color: var(--verified);
+    font-weight: 700;
+    font-size: 12px;
+  }
+
+  .btn-price {
+    width: 100%;
+    padding: 13px;
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-price:hover { border-color: var(--gold); color: var(--gold); }
+  .price-card.featured .btn-price {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--black);
+  }
+  .price-card.featured .btn-price:hover { background: var(--gold-light); }
+
+  /* ── ABOUT ── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  @media (max-width: 768px) { .about-grid { grid-template-columns: 1fr; } }
+
+  .about-img-frame {
+    aspect-ratio: 3/4;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 80px;
+    background: linear-gradient(135deg, #151515, #0d0d0d);
+    position: relative;
+    overflow: hidden;
+  }
+  .about-img-frame::after {
+    content: 'BETAART';
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    font-family: 'DM Serif Display', serif;
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    opacity: 0.5;
+  }
+
+  .about-text p {
+    color: var(--text-muted);
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+
+  /* ── MODAL ── */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.92);
+    z-index: 1000;
+    backdrop-filter: blur(12px);
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+  }
+  .modal-overlay.open { display: flex; }
+
+  .modal {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    max-width: 900px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+  }
+  @media (max-width: 700px) { .modal { grid-template-columns: 1fr; } }
+
+  .modal-img {
+    aspect-ratio: 1/1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 96px;
+    border-right: 1px solid var(--border);
+  }
+  @media (max-width: 700px) { .modal-img { border-right: none; border-bottom: 1px solid var(--border); height: 200px; } }
+
+  .modal-info { padding: 36px; }
+
+  .modal-close {
+    display: block;
+    text-align: right;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 22px;
+    margin-bottom: 20px;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    transition: color 0.2s;
+  }
+  .modal-close:hover { color: var(--text); }
+
+  .modal-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+  .modal-cat {
+    font-size: 11px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 24px;
+  }
+
+  .modal-trust {
+    background: var(--black);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    margin-bottom: 24px;
+  }
+  .modal-trust-header {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .mt-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--border);
+    font-size: 12px;
+  }
+  .mt-row:last-child { border-bottom: none; }
+  .mt-k { color: var(--text-muted); }
+  .mt-v { color: var(--text); font-weight: 500; }
+  .mt-v.ok { color: var(--verified); }
+
+  .modal-price-row {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .price-opt {
+    flex: 1;
+    background: var(--black);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+  }
+  .price-opt:hover, .price-opt.selected {
+    border-color: var(--gold);
+  }
+  .price-opt-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+  .price-opt-amount {
+    font-family: 'Space Mono', monospace;
+    font-size: 16px;
+    color: var(--white);
+  }
+
+  .btn-buy-now {
+    width: 100%;
+    padding: 16px;
+    background: var(--gold);
+    color: var(--black);
+    border: none;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  .btn-buy-now:hover {
+    background: var(--gold-light);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(201,169,110,0.25);
+  }
+
+  /* ── CONTACT ── */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; gap: 40px; } }
+
+  .contact-form { display: flex; flex-direction: column; gap: 16px; }
+
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .form-input, .form-textarea {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 12px 16px;
+    color: var(--text);
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    transition: border-color 0.2s;
+    outline: none;
+  }
+  .form-input:focus, .form-textarea:focus { border-color: var(--gold); }
+  .form-textarea { resize: vertical; min-height: 120px; }
+  .form-input::placeholder, .form-textarea::placeholder { color: var(--text-dim); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 60px 40px 40px;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 48px;
+  }
+  @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; } }
+
+  .footer-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 24px;
+    letter-spacing: 0.12em;
+    color: var(--text);
+    margin-bottom: 12px;
+  }
+  .footer-logo span { color: var(--gold); }
+  .footer-tagline {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    max-width: 240px;
+  }
+
+  .footer-col h4 {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+  }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-links a {
+    font-size: 13px;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--text); }
+
+  .footer-bottom {
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .footer-copy { font-size: 12px; color: var(--text-dim); }
+  .footer-verified {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    color: var(--verified);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .footer-verified::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--verified);
+    border-radius: 50%;
+  }
+
+  /* ── UTILS ── */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    section { padding: 60px 20px; }
+    .hero { padding: 0 20px 48px; }
+    .hero-stats { display: none; }
+    footer { padding: 40px 20px; }
+  }
+
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--black); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--text-dim); }
+
+  ::selection { background: var(--gold); color: var(--black); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">BETA<span>ART</span></a>
+  <ul class="nav-links">
+    <li><a href="#galleri">Galleri</a></li>
+    <li><a href="#tillit">Verifisert</a></li>
+    <li><a href="#lisens">Lisens</a></li>
+    <li><a href="#om">Om</a></li>
+    <li><a href="#kontakt" class="nav-cta">Kjøp nå</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Norges første verifiserte fotografiplattform</div>
+    <h1>Autentiske bilder.<br><em>Garantert.</em></h1>
+    <p class="hero-sub">Hvert bilde er verifisert, lisensiert og dokumentert. Du vet alltid hvem som tok det, om du har rett til å bruke det — og at det er ekte.</p>
+    <div class="hero-actions">
+      <a href="#galleri" class="btn-primary">
+        <span>Utforsk galleri</span>
+        <span>↓</span>
+      </a>
+      <a href="#tillit" class="btn-ghost">Hva er Trust Passport? →</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Verifisert</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">48h</div>
+      <div class="stat-label">Levering</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">NOK</div>
+      <div class="stat-label">Norsk betaling</div>
+    </div>
+  </div>
+</section>
+
+<!-- VERIFIED STRIP -->
+<div class="verified-strip">
+  <div class="verified-strip-inner" id="stripInner">
+    <span class="verified-strip-item"><span>✓</span> Verifisert fotograf</span>
+    <span class="verified-strip-item"><span>✓</span> EXIF-autentisert</span>
+    <span class="verified-strip-item"><span>✓</span> Kommersiell lisens</span>
+    <span class="verified-strip-item"><span>✓</span> Ikke AI-generert</span>
+    <span class="verified-strip-item"><span>✓</span> Model Release</span>
+    <span class="verified-strip-item"><span>✓</span> Trust Score 98</span>
+    <span class="verified-strip-item"><span>✓</span> Norsk arkiv</span>
+    <span class="verified-strip-item"><span>✓</span> Verifisert fotograf</span>
+    <span class="verified-strip-item"><span>✓</span> EXIF-autentisert</span>
+    <span class="verified-strip-item"><span>✓</span> Kommersiell lisens</span>
+    <span class="verified-strip-item"><span>✓</span> Ikke AI-generert</span>
+    <span class="verified-strip-item"><span>✓</span> Model Release</span>
+    <span class="verified-strip-item"><span>✓</span> Trust Score 98</span>
+    <span class="verified-strip-item"><span>✓</span> Norsk arkiv</span>
+  </div>
+</div>
+
+<!-- GALLERY -->
+<section id="galleri">
+  <div class="gallery-header">
+    <div>
+      <div class="section-label">Galleri</div>
+      <h2 class="section-title">Alle bilder. Alle verifisert.</h2>
+    </div>
+    <div class="filter-tabs">
+      <button class="filter-tab active" onclick="filterGallery('alle', this)">Alle</button>
+      <button class="filter-tab" onclick="filterGallery('natur', this)">Natur</button>
+      <button class="filter-tab" onclick="filterGallery('urban', this)">Urban</button>
+      <button class="filter-tab" onclick="filterGallery('arkitektur', this)">Arkitektur</button>
+    </div>
+  </div>
+
+  <div class="gallery-grid" id="galleryGrid">
+
+    <div class="photo-card" data-cat="natur" onclick="openModal('Fjordlys ved solnedgang','Natur','🌄','ph-1', '490', '1490')">
+      <div class="photo-placeholder ph-1">🌄</div>
+      <div class="photo-score">TS 99</div>
+      <div class="photo-badge">Verified</div>
+      <div class="photo-overlay">
+        <div class="photo-title">Fjordlys ved solnedgang</div>
+        <div class="photo-price">Fra NOK 490</div>
+        <button class="photo-buy-btn">Kjøp bilde →</button>
+      </div>
+    </div>
+
+    <div class="photo-card" data-cat="urban" onclick="openModal('Oslo om natten','Urban','🌃','ph-2', '390', '1290')">
+      <div class="photo-placeholder ph-2">🌃</div>
+      <div class="photo-score">TS 97</div>
+      <div class="photo-badge">Verified</div>
+      <div class="photo-overlay">
+        <div class="photo-title">Oslo om natten</div>
+        <div class="photo-price">Fra NOK 390</div>
+        <button class="photo-buy-btn">Kjøp bilde →</button>
+      </div>
+    </div>
+
+    <div class="photo-card" data-cat="arkitektur" onclick="openModal('Operahuset i morgenlys','Arkitektur','🏛️','ph-3', '590', '1890')">
+      <div class="photo-placeholder ph-3">🏛️</div>
+      <div class="photo-score">TS 98</div>
+      <div class="photo-badge">Verified</div>
+      <div class="photo-overlay">
+        <div class="photo-title">Operahuset i morgenlys</div>
+        <div class="photo-price">Fra NOK 590</div>
+        <button class="photo-buy-btn">Kjøp bilde →</button>
+      </div>
+    </div>
+
+    <div class="photo-card" data-cat="natur" onclick="openModal('Nordlys over Tromsø','Natur','🌌','ph-4', '790', '2490')">
+      <div class="photo-placeholder ph-4">🌌</div>
+      <div class="photo-score">TS 100</div>
+      <div class="photo-badge">Verified</div>
+      <div class="photo-overlay">
+        <div class="photo-title">Nordlys over Tromsø</div>
+        <div class="photo-price">Fra NOK 790</div>
+        <button class="photo-buy-btn">Kjøp bilde →</button>
+      </div>
+    </div>
+
+    <div class="photo-card" data-cat="urban" onclick="openModal('Bryggen, Bergen','Urban','🏘️','ph-5', '450', '1390')">
+      <div class="photo-placeholder ph-5">🏘️</div>
+      <div class="photo-score">TS 96</div>
+      <div class="photo-badge">Verified</div>
+      <div class="photo-overlay">
+        <div class="photo-title">Bryggen, Bergen</div>
+        <div class="photo-price">Fra NOK 450</div>
+        <button class="photo-buy-btn">Kjøp bilde →</button>
+      </div>
+    </div>
+
+    <div class="photo-card" data-cat="arkitektur" onclick="openModal('Stavkirke i tåke','Arkitektur','⛪','ph-6', '650', '1990')">
+      <div class="photo-placeholder ph-6">⛪</div>
+      <div class="photo-score">TS 99</div>
+      <div class="photo-badge">Verified</div>
+      <div class="photo-overlay">
+        <div class="photo-title">Stavkirke i tåke</div>
+        <div class="photo-price">Fra NOK 650</div>
+        <button class="photo-buy-btn">Kjøp bilde →</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- TRUST -->
+<section id="tillit" class="trust-section">
+  <div class="trust-grid">
+    <div>
+      <div class="section-label">Trust Passport</div>
+      <h2 class="section-title">Hvert bilde har<br>sin egen identitet.</h2>
+      <p class="section-sub" style="margin-bottom:40px;">Trust Passport er vår verifiseringsdokumentasjon for hvert enkelt bilde — hvem som tok det, når, med hva, og om det er klart for kommersiell bruk.</p>
+      <ul class="trust-features">
+        <li class="trust-feature">
+          <div class="tf-icon">🔍</div>
+          <div>
+            <div class="tf-title">EXIF-verifisering</div>
+            <div class="tf-desc">Kameradata, GPS, tidsstempel og original råfil er dokumentert og kontrollert.</div>
+          </div>
+        </li>
+        <li class="trust-feature">
+          <div class="tf-icon">📜</div>
+          <div>
+            <div class="tf-title">Lisensklarert</div>
+            <div class="tf-desc">Klar for personlig eller kommersiell bruk. Ingen overraskelser i ettertid.</div>
+          </div>
+        </li>
+        <li class="trust-feature">
+          <div class="tf-icon">🤖</div>
+          <div>
+            <div class="tf-title">Ikke AI-generert</div>
+            <div class="tf-desc">Alle bilder er tatt av ekte fotografer. Vi garanterer autentisitet.</div>
+          </div>
+        </li>
+        <li class="trust-feature">
+          <div class="tf-icon">⚖️</div>
+          <div>
+            <div class="tf-title">Juridisk trygghet</div>
+            <div class="tf-desc">Model Release og Property Release er inkludert der det er nødvendig.</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="trust-passport">
+      <div class="tp-header">
+        <span class="tp-title">Trust Passport</span>
+        <span class="tp-id">#BA-2024-00441</span>
+      </div>
+      <div class="tp-photo">🌄</div>
+      <div class="tp-body">
+        <div class="tp-row">
+          <span class="tp-key">Fotograf</span>
+          <span class="tp-val">BETAART / Verifisert</span>
+        </div>
+        <div class="tp-row">
+          <span class="tp-key">Kamera</span>
+          <span class="tp-val">Sony A7R V</span>
+        </div>
+        <div class="tp-row">
+          <span class="tp-key">Tatt</span>
+          <span class="tp-val">15. mars 2024, 19:42</span>
+        </div>
+        <div class="tp-row">
+          <span class="tp-key">AI-generert</span>
+          <span class="tp-val ok">✓ Nei — Ekte foto</span>
+        </div>
+        <div class="tp-row">
+          <span class="tp-key">Kommersiell lisens</span>
+          <span class="tp-val ok">✓ Inkludert</span>
+        </div>
+        <div class="tp-row">
+          <span class="tp-key">Model Release</span>
+          <span class="tp-val ok">✓ Signert</span>
+        </div>
+        <div class="tp-row">
+          <span class="tp-key">Trust Score</span>
+          <span class="tp-val gold">99 / 100</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="lisens">
+  <div style="text-align:center; max-width:600px; margin:0 auto;">
+    <div class="section-label">Lisens & Priser</div>
+    <h2 class="section-title">Enkel prising.<br>Full klarhet.</h2>
+    <p class="section-sub" style="margin:0 auto;">Ingen skjulte avgifter, ingen overraskelser. Du vet nøyaktig hva du betaler og hva du får lov til å gjøre med bildet.</p>
+  </div>
+
+  <div class="pricing-grid">
+    <div class="price-card">
+      <div class="price-name">Personlig</div>
+      <div class="price-amount">490 <span>NOK</span></div>
+      <div class="price-desc">For privat bruk, blogger og ikke-kommersielle prosjekter.</div>
+      <ul class="price-features">
+        <li class="price-feature">Digital nedlasting, full oppløsning</li>
+        <li class="price-feature">Personlig bruk og blogger</li>
+        <li class="price-feature">Sosiale medier (ikke-kommersiell)</li>
+        <li class="price-feature">Trust Passport inkludert</li>
+        <li class="price-feature">Ingen utløpsdato</li>
+      </ul>
+      <button class="btn-price" onclick="alert('Stripe-betaling kommer snart!')">Velg Personlig</button>
+    </div>
+
+    <div class="price-card featured">
+      <div class="price-badge">Mest populær</div>
+      <div class="price-name">Kommersiell</div>
+      <div class="price-amount">1 490 <span>NOK</span></div>
+      <div class="price-desc">For bedrifter, reklame, markedsføring og kommersiell bruk.</div>
+      <ul class="price-features">
+        <li class="price-feature">Alt i Personlig</li>
+        <li class="price-feature">Kommersiell bruk uten grenser</li>
+        <li class="price-feature">Reklame og markedsføring</li>
+        <li class="price-feature">Model & Property Release</li>
+        <li class="price-feature">Juridisk dokumentasjon</li>
+        <li class="price-feature">Faktura (mva.)</li>
+      </ul>
+      <button class="btn-price" onclick="alert('Stripe-betaling kommer snart!')">Velg Kommersiell</button>
+    </div>
+
+    <div class="price-card">
+      <div class="price-name">Enterprise</div>
+      <div class="price-amount">Pris<span> etter avtale</span></div>
+      <div class="price-desc">For store bedrifter, mediebyråer og langsiktige avtaler.</div>
+      <ul class="price-features">
+        <li class="price-feature">Alt i Kommersiell</li>
+        <li class="price-feature">Eksklusiv lisens mulig</li>
+        <li class="price-feature">Bulk-nedlasting</li>
+        <li class="price-feature">API-tilgang</li>
+        <li class="price-feature">Dedikert kontaktperson</li>
+        <li class="price-feature">Egendefinerte avtaler</li>
+      </ul>
+      <button class="btn-price" onclick="document.getElementById('kontakt').scrollIntoView({behavior:'smooth'})">Ta kontakt</button>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="om" style="background: var(--surface); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+  <div class="about-grid">
+    <div class="about-img-frame">📷</div>
+    <div class="about-text">
+      <div class="section-label">Om BETAART</div>
+      <h2 class="section-title">Fotografen bak bildet.</h2>
+      <p>BETAART er Norges første verifiserte fotografiplattform — der hvert bilde har en identitet, en historie og en garanti.</p>
+      <p>Jeg er en norsk fotograf med lidenskap for lys, landskap og de øyeblikkene som ikke kan gjenskapes. Hvert bilde er tatt med intensjon, bearbeidet med omhu og verifisert med full dokumentasjon.</p>
+      <p>Når du kjøper fra BETAART, vet du nøyaktig hva du får — og du kan bruke det med trygghet.</p>
+      <a href="#kontakt" class="btn-primary" style="display:inline-flex; margin-top:16px;">Ta kontakt →</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="kontakt">
+  <div class="contact-grid">
+    <div>
+      <div class="section-label">Kontakt</div>
+      <h2 class="section-title">La oss snakke.</h2>
+      <p class="section-sub" style="margin-bottom:32px;">Har du spørsmål om et bilde, lisens eller en spesialbestilling? Jeg svarer innen 24 timer.</p>
+      <div style="display:flex; flex-direction:column; gap:16px;">
+        <div style="display:flex; align-items:center; gap:12px; color:var(--text-muted); font-size:14px;">
+          <span style="color:var(--gold);">✉</span> post@betaart.no
+        </div>
+        <div style="display:flex; align-items:center; gap:12px; color:var(--text-muted); font-size:14px;">
+          <span style="color:var(--gold);">📍</span> Norge
+        </div>
+        <div style="display:flex; align-items:center; gap:12px; color:var(--text-muted); font-size:14px;">
+          <span style="color:var(--gold);">⏱</span> Svartid: Under 24 timer
+        </div>
+      </div>
+    </div>
+    <form class="contact-form" onsubmit="handleForm(event)">
+      <div class="form-group">
+        <label class="form-label">Navn</label>
+        <input class="form-input" type="text" placeholder="Ditt navn" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label">E-post</label>
+        <input class="form-input" type="email" placeholder="din@epost.no" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Melding</label>
+        <textarea class="form-textarea" placeholder="Fortell hva du trenger..." required></textarea>
+      </div>
+      <button type="submit" class="btn-primary" style="border:none; cursor:pointer; justify-content:center;">Send melding →</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">BETA<span>ART</span></div>
+      <p class="footer-tagline">Norges første verifiserte fotografiplattform. Autentiske bilder med full dokumentasjon og juridisk trygghet.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Galleri</h4>
+      <ul class="footer-links">
+        <li><a href="#galleri">Alle bilder</a></li>
+        <li><a href="#galleri">Natur</a></li>
+        <li><a href="#galleri">Urban</a></li>
+        <li><a href="#galleri">Arkitektur</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Lisens</h4>
+      <ul class="footer-links">
+        <li><a href="#lisens">Personlig</a></li>
+        <li><a href="#lisens">Kommersiell</a></li>
+        <li><a href="#lisens">Enterprise</a></li>
+        <li><a href="#tillit">Trust Passport</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Om</h4>
+      <ul class="footer-links">
+        <li><a href="#om">Om BETAART</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+        <li><a href="#">Personvern</a></li>
+        <li><a href="#">Vilkår</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2024 BETAART. Alle rettigheter forbeholdt.</span>
+    <span class="footer-verified">Alle bilder verifisert</span>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal" onclick="closeModalOutside(event)">
+  <div class="modal" id="modalInner">
+    <div class="modal-img" id="modalImg">🌄</div>
+    <div class="modal-info">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div class="modal-title" id="modalTitle">Fjordlys</div>
+      <div class="modal-cat" id="modalCat">Natur · Verifisert</div>
+
+      <div class="modal-trust">
+        <div class="modal-trust-header">🛡 Trust Passport</div>
+        <div class="mt-row"><span class="mt-k">AI-generert</span><span class="mt-v ok">✓ Nei</span></div>
+        <div class="mt-row"><span class="mt-k">Lisens</span><span class="mt-v ok">✓ Klar</span></div>
+        <div class="mt-row"><span class="mt-k">Trust Score</span><span class="mt-v" style="color:var(--gold)">99/100</span></div>
+        <div class="mt-row"><span class="mt-k">Model Release</span><span class="mt-v ok">✓ Ja</span></div>
+      </div>
+
+      <div class="modal-price-row">
+        <div class="price-opt selected" onclick="selectLicense(this, 'personal')">
+          <div class="price-opt-label">Personlig</div>
+          <div class="price-opt-amount" id="pricePersonal">490 NOK</div>
+        </div>
+        <div class="price-opt" onclick="selectLicense(this, 'commercial')">
+          <div class="price-opt-label">Kommersiell</div>
+          <div class="price-opt-amount" id="priceCommercial">1 490 NOK</div>
+        </div>
+      </div>
+
+      <button class="btn-buy-now" onclick="buyNow()">
+        <span>🔒</span>
+        <span>Kjøp sikkert</span>
+      </button>
+      <p style="font-size:11px; color:var(--text-muted); text-align:center; margin-top:10px;">
+        Betaling via Stripe · Umiddelbar nedlasting · Trust Passport inkludert
+      </p>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Gallery filter
+  function filterGallery(cat, btn) {
+    document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.photo-card').forEach(card => {
+      if (cat === 'alle' || card.dataset.cat === cat) {
+        card.style.display = '';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  // Modal
+  let currentPrices = { personal: '490', commercial: '1490' };
+  let selectedLicense = 'personal';
+
+  function openModal(title, cat, emoji, bg, priceP, priceC) {
+    currentPrices = { personal: priceP, commercial: priceC };
+    selectedLicense = 'personal';
+    document.getElementById('modalTitle').textContent = title;
+    document.getElementById('modalCat').textContent = cat + ' · Verifisert';
+    document.getElementById('modalImg').textContent = emoji;
+    document.getElementById('modalImg').className = 'modal-img ' + bg;
+    document.getElementById('pricePersonal').textContent = priceP + ' NOK';
+    document.getElementById('priceCommercial').textContent = parseInt(priceC).toLocaleString('no') + ' NOK';
+    document.querySelectorAll('.price-opt').forEach((o, i) => o.classList.toggle('selected', i === 0));
+    document.getElementById('modal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    document.getElementById('modal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function closeModalOutside(e) {
+    if (e.target === document.getElementById('modal')) closeModal();
+  }
+
+  function selectLicense(el, type) {
+    document.querySelectorAll('.price-opt').forEach(o => o.classList.remove('selected'));
+    el.classList.add('selected');
+    selectedLicense = type;
+  }
+
+  function buyNow() {
+    const price = currentPrices[selectedLicense];
+    const label = selectedLicense === 'personal' ? 'personlig' : 'kommersiell';
+    const title = document.getElementById('modalTitle').textContent;
+    alert(`Du er i ferd med å kjøpe:\n\n"${title}"\n${label.toUpperCase()} LISENS — ${price} NOK\n\nStripe-betaling integreres her.\nTa kontakt på post@betaart.no for kjøp nå.`);
+  }
+
+  function handleForm(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button');
+    btn.textContent = '✓ Sendt! Jeg svarer innen 24 timer.';
+    btn.style.background = '#4CAF87';
+    btn.style.pointerEvents = 'none';
+    e.target.reset();
+  }
+
+  // Keyboard close
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+</script>
+</body>
+</html>

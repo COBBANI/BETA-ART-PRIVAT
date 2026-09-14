@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Mark — BETA ART</title>
+<meta name="description" content="The BETA ART mark: an aperture that is also a seal. Identity system, geometry, lockups and downloads.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23FBFAF7'/%3E%3Cg fill='none' stroke='%230F0F0F' stroke-width='4'%3E%3Ccircle cx='50' cy='50' r='46'/%3E%3Cpath d='M50 30 75.81 11.92M67.32 40 84.99 47.86M67.32 60 76.66 84.02M50 70 24.19 88.08M32.68 60 15.01 52.14M32.68 40 23.34 15.98'/%3E%3C/g%3E%3Ccircle cx='50' cy='50' r='7' fill='%238B1A1A'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..800,50..100,0..1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FBFAF7; --paper-2:#F3F0E9; --paper-lift:#FFFFFF; --paper-press:#DCD6C9;
+  --ink:#0F0F0F; --ink-2:#1F1D1B; --muted:#85817A; --rule:#E4E0D8; --seal:#8B1A1A;
+  --f-serif:'Fraunces',Georgia,serif;
+  --f-sans:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  --f-mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--f-sans);background:var(--paper);color:var(--ink);line-height:1.6;font-size:16px;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+svg{display:block}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:20;background:rgba(251,250,247,.93);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--rule)}
+.nav-inner{max-width:1400px;margin:0 auto;padding:16px 40px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:inline-flex;align-items:center;gap:11px;font-family:var(--f-mono);font-size:12px;letter-spacing:.24em;text-transform:uppercase;font-weight:500}
+.nav-right{display:flex;align-items:center;gap:26px}
+.nav-right a{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);transition:color .18s}
+.nav-right a:hover{color:var(--ink)}
+.lang{display:flex;align-items:center;border-left:1px solid var(--rule);padding-left:18px}
+.lang button{background:none;border:0;padding:3px 5px;cursor:pointer;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);transition:color .18s}
+.lang button:hover{color:var(--ink)}
+.lang button.on{color:var(--ink);font-weight:600}
+.lang-sep{color:var(--rule)}
+@media(max-width:760px){.nav-inner{padding:14px 20px}.nav-right a{display:none}.lang{padding-left:0;border-left:0}}
+
+/* ---------- shared rhythm ---------- */
+.wrap{max-width:1200px;margin:0 auto;padding:0 40px}
+@media(max-width:760px){.wrap{padding:0 20px}}
+.eyebrow{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:22px;height:1px;background:var(--muted)}
+.chapter{padding:96px 0 0}
+.chapter-head{display:flex;align-items:baseline;gap:18px;padding-bottom:18px;margin-bottom:36px;border-bottom:1px solid var(--rule)}
+.chapter-head .cn{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.2em;color:var(--seal);font-weight:500}
+.chapter-head h2{font-family:var(--f-serif);font-weight:500;font-size:clamp(24px,3vw,32px);line-height:1.15;letter-spacing:-.01em}
+.lede{font-size:15.5px;color:var(--ink-2);line-height:1.68;max-width:64ch}
+.lede + .lede{margin-top:14px}
+
+/* ---------- hero: the emboss ---------- */
+.hero{padding:100px 0 84px;border-bottom:1px solid var(--rule)}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:48px}.hero{padding:60px 0 56px}}
+.hero h1{font-family:var(--f-serif);font-weight:300;font-variation-settings:'WONK' 1,'SOFT' 40;font-size:clamp(46px,7vw,86px);line-height:.98;letter-spacing:-.03em;margin:26px 0 22px}
+.hero h1 em{font-style:normal;color:var(--seal)}
+.hero .sub{font-family:var(--f-serif);font-style:italic;font-size:19px;color:var(--muted)}
+
+/* the blind-emboss stage — signature element */
+.emboss-stage{
+  aspect-ratio:1/1;
+  background:
+    radial-gradient(120% 120% at 22% 18%, #FFFFFF 0%, var(--paper) 46%, #F2EFE6 100%);
+  border:1px solid var(--rule);
+  display:grid;place-items:center;
+  position:relative;overflow:hidden;
+}
+.emboss-stage::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(0deg,rgba(15,15,15,.014) 0 1px,transparent 1px 3px);
+}
+.emboss{position:relative;width:58%;max-width:330px;aspect-ratio:1/1}
+.emboss > svg{position:absolute;inset:0;width:100%;height:100%}
+.emboss .lift{color:var(--paper-lift)}
+.emboss .press{color:var(--paper-press)}
+.emboss .face{color:rgba(15,15,15,.10)}
+.emboss .pin{color:var(--seal);opacity:.9}
+.stage-cap{
+  position:absolute;left:20px;bottom:16px;
+  font-family:var(--f-mono);font-size:10px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--muted);
+}
+
+/* ---------- primary mark panel ---------- */
+.mark-panel{display:grid;grid-template-columns:340px 1fr;gap:56px;align-items:start}
+@media(max-width:900px){.mark-panel{grid-template-columns:1fr;gap:32px}}
+.mark-plate{border:1px solid var(--rule);background:var(--paper-2);padding:44px;display:grid;place-items:center}
+.mark-plate svg{width:100%;max-width:220px;height:auto}
+.spec{border-top:1px solid var(--rule);margin-top:26px}
+.spec-row{display:grid;grid-template-columns:132px 1fr;gap:16px;padding:11px 0;border-bottom:1px solid var(--rule)}
+.spec-row dt{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding-top:2px}
+.spec-row dd{font-size:14.5px;color:var(--ink-2)}
+
+/* ---------- geometry ---------- */
+.geo{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--rule)}
+@media(max-width:820px){.geo{grid-template-columns:1fr}}
+.geo-cell{padding:34px 30px;border-right:1px solid var(--rule)}
+.geo-cell:last-child{border-right:0}
+@media(max-width:820px){.geo-cell{border-right:0;border-bottom:1px solid var(--rule)}.geo-cell:last-child{border-bottom:0}}
+.geo-cell svg{width:100%;max-width:170px;height:auto;margin:0 auto 20px}
+.geo-cell h3{font-family:var(--f-serif);font-size:17px;font-weight:500;margin-bottom:6px}
+.geo-cell p{font-size:13.5px;color:var(--ink-2);line-height:1.6}
+.geo-cell .step{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.18em;color:var(--seal);margin-bottom:14px}
+
+/* ---------- alternates ---------- */
+.alts{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border:1px solid var(--rule)}
+@media(max-width:820px){.alts{grid-template-columns:1fr}}
+.alt{padding:40px 34px;border-right:1px solid var(--rule)}
+.alt:last-child{border-right:0}
+@media(max-width:820px){.alt{border-right:0;border-bottom:1px solid var(--rule)}.alt:last-child{border-bottom:0}}
+.alt-canvas{background:var(--paper-2);padding:36px;display:grid;place-items:center;margin-bottom:22px;min-height:200px}
+.alt-canvas svg{width:100%;max-width:180px;height:auto}
+.alt-canvas .accession-mark{font-family:var(--f-mono);font-size:clamp(22px,4vw,30px);letter-spacing:.1em;color:var(--ink);font-weight:500;white-space:nowrap}
+.alt-canvas .accession-mark span{color:var(--seal)}
+.alt h3{font-family:var(--f-serif);font-size:19px;font-weight:500;margin-bottom:8px}
+.alt .verdict{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.alt p{font-size:13.5px;color:var(--ink-2);line-height:1.62}
+
+/* ---------- lockups ---------- */
+.lockups{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+@media(max-width:820px){.lockups{grid-template-columns:1fr}}
+.lock{border:1px solid var(--rule);padding:44px 38px;display:flex;flex-direction:column;gap:26px;align-items:center;justify-content:center;min-height:230px}
+.lock-label{font-family:var(--f-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);align-self:flex-start;margin-top:auto}
+.lock-h{display:flex;align-items:center;gap:20px}
+.lock-h svg{width:60px;height:60px;flex-shrink:0}
+.lock-v{display:flex;flex-direction:column;align-items:center;gap:18px}
+.lock-v svg{width:66px;height:66px}
+.wordmark{
+  font-family:var(--f-serif);font-weight:300;
+  font-variation-settings:'WONK' 1,'SOFT' 30;
+  font-size:34px;letter-spacing:.14em;line-height:1;
+  text-transform:uppercase;color:var(--ink);white-space:nowrap;
+}
+.wordmark-sm{font-size:26px}
+.wordmark-rule{
+  font-family:var(--f-mono);font-size:9px;letter-spacing:.3em;
+  text-transform:uppercase;color:var(--muted);margin-top:9px;text-align:center;
+}
+
+/* ---------- scale ---------- */
+.scale-strip{display:flex;align-items:flex-end;gap:38px;flex-wrap:wrap;border:1px solid var(--rule);padding:44px 38px;background:var(--paper-2)}
+.scale-item{display:flex;flex-direction:column;align-items:center;gap:12px}
+.scale-item .px{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;color:var(--muted)}
+.scale-note{margin-top:18px;font-size:13.5px;color:var(--ink-2);max-width:60ch}
+
+/* ---------- colour variants ---------- */
+.vars{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--rule)}
+@media(max-width:820px){.vars{grid-template-columns:repeat(2,1fr)}}
+.var-cell{padding:36px 20px;display:flex;flex-direction:column;align-items:center;gap:18px;border-right:1px solid var(--rule)}
+.var-cell:last-child{border-right:0}
+@media(max-width:820px){
+  .var-cell:nth-child(2){border-right:0}
+  .var-cell:nth-child(1),.var-cell:nth-child(2){border-bottom:1px solid var(--rule)}
+}
+.var-cell svg{width:78px;height:78px}
+.var-cell .vn{font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-align:center}
+.var-ink{background:var(--ink)}
+.var-ink .vn{color:#8B857A}
+.var-seal{background:var(--seal)}
+.var-seal .vn{color:rgba(251,250,247,.62)}
+
+/* ---------- clear space ---------- */
+.clear-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+@media(max-width:900px){.clear-grid{grid-template-columns:1fr;gap:32px}}
+.clear-stage{border:1px solid var(--rule);background:var(--paper-2);padding:40px;display:grid;place-items:center}
+.clear-stage svg{width:100%;max-width:300px;height:auto}
+
+/* ---------- misuse ---------- */
+.misuse{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--rule)}
+@media(max-width:900px){.misuse{grid-template-columns:repeat(2,1fr)}}
+.mis{padding:30px 22px;border-right:1px solid var(--rule);display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center}
+.mis:last-child{border-right:0}
+@media(max-width:900px){
+  .mis:nth-child(2){border-right:0}
+  .mis:nth-child(1),.mis:nth-child(2){border-bottom:1px solid var(--rule)}
+}
+.mis-frame{position:relative;width:82px;height:82px;display:grid;place-items:center}
+.mis-frame svg{width:100%;height:100%}
+.mis-frame::after{
+  content:"";position:absolute;inset:-6px;
+  border:1px solid var(--seal);opacity:.34;
+}
+.mis p{font-size:12.5px;color:var(--ink-2);line-height:1.5}
+
+/* ---------- downloads ---------- */
+.dl{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media(max-width:820px){.dl{grid-template-columns:1fr}}
+.dl-btn{
+  font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  border:1px solid var(--ink);background:var(--paper);color:var(--ink);
+  padding:16px 20px;cursor:pointer;text-align:left;transition:background .18s,color .18s;
+}
+.dl-btn:hover{background:var(--ink);color:var(--paper)}
+.dl-btn small{display:block;font-size:9.5px;letter-spacing:.1em;color:var(--muted);margin-top:5px;text-transform:none}
+.dl-btn:hover small{color:rgba(251,250,247,.6)}
+
+/* ---------- footer ---------- */
+.footer{border-top:1px solid var(--rule);margin-top:104px;padding:36px 0 30px}
+.footer-inner{max-width:1200px;margin:0 auto;padding:0 40px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.06em;color:var(--muted)}
+@media(max-width:760px){.footer-inner{padding:0 20px}}
+:focus-visible{outline:2px solid var(--seal);outline-offset:3px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="brand">
+      <svg width="15" height="15" viewBox="0 0 100 100" aria-hidden="true">
+        <g fill="none" stroke="currentColor" stroke-width="6"><circle cx="50" cy="50" r="46"/></g>
+        <circle cx="50" cy="50" r="10" fill="#8B1A1A"/>
+      </svg>
+      BETA · ART
+    </a>
+    <div class="nav-right">
+      <a href="/series.html" data-i18n="nav.series">Series</a>
+      <a href="/faq.html" data-i18n="nav.faq">FAQ</a>
+      <a href="/contact.html" data-i18n="nav.contact">Contact</a>
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-lang="en" class="on">EN</button>
+        <span class="lang-sep">/</span>
+        <button type="button" data-lang="no">NO</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow" data-i18n="hero.eyebrow">Identity · The mark</div>
+      <h1 data-i18n-html="hero.title">An aperture<br>that is also<br>a <em>seal</em>.</h1>
+      <p class="sub" data-i18n="hero.sub">Designed to be pressed into paper, not just placed on screens.</p>
+    </div>
+
+    <div class="emboss-stage">
+      <div class="emboss" aria-label="BETA ART mark, blind-embossed on paper">
+        <!-- highlight -->
+        <svg viewBox="0 0 100 100" class="lift" style="transform:translate(-1.2px,-1.2px)" aria-hidden="true">
+          <g fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round">
+            <circle cx="50" cy="50" r="46"/>
+            <g class="blades"><path d="M50 30 L75.81 11.92"/><path d="M50 30 L75.81 11.92" transform="rotate(60 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(120 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(180 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(240 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(300 50 50)"/></g>
+            <path d="M50 30 L32.68 40 L32.68 60 L50 70 L67.32 60 L67.32 40 Z"/>
+          </g>
+        </svg>
+        <!-- shadow -->
+        <svg viewBox="0 0 100 100" class="press" style="transform:translate(1.2px,1.2px)" aria-hidden="true">
+          <g fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round">
+            <circle cx="50" cy="50" r="46"/>
+            <g><path d="M50 30 L75.81 11.92"/><path d="M50 30 L75.81 11.92" transform="rotate(60 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(120 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(180 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(240 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(300 50 50)"/></g>
+            <path d="M50 30 L32.68 40 L32.68 60 L50 70 L67.32 60 L67.32 40 Z"/>
+          </g>
+        </svg>
+        <!-- face -->
+        <svg viewBox="0 0 100 100" class="face" aria-hidden="true">
+          <g fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round">
+            <circle cx="50" cy="50" r="46"/>
+            <g><path d="M50 30 L75.81 11.92"/><path d="M50 30 L75.81 11.92" transform="rotate(60 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(120 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(180 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(240 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(300 50 50)"/></g>
+            <path d="M50 30 L32.68 40 L32.68 60 L50 70 L67.32 60 L67.32 40 Z"/>
+          </g>
+        </svg>
+        <!-- the only ink on the page -->
+        <svg viewBox="0 0 100 100" class="pin" aria-hidden="true">
+          <circle cx="50" cy="50" r="5.4" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="stage-cap" data-i18n="hero.cap">Blind emboss · certificate of authenticity</div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ 01 · PRIMARY ============ -->
+<section class="chapter wrap">
+  <div class="chapter-head"><span class="cn">01</span><h2 data-i18n="c1.h">The primary mark</h2></div>
+
+  <div class="mark-panel">
+    <div class="mark-plate">
+      <svg id="mark-primary" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="BETA ART primary mark">
+        <g fill="none" stroke="#0F0F0F" stroke-width="3" stroke-linecap="round">
+          <circle cx="50" cy="50" r="46"/>
+          <path d="M50 30 L75.81 11.92"/><path d="M50 30 L75.81 11.92" transform="rotate(60 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(120 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(180 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(240 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(300 50 50)"/>
+          <path d="M50 30 L32.68 40 L32.68 60 L50 70 L67.32 60 L67.32 40 Z"/>
+        </g>
+        <circle cx="50" cy="50" r="5.4" fill="#8B1A1A"/>
+      </svg>
+    </div>
+
+    <div>
+      <p class="lede" data-i18n="c1.p1">Six blades close around a hexagonal opening — the geometry of a real iris diaphragm, the one mechanism no generated image has ever passed through. Drawn as a closed circle, it reads simultaneously as a wax seal: the instrument archives have used to certify a document for eight hundred years.</p>
+      <p class="lede" data-i18n="c1.p2">At the exact centre sits a single point in archival wax red. It is the only ink in the mark. It marks the moment of capture — and doubles as a coordinate pin, because every plate in this archive carries the coordinates of where it was made.</p>
+
+      <dl class="spec">
+        <div class="spec-row"><dt data-i18n="c1.s1.t">Construction</dt><dd data-i18n="c1.s1.d">Circle r=46 · hexagon r=20 · six blades at 55°</dd></div>
+        <div class="spec-row"><dt data-i18n="c1.s2.t">Stroke</dt><dd data-i18n="c1.s2.d">3 units at 100 × 100 · scales proportionally</dd></div>
+        <div class="spec-row"><dt data-i18n="c1.s3.t">Ink</dt><dd>#0F0F0F</dd></div>
+        <div class="spec-row"><dt data-i18n="c1.s4.t">Seal point</dt><dd>#8B1A1A · r=5.4</dd></div>
+        <div class="spec-row"><dt data-i18n="c1.s5.t">Minimum size</dt><dd data-i18n="c1.s5.d">16 px screen · 8 mm print</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 02 · GEOMETRY ============ -->
+<section class="chapter wrap">
+  <div class="chapter-head"><span class="cn">02</span><h2 data-i18n="c2.h">How it is built</h2></div>
+  <p class="lede" style="margin-bottom:34px" data-i18n="c2.p">Nothing in the mark is drawn by eye. Every line is derived from two radii and one angle, so the mark can be rebuilt exactly at any size, by anyone, on any medium — including a physical embossing die.</p>
+
+  <div class="geo">
+    <div class="geo-cell">
+      <svg viewBox="0 0 100 100" aria-hidden="true">
+        <circle cx="50" cy="50" r="46" fill="none" stroke="#0F0F0F" stroke-width="3"/>
+        <circle cx="50" cy="50" r="20" fill="none" stroke="#E4E0D8" stroke-width="1.5"/>
+        <line x1="50" y1="4" x2="50" y2="96" stroke="#E4E0D8" stroke-width="1"/>
+        <line x1="4" y1="50" x2="96" y2="50" stroke="#E4E0D8" stroke-width="1"/>
+      </svg>
+      <div class="step">01</div>
+      <h3 data-i18n="c2.a.h">Two radii</h3>
+      <p data-i18n="c2.a.p">The housing at r=46. The opening at r=20. Their ratio, 2.3, sets every other measure.</p>
+    </div>
+
+    <div class="geo-cell">
+      <svg viewBox="0 0 100 100" aria-hidden="true">
+        <circle cx="50" cy="50" r="46" fill="none" stroke="#E4E0D8" stroke-width="1.5"/>
+        <path d="M50 30 L32.68 40 L32.68 60 L50 70 L67.32 60 L67.32 40 Z" fill="none" stroke="#0F0F0F" stroke-width="3"/>
+        <g fill="#8B1A1A"><circle cx="50" cy="30" r="2.6"/><circle cx="32.68" cy="40" r="2.6"/><circle cx="32.68" cy="60" r="2.6"/><circle cx="50" cy="70" r="2.6"/><circle cx="67.32" cy="60" r="2.6"/><circle cx="67.32" cy="40" r="2.6"/></g>
+      </svg>
+      <div class="step">02</div>
+      <h3 data-i18n="c2.b.h">Six vertices</h3>
+      <p data-i18n="c2.b.p">A pointy-top hexagon on the inner radius. Six blades, the count used in most fast prime lenses.</p>
+    </div>
+
+    <div class="geo-cell">
+      <svg viewBox="0 0 100 100" aria-hidden="true">
+        <circle cx="50" cy="50" r="46" fill="none" stroke="#E4E0D8" stroke-width="1.5"/>
+        <path d="M50 30 L32.68 40 L32.68 60 L50 70 L67.32 60 L67.32 40 Z" fill="none" stroke="#E4E0D8" stroke-width="1.5"/>
+        <g fill="none" stroke="#0F0F0F" stroke-width="3" stroke-linecap="round">
+          <path d="M50 30 L75.81 11.92"/><path d="M50 30 L75.81 11.92" transform="rotate(60 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(120 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(180 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(240 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(300 50 50)"/>
+        </g>
+      </svg>
+      <div class="step">03</div>
+      <h3 data-i18n="c2.c.h">One angle</h3>
+      <p data-i18n="c2.c.p">Each blade leaves its vertex at 55° from the radius and runs to the housing. Rotate five times. Done.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 · ALTERNATES ============ -->
+<section class="chapter wrap">
+  <div class="chapter-head"><span class="cn">03</span><h2 data-i18n="c3.h">Two routes not taken</h2></div>
+  <p class="lede" style="margin-bottom:34px" data-i18n="c3.p">Both were developed to the same finish. Both are usable. Neither carries the double meaning the aperture-seal does, and a mark that says one thing is a weaker asset than a mark that says two true things at once.</p>
+
+  <div class="alts">
+    <div class="alt">
+      <div class="alt-canvas">
+        <svg id="mark-alt-reg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Alternate: registration mark">
+          <g fill="none" stroke="#0F0F0F" stroke-width="3">
+            <circle cx="50" cy="50" r="30"/>
+            <line x1="50" y1="6" x2="50" y2="34"/><line x1="50" y1="66" x2="50" y2="94"/>
+            <line x1="6" y1="50" x2="34" y2="50"/><line x1="66" y1="50" x2="94" y2="50"/>
+          </g>
+          <circle cx="50" cy="50" r="6" fill="#8B1A1A"/>
+        </svg>
+      </div>
+      <div class="verdict" data-i18n="c3.a.v">Considered · not selected</div>
+      <h3 data-i18n="c3.a.h">The registration mark</h3>
+      <p data-i18n="c3.a.p">A printer's crosshair, which is also a focus point and a map coordinate. Precise, technical, and instantly legible at any size. Rejected because it belongs to printing rather than to photography, and because the form is close to public domain — it would be hard to defend as a trademark.</p>
+    </div>
+
+    <div class="alt">
+      <div class="alt-canvas">
+        <div class="accession-mark">2026<span>.</span>0001</div>
+      </div>
+      <div class="verdict" data-i18n="c3.b.v">Considered · not selected</div>
+      <h3 data-i18n="c3.b.h">The accession number</h3>
+      <p data-i18n="c3.b.p">The catalogue system as the identity: no symbol at all, just the number every plate already carries, with the separator in seal red. Confident and genuinely museum. Rejected because it cannot function at favicon size, cannot be embossed, and offers nothing to a viewer who has not yet learned what the numbering means.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 · LOCKUPS ============ -->
+<section class="chapter wrap">
+  <div class="chapter-head"><span class="cn">04</span><h2 data-i18n="c4.h">Wordmark and lockups</h2></div>
+  <p class="lede" style="margin-bottom:34px" data-i18n="c4.p">The wordmark is Fraunces at light weight with the WONK axis engaged, which keeps a trace of hand-cut serif in an otherwise disciplined setting. Wide tracking gives it the pace of an engraved plate rather than a logotype.</p>
+
+  <div class="lockups">
+    <div class="lock">
+      <div class="lock-h">
+        <svg viewBox="0 0 100 100" aria-hidden="true">
+          <g fill="none" stroke="#0F0F0F" stroke-width="3.4" stroke-linecap="round">
+            <circle cx="50" cy="50" r="46"/>
+            <path d="M50 30 L75.81 11.92"/><path d="M50 30 L75.81 11.92" transform="rotate(60 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(120 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(180 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(240 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(300 50 50)"/>
+            <path d="M50 30 L32.68 40 L32.68 60 L50 70 L67.32 60 L67.32 40 Z"/>
+          </g>
+          <circle cx="50" cy="50" r="5.4" fill="#8B1A1A"/>
+        </svg>
+        <div><div class="wordmark wordmark-sm">Beta Art</div></div>
+      </div>
+      <div class="lock-label" data-i18n="lock.a">Horizontal · default</div>
+    </div>
+
+    <div class="lock">
+      <div class="lock-v">
+        <svg viewBox="0 0 100 100" aria-hidden="true">
+          <g fill="none" stroke="#0F0F0F" stroke-width="3.4" stroke-linecap="round">
+            <circle cx="50" cy="50" r="46"/>
+            <path d="M50 30 L75.81 11.92"/><path d="M50 30 L75.81 11.92" transform="rotate(60 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(120 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(180 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(240 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(300 50 50)"/>
+            <path d="M50 30 L32.68 40 L32.68 60 L50 70 L67.32 60 L67.32 40 Z"/>
+          </g>
+          <circle cx="50" cy="50" r="5.4" fill="#8B1A1A"/>
+        </svg>
+        <div style="text-align:center">
+          <div class="wordmark wordmark-sm">Beta Art</div>
+          <div class="wordmark-rule" data-i18n="lock.rule">Verified Human Photography</div>
+        </div>
+      </div>
+      <div class="lock-label" data-i18n="lock.b">Stacked · certificates, prints, exhibition</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 · SCALE ============ -->
+<section class="chapter wrap">
+  <div class="chapter-head"><span class="cn">05</span><h2 data-i18n="c5.h">Behaviour at size</h2></div>
+
+  <div class="scale-strip" id="scaleStrip"></div>
+  <p class="scale-note" data-i18n="c5.note">Below 24 px the blades merge and stop reading. The favicon build therefore drops the hexagon outline and thickens the stroke — the ring and the seal point survive, which is all that is needed to be recognised in a browser tab.</p>
+</section>
+
+<!-- ============ 06 · VARIANTS ============ -->
+<section class="chapter wrap">
+  <div class="chapter-head"><span class="cn">06</span><h2 data-i18n="c6.h">Colour variants</h2></div>
+
+  <div class="vars">
+    <div class="var-cell">
+      <svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="#0F0F0F" stroke-width="3.4" stroke-linecap="round"><circle cx="50" cy="50" r="46"/><path d="M50 30 L75.81 11.92"/><path d="M50 30 L75.81 11.92" transform="rotate(60 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(120 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(180 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(240 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(300 50 50)"/><path d="M50 30 L32.68 40 L32.68 60 L50 70 L67.32 60 L67.32 40 Z"/></g><circle cx="50" cy="50" r="5.4" fill="#8B1A1A"/></svg>
+      <div class="vn" data-i18n="v.a">Primary<br>Ink on paper</div>
+    </div>
+    <div class="var-cell var-ink">
+      <svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="#FBFAF7" stroke-width="3.4" stroke-linecap="round"><circle cx="50" cy="50" r="46"/><path d="M50 30 L75.81 11.92"/><path d="M50 30 L75.81 11.92" transform="rotate(60 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(120 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(180 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(240 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(300 50 50)"/><path d="M50 30 L32.68 40 L32.68 60 L50 70 L67.32 60 L67.32 40 Z"/></g><circle cx="50" cy="50" r="5.4" fill="#8B1A1A"/></svg>
+      <div class="vn" data-i18n="v.b">Reversed<br>Paper on ink</div>
+    </div>
+    <div class="var-cell var-seal">
+      <svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="#FBFAF7" stroke-width="3.4" stroke-linecap="round"><circle cx="50" cy="50" r="46"/><path d="M50 30 L75.81 11.92"/><path d="M50 30 L75.81 11.92" transform="rotate(60 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(120 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(180 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(240 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(300 50 50)"/><path d="M50 30 L32.68 40 L32.68 60 L50 70 L67.32 60 L67.32 40 Z"/></g><circle cx="50" cy="50" r="5.4" fill="#FBFAF7"/></svg>
+      <div class="vn" data-i18n="v.c">Seal<br>Stamps, wax, foil</div>
+    </div>
+    <div class="var-cell">
+      <svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="#0F0F0F" stroke-width="3.4" stroke-linecap="round"><circle cx="50" cy="50" r="46"/><path d="M50 30 L75.81 11.92"/><path d="M50 30 L75.81 11.92" transform="rotate(60 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(120 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(180 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(240 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(300 50 50)"/><path d="M50 30 L32.68 40 L32.68 60 L50 70 L67.32 60 L67.32 40 Z"/></g><circle cx="50" cy="50" r="5.4" fill="#0F0F0F"/></svg>
+      <div class="vn" data-i18n="v.d">Single colour<br>Fax, engraving, die</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 07 · CLEAR SPACE ============ -->
+<section class="chapter wrap">
+  <div class="chapter-head"><span class="cn">07</span><h2 data-i18n="c7.h">Clear space</h2></div>
+
+  <div class="clear-grid">
+    <div class="clear-stage">
+      <svg viewBox="-30 -30 160 160" aria-hidden="true">
+        <rect x="-26" y="-26" width="152" height="152" fill="none" stroke="#8B1A1A" stroke-width="1" stroke-dasharray="4 4" opacity=".5"/>
+        <g fill="none" stroke="#E4E0D8" stroke-width="1">
+          <line x1="-26" y1="-14" x2="126" y2="-14"/><line x1="-26" y1="114" x2="126" y2="114"/>
+          <line x1="-14" y1="-26" x2="-14" y2="126"/><line x1="114" y1="-26" x2="114" y2="126"/>
+        </g>
+        <g fill="none" stroke="#0F0F0F" stroke-width="3" stroke-linecap="round">
+          <circle cx="50" cy="50" r="46"/>
+          <path d="M50 30 L75.81 11.92"/><path d="M50 30 L75.81 11.92" transform="rotate(60 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(120 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(180 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(240 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(300 50 50)"/>
+          <path d="M50 30 L32.68 40 L32.68 60 L50 70 L67.32 60 L67.32 40 Z"/>
+        </g>
+        <circle cx="50" cy="50" r="5.4" fill="#8B1A1A"/>
+        <g fill="#8B1A1A" font-family="JetBrains Mono, monospace" font-size="9">
+          <text x="-22" y="-17">r ÷ 2</text>
+        </g>
+      </svg>
+    </div>
+    <div>
+      <p class="lede" data-i18n="c7.p1">Keep clear on all sides by half the mark's radius. Nothing enters that field — no type, no rule, no photograph edge, no other logo.</p>
+      <p class="lede" data-i18n="c7.p2">The mark is never placed over a photograph. This is not a style preference. The archive licenses photographs to other people, and a mark sitting on top of an image looks like a watermark on someone else's picture — which is the one thing this brand must never appear to be doing.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 08 · MISUSE ============ -->
+<section class="chapter wrap">
+  <div class="chapter-head"><span class="cn">08</span><h2 data-i18n="c8.h">Never do this</h2></div>
+
+  <div class="misuse">
+    <div class="mis">
+      <div class="mis-frame">
+        <svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="#0F0F0F" stroke-width="3.4" stroke-linecap="round" transform="rotate(24 50 50)"><circle cx="50" cy="50" r="46"/><path d="M50 30 L75.81 11.92"/><path d="M50 30 L75.81 11.92" transform="rotate(60 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(120 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(180 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(240 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(300 50 50)"/><path d="M50 30 L32.68 40 L32.68 60 L50 70 L67.32 60 L67.32 40 Z"/></g><circle cx="50" cy="50" r="5.4" fill="#8B1A1A"/></svg>
+      </div>
+      <p data-i18n="mis.a">Do not rotate. The mark is a seal; seals sit level.</p>
+    </div>
+    <div class="mis">
+      <div class="mis-frame">
+        <svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="#2C6FBB" stroke-width="3.4" stroke-linecap="round"><circle cx="50" cy="50" r="46"/><path d="M50 30 L75.81 11.92"/><path d="M50 30 L75.81 11.92" transform="rotate(60 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(120 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(180 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(240 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(300 50 50)"/><path d="M50 30 L32.68 40 L32.68 60 L50 70 L67.32 60 L67.32 40 Z"/></g><circle cx="50" cy="50" r="5.4" fill="#3F9E5A"/></svg>
+      </div>
+      <p data-i18n="mis.b">Do not recolour. Ink, paper and seal red only.</p>
+    </div>
+    <div class="mis">
+      <div class="mis-frame">
+        <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><g fill="none" stroke="#0F0F0F" stroke-width="3.4" stroke-linecap="round" transform="translate(0,14) scale(1,0.72)"><circle cx="50" cy="50" r="46"/><path d="M50 30 L75.81 11.92"/><path d="M50 30 L75.81 11.92" transform="rotate(60 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(120 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(180 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(240 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(300 50 50)"/><path d="M50 30 L32.68 40 L32.68 60 L50 70 L67.32 60 L67.32 40 Z"/></g><circle cx="50" cy="50" r="5.4" fill="#8B1A1A"/></svg>
+      </div>
+      <p data-i18n="mis.c">Do not stretch. Scale both axes together.</p>
+    </div>
+    <div class="mis">
+      <div class="mis-frame" style="background:linear-gradient(135deg,#6b6357,#3a3630);">
+        <svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="#FBFAF7" stroke-width="3.4" stroke-linecap="round"><circle cx="50" cy="50" r="46"/><path d="M50 30 L75.81 11.92"/><path d="M50 30 L75.81 11.92" transform="rotate(60 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(120 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(180 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(240 50 50)"/><path d="M50 30 L75.81 11.92" transform="rotate(300 50 50)"/><path d="M50 30 L32.68 40 L32.68 60 L50 70 L67.32 60 L67.32 40 Z"/></g><circle cx="50" cy="50" r="5.4" fill="#8B1A1A"/></svg>
+      </div>
+      <p data-i18n="mis.d">Do not place on a photograph. It reads as a watermark.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 09 · DOWNLOADS ============ -->
+<section class="chapter wrap">
+  <div class="chapter-head"><span class="cn">09</span><h2 data-i18n="c9.h">Files</h2></div>
+  <p class="lede" style="margin-bottom:28px" data-i18n="c9.p">Vector only. Every file is a plain SVG with no dependencies, editable in Illustrator, Figma, Affinity or a text editor. Send the die file to the embosser as-is.</p>
+
+  <div class="dl">
+    <button class="dl-btn" onclick="dl('mark-primary','betaart-mark-primary')" data-i18n-html="dl.a">Primary mark<small>SVG · ink + seal point</small></button>
+    <button class="dl-btn" onclick="dlVariant('reverse','betaart-mark-reverse')" data-i18n-html="dl.b">Reversed mark<small>SVG · for dark grounds</small></button>
+    <button class="dl-btn" onclick="dlVariant('mono','betaart-mark-mono')" data-i18n-html="dl.c">Single colour<small>SVG · engraving, die, fax</small></button>
+    <button class="dl-btn" onclick="dlVariant('favicon','betaart-favicon')" data-i18n-html="dl.d">Favicon build<small>SVG · simplified for 16–24 px</small></button>
+    <button class="dl-btn" onclick="dlLockup()" data-i18n-html="dl.e">Horizontal lockup<small>SVG · mark + wordmark</small></button>
+    <button class="dl-btn" onclick="dlVariant('die','betaart-emboss-die')" data-i18n-html="dl.f">Emboss die<small>SVG · outline only, 25 mm</small></button>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <span data-i18n="foot.a">BETA ART · Mark system v1.0 · 2026</span>
+    <span data-i18n="foot.b">Register as trademark before public launch</span>
+  </div>
+</footer>
+
+<script>
+/* ---------- geometry, shared ---------- */
+const BLADES = [0,60,120,180,240,300]
+  .map(a => `<path d="M50 30 L75.81 11.92" transform="rotate(${a} 50 50)"/>`).join('');
+const HEX = '<path d="M50 30 L32.68 40 L32.68 60 L50 70 L67.32 60 L67.32 40 Z"/>';
+
+function markSVG({stroke='#0F0F0F', dot='#8B1A1A', w=3.4, size=256, simplified=false, dieMode=false} = {}){
+  const body = simplified
+    ? `<circle cx="50" cy="50" r="46"/>${BLADES}`
+    : `<circle cx="50" cy="50" r="46"/>${BLADES}${HEX}`;
+  const dotEl = dieMode ? '' : `<circle cx="50" cy="50" r="5.4" fill="${dot}"/>`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="${size}" height="${size}">
+  <g fill="none" stroke="${stroke}" stroke-width="${w}" stroke-linecap="round">
+    ${body}
+  </g>
+  ${dotEl}
+</svg>`;
+}
+
+/* ---------- scale strip ---------- */
+(function(){
+  const sizes = [128, 64, 40, 24, 16];
+  const strip = document.getElementById('scaleStrip');
+  strip.innerHTML = sizes.map(s => {
+    const simplified = s <= 24;
+    const w = s <= 24 ? 7 : (s <= 40 ? 4.6 : 3.4);
+    return `<div class="scale-item">
+      <div style="width:${s}px;height:${s}px">${markSVG({size:s, w, simplified})}</div>
+      <div class="px">${s} px</div>
+    </div>`;
+  }).join('');
+})();
+
+/* ---------- downloads ---------- */
+function saveSVG(str, name){
+  const blob = new Blob([str], {type:'image/svg+xml;charset=utf-8'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = name + '.svg';
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(()=>URL.revokeObjectURL(a.href), 1000);
+}
+function dl(id, name){
+  const el = document.getElementById(id);
+  if(!el) return;
+  const clone = el.cloneNode(true);
+  clone.setAttribute('xmlns','http://www.w3.org/2000/svg');
+  clone.setAttribute('width','256'); clone.setAttribute('height','256');
+  saveSVG(new XMLSerializer().serializeToString(clone), name);
+}
+function dlVariant(kind, name){
+  const map = {
+    reverse:  {stroke:'#FBFAF7', dot:'#8B1A1A'},
+    mono:     {stroke:'#0F0F0F', dot:'#0F0F0F'},
+    favicon:  {stroke:'#0F0F0F', dot:'#8B1A1A', w:7, size:64, simplified:true},
+    die:      {stroke:'#000000', w:2, size:512, dieMode:true}
+  };
+  saveSVG(markSVG(map[kind] || {}), name);
+}
+function dlLockup(){
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 100" width="840" height="200">
+  <g fill="none" stroke="#0F0F0F" stroke-width="3.4" stroke-linecap="round">
+    <circle cx="50" cy="50" r="46"/>${BLADES}${HEX}
+  </g>
+  <circle cx="50" cy="50" r="5.4" fill="#8B1A1A"/>
+  <text x="126" y="62" font-family="Fraunces, Georgia, serif" font-size="34" font-weight="300"
+        letter-spacing="4.8" fill="#0F0F0F">BETA ART</text>
+</svg>`;
+  saveSVG(svg, 'betaart-lockup-horizontal');
+}
+
+/* ---------- i18n ---------- */
+const LANG_KEY = "betaart:lang:v1";
+const DEFAULT_LANG = "en";
+let currentLang = DEFAULT_LANG;
+
+const T = {
+  en: {
+    "nav.series":"Series","nav.faq":"FAQ","nav.contact":"Contact",
+    "hero.eyebrow":"Identity · The mark",
+    "hero.title":"An aperture<br>that is also<br>a <em>seal</em>.",
+    "hero.sub":"Designed to be pressed into paper, not just placed on screens.",
+    "hero.cap":"Blind emboss · certificate of authenticity",
+
+    "c1.h":"The primary mark",
+    "c1.p1":"Six blades close around a hexagonal opening — the geometry of a real iris diaphragm, the one mechanism no generated image has ever passed through. Drawn as a closed circle, it reads simultaneously as a wax seal: the instrument archives have used to certify a document for eight hundred years.",
+    "c1.p2":"At the exact centre sits a single point in archival wax red. It is the only ink in the mark. It marks the moment of capture — and doubles as a coordinate pin, because every plate in this archive carries the coordinates of where it was made.",
+    "c1.s1.t":"Construction","c1.s1.d":"Circle r=46 · hexagon r=20 · six blades at 55°",
+    "c1.s2.t":"Stroke","c1.s2.d":"3 units at 100 × 100 · scales proportionally",
+    "c1.s3.t":"Ink","c1.s4.t":"Seal point",
+    "c1.s5.t":"Minimum size","c1.s5.d":"16 px screen · 8 mm print",
+
+    "c2.h":"How it is built",
+    "c2.p":"Nothing in the mark is drawn by eye. Every line is derived from two radii and one angle, so the mark can be rebuilt exactly at any size, by anyone, on any medium — including a physical embossing die.",
+    "c2.a.h":"Two radii","c2.a.p":"The housing at r=46. The opening at r=20. Their ratio, 2.3, sets every other measure.",
+    "c2.b.h":"Six vertices","c2.b.p":"A pointy-top hexagon on the inner radius. Six blades, the count used in most fast prime lenses.",
+    "c2.c.h":"One angle","c2.c.p":"Each blade leaves its vertex at 55° from the radius and runs to the housing. Rotate five times. Done.",
+
+    "c3.h":"Two routes not taken",
+    "c3.p":"Both were developed to the same finish. Both are usable. Neither carries the double meaning the aperture-seal does, and a mark that says one thing is a weaker asset than a mark that says two true things at once.",
+    "c3.a.v":"Considered · not selected","c3.a.h":"The registration mark",
+    "c3.a.p":"A printer's crosshair, which is also a focus point and a map coordinate. Precise, technical, and instantly legible at any size. Rejected because it belongs to printing rather than to photography, and because the form is close to public domain — it would be hard to defend as a trademark.",
+    "c3.b.v":"Considered · not selected","c3.b.h":"The accession number",
+    "c3.b.p":"The catalogue system as the identity: no symbol at all, just the number every plate already carries, with the separator in seal red. Confident and genuinely museum. Rejected because it cannot function at favicon size, cannot be embossed, and offers nothing to a viewer who has not yet learned what the numbering means.",
+
+    "c4.h":"Wordmark and lockups",
+    "c4.p":"The wordmark is Fraunces at light weight with the WONK axis engaged, which keeps a trace of hand-cut serif in an otherwise disciplined setting. Wide tracking gives it the pace of an engraved plate rather than a logotype.",
+    "lock.a":"Horizontal · default","lock.b":"Stacked · certificates, prints, exhibition",
+    "lock.rule":"Verified Human Photography",
+
+    "c5.h":"Behaviour at size",
+    "c5.note":"Below 24 px the blades merge and stop reading. The favicon build therefore drops the hexagon outline and thickens the stroke — the ring and the seal point survive, which is all that is needed to be recognised in a browser tab.",
+
+    "c6.h":"Colour variants",
+    "v.a":"Primary\nInk on paper","v.b":"Reversed\nPaper on ink","v.c":"Seal\nStamps, wax, foil","v.d":"Single colour\nFax, engraving, die",
+
+    "c7.h":"Clear space",
+    "c7.p1":"Keep clear on all sides by half the mark's radius. Nothing enters that field — no type, no rule, no photograph edge, no other logo.",
+    "c7.p2":"The mark is never placed over a photograph. This is not a style preference. The archive licenses photographs to other people, and a mark sitting on top of an image looks like a watermark on someone else's picture — which is the one thing this brand must never appear to be doing.",
+
+    "c8.h":"Never do this",
+    "mis.a":"Do not rotate. The mark is a seal; seals sit level.",
+    "mis.b":"Do not recolour. Ink, paper and seal red only.",
+    "mis.c":"Do not stretch. Scale both axes together.",
+    "mis.d":"Do not place on a photograph. It reads as a watermark.",
+
+    "c9.h":"Files",
+    "c9.p":"Vector only. Every file is a plain SVG with no dependencies, editable in Illustrator, Figma, Affinity or a text editor. Send the die file to the embosser as-is.",
+    "dl.a":"Primary mark<small>SVG · ink + seal point</small>",
+    "dl.b":"Reversed mark<small>SVG · for dark grounds</small>",
+    "dl.c":"Single colour<small>SVG · engraving, die, fax</small>",
+    "dl.d":"Favicon build<small>SVG · simplified for 16–24 px</small>",
+    "dl.e":"Horizontal lockup<small>SVG · mark + wordmark</small>",
+    "dl.f":"Emboss die<small>SVG · outline only, 25 mm</small>",
+
+    "foot.a":"BETA ART · Mark system v1.0 · 2026",
+    "foot.b":"Register as trademark before public launch"
+  },
+  no: {
+    "nav.series":"Serier","nav.faq":"Spørsmål","nav.contact":"Kontakt",
+    "hero.eyebrow":"Identitet · Merket",
+    "hero.title":"En blender<br>som også er<br>et <em>segl</em>.",
+    "hero.sub":"Laget for å presses ned i papir, ikke bare plasseres på skjermer.",
+    "hero.cap":"Blindpreg · ekthetssertifikat",
+
+    "c1.h":"Hovedmerket",
+    "c1.p1":"Seks blader lukker seg rundt en sekskantet åpning — geometrien til en ekte irisblender, den ene mekanismen intet generert bilde noensinne har passert gjennom. Tegnet som en lukket sirkel leses det samtidig som et voksegl: instrumentet arkiver har brukt til å bekrefte et dokument i åtte hundre år.",
+    "c1.p2":"I nøyaktig sentrum sitter ett enkelt punkt i arkivrød voks. Det er det eneste blekket i merket. Det markerer opptaksøyeblikket — og fungerer samtidig som en koordinatnål, fordi hver plate i dette arkivet bærer koordinatene for hvor den ble laget.",
+    "c1.s1.t":"Konstruksjon","c1.s1.d":"Sirkel r=46 · sekskant r=20 · seks blader ved 55°",
+    "c1.s2.t":"Strek","c1.s2.d":"3 enheter ved 100 × 100 · skalerer proporsjonalt",
+    "c1.s3.t":"Blekk","c1.s4.t":"Seglpunkt",
+    "c1.s5.t":"Minstestørrelse","c1.s5.d":"16 px skjerm · 8 mm trykk",
+
+    "c2.h":"Slik er det bygget",
+    "c2.p":"Ingenting i merket er tegnet på øyemål. Hver linje er utledet av to radier og én vinkel, slik at merket kan gjenskapes nøyaktig i enhver størrelse, av hvem som helst, i ethvert medium — inkludert en fysisk pregestans.",
+    "c2.a.h":"To radier","c2.a.p":"Huset ved r=46. Åpningen ved r=20. Forholdet, 2,3, bestemmer alle andre mål.",
+    "c2.b.h":"Seks hjørner","c2.b.p":"En spisstoppet sekskant på indre radius. Seks blader — antallet i de fleste lyssterke fastobjektiver.",
+    "c2.c.h":"Én vinkel","c2.c.p":"Hvert blad forlater hjørnet sitt i 55° fra radien og løper til huset. Roter fem ganger. Ferdig.",
+
+    "c3.h":"To veier som ikke ble valgt",
+    "c3.p":"Begge ble utviklet til samme ferdighetsnivå. Begge er brukbare. Ingen av dem bærer den doble betydningen blender-seglet har, og et merke som sier én ting er en svakere eiendel enn et merke som sier to sanne ting samtidig.",
+    "c3.a.v":"Vurdert · ikke valgt","c3.a.h":"Passermerket",
+    "c3.a.p":"Et trykkerkors, som også er et fokuspunkt og en kartkoordinat. Presist, teknisk og umiddelbart lesbart i enhver størrelse. Forkastet fordi det tilhører trykkeriet snarere enn fotografiet, og fordi formen ligger nær public domain — den ville vært vanskelig å forsvare som varemerke.",
+    "c3.b.v":"Vurdert · ikke valgt","c3.b.h":"Tilvekstnummeret",
+    "c3.b.p":"Katalogsystemet som identitet: ingen symbol i det hele tatt, bare nummeret hver plate allerede bærer, med skilletegnet i seglrødt. Selvsikkert og ekte museum. Forkastet fordi det ikke fungerer i favicon-størrelse, ikke kan preges, og ikke gir noe til en betrakter som ennå ikke har lært hva nummereringen betyr.",
+
+    "c4.h":"Ordmerke og oppsett",
+    "c4.p":"Ordmerket er Fraunces i lett vekt med WONK-aksen aktivert, som beholder et spor av håndskåret antikva i en ellers disiplinert setting. Bred sperring gir det takten til en gravert plate snarere enn en logotype.",
+    "lock.a":"Horisontal · standard","lock.b":"Stablet · sertifikater, trykk, utstilling",
+    "lock.rule":"Verified Human Photography",
+
+    "c5.h":"Oppførsel i størrelse",
+    "c5.note":"Under 24 px smelter bladene sammen og slutter å lese. Favicon-versjonen dropper derfor sekskanten og tykner streken — ringen og seglpunktet overlever, og det er alt som trengs for å bli gjenkjent i en nettleserfane.",
+
+    "c6.h":"Fargevarianter",
+    "v.a":"Primær\nBlekk på papir","v.b":"Negativ\nPapir på blekk","v.c":"Segl\nStempel, voks, folie","v.d":"Én farge\nFaks, gravering, stans",
+
+    "c7.h":"Frisone",
+    "c7.p1":"Hold fritt på alle sider med halvparten av merkets radius. Ingenting kommer inn i det feltet — ingen skrift, ingen linje, ingen bildekant, ingen annen logo.",
+    "c7.p2":"Merket plasseres aldri oppå et fotografi. Dette er ikke en stilpreferanse. Arkivet lisensierer fotografier til andre mennesker, og et merke som ligger oppå et bilde ser ut som et vannmerke på noen andres bilde — det ene denne merkevaren aldri må se ut til å gjøre.",
+
+    "c8.h":"Aldri gjør dette",
+    "mis.a":"Ikke roter. Merket er et segl; segl står rett.",
+    "mis.b":"Ikke fargelegg om. Kun blekk, papir og seglrødt.",
+    "mis.c":"Ikke strekk. Skaler begge akser likt.",
+    "mis.d":"Ikke legg det på et fotografi. Det leses som vannmerke.",
+
+    "c9.h":"Filer",
+    "c9.p":"Kun vektor. Hver fil er en ren SVG uten avhengigheter, redigerbar i Illustrator, Figma, Affinity eller en teksteditor. Send stansefilen til pregeriet som den er.",
+    "dl.a":"Hovedmerke<small>SVG · blekk + seglpunkt</small>",
+    "dl.b":"Negativt merke<small>SVG · for mørk bunn</small>",
+    "dl.c":"Én farge<small>SVG · gravering, stans, faks</small>",
+    "dl.d":"Favicon-versjon<small>SVG · forenklet for 16–24 px</small>",
+    "dl.e":"Horisontalt oppsett<small>SVG · merke + ordmerke</small>",
+    "dl.f":"Pregestans<small>SVG · kun kontur, 25 mm</small>",
+
+    "foot.a":"BETA ART · Merkesystem v1.0 · 2026",
+    "foot.b":"Registrer som varemerke før offentlig lansering"
+  }
+};
+
+function t(k){ return (T[currentLang] && T[currentLang][k]) ?? (T[DEFAULT_LANG] && T[DEFAULT_LANG][k]) ?? k; }
+function applyLang(){
+  document.documentElement.lang = currentLang;
+  document.title = currentLang === "no" ? "Merket — BETA ART" : "The Mark — BETA ART";
+  document.querySelectorAll("[data-i18n]").forEach(el => el.textContent = t(el.getAttribute("data-i18n")));
+  document.querySelectorAll("[data-i18n-html]").forEach(el => el.innerHTML = t(el.getAttribute("data-i18n-html")));
+  document.querySelectorAll(".lang button[data-lang]").forEach(b => b.classList.toggle("on", b.dataset.lang === currentLang));
+}
+function switchLang(l){ if(!T[l]) return; currentLang = l; try{ localStorage.setItem(LANG_KEY, l); }catch(e){} applyLang(); }
+document.querySelectorAll(".lang button[data-lang]").forEach(b => b.addEventListener("click", () => switchLang(b.dataset.lang)));
+try{ const s = localStorage.getItem(LANG_KEY); if(s && T[s]) currentLang = s; }catch(e){}
+applyLang();
+</script>
+</body>
+</html>

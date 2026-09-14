@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Beta Art Business — Insights</title>
+    <link>https://business.beta-art.com/</link>
+    <description>Practical notes on websites, automation, search and running a small business in Norway.</description>
+    <language>en</language>
+    <copyright>© 2026 Beta Art — Betül Öner. All rights reserved worldwide. No text or image here may be used as AI training data.</copyright>
+    <atom:link href="https://business.beta-art.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <lastBuildDate>Tue, 18 Aug 2026 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title><![CDATA[Every Norwegian business must issue e-invoices from 1 January 2027]]></title>
+      <link>https://business.beta-art.com/b-einvoicing-2027.html</link>
+      <guid isPermaLink="true">https://business.beta-art.com/b-einvoicing-2027.html</guid>
+      <pubDate>Tue, 18 Aug 2026 00:00:00 +0000</pubDate>
+      <description><![CDATA[The date moved forward a year and most small companies have not heard. Here is what actually changes, and what to do about it in 2026 rather than in December.]]></description>
+      <category>Small business</category>
+    </item>
+    <item>
+      <title><![CDATA[What a website actually costs in Norway, and why nobody will tell you]]></title>
+      <link>https://business.beta-art.com/b-website-cost.html</link>
+      <guid isPermaLink="true">https://business.beta-art.com/b-website-cost.html</guid>
+      <pubDate>Wed, 12 Aug 2026 00:00:00 +0000</pubDate>
+      <description><![CDATA[Three quotes for the same brief came back at kr 18 000, kr 140 000 and “let’s have a meeting”. All three were honest. Here is what moves the number.]]></description>
+      <category>Web design</category>
+    </item>
+    <item>
+      <title><![CDATA[The CV format that clears applicant-tracking systems]]></title>
+      <link>https://business.beta-art.com/b-cv-ats.html</link>
+      <guid isPermaLink="true">https://business.beta-art.com/b-cv-ats.html</guid>
+      <pubDate>Wed, 05 Aug 2026 00:00:00 +0000</pubDate>
+      <description><![CDATA[Sixty applications and four replies is usually not a talent problem. It is a parsing problem, and it is fixable in an afternoon.]]></description>
+      <category>Job search</category>
+    </item>
+    <item>
+      <title><![CDATA[Which tasks are worth automating, and which are not]]></title>
+      <link>https://business.beta-art.com/b-what-to-automate.html</link>
+      <guid isPermaLink="true">https://business.beta-art.com/b-what-to-automate.html</guid>
+      <pubDate>Wed, 29 Jul 2026 00:00:00 +0000</pubDate>
+      <description><![CDATA[Most automation projects fail on the choice of task, not on the technology. There is a simple test.]]></description>
+      <category>Automation</category>
+    </item>
+    <item>
+      <title><![CDATA[AI in a small business: what works, what wastes money]]></title>
+      <link>https://business.beta-art.com/b-ai-small-business.html</link>
+      <guid isPermaLink="true">https://business.beta-art.com/b-ai-small-business.html</guid>
+      <pubDate>Wed, 22 Jul 2026 00:00:00 +0000</pubDate>
+      <description><![CDATA[After a year of building these for other people, a short and unglamorous list.]]></description>
+      <category>AI</category>
+    </item>
+    <item>
+      <title><![CDATA[How to price your first freelance project]]></title>
+      <link>https://business.beta-art.com/b-pricing-first-project.html</link>
+      <guid isPermaLink="true">https://business.beta-art.com/b-pricing-first-project.html</guid>
+      <pubDate>Wed, 15 Jul 2026 00:00:00 +0000</pubDate>
+      <description><![CDATA[The number you are afraid to say out loud is usually the right one. Here is how to get to it without guessing.]]></description>
+      <category>Side income</category>
+    </item>
+    <item>
+      <title><![CDATA[SEO for a company with no marketing department]]></title>
+      <link>https://business.beta-art.com/b-seo-without-marketing.html</link>
+      <guid isPermaLink="true">https://business.beta-art.com/b-seo-without-marketing.html</guid>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0000</pubDate>
+      <description><![CDATA[Four things, in order. Do them and you will beat most of your competitors, who have not.]]></description>
+      <category>Digital marketing</category>
+    </item>
+  </channel>
+</rss>

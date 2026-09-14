@@ -1,0 +1,109 @@
+{
+  "title": "Frequently asked questions",
+  "groups": [
+    {
+      "id": "g1",
+      "label": "About the photographs",
+      "items": [
+        {
+          "id": "faq1",
+          "question": "Do you use AI?",
+          "answer": "No. Every photograph on this site is an original image captured with a physical camera. Nothing is generated, composited or enhanced by AI. The RAW files are archived and can be produced on request. That's the whole point of BETA ART."
+        },
+        {
+          "id": "faq2",
+          "question": "How does 'Human Verified' work?",
+          "answer": "Every photograph is shipped with its capture record — camera, lens, exposure, location, date. The original RAW file is kept in a permanent archive. If anyone questions whether a photograph is genuine, I can produce the RAW original, the EXIF data, and, where the camera supports it, C2PA Content Credentials."
+        },
+        {
+          "id": "faq3",
+          "question": "Where are the photographs taken?",
+          "answer": "Primarily in Norway and the Nordics, with some international work. Each photograph's location is stated on its page."
+        },
+        {
+          "id": "faq4",
+          "question": "Can I request a specific photograph or custom shoot?",
+          "answer": "Yes. Contact me at hello@betaart.no with your brief and timing."
+        }
+      ]
+    },
+    {
+      "id": "g2",
+      "label": "Licenses and use",
+      "items": [
+        {
+          "id": "faq5",
+          "question": "Which license do I need?",
+          "answer": "Personal — for private projects, gifts, personal websites. Commercial — for one business, on marketing, web, social, print up to 5,000 copies. Extended — for unlimited print, products for resale, national campaigns. If you're unsure, email me before you buy — I'd rather help you pick the right tier than deal with it after."
+        },
+        {
+          "id": "faq6",
+          "question": "Can I use the photograph on social media for my business?",
+          "answer": "Yes, with a Commercial license or higher."
+        },
+        {
+          "id": "faq7",
+          "question": "Can I edit or crop the photograph?",
+          "answer": "Yes, for design purposes (crop, colour adjustment, overlay text). You cannot use it as training data for AI, present it as your own work, or make it the primary sellable element of a product without an Extended license."
+        },
+        {
+          "id": "faq8",
+          "question": "Can I use the photograph for AI training?",
+          "answer": "No. Every license explicitly excludes use in training generative-AI models."
+        },
+        {
+          "id": "faq9",
+          "question": "Is the license exclusive?",
+          "answer": "No, unless you specifically buy an Exclusive license (contact me for a quote). Standard licenses are non-exclusive — the same photograph may be licensed to other buyers."
+        },
+        {
+          "id": "faq10",
+          "question": "Can I transfer the license to a client?",
+          "answer": "No — the license is granted to the entity named on the invoice. Agencies buying on behalf of a client should either use the Extended License (which permits one client sublicense) or purchase a separate license per client."
+        }
+      ]
+    },
+    {
+      "id": "g3",
+      "label": "Ordering and delivery",
+      "items": [
+        {
+          "id": "faq11",
+          "question": "How do I receive the file?",
+          "answer": "Immediately after payment, you'll get an email with a download link (valid 72 hours) and a PDF license certificate. The file is high-resolution, sRGB, JPEG or TIFF on request."
+        },
+        {
+          "id": "faq12",
+          "question": "Do I get an invoice?",
+          "answer": "Yes — a proper Norwegian invoice with organisation number and VAT (where applicable) is sent by email."
+        },
+        {
+          "id": "faq13",
+          "question": "Do you deliver internationally?",
+          "answer": "Yes. Delivery is digital, so location doesn't matter."
+        },
+        {
+          "id": "faq14",
+          "question": "What if the download link expires?",
+          "answer": "Email me at hello@betaart.no with your order number and I'll send a fresh link."
+        }
+      ]
+    },
+    {
+      "id": "g4",
+      "label": "Payment and refunds",
+      "items": [
+        {
+          "id": "faq15",
+          "question": "Can I get a refund?",
+          "answer": "Because photographs are delivered digitally and you keep the file, refunds are limited to technical delivery failures or duplicate charges. See the License Terms for details."
+        },
+        {
+          "id": "faq16",
+          "question": "What about the 14-day withdrawal right?",
+          "answer": "Under Norwegian law you have a 14-day right to withdraw digital purchases — unless you consent to receive the file immediately, in which case you waive that right. You will be asked to tick a box at checkout."
+        }
+      ]
+    }
+  ]
+}

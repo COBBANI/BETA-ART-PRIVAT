@@ -1,0 +1,738 @@
+<title>BETA ART — Project Catalogue</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap">
+
+<style>
+  /* ── Tokens ── */
+  :root {
+    --void:        #0F0F0F;
+    --surface:     #171614;
+    --surface-2:   #1F1D1B;
+    --edge:        #2C2926;
+    --text:        #F3F0E9;
+    --text-2:      #CFCAC0;
+    --muted:       #8B857A;
+    --seal:        #8B1A1A;
+    --seal-bright: #C43A2E;
+    --ok:          #7FB69B;
+    --warm:        #C8A96E;
+    --slate:       #6B8FAD;
+
+    --f-display: "Fraunces", Georgia, serif;
+    --f-body:    "Inter", system-ui, sans-serif;
+    --f-mono:    "JetBrains Mono", "Fira Code", monospace;
+
+    --wrap: 1120px;
+    --ease: cubic-bezier(.2, .7, .2, 1);
+  }
+
+  /* Light theme */
+  :root:not([data-theme="dark"]) {
+    --void:      #F7F4EF;
+    --surface:   #EDE9E1;
+    --surface-2: #E4DFD5;
+    --edge:      #C9C4BB;
+    --text:      #171512;
+    --text-2:    #4A4540;
+    --muted:     #7A756E;
+    --ok:        #3D7A5E;
+    --warm:      #8A6530;
+    --slate:     #3D5F7A;
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --void:      #F7F4EF;
+      --surface:   #EDE9E1;
+      --surface-2: #E4DFD5;
+      --edge:      #C9C4BB;
+      --text:      #171512;
+      --text-2:    #4A4540;
+      --muted:     #7A756E;
+      --ok:        #3D7A5E;
+      --warm:      #8A6530;
+      --slate:     #3D5F7A;
+    }
+  }
+
+  :root[data-theme="light"] {
+    --void:      #F7F4EF;
+    --surface:   #EDE9E1;
+    --surface-2: #E4DFD5;
+    --edge:      #C9C4BB;
+    --text:      #171512;
+    --text-2:    #4A4540;
+    --muted:     #7A756E;
+    --ok:        #3D7A5E;
+    --warm:      #8A6530;
+    --slate:     #3D5F7A;
+  }
+
+  /* ── Reset ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+
+  body {
+    background: var(--void);
+    color: var(--text);
+    font-family: var(--f-body);
+    font-size: 1rem;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* ── Layout ── */
+  .page {
+    max-width: var(--wrap);
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  /* ── Header ── */
+  .site-header {
+    padding: 3rem 0 2.5rem;
+    border-bottom: 1px solid var(--edge);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .wordmark {
+    font-family: var(--f-display);
+    font-weight: 600;
+    font-size: 1.375rem;
+    color: var(--text);
+    letter-spacing: .02em;
+  }
+
+  .wordmark span {
+    color: var(--seal);
+  }
+
+  .header-meta {
+    font-family: var(--f-mono);
+    font-size: .75rem;
+    color: var(--muted);
+    letter-spacing: .04em;
+    text-align: right;
+    line-height: 1.8;
+  }
+
+  /* ── Section label ── */
+  .group-label {
+    font-family: var(--f-mono);
+    font-size: .6875rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 2.5rem 0 1rem;
+  }
+
+  /* ── Project rows ── */
+  .projects {
+    list-style: none;
+  }
+
+  .project {
+    display: grid;
+    grid-template-columns: 9rem 1fr auto;
+    gap: 0 2.5rem;
+    align-items: start;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--edge);
+    transition: background .15s var(--ease);
+  }
+
+  .project:first-child {
+    border-top: 1px solid var(--edge);
+  }
+
+  /* Code column */
+  .project-code {
+    font-family: var(--f-mono);
+    font-size: .75rem;
+    color: var(--muted);
+    letter-spacing: .03em;
+    padding-top: .3rem;
+    line-height: 1.5;
+  }
+
+  .project-code .year {
+    display: block;
+    font-size: .6875rem;
+    color: var(--seal);
+    letter-spacing: .06em;
+    margin-bottom: .15rem;
+  }
+
+  /* Main column */
+  .project-main {}
+
+  .project-name {
+    font-family: var(--f-display);
+    font-weight: 600;
+    font-size: 1.3125rem;
+    color: var(--text);
+    line-height: 1.25;
+    margin-bottom: .5rem;
+    text-wrap: balance;
+  }
+
+  .project-sub {
+    font-family: var(--f-mono);
+    font-size: .6875rem;
+    color: var(--seal);
+    letter-spacing: .06em;
+    margin-bottom: .75rem;
+  }
+
+  .project-desc {
+    font-size: .9375rem;
+    color: var(--text-2);
+    line-height: 1.65;
+    max-width: 54ch;
+    margin-bottom: 1.25rem;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .4rem;
+  }
+
+  .tag {
+    font-family: var(--f-mono);
+    font-size: .625rem;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border: 1px solid var(--edge);
+    padding: .2rem .55rem;
+    border-radius: 2px;
+  }
+
+  .tag.live-tag {
+    color: var(--ok);
+    border-color: color-mix(in srgb, var(--ok) 30%, transparent);
+  }
+
+  .tag.url-tag {
+    color: var(--slate);
+    border-color: color-mix(in srgb, var(--slate) 30%, transparent);
+  }
+
+  /* Status column */
+  .project-status {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: .5rem;
+    padding-top: .25rem;
+  }
+
+  .status-pill {
+    font-family: var(--f-mono);
+    font-size: .625rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    padding: .3rem .7rem;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+
+  .status-pill.live {
+    background: color-mix(in srgb, var(--ok) 12%, transparent);
+    color: var(--ok);
+    border: 1px solid color-mix(in srgb, var(--ok) 25%, transparent);
+  }
+
+  .status-pill.dev {
+    background: color-mix(in srgb, var(--warm) 12%, transparent);
+    color: var(--warm);
+    border: 1px solid color-mix(in srgb, var(--warm) 25%, transparent);
+  }
+
+  .status-pill.planned {
+    background: color-mix(in srgb, var(--slate) 12%, transparent);
+    color: var(--slate);
+    border: 1px solid color-mix(in srgb, var(--slate) 25%, transparent);
+  }
+
+  .status-pill.spec {
+    background: color-mix(in srgb, var(--muted) 10%, transparent);
+    color: var(--muted);
+    border: 1px solid color-mix(in srgb, var(--muted) 20%, transparent);
+  }
+
+  /* Volume badge */
+  .volume {
+    font-family: var(--f-mono);
+    font-size: .625rem;
+    color: var(--muted);
+    letter-spacing: .05em;
+    margin-top: .25rem;
+  }
+
+  /* ── Footer ── */
+  .site-footer {
+    padding: 2.5rem 0 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-note {
+    font-family: var(--f-mono);
+    font-size: .6875rem;
+    color: var(--muted);
+    letter-spacing: .04em;
+  }
+
+  .seal-dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--seal);
+    margin-right: .5rem;
+    vertical-align: middle;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 700px) {
+    .project {
+      grid-template-columns: 1fr;
+      gap: .75rem 0;
+    }
+    .project-status {
+      align-items: flex-start;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+    .header-meta { text-align: left; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+
+<main>
+<div class="page">
+
+  <header class="site-header">
+    <div class="wordmark">BETA <span>·</span> ART</div>
+    <div class="header-meta">
+      PROJE KATALOĞU<br>
+      2026 — 12 proje<br>
+      Son güncelleme: 30.08.2026
+    </div>
+  </header>
+
+  <!-- GROUP 1: ARŞİV -->
+  <div class="group-label">ARŞİV — Numaralandırılmış fotografi</div>
+  <ul class="projects">
+
+    <li class="project">
+      <div class="project-code">
+        <span class="year">BA · 2026</span>
+        P · 001
+      </div>
+      <div class="project-main">
+        <div class="project-name">Beta Art Privat</div>
+        <div class="project-sub">Numaralandırılmış Arşiv · Doğrudan Lisanslama</div>
+        <p class="project-desc">
+          Fiziksel kameralarla çekilen, provenansı belgelenmiş orijinal fotoğrafların arşivi.
+          Her plaka bir katalog numarası, çekim kaydı ve fotoğrafçı tarafından imzalanan yazılı
+          bir lisans taşır. Volume I: 12 plaka, kr 190'dan başlayan fiyatlarla.
+        </p>
+        <div class="project-tags">
+          <span class="tag live-tag">Canlı</span>
+          <span class="tag url-tag">beta-art.com</span>
+          <span class="tag">React + Vite</span>
+          <span class="tag">Supabase</span>
+          <span class="tag">C2PA</span>
+          <span class="tag dev-tag">Git kurulum</span>
+        </div>
+      </div>
+      <div class="project-status">
+        <span class="status-pill live">● Yayında</span>
+        <span class="volume">Volume I — 12/12 plaka</span>
+      </div>
+    </li>
+
+    <li class="project">
+      <div class="project-code">
+        <span class="year">BA · 2026</span>
+        P · 002
+      </div>
+      <div class="project-main">
+        <div class="project-name">Beta Art Privat — Statik</div>
+        <div class="project-sub">Arşiv Önyüzü · Bağımlılıksız</div>
+        <p class="project-desc">
+          Aynı arşivin derleme adımı olmayan saf HTML/CSS/JS versiyonu. Herhangi bir statik
+          sunucuya doğrudan yüklenir. Açık zemin (kağıt tonu) tema; Inter + Fraunces tipografi.
+          React versiyonuyla içerik eşdeğerdir.
+        </p>
+        <div class="project-tags">
+          <span class="tag">HTML · CSS · JS</span>
+          <span class="tag">beta-art-static/beta-art/</span>
+        </div>
+      </div>
+      <div class="project-status">
+        <span class="status-pill dev">◐ Geliştirme</span>
+        <span class="volume">beta-art-static</span>
+      </div>
+    </li>
+
+  </ul>
+
+  <!-- GROUP: FOTOĞRAF -->
+  <div class="group-label">FOTOĞRAF — Sanat Fotoğrafçılığı</div>
+  <ul class="projects">
+
+    <li class="project">
+      <div class="project-code">
+        <span class="year">BA · 2026</span>
+        F · 001
+      </div>
+      <div class="project-main">
+        <div class="project-name">Beta Photo</div>
+        <div class="project-sub">Verifisert Kunstfotografi · Begrenset Opplag</div>
+        <p class="project-desc">
+          Fotografen tarafından imzalanmış ve numaralandırılmış sanat fotoğrafları.
+          Her eser belgelenmiş provenans ve benzersiz bir BETA-ID taşır. Maks. 20
+          adet/motif. Galeri, doğrulama sistemi, QR + fiziksel sertifika akışı.
+          Ödeme aktivasyonu ilk koleksiyon seçiminden sonra yapılacak.
+        </p>
+        <div class="project-tags">
+          <span class="tag url-tag">beta-photo (Vercel)</span>
+          <span class="tag">HTML · CSS · JS</span>
+          <span class="tag">beta-photo/</span>
+          <span class="tag">BETA VERIFY</span>
+          <span class="tag dev-tag">Git kurulum</span>
+        </div>
+      </div>
+      <div class="project-status">
+        <span class="status-pill dev">◐ Geliştirme</span>
+        <span class="volume">MVP · project-hxi</span>
+      </div>
+    </li>
+
+  </ul>
+
+  <!-- GROUP 2: İŞ -->
+  <div class="group-label">İŞ — B2B Belgeleme Platformu</div>
+  <ul class="projects">
+
+    <li class="project">
+      <div class="project-code">
+        <span class="year">BA · 2026</span>
+        B · 001
+      </div>
+      <div class="project-main">
+        <div class="project-name">Beta Art Business</div>
+        <div class="project-sub">İnşaat Önce · KOBİ Belgeleme</div>
+        <p class="project-desc">
+          Kendi içerik ekibi olmayan KOBİ ve SaaS şirketleri için belgeleme platformu.
+          Projeyi atlatan belgeler: uyumluluk, teknik şartname, süreç arşivi. Koyu operasyonel
+          tema, norveç iş sektörüne odaklı içerik hattı.
+        </p>
+        <div class="project-tags">
+          <span class="tag">HTML · CSS · JS</span>
+          <span class="tag">beta-art-static/beta-art-business/</span>
+          <span class="tag">9 makale</span>
+          <span class="tag">36 doküman</span>
+          <span class="tag dev-tag">Git kurulum</span>
+        </div>
+      </div>
+      <div class="project-status">
+        <span class="status-pill dev">◐ Geliştirme</span>
+        <span class="volume">Ön lansman</span>
+      </div>
+    </li>
+
+  </ul>
+
+  <!-- GROUP 3: ETKİNLİK -->
+  <div class="group-label">ETKİNLİK — Sergi ve Gösteri</div>
+  <ul class="projects">
+
+    <li class="project">
+      <div class="project-code">
+        <span class="year">BA · 2026</span>
+        G · 001
+      </div>
+      <div class="project-main">
+        <div class="project-name">Galleri og Utstilling Event</div>
+        <div class="project-sub">Sergi Varlığı · Fiziksel Etkinlik</div>
+        <p class="project-desc">
+          Doğrulanmış insan fotoğrafçılığını fiziksel sergilerde ve küratörlü etkinliklerde
+          sunar. Volume I açılış sergisi: Sonbahar 2026, Oslo. Davetli önizleme sergileri,
+          koleksiyon sahiplerine özel etkinlikler.
+        </p>
+        <div class="project-tags">
+          <span class="tag">HTML · CSS · JS</span>
+          <span class="tag">beta-art-static/beta-art-gallery-event/</span>
+          <span class="tag">Sonbahar 2026</span>
+        </div>
+      </div>
+      <div class="project-status">
+        <span class="status-pill planned">○ Planlandı</span>
+        <span class="volume">Oslo, Norveç</span>
+      </div>
+    </li>
+
+  </ul>
+
+  <!-- GROUP 4: YAYIM -->
+  <div class="group-label">YAYIM — Editoryal ve Blog</div>
+  <ul class="projects">
+
+    <li class="project">
+      <div class="project-code">
+        <span class="year">BA · 2026</span>
+        J · 001
+      </div>
+      <div class="project-main">
+        <div class="project-name">Field Notes — The Beta Art Journal</div>
+        <div class="project-sub">Doğrulanmış Arşiv Nasıl İnşa Edilir · Editoryal</div>
+        <p class="project-desc">
+          Doğrulanmış bir fotoğraf arşivinin nasıl inşa edildiğini anlatan journal:
+          provenance, üç test, çekim planlaması, Norveç ışığı ve lisanslama ekonomisi.
+          Beta Art'ın bakış açısıyla sahadan notlar.
+        </p>
+        <div class="project-tags">
+          <span class="tag live-tag">Canlı</span>
+          <span class="tag url-tag">beta-art-journal (Vercel)</span>
+          <span class="tag">HTML · CSS · JS</span>
+          <span class="tag">beta-art-static/beta-art-blog/</span>
+        </div>
+      </div>
+      <div class="project-status">
+        <span class="status-pill live">● Yayında</span>
+        <span class="volume">project-hxi</span>
+      </div>
+    </li>
+
+  </ul>
+
+  <!-- GROUP 5: BÖLGESEL -->
+  <div class="group-label">BÖLGESEL — Ülke ve Pazar Varlığı</div>
+  <ul class="projects">
+
+    <li class="project">
+      <div class="project-code">
+        <span class="year">BA · 2026</span>
+        N · 001
+      </div>
+      <div class="project-main">
+        <div class="project-name">Beta Art Norway Archive</div>
+        <div class="project-sub">Norveç'in Doğrulanmış Görsel Arşivi · Bölgesel</div>
+        <p class="project-desc">
+          Norveç ve Kuzey Avrupa pazarına özel arşiv varlığı. Nordik kategoriler,
+          Norveç lokasyonları ve bölgesel içerik odağıyla yapılandırılmış.
+          Git entegrasyonu kurulum aşamasında.
+        </p>
+        <div class="project-tags">
+          <span class="tag dev-tag">Git kurulum</span>
+          <span class="tag url-tag">beta-art-norway-archive (Vercel)</span>
+          <span class="tag">betaartnordiccategories.html</span>
+          <span class="tag">project-hxi</span>
+        </div>
+      </div>
+      <div class="project-status">
+        <span class="status-pill dev">◐ Geliştirme</span>
+        <span class="volume">NO · Nordik</span>
+      </div>
+    </li>
+
+    <li class="project">
+      <div class="project-code">
+        <span class="year">BA · 2026</span>
+        N · 002
+      </div>
+      <div class="project-main">
+        <div class="project-name">Beta Art Industry Archive</div>
+        <div class="project-sub">Sektör Kategorili Arşiv · Tam Platform</div>
+        <p class="project-desc">
+          Sektör ve kullanım alanı bazlı kategorilere göre düzenlenmiş tam özellikli
+          arşiv platformu. Koleksiyon ızgarası, dashboard, lisanslama akışı ve
+          kurumsal talep modülü içerir. Norveç ve Kuzey Avrupa odaklı.
+        </p>
+        <div class="project-tags">
+          <span class="tag url-tag">beta-art-industry-archive (Vercel)</span>
+          <span class="tag">betaartindustrycategories.html</span>
+          <span class="tag">project-hxi</span>
+          <span class="tag">Git kurulum</span>
+        </div>
+      </div>
+      <div class="project-status">
+        <span class="status-pill dev">◐ Geliştirme</span>
+        <span class="volume">NO · Sektör</span>
+      </div>
+    </li>
+
+  </ul>
+
+  <!-- GROUP 5: ARAÇLAR -->
+  <div class="group-label">ARAÇLAR — Yardımcı Uygulamalar</div>
+  <ul class="projects">
+
+    <li class="project">
+      <div class="project-code">
+        <span class="year">BA · 2026</span>
+        Q · 001
+      </div>
+      <div class="project-main">
+        <div class="project-name">Beta Art QR</div>
+        <div class="project-sub">Plaka QR Üreteci · Baskı Hazır</div>
+        <p class="project-desc">
+          Her BETA ART plakası veya arşivin kendisi için baskıya hazır QR kod üretir.
+          Sergide, sertifikada ve pakette kullanılmak üzere tasarlanmış; doğrudan
+          plaka sayfasına veya arşive yönlendirir. Üçüncü versiyon (v3) canlıda.
+        </p>
+        <div class="project-tags">
+          <span class="tag live-tag">Canlı</span>
+          <span class="tag url-tag">beta-art-qr_3 (Vercel)</span>
+          <span class="tag">betaartqr_3.html</span>
+          <span class="tag">Bağımlılıksız</span>
+        </div>
+      </div>
+      <div class="project-status">
+        <span class="status-pill live">● Yayında</span>
+        <span class="volume">v3 · project-hxi</span>
+      </div>
+    </li>
+
+    <li class="project">
+      <div class="project-code">
+        <span class="year">BA · 2026</span>
+        A · 001
+      </div>
+      <div class="project-main">
+        <div class="project-name">Beta Art Archive Platform</div>
+        <div class="project-sub">Arşiv Yönetim Arayüzü · Dahili</div>
+        <p class="project-desc">
+          Arşiv içeriğinin yönetimi ve kataloglama için dahili platform arayüzü.
+          Plaka girişi, provenance kaydı ve koleksiyon yönetimini tek panelde sunar.
+          Vercel'de dağıtılmış, indeks dışında tutulmuş (noindex).
+        </p>
+        <div class="project-tags">
+          <span class="tag live-tag">Canlı</span>
+          <span class="tag url-tag">beta-art-archive (Vercel)</span>
+          <span class="tag">betaartplatform.html</span>
+          <span class="tag">Dahili</span>
+        </div>
+      </div>
+      <div class="project-status">
+        <span class="status-pill live">● Yayında</span>
+        <span class="volume">project-hxi</span>
+      </div>
+    </li>
+
+  </ul>
+
+    <li class="project">
+      <div class="project-code">
+        <span class="year">BA · 2026</span>
+        A · 002
+      </div>
+      <div class="project-main">
+        <div class="project-name">Beta Art Platform</div>
+        <div class="project-sub">Görsel Lisanslama Platformu · İş Ortağı Arayüzü</div>
+        <p class="project-desc">
+          Görsel lisanslama iş akışını yönetmek için tasarlanmış platform arayüzü.
+          Arşiv yönetimini lisans süreciyle birleştirir; beta-art-archive'dan
+          farklı olarak dış kullanıcılara (iş ortakları, ajanslar) yöneliktir.
+        </p>
+        <div class="project-tags">
+          <span class="tag live-tag">Canlı</span>
+          <span class="tag url-tag">beta-art-platform (Vercel)</span>
+          <span class="tag">betaartproplatform.html</span>
+          <span class="tag">project-hxi</span>
+        </div>
+      </div>
+      <div class="project-status">
+        <span class="status-pill live">● Yayında</span>
+        <span class="volume">project-hxi</span>
+      </div>
+    </li>
+
+  </ul>
+
+  <!-- GROUP 6: TEKNİK -->
+  <div class="group-label">TEKNİK — SSR ve Ürün Motoru</div>
+  <ul class="projects">
+
+    <li class="project">
+      <div class="project-code">
+        <span class="year">BA · 2026</span>
+        T · 001
+      </div>
+      <div class="project-main">
+        <div class="project-name">Beta Art v8 — Airo SSR</div>
+        <div class="project-sub">Sunucu Taraflı Render · Tam Özellikli</div>
+        <p class="project-desc">
+          React + Airo SSR üzerine inşa edilmiş, Tailwind CSS + shadcn/ui kullanan tam
+          özellikli versiyon. 42 Radix UI bileşeni, Lexical editör, çok dilli destek.
+          Gelecek sürüm mimarisi.
+        </p>
+        <div class="project-tags">
+          <span class="tag">React · Airo SSR</span>
+          <span class="tag">Tailwind · shadcn/ui</span>
+          <span class="tag">beta-art-v8/</span>
+        </div>
+      </div>
+      <div class="project-status">
+        <span class="status-pill spec">◎ Spesifikasyon</span>
+        <span class="volume">v8 mimarisi</span>
+      </div>
+    </li>
+
+    <li class="project">
+      <div class="project-code">
+        <span class="year">BA · 2026</span>
+        T · 002
+      </div>
+      <div class="project-main">
+        <div class="project-name">Beta Art v3 — Referans</div>
+        <div class="project-sub">Müze Standardı Tasarım · Arşiv İterasyonu</div>
+        <p class="project-desc">
+          Mevcut beta-art.com'un önceki tasarım iterasyonu. "Museum Standard" estetik:
+          kemik-beyaz galeri zemini, yakın-siyah mürekkep, tek arşiv mührü kırmızısı.
+          Güncel siteye evrildi; referans olarak Vercel'de tutuluyor.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Referans</span>
+          <span class="tag url-tag">beta-art-v3 (Vercel)</span>
+          <span class="tag">betaartv3.html</span>
+        </div>
+      </div>
+      <div class="project-status">
+        <span class="status-pill spec">◎ Referans</span>
+        <span class="volume">project-hxi · arşiv</span>
+      </div>
+    </li>
+
+  </ul>
+
+  <footer class="site-footer">
+    <div class="footer-note">
+      <span class="seal-dot"></span>
+      BETA ART Monorepo · andersenbetul-alt/BETA-ART
+    </div>
+    <div class="footer-note">
+      beta-art.com · Verified Human Photography · No AI
+    </div>
+  </footer>
+
+</div>
+</main>

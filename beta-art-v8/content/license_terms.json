@@ -1,0 +1,398 @@
+{
+  "en": {
+    "eyebrow": "Legal document",
+    "title": "License Terms",
+    "metaEffective": "Effective",
+    "metaApplies": "Applies to",
+    "metaVersion": "Version",
+    "effectiveDate": "[DATE]",
+    "appliesTo": "betaart.no",
+    "version": "1.0",
+    "intro": "These terms govern any license granted by BETA ART for the use of a photograph. By ordering a plate, you accept these terms in full. If anything is unclear, ask at hello@betaart.no before ordering.",
+    "tiers": [
+      {
+        "id": "tier-a",
+        "label": "A \u00b7 Personal",
+        "name": "Personal License",
+        "price": "kr 190",
+        "grant": "Personal, non-commercial use by one individual for one project.",
+        "permitted": [
+          "Personal social media (private accounts)",
+          "Personal blog, portfolio, or website \u2014 not monetised",
+          "Home printing",
+          "Screensaver or wallpaper"
+        ],
+        "notPermitted": [
+          "Any use by or for a business or organisation",
+          "Any use where money changes hands"
+        ]
+      },
+      {
+        "id": "tier-b",
+        "label": "B \u00b7 Commercial",
+        "name": "Commercial License",
+        "price": "kr 890",
+        "grant": "One entity. Marketing, editorial and communications use.",
+        "permitted": [
+          "Company website, social media, blog",
+          "Marketing materials (brochures, ads, presentations)",
+          "Print runs up to 5,000 copies",
+          "Editorial use (magazines, newspapers, newsletters)",
+          "Internal communications"
+        ],
+        "notPermitted": [
+          "Resale as a product (e.g. printed merchandise for sale)",
+          "Inclusion in a template or resold digital product",
+          "Sublicensing to third parties"
+        ]
+      },
+      {
+        "id": "tier-c",
+        "label": "C \u00b7 Extended",
+        "name": "Extended License",
+        "price": "kr 2,900",
+        "grant": "One entity, unlimited print, product resale, one client sublicense.",
+        "permitted": [
+          "Everything under Commercial, plus:",
+          "Unlimited print runs and campaign reach",
+          "Merchandise for sale (prints, books, apparel)",
+          "Product packaging",
+          "One sublicense to a named end-client"
+        ],
+        "notPermitted": [
+          "Sublicensing to multiple clients (needs custom license)",
+          "Inclusion in stock photography catalogues"
+        ]
+      }
+    ],
+    "tiersCustom": "Need something else \u2014 a longer sublicense chain, a book cover print of 50,000, or an exclusive right in one industry for a period? Write to hello@betaart.no for a custom license quote.",
+    "sections": [
+      {
+        "id": "s1",
+        "num": "\u00a7 01",
+        "heading": "Copyright ownership",
+        "paragraphs": [
+          "Every photograph in the BETA ART archive was created by [PHOTOGRAPHER NAME] and remains their sole property. Copyright is protected under the Norwegian Copyright Act (\u00e5ndsverkloven) and international copyright conventions.",
+          "Purchasing a license grants you the right to USE the photograph within the scope of the license you select. It does not transfer copyright. You do not own the photograph. You may not resell, redistribute, or sublicense it beyond what your license grant explicitly permits.",
+          "Moral rights \u2014 attribution and integrity (\u00e5ndsverkloven \u00a7 5) \u2014 remain with the photographer at all times and cannot be waived."
+        ]
+      },
+      {
+        "id": "s2",
+        "num": "\u00a7 02",
+        "heading": "What you are licensing",
+        "paragraphs": [
+          "Subject to full payment and the terms of your chosen license tier, BETA ART grants you a non-exclusive, non-transferable, worldwide right to use the photograph in the ways permitted by that tier, in perpetuity from the date of delivery."
+        ],
+        "deliveryHead": "Every order includes",
+        "deliveryList": [
+          "A full-resolution digital file (JPEG at maximum quality; TIFF on request)",
+          "A written license naming the purchaser and licensed use",
+          "A proper invoice",
+          "A numbered certificate of authenticity",
+          "Full accession record \u2014 camera, lens, exposure, location, date",
+          "The RAW original archived and available for inspection on request"
+        ],
+        "guaranteeHead": "Every photograph is guaranteed to be",
+        "guaranteeList": [
+          "Made by a human photographer with a physical camera",
+          "Not generated, composited, or hallucinated by artificial intelligence",
+          "Taken in a real place on a real date, recorded in the accession label"
+        ]
+      },
+      {
+        "id": "s3",
+        "num": "\u00a7 03",
+        "heading": "The three license tiers",
+        "intro": "Every plate is offered under one of three tiers. All tiers grant a perpetual, worldwide, non-exclusive right to use the photograph within the scope defined below."
+      },
+      {
+        "id": "s4",
+        "num": "\u00a7 04",
+        "heading": "Prohibited under every license",
+        "intro": "Regardless of the tier you hold, the following uses are always prohibited unless separately negotiated in writing:",
+        "aiLabel": "Article 04.1 \u2014 AI training",
+        "aiBody": "No BETA ART photograph may be used to train, fine-tune, benchmark, or evaluate any artificial intelligence, machine learning, or generative model. The archive exists precisely because human-made photographs remain distinguishable from generated images. Feeding these plates into an AI training pipeline destroys that value proposition and is expressly forbidden, in all license tiers, without exception.",
+        "prohibitedList": [
+          "Resale, redistribution, or sublicensing of the photograph itself as a licensable asset beyond what your tier explicitly permits",
+          "Trademark or logo registration incorporating the photograph",
+          "Defamatory, obscene, misleading, or unlawful contexts \u2014 including political smears, false attribution, or contexts implying the depicted subject endorses something they do not",
+          "Uses harmful to depicted persons (models, identifiable individuals)",
+          "Removal or alteration of embedded metadata, watermarks, or C2PA Content Credentials, except where technically required for delivery",
+          "Modification that materially alters the character of the photograph without written approval \u2014 moral rights under \u00e5ndsverkloven \u00a7 5 apply"
+        ]
+      },
+      {
+        "id": "s5",
+        "num": "\u00a7 05",
+        "heading": "Model releases and third-party content",
+        "paragraphs": [
+          "Photographs of identifiable individuals are only offered under a Commercial or Extended license where a signed model release is on file. This is indicated in the accession record as Release \u00b7 Model release on file.",
+          "Even with a release, licensees must not use portraits in a manner that could reasonably be considered defamatory to the depicted person, or in political or commercial contexts to which the depicted person would reasonably object.",
+          "Where a photograph contains identifiable third-party trademarks, artworks, or property, the licensee is responsible for ensuring their intended use is compatible with any rights the third party may hold."
+        ]
+      },
+      {
+        "id": "s6",
+        "num": "\u00a7 06",
+        "heading": "Delivery",
+        "intro": "Following payment and confirmation of order details:",
+        "deliveryList": [
+          "A full-resolution digital file is delivered by secure download link within 24 hours (Monday\u2013Friday, 09:00\u201317:00 CET)",
+          "Default format is JPEG at maximum quality; TIFF is available on request at no additional charge",
+          "The download link remains valid for 30 days",
+          "The written license, invoice, and certificate are attached to the delivery email"
+        ],
+        "outro": "You are responsible for backing up the delivered file. Re-issuance after the 30-day window may be subject to a small fee."
+      },
+      {
+        "id": "s7",
+        "num": "\u00a7 07",
+        "heading": "Right of withdrawal (angrerett)",
+        "paragraphs": [
+          "For consumer purchases within the EU/EEA, Norwegian law (angrerettloven) grants a 14-day right of withdrawal.",
+          "However: because the file is delivered digitally as a distinct copy, and because you expressly consent to immediate delivery and waiver of the withdrawal right at checkout (via the required consent checkbox), the angrerett does not apply once the download link has been sent.",
+          "If you did not tick the consent checkbox, you retain the 14-day right but the download will not be released until either (a) you tick the consent or (b) the 14-day period expires.",
+          "For B2B purchases (where you are ordering on behalf of a business), the right of withdrawal does not apply."
+        ]
+      },
+      {
+        "id": "s8",
+        "num": "\u00a7 08",
+        "heading": "Warranties and indemnity",
+        "intro": "BETA ART warrants that:",
+        "warrantiesList": [
+          "The photograph is an original work created by the photographer named in the accession record",
+          "The photograph was made with a physical camera in a real place \u2014 it was not generated, composited, or hallucinated by artificial intelligence",
+          "The RAW original file is archived and available for inspection",
+          "Where a model release is stated to be on file, it is on file",
+          "BETA ART has the right to grant the license offered"
+        ],
+        "indemnity": "BETA ART indemnifies the licensee against direct damages arising from a breach of these warranties, up to the total amount paid for the license. This is the licensee\u2019s exclusive remedy.",
+        "disclaim": "Otherwise, the photograph is licensed as-is. BETA ART is not liable for indirect, incidental, or consequential damages arising from the licensee\u2019s use."
+      },
+      {
+        "id": "s9",
+        "num": "\u00a7 09",
+        "heading": "Enforcement",
+        "intro": "Unauthorized use \u2014 including use beyond the scope of your license tier, or any use prohibited under \u00a7 04 \u2014 is a breach of these terms and an infringement of copyright under Norwegian law.",
+        "rights": "In the event of unauthorized use, BETA ART is entitled to:",
+        "enforcementList": [
+          "Damages of no less than three times the applicable license fee, in accordance with \u00e5ndsverkloven \u00a7 81",
+          "Injunctive relief to stop the continued use",
+          "Recovery of legal and enforcement costs"
+        ],
+        "forensic": "BETA ART uses reverse image search, embedded metadata, and third-party monitoring services to detect unauthorized use."
+      },
+      {
+        "id": "s10",
+        "num": "\u00a7 10",
+        "heading": "Governing law and jurisdiction",
+        "paragraphs": [
+          "These terms are governed by Norwegian law. Any dispute arising from these terms is subject to the exclusive jurisdiction of Oslo tingrett (Oslo District Court), unless mandatory consumer protection law provides otherwise.",
+          "For international licensees, BETA ART may in its discretion agree to arbitration in place of litigation. Requests should be sent to hello@betaart.no."
+        ]
+      }
+    ],
+    "governing": "Governing text \u2014 In case of conflict between the Norwegian and English versions of these terms, the Norwegian version prevails.",
+    "contact": "hello@betaart.no"
+  },
+  "no": {
+    "eyebrow": "Juridisk dokument",
+    "title": "Lisensvilk\u00e5r",
+    "metaEffective": "Ikrafttredelse",
+    "metaApplies": "Gjelder for",
+    "metaVersion": "Versjon",
+    "effectiveDate": "[DATO]",
+    "appliesTo": "betaart.no",
+    "version": "1.0",
+    "intro": "Disse vilk\u00e5rene regulerer enhver lisens gitt av BETA ART for bruk av et fotografi. Ved \u00e5 bestille en plate aksepterer du disse vilk\u00e5rene i sin helhet. Er noe uklart, sp\u00f8r p\u00e5 hello@betaart.no f\u00f8r du bestiller.",
+    "tiers": [
+      {
+        "id": "tier-a",
+        "label": "A \u00b7 Personlig",
+        "name": "Personlig lisens",
+        "price": "kr 190",
+        "grant": "Personlig, ikke-kommersiell bruk av \u00e9n person for \u00e9tt prosjekt.",
+        "permitted": [
+          "Personlig bruk p\u00e5 sosiale medier (private kontoer)",
+          "Personlig blogg, portef\u00f8lje eller nettside \u2014 ikke monetarisert",
+          "Hjemmeutskrift",
+          "Skjermsparer eller bakgrunnsbilde"
+        ],
+        "notPermitted": [
+          "Enhver bruk av eller for en virksomhet eller organisasjon",
+          "Enhver bruk der penger skifter hender"
+        ]
+      },
+      {
+        "id": "tier-b",
+        "label": "B \u00b7 Kommersiell",
+        "name": "Kommersiell lisens",
+        "price": "kr 890",
+        "grant": "\u00c9n virksomhet. Markedsf\u00f8ring, redaksjonell og kommunikasjonsbruk.",
+        "permitted": [
+          "Bedriftens nettside, sosiale medier, blogg",
+          "Markedsmateriell (brosjyrer, annonser, presentasjoner)",
+          "Opplag inntil 5\u202f000 eksemplarer",
+          "Redaksjonell bruk (magasiner, aviser, nyhetsbrev)",
+          "Internkommunikasjon"
+        ],
+        "notPermitted": [
+          "Videresalg som produkt (f.eks. trykt merchandise til salgs)",
+          "Innlemmelse i en mal eller videresolgt digitalt produkt",
+          "Viderelisensiering til tredjeparter"
+        ]
+      },
+      {
+        "id": "tier-c",
+        "label": "C \u00b7 Utvidet",
+        "name": "Utvidet lisens",
+        "price": "kr 2\u202f900",
+        "grant": "\u00c9n virksomhet, ubegrenset opplag, videresalg av produkter, \u00e9n kundeunderlisens.",
+        "permitted": [
+          "Alt under Kommersiell, pluss:",
+          "Ubegrenset opplag og kampanjerekkevidde",
+          "Merchandise for salg (trykk, b\u00f8ker, kl\u00e6r)",
+          "Produktemballasje",
+          "\u00c9n underlisens til en navngitt sluttkunde"
+        ],
+        "notPermitted": [
+          "Viderelisensiering til flere kunder (krever skreddersydd lisens)",
+          "Innlemmelse i stock-fotokataloger"
+        ]
+      }
+    ],
+    "tiersCustom": "Trenger du noe annet \u2014 en lengre underlisenskjede, et bokomslagsopplag p\u00e5 50\u202f000, eller en eksklusiv rett i \u00e9n bransje i en periode? Skriv til hello@betaart.no for et skreddersydd lisenstilbud.",
+    "sections": [
+      {
+        "id": "s1",
+        "num": "\u00a7 01",
+        "heading": "Opphavsrett",
+        "paragraphs": [
+          "Hvert fotografi i BETA ART-arkivet er skapt av [FOTOGRAFENS NAVN] og forblir dennes eiendom. Opphavsretten er beskyttet av \u00e5ndsverkloven og internasjonale opphavsrettskonvensjoner.",
+          "Kj\u00f8p av en lisens gir deg rett til \u00c5 BRUKE fotografiet innenfor omfanget av lisensen du velger. Opphavsretten overf\u00f8res ikke. Du eier ikke fotografiet. Du kan ikke videreselge, redistribuere eller viderelisensiere det utover det lisensen uttrykkelig tillater.",
+          "Ideelle rettigheter \u2014 navngivelse og respekt (\u00e5ndsverkloven \u00a7 5) \u2014 forblir hos fotografen til enhver tid og kan ikke fraskrives."
+        ]
+      },
+      {
+        "id": "s2",
+        "num": "\u00a7 02",
+        "heading": "Hva du lisensierer",
+        "paragraphs": [
+          "Under forutsetning av full betaling og vilk\u00e5rene for valgt lisensniv\u00e5, gir BETA ART deg en ikke-eksklusiv, ikke-overf\u00f8rbar, verdensomspennende rett til \u00e5 bruke fotografiet p\u00e5 m\u00e5tene som niv\u00e5et tillater, evigvarende fra leveringsdato."
+        ],
+        "deliveryHead": "Hver bestilling inkluderer",
+        "deliveryList": [
+          "En digital fil i full oppl\u00f8sning (JPEG i maksimal kvalitet; TIFF p\u00e5 foresp\u00f8rsel)",
+          "En skriftlig lisens som navngir kj\u00f8per og lisensiert bruk",
+          "En ordin\u00e6r faktura",
+          "Et nummerert ekthetssertifikat",
+          "Fullt tilvekstregister \u2014 kamera, objektiv, eksponering, sted, dato",
+          "RAW-originalen arkivert og tilgjengelig for inspeksjon p\u00e5 foresp\u00f8rsel"
+        ],
+        "guaranteeHead": "Hvert fotografi garanteres \u00e5 v\u00e6re",
+        "guaranteeList": [
+          "Laget av en menneskelig fotograf med et fysisk kamera",
+          "Ikke generert, satt sammen eller hallusinert av kunstig intelligens",
+          "Tatt p\u00e5 et virkelig sted en virkelig dag, registrert i tilvekstetiketten"
+        ]
+      },
+      {
+        "id": "s3",
+        "num": "\u00a7 03",
+        "heading": "De tre lisensniv\u00e5ene",
+        "intro": "Hver plate tilbys under ett av tre niv\u00e5er. Alle niv\u00e5er gir en evigvarende, verdensomspennende, ikke-eksklusiv rett til \u00e5 bruke fotografiet innenfor omfanget definert nedenfor."
+      },
+      {
+        "id": "s4",
+        "num": "\u00a7 04",
+        "heading": "Forbudt under enhver lisens",
+        "intro": "Uavhengig av hvilket niv\u00e5 du har, er f\u00f8lgende bruk alltid forbudt med mindre det er separat avtalt skriftlig:",
+        "aiLabel": "Artikkel 04.1 \u2014 KI-trening",
+        "aiBody": "Ingen BETA ART-fotografier kan brukes til \u00e5 trene, finjustere, teste eller evaluere kunstig intelligens, maskinl\u00e6ring eller generative modeller. Arkivet eksisterer nettopp fordi menneskeskapte fotografier forblir distinkt fra genererte bilder. \u00c5 mate disse platene inn i en KI-treningspipeline \u00f8delegger dette verdiforslaget og er uttrykkelig forbudt, i alle lisensniv\u00e5er, uten unntak.",
+        "prohibitedList": [
+          "Videresalg, redistribusjon eller viderelisensiering av selve fotografiet som en lisensierbar ressurs utover det ditt niv\u00e5 uttrykkelig tillater",
+          "Registrering av varemerke eller logo som inkorporerer fotografiet",
+          "\u00c6rekrenkende, obsk\u00f8n, villedende eller ulovlig kontekst \u2014 inkludert politiske sverting, falsk attribusjon, eller kontekster som antyder at det avbildede subjektet st\u00f8tter noe det ikke gj\u00f8r",
+          "Bruk som skader avbildede personer (modeller, identifiserbare individer)",
+          "Fjerning eller endring av innebygde metadata, vannmerker, eller C2PA Content Credentials, unntatt der teknisk p\u00e5krevd for levering",
+          "Endring som vesentlig endrer fotografiets karakter uten skriftlig godkjenning \u2014 ideelle rettigheter etter \u00e5ndsverkloven \u00a7 5 gjelder"
+        ]
+      },
+      {
+        "id": "s5",
+        "num": "\u00a7 05",
+        "heading": "Modellsamtykker og tredjepartsinnhold",
+        "paragraphs": [
+          "Fotografier av identifiserbare individer tilbys kun under Kommersiell eller Utvidet lisens der signert modellsamtykke er arkivert. Dette angis i tilvekstregisteret som Samtykke \u00b7 Modellsamtykke i arkiv.",
+          "Selv med samtykke m\u00e5 lisensinnehavere ikke bruke portretter p\u00e5 en m\u00e5te som med rimelighet kan anses som \u00e6rekrenkende for den avbildede personen, eller i politiske eller kommersielle kontekster som personen med rimelighet ville motsette seg.",
+          "Der et fotografi inneholder identifiserbare tredjeparts varemerker, kunstverk eller eiendom, er lisensinnehaveren ansvarlig for \u00e5 sikre at tiltenkt bruk er forenlig med eventuelle rettigheter tredjeparten m\u00e5tte inneha."
+        ]
+      },
+      {
+        "id": "s6",
+        "num": "\u00a7 06",
+        "heading": "Levering",
+        "intro": "Etter betaling og bekreftelse av bestillingsdetaljer:",
+        "deliveryList": [
+          "En digital fil i full oppl\u00f8sning leveres via sikker nedlastingslenke innen 24 timer (mandag\u2013fredag, 09:00\u201317:00 CET)",
+          "Standardformat er JPEG i maksimal kvalitet; TIFF er tilgjengelig p\u00e5 foresp\u00f8rsel uten ekstra kostnad",
+          "Nedlastingslenken er gyldig i 30 dager",
+          "Skriftlig lisens, faktura og sertifikat er vedlagt leverings-e-posten"
+        ],
+        "outro": "Du er ansvarlig for \u00e5 sikkerhetskopiere den leverte filen. Ny levering etter 30-dagersvinduet kan v\u00e6re underlagt et lite gebyr."
+      },
+      {
+        "id": "s7",
+        "num": "\u00a7 07",
+        "heading": "Angrerett",
+        "paragraphs": [
+          "For forbrukerkj\u00f8p innen EU/E\u00d8S gir angrerettloven en 14-dagers angrerett.",
+          "Imidlertid: fordi filen leveres digitalt som en distinkt kopi, og fordi du uttrykkelig samtykker til umiddelbar levering og fraskrivelse av angreretten ved kassa (via den p\u00e5krevde samtykke-avmerkingsboksen), gjelder ikke angreretten n\u00e5r nedlastingslenken er sendt.",
+          "Hvis du ikke krysset av samtykkeboksen, beholder du 14-dagers angreretten, men nedlastingen frigis ikke f\u00f8r enten (a) du krysser av samtykket eller (b) 14-dagersperioden utl\u00f8per.",
+          "For B2B-kj\u00f8p (der du bestiller p\u00e5 vegne av en virksomhet) gjelder ikke angreretten."
+        ]
+      },
+      {
+        "id": "s8",
+        "num": "\u00a7 08",
+        "heading": "Garantier og skadesløsholdelse",
+        "intro": "BETA ART garanterer at:",
+        "warrantiesList": [
+          "Fotografiet er et originalt verk skapt av fotografen navngitt i tilvekstregisteret",
+          "Fotografiet ble laget med et fysisk kamera p\u00e5 et virkelig sted \u2014 det ble ikke generert, satt sammen eller hallusinert av kunstig intelligens",
+          "RAW-originalfilen er arkivert og tilgjengelig for inspeksjon",
+          "Der det er oppgitt at modellsamtykke er arkivert, er det arkivert",
+          "BETA ART har rett til \u00e5 gi den tilbudte lisensen"
+        ],
+        "indemnity": "BETA ART holder lisensinnehaveren skadesløs mot direkte skader som oppstår ved brudd på disse garantiene, opp til totalbeløpet betalt for lisensen. Dette er lisensinnehaverens eksklusive rettsmiddel.",
+        "disclaim": "Ellers lisensieres fotografiet som det er. BETA ART er ikke ansvarlig for indirekte, tilfeldige eller konsekvensielle skader som oppstår fra lisensinnehaverens bruk."
+      },
+      {
+        "id": "s9",
+        "num": "\u00a7 09",
+        "heading": "Håndhevelse",
+        "intro": "Uautorisert bruk \u2014 inkludert bruk utover omfanget av ditt lisensnivå, eller enhver bruk forbudt under \u00a7 04 \u2014 er et brudd på disse vilkårene og en krenkelse av opphavsretten etter norsk lov.",
+        "rights": "Ved uautorisert bruk har BETA ART rett til:",
+        "enforcementList": [
+          "Skadeserstatning på minst tre ganger gjeldende lisensgebyr, i henhold til åndsverkloven § 81",
+          "Midlertidig forføyning for å stanse fortsatt bruk",
+          "Dekning av juridiske kostnader og håndhevingskostnader"
+        ],
+        "forensic": "BETA ART bruker omvendt bildesøk, innebygde metadata og tredjeparts overvåkingstjenester for å avdekke uautorisert bruk."
+      },
+      {
+        "id": "s10",
+        "num": "\u00a7 10",
+        "heading": "Lovvalg og jurisdiksjon",
+        "paragraphs": [
+          "Disse vilkårene reguleres av norsk lov. Enhver tvist som oppstår fra disse vilkårene er underlagt Oslo tingretts eksklusive jurisdiksjon, med mindre ufravikelig forbrukervernlovgivning bestemmer annet.",
+          "For internasjonale lisensinnehavere kan BETA ART etter eget skjønn samtykke til voldgift i stedet for søksmål. Forespørsler sendes til hello@betaart.no."
+        ]
+      }
+    ],
+    "governing": "R\u00e5dende versjon \u2014 Ved konflikt mellom norsk og engelsk versjon av disse vilk\u00e5rene gjelder den norske versjonen.",
+    "contact": "hello@betaart.no"
+  }
+}

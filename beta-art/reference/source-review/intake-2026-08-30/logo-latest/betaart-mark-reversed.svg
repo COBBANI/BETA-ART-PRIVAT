@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300" role="img" aria-label="BETA ART — Verified Human Photography">
+  <title>BETA ART mark</title>
+  <defs><clipPath id="ba-clip"><circle cx="150" cy="150" r="72"/></clipPath></defs>
+  <g class="ba-badge">
+      <circle cx="150" cy="150" r="112" fill="none" stroke="#D95050" stroke-width="6"/>
+      <circle cx="150" cy="150" r="74" fill="none" stroke="#D95050" stroke-width="2"/>
+      <circle cx="150" cy="243" r="4.2" fill="#D95050"/>
+      <path id="ba-ring" d="M 150 238 A 88 88 0 1 1 150.01 238" fill="none"/>
+      <text fill="#D95050" font-family="Optima,'Gill Sans','Gill Sans MT','Futura','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="19.5"
+            letter-spacing="6.2" font-weight="500">
+        <textPath href="#ba-ring" startOffset="50%" text-anchor="middle">VERIFIED HUMAN PHOTOGRAPHY</textPath>
+      </text>
+      <g clip-path="url(#ba-clip)">
+        <g transform="translate(150 152) scale(1.13) translate(-150 -152)"><path d="M 139 93 C 148 90 158 92 166 97 C 173 101 179 108 181 114 C 183 118 184 122 186 126 C 190 132 197 141 196 144 C 195 147 190 150 183 153 C 188 155 188 159 183 163 C 188 165 188 171 183 175 C 186 179 184 183 181 186 C 176 194 168 199 161 202 C 160 210 159 218 159 228" fill="none" stroke="#D95050" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M 139 93 C 127 97 118 108 115 121 C 112 134 114 148 119 158 C 123 167 128 174 129 183" fill="none" stroke="#D95050" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M 129 183 C 129 195 127 206 125 216" fill="none" stroke="#D95050" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M 125 216 C 116 219 106 224 99 232" fill="none" stroke="#D95050" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M 159 228 C 176 226 194 223 206 215" fill="none" stroke="#D95050" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M 143 137 C 151 134 157 140 156 148 C 155 156 149 160 144 157" fill="none" stroke="#D95050" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M 148 143 C 152 144 152 150 149 153" fill="none" stroke="#D95050" stroke-width="1.92" stroke-linecap="round"/>
+      <path d="M 168 116 C 173 113 179 114 183 118" fill="none" stroke="#D95050" stroke-width="1.92" stroke-linecap="round"/>
+      <path d="M 172 124 C 176 121 181 122 184 126" fill="none" stroke="#D95050" stroke-width="1.92" stroke-linecap="round"/>
+      <path d="M 176 126 C 178 126 180 127 181 128" fill="none" stroke="#D95050" stroke-width="1.92" stroke-linecap="round"/>
+      <path d="M 134 192 C 141 198 149 203 156 206" fill="none" stroke="#D95050" stroke-width="1.44" stroke-linecap="round" opacity="0.85"/>
+      <path d="M 132 200 C 139 206 147 210 154 213" fill="none" stroke="#D95050" stroke-width="1.44" stroke-linecap="round" opacity="0.85"/>
+      <path d="M 133 208 C 139 213 146 217 152 219" fill="none" stroke="#D95050" stroke-width="1.44" stroke-linecap="round" opacity="0.85"/>
+      <path d="M 158 170 C 163 176 167 182 169 187" fill="none" stroke="#D95050" stroke-width="1.44" stroke-linecap="round" opacity="0.85"/>
+      <path d="M 165 166 C 169 171 172 176 174 181" fill="none" stroke="#D95050" stroke-width="1.44" stroke-linecap="round" opacity="0.85"/>
+      <path d="M 122 122 C 127 130 128 142 125 152" fill="none" stroke="#D95050" stroke-width="1.44" stroke-linecap="round" opacity="0.85"/>
+      <path d="M 130 116 C 135 126 136 140 132 152" fill="none" stroke="#D95050" stroke-width="1.44" stroke-linecap="round" opacity="0.85"/>
+      <path d="M 118 136 C 121 145 122 154 121 161" fill="none" stroke="#D95050" stroke-width="1.44" stroke-linecap="round" opacity="0.85"/>
+      <ellipse cx="187.6" cy="123.2" rx="10.5" ry="4.2" transform="rotate(-91.6 187.6 123.2)" fill="none" stroke="#D95050" stroke-width="2"/>
+      <circle cx="178.3" cy="120.4" r="1.9" fill="#D95050"/>
+      <ellipse cx="182.4" cy="110.6" rx="10.5" ry="4.2" transform="rotate(-105.0 182.4 110.6)" fill="none" stroke="#D95050" stroke-width="2"/>
+      <circle cx="173.1" cy="110.6" r="1.9" fill="#D95050"/>
+      <ellipse cx="174.8" cy="100.2" rx="10.5" ry="4.2" transform="rotate(-120.1 174.8 100.2)" fill="none" stroke="#D95050" stroke-width="2"/>
+      <circle cx="166.2" cy="103.1" r="1.9" fill="#D95050"/>
+      <ellipse cx="165.4" cy="93.0" rx="10.5" ry="4.2" transform="rotate(-137.6 165.4 93.0)" fill="none" stroke="#D95050" stroke-width="2"/>
+      <circle cx="158.1" cy="98.4" r="1.9" fill="#D95050"/>
+      <ellipse cx="154.7" cy="89.4" rx="10.5" ry="4.2" transform="rotate(-157.2 154.7 89.4)" fill="none" stroke="#D95050" stroke-width="2"/>
+      <circle cx="149.4" cy="97.0" r="1.9" fill="#D95050"/>
+      <ellipse cx="143.7" cy="89.6" rx="10.5" ry="4.2" transform="rotate(182.4 143.7 89.6)" fill="none" stroke="#D95050" stroke-width="2"/>
+      <circle cx="140.7" cy="98.9" r="1.9" fill="#D95050"/>
+      <ellipse cx="133.2" cy="93.8" rx="10.5" ry="4.2" transform="rotate(163.0 133.2 93.8)" fill="none" stroke="#D95050" stroke-width="2"/>
+      <circle cx="132.7" cy="104.0" r="1.9" fill="#D95050"/>
+      <ellipse cx="124.0" cy="101.5" rx="10.5" ry="4.2" transform="rotate(145.9 124.0 101.5)" fill="none" stroke="#D95050" stroke-width="2"/>
+      <circle cx="126.0" cy="111.8" r="1.9" fill="#D95050"/>
+      <ellipse cx="116.7" cy="112.2" rx="10.5" ry="4.2" transform="rotate(131.1 116.7 112.2)" fill="none" stroke="#D95050" stroke-width="2"/>
+      <circle cx="121.2" cy="121.9" r="1.9" fill="#D95050"/>
+      <ellipse cx="111.9" cy="125.1" rx="10.5" ry="4.2" transform="rotate(117.9 111.9 125.1)" fill="none" stroke="#D95050" stroke-width="2"/>
+      <circle cx="118.5" cy="133.4" r="1.9" fill="#D95050"/>
+      <ellipse cx="110.0" cy="139.2" rx="10.5" ry="4.2" transform="rotate(105.5 110.0 139.2)" fill="none" stroke="#D95050" stroke-width="2"/></g>
+      </g>
+    </g>
+</svg>

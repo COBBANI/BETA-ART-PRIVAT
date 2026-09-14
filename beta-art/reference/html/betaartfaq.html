@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Questions & Answers — BETA ART</title>
+<meta name="description" content="What BETA ART is, how licensing works, what you can and cannot do with the photographs.">
+<meta name="robots" content="index, follow">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23FBFAF7'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%238B1A1A'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..800,50..100,0..1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --paper:#FBFAF7; --paper-2:#F3F0E9;
+  --ink:#0F0F0F;   --ink-2:#1F1D1B;
+  --muted:#85817A; --rule:#E4E0D8;
+  --seal:#8B1A1A;
+  --f-serif:'Fraunces',Georgia,serif;
+  --f-sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --f-mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--f-sans);background:var(--paper);color:var(--ink);line-height:1.6;font-size:16px;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+a.link{border-bottom:1px solid var(--rule);transition:border-color .18s}
+a.link:hover{border-bottom-color:var(--ink)}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:10;background:rgba(251,250,247,.92);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--rule)}
+.nav-inner{max-width:1400px;margin:0 auto;padding:18px 40px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:inline-flex;align-items:center;gap:12px;font-family:var(--f-mono);font-size:12.5px;letter-spacing:.24em;text-transform:uppercase;font-weight:500}
+.brand-mark{display:inline-block;width:11px;height:11px;border:1.5px solid var(--ink);border-radius:50%;position:relative}
+.brand-mark::after{content:"";position:absolute;inset:2px;background:var(--seal);border-radius:50%}
+.nav-links{display:flex;gap:36px;align-items:center}
+.nav-links a{font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);transition:color .18s}
+.nav-links a:hover{color:var(--ink)}
+.lang{display:flex;align-items:center;gap:0;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);border-left:1px solid var(--rule);padding-left:20px;margin-left:4px}
+.lang button{background:none;border:0;padding:4px 6px;cursor:pointer;font-family:inherit;font-size:inherit;letter-spacing:inherit;color:var(--muted);transition:color .18s}
+.lang button:hover{color:var(--ink)}
+.lang button.on{color:var(--ink);font-weight:600}
+.lang-sep{color:var(--rule);padding:0 2px}
+@media (max-width:700px){
+  .nav-inner{padding:16px 20px}
+  .nav-links{gap:14px}
+  .nav-links a:not(.lang a){display:none}
+  .lang{padding-left:12px;margin-left:0}
+}
+
+/* PAGE */
+.policy{max-width:900px;margin:0 auto;padding:80px 40px 120px}
+.policy-header{padding-bottom:60px;margin-bottom:60px;border-bottom:1px solid var(--rule)}
+.rule-label{display:inline-flex;align-items:center;gap:10px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:28px}
+.rule-label::before{content:"";width:22px;height:1px;background:var(--muted)}
+h1{font-family:var(--f-serif);font-weight:400;font-size:clamp(40px,5.5vw,62px);line-height:1.08;letter-spacing:-.015em;color:var(--ink);margin-bottom:24px}
+.policy-intro{font-family:var(--f-serif);font-size:19px;line-height:1.6;color:var(--ink-2);max-width:60ch}
+
+/* TOC */
+.toc{
+  background:var(--paper-2);
+  padding:32px 36px;
+  margin:56px 0 32px;
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  gap:14px 32px;
+}
+.toc-label{
+  grid-column:1/-1;
+  font-family:var(--f-mono);font-size:10.5px;
+  letter-spacing:.18em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:8px;
+}
+.toc a{
+  font-family:var(--f-mono);font-size:12px;
+  color:var(--ink-2);letter-spacing:.02em;
+  padding:6px 0;border-bottom:1px dashed var(--rule);
+  display:flex;justify-content:space-between;gap:12px;
+  transition:color .18s;
+}
+.toc a:hover{color:var(--seal)}
+.toc a .n{color:var(--seal);font-weight:500}
+@media (max-width:640px){.toc{grid-template-columns:1fr;padding:24px 22px}}
+
+/* Sections */
+section.s{margin-top:56px;scroll-margin-top:90px}
+section.s > h2{
+  font-family:var(--f-serif);font-weight:500;
+  font-size:28px;line-height:1.2;color:var(--ink);
+  margin-bottom:8px;padding-bottom:16px;
+  border-bottom:1px solid var(--rule);
+  display:flex;align-items:baseline;gap:16px;
+}
+section.s > h2 .num{
+  font-family:var(--f-mono);font-size:12px;
+  color:var(--seal);letter-spacing:.14em;font-weight:500;
+}
+
+/* Q & A */
+.qa{padding:24px 0;border-bottom:1px solid var(--rule)}
+.qa:last-child{border-bottom:0}
+.qa .q{
+  font-family:var(--f-serif);font-weight:500;
+  font-size:19px;line-height:1.35;
+  color:var(--ink);margin-bottom:12px;
+  display:flex;gap:14px;
+}
+.qa .q .qn{
+  font-family:var(--f-mono);font-size:11px;
+  color:var(--seal);letter-spacing:.14em;font-weight:500;
+  padding-top:6px;flex-shrink:0;
+}
+.qa .a{color:var(--ink-2);font-size:15.5px;line-height:1.65;padding-left:34px;max-width:70ch}
+.qa .a p{margin-bottom:12px}
+.qa .a p:last-child{margin-bottom:0}
+.qa .a ul{list-style:none;padding:0;margin:12px 0}
+.qa .a ul li{padding:5px 0 5px 20px;position:relative}
+.qa .a ul li::before{content:"—";position:absolute;left:0;top:5px;color:var(--muted)}
+.qa .a b{color:var(--ink);font-weight:600}
+.qa .a code{font-family:var(--f-mono);font-size:.9em;background:var(--paper-2);padding:2px 6px;border-radius:2px}
+.qa .a a.link{border-bottom:1px solid var(--rule)}
+
+/* Strong AI callout */
+.ai-callout{
+  background:var(--ink);color:var(--paper);
+  padding:22px 26px;margin:14px 0;
+  border-left:4px solid var(--seal);
+  max-width:70ch;
+}
+.ai-callout p{color:var(--paper);margin-bottom:8px}
+.ai-callout p:last-child{margin-bottom:0}
+.ai-callout b{color:#fff}
+.ai-callout .lbl{
+  font-family:var(--f-mono);font-size:10.5px;
+  color:var(--seal);letter-spacing:.18em;
+  text-transform:uppercase;display:block;margin-bottom:10px;
+}
+
+/* Bottom */
+.bottom{
+  margin-top:72px;padding-top:40px;
+  border-top:1px solid var(--rule);
+  font-family:var(--f-mono);font-size:12px;
+  color:var(--muted);line-height:1.8;
+}
+.bottom b{color:var(--ink);font-weight:500}
+.bottom a{color:var(--ink)}
+
+/* Footer */
+.footer{border-top:1px solid var(--rule);padding:40px 0 32px;background:var(--paper)}
+.footer-inner{max-width:1400px;margin:0 auto;padding:0 40px}
+.footer-links{display:flex;flex-wrap:wrap;gap:24px 40px;font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding-bottom:24px;border-bottom:1px solid var(--rule)}
+.footer-links a{color:var(--muted);transition:color .18s}
+.footer-links a:hover{color:var(--ink)}
+.footer-legal{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;padding-top:24px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.06em;color:var(--muted)}
+@media (max-width:700px){
+  .policy{padding:48px 20px 80px}
+  .footer-inner{padding:0 20px}
+  .qa .a{padding-left:0}
+}
+:focus-visible{outline:2px solid var(--seal);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="brand"><span class="brand-mark"></span> BETA · ART</a>
+    <div class="nav-links">
+      <a href="/#collection" data-i18n="nav.collection">Collection</a>
+      <a href="/#verify" data-i18n="nav.verification">Verification</a>
+      <a href="/#about" data-i18n="nav.photographer">Photographer</a>
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-lang="en" class="on">EN</button>
+        <span class="lang-sep">/</span>
+        <button type="button" data-lang="no">NO</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main class="policy">
+  <div class="policy-header">
+    <span class="rule-label" data-i18n="eyebrow">Questions & answers</span>
+    <h1 data-i18n="title">Frequently Asked Questions</h1>
+    <p class="policy-intro" data-i18n="intro">Twenty questions that cover most of what buyers ask before licensing. If yours isn't here, write to hello@betaart.no — every real question ends up on this page.</p>
+  </div>
+
+  <nav class="toc" aria-label="Contents">
+    <div class="toc-label" data-i18n="toc.label">Contents</div>
+    <a href="#s1"><span data-i18n="s1.title">About the archive</span> <span class="n">§ 01</span></a>
+    <a href="#s2"><span data-i18n="s2.title">Verification</span> <span class="n">§ 02</span></a>
+    <a href="#s3"><span data-i18n="s3.title">Licensing</span> <span class="n">§ 03</span></a>
+    <a href="#s4"><span data-i18n="s4.title">Ordering & payment</span> <span class="n">§ 04</span></a>
+    <a href="#s5"><span data-i18n="s5.title">Delivery & use</span> <span class="n">§ 05</span></a>
+    <a href="#s6"><span data-i18n="s6.title">AI, models & copyright</span> <span class="n">§ 06</span></a>
+  </nav>
+
+  <!-- § 01 -->
+  <section class="s" id="s1">
+    <h2><span class="num">§ 01</span><span data-i18n="s1.title">About the archive</span></h2>
+
+    <div class="qa">
+      <div class="q"><span class="qn">Q · 01</span><span data-i18n="q01">What is BETA ART?</span></div>
+      <div class="a" data-i18n-html="a01">A curated photography archive where every image is guaranteed to be made by a human photographer with a physical camera. Licences start at kr 190 for personal use. The archive exists to give designers, agencies and publications a source of images that are demonstrably not generated by artificial intelligence.</div>
+    </div>
+
+    <div class="qa">
+      <div class="q"><span class="qn">Q · 02</span><span data-i18n="q02">Who took the photos?</span></div>
+      <div class="a" data-i18n-html="a02"><b>[PHOTOGRAPHER NAME]</b>, based in Norway. Every plate in the archive was made by the same photographer. This is not a collective, not a marketplace, not a stock library reselling other people's work. One photographer, one vision, one archive.</div>
+    </div>
+
+    <div class="qa">
+      <div class="q"><span class="qn">Q · 03</span><span data-i18n="q03">What does "Verified Human Photography" mean?</span></div>
+      <div class="a" data-i18n-html="a03"><p>Three things:</p>
+        <ul>
+          <li>Every photograph was made with a physical camera at a specific place and date, recorded in the accession label</li>
+          <li>The RAW original file is archived and available for inspection on request</li>
+          <li>No image in the archive was generated, composited, or altered by artificial intelligence — and by contract, no image you licence may be used to train one</li>
+        </ul>
+        <p>It is a promise you can audit, not a marketing claim.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- § 02 -->
+  <section class="s" id="s2">
+    <h2><span class="num">§ 02</span><span data-i18n="s2.title">Verification</span></h2>
+
+    <div class="qa">
+      <div class="q"><span class="qn">Q · 04</span><span data-i18n="q04">How do I know these aren't AI-generated?</span></div>
+      <div class="a" data-i18n-html="a04"><p>Four independent signals:</p>
+        <ul>
+          <li><b>Accession label</b> — camera body, lens, exposure, ISO, focal length, GPS coordinates, and date, published for every plate</li>
+          <li><b>RAW original</b> — the unprocessed sensor file is archived and available for you to inspect before or after purchase</li>
+          <li><b>C2PA Content Credentials</b> embedded in the delivered file, cryptographically signed at capture and edit</li>
+          <li><b>Contractual guarantee</b> — the licence includes a warranty that the photograph was made with a physical camera in a real place; a breach entitles you to a full refund plus damages</li>
+        </ul>
+        <p>Any single signal can be faked. Faking all four is significantly harder than simply not using AI.</p>
+      </div>
+    </div>
+
+    <div class="qa">
+      <div class="q"><span class="qn">Q · 05</span><span data-i18n="q05">Can I see the RAW original?</span></div>
+      <div class="a" data-i18n-html="a05">Yes. Write to <a class="link" href="mailto:hello@betaart.no">hello@betaart.no</a> with the accession number and you will get a link to inspect the RAW file. This is offered as a legitimacy check — buyers of substantial licences, agency legal teams, and publications sometimes want to verify before purchase. There is no fee.</div>
+    </div>
+
+    <div class="qa">
+      <div class="q"><span class="qn">Q · 06</span><span data-i18n="q06">What are C2PA Content Credentials?</span></div>
+      <div class="a" data-i18n-html="a06">An open industry standard for cryptographically signing image provenance — when it was captured, on what device, and what edits were applied. Every BETA ART plate carries embedded C2PA credentials. Adobe, Leica, Nikon, Sony and the Content Authenticity Initiative all support the standard. Any modern viewer can inspect them.</div>
+    </div>
+  </section>
+
+  <!-- § 03 -->
+  <section class="s" id="s3">
+    <h2><span class="num">§ 03</span><span data-i18n="s3.title">Licensing</span></h2>
+
+    <div class="qa">
+      <div class="q"><span class="qn">Q · 07</span><span data-i18n="q07">Which licence do I need?</span></div>
+      <div class="a" data-i18n-html="a07"><p>Three tiers, all perpetual and worldwide:</p>
+        <ul>
+          <li><b>Personal (kr 190)</b> — for one individual, non-commercial use. Personal social media, home printing, a private blog</li>
+          <li><b>Commercial (kr 890)</b> — for one company or organisation. Marketing materials, editorial, print runs up to 5,000 copies</li>
+          <li><b>Extended (kr 2,900)</b> — unlimited print, merchandise resale, one client sublicence</li>
+        </ul>
+        <p>Full details in the <a class="link" href="/license-terms.html">licence terms</a>. When in doubt, ask.</p>
+      </div>
+    </div>
+
+    <div class="qa">
+      <div class="q"><span class="qn">Q · 08</span><span data-i18n="q08">Can I upgrade a licence later?</span></div>
+      <div class="a" data-i18n-html="a08">Yes. Pay the difference between what you originally paid and the new tier, and a new licence document is issued for the same plate. Contact <a class="link" href="mailto:hello@betaart.no">hello@betaart.no</a>.</div>
+    </div>
+
+    <div class="qa">
+      <div class="q"><span class="qn">Q · 09</span><span data-i18n="q09">How long does a licence last?</span></div>
+      <div class="a" data-i18n-html="a09">In perpetuity from the date of delivery. Once you have licensed a photograph, the right to use it does not expire. What is bounded is <em>how</em> you may use it, defined by the tier.</div>
+    </div>
+
+    <div class="qa">
+      <div class="q"><span class="qn">Q · 10</span><span data-i18n="q10">Can multiple people in my company use the same licence?</span></div>
+      <div class="a" data-i18n-html="a10">A Commercial or Extended licence is granted to one legal entity — the buying company. Anyone acting on behalf of that entity can use the photograph within the tier's scope. If two separate companies want to use the same image, each needs its own licence.</div>
+    </div>
+
+    <div class="qa">
+      <div class="q"><span class="qn">Q · 11</span><span data-i18n="q11">Can I resell the image?</span></div>
+      <div class="a" data-i18n-html="a11">The photograph itself, no. What you may do differs by tier: the Extended licence permits merchandise for sale (books, prints, apparel with the image) and one sublicence to a named end-client. Selling the image file as a stock asset, or repackaging it in a template product, is prohibited under every tier.</div>
+    </div>
+  </section>
+
+  <!-- § 04 -->
+  <section class="s" id="s4">
+    <h2><span class="num">§ 04</span><span data-i18n="s4.title">Ordering & payment</span></h2>
+
+    <div class="qa">
+      <div class="q"><span class="qn">Q · 12</span><span data-i18n="q12">How do I order?</span></div>
+      <div class="a" data-i18n-html="a12">Open the plate you want, pick a licence tier, add to cart, and go to checkout. You'll receive a confirmation email within minutes. During the first phase the actual invoice and download link are prepared manually within 24 hours — this is deliberate; every early buyer gets personal attention.</div>
+    </div>
+
+    <div class="qa">
+      <div class="q"><span class="qn">Q · 13</span><span data-i18n="q13">What payment methods are accepted?</span></div>
+      <div class="a" data-i18n-html="a13"><p>Depending on where you are:</p>
+        <ul>
+          <li><b>Norway</b> — Vipps, bank transfer (norsk kontonummer), invoice with Norwegian org.nr</li>
+          <li><b>EU / EEA</b> — bank transfer, SEPA, credit card</li>
+          <li><b>Rest of world</b> — credit card, PayPal, wire transfer</li>
+        </ul>
+        <p>Business customers automatically receive a compliant invoice with our org.nr and, where applicable, MVA specified.</p>
+      </div>
+    </div>
+
+    <div class="qa">
+      <div class="q"><span class="qn">Q · 14</span><span data-i18n="q14">Can I get a refund?</span></div>
+      <div class="a" data-i18n-html="a14"><p>Two situations to distinguish:</p>
+        <ul>
+          <li><b>Right of withdrawal (angrerett)</b> — For consumers in the EU/EEA, Norwegian law grants a 14-day withdrawal right on digital purchases. However, at checkout you consent to immediate delivery, which waives the withdrawal right once the download is sent. If you did not tick that consent, the download waits and you keep the 14-day window.</li>
+          <li><b>Warranty breach</b> — If we ever fail to deliver what we promised (a human-made photograph with archived RAW), the licence fee is refunded in full plus damages under the licence terms.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- § 05 -->
+  <section class="s" id="s5">
+    <h2><span class="num">§ 05</span><span data-i18n="s5.title">Delivery & use</span></h2>
+
+    <div class="qa">
+      <div class="q"><span class="qn">Q · 15</span><span data-i18n="q15">How fast is delivery?</span></div>
+      <div class="a" data-i18n-html="a15">Within 24 hours on business days (Monday–Friday, 09:00–17:00 CET). The delivery email includes the download link (valid for 30 days), your written licence naming the licensed use, the invoice, and a numbered certificate of authenticity.</div>
+    </div>
+
+    <div class="qa">
+      <div class="q"><span class="qn">Q · 16</span><span data-i18n="q16">What file format and size do I get?</span></div>
+      <div class="a" data-i18n-html="a16">Full-resolution JPEG at maximum quality is default — usually 40–60 megapixels depending on the camera used. TIFF is available on request at no extra charge for licensees who need it for print production. RAW files are not delivered under a standard licence but can be inspected for verification.</div>
+    </div>
+
+    <div class="qa">
+      <div class="q"><span class="qn">Q · 17</span><span data-i18n="q17">Can I edit the photo?</span></div>
+      <div class="a" data-i18n-html="a17">Ordinary edits are fine — crop, colour correction, brightness, contrast, resizing. What is not permitted, under any tier, is modification that materially alters the character of the photograph (åndsverkloven § 5 — moral rights). Compositing the photograph together with other images so it is no longer recognisable as the original, or altering it to depict something the original did not, needs written approval.</div>
+    </div>
+  </section>
+
+  <!-- § 06 -->
+  <section class="s" id="s6">
+    <h2><span class="num">§ 06</span><span data-i18n="s6.title">AI, models & copyright</span></h2>
+
+    <div class="qa">
+      <div class="q"><span class="qn">Q · 18</span><span data-i18n="q18">Can I use the photo to train an AI model?</span></div>
+      <div class="a">
+        <div class="ai-callout">
+          <span class="lbl" data-i18n="a18.lbl">Answer</span>
+          <p data-i18n-html="a18.body"><b>No. Under any licence tier. Under any circumstance.</b> BETA ART photographs may not be used to train, fine-tune, benchmark, or evaluate any artificial intelligence, machine learning, or generative model. The archive exists precisely because human-made photographs remain distinguishable from generated ones — feeding these plates into an AI pipeline destroys that value proposition, is contractually forbidden, and triggers damages of at least three times the licence fee under åndsverkloven § 81.</p>
+        </div>
+        <p data-i18n-html="a18.note">If your use case involves any form of automated image analysis where the outputs will be seen by humans, ask before ordering. Some analytical uses (colour extraction for a design tool, subject detection for a search engine indexing your own site) are compatible with the licence. Training a generative model is not.</p>
+      </div>
+    </div>
+
+    <div class="qa">
+      <div class="q"><span class="qn">Q · 19</span><span data-i18n="q19">Is there a model release?</span></div>
+      <div class="a" data-i18n-html="a19">Photographs containing identifiable individuals are only offered under Commercial or Extended licences when a signed model release is on file. This is indicated on the accession label as <code>Release · Model release on file</code>. Even with a release, portrait photographs may not be used in defamatory or misleading contexts. Where no release is on file, the plate is only available for editorial use.</div>
+    </div>
+
+    <div class="qa">
+      <div class="q"><span class="qn">Q · 20</span><span data-i18n="q20">What if someone uses my photo without a licence?</span></div>
+      <div class="a" data-i18n-html="a20"><p>Two answers depending on which side you are on:</p>
+        <ul>
+          <li><b>If you have licensed a photograph and someone copies your use</b> — that is a copyright matter between you and them, not a BETA ART matter. You have a licence to use the image, not exclusivity in your use.</li>
+          <li><b>If someone uses a BETA ART photograph without any licence</b> — that is copyright infringement under åndsverkloven. Damages start at three times the applicable licence fee (§ 81), plus injunctive relief and legal costs. We use reverse image search and third-party monitoring to detect this. If you spot unauthorised use, tell us: <a class="link" href="mailto:hello@betaart.no">hello@betaart.no</a>.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="bottom" data-i18n-html="bottom">
+    <b>Still have a question?</b> Write to <a class="link" href="mailto:hello@betaart.no">hello@betaart.no</a>. Every question that appears twice ends up on this page.<br>
+    <b>See also</b> — <a class="link" href="/license-terms.html">Licence terms</a> · <a class="link" href="/privacy.html">Privacy policy</a> · <a class="link" href="/contact.html">Contact</a>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/" data-i18n="footer.home">Home</a>
+      <a href="/#collection" data-i18n="nav.collection">Collection</a>
+      <a href="/license-terms.html" data-i18n="footer.terms">Licence terms</a>
+      <a href="/privacy.html" data-i18n="footer.privacy">Privacy policy</a>
+      <a href="/contact.html" data-i18n="footer.contact">Contact</a>
+    </div>
+    <div class="footer-legal">
+      <span data-i18n="footer.legal1">© 2026 Beta Art · All plates human-made · No generative AI</span>
+      <span>Org.nr [000 000 000]</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const LANG_KEY = "betaart:lang:v1";
+const DEFAULT_LANG = "en";
+let currentLang = DEFAULT_LANG;
+
+const T = {
+  en: {
+    "nav.collection":"Collection","nav.verification":"Verification","nav.photographer":"Photographer",
+    "eyebrow":"Questions & answers",
+    "title":"Frequently Asked Questions",
+    "intro":"Twenty questions that cover most of what buyers ask before licensing. If yours isn't here, write to hello@betaart.no — every real question ends up on this page.",
+    "toc.label":"Contents",
+    "s1.title":"About the archive",
+    "s2.title":"Verification",
+    "s3.title":"Licensing",
+    "s4.title":"Ordering & payment",
+    "s5.title":"Delivery & use",
+    "s6.title":"AI, models & copyright",
+
+    "q01":"What is BETA ART?",
+    "a01":"A curated photography archive where every image is guaranteed to be made by a human photographer with a physical camera. Licences start at kr 190 for personal use. The archive exists to give designers, agencies and publications a source of images that are demonstrably not generated by artificial intelligence.",
+    "q02":"Who took the photos?",
+    "a02":"<b>[PHOTOGRAPHER NAME]</b>, based in Norway. Every plate in the archive was made by the same photographer. This is not a collective, not a marketplace, not a stock library reselling other people's work. One photographer, one vision, one archive.",
+    "q03":"What does \"Verified Human Photography\" mean?",
+    "a03":"<p>Three things:</p><ul><li>Every photograph was made with a physical camera at a specific place and date, recorded in the accession label</li><li>The RAW original file is archived and available for inspection on request</li><li>No image in the archive was generated, composited, or altered by artificial intelligence — and by contract, no image you licence may be used to train one</li></ul><p>It is a promise you can audit, not a marketing claim.</p>",
+
+    "q04":"How do I know these aren't AI-generated?",
+    "a04":"<p>Four independent signals:</p><ul><li><b>Accession label</b> — camera body, lens, exposure, ISO, focal length, GPS coordinates, and date, published for every plate</li><li><b>RAW original</b> — the unprocessed sensor file is archived and available for you to inspect before or after purchase</li><li><b>C2PA Content Credentials</b> embedded in the delivered file, cryptographically signed at capture and edit</li><li><b>Contractual guarantee</b> — the licence includes a warranty that the photograph was made with a physical camera in a real place; a breach entitles you to a full refund plus damages</li></ul><p>Any single signal can be faked. Faking all four is significantly harder than simply not using AI.</p>",
+    "q05":"Can I see the RAW original?",
+    "a05":"Yes. Write to <a class=\"link\" href=\"mailto:hello@betaart.no\">hello@betaart.no</a> with the accession number and you will get a link to inspect the RAW file. This is offered as a legitimacy check — buyers of substantial licences, agency legal teams, and publications sometimes want to verify before purchase. There is no fee.",
+    "q06":"What are C2PA Content Credentials?",
+    "a06":"An open industry standard for cryptographically signing image provenance — when it was captured, on what device, and what edits were applied. Every BETA ART plate carries embedded C2PA credentials. Adobe, Leica, Nikon, Sony and the Content Authenticity Initiative all support the standard. Any modern viewer can inspect them.",
+
+    "q07":"Which licence do I need?",
+    "a07":"<p>Three tiers, all perpetual and worldwide:</p><ul><li><b>Personal (kr 190)</b> — for one individual, non-commercial use. Personal social media, home printing, a private blog</li><li><b>Commercial (kr 890)</b> — for one company or organisation. Marketing materials, editorial, print runs up to 5,000 copies</li><li><b>Extended (kr 2,900)</b> — unlimited print, merchandise resale, one client sublicence</li></ul><p>Full details in the <a class=\"link\" href=\"/license-terms.html\">licence terms</a>. When in doubt, ask.</p>",
+    "q08":"Can I upgrade a licence later?",
+    "a08":"Yes. Pay the difference between what you originally paid and the new tier, and a new licence document is issued for the same plate. Contact <a class=\"link\" href=\"mailto:hello@betaart.no\">hello@betaart.no</a>.",
+    "q09":"How long does a licence last?",
+    "a09":"In perpetuity from the date of delivery. Once you have licensed a photograph, the right to use it does not expire. What is bounded is <em>how</em> you may use it, defined by the tier.",
+    "q10":"Can multiple people in my company use the same licence?",
+    "a10":"A Commercial or Extended licence is granted to one legal entity — the buying company. Anyone acting on behalf of that entity can use the photograph within the tier's scope. If two separate companies want to use the same image, each needs its own licence.",
+    "q11":"Can I resell the image?",
+    "a11":"The photograph itself, no. What you may do differs by tier: the Extended licence permits merchandise for sale (books, prints, apparel with the image) and one sublicence to a named end-client. Selling the image file as a stock asset, or repackaging it in a template product, is prohibited under every tier.",
+
+    "q12":"How do I order?",
+    "a12":"Open the plate you want, pick a licence tier, add to cart, and go to checkout. You'll receive a confirmation email within minutes. During the first phase the actual invoice and download link are prepared manually within 24 hours — this is deliberate; every early buyer gets personal attention.",
+    "q13":"What payment methods are accepted?",
+    "a13":"<p>Depending on where you are:</p><ul><li><b>Norway</b> — Vipps, bank transfer (norsk kontonummer), invoice with Norwegian org.nr</li><li><b>EU / EEA</b> — bank transfer, SEPA, credit card</li><li><b>Rest of world</b> — credit card, PayPal, wire transfer</li></ul><p>Business customers automatically receive a compliant invoice with our org.nr and, where applicable, MVA specified.</p>",
+    "q14":"Can I get a refund?",
+    "a14":"<p>Two situations to distinguish:</p><ul><li><b>Right of withdrawal (angrerett)</b> — For consumers in the EU/EEA, Norwegian law grants a 14-day withdrawal right on digital purchases. However, at checkout you consent to immediate delivery, which waives the withdrawal right once the download is sent. If you did not tick that consent, the download waits and you keep the 14-day window.</li><li><b>Warranty breach</b> — If we ever fail to deliver what we promised (a human-made photograph with archived RAW), the licence fee is refunded in full plus damages under the licence terms.</li></ul>",
+
+    "q15":"How fast is delivery?",
+    "a15":"Within 24 hours on business days (Monday–Friday, 09:00–17:00 CET). The delivery email includes the download link (valid for 30 days), your written licence naming the licensed use, the invoice, and a numbered certificate of authenticity.",
+    "q16":"What file format and size do I get?",
+    "a16":"Full-resolution JPEG at maximum quality is default — usually 40–60 megapixels depending on the camera used. TIFF is available on request at no extra charge for licensees who need it for print production. RAW files are not delivered under a standard licence but can be inspected for verification.",
+    "q17":"Can I edit the photo?",
+    "a17":"Ordinary edits are fine — crop, colour correction, brightness, contrast, resizing. What is not permitted, under any tier, is modification that materially alters the character of the photograph (åndsverkloven § 5 — moral rights). Compositing the photograph together with other images so it is no longer recognisable as the original, or altering it to depict something the original did not, needs written approval.",
+
+    "q18":"Can I use the photo to train an AI model?",
+    "a18.lbl":"Answer",
+    "a18.body":"<b>No. Under any licence tier. Under any circumstance.</b> BETA ART photographs may not be used to train, fine-tune, benchmark, or evaluate any artificial intelligence, machine learning, or generative model. The archive exists precisely because human-made photographs remain distinguishable from generated ones — feeding these plates into an AI pipeline destroys that value proposition, is contractually forbidden, and triggers damages of at least three times the licence fee under åndsverkloven § 81.",
+    "a18.note":"If your use case involves any form of automated image analysis where the outputs will be seen by humans, ask before ordering. Some analytical uses (colour extraction for a design tool, subject detection for a search engine indexing your own site) are compatible with the licence. Training a generative model is not.",
+    "q19":"Is there a model release?",
+    "a19":"Photographs containing identifiable individuals are only offered under Commercial or Extended licences when a signed model release is on file. This is indicated on the accession label as <code>Release · Model release on file</code>. Even with a release, portrait photographs may not be used in defamatory or misleading contexts. Where no release is on file, the plate is only available for editorial use.",
+    "q20":"What if someone uses my photo without a licence?",
+    "a20":"<p>Two answers depending on which side you are on:</p><ul><li><b>If you have licensed a photograph and someone copies your use</b> — that is a copyright matter between you and them, not a BETA ART matter. You have a licence to use the image, not exclusivity in your use.</li><li><b>If someone uses a BETA ART photograph without any licence</b> — that is copyright infringement under åndsverkloven. Damages start at three times the applicable licence fee (§ 81), plus injunctive relief and legal costs. We use reverse image search and third-party monitoring to detect this. If you spot unauthorised use, tell us: <a class=\"link\" href=\"mailto:hello@betaart.no\">hello@betaart.no</a>.</li></ul>",
+
+    "bottom":"<b>Still have a question?</b> Write to <a class=\"link\" href=\"mailto:hello@betaart.no\">hello@betaart.no</a>. Every question that appears twice ends up on this page.<br><b>See also</b> — <a class=\"link\" href=\"/license-terms.html\">Licence terms</a> · <a class=\"link\" href=\"/privacy.html\">Privacy policy</a> · <a class=\"link\" href=\"/contact.html\">Contact</a>",
+
+    "footer.home":"Home","footer.terms":"Licence terms","footer.privacy":"Privacy policy","footer.contact":"Contact",
+    "footer.legal1":"© 2026 Beta Art · All plates human-made · No generative AI"
+  },
+  no: {
+    "nav.collection":"Samling","nav.verification":"Verifisering","nav.photographer":"Fotograf",
+    "eyebrow":"Spørsmål og svar",
+    "title":"Ofte stilte spørsmål",
+    "intro":"Tjue spørsmål som dekker det meste av det kjøpere spør før de lisensierer. Er ikke ditt spørsmål her, skriv til hello@betaart.no — hvert ekte spørsmål havner på denne siden.",
+    "toc.label":"Innhold",
+    "s1.title":"Om arkivet",
+    "s2.title":"Verifisering",
+    "s3.title":"Lisensiering",
+    "s4.title":"Bestilling og betaling",
+    "s5.title":"Levering og bruk",
+    "s6.title":"KI, modeller og opphavsrett",
+
+    "q01":"Hva er BETA ART?",
+    "a01":"Et kuratert fotoarkiv der hvert bilde er garantert laget av en menneskelig fotograf med et fysisk kamera. Lisenser starter på kr 190 for personlig bruk. Arkivet finnes for å gi designere, byråer og publikasjoner en kilde til bilder som beviselig ikke er generert av kunstig intelligens.",
+    "q02":"Hvem tok bildene?",
+    "a02":"<b>[FOTOGRAFENS NAVN]</b>, med base i Norge. Hver plate i arkivet er laget av samme fotograf. Dette er ikke et kollektiv, ikke en markedsplass, ikke et stock-bibliotek som selger andres arbeid. Én fotograf, én visjon, ett arkiv.",
+    "q03":"Hva betyr \"Verified Human Photography\"?",
+    "a03":"<p>Tre ting:</p><ul><li>Hvert fotografi ble laget med et fysisk kamera på et spesifikt sted og dato, registrert i tilvekstetiketten</li><li>RAW-originalfilen er arkivert og tilgjengelig for inspeksjon på forespørsel</li><li>Ingen bilder i arkivet ble generert, satt sammen eller endret av kunstig intelligens — og ved kontrakt kan ingen bilder du lisensierer brukes til å trene en</li></ul><p>Det er et løfte du kan revidere, ikke en markedsføringspåstand.</p>",
+
+    "q04":"Hvordan vet jeg at bildene ikke er KI-generert?",
+    "a04":"<p>Fire uavhengige signaler:</p><ul><li><b>Tilvekstetikett</b> — kamerahus, objektiv, eksponering, ISO, brennvidde, GPS-koordinater og dato, publisert for hver plate</li><li><b>RAW-original</b> — den ubehandlede sensorfilen er arkivert og tilgjengelig for deg å inspisere før eller etter kjøp</li><li><b>C2PA Content Credentials</b> innebygd i den leverte filen, kryptografisk signert ved fotografering og redigering</li><li><b>Kontraktsfestet garanti</b> — lisensen inkluderer en garanti om at fotografiet ble laget med et fysisk kamera på et virkelig sted; brudd gir deg full refusjon pluss erstatning</li></ul><p>Ethvert enkelt signal kan forfalskes. Å forfalske alle fire er betydelig vanskeligere enn bare å ikke bruke KI.</p>",
+    "q05":"Kan jeg se RAW-originalen?",
+    "a05":"Ja. Skriv til <a class=\"link\" href=\"mailto:hello@betaart.no\">hello@betaart.no</a> med tilvekstnummeret og du får en lenke til å inspisere RAW-filen. Dette tilbys som en legitimitetssjekk — kjøpere av betydelige lisenser, byrå-juridiske team og publikasjoner ønsker noen ganger å verifisere før kjøp. Det er ingen kostnad.",
+    "q06":"Hva er C2PA Content Credentials?",
+    "a06":"En åpen bransjestandard for kryptografisk signering av bilde-proveniens — når det ble tatt, på hvilken enhet, og hvilke redigeringer som ble utført. Hver BETA ART-plate bærer innebygde C2PA-credentials. Adobe, Leica, Nikon, Sony og Content Authenticity Initiative støtter alle standarden. Enhver moderne visning kan inspisere dem.",
+
+    "q07":"Hvilken lisens trenger jeg?",
+    "a07":"<p>Tre nivåer, alle evigvarende og verdensomspennende:</p><ul><li><b>Personlig (kr 190)</b> — for én person, ikke-kommersiell bruk. Personlig sosiale medier, hjemmeutskrift, en privat blogg</li><li><b>Kommersiell (kr 890)</b> — for én virksomhet eller organisasjon. Markedsmateriell, redaksjonelt, opplag inntil 5 000 eksemplarer</li><li><b>Utvidet (kr 2 900)</b> — ubegrenset opplag, videresalg av produkter, én kundeunderlisens</li></ul><p>Fullstendige detaljer i <a class=\"link\" href=\"/license-terms.html\">lisensvilkårene</a>. Er du i tvil, spør.</p>",
+    "q08":"Kan jeg oppgradere en lisens senere?",
+    "a08":"Ja. Betal differansen mellom det du opprinnelig betalte og det nye nivået, og et nytt lisensdokument utstedes for samme plate. Kontakt <a class=\"link\" href=\"mailto:hello@betaart.no\">hello@betaart.no</a>.",
+    "q09":"Hvor lenge varer en lisens?",
+    "a09":"Evigvarende fra leveringsdato. Når du har lisensiert et fotografi, utløper ikke retten til å bruke det. Det som er begrenset er <em>hvordan</em> du kan bruke det, definert av nivået.",
+    "q10":"Kan flere personer i firmaet mitt bruke samme lisens?",
+    "a10":"En Kommersiell eller Utvidet lisens gis til én juridisk enhet — det kjøpende firmaet. Alle som opptrer på vegne av den enheten kan bruke fotografiet innenfor nivåets omfang. Hvis to separate firmaer vil bruke samme bilde, trenger hver sin egen lisens.",
+    "q11":"Kan jeg videreselge bildet?",
+    "a11":"Selve fotografiet, nei. Hva du kan gjøre varierer med nivå: Utvidet-lisensen tillater merchandise for salg (bøker, trykk, klær med bildet) og én underlisens til en navngitt sluttkunde. Å selge bildefilen som en stock-ressurs, eller pakke den inn i et malprodukt, er forbudt under alle nivåer.",
+
+    "q12":"Hvordan bestiller jeg?",
+    "a12":"Åpne platen du vil ha, velg et lisensnivå, legg i handlekurven og gå til kassa. Du får bekreftelses-e-post innen minutter. I den første fasen forberedes selve fakturaen og nedlastingslenken manuelt innen 24 timer — dette er bevisst; hver tidlig kjøper får personlig oppmerksomhet.",
+    "q13":"Hvilke betalingsmåter aksepteres?",
+    "a13":"<p>Avhengig av hvor du er:</p><ul><li><b>Norge</b> — Vipps, bankoverføring (norsk kontonummer), faktura med norsk org.nr</li><li><b>EU / EØS</b> — bankoverføring, SEPA, kredittkort</li><li><b>Resten av verden</b> — kredittkort, PayPal, bankoverføring</li></ul><p>Bedriftskunder mottar automatisk en samsvarende faktura med vårt org.nr og, der det er relevant, MVA spesifisert.</p>",
+    "q14":"Kan jeg få refusjon?",
+    "a14":"<p>To situasjoner å skille mellom:</p><ul><li><b>Angrerett</b> — For forbrukere i EU/EØS gir norsk lov en 14-dagers angrerett på digitale kjøp. Ved kassa samtykker du imidlertid til umiddelbar levering, som fraskriver angreretten når nedlastingen er sendt. Hvis du ikke krysset av det samtykket, venter nedlastingen og du beholder 14-dagersvinduet.</li><li><b>Garantibrudd</b> — Hvis vi noen gang svikter med å levere det vi lovet (et menneskeskapt fotografi med arkivert RAW), refunderes lisensgebyret i sin helhet pluss erstatning etter lisensvilkårene.</li></ul>",
+
+    "q15":"Hvor raskt er levering?",
+    "a15":"Innen 24 timer på virkedager (mandag–fredag, 09:00–17:00 CET). Leverings-e-posten inkluderer nedlastingslenken (gyldig i 30 dager), din skriftlige lisens som navngir den lisensierte bruken, fakturaen og et nummerert ekthetssertifikat.",
+    "q16":"Hvilket filformat og hvilken størrelse får jeg?",
+    "a16":"Full oppløsning JPEG i maksimal kvalitet er standard — vanligvis 40–60 megapiksler avhengig av kameraet som ble brukt. TIFF er tilgjengelig på forespørsel uten ekstra kostnad for lisenshavere som trenger det for trykkproduksjon. RAW-filer leveres ikke under en standard lisens, men kan inspiseres for verifisering.",
+    "q17":"Kan jeg redigere bildet?",
+    "a17":"Vanlige redigeringer er greie — beskjæring, fargekorreksjon, lysstyrke, kontrast, skalering. Det som ikke er tillatt, under noe nivå, er endring som vesentlig endrer fotografiets karakter (åndsverkloven § 5 — ideelle rettigheter). Å sette fotografiet sammen med andre bilder slik at det ikke lenger er gjenkjennelig som originalen, eller endre det til å avbilde noe originalen ikke gjorde, krever skriftlig godkjenning.",
+
+    "q18":"Kan jeg bruke bildet til å trene en KI-modell?",
+    "a18.lbl":"Svar",
+    "a18.body":"<b>Nei. Under ethvert lisensnivå. Under enhver omstendighet.</b> BETA ART-fotografier kan ikke brukes til å trene, finjustere, teste eller evaluere kunstig intelligens, maskinlæring eller generative modeller. Arkivet finnes nettopp fordi menneskeskapte fotografier forblir distinkt fra genererte — å mate disse platene inn i en KI-pipeline ødelegger dette verdiforslaget, er kontraktsfestet forbudt, og utløser erstatning på minst tre ganger lisensgebyret etter åndsverkloven § 81.",
+    "a18.note":"Hvis brukstilfellet ditt involverer noen form for automatisert bildeanalyse der utgangene vil bli sett av mennesker, spør før du bestiller. Enkelte analytiske bruker (fargeuttrekk for et designverktøy, motivgjenkjenning for en søkemotor som indekserer ditt eget nettsted) er forenlige med lisensen. Å trene en generativ modell er det ikke.",
+    "q19":"Er det modellsamtykke?",
+    "a19":"Fotografier som inneholder identifiserbare individer tilbys bare under Kommersiell eller Utvidet lisens når signert modellsamtykke er arkivert. Dette angis på tilvekstetiketten som <code>Samtykke · Modellsamtykke i arkiv</code>. Selv med samtykke kan portrettfotografier ikke brukes i ærekrenkende eller villedende kontekster. Der intet samtykke er arkivert, er platen bare tilgjengelig for redaksjonell bruk.",
+    "q20":"Hva om noen bruker bildet mitt uten lisens?",
+    "a20":"<p>To svar avhengig av hvilken side du er på:</p><ul><li><b>Hvis du har lisensiert et fotografi og noen kopierer din bruk</b> — det er en opphavsrettssak mellom deg og dem, ikke en BETA ART-sak. Du har en lisens til å bruke bildet, ikke eksklusivitet i din bruk.</li><li><b>Hvis noen bruker et BETA ART-fotografi uten lisens</b> — det er opphavsrettskrenkelse etter åndsverkloven. Erstatning starter på tre ganger gjeldende lisensgebyr (§ 81), pluss midlertidig forføyning og juridiske kostnader. Vi bruker omvendt bildesøk og tredjeparts overvåking for å oppdage dette. Ser du uautorisert bruk, si fra: <a class=\"link\" href=\"mailto:hello@betaart.no\">hello@betaart.no</a>.</li></ul>",
+
+    "bottom":"<b>Har du fortsatt et spørsmål?</b> Skriv til <a class=\"link\" href=\"mailto:hello@betaart.no\">hello@betaart.no</a>. Hvert spørsmål som dukker opp to ganger, havner på denne siden.<br><b>Se også</b> — <a class=\"link\" href=\"/license-terms.html\">Lisensvilkår</a> · <a class=\"link\" href=\"/privacy.html\">Personvern</a> · <a class=\"link\" href=\"/contact.html\">Kontakt</a>",
+
+    "footer.home":"Hjem","footer.terms":"Lisensvilkår","footer.privacy":"Personvern","footer.contact":"Kontakt",
+    "footer.legal1":"© 2026 Beta Art · Alle plater laget av mennesker · Ingen generativ KI"
+  }
+};
+
+function t(key){ return (T[currentLang] && T[currentLang][key]) ?? (T[DEFAULT_LANG] && T[DEFAULT_LANG][key]) ?? key; }
+
+function applyLang(){
+  document.documentElement.lang = currentLang;
+  document.title = currentLang === "no" ? "Spørsmål og svar — BETA ART" : "Questions & Answers — BETA ART";
+  document.querySelectorAll("[data-i18n]").forEach(el => { el.textContent = t(el.getAttribute("data-i18n")); });
+  document.querySelectorAll("[data-i18n-html]").forEach(el => { el.innerHTML = t(el.getAttribute("data-i18n-html")); });
+  document.querySelectorAll(".lang button[data-lang]").forEach(b => { b.classList.toggle("on", b.dataset.lang === currentLang); });
+}
+function switchLang(lang){ if(!T[lang]) return; currentLang = lang; try{ localStorage.setItem(LANG_KEY, lang); }catch(e){} applyLang(); }
+document.querySelectorAll(".lang button[data-lang]").forEach(b => b.addEventListener("click", () => switchLang(b.dataset.lang)));
+try{ const s = localStorage.getItem(LANG_KEY); if(s && T[s]) currentLang = s; }catch(e){}
+applyLang();
+</script>
+</body>
+</html>

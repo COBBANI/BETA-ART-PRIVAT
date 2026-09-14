@@ -1,0 +1,129 @@
+<svg viewBox="0 0 520 720" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bgVignette" cx="50%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#131519"/>
+      <stop offset="50%" stop-color="#0a0b0d"/>
+      <stop offset="100%" stop-color="#050505"/>
+    </radialGradient>
+
+    <linearGradient id="chromeRing" x1="10%" y1="0%" x2="90%" y2="100%">
+      <stop offset="0%" stop-color="#f4f6f8"/>
+      <stop offset="18%" stop-color="#ffffff"/>
+      <stop offset="34%" stop-color="#8f9aa6"/>
+      <stop offset="50%" stop-color="#33465e"/>
+      <stop offset="66%" stop-color="#aeb8c2"/>
+      <stop offset="82%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#c7ccd2"/>
+    </linearGradient>
+
+    <linearGradient id="chromeVert" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#e8ebee"/>
+      <stop offset="22%" stop-color="#ffffff"/>
+      <stop offset="45%" stop-color="#98a3af"/>
+      <stop offset="58%" stop-color="#4a5c72"/>
+      <stop offset="75%" stop-color="#c7ccd2"/>
+      <stop offset="100%" stop-color="#f2f4f6"/>
+    </linearGradient>
+
+    <linearGradient id="chromeLobeTop" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="28%" stop-color="#dfe4e8"/>
+      <stop offset="50%" stop-color="#7f8fa0"/>
+      <stop offset="66%" stop-color="#28405e"/>
+      <stop offset="82%" stop-color="#95a6b8"/>
+      <stop offset="100%" stop-color="#f6f8fa"/>
+    </linearGradient>
+
+    <linearGradient id="chromeLobeBottom" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="28%" stop-color="#dfe4e8"/>
+      <stop offset="50%" stop-color="#7f8fa0"/>
+      <stop offset="66%" stop-color="#28405e"/>
+      <stop offset="82%" stop-color="#95a6b8"/>
+      <stop offset="100%" stop-color="#f6f8fa"/>
+    </linearGradient>
+
+    <linearGradient id="textChrome" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="50%" stop-color="#c6cdd4"/>
+      <stop offset="100%" stop-color="#ffffff"/>
+    </linearGradient>
+
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Card background -->
+  <rect x="0" y="0" width="520" height="720" rx="18" fill="url(#bgVignette)"/>
+  <rect x="1" y="1" width="518" height="718" rx="17" fill="none" stroke="#1c2027" stroke-width="1"/>
+
+  <!-- Monogram (scaled + centered at top) -->
+  <g transform="translate(80,40) scale(0.45)">
+    <g filter="url(#softGlow)">
+      <circle cx="400" cy="370" r="272" fill="none" stroke="url(#chromeRing)" stroke-width="6"/>
+      <circle cx="400" cy="370" r="284" fill="none" stroke="#ffffff" stroke-opacity="0.08" stroke-width="1.5"/>
+      <rect x="366" y="228" width="42" height="284" rx="10" fill="url(#chromeVert)"/>
+      <path d="M 404 228 C 470 228, 528 254, 528 306 C 528 348, 486 370, 424 372 L 404 372 Z" fill="url(#chromeLobeTop)"/>
+      <path d="M 404 368 C 470 368, 528 394, 528 446 C 528 488, 486 512, 424 512 L 404 512 Z" fill="url(#chromeLobeBottom)"/>
+      <path d="M 424 250 L 494 306 L 424 306 Z" fill="#0a0b0d"/>
+      <path d="M 424 490 L 494 434 L 424 434 Z" fill="#0a0b0d"/>
+      <rect x="424" y="366" width="70" height="8" rx="3" fill="url(#chromeRing)" opacity="0.9"/>
+      <path d="M 404 228 L 404 512" stroke="#ffffff" stroke-width="1.4" opacity="0.35"/>
+      <path d="M 424 306 L 494 306" stroke="#3a5478" stroke-width="1.6" opacity="0.7"/>
+      <path d="M 424 434 L 494 434" stroke="#3a5478" stroke-width="1.6" opacity="0.7"/>
+    </g>
+  </g>
+
+  <!-- Wordmark -->
+  <text x="260" y="308" text-anchor="middle"
+        font-family="'Futura','Century Gothic','Avenir Next',sans-serif"
+        font-size="30" letter-spacing="9"
+        fill="url(#textChrome)" font-weight="600">VERIFIED BY</text>
+  <text x="260" y="344" text-anchor="middle"
+        font-family="'Futura','Century Gothic','Avenir Next',sans-serif"
+        font-size="34" letter-spacing="10"
+        fill="url(#textChrome)" font-weight="700">BETA ART</text>
+
+  <!-- Divider -->
+  <line x1="70" y1="378" x2="450" y2="378" stroke="#1c2027" stroke-width="1"/>
+  <circle cx="260" cy="378" r="3" fill="#7fa8d9"/>
+
+  <!-- Checklist -->
+  <g font-family="'Avenir Next','Century Gothic',sans-serif" font-size="19" letter-spacing="0.5">
+    <!-- item template: circle check + label -->
+    <g transform="translate(70,410)">
+      <circle cx="12" cy="12" r="12" fill="none" stroke="#7fa8d9" stroke-width="1.6"/>
+      <path d="M 6 12.5 L 10 16.5 L 18.5 7.5" stroke="#7fa8d9" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="34" y="18" fill="#f4f6f8">Authentic Photograph</text>
+    </g>
+    <g transform="translate(70,462)">
+      <circle cx="12" cy="12" r="12" fill="none" stroke="#7fa8d9" stroke-width="1.6"/>
+      <path d="M 6 12.5 L 10 16.5 L 18.5 7.5" stroke="#7fa8d9" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="34" y="18" fill="#f4f6f8">Human Created</text>
+    </g>
+    <g transform="translate(70,514)">
+      <circle cx="12" cy="12" r="12" fill="none" stroke="#7fa8d9" stroke-width="1.6"/>
+      <path d="M 6 12.5 L 10 16.5 L 18.5 7.5" stroke="#7fa8d9" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="34" y="18" fill="#f4f6f8">Metadata Verified</text>
+    </g>
+    <g transform="translate(70,566)">
+      <circle cx="12" cy="12" r="12" fill="none" stroke="#7fa8d9" stroke-width="1.6"/>
+      <path d="M 6 12.5 L 10 16.5 L 18.5 7.5" stroke="#7fa8d9" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="34" y="18" fill="#f4f6f8">Provenance Recorded</text>
+    </g>
+    <g transform="translate(70,618)">
+      <circle cx="12" cy="12" r="12" fill="none" stroke="#7fa8d9" stroke-width="1.6"/>
+      <path d="M 6 12.5 L 10 16.5 L 18.5 7.5" stroke="#7fa8d9" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="34" y="18" fill="#f4f6f8">License Confirmed</text>
+    </g>
+  </g>
+
+  <!-- Footer ID line -->
+  <text x="260" y="680" text-anchor="middle" font-family="'IBM Plex Mono','Courier New',monospace"
+        font-size="12" letter-spacing="3" fill="#4a5561">ID · 0X7F3A—2026 · BETAART.COM/V/0X7F3A</text>
+</svg>

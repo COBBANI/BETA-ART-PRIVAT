@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — BETA ART</title>
+<meta name="description" content="How to reach BETA ART for licensing, press, or general inquiries. Business registration and legal contact information.">
+<meta name="robots" content="index, follow">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23FBFAF7'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%238B1A1A'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..800,50..100,0..1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{--paper:#FBFAF7;--paper-2:#F3F0E9;--ink:#0F0F0F;--ink-2:#1F1D1B;--muted:#85817A;--rule:#E4E0D8;--seal:#8B1A1A;--f-serif:'Fraunces',Georgia,serif;--f-sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;--f-mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--f-sans);background:var(--paper);color:var(--ink);line-height:1.6;font-size:16px;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+a.link{border-bottom:1px solid var(--rule);transition:border-color .18s}
+a.link:hover{border-bottom-color:var(--ink)}
+
+.nav{position:sticky;top:0;z-index:10;background:rgba(251,250,247,.92);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--rule)}
+.nav-inner{max-width:1400px;margin:0 auto;padding:18px 40px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:inline-flex;align-items:center;gap:12px;font-family:var(--f-mono);font-size:12.5px;letter-spacing:.24em;text-transform:uppercase;font-weight:500}
+.brand-mark{display:inline-block;width:11px;height:11px;border:1.5px solid var(--ink);border-radius:50%;position:relative}
+.brand-mark::after{content:"";position:absolute;inset:2px;background:var(--seal);border-radius:50%}
+.nav-links{display:flex;gap:36px;align-items:center}
+.nav-links a{font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);transition:color .18s}
+.nav-links a:hover{color:var(--ink)}
+.lang{display:flex;align-items:center;gap:0;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);border-left:1px solid var(--rule);padding-left:20px;margin-left:4px}
+.lang button{background:none;border:0;padding:4px 6px;cursor:pointer;font-family:inherit;font-size:inherit;letter-spacing:inherit;color:var(--muted);transition:color .18s}
+.lang button:hover{color:var(--ink)}
+.lang button.on{color:var(--ink);font-weight:600}
+.lang-sep{color:var(--rule);padding:0 2px}
+
+.page{max-width:900px;margin:0 auto;padding:80px 40px 120px}
+.page-header{padding-bottom:60px;margin-bottom:60px;border-bottom:1px solid var(--rule)}
+.rule-label{display:inline-flex;align-items:center;gap:10px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:28px}
+.rule-label::before{content:"";width:22px;height:1px;background:var(--muted)}
+h1{font-family:var(--f-serif);font-weight:400;font-size:clamp(40px,5.5vw,62px);line-height:1.08;letter-spacing:-.015em;color:var(--ink);margin-bottom:24px}
+.page-intro{font-family:var(--f-serif);font-size:19px;line-height:1.6;color:var(--ink-2);max-width:60ch}
+
+section.s{margin-top:64px;scroll-margin-top:90px}
+section.s > h2{font-family:var(--f-serif);font-weight:500;font-size:28px;line-height:1.2;color:var(--ink);margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--rule);display:flex;align-items:baseline;gap:16px}
+section.s > h2 .num{font-family:var(--f-mono);font-size:12px;color:var(--seal);letter-spacing:.14em;font-weight:500}
+section.s p{color:var(--ink-2);margin-bottom:16px;max-width:68ch}
+
+/* Contact route cards */
+.routes{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:0 0 12px;border-top:1.5px solid var(--ink);border-bottom:1px solid var(--rule)}
+.route{padding:28px 26px 32px;border-right:1px solid var(--rule);display:flex;flex-direction:column;justify-content:space-between;min-height:220px}
+.route:last-child{border-right:0}
+.route-label{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--seal);margin-bottom:12px}
+.route-name{font-family:var(--f-serif);font-weight:500;font-size:20px;line-height:1.2;color:var(--ink);margin-bottom:10px}
+.route-desc{font-size:14px;color:var(--ink-2);line-height:1.5;margin-bottom:20px}
+.route-email{font-family:var(--f-mono);font-size:13px;color:var(--ink);letter-spacing:.02em;border-bottom:1px solid var(--rule);padding-bottom:3px;display:inline-block;word-break:break-all}
+.route-email:hover{border-bottom-color:var(--ink)}
+@media (max-width:800px){.routes{grid-template-columns:1fr;border-bottom:1.5px solid var(--ink)}.route{border-right:0;border-bottom:1px solid var(--rule);min-height:auto}.route:last-child{border-bottom:0}}
+
+/* Business info table */
+.biz{width:100%;border-collapse:collapse;margin-top:20px}
+.biz tr{border-bottom:1px solid var(--rule)}
+.biz tr:last-child{border-bottom:0}
+.biz th{text-align:left;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:500;padding:16px 20px 16px 0;vertical-align:top;width:38%}
+.biz td{padding:16px 0;color:var(--ink);font-size:15px;line-height:1.55}
+.biz td .mono{font-family:var(--f-mono);font-size:14px}
+@media (max-width:600px){.biz th{width:100%;display:block;padding:12px 0 4px}.biz td{display:block;padding:0 0 12px}.biz tr{display:block;padding:8px 0}}
+
+/* Response times */
+.times{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0;margin-top:20px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.time-item{padding:20px 24px;border-right:1px solid var(--rule)}
+.time-item:last-child{border-right:0}
+.time-label{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.time-value{font-family:var(--f-serif);font-size:22px;color:var(--ink);line-height:1.2;font-weight:500}
+.time-note{font-size:13px;color:var(--muted);margin-top:6px}
+@media (max-width:600px){.time-item{border-right:0;border-bottom:1px solid var(--rule)}.time-item:last-child{border-bottom:0}}
+
+.notice{background:var(--paper-2);padding:20px 24px;margin-top:20px;font-size:14px;color:var(--ink-2);border-left:3px solid var(--seal);line-height:1.6}
+.notice b{color:var(--ink)}
+
+.footer{border-top:1px solid var(--rule);padding:40px 0 32px;background:var(--paper);margin-top:80px}
+.footer-inner{max-width:1400px;margin:0 auto;padding:0 40px}
+.footer-links{display:flex;flex-wrap:wrap;gap:24px 40px;font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding-bottom:24px;border-bottom:1px solid var(--rule)}
+.footer-links a{color:var(--muted);transition:color .18s}
+.footer-links a:hover{color:var(--ink)}
+.footer-legal{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;padding-top:24px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.06em;color:var(--muted)}
+
+@media (max-width:700px){.nav-inner{padding:16px 20px}.nav-links{gap:14px}.nav-links a:not(.lang a){display:none}.lang{padding-left:12px;margin-left:0}.page{padding:48px 20px 80px}.footer-inner{padding:0 20px}}
+:focus-visible{outline:2px solid var(--seal);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="brand"><span class="brand-mark"></span> BETA · ART</a>
+    <div class="nav-links">
+      <a href="/#collection" data-i18n="nav.collection">Collection</a>
+      <a href="/#verify" data-i18n="nav.verification">Verification</a>
+      <a href="/faq.html" data-i18n="nav.faq">FAQ</a>
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-lang="en" class="on">EN</button>
+        <span class="lang-sep">/</span>
+        <button type="button" data-lang="no">NO</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main class="page">
+  <div class="page-header">
+    <span class="rule-label" data-i18n="eyebrow">Contact & business information</span>
+    <h1 data-i18n="title">Contact</h1>
+    <p class="page-intro" data-i18n="intro">One photographer, one archive, one inbox. Real replies from a real person. Route your question to the right address below for the fastest answer.</p>
+  </div>
+
+  <!-- § 01 — Contact routes -->
+  <section class="s" id="routes">
+    <h2><span class="num">§ 01</span><span data-i18n="s1.title">Where to write</span></h2>
+    <p data-i18n="s1.intro">Three routes exist so your message reaches the right context. Any of them will eventually reach the same person, but the routed ones get faster and better-tailored replies.</p>
+
+    <div class="routes">
+      <div class="route">
+        <div>
+          <span class="route-label" data-i18n="route.a.label">A · Licensing</span>
+          <div class="route-name" data-i18n="route.a.name">Buying, custom licences, questions before ordering</div>
+          <p class="route-desc" data-i18n="route.a.desc">Order status, licence tier questions, requests to inspect a RAW original, custom licence quotes, or anything about the archive itself.</p>
+        </div>
+        <a href="mailto:hello@betaart.no" class="route-email">hello@betaart.no</a>
+      </div>
+
+      <div class="route">
+        <div>
+          <span class="route-label" data-i18n="route.b.label">B · Press</span>
+          <div class="route-name" data-i18n="route.b.name">Editorial requests, interviews, exhibition inquiries</div>
+          <p class="route-desc" data-i18n="route.b.desc">Publication interviews, exhibition or gallery requests, book publishers, festival programmers, media background on the archive's positioning.</p>
+        </div>
+        <a href="mailto:press@betaart.no" class="route-email">press@betaart.no</a>
+      </div>
+
+      <div class="route">
+        <div>
+          <span class="route-label" data-i18n="route.c.label">C · Legal</span>
+          <div class="route-name" data-i18n="route.c.name">Copyright, GDPR, unauthorised use reports</div>
+          <p class="route-desc" data-i18n="route.c.desc">Copyright infringement reports, GDPR data subject requests, right-of-withdrawal claims, DMCA counter-notices, or any formal legal correspondence.</p>
+        </div>
+        <a href="mailto:legal@betaart.no" class="route-email">legal@betaart.no</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- § 02 — Response times -->
+  <section class="s" id="response">
+    <h2><span class="num">§ 02</span><span data-i18n="s2.title">Response times</span></h2>
+    <p data-i18n="s2.intro">Written commitments. If we miss one, tell us — that itself is worth a response.</p>
+
+    <div class="times">
+      <div class="time-item">
+        <div class="time-label" data-i18n="time.orders.lbl">Orders</div>
+        <div class="time-value" data-i18n="time.orders.val">24 hours</div>
+        <div class="time-note" data-i18n="time.orders.note">Weekdays, 09–17 CET</div>
+      </div>
+      <div class="time-item">
+        <div class="time-label" data-i18n="time.general.lbl">General questions</div>
+        <div class="time-value" data-i18n="time.general.val">48 hours</div>
+        <div class="time-note" data-i18n="time.general.note">Weekdays</div>
+      </div>
+      <div class="time-item">
+        <div class="time-label" data-i18n="time.legal.lbl">Legal matters</div>
+        <div class="time-value" data-i18n="time.legal.val">72 hours</div>
+        <div class="time-note" data-i18n="time.legal.note">Acknowledged within 72h; substantive reply may take longer</div>
+      </div>
+    </div>
+
+    <div class="notice">
+      <b data-i18n="notice.holiday.lbl">Note</b> — <span data-i18n="notice.holiday.body">During Norwegian public holidays and the summer weeks 28–30, response times may double. Urgent matters should be flagged in the subject line: <code>[URGENT]</code>.</span>
+    </div>
+  </section>
+
+  <!-- § 03 — Business info -->
+  <section class="s" id="business">
+    <h2><span class="num">§ 03</span><span data-i18n="s3.title">Business information</span></h2>
+    <p data-i18n="s3.intro">Required by Norwegian angrerettloven § 8 and forbrukerkjøpsloven for e-commerce operators. If any of these details are missing or incorrect at the time of your purchase, tell us.</p>
+
+    <table class="biz">
+      <tr>
+        <th data-i18n="biz.name">Registered business name</th>
+        <td><b>BETA ART</b> <span data-i18n="biz.name.suffix">(enkeltpersonforetak, [PHOTOGRAPHER NAME])</span></td>
+      </tr>
+      <tr>
+        <th data-i18n="biz.orgnr">Organisation number</th>
+        <td><span class="mono">[000 000 000]</span></td>
+      </tr>
+      <tr>
+        <th data-i18n="biz.mva">VAT registration</th>
+        <td data-i18n="biz.mva.val"><span class="mono">[000 000 000] MVA</span> — registered from [DATE]. Below this date, the business was not MVA-liable.</td>
+      </tr>
+      <tr>
+        <th data-i18n="biz.address">Registered address</th>
+        <td data-i18n-html="biz.address.val">[STREET ADDRESS]<br>[POSTAL CODE] [CITY]<br>Norway</td>
+      </tr>
+      <tr>
+        <th data-i18n="biz.email">Primary email</th>
+        <td><a class="link" href="mailto:hello@betaart.no">hello@betaart.no</a></td>
+      </tr>
+      <tr>
+        <th data-i18n="biz.phone">Telephone</th>
+        <td><span class="mono">[+47 000 00 000]</span> <span data-i18n="biz.phone.note">— written correspondence is preferred</span></td>
+      </tr>
+      <tr>
+        <th data-i18n="biz.website">Website</th>
+        <td><a class="link" href="https://betaart.no">betaart.no</a></td>
+      </tr>
+      <tr>
+        <th data-i18n="biz.bank">Bank details</th>
+        <td data-i18n="biz.bank.val">Provided on invoices. For international transfers, IBAN and BIC are included.</td>
+      </tr>
+    </table>
+  </section>
+
+  <!-- § 04 — Complaints / withdrawal -->
+  <section class="s" id="complaints">
+    <h2><span class="num">§ 04</span><span data-i18n="s4.title">Complaints and right of withdrawal</span></h2>
+
+    <p data-i18n-html="s4.intro"><b>Consumer complaints</b> — If you are a consumer (not a business) and want to raise a complaint about a purchase, write to <a class="link" href="mailto:legal@betaart.no">legal@betaart.no</a>. If we cannot resolve it, you have the right to escalate to Forbrukertilsynet or Forbrukerklageutvalget (Norwegian consumer authorities), or the EU Online Dispute Resolution platform at <a class="link" href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">ec.europa.eu/consumers/odr</a>.</p>
+
+    <p data-i18n-html="s4.withdrawal"><b>Right of withdrawal (angrerett)</b> — 14 days from receipt for consumer purchases in the EU/EEA. For digital delivery, the right lapses once you have expressly consented to immediate download at checkout. Details in <a class="link" href="/license-terms.html#withdrawal">§ 07 of the licence terms</a>.</p>
+
+    <p data-i18n-html="s4.form">To exercise the right of withdrawal (where it still applies), use the standard withdrawal form supplied by Forbrukertilsynet, downloadable at <a class="link" href="https://www.forbrukertilsynet.no" target="_blank" rel="noopener">forbrukertilsynet.no</a>, and send it to <a class="link" href="mailto:legal@betaart.no">legal@betaart.no</a>.</p>
+  </section>
+
+  <!-- § 05 — Physical mail -->
+  <section class="s" id="mail">
+    <h2><span class="num">§ 05</span><span data-i18n="s5.title">Physical mail</span></h2>
+    <p data-i18n-html="s5.intro">Formal legal correspondence (writs, service of process, official notices from Datatilsynet, tax authorities, or courts) should be sent to the registered address in § 03. For non-urgent physical mail (books, contracts to sign, print portfolios) email first — someone may be away.</p>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="/" data-i18n="footer.home">Home</a>
+      <a href="/#collection" data-i18n="nav.collection">Collection</a>
+      <a href="/faq.html" data-i18n="footer.faq">FAQ</a>
+      <a href="/license-terms.html" data-i18n="footer.terms">Licence terms</a>
+      <a href="/privacy.html" data-i18n="footer.privacy">Privacy policy</a>
+    </div>
+    <div class="footer-legal">
+      <span data-i18n="footer.legal1">© 2026 Beta Art · All plates human-made · No generative AI</span>
+      <span>Org.nr [000 000 000]</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const LANG_KEY = "betaart:lang:v1";
+const DEFAULT_LANG = "en";
+let currentLang = DEFAULT_LANG;
+
+const T = {
+  en: {
+    "nav.collection":"Collection","nav.verification":"Verification","nav.faq":"FAQ",
+    "eyebrow":"Contact & business information",
+    "title":"Contact",
+    "intro":"One photographer, one archive, one inbox. Real replies from a real person. Route your question to the right address below for the fastest answer.",
+
+    "s1.title":"Where to write",
+    "s1.intro":"Three routes exist so your message reaches the right context. Any of them will eventually reach the same person, but the routed ones get faster and better-tailored replies.",
+    "route.a.label":"A · Licensing",
+    "route.a.name":"Buying, custom licences, questions before ordering",
+    "route.a.desc":"Order status, licence tier questions, requests to inspect a RAW original, custom licence quotes, or anything about the archive itself.",
+    "route.b.label":"B · Press",
+    "route.b.name":"Editorial requests, interviews, exhibition inquiries",
+    "route.b.desc":"Publication interviews, exhibition or gallery requests, book publishers, festival programmers, media background on the archive's positioning.",
+    "route.c.label":"C · Legal",
+    "route.c.name":"Copyright, GDPR, unauthorised use reports",
+    "route.c.desc":"Copyright infringement reports, GDPR data subject requests, right-of-withdrawal claims, DMCA counter-notices, or any formal legal correspondence.",
+
+    "s2.title":"Response times",
+    "s2.intro":"Written commitments. If we miss one, tell us — that itself is worth a response.",
+    "time.orders.lbl":"Orders",
+    "time.orders.val":"24 hours",
+    "time.orders.note":"Weekdays, 09–17 CET",
+    "time.general.lbl":"General questions",
+    "time.general.val":"48 hours",
+    "time.general.note":"Weekdays",
+    "time.legal.lbl":"Legal matters",
+    "time.legal.val":"72 hours",
+    "time.legal.note":"Acknowledged within 72h; substantive reply may take longer",
+    "notice.holiday.lbl":"Note",
+    "notice.holiday.body":"During Norwegian public holidays and the summer weeks 28–30, response times may double. Urgent matters should be flagged in the subject line: <code>[URGENT]</code>.",
+
+    "s3.title":"Business information",
+    "s3.intro":"Required by Norwegian angrerettloven § 8 and forbrukerkjøpsloven for e-commerce operators. If any of these details are missing or incorrect at the time of your purchase, tell us.",
+    "biz.name":"Registered business name",
+    "biz.name.suffix":"(enkeltpersonforetak, [PHOTOGRAPHER NAME])",
+    "biz.orgnr":"Organisation number",
+    "biz.mva":"VAT registration",
+    "biz.mva.val":"<span class=\"mono\">[000 000 000] MVA</span> — registered from [DATE]. Below this date, the business was not MVA-liable.",
+    "biz.address":"Registered address",
+    "biz.address.val":"[STREET ADDRESS]<br>[POSTAL CODE] [CITY]<br>Norway",
+    "biz.email":"Primary email",
+    "biz.phone":"Telephone",
+    "biz.phone.note":"— written correspondence is preferred",
+    "biz.website":"Website",
+    "biz.bank":"Bank details",
+    "biz.bank.val":"Provided on invoices. For international transfers, IBAN and BIC are included.",
+
+    "s4.title":"Complaints and right of withdrawal",
+    "s4.intro":"<b>Consumer complaints</b> — If you are a consumer (not a business) and want to raise a complaint about a purchase, write to <a class=\"link\" href=\"mailto:legal@betaart.no\">legal@betaart.no</a>. If we cannot resolve it, you have the right to escalate to Forbrukertilsynet or Forbrukerklageutvalget (Norwegian consumer authorities), or the EU Online Dispute Resolution platform at <a class=\"link\" href=\"https://ec.europa.eu/consumers/odr\" target=\"_blank\" rel=\"noopener\">ec.europa.eu/consumers/odr</a>.",
+    "s4.withdrawal":"<b>Right of withdrawal (angrerett)</b> — 14 days from receipt for consumer purchases in the EU/EEA. For digital delivery, the right lapses once you have expressly consented to immediate download at checkout. Details in <a class=\"link\" href=\"/license-terms.html#withdrawal\">§ 07 of the licence terms</a>.",
+    "s4.form":"To exercise the right of withdrawal (where it still applies), use the standard withdrawal form supplied by Forbrukertilsynet, downloadable at <a class=\"link\" href=\"https://www.forbrukertilsynet.no\" target=\"_blank\" rel=\"noopener\">forbrukertilsynet.no</a>, and send it to <a class=\"link\" href=\"mailto:legal@betaart.no\">legal@betaart.no</a>.",
+
+    "s5.title":"Physical mail",
+    "s5.intro":"Formal legal correspondence (writs, service of process, official notices from Datatilsynet, tax authorities, or courts) should be sent to the registered address in § 03. For non-urgent physical mail (books, contracts to sign, print portfolios) email first — someone may be away.",
+
+    "footer.home":"Home","footer.faq":"FAQ","footer.terms":"Licence terms","footer.privacy":"Privacy policy",
+    "footer.legal1":"© 2026 Beta Art · All plates human-made · No generative AI"
+  },
+  no: {
+    "nav.collection":"Samling","nav.verification":"Verifisering","nav.faq":"Spørsmål og svar",
+    "eyebrow":"Kontakt og virksomhetsinformasjon",
+    "title":"Kontakt",
+    "intro":"Én fotograf, ett arkiv, én innboks. Ekte svar fra en ekte person. Ruter du spørsmålet til riktig adresse under, får du raskest svar.",
+
+    "s1.title":"Hvor du skal skrive",
+    "s1.intro":"Tre ruter finnes for å sikre at meldingen når riktig kontekst. Alle når til slutt samme person, men de rutede får raskere og bedre tilpassede svar.",
+    "route.a.label":"A · Lisensiering",
+    "route.a.name":"Kjøp, skreddersydde lisenser, spørsmål før bestilling",
+    "route.a.desc":"Ordrestatus, lisensnivå-spørsmål, forespørsler om å inspisere en RAW-original, skreddersydde lisenstilbud, eller hva som helst om selve arkivet.",
+    "route.b.label":"B · Presse",
+    "route.b.name":"Redaksjonelle henvendelser, intervjuer, utstillingsforespørsler",
+    "route.b.desc":"Publikasjonsintervjuer, utstillings- eller galleriforespørsler, bokforleggere, festivalprogrammerere, mediebakgrunn om arkivets posisjonering.",
+    "route.c.label":"C · Juridisk",
+    "route.c.name":"Opphavsrett, GDPR, rapporter om uautorisert bruk",
+    "route.c.desc":"Rapporter om opphavsrettskrenkelse, GDPR-forespørsler, angreretts-krav, DMCA-motmeldinger, eller enhver formell juridisk korrespondanse.",
+
+    "s2.title":"Svartider",
+    "s2.intro":"Skriftlige forpliktelser. Hvis vi bommer på en, si fra — det fortjener i seg selv et svar.",
+    "time.orders.lbl":"Bestillinger",
+    "time.orders.val":"24 timer",
+    "time.orders.note":"Virkedager, 09–17 CET",
+    "time.general.lbl":"Generelle spørsmål",
+    "time.general.val":"48 timer",
+    "time.general.note":"Virkedager",
+    "time.legal.lbl":"Juridiske saker",
+    "time.legal.val":"72 timer",
+    "time.legal.note":"Bekreftet innen 72t; utfyllende svar kan ta lengre tid",
+    "notice.holiday.lbl":"Merk",
+    "notice.holiday.body":"I norske helligdager og sommerukene 28–30 kan svartidene doble seg. Hastesaker markeres i emnefeltet: <code>[HAST]</code>.",
+
+    "s3.title":"Virksomhetsinformasjon",
+    "s3.intro":"Påkrevd av norsk angrerettloven § 8 og forbrukerkjøpsloven for e-handelsaktører. Hvis noen av disse detaljene mangler eller er feil på tidspunktet for kjøpet ditt, si fra.",
+    "biz.name":"Registrert firmanavn",
+    "biz.name.suffix":"(enkeltpersonforetak, [FOTOGRAFENS NAVN])",
+    "biz.orgnr":"Organisasjonsnummer",
+    "biz.mva":"MVA-registrering",
+    "biz.mva.val":"<span class=\"mono\">[000 000 000] MVA</span> — registrert fra [DATO]. Før denne datoen var virksomheten ikke MVA-pliktig.",
+    "biz.address":"Registrert adresse",
+    "biz.address.val":"[GATEADRESSE]<br>[POSTNUMMER] [POSTSTED]<br>Norge",
+    "biz.email":"Primær e-post",
+    "biz.phone":"Telefon",
+    "biz.phone.note":"— skriftlig korrespondanse foretrekkes",
+    "biz.website":"Nettsted",
+    "biz.bank":"Bankopplysninger",
+    "biz.bank.val":"Gis på fakturaer. For internasjonale overføringer inkluderes IBAN og BIC.",
+
+    "s4.title":"Klager og angrerett",
+    "s4.intro":"<b>Forbrukerklager</b> — Er du forbruker (ikke en virksomhet) og vil klage på et kjøp, skriv til <a class=\"link\" href=\"mailto:legal@betaart.no\">legal@betaart.no</a>. Kan vi ikke løse det, har du rett til å eskalere til Forbrukertilsynet eller Forbrukerklageutvalget, eller EU-plattformen for tvisteløsning på <a class=\"link\" href=\"https://ec.europa.eu/consumers/odr\" target=\"_blank\" rel=\"noopener\">ec.europa.eu/consumers/odr</a>.",
+    "s4.withdrawal":"<b>Angrerett</b> — 14 dager fra mottak for forbrukerkjøp i EU/EØS. For digital levering bortfaller retten når du uttrykkelig har samtykket til umiddelbar nedlasting ved kassa. Detaljer i <a class=\"link\" href=\"/license-terms.html#withdrawal\">§ 07 i lisensvilkårene</a>.",
+    "s4.form":"For å benytte angreretten (der den fortsatt gjelder), bruk standard angreskjema fra Forbrukertilsynet, tilgjengelig på <a class=\"link\" href=\"https://www.forbrukertilsynet.no\" target=\"_blank\" rel=\"noopener\">forbrukertilsynet.no</a>, og send det til <a class=\"link\" href=\"mailto:legal@betaart.no\">legal@betaart.no</a>.",
+
+    "s5.title":"Fysisk post",
+    "s5.intro":"Formell juridisk korrespondanse (stevninger, forkynnelser, offisielle varsler fra Datatilsynet, skattemyndigheter eller domstoler) sendes til den registrerte adressen i § 03. For ikke-hastende fysisk post (bøker, kontrakter til signering, trykkportfolioer) send e-post først — noen kan være bortreist.",
+
+    "footer.home":"Hjem","footer.faq":"Spørsmål og svar","footer.terms":"Lisensvilkår","footer.privacy":"Personvern",
+    "footer.legal1":"© 2026 Beta Art · Alle plater laget av mennesker · Ingen generativ KI"
+  }
+};
+
+function t(key){ return (T[currentLang] && T[currentLang][key]) ?? (T[DEFAULT_LANG] && T[DEFAULT_LANG][key]) ?? key; }
+function applyLang(){
+  document.documentElement.lang = currentLang;
+  document.title = currentLang === "no" ? "Kontakt — BETA ART" : "Contact — BETA ART";
+  document.querySelectorAll("[data-i18n]").forEach(el => el.textContent = t(el.getAttribute("data-i18n")));
+  document.querySelectorAll("[data-i18n-html]").forEach(el => el.innerHTML = t(el.getAttribute("data-i18n-html")));
+  document.querySelectorAll(".lang button[data-lang]").forEach(b => b.classList.toggle("on", b.dataset.lang === currentLang));
+}
+function switchLang(lang){ if(!T[lang]) return; currentLang = lang; try{ localStorage.setItem(LANG_KEY, lang); }catch(e){} applyLang(); }
+document.querySelectorAll(".lang button[data-lang]").forEach(b => b.addEventListener("click", () => switchLang(b.dataset.lang)));
+try{ const s = localStorage.getItem(LANG_KEY); if(s && T[s]) currentLang = s; }catch(e){}
+applyLang();
+</script>
+</body>
+</html>

@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BETA ART Proof™ — Evidence Photography Platform</title>
+  <style>
+    :root {
+      --black: #050505;
+      --panel: #0b0d10;
+      --chrome-white: #f4f6f8;
+      --steel: #8f9aa6;
+      --silver-line: #c7ccd2;
+      --sapphire: #3a6fa8;
+      --sapphire-deep: #16283d;
+      --sapphire-bright: #7fa8d9;
+      --accent-brass: #b8860b;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      background: var(--black);
+      color: var(--chrome-white);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+    }
+
+    .mono {
+      font-family: 'IBM Plex Mono', 'Courier New', monospace;
+    }
+
+    /* ========== LAYOUT ========== */
+    section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 120px 48px;
+      position: relative;
+    }
+
+    .divider {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 48px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      opacity: 0.4;
+    }
+
+    .divider-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--sapphire) 50%, transparent);
+    }
+
+    .divider-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--sapphire-bright);
+    }
+
+    /* ========== TYPOGRAPHY ========== */
+    h1 {
+      font-size: clamp(48px, 6vw, 84px);
+      letter-spacing: 2px;
+      font-weight: 600;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      background: linear-gradient(135deg, var(--chrome-white) 0%, var(--silver-line) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    h2 {
+      font-size: clamp(32px, 4vw, 56px);
+      letter-spacing: 1px;
+      font-weight: 600;
+      margin-bottom: 24px;
+      color: var(--chrome-white);
+    }
+
+    h3 {
+      font-size: 20px;
+      letter-spacing: 1px;
+      font-weight: 600;
+      color: var(--chrome-white);
+      margin-bottom: 12px;
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--sapphire-bright);
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--steel);
+      margin-bottom: 16px;
+    }
+
+    .lead {
+      font-size: 18px;
+      line-height: 1.8;
+      max-width: 720px;
+      color: var(--silver-line);
+    }
+
+    /* ========== COMPONENTS ========== */
+    .verification-seal {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(74, 157, 111, 0.08);
+      border: 1px solid rgba(127, 168, 217, 0.3);
+      border-radius: 20px;
+      padding: 8px 16px;
+      font-size: 13px;
+      color: var(--sapphire-bright);
+      font-weight: 600;
+      letter-spacing: 1px;
+      margin: 16px 0;
+    }
+
+    .verification-seal::before {
+      content: '✓';
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .badge-stat {
+      background: rgba(58, 111, 168, 0.08);
+      border: 1px solid rgba(58, 111, 168, 0.2);
+      border-radius: 4px;
+      padding: 20px 24px;
+      margin: 12px 0;
+    }
+
+    .badge-stat strong {
+      color: var(--sapphire-bright);
+      display: block;
+      font-size: 13px;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
+    .badge-stat span {
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--chrome-white);
+      font-family: 'IBM Plex Mono', monospace;
+    }
+
+    button {
+      background: var(--sapphire);
+      color: var(--black);
+      border: none;
+      padding: 14px 32px;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+    }
+
+    button:hover {
+      background: var(--sapphire-bright);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(127, 168, 217, 0.2);
+    }
+
+    /* ========== HERO ========== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding-top: 80px;
+      padding-bottom: 80px;
+    }
+
+    .hero-seal {
+      width: 200px;
+      height: 200px;
+      margin: 0 auto 48px;
+      background: radial-gradient(circle, rgba(127, 168, 217, 0.1) 0%, transparent 70%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      animation: pulse-seal 3s ease-in-out infinite;
+    }
+
+    .hero-seal::before {
+      content: '✓';
+      font-size: 80px;
+      font-weight: 700;
+      color: var(--sapphire-bright);
+    }
+
+    @keyframes pulse-seal {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.05); opacity: 0.8; }
+    }
+
+    .hero h1 {
+      max-width: 900px;
+      margin: 0 auto 16px;
+    }
+
+    .hero-tagline {
+      font-size: 20px;
+      letter-spacing: 6px;
+      color: var(--steel);
+      text-transform: uppercase;
+      margin: 32px 0 48px;
+    }
+
+    .hero-tagline em {
+      color: var(--sapphire-bright);
+      font-style: normal;
+      font-weight: 700;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 48px;
+    }
+
+    /* ========== TRUST STRIP ========== */
+    .trust-strip {
+      background: linear-gradient(135deg, rgba(58, 111, 168, 0.05) 0%, rgba(16, 40, 61, 0.05) 100%);
+      border-top: 1px solid rgba(58, 111, 168, 0.1);
+      border-bottom: 1px solid rgba(58, 111, 168, 0.1);
+      padding: 60px 48px;
+    }
+
+    .trust-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 40px;
+      text-align: center;
+    }
+
+    .trust-item strong {
+      display: block;
+      font-size: 28px;
+      color: var(--sapphire-bright);
+      font-weight: 700;
+      margin-bottom: 8px;
+      font-family: 'IBM Plex Mono', monospace;
+    }
+
+    .trust-item p {
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--steel);
+    }
+
+    /* ========== WHY TRUST ========== */
+    .principle-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      margin-top: 60px;
+    }
+
+    .principle-card {
+      border: 1px solid rgba(58, 111, 168, 0.15);
+      border-radius: 4px;
+      padding: 40px;
+      background: linear-gradient(135deg, rgba(11, 13, 16, 0.5) 0%, rgba(22, 40, 61, 0.3) 100%);
+      transition: all 0.3s ease;
+    }
+
+    .principle-card:hover {
+      border-color: var(--sapphire-bright);
+      background: linear-gradient(135deg, rgba(11, 13, 16, 0.7) 0%, rgba(22, 40, 61, 0.5) 100%);
+      transform: translateY(-4px);
+    }
+
+    .principle-icon {
+      font-size: 40px;
+      margin-bottom: 20px;
+    }
+
+    .principle-card h3 {
+      color: var(--sapphire-bright);
+      margin-bottom: 16px;
+    }
+
+    /* ========== HOW IT WORKS ========== */
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      margin-top: 60px;
+      position: relative;
+    }
+
+    .process-step {
+      text-align: center;
+    }
+
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--sapphire) 0%, var(--sapphire-deep) 100%);
+      border-radius: 50%;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--chrome-white);
+      margin: 0 auto 24px;
+    }
+
+    .process-step h3 {
+      color: var(--chrome-white);
+      margin-bottom: 12px;
+    }
+
+    .process-step p {
+      font-size: 14px;
+      color: var(--steel);
+    }
+
+    @media (max-width: 768px) {
+      .process-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ========== SPLIT MESSAGING ========== */
+    .split-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      margin-top: 60px;
+      align-items: start;
+    }
+
+    .split-card {
+      border: 1px solid rgba(58, 111, 168, 0.15);
+      border-radius: 4px;
+      padding: 48px;
+      background: linear-gradient(135deg, rgba(11, 13, 16, 0.5) 0%, rgba(22, 40, 61, 0.3) 100%);
+    }
+
+    .split-card h3 {
+      color: var(--sapphire-bright);
+      font-size: 24px;
+      margin-bottom: 24px;
+    }
+
+    .split-card ul {
+      list-style: none;
+      margin: 24px 0;
+    }
+
+    .split-card li {
+      margin-bottom: 16px;
+      padding-left: 24px;
+      position: relative;
+      color: var(--steel);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .split-card li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--sapphire-bright);
+      font-weight: bold;
+    }
+
+    .split-card button {
+      width: 100%;
+      margin-top: 24px;
+    }
+
+    @media (max-width: 768px) {
+      .split-section {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ========== GALLERY ========== */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 60px;
+    }
+
+    .gallery-item {
+      position: relative;
+      aspect-ratio: 1;
+      overflow: hidden;
+      border-radius: 4px;
+      border: 1px solid rgba(58, 111, 168, 0.1);
+      background: linear-gradient(135deg, #2a3a4a 0%, #1a2a3a 100%);
+      cursor: pointer;
+      transition: all 0.4s ease;
+    }
+
+    .gallery-item:hover {
+      border-color: var(--sapphire-bright);
+      box-shadow: 0 16px 48px rgba(127, 168, 217, 0.15);
+      transform: translateY(-4px);
+    }
+
+    .gallery-image {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle, rgba(58, 111, 168, 0.1) 0%, transparent 70%);
+      font-size: 48px;
+    }
+
+    .gallery-seal {
+      position: absolute;
+      bottom: 16px;
+      right: 16px;
+      opacity: 0;
+      transform: scale(0.8);
+      transition: all 0.4s ease;
+    }
+
+    .gallery-item:hover .gallery-seal {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .seal-badge {
+      background: rgba(74, 157, 111, 0.15);
+      border: 1px solid rgba(74, 157, 111, 0.4);
+      border-radius: 50%;
+      width: 70px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      font-size: 11px;
+      color: #4a9d6f;
+      font-weight: 600;
+      text-align: center;
+      padding: 8px;
+      font-family: 'IBM Plex Mono', monospace;
+    }
+
+    .seal-check {
+      font-size: 20px;
+      margin-bottom: 4px;
+    }
+
+    @media (max-width: 768px) {
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    /* ========== FOOTER ========== */
+    footer {
+      border-top: 1px solid rgba(58, 111, 168, 0.1);
+      padding: 60px 48px;
+      text-align: center;
+      color: var(--steel);
+      font-size: 13px;
+      letter-spacing: 2px;
+    }
+
+    footer a {
+      color: var(--sapphire-bright);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    footer a:hover {
+      color: var(--chrome-white);
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 768px) {
+      section {
+        padding: 80px 24px;
+      }
+
+      .divider {
+        padding: 0 24px;
+      }
+
+      .hero-seal {
+        width: 140px;
+        height: 140px;
+      }
+
+      .hero-seal::before {
+        font-size: 56px;
+      }
+
+      h1 {
+        font-size: 40px;
+      }
+
+      h2 {
+        font-size: 28px;
+      }
+
+      .lead {
+        font-size: 16px;
+      }
+
+      .principle-card,
+      .split-card {
+        padding: 32px;
+      }
+
+      .trust-grid {
+        gap: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ========== HERO ========== -->
+<section class="hero">
+  <div class="hero-seal"></div>
+  <h1>Tamper-Proof Documentation for Construction</h1>
+  <div class="hero-tagline">
+    Trust <em>Every</em> Image
+  </div>
+  <p class="lead">
+    Verified photographs with audited chain of custody. Evidence-grade documentation for insurance claims, disputes, and compliance.
+  </p>
+  <div class="hero-cta">
+    <button>Apply as Photographer</button>
+    <button>Learn for Contractors</button>
+  </div>
+</section>
+
+<div class="divider">
+  <div class="divider-line"></div>
+  <div class="divider-dot"></div>
+  <div class="divider-line"></div>
+</div>
+
+<!-- ========== TRUST STRIP ========== -->
+<div class="trust-strip">
+  <div class="trust-grid">
+    <div class="trust-item">
+      <strong>8,400+</strong>
+      <p>Verified Photographers</p>
+    </div>
+    <div class="trust-item">
+      <strong>0%</strong>
+      <p>AI-Generated Images</p>
+    </div>
+    <div class="trust-item">
+      <strong>100%</strong>
+      <p>Auditable Chain</p>
+    </div>
+    <div class="trust-item">
+      <strong>15ms</strong>
+      <p>Timestamp Precision</p>
+    </div>
+  </div>
+</div>
+
+<div class="divider">
+  <div class="divider-line"></div>
+  <div class="divider-dot"></div>
+  <div class="divider-line"></div>
+</div>
+
+<!-- ========== WHY TRUST ========== -->
+<section>
+  <div class="eyebrow">Why We're Different</div>
+  <h2>Built for Verification, Not Aesthetics</h2>
+  <p class="lead">
+    BETA ART Proof™ is designed for legal admissibility from the ground up. Every photograph carries cryptographic proof of identity, time, location, and rights.
+  </p>
+
+  <div class="principle-grid">
+    <div class="principle-card">
+      <div class="principle-icon">🔐</div>
+      <h3>Identity Verified</h3>
+      <p>Every photographer is vetted at signup. No anonymous uploads. No deepfakes. Every photo is tied to a verified human.</p>
+    </div>
+
+    <div class="principle-card">
+      <div class="principle-icon">⛓️</div>
+      <h3>Provenance Sealed</h3>
+      <p>Timestamp locked to GPS coordinates. Immutable audit trail of who accessed, used, or shared each image. Chain of custody built in.</p>
+    </div>
+
+    <div class="principle-card">
+      <div class="principle-icon">✓</div>
+      <h3>Rights Documented</h3>
+      <p>Copyright, licensing terms, and usage rights embedded in metadata. No disputes later. Every image speaks for itself.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider">
+  <div class="divider-line"></div>
+  <div class="divider-dot"></div>
+  <div class="divider-line"></div>
+</div>
+
+<!-- ========== HOW IT WORKS ========== -->
+<section>
+  <div class="eyebrow">Process</div>
+  <h2>How BETA ART Proof™ Works</h2>
+
+  <div class="process-grid">
+    <div class="process-step">
+      <div class="step-number">1</div>
+      <h3>Upload & Verify</h3>
+      <p>Photographer submits image with optional metadata. Our system auto-tags timestamp, GPS, and photographer ID.</p>
+    </div>
+
+    <div class="process-step">
+      <div class="step-number">2</div>
+      <h3>Audit & Seal</h3>
+      <p>Image is cryptographically sealed. Audit log created. All changes (if any) are recorded and timestamped.</p>
+    </div>
+
+    <div class="process-step">
+      <div class="step-number">3</div>
+      <h3>License & Deploy</h3>
+      <p>Contractors/insurers license the image. Download comes with verification certificate. Full chain of custody documented.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider">
+  <div class="divider-line"></div>
+  <div class="divider-dot"></div>
+  <div class="divider-line"></div>
+</div>
+
+<!-- ========== SPLIT MESSAGING ========== -->
+<section>
+  <div class="eyebrow">Who Uses BETA ART</div>
+  <h2>Two Communities, One Platform</h2>
+
+  <div class="split-section">
+    <div class="split-card">
+      <h3>For Photographers</h3>
+      <p>Turn site documentation into income. Build a portfolio of verified, legally-defensible evidence.</p>
+      <ul>
+        <li>Application-based signup (quality control)</li>
+        <li>15–20% commission per license</li>
+        <li>Global audience of contractors & insurers</li>
+        <li>Certificate of authenticity for every upload</li>
+        <li>Monthly payouts, no fees</li>
+      </ul>
+      <button>Join Our Community</button>
+    </div>
+
+    <div class="split-card">
+      <h3>For Contractors & Insurers</h3>
+      <p>Access verified site photography. Resolve disputes. Strengthen insurance claims. No more email chains.</p>
+      <ul>
+        <li>Search verified photographers by location & specialty</li>
+        <li>Download with chain-of-custody certificate</li>
+        <li>Enterprise tier for large teams</li>
+        <li>API integration for workflow automation</li>
+        <li>Audit trail admissible in court</li>
+      </ul>
+      <button>Start Your Trial</button>
+    </div>
+  </div>
+</section>
+
+<div class="divider">
+  <div class="divider-line"></div>
+  <div class="divider-dot"></div>
+  <div class="divider-line"></div>
+</div>
+
+<!-- ========== GALLERY ========== -->
+<section>
+  <div class="eyebrow">Curated Portfolio</div>
+  <h2>Evidence in Action</h2>
+  <p class="lead">
+    Real construction site documentation. Verified photographers. Timestamp locked. Ready for claims.
+  </p>
+
+  <div class="gallery-grid">
+    <div class="gallery-item">
+      <div class="gallery-image">📸</div>
+      <div class="gallery-seal">
+        <div class="seal-badge">
+          <div class="seal-check">✓</div>
+          <div>Verified</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery-item">
+      <div class="gallery-image">📸</div>
+      <div class="gallery-seal">
+        <div class="seal-badge">
+          <div class="seal-check">✓</div>
+          <div>Verified</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery-item">
+      <div class="gallery-image">📸</div>
+      <div class="gallery-seal">
+        <div class="seal-badge">
+          <div class="seal-check">✓</div>
+          <div>Verified</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery-item">
+      <div class="gallery-image">📸</div>
+      <div class="gallery-seal">
+        <div class="seal-badge">
+          <div class="seal-check">✓</div>
+          <div>Verified</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery-item">
+      <div class="gallery-image">📸</div>
+      <div class="gallery-seal">
+        <div class="seal-badge">
+          <div class="seal-check">✓</div>
+          <div>Verified</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery-item">
+      <div class="gallery-image">📸</div>
+      <div class="gallery-seal">
+        <div class="seal-badge">
+          <div class="seal-check">✓</div>
+          <div>Verified</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider">
+  <div class="divider-line"></div>
+  <div class="divider-dot"></div>
+  <div class="divider-line"></div>
+</div>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+  <p style="margin-bottom: 24px;">BETA ART Proof™ — Verified Documentation for Construction</p>
+  <p>
+    <a href="#">Privacy</a> · 
+    <a href="#">Terms</a> · 
+    <a href="#">Contact</a> · 
+    <a href="#">Status</a>
+  </p>
+  <p style="margin-top: 24px; font-size: 11px; opacity: 0.6;">
+    © 2026 BETA ART. All rights reserved.
+  </p>
+</footer>
+
+</body>
+</html>

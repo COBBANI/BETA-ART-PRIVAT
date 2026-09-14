@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BETA ART — Three Properties</title>
+<meta name="description" content="Entry point to the three Beta Art web properties: the verified archive, the business rights desk, and the Field Notes journal.">
+<meta name="robots" content="index,follow,noai,noimageai">
+<meta name="author" content="Betül Öner">
+<meta name="copyright" content="© 2026 Beta Art — Betül Öner. All rights reserved worldwide.">
+<link rel="canonical" href="https://start.beta-art.com/">
+<link rel="alternate" hreflang="no" href="https://start.beta-art.com/no/">
+<link rel="alternate" hreflang="en" href="https://start.beta-art.com/">
+<link rel="alternate" hreflang="x-default" href="https://start.beta-art.com/">
+<meta property="og:url" content="https://start.beta-art.com">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Beta Art">
+<meta property="og:title" content="BETA ART — Made by a human. Verified at the source.">
+<meta property="og:description" content="Three separate properties: the verified photography archive, the digital studio, and the Field Notes journal.">
+<meta property="og:image:alt" content="Beta Art — made by a human, verified at the source.">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://start.beta-art.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Beta Art — made by a human, verified at the source.">
+<meta name="twitter:image" content="https://start.beta-art.com/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#FBFAF7">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23FBFAF7'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%238B1A1A'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #FBFAF7; --paper-2: #F3F0E9; --ink: #0F0F0F; --ink-2: #1F1D1B;
+    --muted: #67635B; --rule: #E4E0D8; --seal: #8B1A1A; --on-seal: #FBFAF7;
+    --f-display: "Fraunces", Georgia, serif;
+    --f-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    --f-mono: "JetBrains Mono", "SFMono-Regular", Menlo, monospace;
+
+    /* Spacing, on a 4px base. Every gap on the page comes from this list, so
+       the same relationship is spaced the same way wherever it appears. */
+    --space-1: .25rem;  --space-2: .5rem;   --space-3: .75rem;  --space-4: 1rem;
+    --space-5: 1.25rem; --space-6: 1.5rem;  --space-8: 2rem;    --space-10: 2.5rem;
+    --space-12: 3rem;   --space-14: 3.5rem; --space-16: 4rem;   --space-20: 5rem;
+
+    /* Small type. Three steps, not nine: the old set put four sizes inside a
+       0.96px band, which no eye can separate. The floor is 12px because the
+       legal and trust text is set in this face. */
+    --mono-sm: .75rem;    /* 12px — navigation, roles, copyright */
+    --mono-md: .8125rem;  /* 13px — labels, buttons, the approval mark */
+    --mono-lg: .875rem;   /* 14px — wordmark */
+
+    /* Motion. One duration for interface feedback; anything slower reads as
+       lag on a control you are about to click. */
+    --dur: 200ms;
+    --ease: cubic-bezier(.2, 0, 0, 1);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh; background: var(--paper); color: var(--ink);
+    font-family: var(--f-body); line-height: 1.6; display: flex; flex-direction: column;
+  }
+  .wrap { width: min(100% - 3rem, 1100px); margin-inline: auto; }
+  header { padding: clamp(3rem, 9vw, 6rem) 0 2rem; }
+  .mark-row { display: flex; align-items: center; gap: .9rem; margin-bottom: 2rem; }
+  .seal-mark { width: 34px; height: 34px; }
+  .wordmark { font-family: var(--f-mono); font-size: var(--mono-lg); letter-spacing: .26em; }
+  h1 { font-family: var(--f-display); font-weight: 300; font-size: clamp(2.4rem, 6vw, 4.2rem); margin: 0 0 var(--space-6); letter-spacing: -.02em; line-height: 1.05; }
+  .label { font-family: var(--f-mono); font-size: var(--mono-sm); letter-spacing: .24em; text-transform: uppercase; color: var(--muted); margin: 0 0 1rem; }
+  .lead { max-width: 60ch; color: var(--ink-2); margin: 0; }
+
+  main { flex: 1; padding-bottom: 4rem; }
+  .sites { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-top: 2.5rem; }
+  .site { background: var(--paper); padding: 2rem 1.7rem; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: .6rem; transition: background var(--dur) var(--ease); }
+  .site:hover { background: var(--paper-2); }
+  .swatch { height: 5px; width: 60px; }
+  .swatch-archive { background: linear-gradient(90deg, var(--ink) 60%, var(--seal) 60%); }
+  .swatch-business { background: linear-gradient(90deg, #171614 60%, var(--seal) 60%); }
+  .swatch-journal { background: linear-gradient(90deg, var(--paper-2) 60%, var(--seal) 60%); border: 1px solid var(--rule); }
+  .site h2 { font-family: var(--f-display); font-weight: 400; font-size: 1.5rem; margin: .7rem 0 0; }
+  .site .role { font-family: var(--f-mono); font-size: var(--mono-sm); letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin: 0; }
+  .site p { margin: 0; font-size: .92rem; color: var(--ink-2); }
+  .site .go { font-family: var(--f-mono); font-size: var(--mono-sm); letter-spacing: .18em; text-transform: uppercase; color: var(--muted); margin-top: auto; padding-top: 1.4rem; }
+  .site .go, .btn, footer nav a, .lang-select {
+    transition: color var(--dur) var(--ease), background var(--dur) var(--ease), border-color var(--dur) var(--ease);
+  }
+  .site:hover .go { color: var(--seal); }
+
+  footer { border-top: 1px solid var(--rule); padding: 1.4rem 0; background: var(--paper-2); }
+  footer p { margin: 0 0 var(--space-2); font-family: var(--f-mono); font-size: var(--mono-sm); letter-spacing: .08em; color: var(--muted); }
+  footer nav { display: flex; flex-wrap: wrap; gap: 1.2rem; }
+  footer nav a { font-family: var(--f-mono); font-size: var(--mono-sm); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); text-decoration: none; }
+  footer nav a:hover { color: var(--seal); }
+  a:focus-visible, .site:focus-visible { outline: 2px solid var(--seal); outline-offset: 3px; }
+
+  .mark-row { justify-content: space-between; }
+  .mark-id { display: flex; align-items: center; gap: .9rem; }
+  .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
+  .lang-select {
+    appearance: none; -webkit-appearance: none;
+    font-family: var(--f-mono); font-size: var(--mono-sm); letter-spacing: .14em; text-transform: uppercase;
+    color: var(--ink); background: transparent; border: 1px solid var(--rule);
+    padding: .5rem 1.8rem .5rem .7rem; border-radius: 0; cursor: pointer;
+    background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%), linear-gradient(135deg, var(--muted) 50%, transparent 50%);
+    background-position: calc(100% - 13px) 52%, calc(100% - 8px) 52%;
+    background-size: 5px 5px, 5px 5px; background-repeat: no-repeat;
+  }
+  .lang-select:hover, .lang-select:focus-visible { border-color: var(--seal); }
+  [dir="rtl"] .lang-select { padding: .5rem .7rem .5rem 1.8rem; background-position: 13px 52%, 8px 52%; }
+
+  /* The Norwegian hub has no switcher — a page whose body is Norwegian should
+     not have its chrome silently become Turkish. It gets two addresses
+     instead, and it has to read as the same control the English page shows in
+     that corner, or the two pages look like two sites. */
+  .lang-pair {
+    display: flex; align-items: center; gap: var(--space-2); margin: 0;
+    font-family: var(--f-mono); font-size: var(--mono-sm); letter-spacing: .14em;
+    text-transform: uppercase;
+    border: 1px solid var(--rule); padding: 0 .7rem;
+  }
+  /* The links carry the box's vertical padding rather than the box doing it,
+     so the tap target is the full height of the control and not the 19px of
+     the text inside it. */
+  .lang-pair a, .lang-pair span { padding-block: .5rem; }
+  .lang-pair a { color: var(--muted); text-decoration: none; }
+  .lang-pair a:hover { color: var(--seal); }
+  .lang-pair a::after { content: "·"; margin-left: var(--space-2); color: var(--rule); }
+  .lang-pair span { color: var(--ink); }
+
+  /* The mark: a person looked at this page and approved it. Not decoration —
+     it is the promise the whole archive rests on, so it says so in words too. */
+  .human-mark {
+    display: inline-flex; align-items: center; gap: .55rem;
+    margin: 0 0 .55rem; padding: .4rem .8rem;
+    border: 1px solid var(--seal); color: var(--seal);
+    font-family: var(--f-mono); font-size: var(--mono-md); letter-spacing: .12em;
+    text-transform: uppercase; line-height: 1;
+  }
+  .human-mark svg { flex: none; }
+  .human-mark-note {
+    margin: 0 0 .9rem; max-width: 62ch;
+    font-family: var(--f-body); font-size: var(--mono-md); letter-spacing: 0;
+    text-transform: none; color: var(--muted);
+  }
+  /* Arabic letters join; extra tracking would break the word apart. */
+  [lang="ar"] .human-mark { letter-spacing: 0; }
+
+
+  .guarantee { margin-top: 3.5rem; }
+  .guarantee h2 { font-family: var(--f-display); font-weight: 400; font-size: clamp(2rem, 4vw, 2.6rem); margin: 0 0 var(--space-6); letter-spacing: -.01em; }
+  .guar-lead { max-width: 64ch; margin: 0; color: var(--ink-2); }
+  .guar-list { list-style: none; counter-reset: g; padding: 0; margin: var(--space-6) 0 0;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.8rem; }
+  .guar-list li { counter-increment: g; border-top: 2px solid var(--ink); padding-top: .9rem; }
+  .guar-list li::before { content: counter(g, upper-roman); display: block;
+    font-family: var(--f-mono); font-size: var(--mono-sm); letter-spacing: .2em; color: var(--seal); margin-bottom: var(--space-2); }
+  .guar-list h3 { font-family: var(--f-display); font-weight: 400; font-size: 1.16rem; margin: 0 0 .45rem; }
+  .guar-list p { margin: 0; font-size: .9rem; color: var(--ink-2); }
+  .guar-note { max-width: 64ch; margin: var(--space-14) 0 0; padding-left: var(--space-4);
+    border-left: 3px solid var(--seal); font-size: .92rem; color: var(--ink-2); }
+
+  .guar-actions { display: flex; flex-wrap: wrap; gap: .7rem; margin: 2rem 0 0; }
+  .btn { display: inline-block; padding: .8rem 1.4rem; background: var(--ink); color: var(--paper);
+    border: 1px solid var(--ink); text-decoration: none; font-family: var(--f-mono);
+    font-size: var(--mono-md); letter-spacing: .16em; text-transform: uppercase; }
+  .btn:hover { background: var(--seal); border-color: var(--seal); color: var(--on-seal); }
+  .btn-quiet { background: transparent; color: var(--ink); border-color: var(--rule); }
+  .btn-quiet:hover { background: transparent; color: var(--seal); border-color: var(--seal); }
+
+/* WCAG 2.2 AA, 2.5.8: a target needs 24x24. Navigation, footer and social
+   links were 16-21px tall — the text height and nothing else. */
+.nav a, .footer nav a, .social a, .crumbs a, .colophon nav a,
+.bar-inner nav a, footer nav a, .legal-index a, .toc a, .pager a, .card-go, .read-on {
+  padding-block: .5rem;
+}
+
+  /* The other three properties honour this; the front door did not. */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      transition-duration: .01ms !important;
+      animation-duration: .01ms !important;
+      animation-iteration-count: 1 !important;
+      scroll-behavior: auto !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="mark-row">
+      <div class="mark-id">
+      <svg class="seal-mark" viewBox="0 0 100 100" aria-hidden="true">
+        <g fill="none" stroke="currentColor" stroke-width="4">
+          <circle cx="50" cy="50" r="46"/>
+          <path d="M50 30 75.81 11.92M67.32 40 84.99 47.86M67.32 60 76.66 84.02M50 70 24.19 88.08M32.68 60 15.01 52.14M32.68 40 23.34 15.98"/>
+        </g>
+        <circle cx="50" cy="50" r="7" fill="#8B1A1A"/>
+      </svg>
+      <span class="wordmark">BETA ART</span>
+      </div>
+      <div class="lang-slot" id="lang-slot"></div>
+    </div>
+    <p class="label" data-i18n="label">Three properties · one archive</p>
+    <h1 data-i18n="h1">Made by a human. Verified at the source.</h1>
+    <p class="lead" data-i18n="lead">Three separate concepts, each with its own design language, built as static HTML, CSS and JavaScript — no build step, no framework, no external dependency beyond the brand's three typefaces.</p>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <nav class="sites" aria-label="Beta Art sites">
+      <a class="site" href="https://beta-art.com/">
+        <span class="swatch swatch-archive" aria-hidden="true"></span>
+        <p class="role" data-i18n="p1.role">Project 01 · Public archive</p>
+        <h2>Beta Art</h2>
+        <p data-i18n="p1.body">Twelve launch plates with accession labels, the three verification tests, a 35-category directory and licence tiers from kr 190. Museum paper, blind emboss, hairline rules.</p>
+        <span class="go" data-i18n="p1.go">Enter the archive →</span>
+      </a>
+
+      <a class="site" href="https://business.beta-art.com/">
+        <span class="swatch swatch-business" aria-hidden="true"></span>
+        <p class="role" data-i18n="p2.role">Project 02 · Rights desk</p>
+        <h2>Beta Art Business</h2>
+        <p data-i18n="p2.body">The digital studio: websites, branding, content, SEO and AI automation for people and companies, with a smart service finder, four packages and a browser-only AI Studio.</p>
+        <span class="go" data-i18n="p2.go">Open the desk →</span>
+      </a>
+
+      <a class="site" href="https://notater.beta-art.com/">
+        <span class="swatch swatch-journal" aria-hidden="true"></span>
+        <p class="role" data-i18n="p3.role">Project 03 · Journal</p>
+        <h2>Field Notes</h2>
+        <p data-i18n="p3.body">How the archive gets built: provenance, the three tests, shot planning, light this far north. Newsprint masthead, numbered entries, long-form reading with a dark mode.</p>
+        <span class="go" data-i18n="p3.go">Open the journal →</span>
+      </a>
+    </nav>
+
+    <section class="guarantee" aria-labelledby="guarantee-title">
+      <h2 id="guarantee-title" data-i18n="guar.title">What “verified at the source” means</h2>
+      <p class="guar-lead" data-i18n="guar.lead">Every photograph in the archive was made by a person with a camera. Nothing here is generated, composited or enhanced by a machine — and that is a written guarantee, not a house style. Three records stand behind it, and each one is made before anybody asks for it.</p>
+      <ol class="guar-list">
+        <li>
+          <h3 data-i18n="guar.1t">The original file is kept</h3>
+          <p data-i18n="guar.1b">Every plate begins as a RAW file from a real camera, archived within a day with a checksum and available for inspection.</p>
+        </li>
+        <li>
+          <h3 data-i18n="guar.2t">The capture record travels with the image</h3>
+          <p data-i18n="guar.2b">Camera, lens, exposure, place and time, written at the shoot. Where the equipment supports it, content credentials are signed in camera.</p>
+        </li>
+        <li>
+          <h3 data-i18n="guar.3t">The licence is signed by the maker</h3>
+          <p data-i18n="guar.3b">You license directly from the photographer, with a written licence, a proper invoice and a numbered certificate. No intermediary, and no uncertainty about who holds the rights.</p>
+        </li>
+      </ol>
+      <p class="guar-note" data-i18n="guar.note">If a plate sold as verified is ever shown to have been generated by a machine, the licence fee is refunded in full. A guarantee with no consequence attached is a slogan.</p>
+      <p class="guar-actions">
+        <a class="btn" href="https://beta-art.com/#collection" data-i18n="guar.cta1">See the twelve plates</a>
+        <a class="btn btn-quiet" href="legal.html#licence" data-i18n="guar.cta2">Read the licence terms</a>
+      </p>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="human-mark"><svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7.1" fill="none" stroke="currentColor" stroke-width="1.4"></circle><path d="M4.7 8.2 7 10.5 11.3 5.7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"></path></svg><span data-i18n="mark.human">Human approved</span></p>
+    <p class="human-mark-note" data-i18n="mark.human.note">Nothing is published here until a person has seen it and approved it.</p>
+    <p data-i18n="foot.copy">&copy; 2026 Beta Art &mdash; Bet&uuml;l &Ouml;ner. All rights reserved worldwide. The Beta Art name, mark, concept, page design and every photographic work are protected. Development preview &mdash; placeholder imagery, draft pricing, no backend connected.</p>
+    <nav aria-label="Legal and social">
+      <a href="legal.html" data-i18n="nav.legal">Legal notice</a>
+      <a href="legal.html#privacy" data-i18n="nav.privacy">Privacy (worldwide)</a>
+      <a href="legal.html#ai" data-i18n="nav.ai">AI &amp; training data</a>
+      <a href="legal.html#licence" data-i18n="nav.licence">Licence terms</a>
+      <a href="report.html" data-i18n="nav.report">Report content</a>
+      <a href="https://www.instagram.com/betaart.no" rel="me noopener">Instagram</a>
+      <a href="https://www.linkedin.com/company/beta-art" rel="me noopener">LinkedIn</a>
+      <a href="mailto:hallo@beta-art.com">hallo@beta-art.com</a>
+    </nav>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "Organization",
+ "@id": "https://start.beta-art.com/#org",
+ "name": "Beta Art",
+ "url": "https://start.beta-art.com/",
+ "description": "Beta Art is a verified-human photography archive, a digital studio and a journal, run by Betül Öner in Norway.",
+ "email": "hallo@beta-art.com",
+ "areaServed": "Worldwide",
+ "founder": {
+  "@type": "Person",
+  "name": "Betül Öner"
+ },
+ "address": {
+  "@type": "PostalAddress",
+  "addressCountry": "NO"
+ },
+ "sameAs": [
+  "https://www.instagram.com/betaart.no",
+  "https://www.linkedin.com/company/beta-art",
+  "https://www.behance.net/betaart",
+  "https://www.pinterest.com/betaart",
+  "https://www.facebook.com/betaart.no",
+  "https://www.youtube.com/@betaart"
+ ],
+ "subOrganization": [
+  {
+   "@type": "Organization",
+   "name": "Beta Art",
+   "url": "https://beta-art.com/",
+   "description": "The verified photography archive and licensing desk."
+  },
+  {
+   "@type": "Organization",
+   "name": "Beta Art Business",
+   "url": "https://business.beta-art.com/",
+   "description": "The digital studio: websites, branding, content, SEO and AI automation."
+  },
+  {
+   "@type": "Organization",
+   "name": "Field Notes",
+   "url": "https://notater.beta-art.com/",
+   "description": "The Beta Art journal on building a verified photography archive."
+  }
+ ]
+}
+</script>
+<script src="i18n.js"></script>
+</body>
+</html>

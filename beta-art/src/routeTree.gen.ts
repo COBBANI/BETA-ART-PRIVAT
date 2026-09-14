@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as ChuckNorrisRouteImport } from './routes/chuck-norris'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as LicenseTermsRouteImport } from './routes/license-terms'
 import { Route as PrivacyRouteImport } from './routes/privacy'
@@ -31,6 +32,11 @@ const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
 const AuthRoute = AuthRouteImport.update({
   id: '/auth',
   path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChuckNorrisRoute = ChuckNorrisRouteImport.update({
+  id: '/chuck-norris',
+  path: '/chuck-norris',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -67,6 +73,7 @@ const PlatesSlugRoute = PlatesSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/chuck-norris': typeof ChuckNorrisRoute
   '/contact': typeof ContactRoute
   '/license-terms': typeof LicenseTermsRoute
   '/privacy': typeof PrivacyRoute
@@ -77,6 +84,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/chuck-norris': typeof ChuckNorrisRoute
   '/contact': typeof ContactRoute
   '/license-terms': typeof LicenseTermsRoute
   '/privacy': typeof PrivacyRoute
@@ -89,6 +97,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
+  '/chuck-norris': typeof ChuckNorrisRoute
   '/contact': typeof ContactRoute
   '/license-terms': typeof LicenseTermsRoute
   '/privacy': typeof PrivacyRoute
@@ -101,6 +110,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/auth'
+    | '/chuck-norris'
     | '/contact'
     | '/license-terms'
     | '/privacy'
@@ -111,6 +121,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/auth'
+    | '/chuck-norris'
     | '/contact'
     | '/license-terms'
     | '/privacy'
@@ -122,6 +133,7 @@ export interface FileRouteTypes {
     | '/'
     | '/_authenticated'
     | '/auth'
+    | '/chuck-norris'
     | '/contact'
     | '/license-terms'
     | '/privacy'
@@ -134,6 +146,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AuthRoute: typeof AuthRoute
+  ChuckNorrisRoute: typeof ChuckNorrisRoute
   ContactRoute: typeof ContactRoute
   LicenseTermsRoute: typeof LicenseTermsRoute
   PrivacyRoute: typeof PrivacyRoute
@@ -162,6 +175,13 @@ declare module '@tanstack/react-router' {
       path: '/auth'
       fullPath: '/auth'
       preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/chuck-norris': {
+      id: '/chuck-norris'
+      path: '/chuck-norris'
+      fullPath: '/chuck-norris'
+      preLoaderRoute: typeof ChuckNorrisRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -224,6 +244,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AuthRoute: AuthRoute,
+  ChuckNorrisRoute: ChuckNorrisRoute,
   ContactRoute: ContactRoute,
   LicenseTermsRoute: LicenseTermsRoute,
   PrivacyRoute: PrivacyRoute,

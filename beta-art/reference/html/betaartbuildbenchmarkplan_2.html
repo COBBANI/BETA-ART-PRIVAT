@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Build &amp; Benchmark Plan — BETA ART</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23FBFAF7'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%238B1A1A'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FBFAF7;--paper-2:#F3F0E9;--card:#FFFFFF;
+  --ink:#0F0F0F;--ink-2:#1F1D1B;--muted:#85817A;--muted-2:#B4B0A7;
+  --rule:#E4E0D8;--rule-2:#CFC9BC;--seal:#8B1A1A;--seal-soft:rgba(139,26,26,.10);
+  --track:#EAE6DD;
+  --f-serif:'Fraunces',Georgia,serif;--f-sans:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;--f-mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
+}
+body.dark{
+  --paper:#141311;--paper-2:#1C1A18;--card:#1C1A18;
+  --ink:#F3F0E9;--ink-2:#E4E0D8;--muted:#9A958C;--muted-2:#726E67;
+  --rule:#2A2724;--rule-2:#3A362F;--seal:#D96B5A;--seal-soft:rgba(217,107,90,.14);
+  --track:#26231F;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--f-sans);background:var(--paper);color:var(--ink);line-height:1.6;font-size:16px;-webkit-font-smoothing:antialiased;transition:background .3s,color .3s}
+a{color:var(--seal)}
+
+.nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--rule)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:14px 34px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:inline-flex;align-items:center;gap:11px;font-family:var(--f-mono);font-size:12px;letter-spacing:.24em;text-transform:uppercase;font-weight:500;color:var(--ink)}
+.brand-mark{width:10px;height:10px;border:1.5px solid var(--ink);border-radius:50%;position:relative;display:inline-block}
+.brand-mark::after{content:"";position:absolute;inset:2px;background:var(--seal);border-radius:50%}
+.nav-r{display:flex;align-items:center;gap:20px}
+.jump{display:flex;gap:16px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase}
+.jump a{color:var(--muted);text-decoration:none;transition:color .18s}
+.jump a:hover{color:var(--ink)}
+.tgl{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);background:none;border:1px solid var(--rule-2);padding:7px 12px;border-radius:2px;cursor:pointer;transition:.18s}
+.tgl:hover{color:var(--ink);border-color:var(--ink)}
+@media(max-width:900px){.jump{display:none}}
+
+.wrap{max-width:1200px;margin:0 auto;padding:56px 34px 110px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:22px}
+.eyebrow::before{content:"";width:22px;height:1px;background:var(--muted)}
+h1{font-family:var(--f-serif);font-weight:400;font-size:clamp(36px,5vw,60px);line-height:1.03;letter-spacing:-.02em;margin-bottom:20px;max-width:20ch}
+.lede{font-family:var(--f-serif);font-size:20px;line-height:1.5;color:var(--ink-2);max-width:70ch}
+.lede b{color:var(--seal);font-weight:500}
+.byline{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.05em;color:var(--muted-2);margin-top:16px;line-height:1.7}
+
+.section{margin-top:72px;scroll-margin-top:80px}
+.section-h{display:flex;align-items:baseline;gap:14px;padding-bottom:16px;margin-bottom:10px;border-bottom:1px solid var(--rule)}
+.section-h .num{font-family:var(--f-mono);font-size:11px;color:var(--seal);letter-spacing:.14em}
+.section-h h2{font-family:var(--f-serif);font-weight:500;font-size:27px;letter-spacing:-.01em}
+.section-sub{font-size:14.5px;color:var(--muted);margin:14px 0 24px;max-width:74ch}
+
+.fields{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:16px}
+@media(max-width:820px){.fields{grid-template-columns:1fr}}
+.fcard{background:var(--card);border:1px solid var(--rule);border-radius:3px;padding:24px}
+.fcard .fk{font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--seal);margin-bottom:10px}
+.fcard .ft{font-family:var(--f-serif);font-size:19px;font-weight:500;margin-bottom:8px}
+.fcard .fx{font-size:13.5px;color:var(--ink-2);line-height:1.5}
+.fcard .fex{font-family:var(--f-mono);font-size:11px;color:var(--muted);margin-top:12px;letter-spacing:.02em}
+
+/* status pills — brand-coherent: ink + seal + muted, differentiated by fill not hue */
+.pill{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;font-weight:500;padding:4px 10px;border-radius:100px;white-space:nowrap;border:1px solid transparent}
+.pill.lead{background:var(--ink);color:var(--paper)}
+.pill.solid{border-color:var(--ink);color:var(--ink)}
+.pill.weak{border-color:var(--muted-2);color:var(--muted)}
+.pill.blocker{background:var(--seal);color:var(--paper)}
+.pill.blocker::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--paper)}
+
+.statuslegend{display:flex;flex-wrap:wrap;gap:10px 14px;margin-bottom:22px;align-items:center;font-family:var(--f-mono);font-size:10px;letter-spacing:.06em;color:var(--muted)}
+.statuslegend .lg{display:inline-flex;align-items:center;gap:7px}
+
+.matrix{width:100%;border-collapse:collapse;font-size:14px;margin-top:6px}
+.matrix th{text-align:left;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:500;padding:0 14px 12px;border-bottom:1.5px solid var(--ink);vertical-align:bottom}
+.matrix td{padding:16px 14px;border-bottom:1px solid var(--rule);vertical-align:top}
+.matrix td.dim{font-family:var(--f-serif);font-size:16px;color:var(--ink);width:20%}
+.matrix td.us{width:32%;color:var(--ink-2);font-size:13.5px;line-height:1.5}
+.matrix td.them{width:38%;color:var(--muted);font-size:13px;line-height:1.5}
+.matrix td.st{width:10%;white-space:nowrap}
+@media(max-width:820px){
+  .matrix,.matrix tbody,.matrix tr,.matrix td{display:block;width:auto}
+  .matrix thead{display:none}
+  .matrix tr{border:1px solid var(--rule);border-radius:3px;padding:8px 12px;margin-bottom:12px}
+  .matrix td{border:0;padding:6px 0}
+  .matrix td.dim{font-size:18px}
+  .matrix td.them::before{content:"Best in class — ";color:var(--muted-2);font-family:var(--f-mono);font-size:10px;text-transform:uppercase;letter-spacing:.1em}
+}
+
+.adv{display:grid;grid-template-columns:repeat(2,1fr);gap:0 40px}
+@media(max-width:720px){.adv{grid-template-columns:1fr}}
+.adv .a{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--rule);font-size:14px;color:var(--ink-2);line-height:1.5}
+.adv .a .m{font-family:var(--f-mono);color:var(--seal);font-size:12px;flex-shrink:0;padding-top:2px}
+.adv .a b{color:var(--ink);font-weight:600}
+
+.overall{display:flex;align-items:center;gap:16px;background:var(--card);border:1px solid var(--rule);border-radius:4px;padding:18px 24px;margin-bottom:8px}
+.overall .lbl{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.overall .track{flex:1;height:8px;background:var(--track);border-radius:4px;overflow:hidden}
+.overall .track i{display:block;height:100%;background:var(--ink);border-radius:4px;transition:width .4s}
+.overall .pc{font-family:var(--f-mono);font-size:13px;color:var(--ink);min-width:120px;text-align:right}
+.overall .reset{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);background:none;border:1px solid var(--rule-2);padding:6px 10px;border-radius:2px;cursor:pointer}
+.overall .reset:hover{color:var(--seal);border-color:var(--seal)}
+
+.phase{background:var(--card);border:1px solid var(--rule);border-radius:4px;margin-top:18px;overflow:hidden;break-inside:avoid}
+.phase-h{display:flex;align-items:center;gap:16px;padding:20px 26px;border-bottom:1px solid var(--rule);flex-wrap:wrap}
+.phase-tag{font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--paper);background:var(--ink);padding:5px 10px;border-radius:2px}
+.phase.t0 .phase-tag{background:var(--seal)}
+.phase-h h3{font-family:var(--f-serif);font-size:22px;font-weight:500}
+.phase-h .when{font-family:var(--f-mono);font-size:11px;color:var(--muted);letter-spacing:.06em}
+.phase-prog{margin-left:auto;display:flex;align-items:center;gap:12px;min-width:180px}
+.phase-prog .track{flex:1;height:6px;background:var(--track);border-radius:3px;overflow:hidden}
+.phase-prog .track i{display:block;height:100%;background:var(--ink);border-radius:3px;transition:width .4s}
+.phase-prog .pc{font-family:var(--f-mono);font-size:11px;color:var(--muted);min-width:64px;text-align:right}
+.items{list-style:none}
+.item{display:grid;grid-template-columns:26px 1fr;gap:14px;padding:16px 26px;border-bottom:1px solid var(--rule);align-items:start;break-inside:avoid}
+.item:last-child{border-bottom:0}
+.item input{appearance:none;width:18px;height:18px;border:1.5px solid var(--rule-2);border-radius:3px;cursor:pointer;margin-top:2px;position:relative;transition:.15s;background:var(--paper);flex-shrink:0}
+.item input:checked{background:var(--ink);border-color:var(--ink)}
+.item input:checked::after{content:"✓";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--paper);font-size:12px}
+.item .body .t{font-size:15px;color:var(--ink);font-weight:500;line-height:1.4}
+.item input:checked ~ .body .t{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--rule-2)}
+.item .why{font-size:13px;color:var(--muted);margin-top:5px;line-height:1.5}
+.item .meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.chip{font-family:var(--f-mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:100px;border:1px solid var(--rule-2);color:var(--muted)}
+.chip.you{border-color:var(--seal);color:var(--seal)} .chip.me{border-color:var(--ink);color:var(--ink)} .chip.both{border-color:var(--muted-2);color:var(--muted)}
+
+.callout{background:var(--paper-2);border-left:3px solid var(--seal);padding:26px 30px;margin-top:24px;border-radius:0 3px 3px 0}
+.callout h4{font-family:var(--f-serif);font-size:22px;font-weight:500;margin-bottom:10px}
+.callout p{font-size:15px;color:var(--ink-2);line-height:1.6;max-width:72ch}
+.anti{display:grid;grid-template-columns:repeat(2,1fr);gap:0 40px;margin-top:8px}
+@media(max-width:720px){.anti{grid-template-columns:1fr}}
+.anti .x{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--rule);font-size:13.5px;color:var(--ink-2);line-height:1.45}
+.anti .x .m{color:var(--seal);flex-shrink:0}
+
+.foot{margin-top:84px;padding-top:24px;border-top:1px solid var(--rule);font-family:var(--f-mono);font-size:10.5px;letter-spacing:.06em;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+:focus-visible{outline:2px solid var(--seal);outline-offset:3px}
+
+/* ---- PRINT ---- */
+@media print{
+  :root{--paper:#fff;--card:#fff;--ink:#111;--ink-2:#222;--muted:#555;--rule:#ccc;--track:#e5e5e5}
+  .nav,.overall .reset,.tgl,#darkBtn{display:none!important}
+  body{background:#fff;color:#111;font-size:12px}
+  .wrap{padding:0;max-width:none}
+  .section{margin-top:26px;page-break-inside:auto}
+  .phase,.item,.fcard{page-break-inside:avoid}
+  .pill.lead,.pill.blocker{background:none;color:#111;border:1px solid #111}
+  .pill.blocker::before{background:#111}
+  a{color:#111;text-decoration:underline}
+  h1{font-size:28px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <span class="brand"><span class="brand-mark"></span> BETA · ART</span>
+    <div class="nav-r">
+      <span class="jump">
+        <a href="#field">Field</a><a href="#matrix">Matrix</a><a href="#edge">Edge</a><a href="#plan">Plan</a><a href="#one">One thing</a><a href="#anti">Not now</a>
+      </span>
+      <button class="tgl" id="printBtn" type="button">Print</button>
+      <button class="tgl" id="darkBtn" type="button">Dark</button>
+    </div>
+  </div>
+</nav>
+
+<main class="wrap">
+  <span class="eyebrow">Internal · Build &amp; benchmark plan</span>
+  <h1>Everything left to build, measured against the world's best.</h1>
+  <p class="lede">Beta Art is a hybrid no one else is: <b>one photographer with museum-grade licensing.</b> The design is already world-class — what remains is depth. This is the whole plan, in order, each item benchmarked against how the best photography and licensing sites do it.</p>
+  <p class="byline">Benchmarks · Stocksy · Magnum Photos · Nick Brandt · Aperture · Fotografiska<br>Synthesised from the project audit &amp; scorecard. Figures (open rates, price multiples, competitor policies) are directional — verify before quoting externally.</p>
+
+  <!-- FIELD -->
+  <section class="section" id="field">
+    <div class="section-h"><span class="num">§ 01</span><h2>Who we measure against</h2></div>
+    <p class="section-sub">Not Getty or Shutterstock — competing on volume is a losing game a boutique should never play. The real field is three archetypes. Beta Art is a hybrid of the last two: a single vision, sold with an institution's rigour.</p>
+    <div class="fields">
+      <div class="fcard"><div class="fk">Curated collective</div><div class="ft">How a small, hand-picked archive becomes premium</div><div class="fx">A vetted pool positioned above stock — quality over count.</div><div class="fex">Stocksy · Trunk Archive · Millennium Images</div></div>
+      <div class="fcard"><div class="fk">Signature solo</div><div class="ft">How one person's vision becomes a saleable brand</div><div class="fx">Body of work, a name, a story, print editions.</div><div class="fex">Nick Brandt · Alec Soth · Salgado · Peter Lik</div></div>
+      <div class="fcard"><div class="fk">Institution / museum</div><div class="ft">How archive, editorial &amp; shop combine</div><div class="fx">Deep editorial that also ranks and sells.</div><div class="fex">Magnum Photos · Aperture · Fotografiska</div></div>
+    </div>
+  </section>
+
+  <!-- MATRIX -->
+  <section class="section" id="matrix">
+    <div class="section-h"><span class="num">§ 02</span><h2>Where Beta Art stands, dimension by dimension</h2></div>
+    <p class="section-sub">Ten dimensions every premium photo archive is judged on in 2026.</p>
+    <div class="statuslegend">
+      <span class="lg"><span class="pill lead">Lead</span> we lead or match the field</span>
+      <span class="lg"><span class="pill solid">Solid</span> covered, minor gaps</span>
+      <span class="lg"><span class="pill weak">Weak</span> below par, not urgent</span>
+      <span class="lg"><span class="pill blocker">Blocker</span> blocks launch</span>
+    </div>
+    <table class="matrix">
+      <thead><tr><th>Dimension</th><th>Beta Art today</th><th>What the best in class do</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td class="dim">Positioning</td><td class="us">Unique hybrid: verified human photography, one maker, museum licensing. No one occupies this in the Nordics.</td><td class="them">Stocksy owns "curated"; Nick Brandt owns "signature vision"; Magnum owns "institution." None combine all three.</td><td class="st"><span class="pill lead">Lead</span></td></tr>
+        <tr><td class="dim">Design &amp; aesthetics</td><td class="us">Museum-standard system — bone-white, single seal accent, accession numbering. Distinctive.</td><td class="them">Most solo-photographers ship a Squarespace template. Very few reach this coherence.</td><td class="st"><span class="pill lead">Lead</span></td></tr>
+        <tr><td class="dim">Content depth</td><td class="us">12 placeholder images, no series. This is the single biggest gap.</td><td class="them">Nick Brandt: ~5 series of 20–40 images, each with its own narrative. Buyers buy a <em>body of work</em>.</td><td class="st"><span class="pill blocker">Blocker</span></td></tr>
+        <tr><td class="dim">Trust signals / About</td><td class="us">Photographer name is a placeholder; two sentences. "Verified by whom?"</td><td class="them">Deep bio, manifesto, press ("as seen in"), books, exhibitions, awards, a face behind the archive.</td><td class="st"><span class="pill blocker">Blocker</span></td></tr>
+        <tr><td class="dim">Purchase flow</td><td class="us">Manual mailto → invoice → WeTransfer. Acceptable for MVP; forces real conversations (good for learning).</td><td class="them">Account-based, instant download, invoice archive, print fulfilment (Shopify/Stripe).</td><td class="st"><span class="pill weak">Weak</span></td></tr>
+        <tr><td class="dim">Editorial / content marketing</td><td class="us">Nothing yet.</td><td class="them">Magnum's Newsroom ranks for thousands of keywords. Nick Brandt's journal builds the myth.</td><td class="st"><span class="pill blocker">Blocker</span></td></tr>
+        <tr><td class="dim">Discovery / navigation</td><td class="us">Four category filters, no search, no related images.</td><td class="them">Magnum advanced search; Stocksy visual/mood filters. At 12–50 plates, <em>related images</em> matters more than search.</td><td class="st"><span class="pill weak">Weak</span></td></tr>
+        <tr><td class="dim">Technical foundation</td><td class="us">Static HTML. No analytics, CMS, sitemap, structured data — and no cookie consent.</td><td class="them">CMS, image CDN, analytics, JSON-LD, sitemap as table stakes.</td><td class="st"><span class="pill blocker">Blocker</span></td></tr>
+        <tr><td class="dim">Legal</td><td class="us">Privacy, licence terms, FAQ, contact/impressum done (bilingual). Cookie consent still missing.</td><td class="them">Full compliance + transparent, printable licence tiers (better than Magnum, who hide behind sales).</td><td class="st"><span class="pill solid">Solid</span></td></tr>
+        <tr><td class="dim">Growth / marketing</td><td class="us">Only the QR tool. No newsletter, no per-plate share images.</td><td class="them">Newsletter (high open rates — the most profitable channel for solo shooters), IG embed, per-plate OG images.</td><td class="st"><span class="pill weak">Weak</span></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- EDGE -->
+  <section class="section" id="edge">
+    <div class="section-h"><span class="num">§ 03</span><h2>Eight things Beta Art already beats the field on</h2></div>
+    <p class="section-sub">These are framing — they don't sell on their own, but no competitor has this stack. Protect them.</p>
+    <div class="adv">
+      <div class="a"><span class="m">01</span><span><b>The verification narrative.</b> "Verified human photography." Nobody else owns this.</span></div>
+      <div class="a"><span class="m">02</span><span><b>AI-training ban</b> as a headline licence clause — a sharp point of difference in 2026.</span></div>
+      <div class="a"><span class="m">03</span><span><b>Museum aesthetic</b> in a market of identical templates.</span></div>
+      <div class="a"><span class="m">04</span><span><b>Bilingual EN/NO</b> with a language switcher — rare among Norwegian solo shooters.</span></div>
+      <div class="a"><span class="m">05</span><span><b>Accession numbering</b> (2026.0142). Museum-standard; no solo-photographer does this.</span></div>
+      <div class="a"><span class="m">06</span><span><b>QR generator</b> tied to the licensing flow. A unique offline→online channel.</span></div>
+      <div class="a"><span class="m">07</span><span><b>Transparent three-tier licensing</b> — Magnum and Stocksy make you "talk to sales."</span></div>
+      <div class="a"><span class="m">08</span><span><b>Full bilingual GDPR privacy.</b> Rare at the solo level.</span></div>
+    </div>
+  </section>
+
+  <!-- PLAN -->
+  <section class="section" id="plan">
+    <div class="section-h"><span class="num">§ 04</span><h2>The plan — everything to do, in order</h2></div>
+    <p class="section-sub">Ranked by <em>impact on sales × effort</em>, not by what's fun to build. Tick items as they land — progress saves in this browser. Owner chips: <span class="chip me">Claude builds</span> <span class="chip you">You</span> <span class="chip both">Together</span></p>
+    <div class="overall">
+      <span class="lbl">Overall</span>
+      <div class="track"><i id="allbar"></i></div>
+      <span class="pc" id="allpc"></span>
+      <button class="reset" id="resetBtn" type="button">Reset</button>
+    </div>
+    <div id="phases"></div>
+  </section>
+
+  <!-- ONE THING -->
+  <section class="section" id="one">
+    <div class="section-h"><span class="num">§ 05</span><h2>If you do one thing</h2></div>
+    <div class="callout">
+      <h4>Write a deep, honest About page.</h4>
+      <p>Not for SEO, not because it's nice. Because the entire verification thesis collapses without a human face behind it — "Verified Human Photography" from an anonymous person is meaningless. A buyer spending kr 890 wants to know who took it, why, why the archive exists, and why to trust the claim. Every other item on this plan is plumbing. <b>Your story is the product.</b> Give me 10–15 honest sentences about yourself and I'll draft it in the v3 voice, bilingual.</p>
+    </div>
+  </section>
+
+  <!-- ANTI -->
+  <section class="section" id="anti">
+    <div class="section-h"><span class="num">§ 06</span><h2>What NOT to build (yet, or ever)</h2></div>
+    <p class="section-sub">The temptation of any plan is to build everything. Resist. A world-class designer's discipline is subtraction.</p>
+    <div class="anti">
+      <div class="x"><span class="m">✕</span><span><b>Subscription pricing</b> — destroys the premium thesis. Never.</span></div>
+      <div class="x"><span class="m">✕</span><span><b>Multi-photographer collective</b> — breaks "verified by one person." Never.</span></div>
+      <div class="x"><span class="m">✕</span><span><b>AI visual search</b> — overkill under 100 plates.</span></div>
+      <div class="x"><span class="m">✕</span><span><b>Accounts / login</b> — wait until repeat buyers ask.</span></div>
+      <div class="x"><span class="m">✕</span><span><b>Print shop</b> — wait until 3 digital sales prove demand.</span></div>
+      <div class="x"><span class="m">✕</span><span><b>CMS</b> — wait until 20+ plates.</span></div>
+      <div class="x"><span class="m">✕</span><span><b>Mobile app</b> — browser is enough. Probably never.</span></div>
+      <div class="x"><span class="m">✕</span><span><b>The second design direction</b> (dark-gold v1) — commit to v3, drop the rest.</span></div>
+    </div>
+  </section>
+
+  <div class="foot">
+    <span>Beta Art · build &amp; benchmark plan</span>
+    <span>Design is done. Depth is the work.</span>
+  </div>
+</main>
+
+<script>
+const PHASES = [
+  {tag:"Tier 0", t:"Launch blockers", when:"2–3 days · nothing ships before these", t0:true, items:[
+    {t:"12–15 real photographs with archived RAW + EXIF", why:"Benchmark: every serious archive. Without real images Beta Art has no product — design over placeholder is empty theatre.", own:"you"},
+    {t:"Cookie-consent banner + consent storage", why:"GDPR requirement; Datatilsynet enforces. A hard legal block on launching to EU visitors.", own:"me"},
+    {t:"Analytics (Plausible / Fathom, no cookies)", why:"Benchmark: all platforms. Without data you can't learn what converts.", own:"you"},
+    {t:"Real org.nr + address filled across ALL pages", why:"Cross-cutting: every footer + contact/impressum currently shows [000 000 000]. Required by angrerettloven; unlocks after registration.", own:"both"},
+    {t:"Contact / impressum page (bilingual)", why:"Required for e-commerce. Built this session — pending real org.nr data above.", own:"me", done:true},
+    {t:"FAQ page (bilingual)", why:"Answers buyer questions before they ask; closes a legal + trust gap. Built this session.", own:"me", done:true},
+  ]},
+  {tag:"Tier 1", t:"Critical for the first sale", when:"Week 2–4", items:[
+    {t:"Deep About page — 400+ words + self-portrait", why:"Benchmark: Nick Brandt's bio/press/manifesto. The single highest-impact task in the whole plan.", own:"both"},
+    {t:"One complete named series (8–12 plates + 200-word intro)", why:"Benchmark: Nick Brandt sells on series, not loose plates — a plate inside a recognised series commands a large premium. Template already built.", own:"both"},
+    {t:"Newsletter signup in footer + /newsletter page", why:"Benchmark: the most profitable channel for solo shooters. Biggest single growth miss.", own:"me"},
+    {t:"JSON-LD Product schema per plate", why:"Benchmark: every serious shop. Google shows price/availability rich results. One day's work, pays itself back.", own:"me"},
+    {t:"sitemap.xml + robots.txt + Search Console", why:"Without them Google can't find the pages.", own:"me"},
+    {t:"Per-plate Open-Graph share images", why:"Benchmark: all growth-minded sites. Makes every social/LinkedIn share look professional.", own:"me"},
+    {t:"Related plates on the detail view (3 suggestions)", why:"Benchmark: Magnum/Stocksy. Drives more than one purchase per visit — cheap, high-return.", own:"me"},
+  ]},
+  {tag:"Tier 2", t:"For scaling past 10–30 sales", when:"Month 2–3", items:[
+    {t:"Payment integration — Lemon Squeezy (intl VAT) + Vipps (NO)", why:"Benchmark: Stocksy/Magnum instant checkout. Switch on after validation proves willingness to pay.", own:"you"},
+    {t:"Headless CMS (Sanity / Payload)", why:"Benchmark: every archive past ~20 items. Otherwise you edit HTML for each new plate.", own:"both"},
+    {t:"Auto-generated invoice PDF with org.nr + MVA", why:"Benchmark: Magnum invoice archive. Table stakes for business buyers.", own:"me"},
+    {t:"Client-side full-text search (title / place / subject)", why:"Benchmark: Magnum search. Simple at this scale, but expected once the archive grows.", own:"me"},
+    {t:"Journal / blog with the first 3 posts", why:"Benchmark: Magnum Newsroom, Brandt's field notes. The organic-growth engine.", own:"both"},
+  ]},
+  {tag:"Tier 3", t:"Year one — where the real money is", when:"Month 4–12", items:[
+    {t:"Print shop — signed, numbered editions from ~15,000 kr", why:"Benchmark: Nick Brandt's model. This is where signature photographers actually earn.", own:"you"},
+    {t:"Photo book (Blurb / Peecho)", why:"Benchmark: Brandt's Thames & Hudson titles. Brand-reinforcing even at small scale.", own:"both"},
+    {t:"Image CDN (Cloudflare Images / Bunny)", why:"Benchmark: all platforms. Mobile performance + cost at scale.", own:"you"},
+    {t:"Instagram feed embed + press page", why:"Benchmark: every signature site. Social proof once coverage arrives.", own:"me"},
+    {t:"Group exhibition(s) with other Norwegian photographers", why:"Benchmark: the institution tier. Cheap, brand-reinforcing legitimacy.", own:"you"},
+    {t:"Enterprise-licence enquiry form for high-volume agencies", why:"Benchmark: Getty/Magnum enterprise. Captures the biggest deals.", own:"me"},
+  ]},
+];
+const OWN = {you:["you","You"], me:["me","Claude builds"], both:["both","Together"]};
+const LS="betaart:plan:v2", LS_DARK="betaart:plan:dark";
+function loadState(){try{return JSON.parse(localStorage.getItem(LS))||{}}catch(e){return {}}}
+function saveState(s){try{localStorage.setItem(LS,JSON.stringify(s))}catch(e){}}
+let state = loadState();
+
+const host=document.getElementById("phases");
+host.innerHTML = PHASES.map((ph,pi)=>`
+  <div class="phase ${ph.t0?'t0':''}">
+    <div class="phase-h">
+      <span class="phase-tag">${ph.tag}</span>
+      <h3>${ph.t}</h3>
+      <span class="when">${ph.when}</span>
+      <div class="phase-prog"><div class="track"><i id="p${pi}bar"></i></div><span class="pc" id="p${pi}pc"></span></div>
+    </div>
+    <ul class="items">
+      ${ph.items.map((it,ii)=>{
+        const id=`c-${pi}-${ii}`;
+        const checked = (id in state) ? state[id] : !!it.done;
+        return `<li class="item">
+          <input type="checkbox" id="${id}" data-p="${pi}" ${checked?'checked':''} aria-label="${it.t}">
+          <div class="body">
+            <div class="t">${it.t}</div>
+            <div class="why">${it.why}</div>
+            <div class="meta"><span class="chip ${OWN[it.own][0]}">${OWN[it.own][1]}</span></div>
+          </div>
+        </li>`;}).join("")}
+    </ul>
+  </div>`).join("");
+
+function updateProg(){
+  let allDone=0, allTot=0;
+  PHASES.forEach((ph,pi)=>{
+    const boxes=[...document.querySelectorAll(`input[data-p="${pi}"]`)];
+    const done=boxes.filter(b=>b.checked).length;
+    const pctv=Math.round(done/boxes.length*100);
+    document.getElementById(`p${pi}bar`).style.width=pctv+"%";
+    document.getElementById(`p${pi}pc`).textContent=`${done}/${boxes.length} · ${pctv}%`;
+    allDone+=done; allTot+=boxes.length;
+  });
+  const ap=Math.round(allDone/allTot*100);
+  document.getElementById("allbar").style.width=ap+"%";
+  document.getElementById("allpc").textContent=`${allDone} / ${allTot} done · ${ap}%`;
+}
+document.querySelectorAll('input[type="checkbox"]').forEach(b=>b.addEventListener('change',()=>{
+  state[b.id]=b.checked; saveState(state); updateProg();
+}));
+document.getElementById("resetBtn").addEventListener('click',()=>{
+  state={}; saveState(state);
+  document.querySelectorAll('input[type="checkbox"]').forEach((b)=>{
+    const [_,pi,ii]=b.id.split('-'); b.checked=!!PHASES[pi].items[ii].done;
+  });
+  updateProg();
+});
+updateProg();
+
+// dark mode (persisted) + print
+const darkBtn=document.getElementById('darkBtn');
+function setDark(on){document.body.classList.toggle('dark',on);darkBtn.textContent=on?'Light':'Dark';try{localStorage.setItem(LS_DARK,on?'1':'0')}catch(e){}}
+try{ if(localStorage.getItem(LS_DARK)==='1') setDark(true); }catch(e){}
+darkBtn.addEventListener('click',()=>setDark(!document.body.classList.contains('dark')));
+document.getElementById('printBtn').addEventListener('click',()=>window.print());
+</script>
+</body>
+</html>
