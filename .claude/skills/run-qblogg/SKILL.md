@@ -68,6 +68,17 @@ sürmek mümkün değil (ve olmamalı, gerçek bir depoya yazar).
 
 ## Gotchas (hepsi bu konteynerde yaşandı)
 
+- **`pkill -f "http.server"` bu araç çağrısının TAMAMINI öldürür.** Sunucuyu
+  önceki bir çağrıda arkaplanda başlatıp sonra `pkill -f "http.server 8000"`
+  ile durdurmayı denersem, o Bash aracı çağrısı çıkış kodu **144** ve **sıfır
+  çıktıyla** ölüyor — komutta pkill'den önce veya sonra ne olursa olsun
+  (tek başına `pkill -f "http.server 8000"; echo done` bile "done"u hiç
+  yazdırmadan 144 veriyor). 6 denemede 4 kez tekrarlandı; `kill <pid>` ve
+  `fuser -k 8000/tcp` ise sorunsuz çalışıyor (ikisi de doğrulandı). **Sonuç:
+  sunucuyu asla `pkill -f` ile durdurma.** Zaten gerek yok — driver.mjs
+  kendi başlattığı sunucuyu Node içinden (`process.kill(-srv.pid)`) kapatıyor
+  ve zaten açık bir sunucuyu tespit edip yeniden kullanıyor. Port temizlemek
+  gerekirse `fuser -k 8000/tcp` veya `kill <pid>` kullan.
 - **Playwright depo kökünden import EDİLEMEZ** (`ERR_MODULE_NOT_FOUND`;
   ESM, NODE_PATH'i de yok sayar). driver.mjs bunu
   `createRequire('/opt/node22/lib/node_modules/')` ile çözer — kendi
@@ -93,6 +104,6 @@ sürmek mümkün değil (ve olmamalı, gerçek bir depoya yazar).
 | Belirti | Çözüm |
 |---|---|
 | `ERR_MODULE_NOT_FOUND: playwright` | createRequire deseni (yukarıda); betiği scratchpad'e taşımak da çalışır |
-| `sunucu 5 sn içinde açılmadı` | 8000 portunu tutan eski süreç: `pkill -f http.server` sonra tekrar |
+| `sunucu 5 sn içinde açılmadı` | 8000 portunu tutan eski süreç: `fuser -k 8000/tcp` (ASLA `pkill -f http.server` — yukarıdaki gotcha) sonra tekrar |
 | Görüntüde kartlar boş | reveal sabitleme enjekte edilmemiş — driver'ı kullan |
 | SendUserFile 400 | Görüntü >8000px — deviceScaleFactor'ı düşür |

@@ -48,6 +48,16 @@ Dağıtım depoyu klonlayan bir buildCommand ise ("tarif" deseni):
 - esm.sh ve *.vercel.app proxy'den engelli; dış paket gerektiğinde npm
   registry çalışıyor → kütüphaneyi vendor'la ve KAYNAK.md kaydı düş
   (sürüm, lisans, sha256).
+- **Genel web fetch (WebFetch/deep-research) çoğu tüketici/pazarlama
+  sitesinde EGRESS_BLOCKED verebiliyor** — yalnız *.vercel.app/esm.sh
+  değil; 01.09.2026'da doğrulandı: `canva.com`, `smartbyra.no`,
+  `geopriced.com` üçü de doğrudan WebFetch'te engellendi (deep-research
+  workflow'unun 16 kaynağının tamamı da aynı sebeple boş döndü — hata
+  görünmez, sessizce `claims: []` üretiyor). Sonuç: `WebSearch`
+  sonuçlarının snippet'i güvenilir tek bilgi kaynağı olabilir; bir
+  fiyat/rakam için `WebFetch` ile doğrulama denenmeli ama başarısız
+  olursa **kullanıcıya elle teyit görevi olarak devredilmeli**, snippet
+  kesin bilgi gibi sunulmamalı.
 - Scratchpad'e stdlib modül adıyla dosya koyma (copy.py vakası import
   uzayını kırdı).
 

@@ -5,6 +5,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { robotsContent } from "@/config/site";
 import { supabase } from "@/integrations/supabase/client";
+import { getPlateViewSummary } from "@/lib/plateInterest.functions";
 import { listAllPlates } from "@/lib/plates.functions";
 
 export const Route = createFileRoute("/_authenticated/admin")({
@@ -46,12 +47,23 @@ export const Route = createFileRoute("/_authenticated/admin")({
 
 function AdminPage() {
   const fetchPlates = useServerFn(listAllPlates);
+  const fetchViewSummary = useServerFn(getPlateViewSummary);
   const navigate = useNavigate();
   const queryClient = useQueryClient();
 
   const { data, isPending, error } = useQuery({
     queryKey: ["admin", "plates"],
     queryFn: () => fetchPlates(),
+    retry: false,
+  });
+
+  const {
+    data: viewData,
+    isPending: viewPending,
+    error: viewError,
+  } = useQuery({
+    queryKey: ["admin", "plate-view-summary"],
+    queryFn: () => fetchViewSummary(),
     retry: false,
   });
 
@@ -131,6 +143,54 @@ function AdminPage() {
             </table>
           </div>
         ) : null}
+
+        <div className="mt-20">
+          <p className="label">Anonim, oturum-tabanlı</p>
+          <h2 className="display mt-3 text-2xl">Ziyaretçi ilgisi</h2>
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+            Kimliksiz görüntüleme sayımları — bkz. Privacy Policy, "Cookies and analytics". Yalnızca
+            hangi katalog kaydının ilgi gördüğünü gösterir; hiçbir ziyaretçi tanımlanamaz.
+          </p>
+
+          {viewPending ? <p className="mt-8 text-sm text-muted-foreground">Yükleniyor…</p> : null}
+          {viewError ? (
+            <p role="alert" className="mt-8 text-sm text-muted-foreground">
+              {viewError.message}
+            </p>
+          ) : null}
+
+          {viewData && viewData.summary.length > 0 ? (
+            <div className="mt-8 overflow-x-auto border border-border">
+              <table className="w-full min-w-[32rem] text-left text-sm">
+                <caption className="sr-only">Plaka başına toplu görüntüleme sayımı</caption>
+                <thead>
+                  <tr className="border-b border-border">
+                    <th scope="col" className="label p-4">
+                      Plaka
+                    </th>
+                    <th scope="col" className="label p-4">
+                      Görüntüleme
+                    </th>
+                    <th scope="col" className="label p-4">
+                      Benzersiz oturum
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {viewData.summary.map((row) => (
+                    <tr key={row.plate_slug} className="border-b border-border last:border-0">
+                      <td className="p-4 font-mono text-xs">{row.plate_slug}</td>
+                      <td className="p-4 text-muted-foreground">{row.views}</td>
+                      <td className="p-4 text-muted-foreground">{row.unique_sessions}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          ) : viewData ? (
+            <p className="mt-8 text-sm text-muted-foreground">Henüz kayıtlı görüntüleme yok.</p>
+          ) : null}
+        </div>
       </main>
       <SiteFooter />
     </div>

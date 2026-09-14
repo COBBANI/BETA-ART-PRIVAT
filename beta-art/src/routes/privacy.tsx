@@ -38,10 +38,10 @@ function Privacy() {
       <LegalSection heading="Licence and contact requests">
         <p>
           A licence or contact request can include the selected catalogue record, requested licence,
-          name, email address, company, intended use, territory, duration and any message supplied by
-          the requester. These details should only be processed for responding to the enquiry,
-          preparing a licence or contract, administering an order and meeting legal/accounting duties
-          where applicable.
+          name, email address, company, intended use, territory, duration and any message supplied
+          by the requester. These details should only be processed for responding to the enquiry,
+          preparing a licence or contract, administering an order and meeting legal/accounting
+          duties where applicable.
         </p>
         <p>
           The current development form must not be described as storing or transmitting data until a
@@ -52,19 +52,19 @@ function Privacy() {
 
       <LegalSection heading="Technical connection data">
         <p>
-          Hosting and security infrastructure can process ordinary connection data such as IP address,
-          request time, requested path, browser/user-agent information and security logs as part of
-          delivering and protecting the website. The production hosting provider and applicable
-          retention period must be listed here once the final deployment is connected.
+          Hosting and security infrastructure can process ordinary connection data such as IP
+          address, request time, requested path, browser/user-agent information and security logs as
+          part of delivering and protecting the website. The production hosting provider and
+          applicable retention period must be listed here once the final deployment is connected.
         </p>
       </LegalSection>
 
       <LegalSection heading="Fonts and third-party resources">
         <p>
-          The development build currently loads web-font styles from Google Fonts. This can cause the
-          visitor's browser to connect to a third-party service. Before production launch, Beta Art
-          should either document this processing accurately or self-host the required web fonts to
-          minimise external requests.
+          The development build currently loads web-font styles from Google Fonts. This can cause
+          the visitor's browser to connect to a third-party service. Before production launch, Beta
+          Art should either document this processing accurately or self-host the required web fonts
+          to minimise external requests.
         </p>
       </LegalSection>
 
@@ -72,24 +72,37 @@ function Privacy() {
         <p>
           No non-essential analytics service should be enabled merely by publishing this draft. If
           analytics, advertising, embedded social media or other tracking technology is introduced,
-          Beta Art must update this policy and implement the consent/information mechanism required by
-          the applicable Norwegian and EEA rules before that tracking begins.
+          Beta Art must update this policy and implement the consent/information mechanism required
+          by the applicable Norwegian and EEA rules before that tracking begins.
+        </p>
+        <p>
+          One such mechanism exists in this development build: viewing a catalogue plate stores a
+          random identifier in <code>sessionStorage</code> (cleared when the browser tab closes, not
+          linked to any account, IP address or device) and records which plate was viewed against
+          that identifier. This is used only to compute aggregate, anonymous "viewed together with"
+          counts — shown to visitors as "you might also like" and to administrators as a summary
+          table — and is never linked back to an individual. No advertising, profiling or
+          third-party sharing is involved. This is a lower-risk mechanism than persistent tracking,
+          but it has
+          <strong> not</strong> been reviewed against Norwegian/EEA ePrivacy consent requirements —
+          that review, and either a consent banner or a documented "strictly necessary"
+          justification, must happen before commercial launch.
         </p>
       </LegalSection>
 
       <LegalSection heading="Legal basis and retention">
         <p>
-          [To be completed before launch: identify the legal basis for each real processing activity,
-          define retention periods, and distinguish enquiries, contracts, accounting records and any
-          optional marketing subscription.]
+          [To be completed before launch: identify the legal basis for each real processing
+          activity, define retention periods, and distinguish enquiries, contracts, accounting
+          records and any optional marketing subscription.]
         </p>
       </LegalSection>
 
       <LegalSection heading="Recipients and international transfers">
         <p>
           [To be completed before launch with the actual production providers for hosting, email,
-          payments, analytics, file delivery and other processors, including transfer safeguards where
-          relevant.]
+          payments, analytics, file delivery and other processors, including transfer safeguards
+          where relevant.]
         </p>
       </LegalSection>
 

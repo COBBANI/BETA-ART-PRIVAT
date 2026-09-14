@@ -100,7 +100,7 @@ http://localhost:8000.
 ## 7. Proje yapısı ve metin kuralı
 
 ```
-index/work/blog/post/gizlilik/kosullar(.html) + 404.html   sayfalar
+index/work/blog/post/gizlilik/kosullar/kalite/ornek(.html) + 404.html   sayfalar
 assets/css/main.css      tek stil dosyası
 assets/js/config.js      yayın ayarları (tek yapılandırma noktası)
 assets/js/i18n.js        10 dil sözlüğü (QB_I18N)

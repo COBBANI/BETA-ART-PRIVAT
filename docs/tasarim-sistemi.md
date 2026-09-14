@@ -209,11 +209,12 @@ Görünen her ikon **satır içi SVG**dir.
 
 ### İki depo
 
-**Yazı ikonları** — `assets/js/app.js` içindeki `ICONS` kaydı, 11 ikon:
+**Yazı ikonları** — `assets/js/app.js` içindeki `ICONS` kaydı, 15 ikon
+(11 içerik ikonu + 4 paylaşım kanalı glifi):
 
 ```
 question · coin · blocks · phone · banknote · compass · bulb · chart ·
-envelope · link · gear
+envelope · link · gear · linkedin · x · facebook · whatsapp
 ```
 
 Yalnızca yol gövdesi saklanır; sarmalayıcıyı `iconSVG(name)` üretir:
@@ -249,8 +250,8 @@ değişiminde kendiliğinden döner. Figma'dan gelen bir ikonda sabit renk varsa
 
 ### Metodoloji
 
-Hiçbiri. Düz CSS, tek dosya, 553 satır, 95 sınıf. Sınıf adları anlamsal ve
-kısa: `.cta-box`, `.posts`, `.share-btn`, `.article-note`.
+Hiçbiri. Düz CSS, tek dosya, 629 satır. Sınıf adları anlamsal ve kısa:
+`.cta-box`, `.posts`, `.share-btn`, `.article-note`.
 
 ### Küresel stiller
 
@@ -259,8 +260,10 @@ sıfırlama → tipografi → düzen → bileşenler → medya sorguları.
 
 ### Duyarlılık
 
-**5 medya sorgusu**, hepsi `max-width`. Mobil kırılma noktaları:
+**6 medya sorgusu**: dördü `max-width` (`1180px`, `860px`, `620px`, `360px`)
++ `prefers-reduced-motion` + `print`. Mobil kırılma noktaları:
 
+- `≤1180px` / `≤860px` — düzen daralması (menü/ızgara kırılımı)
 - `≤620px` — dil seçici ikona düşer, logo yalnızca sembol
 - `≤360px` — tema düğmesi gizlenir
 

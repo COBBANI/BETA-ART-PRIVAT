@@ -1,5 +1,6 @@
+import { useQuery } from "@tanstack/react-query";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { LicenseRequestForm } from "@/components/LicenseRequestForm";
 import { CaptureTable, ProvenancePanel } from "@/components/ProvenancePanel";
@@ -7,7 +8,15 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { TrustStrip } from "@/components/TrustStrip";
 import { canonicalUrl, PRICE_STATUS_NOTE, robotsContent, siteConfig } from "@/config/site";
-import { deliveryInfo, getPlate, licenses, orderingSteps } from "@/data/collection";
+import {
+  deliveryInfo,
+  getPlate,
+  licenses,
+  orderingSteps,
+  plates,
+  type Plate,
+} from "@/data/collection";
+import { getCoViewedPlates, getLocallyViewedSlugs, trackPlateView } from "@/lib/plateInterest";
 
 export const Route = createFileRoute("/plates/$slug")({
   loader: ({ params }) => {
@@ -86,10 +95,52 @@ function PlateNotFound() {
   );
 }
 
+/**
+ * Toplu "birlikte görüntülendi" verisini gerçek Plate kayıtlarına çözer;
+ * yeterli veri yoksa (yeni plaka, az trafik) bu oturumda henüz
+ * görüntülenmemiş plakalarla, katalog sırasına göre tamamlar — soğuk
+ * başlangıçta da boş bir bölüm göstermez.
+ */
+function useAlsoLikePlates(currentSlug: string, count = 3): Plate[] {
+  const { data: coViewed } = useQuery({
+    queryKey: ["plate-interest", "co-viewed", currentSlug],
+    queryFn: () => getCoViewedPlates(currentSlug, count),
+    staleTime: 60_000,
+  });
+
+  const resolved: Plate[] = [];
+  const seen = new Set([currentSlug]);
+  for (const row of coViewed ?? []) {
+    const p = plates.find((candidate) => candidate.slug === row.plate_slug);
+    if (p && !seen.has(p.slug)) {
+      resolved.push(p);
+      seen.add(p.slug);
+    }
+  }
+
+  if (resolved.length < count) {
+    const viewedThisSession = new Set(getLocallyViewedSlugs());
+    const fallback = plates.filter((p) => !seen.has(p.slug) && !viewedThisSession.has(p.slug));
+    const backfillPool = fallback.length ? fallback : plates.filter((p) => !seen.has(p.slug));
+    for (const p of backfillPool) {
+      if (resolved.length >= count) break;
+      resolved.push(p);
+      seen.add(p.slug);
+    }
+  }
+
+  return resolved;
+}
+
 function PlateDetail() {
   const { plate } = Route.useLoaderData();
   const [selected, setSelected] = useState(licenses[0]!.id);
   const active = licenses.find((l) => l.id === selected)!;
+  const alsoLike = useAlsoLikePlates(plate.slug);
+
+  useEffect(() => {
+    trackPlateView(plate.slug);
+  }, [plate.slug]);
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -256,6 +307,46 @@ function PlateDetail() {
             </div>
           </div>
         </section>
+
+        {alsoLike.length > 0 && (
+          <section className="border-t border-border" aria-labelledby="also-like-title">
+            <div className="mx-auto max-w-[92rem] px-5 py-16 sm:px-8 sm:py-20">
+              <h2 id="also-like-title" className="display text-3xl sm:text-4xl">
+                You might also like
+              </h2>
+              <ul className="mt-10 grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+                {alsoLike.map((p) => (
+                  <li key={p.catalogue}>
+                    <article>
+                      <Link
+                        to="/plates/$slug"
+                        params={{ slug: p.slug }}
+                        className="focus-ring block rounded-sm"
+                      >
+                        <div className="plate-frame aspect-4/5">
+                          <img
+                            src={p.src}
+                            alt={p.alt}
+                            width={1280}
+                            height={1600}
+                            loading="lazy"
+                            decoding="async"
+                            className="h-full w-full object-cover"
+                          />
+                        </div>
+                        <div className="rule-top mt-4 grid grid-cols-[1fr_auto] gap-3 pt-3">
+                          <h3 className="display text-lg">{p.title}</h3>
+                          <span className="label">{p.catalogue}</span>
+                        </div>
+                        <p className="label mt-2 text-foreground">from kr {p.price}</p>
+                      </Link>
+                    </article>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+        )}
       </main>
 
       <SiteFooter />

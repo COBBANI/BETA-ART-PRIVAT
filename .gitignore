@@ -21,3 +21,9 @@ engine/data/
 # Üretilen dağıtım klasörleri — marka-tescil.mjs ve marka-paket.mjs üretiyor
 tescil/
 paket/
+
+# skill-creator değerlendirme çalışma alanları — geçici çalışma çıktıları
+# (yanıt metinleri, grading.json, benchmark.json). Kalıcı sonuç zaten
+# ilgili becerinin evals/evals.json'unda tutuluyor; bunlar tekrar
+# üretilebilir ara çıktılar.
+*-workspace/

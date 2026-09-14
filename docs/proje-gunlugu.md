@@ -324,6 +324,151 @@ kurulmaz (sıfır bağımlılık, mevcut denetimler yeterli); asıl benimsenen
 kısım uye/ platformu için 6 maddelik RLS/safety spec listesi — Supabase
 anahtarları gelince Given/When/Then spec'leri + testleri yazılacak.
 
+**Not (01.09.2026, birleştirme):** Bu noktadan sonraki iki bölüm iki
+paralel dalda (bu dal ve `main`) bağımsız ilerledi — tarihler bu yüzden
+tam kronolojik sıralanmıyor, her girişin kendi başlığındaki tarih esas
+alınmalı. Önce bu dalın günlüğü, sonra `main`'den gelen ayrı iş akışı.
+
+## 25.08.2026 — Beta Art konsepti: dördüncü ürün fikri değerlendirildi
+
+Kullanıcı "Beta Art AI" fikrini önce genel hatlarıyla (kredi/abonelik,
+generation studio), sonra kendi hazırladığı ayrıntılı 90 günlük plan
+metniyle getirdi. AskUserQuestion ile kapsam netleştirildi: QBLOGG'un
+YANINA eklenen ayrı ürün, henüz yalnız plan/tasarım dokümanı (kod yok).
+Kullanıcının planı, önceki genel çerçeveyi daralttı: Beta Art ilk
+aşamada herkese açık bir prompt→görsel aracı DEĞİL, küçük işletmelere
+insan seçkili, teslim edilmiş marka görseli satan bir dijital stüdyo
+(Canva/Firefly'a araç olarak değil, sonuç olarak rakip). Plan
+`docs/beta-art-konsept.md`'ye QBLOGG'un kanıt-sınıflandırma biçimiyle
+([V]/[H]/[D]) işlendi; üç dış iddia bu oturumda gerçekten doğrulandı
+(WebSearch): Norveç KDV eşiği 50.000 NOK/12 ay, AB AI Act 50. madde
+şeffaflık yükümlülüğü 2 Ağustos 2026 (işaretleme için önceden piyasada
+olan sistemlere 2 Aralık 2026 ek süre — kullanıcının notunda yoktu, yeni
+bulgu), SSB Q2 2026 17.052 yeni işletme (+%21). Ayrıca Avrupa
+Erişilebilirlik Yasası'nın <10 kişi/<2M€ mikro işletme istisnası
+bulundu — Beta Art büyüklüğünde WCAG 2.2 AA'yı yasal zorunluluktan
+gönüllü hedefe indiriyor. Canva'nın Norveç NOK fiyatı doğrulanamadı,
+[D] işaretlendi. Bu, dördüncü paralel ürün fikri (QBLOGG, AI Workforce,
+Yazar Platformu, şimdi Beta Art) — hiçbiri aynı anda inşa edilmemeli
+uyarısı belgede tekrarlandı. Yedi açık karar kullanıcıda (niş seçimi,
+marka adı/depo ilişkisi, teknik yığın, ödeme sağlayıcı, AI görsel
+sağlayıcısı, NOK fiyat doğrulaması, erişilebilirlik hedefi).
+## 26.08.2026 — Depo monorepo'ya çevrildi: Beta Art yön çelişkisi çözüldü
+
+Kullanıcı "her proje/dosya/tool burada birleşsin", sonra "bütün projeleri
+buraya taşı" dedi. Envanter çıkarırken kritik bir çelişki bulundu:
+`andersenbetul-alt/beta-art-archive` deposunda kullanıcının kendi yazdığı
+`BETA_ART_MASTER.md` (25-26.08.2026), önceki günün `docs/beta-art-konsept.md`
+belgesindeki "AI destekli görsel stüdyo" yönünü isim vererek reddediyordu
+("conflicting AI creative-studio positioning") ve o depoyu "Master
+production codebase" ilan ediyordu — asıl yön "Verified Human Photography
+& Licensing" + inşaat sektörü proje-kapanışı dokümantasyonu (Beta Art
+Business/BAB). Kullanıcıya soruldu, beta-art-archive asıl kabul edildi.
+Sonuç: `docs/beta-art-konsept.md` AŞILDI/REDDEDİLDİ işaretlendi (silinmedi);
+`small-business` becerisindeki yanlış BAB/BAC/BAP tahmini düzeltildi (BAB
+artık doğrulandı, BAC/BAP hâlâ teyit gerekiyor ama artık yanlış bir
+varsayıma bağlı değil). Üç depo `git subtree` ile tam geçmişleriyle
+göçürüldü: `beta-art/` (45 commit, asıl Beta Art kodu), `eve-slack-agent/`
+ve `eve-chat-template/` (ikisi de değiştirilmemiş Vercel "eve" şablonları).
+`andersenbetul-alt/qb` ve `andersenbetul-alt/qblogg` boş bulundu, taşınacak
+bir şey yoktu. Erişilemeyenler: Vercel takımındaki `naviar-care`,
+`naviar-care-1`, `hximusic`, `naerhjelp-pilot`, `naerhjelp-pilot-v2`,
+`cobban` ve Vercel'deki ayrı "beta-art" projesi — hepsi `betulandersen-droid`
+adlı farklı bir GitHub hesabına bağlı, bu oturumun tek-hesap sınırı
+yüzünden ("cross-tier adds are not supported") erişilemedi; ayrıca
+`andersenbetul-9635s-projects` adlı ikinci bir Vercel hesabı da bu
+oturumdaki Vercel MCP bağlantısının kapsamı dışında kaldı. CLAUDE.md'ye
+monorepo yapısını ve alt klasörlerin QBLOGG'un "sıfır bağımlılık"
+kuralına tabi olmadığını açıklayan bir bölüm eklendi.
+
+## 30.08.2026 — "Beta AI" bağımsız marka oldu; canlı beta-art.com arşivlendi; @ARTIFACTS taraması
+
+Üç ayrı iş: (1) Kullanıcı "BETA AI CONSEPTİ İÇİN BETA ART DOSYALARINI
+İNCELE" dedi; gerçek Beta Art kaynaklarında (README, BETA_ART_MASTER.md,
+kod) bir AI-görsel-üretim ürününe hiç destek bulunmadı — tam tersine
+"Do not use AI-themed visuals" ve AI-eğitimini yasaklayan lisans
+maddeleri var. Kullanıcı kararı: "Tamamen ayrı, farklı bir marka olarak
+geliştir." `docs/beta-art-konsept.md` içeriği `docs/beta-ai-konsept.md`
+olarak "Beta AI" adıyla yeniden markalandı (Beta Art'tan ve QBLOGG'dan
+bağımsız üçüncü marka); eski dosya silinmedi, üstüne yönlendirme
+notu eklendi. ROADMAP güncellendi. (2) Kullanıcı canlı
+`https://beta-art.com/cart` sayfasının içeriğini yapıştırdı ("BU
+SAYFAYI ORNEK ALARAK KONSEPTI GELISTIR"). İçerik birebir
+`beta-art/source-review/intake-2026-08-30/beta-art-com-live-homepage.md`
+olarak arşivlendi; karşılaştırma `MANIFEST-live-homepage.md`'de: canlı
+site kod tabanından (`beta-art/src`) farklı — ayrı bir "Exhibitions &
+Events" bölümü var (bu, aynı gün gelen `PROJECT-MANIFEST.md`'nin
+G·001/BAG-03 "Galeri" alt-projesini neden ayırmak istediğinin kanıtı
+olabilir), farklı FAQ, ek rotalar (`/categories`, `/industries`,
+`/cart`). Kod değişikliği yapılmadı, dört açık soru kullanıcıya
+bırakıldı (cart/ana-sayfa URL çelişkisi, "84.000 kare" iddiasının
+gerçekliği, `hallo@beta-art.com` adresi, FAQ/Exhibitions'ın nereye
+taşınacağı). (3) `@ARTIFACTS` ile bu oturumun 25 yayınlanmış Claude
+Artifact'i tarandı: "BETA ART — Project Catalogue" adlı artifact Beta
+Art'ı **12 ayrı alt-proje** olarak tanımlıyor (ikisi erişilemeyen
+`project-hxi` Vercel hesabında) ve bu depoyu ("andersenbetul-alt/BETA-ART")
+kendi kanonik evi ilan ediyor; "BETA-ART Design System" adlı bir başka
+artifact ise depoda hiç var olmayan bir `hxi-v6/` alt-projesinden ve
+`beta-art/`'ın (yanlış biçimde) TanStack Start kullandığından bahsediyor.
+İki gerçek statik HTML sayfası ("Beta Art Privat", "BETA ART Business")
+tam okunup frame-runtime sarmalayıcısı soyularak
+`beta-art/source-review/intake-2026-08-30/artifact-beta-art-*.html`
+olarak birebir arşivlendi; `MANIFEST-claude-artifacts.md`'de
+"BETA ART Business" kaynak kalitesinde (BETA_ART_MASTER.md paletiyle
+örtüşüyor), "Beta Art Privat" ise derlenmiş/minify bir SPA çıktısı
+(kaynak değil) olarak işaretlendi. Sonuç: Beta Art'ın klasör yapısı
+için artık **dört** çelişen model var (bu oturumun git-subtree taşıması;
+`PROJECT-MANIFEST.md`'nin üç-klasör modeli; Project Catalogue'nin
+`beta-art-static/` modeli; Design System artifact'inin — güvenilirliği
+şüpheli — `hxi-v6/` modeli). Hiçbir klasör taşınmadı/yeniden
+yapılandırılmadı; yalnızca arşivleme yapıldı. Karar kullanıcıda.
+
+## 31.08.2026 — Beş marka görseli sohbete yapıştırıldı (dosya olarak henüz alınmadı)
+
+Kullanıcı, metinsiz, beş görsel yapıştırdı: aparatür/iris biçimli bir
+sembol (beyaz halka + ışınsal çizgiler + tek kırmızı mühür noktası —
+merkez), ve bu sembolü kullanan üç OG-kart tasarımı — "BETA ART ·
+BUSINESS" (koyu zemin, "Turn your idea into a working digital
+solution."), "BETA ART · FIELD NOTES" (kağıt zemin, "What the work
+actually looks like.") ve markasız bir üçüncüsü, "THREE PROPERTIES ·
+ONE ARCHIVE" başlığıyla ("Made by a human. Verified at the source.").
+Palet daha önce arşivlenen `BETA_ART_MASTER.md`/"BETA ART Business"
+artifact'iyle örtüşüyor (kağıt + neredeyse-siyah + arşiv kırmızısı).
+"Field Notes" adı Project Catalogue'deki J·001'le ("Field Notes — The
+Beta Art Journal") eşleşiyor; "Three Properties" ise `PROJECT-MANIFEST.md`'nin
+üç-klasör modelini destekliyor — 30.08'de bulunan dört çelişen yapısal
+modelden ikisini birbirine bağlayan yeni bir veri noktası.
+
+**Teknik not:** bu görseller sohbete satır içi yapıştırıldı, dosya
+olarak gelmedi; oturumda hiçbir yerde piksel verisine erişim yok
+(diskte arandı, bulunamadı) — bu yüzden `source-review/` kuralına göre
+birebir arşivlenemedi, yalnızca görsel olarak tarif edildi. Kullanıcıdan
+dosya olarak göndermesi istendi. Bu arada aynı görsel DNA'yı (aparatür
+sembolü + OG-kart şablonu, üç varyant) yeniden üretilebilir kodla ifade
+eden bir örnek şablon inşa edildi (bkz. sonraki artifact) — birebir
+kopya değil, tarif edilen tasarımdan türetilmiş bir yorum.
+
+## 01.09.2026 — AUTOPROMPT: "Üç Mülk, Tek Arşiv" konsepti çok-uzmanlı çerçeveyle puanlandı
+
+Kullanıcının verdiği "Fikir ve Konsept Değerlendirme Ekibi" şablonu, Beta
+Art'ın üç-mülk modeline (BAP-01 Privat, BAG-03 Galeri, BAB-02 Business —
+tek `beta-art.com` altında üç dizin) uygulandı. Tam rapor:
+`docs/beta-art-uc-mulk-degerlendirme.md`. Ekstra doğrulama: iki WebSearch
+ile inşaat proje-kapanış yazılımı rakipleri (Autodesk Forma/Bluebeam/
+Kahua — hiçbiri "kapanmış proje kurtarma" senaryosuna odaklanmıyor) ve
+fotoğraf lisanslama pazarı (Stocksy %50-75 telif/abonelik yok vs. Getty
+%20-30 telif/yeni abonelik modeli; C2PA benimsemesi 2026'da hâlâ erken —
+çoğu çevrimiçi fotoğraf hâlâ meta veri taşımıyor) araştırıldı, [D]
+etiketiyle rapora işlendi. Sonuç: **51/100**, "50-64: konsepti veya hedef
+kitleyi önemli ölçüde değiştir" bandı — ama fikri reddetmiyor, kapsamı
+daraltıyor: üç mülkü aynı anda değil, önce Business'ı (master planın
+kendi §3 doğrulama kapısıyla zaten aynı yönde: "3 ödeyen pilot, sonra
+yazılım"), Privat ve Galeri'yi ticari olarak duraklatarak (kod/tasarım
+korunarak) öner. En kritik bulgu: doğrulanmış talep sıfır (hiçbir gerçek
+pilot müşteri kanıtı yok), Business fiyatı hiçbir belgede yayınlanmamış,
+GDPR/AB-AEA depolama kapıları resmen hâlâ açık. Kod değişikliği yok;
+bu bir karar/analiz dokümanı. İlk 10 somut görev raporun 19. maddesinde.
+
 ## 25.08.2026 (gece) — Beşinci yön teklifi değerlendirildi: B2C affiliate/karşılaştırma medyası
 
 Kullanıcı dışarıdan gelen bir strateji belgesi paylaştı: QBLOGG'u Norveç
@@ -486,6 +631,168 @@ cevabı bunu kapsasa da teknik olarak henüz mümkün değil.
 
 Gerçek dosya/geçmiş taşıma işlemi, yukarıdaki üç karar netleşmeden
 başlatılmadı.
+
+## 01.09.2026 (devam) — AUTOPROMPT #2: Beta AI konsepti puanlandı (58/100)
+
+Aynı çok-uzmanlı AUTOPROMPT çerçevesi bu kez Beta AI'ye (küçük işletmelere
+insan seçkili AI görsel/marka paketi satan bağımsız stüdyo, `docs/beta-ai-konsept.md`)
+uygulandı. Tam rapor: `docs/beta-ai-degerlendirme.md`. İki WebSearch ile
+dış doğrulama: Canva Pro'nun genel USD fiyatı bulundu ($15/ay) ama Norveç
+NOK karşılığı hâlâ doğrulanamadı (belgenin kendi açık kararıyla tutarlı);
+Design Pickle/Superside gibi "brief ver, sonucu al" abonelik hizmetleri
+araştırıldı ([D] etiketiyle) — Beta AI'nin kendi rakip tablosunda hiç
+yer almayan, aslında en yakın gerçek rakip kategorisi olduğu bulundu.
+Sonuç: **58/100**, yine 50-64 bandı — ama bu kez asıl teşhis kapsam değil
+**zamanlama**: Beta AI'nin kendi belgesi zaten "üç girişim aynı anda
+inşa edilirse hiçbiri kanıt eşiğine ulaşamaz" diye yazmış (25.08), bugün
+daha erken Beta Art için bağımsız olarak varılan sonuçla (51/100, "önce
+Business'a odaklan") birebir örtüşüyor. Karar: **Beklet** — Beta Art
+Business 3 ödeyen pilotu kapatana kadar Beta AI'ye kod/site yatırımı
+yapılmasın; beklerken masa başında yapılabilecek iki iş var (niş
+daraltma, Design Pickle-benzeri rakiplere karşı analiz yenileme).
+Kod değişikliği yok. Böylece bugün iki ayrı AUTOPROMPT değerlendirmesi
+(Beta Art + Beta AI) birbirini bağımsız doğrulayan, tutarlı bir portföy
+kararına ulaştı: tek girişime odaklan, gerisini kanıt gelene kadar
+duraklat.
+
+## 02.09.2026 — Müşteri davranış/öneri sistemi: QBLOGG + Beta Art, Business bloklu
+
+Kullanıcı "her web sayfasında müşterinin bir sonraki ilgisini bulan bir
+sistem" istedi, sonra kapsamı netleştirdi: anonim/oturum-bazlı (kişisel
+veri yok), editör için de ayrı bir toplu görünüm olsun. İki karar
+AskUserQuestion ile alındı: (1) editör toplu görünümü Beta Art'ın zaten
+var olan Supabase'ine yazılsın, QBLOGG yalnızca ziyaretçi-tarafı kalsın
+(sıfır bağımlılık ilkesi korunuyor); (2) kullanıcı **açıkça** bugünkü
+Beta Art Business "Beklet" kararını bu özellik için geçersiz saydı.
+
+**QBLOGG (`assets/js/ilgi.js`, yeni):** Yazı görüntülemelerini
+`qb_ilgi` anahtarıyla localStorage'da tutan, kategori ağırlıklı,
+sunucusuz bir öneri motoru. İlk ziyaretçi için davranış değişmedi
+(geçmiş yoksa `recommend()` null döner, mevcut aynı-kategori mantığına
+düşülür) — yalnızca geçmişi olan ziyaretçide devreye giriyor. 8 sayfaya
+da eklendi, `gizlilik.html` (TR+EN) yeni anahtarı açıkladı, `guvenlik.mjs`
+artık `ilgi.js`'i de tarıyor. Playwright ile uçtan uca doğrulandı (iki
+ziyaretten sonra öneri gerçekten kategoriye göre değişiyor, gizli modda
+[localStorage kapalı] hata vermiyor).
+
+**Beta Art (`beta-art/`):** Yeni Supabase migration'ı
+(`plate_view_events` tablosu + iki SECURITY DEFINER fonksiyon:
+`co_viewed_plates` herkese açık toplu "birlikte görüntülendi" sayımı,
+`plate_view_summary` yalnızca admin). Kimlik yok — yalnızca
+`sessionStorage`'da (sekme kapanınca silinen) rastgele bir bağıntı
+kimliği. Plaka sayfasına "You might also like" bölümü, `_authenticated/
+admin.tsx`'e ("zaten var olan gerçek bir admin rota) ziyaretçi ilgisi
+tablosu eklendi. `privacy.tsx`'in "Cookies and analytics" bölümü
+**dürüstçe** güncellendi: bu mekanizma düşük riskli ama "ticari lansman
+öncesi ePrivacy rızası incelemesi yapılmadı" notu eklendi — sayfanın
+zaten var olan "[lansman öncesi tamamlanacak]" desenine uyularak,
+yeni bir onay-banner'ı icat edilmedi. `types.ts` (otomatik üretilen
+dosya) elle güncellendi çünkü bu ortamdan canlı Supabase şemasına
+erişilip `supabase gen types` çalıştırılamadı — gerçek CLI ile
+yeniden üretilmeli, şekli birebir aynı olacak şekilde yazıldı.
+`npm run build` + `tsc --noEmit` + `eslint` üçü de temiz (yalnızca
+bu değişiklikle ilgisiz, önceden var olan iki tsc hatası kaldı —
+biri `routeTree.gen.ts`'in bayatlamış olması, derleme sırasında
+kendiliğinden düzeldi).
+
+**Beta Art Business: kasıtlı olarak bloklu, "Beklet" karar geçersiz
+kılınmasına rağmen.** Business'ın hiç kodu/sayfası yok (bugünkü kendi
+değerlendirmesi bunu zaten teyit etmişti) — davranış izlemek için
+izlenecek bir sayfa gerekiyor. Bu özellik isteği bir sayfa şablonu
+inşa etmeyi kapsamıyordu; o yüzden Business'a hiçbir şey eklenmedi,
+yalnızca bu not düşüldü. Business'a bir sayfa geldiğinde aynı desen
+(Beta Art'ınkiyle birebir) uygulanabilir.
+
+## 02.09.2026 — `small-business` becerisi kullanıcıya göre özelleştirildi
+
+Skill-creator eval turunun (`small-business-workspace/iteration-1/`,
+24/24 assertion geçti — bkz. `benchmark.md`) hemen ardından, kullanıcı
+"küçük işletme becerisini şirketime göre özelleştir" dedi. Repo taraması
+BAC/pipeline/yapı çelişkisinin hâlâ hiçbir belgede çözülmediğini
+doğruladı (`isletme/` klasörü yoktu, pipeline dosyası yoktu); tahmin
+etmek yerine `AskUserQuestion` ile dört doğrudan karar istendi ve
+`.claude/skills/small-business/SKILL.md`'ye işlendi (v0.1.0 → v0.2.0):
+
+- **"BAC" = BAG-03'ün yazım hatası** — ayrı bir dördüncü hat yok.
+- **Hedef klasör yapısı: üç ayrı proje** (`beta-art-privat/`,
+  `beta-art-gallery-event/`, `beta-art-business/`) — 26.08'de tek
+  uygulama olarak göçürülen `beta-art/` kodu yalnızca
+  `beta-art-privat/app-reference/` altında referans kalacak.
+  **Fiziksel taşıma henüz yapılmadı** — bu yalnızca beceriyi güncelledi,
+  gerçek klasör yeniden yapılandırması (ve bu depronun `CLAUDE.md`'sindeki
+  "iki yapı henüz uzlaştırılmadı" notunun düzeltilmesi) hâlâ ayrı,
+  yapılmamış bir iş olarak duruyor.
+- **Diller:** BAB-02 ve BAG-03 varsayılan Norveççe (yerel pazar), BAP-01
+  varsayılan İngilizce (uluslararası koleksiyoncu).
+- **Veri konumları:** `isletme/pipeline.md` oluşturuldu (BAP-01/BAG-03/
+  BAB-02 başlıklı, boş tablo); muhasebe/banka dışa aktarımı **kasıtlı
+  olarak** sabit bir yol almadı, her kullanımda sorulmaya devam edecek.
+
+Açık kalan tek nokta: forskuddsskatt'ın kesin taksit takvimi — kullanıcının
+kendi Altinn hesabından gelmesi gereken kişisel veri, bu ortamdan
+doğrulanamaz, tahmin edilmedi.
+
+**Not:** `.claude/skills/small-business/evals/evals.json`'daki eval-2
+hâlâ "BAC abonelik durumunu özetle" istiyor ve bu artık çözülmüş bir
+soru soruyor (skill artık "BAC" gördüğünde BAG-03 diyecek, eskisi gibi
+kullanıcıya sormayacak) — eval setinin bir sonraki iterasyonda
+güncellenmesi gerekiyor, bu oturumda dokunulmadı.
+
+## 02.09.2026 — Beta Art için DNB/Klarna ödeme araştırması
+
+Kullanıcının kısa isteği ("VIBBES DNB ODEME SISTEMI KLARNA") netleştirme
+turuyla "Beta Art için DNB ve Klarna'yı araştır ve karşılaştır"a
+indirgendi ("VIBBES" çözülmedi, konu dışı bırakıldı). Sonuç:
+`beta-art/docs/odeme-arastirmasi.md`. Ortam yine `dnb.no`,
+`vippsmobilepay.com`, `klarna.com`'a doğrudan erişimi engelledi
+(`qblogg-operasyon`'da daha önce belgelenen sınırla aynı) — tüm rakamlar
+yalnızca WebSearch özetlerinden, `[D]` işaretli, birincil kaynaktan
+doğrulanmadı. En önemli bulgu: DNB'nin ayrı bir "DNB ödeme sistemi"
+markası görünmüyor — DNB, Vipps MobilePay'in ~%52 hissedarı; "DNB ile
+öde" fiilen Vipps'e çıkıyor olabilir. Klarna için ABD rakamı (%5,99)
+bulunup Norveç'e yanlışlıkla uygulanma riski fark edildi ve raporda
+açıkça ayrıştırıldı. Ürün-uyum notu: Beta Art'ın 190 NOK'tan başlayan
+tek-plaka satışı, Klarna'nın taksit/erteleme değer önerisiyle örtüşmüyor
+— bu gözlem hipotez (`[H]`) olarak işaretlendi. Kod tabanında değişiklik
+yok; `LicenseRequestForm.tsx` zaten ödeme akışına bağlı değil, bu yüzden
+sağlayıcı seçimi henüz geri dönüşsüz bir adım değil.
+
+## 03.09.2026 — PR #13 merge: iki paralel oturumun çakışan işi uzlaştırıldı
+
+`main`, bu daldan bağımsız olarak ilerlemişti (aynı gün, `claude/qblogg-cbkoe8`
+dalından) — merge sırasında 5 gerçek çakışma çıktı (`assets/js/app.js`,
+`docs/proje-gunlugu.md`, `gizlilik.html`, `scripts/vercel-build.sh`,
+`vercel.json`). En önemlisi: **iki oturum da bağımsız olarak aynı özelliği
+kurmuş** — QBLOGG'un davranış temelli içerik önerisi sistemi. Benim
+sürümüm (`assets/js/ilgi.js`, `qb_ilgi` anahtarı, yalnızca post.html'de
+"Benzer yazılar") yalnızca kategori-eşleşmeli mantığı ağırlıklandırıyordu.
+`main`'in sürümü (`qb_interest` anahtarı, doğrudan `app.js` içinde) daha
+kapsamlıydı: aynı ağırlıklandırma **artı** blog.html'de yepyeni bir "Sizin
+için önerilen" şeridi, çip rozetlerinde yazı sayısı, öne çıkan kart
+vurgusu — ve 10 dilin hepsine `posts.recommended` çevirisi eklenmişti
+(benim sürümümde hiç yeni UI metni yoktu). Bu yüzden **`main`'in sürümü
+tutuldu, benimki (`ilgi.js` dosyası, 8 sayfadaki `<script>` etiketi,
+`gizlilik.html`'deki `qb_ilgi` maddesi, `guvenlik.mjs`'in ilgi.js taraması)
+kaldırıldı** — iki paralel sistemi birlikte tutmak yalnızca karışıklık ve
+bakım yükü eklerdi, "önce sadelik" ilkesine aykırı olurdu. Aşağıdaki
+02.09.2026 tarihli "Müşteri davranış/öneri sistemi" kaydı QBLOGG kısmı
+için artık **tarihsel** — o günün kararı doğruydu (özellik gerçekten
+QBLOGG'a eklendi), yalnızca hangi kod tabanının kazandığı bu merge'de
+belirlendi. Beta Art tarafı (Supabase, `co_viewed_plates`) hiç çakışmadı,
+olduğu gibi kaldı.
+
+İkinci örtüşme: **her iki oturum da bağımsız olarak DNB/Klarna/Vipps
+araştırdı** (benimki: `beta-art/docs/odeme-arastirmasi.md`, WebSearch
+özetleriyle; `main`'inki: `docs/odeme-sistemi.md` §10, Stripe'ın kendi
+belgelerinden). Bu bir çakışma değil — iki dosya farklı yollarda, ikisi
+de kalıyor — ama iki bağımsız araştırma **aynı ana sonuca vardı**: "DNB"
+diye ayrı bir ödeme yöntemi yok, muhtemelen Vipps kastediliyor. Bağımsız
+yakınsama, ek bir doğrulama sinyali olarak notlanıyor.
+
+Çakışan dosyalardan `vercel-build.sh`/`vercel.json`: `main`'in sürümü
+(iki dağıtım şeklini de ele alan) tutuldu, benim daha basit sürümüm
+(yalnızca kendinden-klonlayan) kaldırıldı — `main`'inki net bir üstünlük,
+kayıp yok.
 
 ## 02.09.2026 — Sosyal medya kanalları: strateji + ilk gerçek içerik partisi
 

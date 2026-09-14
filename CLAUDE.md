@@ -3,6 +3,48 @@
 Sürekli geliştirilen bir proje. Bu dosya, her yeni oturumun projeyi baştan çözmek
 zorunda kalmaması içindir. Bir kural değişirse burayı da güncelleyin.
 
+## Bu depo artık bir monorepo (26.08.2026, güncellendi 30.08.2026)
+
+Kullanıcı kararıyla, dağınık duran ayrı depolar buraya göçürüldü — repo
+kökü hâlâ **QBLOGG**'a ait (aşağıdaki her şey QBLOGG içindir), ama alt
+klasörler **tamamen ayrı projeler**, kendi bağımlılıkları ve derleme
+adımlarıyla:
+
+| Klasör | Ne | Bağımlılık/derleme |
+|---|---|---|
+| `beta-art/` | **Beta Art** — asıl yön: "Verified Human Photography & Licensing" + inşaat sektörü proje-kapanışı dokümantasyon arşivi. **Yapısı henüz kesinleşmedi:** 26.08'de tek bir React/Vite/Supabase kod tabanı (eski `andersenbetul-alt/beta-art-archive`, 45 commit) buraya taşındı, ama 30.08'de gelen daha yeni belgeler (`beta-art/source-review/intake-2026-08-30/`) üç ayrı alt-proje öneriyor: **BAP-01 Privat** (fotoğraf/edisyon), **BAG-03 Galeri**/Utstilling Event (sanatçı/sergi), **BAB-02 Business** (inşaat dokümantasyonu) — ve React kodunun yalnızca `beta-art-privat/app-reference/` altında referans olması gerektiğini söylüyor. Bu iki yapı henüz uzlaştırılmadı, kullanıcıya soruldu. **QBLOGG'daki `docs/beta-art-konsept.md`'de yazılan "AI destekli görsel stüdyo" fikri Beta Art'tan REDDEDİLDİ** — o fikir yaşıyor ama artık bağımsız bir marka: bkz. `docs/beta-ai-konsept.md` ("Beta AI"). | React + Vite + TypeScript + Supabase (bun.lock). Kendi `npm i`/`bun install` gerekir — QBLOGG'un "sıfır bağımlılık" kuralı buraya uygulanmaz. |
+| `eve-slack-agent/` | Vercel "eve" Slack ajanı şablonu — **değiştirilmemiş boilerplate**, henüz özel içerik yok | pnpm workspace |
+| `eve-chat-template/` | Vercel "eve" sohbet şablonu (Next.js) — **değiştirilmemiş boilerplate** | Next.js, kendi paket yönetimi |
+
+**"Beta AI" (30.08.2026, henüz kod yok):** `docs/beta-ai-konsept.md` —
+Beta Art'tan (fotoğraf arşivi) ve QBLOGG'dan (içerik stüdyosu) tamamen
+bağımsız, üçüncü bir marka/ürün fikri: küçük işletmelere insan seçkili
+AI görsel/marka paketi satan bir stüdyo. Henüz yalnızca kavram belgesi;
+kendi klasörü, kod tabanı veya alan adı yok (§M'de açık kararlar).
+
+**Kural:** Bu alt klasörlerde çalışırken QBLOGG'un "Değişmez kurallar"ı
+(aşağıda) uygulanmaz — onlar yalnız repo kökündeki QBLOGG dosyaları için
+geçerli. `beta-art/` kendi CLAUDE.md'sini henüz yazmadı; oraya girildiğinde
+önce `beta-art/BETA_ART_MASTER.md`, `beta-art/BETA_ART_SINGLE_SITE_ARCHITECTURE.md`
+ve `beta-art/source-review/intake-2026-08-30/PROJECT-MANIFEST.md` okunmalı
+(üçü şu an kısmen çelişiyor, yukarıya bakın). `npm run check`/`guvenlik`/
+`gorunurluk` betikleri yalnız repo köküne (QBLOGG) bakar, `beta-art/`
+içini denetlemez.
+
+**Her proje klasörünün kendi `source-review/` ham kaynak arşivi var**
+(`docs/arsiv-sistemi.md`) — yeni bir dosya/belge geldiğinde önce hangi
+projeye ait olduğu belirlenir, sonra o klasörün `source-review/
+intake-<tarih>/` altına olduğu gibi kaydedilir.
+
+**Göçürülemeyenler (erişim sınırı):** Vercel takımındaki `naviar-care`,
+`naviar-care-1`, `hximusic`, `naerhjelp-pilot`, `naerhjelp-pilot-v2`,
+`cobban` ve Vercel'deki "beta-art" adlı proje — hepsi `betulandersen-droid`
+adlı **farklı bir GitHub hesabına** bağlı; bu oturumun GitHub erişimi
+tek hesapla sınırlı ("cross-tier adds are not supported"). Bunlar için
+ayrı bir oturum, o hesabı kaynak alarak açılmalı. `andersenbetul-alt/qb`
+ve `andersenbetul-alt/qblogg` depoları da kontrol edildi — ikisi de boş,
+göçürülecek bir şey yok.
+
 ## Proje nedir
 
 QBLOGG, şirketlere içerik hattı satan bir stüdyonun tanıtım + blog sitesidir:

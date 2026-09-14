@@ -72,7 +72,7 @@ maliyet.
 | 13 | Ayda 2 yeni yazı (10 dilde) | Sürekli | Konu havuzu aşağıda |
 | 14 | Her yazının sonuna ilgili pakete bağlantı | **Bitti** 18.08 | Yazı sonunda brief + paket köprüsü, 10 dilde |
 | 15 | Analitik (gizlilik dostu) ve dönüşüm ölçümü | Bekliyor | Hangi yazı brief getiriyor? |
-| 22 | Sayfa ağırlığını böl | Bekliyor | 236 KB'ın 183 KB'ı i18n+posts; ziyaretçi on dilin tamamını indiriyor |
+| 22 | Sayfa ağırlığını böl | Bekliyor | 26.08.2026 yeniden ölçüldü: ilk yük artık ~526 KB ham / ~194 KB gzip, bunun 439 KB'ı (i18n 142 KB + posts 297 KB) — 10 yazı 10 dile çıktıkça büyüdü, eski "236 KB" rakamı bayatlamıştı. Ziyaretçi hâlâ on dilin tamamını indiriyor |
 | 23 | ~~Sosyal paylaşım görseli (og:image) ve 404 sayfası~~ | **Bitti** 22.08 | → satır 86–87 |
 
 ### 3.5. AI Workforce (yeni ürün hattı — bkz. `docs/ai-workforce/`)
@@ -109,6 +109,34 @@ maliyet.
 | 48 | Görünürlük denetimini siteye uygula | **Bitti** 18.08 | `npm run gorunurluk`; yazı modeline `src` ve `orig` eklendi |
 | 49 | Kaynak adreslerini doldur | Bekliyor | `check.mjs` adresi eksik kaynakları listeliyor; ortamda dış erişim kapalı |
 | 50 | Depoya ilk push | **Engelli** | Depo boş (hiç commit yok) + GitHub App'in yazma izni yok: "Resource not accessible by integration" |
+
+### 3.7. Beta AI (yeni, ayrı ürün fikri — bkz. `docs/beta-ai-konsept.md`)
+
+QBLOGG'un ve Beta Art'ın yanına eklenen üçüncü/dördüncü paralel ürün
+fikri (bkz. AI Workforce ve `docs/yazar-platformu.md`). **30.08.2026'da
+"Beta Art"tan ayrıştırılıp "Beta AI" adıyla yeniden kuruldu** — aynı iş
+modeli, farklı ve bağımsız marka (gerekçe: `beta-art/BETA_ART_MASTER.md`
+bu yönü "Beta Art" adı altında açıkça reddediyordu). Henüz kod yok; şu an
+yalnız 90 günlük konsept belgesi var, kullanıcıda 7 açık karar bekliyor
+(niş, alan adı/görsel kimlik, teknik yığın, ödeme sağlayıcı, AI görsel
+sağlayıcısı, NOK fiyat doğrulaması, erişilebilirlik hedefi — belgenin §M'i).
+
+| # | İş | Durum | Not |
+|---|---|---|---|
+| 91 | 90 günlük konsept + kanıt sınıflandırması | **Bitti** 25.08 | `docs/beta-ai-konsept.md` (eski adı `beta-art-konsept.md`); 3 dış iddia doğrulandı (KDV eşiği, AI Act 50. madde, SSB Q2 2026) |
+| 94 | "Beta Art" adından ayrıştırma | **Bitti** 30.08 | İsim çakışması ve marka reddi bulununca yapıldı; `docs/beta-art-konsept.md` AŞILDI olarak işaretlendi |
+| 92 | Açık kararları kapat (§M) | Bekliyor | Karar kullanıcıda; kapanmadan kod/tasarım başlamaz |
+| 93 | Landing page + brief formu | Bekliyor | §M karar #3 (teknik yığın) sonrası |
+
+### 3.8. Beta Art — yapısal netleştirme (bkz. `CLAUDE.md` monorepo bölümü)
+
+`beta-art/` klasöründeki React/Vite/Supabase kod tabanı (26.08 göçü) ile
+30.08'de gelen üç-proje modeli (`BAP-01`/`BAG-03`/`BAB-02`, bkz.
+`beta-art/source-review/intake-2026-08-30/`) henüz uzlaştırılmadı.
+
+| # | İş | Durum | Not |
+|---|---|---|---|
+| 95 | Yapı çelişkisini çöz | **Karar bekliyor** | Kullanıcıya 3 soru soruldu: gerçek üç-klasör içeriği nerede, 26.08 göçü nasıl yeniden düzenlensin, alt-alan adı mı yol tabanlı mount mu |
 
 ### 4. Ölçekleme (öncelik: düşük — talep oluştuktan sonra)
 

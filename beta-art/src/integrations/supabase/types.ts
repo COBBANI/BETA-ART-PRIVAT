@@ -14,6 +14,32 @@ export type Database = {
   }
   public: {
     Tables: {
+      /* Bu tablo satırı elle eklendi (supabase/migrations/20260902120000_*.sql'e
+         karşılık gelir) — bu ortamda canlı Supabase şemasına erişilemediği için
+         `supabase gen types typescript` çalıştırılamadı. Migration uygulandıktan
+         sonra bu dosya gerçek CLI ile yeniden üretilmeli; şekli birebir aynı
+         olmalı. */
+      plate_view_events: {
+        Row: {
+          correlation_id: string
+          created_at: string
+          id: string
+          plate_slug: string
+        }
+        Insert: {
+          correlation_id: string
+          created_at?: string
+          id?: string
+          plate_slug: string
+        }
+        Update: {
+          correlation_id?: string
+          created_at?: string
+          id?: string
+          plate_slug?: string
+        }
+        Relationships: []
+      }
       plates: {
         Row: {
           alt_text: string | null
@@ -115,6 +141,10 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      co_viewed_plates: {
+        Args: { _limit?: number; _slug: string }
+        Returns: { plate_slug: string; views: number }[]
+      }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
@@ -123,6 +153,10 @@ export type Database = {
         Returns: boolean
       }
       is_admin: { Args: never; Returns: boolean }
+      plate_view_summary: {
+        Args: never
+        Returns: { plate_slug: string; unique_sessions: number; views: number }[]
+      }
     }
     Enums: {
       app_role: "admin" | "photographer" | "customer"
