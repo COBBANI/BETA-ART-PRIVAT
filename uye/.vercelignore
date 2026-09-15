@@ -1,0 +1,7 @@
+# Upload only the sources needed by this separate Vercel project.
+/*
+!vercel.json
+!build.mjs
+!index.html
+!app.js
+!lib/

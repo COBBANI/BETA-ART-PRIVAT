@@ -14,8 +14,9 @@ SaaS şirketleri. İkincil kitle: stüdyoya katılmak isteyen yazarlar.
 
 ## Teknik yapı
 
-Saf HTML + CSS + JavaScript. **Derleme adımı, çatı (framework) ve bağımlılık yok** —
-bu bilinçli bir tercih: site herhangi bir statik sunucuya olduğu gibi yüklenir.
+Saf HTML + CSS + JavaScript. Çatı (framework) ve site çalışma zamanı bağımlılığı yok.
+Vercel, `scripts/vercel-build.sh` ile seçili kaynak sürümünün yayın dosyalarını
+`dist/` içine kopyalar; bu paketleme adımı bağımlılık kurmaz.
 Yeni bağımlılık eklemeden önce bunun gerçekten gerekli olduğunu doğrulayın.
 
 ```
@@ -253,18 +254,15 @@ açık talebi.
   `main` kullanıcının açık izniyle QBLOGG sitesine çevrildi: `-s ours
   --allow-unrelated-histories` merge'ü ile eski saat uygulamasının geçmişi
   korunarak ağaç QBLOGG yapıldı. Geliştirme dalı `claude/qblogg-web-sayfasi-upcarm`.
-- **Site Vercel'de yayında (22.08.2026).** Proje `qblogg`, takım "BET - ART"
-  (`team_xNtowH7U0jXQrI53DFJFzH2o`), üretim adresi qblogg.vercel.app (23.08 gecesi proje panelde silinmişti; aynı adla yeniden kuruldu — proje id değişti, eski qblogg-flame/qblogg-bet-art adresleri geçersiz).
-  Kurulum tek dosyalık: dağıtıma yalnızca `vercel.json` gönderilir (depodaki
-  dosyanın kendisi — tek kaynak); `buildCommand` public depoyu (`main`)
-  klonlayıp 6 sayfa + `404.html` + `sitemap.xml` + `robots.txt` + `assets/`i
-  `dist/`e kopyalar. Yani **siteyi güncellemek =
-  main'e push + aynı dağıtımı yeniden tetiklemek.** Vercel'in GitHub
-  entegrasyonu `andersenbetul-alt` hesabına yetkili değil (`repo_no_access`,
-  entegrasyon `betulandersen-droid`a bağlı); kullanıcı yetkiyi verirse
-  `create_git_project` ile push başına otomatik dağıtıma geçilebilir.
-  qblogg.com alan adının bağlanması kullanıcı tarafında (Vercel panel +
-  GoDaddy DNS; ad sunucuları taşınmaz, e-posta MX kayıtları GoDaddy'de kalmalı).
+- **Vercel kaynak eşlemesi (07.09.2026):** Ana site `BETA-ART-PRIVAT` kökü,
+  Build Command `bash scripts/vercel-build.sh`, Output Directory `dist`.
+  `panel` ve `uye` ayrı proje kökleridir. Eski yalnız `vercel.json` yükleyen,
+  başka bir deponun `main` dalını klonlayan tarif geçerli değildir.
+  Son bağlantı kontrolü yalnız boş `bet-art` takımını döndürdü;
+  `beta-art-master` projeleri listelenemedi. Mevcut proje kimliği, Git bağlantısı
+  ve canlı durum erişim açılınca doğrulanmalı; yeni kopya proje oluşturulmaz.
+  Doğru yayın adımları `DAGITIM.md` içindedir. DNS ve e-posta MX kayıtları
+  bu kod düzeltmesinde değiştirilmedi.
 - Haftalık SEO/AI görünürlük izlemesi kurulu: pazartesi 07:00 (Norveç saati).
 - FAQPage şeması duruyor ama Google 7 Mayıs 2026'da FAQ zengin sonuçlarını kaldırdı.
   Yapay zekâ aramaları için tutuluyor; zengin sonuç beklemeyin.

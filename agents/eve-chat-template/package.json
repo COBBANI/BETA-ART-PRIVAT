@@ -17,6 +17,7 @@
     "dev": "next dev",
     "start": "next start",
     "typecheck": "next typegen && tsgo --noEmit -p tsconfig.json",
+    "test": "node --experimental-test-module-mocks --test tests/*.test.mjs",
     "build:eve": "eve build",
     "dev:eve": "eve dev",
     "start:eve": "eve start"
