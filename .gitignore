@@ -21,3 +21,10 @@ engine/data/
 # Üretilen dağıtım klasörleri — marka-tescil.mjs ve marka-paket.mjs üretiyor
 tescil/
 paket/
+
+# beta-privat: ham banka/muhasebe verisi, API anahtarı, vergi kimlik numarası
+# buraya asla commit edilmez (bkz. beta-privat/README.md "Güvenlik notu")
+beta-privat/data/
+beta-privat/*.env
+beta-privat/**/*.csv
+beta-privat/**/*.ofx

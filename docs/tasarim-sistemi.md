@@ -4,9 +4,10 @@ Figma MCP entegrasyonu için istendi, ama asıl işlevi daha geniş: bir Figma
 tasarımını (ya da herhangi bir dış tasarımı) bu depoya çevirirken hangi
 belirteçlerin, hangi kalıpların ve hangi sınırların geçerli olduğunu söyler.
 
-**Her madde depodan ölçüldü**, ezberden yazılmadı. Sayılar 26.08.2026 itibarıyla
-(22.08'den beri main.css'e 6 commit daha girdi: karşılaştırma tablosu, TOC,
-yazdırma CSS'i — sayılar buna göre güncellendi).
+**Her madde depodan ölçüldü**, ezberden yazılmadı. Sayılar 01.09.2026
+itibarıyla, dal birleştirmesi sonrası yeniden ölçüldü (main.css 629 satır,
+119 benzersiz sınıf — 26.08 ölçümüyle aynı; Beta Art Privat işi apps/
+altında olduğundan QBLOGG ölçülerini değiştirmedi).
 
 ---
 
@@ -209,12 +210,15 @@ Görünen her ikon **satır içi SVG**dir.
 
 ### İki depo
 
-**Yazı ikonları** — `assets/js/app.js` içindeki `ICONS` kaydı, 11 ikon:
+**Yazı ikonları** — `assets/js/app.js` içindeki `ICONS` kaydı, 15 ikon:
 
 ```
 question · coin · blocks · phone · banknote · compass · bulb · chart ·
-envelope · link · gear
+envelope · link · gear · linkedin · x · facebook · whatsapp
 ```
+
+Son dördü (linkedin/x/facebook/whatsapp) paylaşım kanalı glifleri, aynı
+çizim kuralına uyan sadeleştirilmiş çizgi dilinde.
 
 Yalnızca yol gövdesi saklanır; sarmalayıcıyı `iconSVG(name)` üretir:
 
@@ -249,7 +253,7 @@ değişiminde kendiliğinden döner. Figma'dan gelen bir ikonda sabit renk varsa
 
 ### Metodoloji
 
-Hiçbiri. Düz CSS, tek dosya, 553 satır, 95 sınıf. Sınıf adları anlamsal ve
+Hiçbiri. Düz CSS, tek dosya, 629 satır, ~100 sınıf. Sınıf adları anlamsal ve
 kısa: `.cta-box`, `.posts`, `.share-btn`, `.article-note`.
 
 ### Küresel stiller

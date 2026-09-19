@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 45.0 33.3% 97.6%;
+    --foreground: 0 0% 5.9%;
+    --card: 42.0 29.4% 93.3%;
+    --card-foreground: 0 0% 5.9%;
+    --popover: 45.0 33.3% 97.6%;
+    --popover-foreground: 0 0% 5.9%;
+    --primary: 0 0% 5.9%;
+    --primary-foreground: 45.0 33.3% 97.6%;
+    --secondary: 41.5 23.6% 89.2%;
+    --secondary-foreground: 0 0% 5.9%;
+    --muted: 41.5 23.6% 89.2%;
+    --muted-foreground: 40.0 6.2% 38.0%;
+    --accent: 0 68.5% 32.4%;
+    --accent-foreground: 45.0 33.3% 97.6%;
+    --destructive: 0 68.5% 32.4%;
+    --destructive-foreground: 45.0 33.3% 97.6%;
+    --border: 40.0 18.2% 87.1%;
+    --input: 40.0 18.2% 87.1%;
+    --ring: 0 68.5% 32.4%;
+    --radius: 0rem;
+  }
+
+  .dark {
+    --background: 48.0 14.3% 6.9%;
+    --foreground: 42.0 29.4% 93.3%;
+    --card: 40.0 12.0% 9.8%;
+    --card-foreground: 42.0 29.4% 93.3%;
+    --popover: 48.0 14.3% 6.9%;
+    --popover-foreground: 42.0 29.4% 93.3%;
+    --primary: 42.0 29.4% 93.3%;
+    --primary-foreground: 48.0 14.3% 6.9%;
+    --secondary: 37.5 12.5% 12.5%;
+    --secondary-foreground: 42.0 29.4% 93.3%;
+    --muted: 37.5 12.5% 12.5%;
+    --muted-foreground: 40.0 8.3% 57.6%;
+    --accent: 4.8 54.3% 49.8%;
+    --accent-foreground: 48.0 14.3% 6.9%;
+    --destructive: 4.8 54.3% 49.8%;
+    --destructive-foreground: 48.0 14.3% 6.9%;
+    --border: 36.0 11.1% 17.6%;
+    --input: 36.0 11.1% 17.6%;
+    --ring: 4.8 54.3% 49.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: "Fraunces", Georgia, "Times New Roman", serif;
+  }
+  .font-record {
+    font-family: "JetBrains Mono", "SFMono-Regular", Menlo, monospace;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}

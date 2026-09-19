@@ -1,116 +1,188 @@
 ---
 name: on-brand
-description: QBLOGG için marka uygunluk denetçisi — renk, tipografi, aralık/yerleşim ve ses kurallarını her içerik veya arayüz üretiminde uygular. Yeni bir HTML/CSS parçası, e-posta, sosyal metin, buton, kart, banner, ikon ya da blog paragrafı üretirken — kullanıcı açıkça "marka kontrolü yap" demese bile — bu beceriyi yükle ve çıktıyı teslim etmeden önce buradaki kurallara karşı kontrol et. Marka dışı bir istek gelirse (aqua renginde metin, Google Fonts, emoji ikon, `margin-left`, "garanti/kesin" dili gibi) sessizce uygulama ya da sessizce düzeltme — kısa gerekçeyle reddet, sonra marka-uyumlu alternatifi sun.
+description: QBLOGG marka kurallarını (renk belirteçleri, tipografi ölçeği, boşluk/radius, ikon çizimi, RTL) ve ses/içerik kurallarını (uydurma yasak, rakamlar örnek, kaynak zorunlu) her içerik veya arayüz üretiminde uygular. Bir istek marka dışı bir örüntü üretmeyi gerektiriyorsa (ham hex, aqua metin, emoji, ham rem, uydurulmuş istatistik/vaat) SESSİZCE UYMAZ — kısa gerekçeyle reddeder ve marka içi alternatifi sunar. Bu depoda (QBLOGG/BETA-ART) HTML/CSS üretilirken, blog yazısı/pazarlama metni yazılırken, yeni sayfa/bileşen eklenirken veya "marka kurallarına uygun mu" diye sorulduğunda MUTLAKA bu beceriyi kullan — kullanıcı "on-brand" demese bile.
+owner: QBLOGG
 ---
 
 # on-brand — QBLOGG marka denetçisi
 
-Bu beceri, dört kaynaktan damıtıldı — hiçbir kural burada icat edilmedi:
-`docs/tasarim-sistemi.md` (renk/tipografi/aralık), `assets/css/main.css`
-(gerçek `:root` değerleri), `.claude/skills/qblogg-blog-yazisi/SKILL.md`
-"Kalite kuralları" ve CLAUDE.md'nin uydurma/abartı yasağı. **Ayrı bir
-"marka sesi" belgesi yok** — bu ikisi (kalite kuralları + uydurma yasağı)
-QBLOGG'un fiili ses kuralıdır; kaynak buysa, bu beceri de bunu söyler.
+Bu beceri bir üretim yöntemi değil, bir **kapı**dır: bu depoda üretilen her
+görsel çıktı (HTML/CSS) ve her metin çıktısı (blog, pazarlama, arayüz metni)
+buradan geçer. Kaynağı depodaki dört belge — `docs/tasarim-sistemi.md`,
+`docs/figma-tasarim-kurallari.md`, `docs/konsept.md`,
+`.claude/skills/qblogg-blog-yazisi/SKILL.md` — ve CLAUDE.md "Değişmez
+kurallar" 4/5/7. Çelişkide CLAUDE.md kazanır.
 
-Çelişki hâlinde CLAUDE.md kazanır — bu beceri onun bir alt kümesidir.
+## Neden bir kapı, bir kılavuz değil
 
-## Neden bu bir "reddet" becerisi, "düzelt" becerisi değil
+Kural yazılı olması onun uygulanacağı anlamına gelmez. Bir bileşen isteği
+geldiğinde model "biraz mavi" ya da "ince bir vurgu rengi" gibi doğal dilden
+doğrudan hex üretme eğilimindedir — kural okunmuş olsa bile. Bu yüzden bu
+beceri iki parçadan oluşur: aşağıdaki kurallar (ne aranacak) ve **Teslimden
+önce** bölümündeki kontrol listesi (üretilen çıktının kendisine karşı
+çalıştırılan bir denetim). Kural olmadan kontrol listesi kördür, kontrol
+listesi olmadan kural unutulur.
 
-Sessizce düzeltmek iki sorun yaratır: kullanıcı neyin yanlış olduğunu
-öğrenmez (aynı hatayı tekrar ister), ve bazen "düzeltme" kullanıcının asıl
-istediğini kaybeder. Bunun yerine: **kısa gerekçeyle reddet, sonra
-marka-uyumlu alternatifi hemen sun.** Tek cümlelik gerekçe + çözüm — uzun
-ders değil.
+## 1. Renk belirteçleri
 
-## Kontrol listesi
+Tek kaynak: `assets/css/main.css` → `:root` (açık) ve
+`html[data-theme="dark"]` (koyu). Kaynak: `docs/tasarim-sistemi.md` §1.
 
-Her içerik/arayüz üretiminde, teslim etmeden önce şunları tara:
+```css
+--bg / --bg-soft / --bg-card          /* zeminler */
+--text / --text-muted / --border      /* metin ve çizgiler */
+--brand: #082C54                      /* Midnight Navy — koyu temada #00D8C2'ye döner */
+--brand-2: #00D8C2                    /* Electric Aqua — YALNIZCA vurgu/dekor, METİNDE ASLA */
+--brand-2-ink: #0a7d72                /* aqua niyetli METİN rengi, beyazda 5,0:1 */
+--on-brand / --logo-ink / --brand-soft / --danger
+```
 
-### 1. Renk — ham hex yazılmaz
+**Kural:** Ham hex/rgb yazılmaz — her zaman `var(--…)`. `--line` diye bir
+belirteç yok, kenarlık her zaman `--border`.
 
-Her renk `var(--token)` ile gelir; token'lar (`assets/css/main.css`):
-`--bg`, `--bg-soft`, `--bg-card`, `--text`, `--text-muted`, `--border`,
-`--brand` (#082C54, koyu temada aqua'ya döner), `--brand-2` (#00D8C2,
-yalnızca vurgu), `--brand-2-ink` (#0a7d72, metinde kullanılacak aqua),
-`--on-brand`, `--danger`.
+**Aqua tuzağı (en sık ihlal):** `#00D8C2` beyaz zeminde 1,9:1 kontrast verir
+— WCAG AA'nın (4,5:1) çok altında. Aqua'yı metin rengi, link rengi veya
+ikon rengi olarak kullanan her istek reddedilir; `var(--brand-2-ink)`
+önerilir. Koyu temada bu ayrım kalkar (`--brand-2-ink: var(--brand-2)`).
 
-**Tuzak:** `--brand-2` (aqua) beyaz üzerinde **1,8:1** — WCAG AA'nın
-(4,5:1) çok altında. Aqua **hiçbir zaman metin rengi olamaz**; metin için
-her zaman `--brand-2-ink`.
+## 2. Tipografi
 
-**Neden reddedilir, düzeltilmez:** Ham hex ya da sabit renk yazılırsa koyu
-tema kendiliğinden çalışmaz — token kullanmak koyu temanın **tek**
-çalışma mekanizması. Sessizce "düzelttim" demek, kullanıcının bir dahaki
-sefere yine ham hex isteyeceği anlamına gelir.
+Sekiz basamak, kaynak: `docs/tasarim-sistemi.md` §1 / `figma-tasarim-kurallari.md` §1.
 
-**Örnek**
-> İstek: "Butonu #00D8C2 renginde, üzerinde beyaz yazıyla yap."
-> Yanıt: Reddediyorum — aqua (#00D8C2) beyaz üzerinde 1,8:1 kontrast
-> veriyor, WCAG AA'nın çok altında ve koyu temada bozulur. Bunun yerine
-> `background: var(--brand); color: var(--on-brand)` kullanıyorum —
-> aynı marka hissi, okunabilir ve tema-uyumlu.
+```
+--fs-2xs .76rem  --fs-xs .8rem  --fs-sm .85rem  --fs-md .92rem
+--fs-base .95rem --fs-lg 1rem   --fs-xl 1.12rem --fs-logo 1.16rem  (yalnız logo)
+```
 
-### 2. Tipografi — sekiz basamaklı ölçek
+**Kural:** Ham `rem`/`px` font-size yazılmaz — en yakın basamağa yuvarlanır.
+İstisna: başlıkların `clamp()` değerleri, `em` cinsinden göreli boyutlar
+(ilk harf, `code`). Font ailesi her zaman `var(--font)` (Inter + sistem
+yığını); Google Fonts veya başka bir CDN bağlantısı **asla** kabul edilmez
+(GDPR gerekçesi `docs/tasarim-sistemi.md` §4'te kayıtlı).
 
-`--fs-2xs` … `--fs-xl` + `--fs-logo`. Ham `rem` yazılmaz. İstisnalar:
-başlık `clamp()` değerleri, `em` göreli boyutlar (ilk harf, `code`),
-`--fs-logo` (ölçeğe yuvarlanmaz, marka belgesinde ölçülü).
+## 3. Boşluk, radius, bileşen sınıfları
 
-Yazı tipi: Inter, **yerelde** (`assets/fonts/`). Google Fonts CDN'i asla
-önerilmez — ziyaretçinin IP'sini Google'a gönderir, Münih Bölge Mahkemesi
-kararı (3 O 17493/20) sonrası AB'de riskli. Bu proje zaten hiçbir dış
-istek yapmıyor; bir Google Fonts linki bunu kırar.
+```
+--radius: 16px   --radius-sm: 10px   --maxw: 1140px
+```
 
-### 3. Aralık ve yerleşim
+Bileşen çatısı yok; tekrar eden sınıf adları kaynaktır
+(`figma-tasarim-kurallari.md` §2): `.btn`/`.btn--primary`/`.btn--ghost`,
+`.card`, `.plan`, `.section`/`.section--soft`, `.wrap`, `.tag`/`.chip`,
+`.field`, `.article-body`. Yeni bir bileşen isteniyorsa önce bu listede
+karşılığı olup olmadığına bakılır; yoksa yeni sınıf bu adlandırma
+diliyle (kısa, anlamsal, Türkçe-İngilizce karışık) türetilir — utility-first
+(Tailwind vb.) sınıf üretilmez, çatı/derleme adımı önerilmez.
 
-Token'lar: `--radius` (16px), `--radius-sm` (10px), `--maxw` (1140px).
-Dokunma hedefi en az 44px.
+Kesme noktaları sabit dörtlü: `1180px, 860px, 620px, 360px` (hepsi
+`max-width`). Yeni bir kesme noktası önerilmeden önce bu dördüne oturmayı
+dener.
 
-**RTL — yön bağımlı CSS yazılmaz.** `margin-left`/`left`/`padding-right`
-yerine `margin-inline-start`/`inset-inline-start`/`padding-inline-end`.
-Arapça sitenin on dilinden biri; yön bağımlı bir kural doğrudan bozulur.
+## 4. İkon kuralı
 
-**Izgaralar** `minmax(min(Xpx, 100%), 1fr)` deseniyle yazılır — çıplak
-`minmax(Xpx, 1fr)` küçük ekranda yatay taşma üretir.
+CLAUDE.md kural 4, `docs/tasarim-sistemi.md` §5. **Emoji her zaman
+reddedilir** — işletim sistemine göre üç farklı görünüm verir, marka görsel
+kontrolünü kaybeder. İstisna: `→ ↑ ☾ ☀` gibi tek renkli, yazı tipiyle
+çizilen ok/tema işaretleri (bunlar ikon değil, karakterdir).
 
-### 4. İkon — emoji yok
+Her ikon satır içi SVG:
 
-Görünen her ikon satır içi SVG: 24×24 ızgara, `fill="none"`,
-`stroke="currentColor"`, `stroke-width="1.7"`, yuvarlak uç/birleşim.
-Emoji işletim sistemine göre değişir (Windows/Android/macOS üç farklı
-görünüm) — marka kendi görselinin kontrolünü kaybeder. **İstisna:** ok ve
-tema düğmesi (`→ ↑ ☾ ☀`) — bunlar yazı tipiyle çizilen tek renkli işaret,
-SVG ikon değil.
+```
+24×24 ızgara · fill="none" · stroke="currentColor" · stroke-width="1.7" ·
+stroke-linecap/linejoin="round"
+```
 
-### 5. Ses — kalite kuralları + uydurma yasağı
+Yazı ikonu isteniyorsa önce `assets/js/app.js → ICONS` kaydına bakılır
+(mevcut adlar: question, coin, blocks, phone, banknote, compass, bulb,
+chart, envelope, link, gear, linkedin, x, facebook, whatsapp); karşılığı
+yoksa aynı çizim kuralına uyan yeni bir yol tanımlanır, sabit renk yazılmaz
+(`currentColor` zorunlu — ikon tema değişince kendiliğinden döner).
 
-- Rakamlar her zaman örnek/tahmin olarak işaretlenir, kesin vaat olarak
-  sunulmaz. Abartılı/mutlak "garanti" dili reddedilir.
-- Uydurma yok: doğrulanmamış istatistik, uydurma müşteri hikâyesi, uydurma
-  kurum şartı — yumuşatılmaz, doğrudan reddedilir.
-- Somut, soyuttan iyidir: beş sıfat yerine bir gerçek örnek.
-- Kancayla aç — boğaz temizleme cümlesiyle değil.
-- Bir içerik tek konuya, tek okura, tek çıkarıma hizmet eder.
+## 5. RTL ve erişilebilirlik
 
-**Örnek**
-> İstek: "Bu pakette kesin olarak %300 daha fazla trafik garantisi
-> verelim."
-> Yanıt: Reddediyorum — kesin/garanti dili bu projenin uydurma yasağını
-> ihlal ediyor (CLAUDE.md, rakamlar örnek olarak işaretlenir). Bunun
-> yerine "örnek senaryomuzda trafik böyle arttı" gibi ölçülmüş, kaynaklı
-> bir ifade öneriyorum.
+Yön bağımlı CSS özelliği yazılmaz: `margin-left/right` yerine
+`margin-inline-start/end`, `left/right` yerine `inset-inline-start/end`,
+`text-align:left` yerine `text-align:start`. Yeni bir bölüm üretildiğinde
+Arapça (`dir="rtl"`) gözden geçirilir. Dokunma hedefi ≥44px, gövde metni
+kontrastı ≥4,5:1, `:focus-visible` halkası korunur.
 
-## Nasıl uygulanır
+## 6. Metin: sözlükten gelir, gömülmez
 
-1. İçerik/arayüz taslağını üretmeden **önce** hangi kategorilerin (1-5)
-   ilgili olduğuna bak — bir buton isteniyorsa 1+3+4, bir paragraf
-   isteniyorsa 5, tam bir bölüm isteniyorsa hepsi.
-2. İstekte açık bir ihlal varsa (ham hex, Google Fonts, emoji, yön bağımlı
-   CSS, garanti dili) — **önce reddet** (bir cümle, hangi kural), **sonra
-   marka-uyumlu alternatifi üret.** İkisini aynı yanıtta yap, ayrı bir tur
-   beklemeden.
-3. İhlal yoksa sessizce devam et — her üretimin başına bu listeyi
-   yapıştırmak gürültü olur. Yalnızca gerçek bir ihlal varsa konuş.
-4. Emin değilsen (örneğin yeni bir renk tonu marka paletine "yakın" ama
-   token değil) — token'a en yakın karşılığı öner, seçimi kullanıcıya
-   bırak; bu bir ret değil bir uyarıdır.
+CLAUDE.md kural 3. Sitede görünen her metin `data-i18n` (veya
+`data-i18n-attr/title/content`) ile `i18n.js` sözlüğünden gelir; HTML'e
+tek dilde metin gömmek en sık yapılan hatadır. Bir sayfa/bileşen isteği
+geldiğinde önce anahtar **on dile birden** açılır (tr, en, zh, hi, es, ar,
+fr, pt, ru, no) — dokuz dili "sonra eklerim" diye ertelemek, bu beceri
+kapsamında bir ihlaldir.
+
+## 7. Ses ve içerik kuralları
+
+Kaynak: `docs/konsept.md` ("uydurma yasağı"), `qblogg-blog-yazisi/SKILL.md`.
+Bu kurallar HTML/CSS'e değil, **her metne** (blog, pazarlama kopyası,
+brief e-postası, arayüz mikro-metni) uygulanır.
+
+| Kural | Anlamı |
+|---|---|
+| **Uydurma yasak** | Doğrulanmamış istatistik, müşteri hikâyesi, kurum şartı yazılmaz. Kaynağı olmayan iddia = yazılmaz, atlanır. |
+| **Rakamlar örnek işaretlenir** | Fiyat/ücret/oran gibi sayılar "örnek başlangıç fiyatıdır" gibi bir ibareyle bağlamlandırılır; kesin vaat gibi sunulmaz. |
+| **Kaynak zorunluluğu** | Para/kariyer konularında en az üç kaynak. Adresi doğrulanmamış kaynak uydurma bağlantıyla değil, adıyla ve `nu` gerekçesiyle yazılır. |
+| **Somut, genelin önüne geçer** | Bir gerçek örnek, beş sıfattan iyidir. Soyut övgü ("lider", "devrimci", "en iyi") yerine ölçülebilir/somut ifade. |
+| **Abartı yok** | "Kesinlikle", "garantili", "anında" gibi kesin-vaat dili; pazarlama metninde bile kullanılmaz — bu işte en pahalı hata olarak kayıtlı (CLAUDE.md kural 8). |
+
+## Reddetme protokolü
+
+Bir istek yukarıdaki kurallardan birini ihlal eden bir çıktı üretmeyi
+gerektiriyorsa (ör. "aqua renkte bir başlık yaz", "buraya bir emoji koy",
+"bu istatistiği kaynaksız ekle", "%40 artış garantisi yazalım"):
+
+1. **Sessizce uyma.** İstenen hâliyle üretme.
+2. **Tek satır gerekçe ver** — hangi kural, neden. Uzun ders verme.
+3. **Marka içi alternatifi hemen sun** — reddetmek tek başına yardımcı
+   değildir, aynı niyeti karşılayan uygun karşılığı üretip devam et.
+
+**Örnek:**
+
+> İstek: "Fiyat kartının başlığını aqua (#00D8C2) yap."
+> Yanıt: Reddediyorum — aqua beyaz zeminde 1,9:1 kontrast, metinde
+> kullanılamaz (`tasarim-sistemi.md` §1). Bunun yerine `var(--brand-2-ink)`
+> kullandım — aynı aile, 5,0:1 kontrast, aynı vurgu hissini veriyor.
+
+> İstek: "Bu yazıya '%300 büyüme sağladık' cümlesini ekle."
+> Yanıt: Reddediyorum — kaynaksız/uydurma istatistik (`konsept.md`,
+> uydurma yasağı). Elimde bu iddiayı destekleyecek ölçülü bir veri yok;
+> ya gerçek bir kaynak/rakam verin ya da cümleyi somut ama doğrulanabilir
+> bir ifadeyle ("kendi yayın hattımızda X hafta içinde Y" gibi, gerçek
+> Y verildiğinde) değiştireyim.
+
+Kural gerçekten belirsizse (yeni bir renk/durum kombinasyonu, sınırdaki bir
+kontrast) reddetmek yerine önce hesapla/ölç, sonra karar ver — tahmin
+etmek de bir tür uydurmadır.
+
+## Teslimden önce — kontrol listesi
+
+Üretilen HTML/CSS veya metni teslim etmeden önce, gerçekten üretilen
+çıktının kendisine karşı bu listeyi çalıştır (kafanda değil, çıktıyı
+yeniden okuyarak):
+
+- [ ] Her renk `var(--…)`'dan mı geliyor? Ham hex var mı?
+- [ ] Aqua (`--brand-2` / `#00D8C2`) metin/link/ikon rengi olarak kullanıldı mı? (Kullanıldıysa `--brand-2-ink`'e çevir.)
+- [ ] Her font-size sekiz basamaktan biri mi? Ham `rem`/`px` var mı?
+- [ ] Emoji var mı? (Ok/tema işaretleri hariç.)
+- [ ] Yeni bir ikon eklendiyse 24×24, `stroke-width 1.7`, `currentColor` mi?
+- [ ] Yön bağımlı CSS (`left/right/margin-left` vb.) var mı?
+- [ ] Görünen metin `data-i18n` ile mi geliyor, HTML'e gömülü mü? On dile açıldı mı?
+- [ ] Metinde kaynaksız istatistik, müşteri hikâyesi veya kesin vaat var mı?
+- [ ] Fiyat/rakam varsa "örnek" bağlamı taşıyor mu?
+- [ ] Yeni bir dış servis/CDN/font bağlantısı önerildi mi? (Önerildiyse reddet — `docs/tasarim-sistemi.md` §4.)
+
+Listedeki bir madde işaretlenemiyorsa (yani ihlal varsa) teslim etme —
+reddetme protokolünü uygula ve düzelterek teslim et.
+
+## Kapsam dışı
+
+Bu beceri renk/tipografi/boşluk/ikon/ses kurallarını uygular. Marka
+varlıklarının (logo, favicon) **üretimi** ayrı bir iştir — `scripts/marka-uret.py`
+ve `docs/logo-sistemi.md` konusudur, elle SVG/PNG çizilmez; bu beceri
+yalnızca üretilmiş varlıkların *kullanımını* (ör. `--logo-ink`) denetler.
+Marka tescili/hukuki konular `docs/marka-tescili.md`'dedir, bu beceri
+kapsamında değildir.
