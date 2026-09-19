@@ -10,13 +10,15 @@ window.QB_CONFIG = {
   /* Yayına alınacak alan adı — paylaşım bağlantıları ve şemalar bunu kullanır */
   siteUrl: 'https://qblogg.com',
 
-  /* Sosyal hesaplar. Boş bırakılan altbilgide gösterilmez (ölü bağlantı olmaz). */
+  /* Sosyal hesaplar. Boş bırakılan altbilgide gösterilmez (ölü bağlantı olmaz).
+   * Hesaplar açıldıkça doldurun; bkz. docs/sosyal-medya-kanallari.md
+   * Öncelik sırası: LinkedIn → X → Medium → Substack → YouTube (6. ay) */
   social: {
-    linkedin: '',
-    x: '',
-    medium: '',
-    substack: '',
-    youtube: ''
+    linkedin: '',   /* linkedin.com/company/qblogg — Company Page kurulunca */
+    x: '',          /* x.com/qblogg — hesap açılınca */
+    medium: '',     /* medium.com/qblogg-icerik-ai — publication açılınca */
+    substack: 'https://qblogg.substack.com',  /* Q Brief — kurulunca aktif */
+    youtube: ''     /* 6. ay */
   },
 
   /* Paket fiyatları. Buraya yazılan değer sözlükteki fiyatı ezer.

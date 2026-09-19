@@ -1798,3 +1798,85 @@ Object.assign(window.QB_I18N.ru, {
 Object.assign(window.QB_I18N.no, {
   'cta.magnet': 'Abonner og få Sjekklisten for automatiseringsdiagnose — mål på én uke hvilken oppgave i bedriften som er verdt å automatisere.',
   'cta.download': '↓ Last ned sjekklisten' });
+
+/* Davranış motoru + sonraki adım sistemi (behavior.js) */
+Object.assign(window.QB_I18N.tr, {
+  'beh.recent': 'Son okunanlar', 'beh.clear': 'Temizle', 'beh.suggested': 'Size özel',
+  'ns.label': 'Sonraki adım',
+  'ns.s0': 'Keşfet', 'ns.s1': 'İncele', 'ns.s2': 'Değerlendir', 'ns.s3': 'Karar ver',
+  'ns.blog':     'Yazıları keşfedin',
+  'ns.discover': 'Örnek çalışmayı inceleyin',
+  'ns.quality':  'Kalite güvencesini görün',
+  'ns.packages': 'Paketleri karşılaştırın',
+  'ns.evaluate': 'Brief gönderin',
+  'ns.decide':   'Bugün başlayalım',
+  'ns.close':    'Kapat'
+});
+Object.assign(window.QB_I18N.en, {
+  'beh.recent': 'Recently read', 'beh.clear': 'Clear', 'beh.suggested': 'Suggested for you',
+  'ns.label': 'Next step',
+  'ns.s0': 'Discover', 'ns.s1': 'Explore', 'ns.s2': 'Evaluate', 'ns.s3': 'Decide',
+  'ns.blog':     'Explore the blog',
+  'ns.discover': 'See sample work',
+  'ns.quality':  'See quality assurance',
+  'ns.packages': 'Compare packages',
+  'ns.evaluate': 'Send a brief',
+  'ns.decide':   "Let's start today",
+  'ns.close':    'Close'
+});
+Object.assign(window.QB_I18N.zh, {
+  'beh.recent': '最近阅读', 'beh.clear': '清除', 'beh.suggested': '为您推荐',
+  'ns.label': '下一步',
+  'ns.s0': '探索', 'ns.s1': '了解', 'ns.s2': '评估', 'ns.s3': '决定',
+  'ns.blog':     '浏览博客', 'ns.discover': '查看示例作品', 'ns.quality': '查看质量保证',
+  'ns.packages': '比较套餐', 'ns.evaluate': '发送需求', 'ns.decide': '立即开始', 'ns.close': '关闭'
+});
+Object.assign(window.QB_I18N.hi, {
+  'beh.recent': 'हाल ही में पढ़ा', 'beh.clear': 'साफ़ करें', 'beh.suggested': 'आपके लिए सुझाव',
+  'ns.label': 'अगला कदम',
+  'ns.s0': 'खोजें', 'ns.s1': 'जानें', 'ns.s2': 'मूल्यांकन करें', 'ns.s3': 'निर्णय करें',
+  'ns.blog':     'ब्लॉग देखें', 'ns.discover': 'नमूना काम देखें', 'ns.quality': 'गुणवत्ता देखें',
+  'ns.packages': 'पैकेज तुलना करें', 'ns.evaluate': 'ब्रीफ भेजें', 'ns.decide': 'आज शुरू करें', 'ns.close': 'बंद करें'
+});
+Object.assign(window.QB_I18N.es, {
+  'beh.recent': 'Leídos recientemente', 'beh.clear': 'Borrar', 'beh.suggested': 'Recomendado para ti',
+  'ns.label': 'Siguiente paso',
+  'ns.s0': 'Descubrir', 'ns.s1': 'Explorar', 'ns.s2': 'Evaluar', 'ns.s3': 'Decidir',
+  'ns.blog':     'Explorar el blog', 'ns.discover': 'Ver trabajo de muestra', 'ns.quality': 'Ver garantía de calidad',
+  'ns.packages': 'Comparar paquetes', 'ns.evaluate': 'Enviar brief', 'ns.decide': 'Empecemos hoy', 'ns.close': 'Cerrar'
+});
+Object.assign(window.QB_I18N.ar, {
+  'beh.recent': 'المقروء مؤخراً', 'beh.clear': 'مسح', 'beh.suggested': 'مقترح لك',
+  'ns.label': 'الخطوة التالية',
+  'ns.s0': 'اكتشف', 'ns.s1': 'استكشف', 'ns.s2': 'قيّم', 'ns.s3': 'قرّر',
+  'ns.blog':     'استكشف المدونة', 'ns.discover': 'شاهد نماذج الأعمال', 'ns.quality': 'شاهد ضمان الجودة',
+  'ns.packages': 'قارن الباقات', 'ns.evaluate': 'أرسل ملخصاً', 'ns.decide': 'لنبدأ اليوم', 'ns.close': 'إغلاق'
+});
+Object.assign(window.QB_I18N.fr, {
+  'beh.recent': 'Lus récemment', 'beh.clear': 'Effacer', 'beh.suggested': 'Recommandé pour vous',
+  'ns.label': 'Prochaine étape',
+  'ns.s0': 'Découvrir', 'ns.s1': 'Explorer', 'ns.s2': 'Évaluer', 'ns.s3': 'Décider',
+  'ns.blog':     'Explorer le blog', 'ns.discover': 'Voir un exemple', 'ns.quality': 'Voir la qualité',
+  'ns.packages': 'Comparer les offres', 'ns.evaluate': 'Envoyer un brief', 'ns.decide': "Commençons aujourd'hui", 'ns.close': 'Fermer'
+});
+Object.assign(window.QB_I18N.pt, {
+  'beh.recent': 'Lidos recentemente', 'beh.clear': 'Limpar', 'beh.suggested': 'Sugerido para você',
+  'ns.label': 'Próximo passo',
+  'ns.s0': 'Descobrir', 'ns.s1': 'Explorar', 'ns.s2': 'Avaliar', 'ns.s3': 'Decidir',
+  'ns.blog':     'Explorar o blog', 'ns.discover': 'Ver exemplo de trabalho', 'ns.quality': 'Ver garantia de qualidade',
+  'ns.packages': 'Comparar pacotes', 'ns.evaluate': 'Enviar brief', 'ns.decide': 'Vamos começar hoje', 'ns.close': 'Fechar'
+});
+Object.assign(window.QB_I18N.ru, {
+  'beh.recent': 'Недавно прочитанное', 'beh.clear': 'Очистить', 'beh.suggested': 'Рекомендуем вам',
+  'ns.label': 'Следующий шаг',
+  'ns.s0': 'Откройте', 'ns.s1': 'Изучите', 'ns.s2': 'Оцените', 'ns.s3': 'Решите',
+  'ns.blog':     'Изучите блог', 'ns.discover': 'Посмотреть пример работы', 'ns.quality': 'Гарантия качества',
+  'ns.packages': 'Сравнить пакеты', 'ns.evaluate': 'Отправить бриф', 'ns.decide': 'Начнём сегодня', 'ns.close': 'Закрыть'
+});
+Object.assign(window.QB_I18N.no, {
+  'beh.recent': 'Nylig lest', 'beh.clear': 'Tøm', 'beh.suggested': 'Anbefalt for deg',
+  'ns.label': 'Neste steg',
+  'ns.s0': 'Utforsk', 'ns.s1': 'Undersøk', 'ns.s2': 'Vurder', 'ns.s3': 'Bestem',
+  'ns.blog':     'Utforsk bloggen', 'ns.discover': 'Se eksempelarbeid', 'ns.quality': 'Se kvalitetssikring',
+  'ns.packages': 'Sammenlign pakker', 'ns.evaluate': 'Send en brief', 'ns.decide': 'La oss starte i dag', 'ns.close': 'Lukk'
+});
